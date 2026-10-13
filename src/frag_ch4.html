@@ -1,0 +1,120 @@
+<section class="chapter" id="ch4">
+<h2>Capítulo 4 · Dinámicas (Reglas de resolución)</h2>
+<p>Con los ejes (el universo) y los personajes (los actores) definidos, necesitamos un protocolo para resolver el conflicto. Este capítulo describe cómo tirar, cómo aplicar los bonos y qué significan. El combate añade algunas reglas propias, así que tiene su capítulo aparte.</p>
+
+<div class="rule formula">
+<p class="rule-title">La tirada</p>
+<p class="formula-line">Lectura de los dados (según la tarjeta de tono) + bono total ≥ TN de la tarjeta → <strong>éxito</strong></p>
+<p>Bono total = habilidad (nivel más alto aplicable) + dificultad + equipo + efectos. <strong>Siempre entre −2 y +4.</strong></p>
+</div>
+
+<h3 id="ch4-dificultad">4.1 Dificultad de la tirada (el filtro de la complejidad)</h3>
+<p>La dificultad no depende de la habilidad del personaje, sino de la complejidad intrínseca de la tarea. El <strong>número objetivo (TN)</strong> lo fija la tarjeta de tono activa (6 en las tarjetas de un dado o de mejor/peor, y 11 en la Realista). La dificultad de la tarea se expresa como un <strong>modificador</strong>:</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Modificador</th><th>Dificultad</th><th>Ejemplos</th></tr></thead>
+<tbody>
+<tr><td class="num">+2</td><td>Fácil</td><td>Tareas rutinarias bajo estrés.</td></tr>
+<tr><td class="num">0</td><td>Estándar</td><td>El desafío por defecto: disparar a alguien que se mueve, hackear un servidor comercial.</td></tr>
+<tr><td class="num">−2</td><td>Difícil</td><td>Requiere competencia profesional: un disparo a la cabeza, una operación a corazón abierto.</td></tr>
+<tr><td class="num">−4</td><td>Heroico</td><td>Matemáticamente improbable para un humano normal. Requiere bonos acumulados.</td></tr>
+</tbody></table></div>
+<div class="rule">
+<p class="rule-title">La regla del éxito y los límites numéricos</p>
+<ul>
+<li>Suma todos los modificadores: habilidad, dificultad, equipo y efectos.</li>
+<li>Si el total queda <strong>por debajo de −2</strong>, el DJ decide si permite la tirada (con −2) o narra el fallo automático. La penalización nunca baja de −2.</li>
+<li>Si el total queda <strong>por encima de +4</strong>, el DJ decide si permite la tirada (con +4) o narra el éxito automático; NOGUM recomienda la tirada de Estilo. El bono nunca supera +4.</li>
+<li>No hay combos: dos efectos de la misma fuente no se acumulan; cuenta el mejor.</li>
+</ul>
+<p><span class="flag ed">ED-5</span> Se retiran la escala de TN 4/6/9/12/15 y el techo de +6 que aparecían en una redacción anterior. El borrador del autor fija la dificultad como modificador y el anclaje en [−2, +4].</p>
+</div>
+<aside class="meta"><p>¿Tu Gran Maestro va a acertar el 99 % en modo Héroe? Perfecto: es lo que pide el género. No inflamos la dificultad para compensar. Si la tarea es mundana, <strong>no tires</strong>. Y si el jugador quiere lucirse, que se suba él mismo la dificultad: una mano a la espalda. <span class="src">T21–T22</span></p></aside>
+<p>Pifias, críticos y éxitos parciales dependen de la tarjeta de tono activa (<a href="#ch1-panel">1.4</a>).</p>
+
+<h3 id="ch4-habilidad">4.2 Habilidad: el peso de la competencia</h3>
+<p>Qué significa matemáticamente lo que escribiste en tu ficha (capítulo 3). Cifras con la tarjeta Primera marcha (dado rojo contra TN 6):</p>
+<ul>
+<li><strong>El Torpe (−1): el pie cambiado.</strong> Tienes el ámbito pero esa columna está vacía. Tu probabilidad baja del 50&nbsp;% al 40&nbsp;%: un poco, y se nota. Con el peor de 2d10 (tarjeta Angustia) cae al 16&nbsp;%, y ahí ya no es poco. Es lo que le pasa al forzudo cuando le piden una acrobacia.</li>
+<li><strong>La Nulidad (−2): el lastre.</strong> Con el ámbito vacío sufres −2. Tu probabilidad de éxito baja del 50 % al 30 %. Con el peor de 2d10 (tarjeta Angustia) cae al 9 %: eres prácticamente un cadáver andante. La Nulidad convierte las tareas rutinarias en peligros mortales.</li>
+<li><strong>La competencia (+0 / +1): el ciudadano.</strong> Tener algo en el ámbito, o su Dominio, te permite tirar sin penalización o con un leve empujón. Eres funcional.</li>
+<li><strong>La disciplina (+2): el profesional.</strong> Eres fiable. Un +2 convierte un TN 6 en un TN 4 virtual y reduce drásticamente el peso de la mala suerte (70 %).</li>
+<li><strong>El Gran Maestro (+4): la certeza.</strong> Con +4, en una tarea estándar solo fallas con el 1 natural, que es la pifia (90 % de éxito). Si el tono es optimista (tarjeta Épica), eres matemáticamente infalible en lo mundano (99 %).</li>
+</ul>
+
+<h3 id="ch4-equipo">4.3 Equipo: bonificadores, llaves y efectos</h3>
+<p>En NOGUM el equipo no sirve solo para sumar números: sirve para <strong>habilitar acciones</strong>.</p>
+<ol>
+<li><strong>Bonificador de calidad (+1 / +2).</strong> Solo el equipo de manufactura excepcional da bonos numéricos. Un rifle de francotirador estándar da +0; un rifle personalizado de maestro armero da +1.</li>
+<li><strong>Permiso narrativo (la Llave).</strong> Normalmente, una pieza de equipo opera en el mismo nivel de la Rejilla que su portador: un puñetazo afecta a una persona, y una escopeta también (nivel 1). Varían en el daño y en cómo se absorbe. Pero hay equipo que rompe esa barrera: un bazuca puede destrozar una oficina entera (nivel 2).
+<ul>
+<li><em>Sin equipo:</em> de un puñetazo no puedes atacar la infraestructura ni a un grupo mediano de personas. Imposible.</li>
+<li><em>Con equipo:</em> tienes un bazuca. Ahora puedes volar una cabaña del bosque y reducirla a cenizas. Tiras contra el TN estándar.</li>
+</ul>
+Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li>
+<li><strong>Efectos (cajón de sastre).</strong> Como buen manual universal, una pieza de equipo puede hacer… otras cosas. Lo que quieras. Si algo merece la pena apuntarlo en la ficha pero no es ni llave ni bono, descríbelo aquí: desde un arma maldita que aumenta tu fuerza pero corrompe tu alma (te va causando daño espiritual) hasta una sustancia que acelera tus reflejos pero cambia tu forma de percibir el peligro (euforia). Los efectos pueden describir una mecánica o dar consejos (o imposiciones) de interpretación. El límite es la imaginación.</li>
+</ol>
+
+
+<h4>Los tres cerrojos del equipo</h4>
+<p>Que algo acabe escrito en tu ficha no es solo cuestión de dinero. Son tres permisos, y la ficha técnica de cada objeto (<a href="#apx-bazar">8.3</a>) dice cuáles te pide: <span class="flag ed">ED-34</span></p>
+<ol>
+<li><strong>El dinero</strong>, que aquí es tu nivel en <em>Recursos</em> (Social → Jerarquía → Recursos). Cada objeto trae su <span class="tag">Acceso N</span>: lo cotidiano pide 0, el arma seria 1, el material militar 2, y lo que no debería existir 3. Si no llegas, no es que sea caro: es que no está a tu alcance, y conseguirlo es una trama.</li>
+<li><strong>El permiso narrativo</strong>: que tenga sentido que eso esté en tus manos aquí y ahora.</li>
+<li><strong>El permiso del ritmo</strong>: si el objeto rompe la Rejilla —lleva <span class="tag">Rejilla: Llave Nx</span>— cuesta además <strong>x² Llaves</strong> de tu monedero, la misma escalera cuadrada de <a href="#ch2-llave">2.3</a>. Un cañón de riel, que es Llave N3, cuesta nueve Llaves.</li>
+</ol>
+<p>El tercer cerrojo cierra un agujero clásico. Sin él, una pistola de catálogo regala gratis lo que un personaje paga con nueve Llaves. Con él, el cañón de riel sigue siendo brutal y quien pagó las suyas no se siente estafado.</p>
+<div class="rule">
+<p class="rule-title">Lo robado funciona una escena</p>
+<p>Un arma robada, prestada o conseguida en la ficción <strong>se usa una escena entera sin pagar nada</strong>. Le quitas el cañón de riel al mercenario muerto, lo usas, y al acabar la escena decides: o gastas las Llaves y es tuyo, o lo dejas tirado.</p>
+<p>Así el saqueo vuelve a ser una decisión en vez de una escalada, que es el problema clásico de todos los juegos con catálogo de equipo. Y encaja con la distinción de las Llaves: la Llave del equipo es la que <strong>se puede perder</strong> —vive en el objeto, te la quitan, se gasta, se rompe—; la Llave propia es la que <strong>eres tú</strong>.</p>
+</div>
+
+<h3 id="ch4-modificadores">4.4 Modificadores temporales y permanentes</h3>
+<dl>
+<dt>Temporales (duran una escena, unos turnos o hasta que se cumpla una condición)</dt>
+<dd>Aturdido, Inspirado, Dopado, Derribado… Pueden ser de los tres tipos anteriores: <strong>bonos</strong> (numéricos, modifican tu tirada), <strong>llaves</strong> (narrativas, modifican tu nivel de Rejilla) o <strong>efectos</strong> (mecánicos o narrativos). Define siempre la condición bajo la que desaparecen (fin de escena, curación, ritual, número de turnos…). Todo efecto que venga de una pieza de equipo es temporal, porque desaparece si no la llevas encima.</dd>
+<dt>Permanentes (duran un arco o una campaña)</dt>
+<dd>Son cambios en la hoja: cicatrices, traumas, corrupción, prótesis. No necesitan ninguna condición para estar ahí: simplemente están. Solo se eliminan o modifican con puntos de experiencia (o, en el caso de las secuelas, con otro arco significativo; ver <a href="#ch5-consecuencias">5.6</a>).</dd>
+</dl>
+
+<h3 id="ch4-malla">4.5 La Rejilla y la Regla del Estilo</h3>
+<p>Esta regla anula todo lo anterior. Antes de calcular nada, el Director de Juego consulta <strong>la Rejilla</strong> (<a href="#ch2-rejilla">capítulo 2</a>). Pedagógicamente va al final del capítulo, pero en mesa es el primer filtro.</p>
+<div class="rule">
+<p class="rule-title">A · La regla del salto de poder</p>
+<p>Compara el nivel de Rejilla del actor y el del desafío en el ámbito que corresponda. <strong>Basta un nivel de diferencia.</strong> <span class="src">T57</span></p>
+<ul>
+<li><strong>Si el PJ está por encima</strong> (héroe de nivel 2 contra matón de nivel 1): <strong>éxito automático</strong>. No se tira para ver si ganas. Se narra, o se tira Estilo (regla B).</li>
+<li><strong>Si el PJ está por debajo</strong> (humano de nivel 1 contra tanque de nivel 2): <strong>fracaso automático / inmunidad</strong>. No tires: tus golpes no le hacen nada. Busca una Llave o cambia de planteamiento. Narración sugerida: «Es como golpear una montaña. Ni se inmuta».</li>
+<li><strong>Mismo nivel:</strong> se tiran los dados con las reglas 4.1–4.4.</li>
+</ul>
+<p><span class="flag ed">ED-6</span> El borrador titulaba esta regla «(+/−2)», resto de una versión en la que hacían falta dos niveles. El autor fijó que basta uno.</p>
+</div>
+
+<div class="rule">
+<p class="rule-title">B · La regla del Estilo (gestión de masillas)</p>
+<p>Se activa cuando te enfrentas a enemigos <strong>por debajo de tu nivel</strong> de Rejilla o que son claramente <strong>decorado</strong> (masillas sin importancia narrativa).</p>
+<ol>
+<li><strong>La premisa:</strong> no hay duda de que vas a ganar. Eres un maestro de la espada de nivel 3 y ellos son matones de taberna de nivel 1. Tirar ataque y daño es perder el tiempo.</li>
+<li><strong>La acción:</strong> no tiras para ver <em>si</em> aciertas. Se da por sentado que aciertas y los eliminas. No se restan puntos de vida a los masillas.</li>
+<li><strong>La tirada de Estilo:</strong> tiras una vez con la tarjeta de tono activa + <strong>Estilo (+2)</strong>, para ver <em>cómo</em> ganas. <strong>El Estilo nunca cuesta</strong>: en las tarjetas con éxito con coste, esa banda se lee aquí como éxito a secas. Se tira Estilo precisamente cuando ya no se puede fallar. <span class="flag ed">ED-26</span></li>
+</ol>
+<div class="tw"><table class="t">
+<thead><tr><th>Resultado</th><th>Qué pasa</th></tr></thead>
+<tbody>
+<tr><td>Pifia</td><td>Lo consigues, pero <strong>te ves ridículo</strong>. Ganas igual: eso nunca estuvo en duda. Lo que se te cae es la pose.</td></tr>
+<tr><td>Fallo</td><td>Lo consigues <strong>de la forma más olvidable y anodina</strong>. Funciona, se acabó, y quizá nadie estaba mirando.</td></tr>
+<tr><td>Éxito</td><td><strong>Molas muchísimo.</strong> Eficaz y limpio, con piruetas y caras de asombro.</td></tr>
+<tr><td>Crítico</td><td><strong>Lúcete.</strong> Describe tú la escena, y que sea inolvidable: coreografía de cine, varios enemigos en una sola acción fluida, rumores que nacen esa noche. Si encaja con lo que está pasando, el DJ puede darte además una ventaja temporal.</td></tr>
+</tbody></table></div>
+<p><span class="flag ed">ED-7</span> El borrador tenía dos versiones (4.5, «diferencia 0 o 1», con cuatro resultados; y 6.2, «por debajo de tu nivel», con tres). Se unifican: el disparador es el de 6.2, que coincide con la regla A y con la corrección del autor <span class="src">T113</span>, y la tabla conserva los cuatro resultados. <strong>Un crítico de Estilo no cura.</strong> Recuperar salud con una floritura no tiene sentido; el estrés se puede negociar en la mesa, pero nunca de forma automática, y el efecto concreto lo decide el Director con el jugador. <span class="src">Decisión del autor</span></p>
+</div>
+<div class="rule warn">
+<p class="rule-title">Advertencia de tono</p>
+<p>Este manual es universal, y esta regla no conviene en cualquier universo: pocas cosas desentonan más en una partida de horror cósmico. El autor la <strong>desaconseja en universos muy serios</strong>. <span class="src">T113</span></p>
+<ul>
+<li><strong>Donde brilla:</strong> anime, wuxia, space opera, cine de acción.</li>
+<li><strong>Donde rompe la inmersión:</strong> terror realista, drama bélico, <em>survival</em>. En <em>Salvar al soldado Ryan</em>, matar a un extra cuesta sudor y miedo, y hasta el último masilla tira dados.</li>
+</ul>
+<p>Por eso el Estilo queda aparte en la ficha, como un sexto ámbito que no depende de la pirámide.</p>
+</div>
+</section>

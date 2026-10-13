@@ -1,0 +1,590 @@
+<title>NOGUM App</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap">
+<style>
+%%TOKENS%%
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:16px/1.5 var(--serif);-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;display:flex;align-items:center;gap:12px;padding:10px 16px;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);min-height:60px}
+.brand{display:flex;align-items:center;gap:10px;flex:none}
+.dice{display:flex;gap:4px}.dice i{width:18px;height:18px;border-radius:4px;background:var(--red);transform:rotate(-8deg);display:block}.dice i+i{background:var(--blue);transform:rotate(10deg)}
+.brand b{font:800 26px/1 var(--display);letter-spacing:.06em}
+.brand small{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.tabs{display:flex;gap:4px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:thin;align-items:center}
+.tab{flex:none;border:1px solid var(--rule);background:var(--paper);border-radius:8px 8px 8px 8px;padding:9px 14px;font:600 13px/1 var(--mono);text-transform:uppercase;letter-spacing:.03em;color:var(--ink-2);white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tab.add{border-style:dashed}
+.tab.aux{margin-left:auto}
+.lang{display:flex;flex:none;border:1px solid var(--ink);border-radius:999px;overflow:hidden}
+.lang button{border:0;background:none;padding:8px 11px;font:600 12px/1 var(--mono)}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.tool{flex:none;border:1px solid var(--rule);background:var(--paper);border-radius:8px;padding:9px 12px;font:600 12px/1 var(--mono);text-transform:uppercase;letter-spacing:.03em;color:var(--ink-2)}
+.tool:hover{color:var(--ink);border-color:var(--ink-3)}
+.tool.primary{background:var(--red);border-color:var(--red);color:#fff}
+.tool.on{background:var(--amber-soft);border-color:var(--amber);color:var(--amber)}
+.tool:disabled{opacity:.4;cursor:default}
+main{padding:18px 16px 60px}
+.wrap{max-width:1500px;margin:0 auto}
+.disclaimer{max-width:1500px;margin:0 auto 14px;font-size:14.5px;color:var(--ink-2);background:var(--paper);border:1px solid var(--rule);border-left:4px solid var(--blue);border-radius:8px;padding:10px 14px}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:18px;align-items:start}
+@media (max-width:1050px){.split{grid-template-columns:1fr}}
+.panel{background:var(--paper);border:1px solid var(--rule);border-radius:12px;box-shadow:var(--shadow);padding:clamp(16px,2.4vw,26px)}
+.formhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.formhead h2,.sheethead h2{font:800 30px/1 var(--display);text-transform:uppercase;letter-spacing:.02em;margin:0}
+.lockmsg{font:13px/1.4 var(--mono);color:var(--amber);background:var(--amber-soft);border-radius:8px;padding:8px 12px;margin:10px 0 4px}
+fieldset.q{border:0;border-top:1px solid var(--rule-2);margin:0;padding:18px 0 12px}
+fieldset.q:disabled{opacity:.55}
+.q legend{padding:0;font:600 12px/1 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);margin-bottom:6px}
+.q .ask{font:600 21px/1.3 var(--serif);margin:0 0 12px;text-wrap:balance}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.opts.wide{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.opt{text-align:left;border:1.5px solid var(--rule);background:var(--ground);border-radius:10px;padding:11px 13px;line-height:1.35}
+.opt:hover:not(:disabled){border-color:var(--ink-3)}
+.opt[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.opt small{display:block;font:12px/1.35 var(--mono);opacity:.75;margin-top:3px}
+.tech{margin:10px 0 0;font:12.5px/1.45 var(--mono);color:var(--ink-3)}
+.tech b{color:var(--blue);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1.5px solid var(--rule);background:var(--ground);border-radius:999px;padding:6px 11px;font-size:14px}
+.chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+/* sheet */
+.sheet{background:var(--paper);border:1px solid var(--rule);border-radius:12px;box-shadow:var(--shadow);padding:clamp(16px,2.4vw,28px)}
+.sheethead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;border-bottom:3px solid var(--ink);padding-bottom:10px;margin-bottom:14px}
+.sheethead .sub{font:600 12px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin-top:4px}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.badge{font:600 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.04em;padding:5px 8px;border-radius:999px;background:var(--rule-2)}
+.badge.red{background:var(--red-soft);color:var(--red)}.badge.blue{background:var(--blue-soft);color:var(--blue)}.badge.amber{background:var(--amber-soft);color:var(--amber)}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-bottom:14px}
+.rbox{border:1px solid var(--rule);border-radius:10px;padding:10px 12px;background:var(--ground)}
+.rbox h3{font:800 17px/1.1 var(--display);text-transform:uppercase;letter-spacing:.03em;margin:0 0 6px}
+.rbox dl{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:0;font-size:14px}
+.rbox dt{font:600 10.5px/1.7 var(--mono);text-transform:uppercase;color:var(--ink-3)}
+.rbox dd{margin:0}
+.rbox p{margin:4px 0 0;font-size:14px}
+.rbox.card{border-top:4px solid var(--red)}
+.note{font:12.5px/1.45 var(--mono);color:var(--ink-3)}
+.sec{font:800 19px/1 var(--display);text-transform:uppercase;letter-spacing:.04em;margin:18px 0 8px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.sec .note{font-family:var(--mono);text-transform:none;letter-spacing:0}
+/* tracks */
+.tracks{display:grid;gap:8px}
+.track{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center}
+.track > span{font:600 11px/1.2 var(--mono);text-transform:uppercase;color:var(--ink-2)}
+.blocks{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.blk{border:2px solid var(--ink);border-radius:6px;padding:4px;display:flex;gap:4px;flex-wrap:wrap;align-items:center;min-height:30px}
+.blk .lbl{width:100%;font:600 10px/1 var(--mono);color:var(--ink-3);text-transform:uppercase}
+.u{flex:1 1 0;min-width:10px;height:22px;border:1.5px solid var(--ink-2);border-radius:3px;background:var(--paper);padding:0;position:relative}
+.u.full{background:var(--red);border-color:var(--red)}
+.u.half{background:linear-gradient(135deg,var(--red) 50%,var(--paper) 50%)}
+.u:disabled{cursor:default}
+/* pyramid */
+.amb{border:1px solid var(--rule);border-radius:10px;margin-bottom:10px;overflow:hidden}
+.amb-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 12px;background:var(--rule-2)}
+.amb-h b{font:800 18px/1 var(--display);text-transform:uppercase;letter-spacing:.04em;flex:1}
+.base{font:600 12px/1 var(--mono);padding:5px 8px;border-radius:6px}
+.base.neg{background:var(--red-soft);color:var(--red)}.base.zero{background:var(--ok-soft);color:var(--ok)}
+.doms{display:grid;grid-template-columns:1fr 1fr}
+@media (max-width:700px){.doms{grid-template-columns:1fr}}
+.dom{padding:8px 12px;border-top:1px solid var(--rule-2)}
+.dom + .dom{border-left:1px solid var(--rule-2)}
+.lvl{display:flex;align-items:center;gap:8px;padding:3px 0;flex-wrap:wrap}
+.lvl .nm{flex:1;min-width:90px}
+.lvl.d .nm{font-weight:600}
+.lvl.s{padding-left:14px}
+.lvl.f{padding-left:30px;font-size:14px}
+.pip{border:1.5px solid var(--rule);background:var(--paper);border-radius:6px;padding:3px 8px;font:600 12px/1.2 var(--mono);min-width:40px}
+.pip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.pip:disabled{opacity:.35;cursor:default}
+.mini{border:1px dashed var(--rule);background:none;border-radius:6px;padding:2px 8px;font:600 11px/1.3 var(--mono);color:var(--ink-3)}
+select{border:1px solid var(--rule);border-radius:6px;background:var(--paper);padding:5px 8px;max-width:100%}
+input[type=text],textarea{border:1px solid var(--rule);border-radius:8px;background:var(--paper);padding:8px 10px;width:100%}
+textarea{min-height:70px;resize:vertical}
+.pts{font:800 22px/1 var(--display)}
+.pts.over{color:var(--red)}
+.stance{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stance button{border:2px solid var(--rule);background:var(--ground);border-radius:10px;padding:10px;font:800 18px/1 var(--display);text-transform:uppercase;letter-spacing:.04em}
+.stance button[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.gear{width:100%;border-collapse:collapse;font-size:14px}
+.gear th,.gear td{text-align:left;border-bottom:1px solid var(--rule-2);padding:6px 6px;vertical-align:top}
+.gear th{font:600 10.5px/1.3 var(--mono);text-transform:uppercase;color:var(--ink-3)}
+.gear tr.out td{opacity:.45}
+.tag{display:inline-block;font:600 11px/1.2 var(--mono);padding:2px 5px;border-radius:4px;background:var(--rule-2);border:1px solid var(--rule);margin:1px 0}
+.addrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:700px){.fields{grid-template-columns:1fr}}
+.fields label{display:block;font:600 11px/1 var(--mono);text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+.create{margin-top:18px;display:flex;justify-content:center}
+.create button{font:800 22px/1 var(--display);text-transform:uppercase;letter-spacing:.05em;padding:14px 28px;border-radius:12px;border:0;background:var(--red);color:#fff}
+.blankpyr{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;font-size:13.5px}
+.blankpyr div{border:1px solid var(--rule);border-radius:8px;padding:8px}
+.blankpyr b{display:block;font:800 15px/1 var(--display);text-transform:uppercase;margin-bottom:4px}
+/* chat */
+.chat{display:flex;flex-direction:column;gap:10px;max-height:55vh;overflow:auto;margin:10px 0}
+.msg{padding:10px 14px;border-radius:10px;max-width:86%;white-space:pre-wrap}
+.msg.me{align-self:flex-end;background:var(--blue-soft)}.msg.ai{align-self:flex-start;background:var(--ground);border:1px solid var(--rule)}.msg.loc{align-self:flex-start;background:var(--amber-soft)}
+.who{display:block;font:600 10.5px/1 var(--mono);text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.status{font:600 11px/1 var(--mono);text-transform:uppercase;padding:6px 9px;border-radius:999px;background:var(--rule-2);color:var(--ink-3)}
+.status.on{background:var(--ok-soft);color:var(--ok)}.status.off{background:var(--amber-soft);color:var(--amber)}
+.timeline{list-style:none;margin:10px 0 0;padding:0 0 0 14px;border-left:2px solid var(--rule)}
+.timeline li{margin-bottom:12px}
+[hidden]{display:none!important}
+@media (max-width:640px){.top{flex-wrap:wrap}.tabs{order:9;flex-basis:100%}.brand small{display:none}.track{grid-template-columns:1fr}}
+@page{size:A4;margin:12mm}
+@media print{
+  :root{--paper:#fff;--ground:#fff;--ink:#161b24;--ink-2:#3b4250;--ink-3:#616978;--rule:#c9cfd8;--rule-2:#e7eaef;color-scheme:light}
+  body{background:#fff;font-size:11pt}
+  .top,.disclaimer,.noprint,#formPanel{display:none!important}
+  main{padding:0}.split{display:block}
+  .sheet{box-shadow:none;border:0;padding:0}
+  .u.full,.base,.badge,.stance button[aria-pressed="true"],.rbox.card{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .amb,.rbox,.track{break-inside:avoid}
+  select,input,textarea{border:0;background:none;appearance:none;-webkit-appearance:none;padding:0}
+}
+</style>
+
+<header class="top">
+  <span class="brand"><span class="dice" aria-hidden="true"><i></i><i></i></span><b>NOGUM</b><small id="brandSub"></small></span>
+  <nav class="tabs" id="tabs" role="tablist"></nav>
+  <span class="status" id="aiStatus"></span>
+  <div class="lang" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button></div>
+  <button class="tool" id="themeBtn" type="button"></button>
+</header>
+<main><div class="wrap" id="view"></div></main>
+
+<script type="application/json" id="data">%%DATA%%</script>
+<script type="application/json" id="canon">%%CANON%%</script>
+<script>
+(function(){
+'use strict';
+var DATA = JSON.parse(document.getElementById('data').textContent);
+var CANON = JSON.parse(document.getElementById('canon').textContent);
+function $(id){ return document.getElementById(id); }
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function load(k, d){ try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } }
+function save(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+
+/* ================= i18n ================= */
+var S = load('nogum-app2', null) || {};
+S.lang = S.lang || load('nogum-lang-app', null) || 'es';
+var L = function(){ return S.lang === 'en' ? 1 : 0; };
+function t(es, en){ return S.lang === 'en' ? en : es; }
+function pick(a){ return Array.isArray(a) ? a[L()] : a; }
+
+var UI = {
+  sub:['App del director','GM app'], mesa:['Mesa','Table'], add:['+ Ficha','+ Sheet'], ask:['Preguntas','Questions'], ses:['Sesiones','Sessions'],
+  theme:['Tema','Theme'], edit:['Editar','Edit'], lock:['Fijar','Lock'], print:['Imprimir','Print'], del:['Borrar ficha','Delete sheet'],
+  disclaimer:['La app aplica un tono y un set de reglas a la partida completa. Repite el formulario siempre que quieras cambiar de tono: para una sesión nueva, una escena nueva o incluso a mitad de escena. Las fichas se actualizan solas.',
+              'The app applies one tone and one rule set to the whole game. Run the form again whenever you want to change tone: for a new session, a new scene or even mid-scene. Character sheets update on their own.'],
+  form:['Formulario de mesa','Table form'],
+  locked:['Formulario fijado. Pulsa «Editar» para cambiar el tono o las reglas.','Form locked. Press “Edit” to change the tone or the rules.'],
+  create:['Crear ficha','Create sheet'], tpl:['Hoja de mesa','Table sheet'], blank:['Plantilla de personaje','Character template'],
+  pc:['Personaje','Character'], name:['Nombre','Name'], concept:['Concepto','Concept'], notes:['Heridas y notas','Wounds and notes'], keys:['Llaves','Keys'],
+  points:['Puntos','Points'], gear:['Equipo','Equipment'], addgear:['Añadir','Add'], type:['Tipo','Type'], item:['Objeto','Item'],
+  stance:['Disposición','Stance'], stanceNote:['Marcador: si la mesa no elige antes de actuar, vale la última disposición marcada.','Marker: if the table does not choose before acting, the last marked stance applies.'],
+  life:['Vida','Health'], grid:['Rejilla','Grid'], style:['Estilo','Style'], init:['Iniciativa','Initiative'],
+  outU:['fuera de este universo','outside this universe'], none:['—','—'], remove:['Quitar','Remove'],
+  firma:['Firma','Signature'], addf:['+ firma','+ signature'], choose:['Elige…','Choose…'],
+  over:['Te has pasado del presupuesto de 10 puntos.','You are over the 10-point budget.']
+};
+function u(k){ return pick(UI[k]); }
+
+/* ================= rules data ================= */
+var AMB = [
+  {id:'fis', n:['Físico','Physical'], doms:[
+    {n:['Destreza','Dexterity'], dis:[['Atletismo','Athletics'],['Acrobacia','Acrobatics'],['Sigilo','Stealth'],['Juego de manos','Sleight of Hand']]},
+    {n:['Vigor','Vigour'], dis:[['Potencia','Might'],['Entereza','Fortitude'],['Pelea','Brawling'],['Armas','Weapons']]}]},
+  {id:'men', n:['Mental','Mental'], doms:[
+    {n:['Erudición','Erudition'], dis:[['Ciencias','Sciences'],['Humanidades','Humanities'],['Ocultismo','Occultism'],['Actualidad','Current Affairs']]},
+    {n:['Ingenio','Wits'], dis:[['Investigación','Investigation'],['Alerta','Alertness'],['Táctica','Tactics'],['Supervivencia','Survival']]}]},
+  {id:'soc', n:['Social','Social'], doms:[
+    {n:['Influencia','Influence'], dis:[['Persuasión','Persuasion'],['Engaño','Deception'],['Empatía','Empathy'],['Seducción','Seduction']]},
+    {n:['Jerarquía','Hierarchy'], dis:[['Liderazgo','Leadership'],['Intimidación','Intimidation'],['Contactos','Contacts'],['Recursos','Resources']]}]},
+  {id:'tec', n:['Técnico','Technical'], doms:[
+    {n:['Artificio','Artifice'], dis:[['Mecánica','Mechanics'],['Electrónica','Electronics'],['Biotecnia','Biotech'],['Artesanía','Crafting']]},
+    {n:['Operaciones','Operations'], dis:[['Pilotaje','Driving'],['Vuelo','Flight'],['Sistemas','Systems'],['Seguridad','Security']]}]},
+  {id:'arc', n:['Arcano','Arcane'], doms:[
+    {n:['Don','Gift'], dis:[['Proyección','Projection'],['Alteración','Alteration'],['Adivinación','Divination'],['Protección','Protection']]},
+    {n:['Ritual','Ritual'], dis:[['Alquimia','Alchemy'],['Invocación','Summoning'],['Encantamiento','Enchantment'],['Vínculos','Bonds']]}]}
+];
+var UNIVERSES = DATA.bazar.map(function(b){ return b.id; });
+/* Placeholder signature catalogue: 5 per discipline, tagged with every universe in order (to be filled in later). */
+function firmas(){ var out = []; for (var i = 1; i <= 5; i++) out.push({id:i, n:[ 'Firma ' + i, 'Signature ' + i ], tags:UNIVERSES.slice()}); return out; }
+
+var CARDS = {
+  T0:{n:['Tarjeta 0 · Estándar','Card 0 · Standard'], roll:['Solo el dado rojo (1d10) + bono','Red die only (1d10) + bonus'], tn:6, fum:['1 natural (10 %)','Natural 1 (10%)'], cri:['10 natural (10 %)','Natural 10 (10%)'], q:['«No quiero pararme a pensar en el tono.»','“I don’t want to stop and think about tone.”']},
+  T1:{n:['Tarjeta 1 · Héroe','Card 1 · Hero'], roll:['2d10, quédate el ALTO + bono','2d10, keep the HIGHER + bonus'], tn:6, fum:['Doble 1 (1 %)','Double 1 (1%)'], cri:['Un 10 en cualquier dado (19 %)','A 10 on either die (19%)'], q:['«Soy el mejor en lo que hago.»','“I’m the best at what I do.”']},
+  T2:{n:['Tarjeta 2 · Realista','Card 2 · Realist'], roll:['SUMA 2d10 + bono','SUM 2d10 + bonus'], tn:11, fum:['Suma natural 2–3 (3 %)','Natural sum 2–3 (3%)'], cri:['Suma natural 19–20 (3 %)','Natural sum 19–20 (3%)'], q:['«La vida es justa y predecible.»','“Life is fair and predictable.”']},
+  T3:{n:['Tarjeta 3 · Pulp / Drama','Card 3 · Pulp / Drama'], roll:['Solo el dado rojo + bono','Red die only + bonus'], tn:6, fum:['1 natural','Natural 1'], cri:['10 natural','Natural 10'], bands:['Total ≤5 fallo · 6–7 éxito parcial · 8+ éxito','Total ≤5 failure · 6–7 partial success · 8+ success'], q:['«Sí, pero te va a costar.»','“Yes, but it’ll cost you.”']},
+  T4:{n:['Tarjeta 4 · Terror','Card 4 · Terror'], roll:['2d10, quédate el BAJO + bono','2d10, keep the LOWER + bonus'], tn:6, fum:['Cualquier 1 (19 %)','Any 1 (19%)'], cri:['Doble 10 (1 %)','Double 10 (1%)'], q:['«Tengo miedo a fallar.»','“I’m afraid to fail.”']},
+  T5:{n:['Tarjeta 5 · Gonzo','Card 5 · Gonzo'], roll:['Solo el dado rojo + bono','Red die only + bonus'], tn:6, fum:['1 o 2 naturales (20 %)','Natural 1 or 2 (20%)'], cri:['9 o 10 naturales (20 %)','Natural 9 or 10 (20%)'], q:['«¡Cualquier cosa puede pasar!»','“Anything can happen!”']},
+  T6:{n:['Tarjeta 6 · Tragedia','Card 6 · Tragedy'], roll:['SUMA 2d10 + bono','SUM 2d10 + bonus'], tn:14, fum:['Suma natural 2–3 (3 %)','Natural sum 2–3 (3%)'], cri:['Suma natural 19–20 (3 %)','Natural sum 19–20 (3%)'], q:['«No hay esperanza.»','“There is no hope.”']},
+  EPIC:{n:['Épica clásica (receta de referencia)','Classic Epic (reference recipe)'], roll:['2d10, quédate el ALTO + bono','2d10, keep the HIGHER + bonus'], tn:6, fum:['Doble 1 (1 %)','Double 1 (1%)'], cri:['Un 10 en cualquier dado (19 %)','A 10 on either die (19%)'], ref:true, q:['Sin tarjeta propia: hoy usa las reglas de la Tarjeta 1.','No card of its own: uses Card 1 rules for now.']},
+  PULPD:{n:['Pulp desatado (receta de referencia)','Unleashed Pulp (reference recipe)'], roll:['2d10, quédate el ALTO + bono','2d10, keep the HIGHER + bonus'], tn:6, fum:['Doble 1 (1 %)','Double 1 (1%)'], cri:['Un 10 en cualquier dado (19 %)','A 10 on either die (19%)'], bands:['Total 6–7 éxito parcial · 8+ éxito','Total 6–7 partial success · 8+ success'], ref:true, q:['Sin tarjeta propia (pendiente).','No card of its own (pending).']},
+  NIGHT:{n:['Pesadilla (receta de referencia)','Nightmare (reference recipe)'], roll:['2d10, quédate el BAJO + bono','2d10, keep the LOWER + bonus'], tn:6, fum:['Cualquier 1 (19 %)','Any 1 (19%)'], cri:['Doble 10 (1 %)','Double 10 (1%)'], ref:true, q:['Sin tarjeta propia: hoy coincide con la Tarjeta 4.','No card of its own: matches Card 4 for now.']}
+};
+var CELL = {
+  'alto|bajo':['T1','Fantasía de poder','Power Fantasy'], 'alto|medio':['EPIC','Épica clásica','Classic Epic'], 'alto|alto':['PULPD','Pulp desatado','Unleashed Pulp'],
+  'neutro|bajo':['T2','Realismo gris','Grey Realism'], 'neutro|medio':['T0','Drama de acción','Action Drama'], 'neutro|alto':['T3','Comedia negra / Extrañeza','Black Comedy / Weirdness'],
+  'bajo|bajo':['T6','Terror purista','Purist Horror'], 'bajo|medio':['T4','Thriller de supervivencia','Survival Thriller'], 'bajo|alto':['NIGHT','Pesadilla / Slasher','Nightmare / Slasher']
+};
+var ACC = {
+  epico:{n:['Épico','Epic'], roll:['El mayor de los dos dados','The higher of the two dice'], fum:['Doble 1','Double 1'], cri:['Un 10 en cualquiera','A 10 on either'], res:['Total 6 o más: éxito','Total 6 or more: success']},
+  neutro:{n:['Neutro','Neutral'], roll:['Solo el rojo','Red die only'], fum:['1 en el rojo','1 on the red die'], cri:['10 en el rojo','10 on the red die'], res:['Total 6 o más: éxito','Total 6 or more: success']},
+  agobio:{n:['Agobio','Dread'], roll:['El menor de los dos dados','The lower of the two dice'], fum:['Un 1 en cualquiera','A 1 on either'], cri:['Doble 10','Double 10'], res:['≤5 fallo · 6–7 parcial · 8+ éxito','≤5 failure · 6–7 partial · 8+ success']}
+};
+var ZOOM = {
+  cascara:{n:['Nivel 1 · La Cáscara','Level 1 · The Shell'], units:3, size:9, d:['3 bloques: cada punto de daño tacha un bloque.','3 blocks: each damage point marks a block.']},
+  carne:{n:['Nivel 2 · La Carne','Level 2 · The Flesh'], units:9, size:3, d:['9 casillas: un ataque tacha 1, 2 o 3.','9 boxes: an attack marks 1, 2 or 3.']},
+  nucleo:{n:['Nivel 3 · El Núcleo','Level 3 · The Core'], units:27, size:1, d:['27 puntos: daño granular, guerra de desgaste.','27 points: granular damage, attrition war.']}
+};
+var BLOCKS = [['Sano','Healthy'],['Herido (−2)','Wounded (−2)'],['Crítico (−4)','Critical (−4)']];
+var BARS = [['fis','Física','Physical'],['men','Mental','Mental'],['esp','Espiritual','Spiritual']];
+var STANCES = [['violencia','Violencia','Violence'],['treta','Treta','Trick'],['especialidad','Especialidad','Specialty']];
+var GRIDN = [null,['Una persona','One person'],['Una sala, decenas','A room, dozens'],['Un edificio, un barrio','A building, a block'],['Una gran ciudad','A big city'],['Un país','A country']];
+
+/* recipe presets (derived from the 20 recipes; adjustable with Edit) */
+var P = function(opt,caos,zoom,grid,estilo,uni,baul,flavor){ return {opt:opt,caos:caos,zoom:zoom,grid:grid,estilo:estilo,uni:uni,baul:baul||[],flavor:flavor||'coste'}; };
+var PRESETS = [
+  P('alto','medio','carne',1,true,['fantasia'],[]),
+  P('bajo','medio','carne',1,false,['fantasia','gotico'],[9]),
+  P('neutro','bajo','carne',1,false,['fantasia'],[0,13]),
+  P('neutro','bajo','cascara',1,false,['fantasia','wuxia','social'],[13]),
+  P('alto','alto','carne',1,true,['fantasia','social'],[]),
+  P('alto','bajo','cascara',1,false,['fantasia'],[5]),
+  P('alto','medio','carne',1,true,['opera'],[]),
+  P('neutro','alto','cascara',1,true,['neon'],[],'coste'),
+  P('neutro','alto','carne',1,false,['neon','opera'],[6],'coste'),
+  P('bajo','alto','cascara',1,false,['postapo'],[9,12]),
+  P('neutro','medio','carne',1,true,['neon','fantasia'],[]),
+  P('bajo','bajo','cascara',1,false,['terror'],[4]),
+  P('neutro','bajo','nucleo',1,false,['gotico','social'],[13]),
+  P('alto','medio','cascara',1,false,['terror'],[14]),
+  P('alto','medio','carne',1,true,['gotico','terror'],[]),
+  P('neutro','alto','carne',1,false,['steampunk','gotico'],[0,1],'coste'),
+  P('alto','bajo','carne',4,true,['supers'],[13]),
+  P('alto','alto','nucleo',3,true,['wuxia'],[10,3]),
+  P('bajo','medio','cascara',1,false,['opera','supers'],[11]),
+  P('neutro','alto','cascara',1,false,['neon','toon'],[7,8],'locura')
+];
+
+/* ================= state ================= */
+var DEF = {recipe:null, uni:UNIVERSES.slice(0,1), opt:'neutro', caos:'medio', flavor:'coste', zoom:'carne', edition:'completo', grid:1, estilo:true, baul:[]};
+S.mesa = S.mesa || JSON.parse(JSON.stringify(DEF));
+S.chars = S.chars || [];
+S.tab = S.tab || 'mesa';
+S.locked = S.locked !== false;
+function persist(){ save('nogum-app2', S); }
+
+function cardKey(){ var k = CELL[S.mesa.opt + '|' + S.mesa.caos][0]; if (S.mesa.opt==='neutro' && S.mesa.caos==='alto' && S.mesa.flavor==='locura') k = 'T5'; return k; }
+function accMode(){ if (S.mesa.opt==='alto') return 'epico'; if (S.mesa.opt==='bajo') return 'agobio'; return S.mesa.caos==='alto' ? 'agobio' : 'neutro'; }
+function isAcc(){ return S.mesa.edition === 'acelerado'; }
+function zoom(){ return isAcc() ? 'carne' : S.mesa.zoom; }
+function uniName(id){ var b = DATA.bazar.filter(function(x){ return x.id===id; })[0]; return b ? pick(b.n).replace(/^\d+\.\s*/,'') : id; }
+
+/* ================= chrome ================= */
+function renderTop(){
+  $('brandSub').textContent = u('sub');
+  document.documentElement.lang = S.lang;
+  document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-lang')===S.lang ? 'true':'false'); });
+  $('themeBtn').textContent = u('theme');
+  var h = '<button class="tab" role="tab" data-tab="mesa" aria-selected="' + (S.tab==='mesa') + '">' + esc(u('mesa')) + '</button>';
+  S.chars.forEach(function(c, i){ h += '<button class="tab" role="tab" data-tab="' + c.id + '" aria-selected="' + (S.tab===c.id) + '">' + esc(c.name || (u('pc') + ' ' + (i+1))) + '</button>'; });
+  h += '<button class="tab aux" role="tab" data-tab="ask" aria-selected="' + (S.tab==='ask') + '">' + esc(u('ask')) + '</button>';
+  h += '<button class="tab" role="tab" data-tab="ses" aria-selected="' + (S.tab==='ses') + '">' + esc(u('ses')) + '</button>';
+  $('tabs').innerHTML = h;
+  updateAiStatus();
+}
+$('tabs').addEventListener('click', function(e){ var b = e.target.closest('[data-tab]'); if (!b) return; S.tab = b.getAttribute('data-tab'); persist(); render(); });
+document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click', function(){ S.lang = b.getAttribute('data-lang'); persist(); save('nogum-lang-app', S.lang); render(); }); });
+var root = document.documentElement; var th = load('nogum-theme-app', null); if (th) root.setAttribute('data-theme', th);
+$('themeBtn').addEventListener('click', function(){ var c = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); var n = c==='dark' ? 'light' : 'dark'; root.setAttribute('data-theme', n); save('nogum-theme-app', n); });
+
+/* ================= form ================= */
+function opt(field, value, label, sub){
+  return '<button type="button" class="opt" data-f="' + field + '" data-v="' + esc(value) + '" aria-pressed="' + (String(S.mesa[field])===String(value)) + '">' + esc(label) + (sub ? '<small>' + esc(sub) + '</small>' : '') + '</button>';
+}
+function q(legend, ask, body, tech, extra){
+  return '<fieldset class="q"' + (S.locked ? ' disabled' : '') + (extra||'') + '><legend>' + esc(legend) + '</legend><p class="ask">' + esc(ask) + '</p>' + body + '<p class="tech">' + tech + '</p></fieldset>';
+}
+function renderForm(){
+  var m = S.mesa, acc = isAcc(), h = '';
+  h += '<div class="formhead"><h2>' + esc(u('form')) + '</h2><button class="tool ' + (S.locked ? '' : 'on') + '" id="lockBtn" type="button">' + esc(S.locked ? u('edit') : u('lock')) + '</button></div>';
+  if (S.locked) h += '<p class="lockmsg">' + esc(u('locked')) + '</p>';
+  // 1 universe (recipe)
+  var ro = '<div class="opts wide">' + '<button type="button" class="opt" data-recipe="-1" aria-pressed="' + (m.recipe===null) + '">' + esc(t('Mundo propio','Your own world')) + '<small>' + esc(t('Lo configuras tú, pregunta a pregunta','You set it up, question by question')) + '</small></button>';
+  DATA.recipes.forEach(function(r, i){ ro += '<button type="button" class="opt" data-recipe="' + i + '" aria-pressed="' + (m.recipe===i) + '">' + esc(pick(r).replace(/^\d+\.\s*/,'')) + '</button>'; });
+  ro += '</div>';
+  h += q(t('1 · Universo','1 · Universe'), t('¿En qué mundo vais a jugar?','What world are you going to play in?'), ro,
+    m.recipe===null ? t('Mundo propio · sin receta','Your own world · no recipe') : t('Receta 8.4 nº ','Recipe 8.4 no. ') + '<b>' + (m.recipe+1) + '</b> · ' + t('configuración sugerida a partir de la receta; ajústala abajo.','suggested setup derived from the recipe; adjust it below.'));
+  var uo = '<div class="chips">'; DATA.bazar.forEach(function(b){ uo += '<button type="button" class="chip" data-uni="' + b.id + '" aria-pressed="' + (m.uni.indexOf(b.id) > -1) + '">' + esc(uniName(b.id)) + '</button>'; }); uo += '</div>';
+  h += q(t('1b · Objetos','1b · Items'), t('¿Qué clase de objetos y poderes existen en este mundo?','What kind of items and powers exist in this world?'), uo, t('Bazar del Multiverso (8.3) · filtra los desplegables de equipo','Multiverse Bazaar (8.3) · filters the equipment dropdowns'));
+  // 2 edition
+  h += q(t('2 · Edición','2 · Edition'), t('¿Cuánto queréis leer antes de jugar?','How much do you want to read before playing?'),
+    '<div class="opts">' + opt('edition','acelerado', t('Casi nada: a jugar ya','Almost nothing: let’s play now'), 'NOGUM Acelerado') + opt('edition','completo', t('Lo que haga falta: todas las herramientas','Whatever it takes: every tool'), t('NOGUM completo','Complete NOGUM')) + '</div>',
+    t('Edición: ','Edition: ') + '<b>' + esc(acc ? t('NOGUM Acelerado (3 modos, TN 6, 9 casillas)','NOGUM Accelerated (3 modes, TN 6, 9 boxes)') : t('NOGUM completo (tarjetas de tono T0–T6)','Complete NOGUM (Tone Cards T0–T6)')) + '</b>');
+  // 3 optimism
+  h += q(t('3 · Optimismo','3 · Optimism'), t('¿El universo quiere que los protagonistas ganen?','Does the universe want the protagonists to win?'),
+    '<div class="opts">' + opt('opt','alto', t('Sí: el universo nos ama','Yes: the universe loves us'), t('La suerte es un superpoder','Luck is a superpower')) + opt('opt','neutro', t('Le da igual: el universo es justo','It doesn’t care: the universe is fair'), t('Si te disparan, sangras','If you get shot, you bleed')) + opt('opt','bajo', t('No: el universo nos odia','No: the universe hates us'), t('Si algo puede salir mal, saldrá peor','If anything can go wrong, it’ll go worse')) + '</div>',
+    t('Eje de Optimismo: ','Optimism axis: ') + '<b>' + esc({alto:t('alto · quédate el mejor de 2d10','high · keep the best of 2d10'), neutro:t('neutro · un solo dado o la suma','neutral · one die or the sum'), bajo:t('bajo · quédate el peor de 2d10','low · keep the worst of 2d10')}[m.opt]) + '</b>');
+  // 4 chaos
+  var co = '<div class="opts">' + opt('caos','bajo', t('Por lógica: el mundo es un reloj','Logically: the world is clockwork'), t('La planificación funciona','Planning works')) + opt('caos','medio', t('Hay giros, pero la historia tiene sentido','There are twists, but the story makes sense'), t('Como en una película','Like in a film')) + opt('caos','alto', t('Por cualquier tontería absurda','Because of some absurd nonsense'), t('Todo puede pasar','Anything can happen')) + '</div>';
+  if (!acc && m.opt==='neutro' && m.caos==='alto') co += '<p class="ask" style="font-size:17px;margin:14px 0 8px">' + esc(t('¿Cómo llega la locura?','How does the madness arrive?')) + '</p><div class="opts">' + opt('flavor','coste', t('Casi todo sale, pero con un precio','Almost everything works, but at a price'), t('Tarjeta 3 · Pulp / Drama','Card 3 · Pulp / Drama')) + opt('flavor','locura', t('Mandan los extremos: desastres y milagros','Extremes rule: disasters and miracles'), t('Tarjeta 5 · Gonzo','Card 5 · Gonzo')) + '</div>';
+  h += q(t('4 · Caos','4 · Chaos'), t('Cuando un plan sale mal, ¿por qué sale mal?','When a plan goes wrong, why does it go wrong?'), co,
+    t('Eje de Caos: ','Chaos axis: ') + '<b>' + esc(m.caos) + '</b> → ' + (acc ? t('modo Acelerado: ','Accelerated mode: ') + '<b>' + esc(pick(ACC[accMode()].n)) + '</b>' : '<b>' + esc(pick(CARDS[cardKey()].n)) + '</b> · ' + esc(pick(CELL[m.opt+'|'+m.caos].slice(1))) ));
+  // 5 lethality
+  var lo = '<div class="opts">' + opt('zoom','cascara', t('Sí: aquí una bala decide','Yes: here one bullet decides'), t('Sucio, inmediato','Gritty, immediate')) + opt('zoom','carne', t('Puede dejarte tocado, pero hacen falta varias','It can leave you hurt, but it takes several'), t('Aventura, control','Adventure, control')) + opt('zoom','nucleo', t('No: los combates son guerras de desgaste','No: fights are wars of attrition'), t('Épico, largo','Epic, long')) + '</div>';
+  h += q(t('5 · Letalidad','5 · Lethality'), t('En tu partida, ¿una sola bala con suerte debería decidir el destino de un combate en tu contra?','In your game, should a single lucky bullet decide the outcome of a fight against you?'), lo,
+    (acc ? t('En Acelerado la vida es fija: ','In Accelerated, health is fixed: ') : t('Vida fractal: ','Fractal Health: ')) + '<b>' + esc(pick(ZOOM[zoom()].n)) + '</b> · ' + esc(pick(ZOOM[zoom()].d)), acc ? ' disabled' : '');
+  // 6 scale
+  var so = '<div class="opts">'; for (var g = 1; g <= 5; g++) so += opt('grid', g, pick(GRIDN[g]), t('Nivel ','Level ') + g); so += '</div>';
+  h += q(t('6 · Escala','6 · Scale'), t('¿De qué tamaño son las hazañas de los protagonistas?','How big are the protagonists’ deeds?'), so,
+    t('Rejilla de Potencia: nivel inicial ','Power Grid: starting level ') + '<b>' + m.grid + '</b> ' + t('en todos los ámbitos (se ajusta por personaje)','in every sphere (adjustable per character)'));
+  // 7 style
+  h += q(t('7 · Estilo','7 · Style'), t('¿Los héroes barren a los enemigos menores con una floritura?','Do the heroes sweep aside lesser enemies with a flourish?'),
+    '<div class="opts">' + opt('estilo', true, t('Sí, es parte de la diversión','Yes, that’s part of the fun')) + opt('estilo', false, t('No: aquí hasta el último matón da miedo','No: here even the last thug is scary')) + '</div>',
+    t('Regla del Estilo (4.5 B): ','Style Rule (4.5 B): ') + '<b>' + esc(m.estilo ? t('activada · Estilo +2 en la ficha','on · Style +2 on the sheet') : t('desactivada · todos tiran','off · everyone rolls')) + '</b>');
+  // 8 chest
+  if (!acc) {
+    var bo = '<div class="chips">'; DATA.baul.forEach(function(b, i){ bo += '<button type="button" class="chip" data-baul="' + i + '" aria-pressed="' + (m.baul.indexOf(i) > -1) + '">' + esc(pick(b)) + '</button>'; }); bo += '</div>';
+    h += q(t('8 · Reglas extra','8 · Extra rules'), t('¿Queréis añadir algo del Baúl de reglas?','Do you want anything from the Rules Chest?'), bo,
+      t('Baúl de reglas (8.1): ','Rules Chest (8.1): ') + '<b>' + (m.baul.length ? m.baul.length : t('ninguna','none')) + '</b>');
+  }
+  return h;
+}
+function onForm(e){
+  if (S.locked) return;
+  var b = e.target.closest('button'); if (!b || b.disabled) return;
+  var m = S.mesa;
+  if (b.hasAttribute('data-recipe')) {
+    var i = +b.getAttribute('data-recipe');
+    if (i < 0) { m.recipe = null; }
+    else { var p = PRESETS[i]; m.recipe = i; m.opt = p.opt; m.caos = p.caos; m.zoom = p.zoom; m.grid = p.grid; m.estilo = p.estilo; m.uni = p.uni.slice(); m.baul = p.baul.slice(); m.flavor = p.flavor; }
+  } else if (b.hasAttribute('data-uni')) {
+    var id = b.getAttribute('data-uni'), k = m.uni.indexOf(id);
+    if (k > -1) { if (m.uni.length > 1) m.uni.splice(k,1); } else m.uni.push(id);
+  } else if (b.hasAttribute('data-baul')) {
+    var j = +b.getAttribute('data-baul'), n = m.baul.indexOf(j);
+    if (n > -1) m.baul.splice(n,1); else m.baul.push(j);
+  } else if (b.hasAttribute('data-f')) {
+    var f = b.getAttribute('data-f'), v = b.getAttribute('data-v');
+    m[f] = (f==='grid') ? +v : (f==='estilo') ? v==='true' : v;
+  } else return;
+  persist(); render(true);
+}
+
+/* ================= rules panel (shared by template and sheets) ================= */
+function rulesBoxes(compact){
+  var m = S.mesa, h = '<div class="rules">';
+  if (isAcc()) {
+    var a = ACC[accMode()];
+    h += '<div class="rbox card"><h3>' + esc(t('Modo ','Mode ') + pick(a.n)) + '</h3><dl><dt>' + t('Dado','Die') + '</dt><dd>' + esc(pick(a.roll)) + '</dd><dt>TN</dt><dd>6</dd><dt>' + t('Pifia','Fumble') + '</dt><dd>' + esc(pick(a.fum)) + '</dd><dt>' + t('Crítico','Critical') + '</dt><dd>' + esc(pick(a.cri)) + '</dd><dt>' + t('Resultado','Result') + '</dt><dd>' + esc(pick(a.res)) + '</dd></dl></div>';
+  } else {
+    var c = CARDS[cardKey()];
+    h += '<div class="rbox card"><h3>' + esc(pick(c.n)) + '</h3><dl><dt>' + t('Tirada','Roll') + '</dt><dd>' + esc(pick(c.roll)) + '</dd><dt>TN</dt><dd>' + c.tn + '</dd><dt>' + t('Pifia','Fumble') + '</dt><dd>' + esc(pick(c.fum)) + '</dd><dt>' + t('Crítico','Critical') + '</dt><dd>' + esc(pick(c.cri)) + '</dd>' + (c.bands ? '<dt>' + t('Franjas','Bands') + '</dt><dd>' + esc(pick(c.bands)) + '</dd>' : '') + '</dl><p class="note">' + esc(pick(c.q)) + '</p></div>';
+  }
+  h += '<div class="rbox"><h3>' + esc(u('life')) + '</h3><p><b>' + esc(pick(ZOOM[zoom()].n)) + '</b></p><p class="note">' + esc(pick(ZOOM[zoom()].d)) + ' ' + t('Herido −2 · Crítico −4 · al llenar el 3.er bloque, fuera de combate.','Wounded −2 · Critical −4 · filling the 3rd block puts you out of the fight.') + '</p></div>';
+  h += '<div class="rbox"><h3>' + esc(t('Combate','Combat')) + '</h3><dl><dt>' + esc(u('init')) + '</dt><dd>' + esc(isAcc() ? t('Mejor bono en Destreza','Best Dexterity bonus') : t('Disposiciones: Violencia · Treta · Especialidad (marcador en la ficha)','Stances: Violence · Trick · Specialty (marker on the sheet)')) + '</dd><dt>' + t('Impacto','Impact') + '</dt><dd>' + t('Tirada contra TN; crítico = +1 daño','Roll vs TN; critical = +1 damage') + '</dd><dt>' + t('Defensa','Defence') + '</dt><dd>' + t('Esquivar o absorber si el arma lo permite: éxito −1, crítico −2','Dodge or soak if the weapon allows: success −1, critical −2') + '</dd><dt>' + esc(u('style')) + '</dt><dd>' + esc(m.estilo ? t('Contra enemigos de nivel inferior no se tira para ganar: se tira Estilo (+2)','Against lower-level foes you don’t roll to win: you roll Style (+2)') : t('Desactivado: todos tiran','Off: everyone rolls')) + '</dd></dl></div>';
+  if (!compact) {
+    h += '<div class="rbox"><h3>' + esc(t('Mundo','World')) + '</h3><dl><dt>' + esc(u('grid')) + '</dt><dd>' + t('Nivel ','Level ') + m.grid + ' · ' + esc(pick(GRIDN[m.grid])) + '</dd><dt>' + esc(u('gear')) + '</dt><dd>' + esc(m.uni.map(uniName).join(', ')) + '</dd>' + (!isAcc() && m.baul.length ? '<dt>' + t('Baúl','Chest') + '</dt><dd>' + esc(m.baul.map(function(i){ return pick(DATA.baul[i]); }).join(', ')) + '</dd>' : '') + '</dl><p class="note">' + t('Dificultad: +2 fácil · 0 estándar · −2 difícil · −4 heroico. El bono total siempre entre −2 y +4. Diferencia de un nivel de Rejilla: éxito o imposible sin tirar (salvo Llave).','Difficulty: +2 easy · 0 standard · −2 hard · −4 heroic. Total bonus always between −2 and +4. One Grid level of difference: success or impossible without rolling (unless you have a Key).') + '</p></div>';
+  }
+  return h + '</div>';
+}
+function titleLine(){
+  var m = S.mesa;
+  return m.recipe===null ? t('Mundo propio','Your own world') : pick(DATA.recipes[m.recipe]).replace(/^\d+\.\s*/,'');
+}
+function renderTemplate(){
+  var h = '<div class="sheet" id="tplSheet"><div class="sheethead"><div><h2>' + esc(u('tpl')) + '</h2><div class="sub">' + esc(titleLine()) + '</div></div><div class="badges"><span class="badge blue">' + esc(isAcc() ? 'NOGUM Acelerado' : t('NOGUM completo','Complete NOGUM')) + '</span><button class="tool noprint" type="button" id="printBtn">' + esc(u('print')) + '</button></div></div>';
+  h += rulesBoxes(false);
+  h += '<div class="sec">' + esc(u('blank')) + '<span class="note">' + esc(u('points')) + ' 0 / 10</span></div><div class="blankpyr">';
+  AMB.forEach(function(a){ h += '<div><b>' + esc(pick(a.n)) + ' · ' + t('N','L') + S.mesa.grid + '</b>' + a.doms.map(function(d){ return esc(pick(d.n)) + ' <span class="note">(' + d.dis.map(pick).join(', ') + ')</span>'; }).join('<br>') + '</div>'; });
+  h += '</div><div class="sec">' + esc(u('life')) + '</div>' + tracks(null) ;
+  h += '<div class="create noprint"><button type="button" id="createBtn">' + esc(u('create')) + '</button></div></div>';
+  return h;
+}
+
+/* ================= tracks ================= */
+function tracks(ch){
+  var z = ZOOM[zoom()], bars = isAcc() ? [BARS[0]] : BARS, h = '<div class="tracks">';
+  bars.forEach(function(bar){
+    var pts = ch ? (ch.dmg[bar[0]] || 0) : 0;
+    h += '<div class="track"><span>' + esc(isAcc() ? u('life') : pick(bar.slice(1))) + '</span><div class="blocks">';
+    for (var bI = 0; bI < 3; bI++) {
+      h += '<div class="blk"><span class="lbl">' + esc(pick(BLOCKS[bI])) + '</span>';
+      var per = z.units / 3;
+      for (var k = 0; k < per; k++) {
+        var idx = bI * per + k, lo = idx * z.size, hi = lo + z.size;
+        var cls = pts >= hi ? ' full' : (pts > lo ? ' half' : '');
+        h += '<button type="button" class="u' + cls + '"' + (ch ? ' data-bar="' + bar[0] + '" data-hi="' + hi + '" data-lo="' + lo + '"' : ' disabled') + ' aria-label="' + (idx+1) + '"></button>';
+      }
+      h += '</div>';
+    }
+    h += '</div></div>';
+  });
+  return h + '</div>';
+}
+
+/* ================= characters ================= */
+function newChar(){
+  var c = {id:'pc' + Date.now().toString(36), name:'', concept:'', grid:{}, dom:{}, dis:{}, fir:[], gear:[], stance:'violencia', dmg:{fis:0,men:0,esp:0}, keys:'', notes:''};
+  AMB.forEach(function(a){ c.grid[a.id] = S.mesa.grid; });
+  return c;
+}
+function cost(c){
+  var p = 0; Object.keys(c.dom).forEach(function(k){ if (c.dom[k]) p++; }); Object.keys(c.dis).forEach(function(k){ if (c.dis[k]) p++; });
+  c.fir.forEach(function(f){ p += f.lv === 4 ? 2 : 1; }); return p;
+}
+function ambHas(c, ai){ var a = AMB[ai], has = false; a.doms.forEach(function(d, di){ if (c.dom[ai+'.'+di]) has = true; }); return has; }
+function bestDex(c){ var b = ambHas(c,0) ? 0 : -2; if (c.dom['0.0']) b = 1; for (var s = 0; s < 4; s++) { if (c.dis['0.0.'+s]) b = Math.max(b,2); } c.fir.forEach(function(f){ if (f.key.indexOf('0.0.')===0) b = Math.max(b, f.lv); }); return b; }
+function allowedItems(){
+  var out = [];
+  DATA.bazar.forEach(function(b){ if (S.mesa.uni.indexOf(b.id) < 0) return; b.blocks.forEach(function(bl, bi){ out.push({u:b.id, b:bi, name:uniName(b.id) + ' · ' + pick(bl.n), items:bl.items}); }); });
+  return out;
+}
+function renderChar(c){
+  var p = cost(c), h = '<div class="sheet" id="pcSheet">';
+  h += '<div class="sheethead"><div style="flex:1;min-width:240px"><div class="fields"><div><label for="f-name">' + esc(u('name')) + '</label><input type="text" id="f-name" value="' + esc(c.name) + '"></div><div><label for="f-concept">' + esc(u('concept')) + '</label><input type="text" id="f-concept" value="' + esc(c.concept) + '"></div></div><div class="sub">' + esc(titleLine()) + ' · ' + esc(isAcc() ? 'NOGUM Acelerado' : t('NOGUM completo','Complete NOGUM')) + '</div></div>';
+  h += '<div class="badges"><span class="pts' + (p > 10 ? ' over' : '') + '">' + esc(u('points')) + ' ' + p + ' / 10</span>' + (S.mesa.estilo || isAcc() ? '<span class="badge red">' + esc(u('style')) + ' +2</span>' : '') + (isAcc() ? '<span class="badge amber">' + esc(u('init')) + ' ' + (bestDex(c) >= 0 ? '+' : '') + bestDex(c) + '</span>' : '') + '<button class="tool noprint" id="printBtn" type="button">' + esc(u('print')) + '</button><button class="tool noprint" id="delBtn" type="button">' + esc(u('del')) + '</button></div></div>';
+  if (p > 10) h += '<p class="lockmsg">' + esc(u('over')) + '</p>';
+  h += rulesBoxes(true);
+  if (!isAcc()) {
+    h += '<div class="sec">' + esc(u('stance')) + '<span class="note">' + esc(u('stanceNote')) + '</span></div><div class="stance">' + STANCES.map(function(s){ return '<button type="button" data-stance="' + s[0] + '" aria-pressed="' + (c.stance===s[0]) + '">' + esc(pick(s.slice(1))) + '</button>'; }).join('') + '</div>';
+  }
+  h += '<div class="sec">' + esc(t('Ámbitos y habilidades','Spheres and skills')) + '<span class="note">' + esc(t('+1 amplia · +2 concreta · Firma +3/+4 · ámbito vacío −2','+1 broad · +2 specific · Signature +3/+4 · empty sphere −2')) + '</span></div>';
+  AMB.forEach(function(a, ai){
+    var has = ambHas(c, ai);
+    h += '<div class="amb"><div class="amb-h"><b>' + esc(pick(a.n)) + '</b><span class="base ' + (has ? 'zero' : 'neg') + '">' + (has ? t('Base +0','Base +0') : t('Nulo −2','Null −2')) + '</span><label class="note">' + esc(u('grid')) + ' <select data-grid="' + a.id + '">' + [1,2,3,4,5,6].map(function(g){ return '<option value="' + g + '"' + (c.grid[a.id]==g ? ' selected' : '') + '>' + g + '</option>'; }).join('') + '</select></label></div><div class="doms">';
+    a.doms.forEach(function(d, di){
+      var dk = ai + '.' + di, dOn = !!c.dom[dk];
+      h += '<div class="dom"><div class="lvl d"><button type="button" class="pip" data-dom="' + dk + '" aria-pressed="' + dOn + '">+1</button><span class="nm">' + esc(pick(d.n)) + '</span></div>';
+      d.dis.forEach(function(s, si){
+        var sk = dk + '.' + si, sOn = !!c.dis[sk];
+        h += '<div class="lvl s"><button type="button" class="pip" data-dis="' + sk + '" aria-pressed="' + sOn + '"' + (dOn ? '' : ' disabled') + '>+2</button><span class="nm">' + esc(pick(s)) + '</span>' + (sOn ? '<button type="button" class="mini" data-addf="' + sk + '">' + esc(u('addf')) + '</button>' : '') + '</div>';
+        c.fir.forEach(function(f, fi){
+          if (f.key !== sk) return;
+          var list = firmas().filter(function(x){ return x.tags.some(function(tg){ return S.mesa.uni.indexOf(tg) > -1; }); });
+          h += '<div class="lvl f"><select data-fsel="' + fi + '"><option value="">' + esc(u('choose')) + '</option>' + list.map(function(x){ return '<option value="' + x.id + '"' + (f.id==x.id ? ' selected' : '') + '>' + esc(pick(x.n)) + ' · ' + esc(pick(s)) + '</option>'; }).join('') + '</select><button type="button" class="pip" data-flv="' + fi + '" data-v="3" aria-pressed="' + (f.lv===3) + '">+3</button><button type="button" class="pip" data-flv="' + fi + '" data-v="4" aria-pressed="' + (f.lv===4) + '">+4</button><button type="button" class="mini" data-fdel="' + fi + '">' + esc(u('remove')) + '</button></div>';
+        });
+      });
+      h += '</div>';
+    });
+    h += '</div></div>';
+  });
+  h += '<div class="sec">' + esc(u('life')) + '<span class="note">' + esc(t('Pulsa una casilla para marcar el daño hasta ahí; vuelve a pulsar la última para quitarlo. Si cambia la letalidad, las heridas se conservan en proporción.','Tap a box to mark damage up to it; tap the last one again to clear it. If lethality changes, wounds are kept in proportion.')) + '</span></div>' + tracks(c);
+  // gear
+  var groups = allowedItems();
+  h += '<div class="sec">' + esc(u('gear')) + '</div><table class="gear"><thead><tr><th>' + esc(u('item')) + '</th><th>' + t('Daño','Dmg') + '</th><th>' + t('Esq','Dodge') + '</th><th>' + t('Abs','Soak') + '</th><th>' + t('Malla / efecto','Grid / effect') + '</th><th class="noprint"></th></tr></thead><tbody>';
+  if (!c.gear.length) h += '<tr><td colspan="6" class="note">' + esc(t('Sin equipo todavía.','No equipment yet.')) + '</td></tr>';
+  c.gear.forEach(function(g, gi){
+    var b = DATA.bazar.filter(function(x){ return x.id===g.u; })[0]; var it = b && b.blocks[g.b] && b.blocks[g.b].items[g.i]; if (!it) return;
+    var out = S.mesa.uni.indexOf(g.u) < 0;
+    h += '<tr' + (out ? ' class="out" title="' + esc(u('outU')) + '"' : '') + '><td><b>' + esc(pick(it.n)) + '</b>' + (out ? ' <span class="note">(' + esc(u('outU')) + ')</span>' : '') + '<br><span class="note">' + esc(pick(it.x)) + '</span></td><td><span class="tag">' + esc(pick(it.d)) + '</span></td><td><span class="tag">' + esc(pick(it.e)) + '</span></td><td><span class="tag">' + esc(pick(it.a)) + '</span></td><td><span class="tag">' + esc(pick(it.m)) + '</span></td><td class="noprint"><button type="button" class="mini" data-gdel="' + gi + '">' + esc(u('remove')) + '</button></td></tr>';
+  });
+  h += '</tbody></table><div class="addrow noprint"><label class="note">' + esc(u('type')) + ' <select id="gType"><option value="">' + esc(u('choose')) + '</option>' + groups.map(function(g, i){ return '<option value="' + i + '">' + esc(g.name) + ' (' + g.items.length + ')</option>'; }).join('') + '</select></label><label class="note">' + esc(u('item')) + ' <select id="gItem" disabled><option value="">' + esc(u('choose')) + '</option></select></label><button type="button" class="tool" id="gAdd" disabled>' + esc(u('addgear')) + '</button></div>';
+  h += '<div class="sec">' + esc(u('keys')) + '</div><textarea id="f-keys">' + esc(c.keys) + '</textarea>';
+  h += '<div class="sec">' + esc(u('notes')) + '</div><textarea id="f-notes">' + esc(c.notes) + '</textarea></div>';
+  return h;
+}
+function onChar(e, c){
+  var b = e.target.closest('button'); if (!b || b.disabled) return;
+  var a;
+  if ((a = b.getAttribute('data-stance'))) c.stance = a;
+  else if ((a = b.getAttribute('data-dom'))) { if (c.dom[a]) { delete c.dom[a]; Object.keys(c.dis).forEach(function(k){ if (k.indexOf(a + '.')===0) delete c.dis[k]; }); c.fir = c.fir.filter(function(f){ return f.key.indexOf(a + '.')!==0; }); } else c.dom[a] = 1; }
+  else if ((a = b.getAttribute('data-dis'))) { if (c.dis[a]) { delete c.dis[a]; c.fir = c.fir.filter(function(f){ return f.key!==a; }); } else c.dis[a] = 1; }
+  else if ((a = b.getAttribute('data-addf'))) c.fir.push({key:a, id:'', lv:3});
+  else if ((a = b.getAttribute('data-flv'))) c.fir[+a].lv = +b.getAttribute('data-v');
+  else if ((a = b.getAttribute('data-fdel'))) c.fir.splice(+a, 1);
+  else if ((a = b.getAttribute('data-gdel'))) c.gear.splice(+a, 1);
+  else if (b.hasAttribute('data-bar')) {
+    var bar = b.getAttribute('data-bar'), hi = +b.getAttribute('data-hi'), lo = +b.getAttribute('data-lo');
+    c.dmg[bar] = (c.dmg[bar] >= hi && c.dmg[bar] < hi + ZOOM[zoom()].size) ? lo : hi;
+  }
+  else if (b.id === 'gAdd') { var g = allowedItems()[+$('gType').value]; if (g && $('gItem').value !== '') c.gear.push({u:g.u, b:g.b, i:+$('gItem').value}); }
+  else if (b.id === 'delBtn') { if (!confirm(t('¿Borrar esta ficha?','Delete this sheet?'))) return; S.chars = S.chars.filter(function(x){ return x !== c; }); S.tab = 'mesa'; persist(); render(); return; }
+  else return;
+  persist(); var y = window.scrollY; render(); window.scrollTo(0, y);
+}
+
+/* ================= questions & sessions (AI) ================= */
+var sample = null, aiDenied = false, turns = [], ctl = null;
+function updateAiStatus(){ var s = $('aiStatus'); if (sample && !aiDenied) { s.className = 'status on'; s.textContent = t('IA disponible','AI on'); } else if (sample === false || aiDenied) { s.className = 'status off'; s.textContent = t('Sin IA','No AI'); } else { s.className = 'status'; s.textContent = t('IA…','AI…'); } }
+if (window.claude && window.claude.use) window.claude.use('sample').then(function(x){ sample = x || false; updateAiStatus(); }, function(){ sample = false; updateAiStatus(); }); else sample = false;
+var ERR = {not_granted:['No se ha dado permiso para usar Claude.','Permission to use Claude was not granted.'], rate_limited:['Demasiadas consultas; prueba en un rato.','Too many requests; try again later.'], prompt_too_large:['Texto demasiado largo; recórtalo.','Text too long; shorten it.'], invalid_json:['Respuesta con formato inesperado; reinténtalo.','Unexpected format; try again.'], upstream_error:['Fallo de conexión; reinténtalo.','Connection error; try again.']};
+function errText(e){ var c = e && e.code; if (['not_granted','sampling_disabled','not_declared','capability_disabled','capability_removed'].indexOf(c) > -1) { aiDenied = true; updateAiStatus(); } return c === 'cancelled' ? t('Detenido.','Stopped.') : pick(ERR[c] || ERR.upstream_error); }
+function ctx(){ return 'MESA ACTUAL / CURRENT TABLE: ' + JSON.stringify({edition:S.mesa.edition, world:titleLine(), optimism:S.mesa.opt, chaos:S.mesa.caos, card:isAcc() ? accMode() : cardKey(), lethality:zoom(), grid:S.mesa.grid, style:S.mesa.estilo}); }
+function renderAsk(){
+  var h = '<div class="panel"><div class="formhead"><h2>' + esc(u('ask')) + '</h2></div><p class="note">' + esc(t('Pregunta cualquier duda de reglas. Responde según el canon de NOGUM y la mesa actual.','Ask any rules question. Answers follow the NOGUM canon and the current table.')) + '</p><div class="chat" id="chat"></div>';
+  h += '<textarea id="askQ" placeholder="' + esc(t('Mi PJ de nivel 1 quiere hackear una IA de nivel 3. ¿Puede tirar?','My level 1 PC wants to hack a level 3 AI. Can they roll?')) + '"></textarea><div class="row" style="margin-top:8px"><button class="tool primary" id="askBtn" type="button">' + esc(t('Preguntar','Ask')) + '</button><button class="tool" id="stopBtn" type="button" hidden>' + esc(t('Parar','Stop')) + '</button><button class="tool" id="clearBtn" type="button">' + esc(t('Nueva conversación','New conversation')) + '</button><span class="note" id="askNote"></span></div></div>';
+  return h;
+}
+function chatMsg(kind, text){ var d = document.createElement('div'); d.className = 'msg ' + kind; d.innerHTML = '<span class="who"></span><span class="tx"></span>'; d.firstChild.textContent = kind==='me' ? t('Tú','You') : kind==='ai' ? 'NOGUM' : t('Canon (sin IA)','Canon (no AI)'); d.lastChild.textContent = text; $('chat').appendChild(d); $('chat').scrollTop = 1e9; return d.lastChild; }
+function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); }
+function localSearch(q){ var w = (norm(q).match(/[a-z0-9]{4,}/g) || []); return CANON.split(/\n(?=##|- )/).map(function(c){ var n = norm(c), sc = 0; w.forEach(function(x){ if (n.indexOf(x) > -1) sc++; }); return {c:c, sc:sc}; }).filter(function(x){ return x.sc; }).sort(function(a,b){ return b.sc-a.sc; }).slice(0,3).map(function(x){ return x.c.replace(/\*\*/g,''); }); }
+function ask(){
+  var qv = $('askQ').value.trim(); if (!qv) return; $('askQ').value = ''; $('askNote').textContent = '';
+  chatMsg('me', qv);
+  if (!sample || aiDenied) { var hits = localSearch(qv); chatMsg('loc', hits.length ? hits.join('\n\n— — —\n\n') : t('No encuentro nada con esas palabras.','Nothing found with those words.')); return; }
+  turns.push({role:'user', content:qv}); while (turns.length > 12) turns.splice(0,2);
+  var bub = chatMsg('ai', t('Pensando…','Thinking…')); ctl = new AbortController(); $('askBtn').disabled = true; $('stopBtn').hidden = false;
+  var rules = 'You are the rules assistant for the NOGUM roleplaying game. Answer ONLY from the canon below (written in Spanish). Reply in ' + (S.lang==='en' ? 'English (use the English glossary: Power Grid, Mesh, Signature, Key, Style, Tone Cards, GM)' : 'Spanish') + ', in 2-6 sentences or a short list, no heavy markdown. Name the manual section when you know it. If something is pending, an unvalidated proposal or absent, say so and do not invent it.\n' + ctx() + '\n\nCANON:\n' + CANON;
+  sample([{role:'user', content:rules}].concat(turns), {cache:false, signal:ctl.signal, onText:function(x){ bub.textContent = x.text; $('chat').scrollTop = 1e9; }})
+    .then(function(r){ bub.textContent = r.text; turns.push({role:'assistant', content:r.text}); })
+    .catch(function(e){ bub.textContent = (e && e.text) || '—'; turns.pop(); $('askNote').textContent = errText(e); })
+    .then(function(){ $('askBtn').disabled = false; $('stopBtn').hidden = true; });
+}
+function renderSes(){
+  var h = '<div class="panel"><div class="formhead"><h2>' + esc(u('ses')) + '</h2></div><p class="note">' + esc(t('Pega las notas de una partida: la app detecta el tono de cada tramo, las disonancias y qué ajustar la próxima vez.','Paste a session’s notes: the app detects the tone of each stretch, any dissonance and what to adjust next time.')) + '</p>';
+  h += '<textarea id="sesText" style="min-height:180px"></textarea><div class="row" style="margin-top:8px"><button class="tool primary" id="sesBtn" type="button">' + esc(t('Analizar','Analyse')) + '</button><span class="note" id="sesNote"></span></div><div id="sesOut"></div></div>';
+  return h;
+}
+function analyse(){
+  var txt = $('sesText').value.trim(); if (!txt) return;
+  if (!sample || aiDenied) { $('sesNote').textContent = t('El análisis necesita la IA.','Analysis needs AI.'); return; }
+  txt = txt.slice(0, 22000); $('sesNote').textContent = t('Analizando…','Analysing…'); $('sesBtn').disabled = true;
+  var pr = 'You analyse a NOGUM roleplaying session against the canon (Optimism/Chaos axes, Tone Cards T0-T6, lethality zoom, dissonance symptoms A laughter in horror, B boring combat, C tired table). Split the session into 3-8 stretches. Reply ONLY with JSON: {"summary":"","stretches":[{"title":"","optimism":"alto|neutro|bajo","chaos":"bajo|medio|alto","card":"T0-T6","symptom":"A|B|C|none","note":""}],"next":["3-5 concrete recommendations"]}. Write the text values in ' + (S.lang==='en' ? 'English' : 'Spanish') + '.\n' + ctx() + '\n\nCANON:\n' + CANON + '\n\nSESSION NOTES:\n' + txt;
+  sample.json(pr).then(function(a){
+    $('sesNote').textContent = '';
+    var h = '<p>' + esc(a.summary) + '</p><ol class="timeline">' + (a.stretches || []).map(function(s){ var cell = CELL[s.optimism + '|' + s.chaos]; return '<li><b>' + esc(s.title) + '</b><br><span class="badge blue">' + esc(cell ? pick(cell.slice(1)) : '') + '</span> <span class="badge">' + esc(CARDS[s.card] ? pick(CARDS[s.card].n) : s.card) + '</span>' + (s.symptom && s.symptom !== 'none' ? ' <span class="badge red">' + esc(t('Síntoma ','Symptom ') + s.symptom) + '</span>' : '') + '<br>' + esc(s.note) + '</li>'; }).join('') + '</ol>';
+    if (a.next) h += '<ul>' + a.next.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
+    $('sesOut').innerHTML = h;
+  }).catch(function(e){ $('sesNote').textContent = errText(e); }).then(function(){ $('sesBtn').disabled = false; });
+}
+
+/* ================= main render ================= */
+function render(keepScroll){
+  renderTop();
+  var v = $('view'), y = window.scrollY;
+  if (S.tab === 'mesa') {
+    v.innerHTML = '<p class="disclaimer">' + esc(u('disclaimer')) + '</p><div class="split"><div class="panel" id="formPanel">' + renderForm() + '</div><div>' + renderTemplate() + '</div></div>';
+    $('formPanel').addEventListener('click', function(e){ if (e.target.id === 'lockBtn') { S.locked = !S.locked; persist(); render(true); return; } onForm(e); });
+    $('printBtn').addEventListener('click', function(){ window.print(); });
+    $('createBtn').addEventListener('click', function(){ var c = newChar(); S.chars.push(c); S.tab = c.id; persist(); render(); window.scrollTo(0,0); });
+  } else if (S.tab === 'ask') {
+    v.innerHTML = renderAsk();
+    $('askBtn').addEventListener('click', ask); $('stopBtn').addEventListener('click', function(){ if (ctl) ctl.abort(); }); $('clearBtn').addEventListener('click', function(){ turns = []; $('chat').innerHTML = ''; });
+    $('askQ').addEventListener('keydown', function(e){ if (e.key==='Enter' && !e.shiftKey) { e.preventDefault(); ask(); } });
+  } else if (S.tab === 'ses') {
+    v.innerHTML = renderSes(); $('sesBtn').addEventListener('click', analyse);
+  } else {
+    var c = S.chars.filter(function(x){ return x.id===S.tab; })[0];
+    if (!c) { S.tab = 'mesa'; return render(); }
+    v.innerHTML = renderChar(c);
+    var sh = $('pcSheet');
+    sh.addEventListener('click', function(e){ if (e.target.id === 'printBtn') { window.print(); return; } onChar(e, c); });
+    $('f-name').addEventListener('input', function(){ c.name = this.value; persist(); renderTop(); });
+    ['concept','keys','notes'].forEach(function(k){ $('f-' + k).addEventListener('input', function(){ c[k] = this.value; persist(); }); });
+    sh.querySelectorAll('select[data-grid]').forEach(function(s){ s.addEventListener('change', function(){ c.grid[s.getAttribute('data-grid')] = +s.value; persist(); }); });
+    sh.querySelectorAll('select[data-fsel]').forEach(function(s){ s.addEventListener('change', function(){ c.fir[+s.getAttribute('data-fsel')].id = s.value; persist(); }); });
+    var groups = allowedItems();
+    $('gType').addEventListener('change', function(){ var g = groups[+this.value], it = $('gItem'); it.innerHTML = '<option value="">' + esc(u('choose')) + '</option>' + (g ? g.items.map(function(x, i){ return '<option value="' + i + '">' + esc(pick(x.n)) + ' — ' + esc(pick(x.d)) + '</option>'; }).join('') : ''); it.disabled = !g; $('gAdd').disabled = true; });
+    $('gItem').addEventListener('change', function(){ $('gAdd').disabled = this.value === ''; });
+  }
+  if (keepScroll) window.scrollTo(0, y);
+}
+render();
+})();
+</script>

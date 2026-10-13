@@ -1,0 +1,13 @@
+# compilados que se regeneran
+src/out3/
+src/*.bak*
+src/**/*.bak*
+NOGUM_productos/
+NOGUM_app/
+NOGUM_taller/
+nogum/
+nogum.zip
+Conversacioncompleta.docx
+.claude/
+__pycache__/
+*.pyc

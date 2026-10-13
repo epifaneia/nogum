@@ -1,0 +1,1559 @@
+<title>NOGUM Acelerado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap">
+<style>:root{
+  --ground:#e6e9ee; --paper:#fdfdfc; --ink:#161b24; --ink-2:#434b59; --ink-3:#6b7382;
+  --rule:#cfd5de; --rule-2:#e4e8ee; --side:#dfe3e9;
+  --red:#b8323a; --red-soft:#f6e3e4; --blue:#2a56a0; --blue-soft:#e2eaf7;
+  --amber:#8a5a00; --amber-soft:#f8ecd2; --violet:#5b3f99; --violet-soft:#ece6f7;
+  --drop:#8f2f36; --drop-soft:#f3e2e3; --ok:#2f6b45; --ok-soft:#e1efe6;
+  --c-pifia:#9b2a32; --c-fallo:#6b6288; --c-parcial:#b98a00; --c-exito:#2f63b5; --c-critico:#0f8f72;
+  --shadow:0 1px 3px rgba(20,30,50,.12),0 10px 30px rgba(20,30,50,.10);
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0e1217; --paper:#171c24; --ink:#e3e7ee; --ink-2:#b3bbc8; --ink-3:#8a93a2;
+  --rule:#303845; --rule-2:#252c37; --side:#12161c;
+  --red:#f07378; --red-soft:#3a1f24; --blue:#86a9ec; --blue-soft:#1b2940;
+  --amber:#e7b95a; --amber-soft:#342a14; --violet:#b9a2ee; --violet-soft:#2a2340;
+  --drop:#f08a90; --drop-soft:#3a2125; --ok:#8fd1a6; --ok-soft:#18301f;
+  --c-pifia:#e0666e; --c-fallo:#9a93ad; --c-parcial:#e0aa42; --c-exito:#86a9ec; --c-critico:#5cc3a0;
+  --shadow:0 1px 3px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --ground:#0e1217; --paper:#171c24; --ink:#e3e7ee; --ink-2:#b3bbc8; --ink-3:#8a93a2;
+  --rule:#303845; --rule-2:#252c37; --side:#12161c;
+  --red:#f07378; --red-soft:#3a1f24; --blue:#86a9ec; --blue-soft:#1b2940;
+  --amber:#e7b95a; --amber-soft:#342a14; --violet:#b9a2ee; --violet-soft:#2a2340;
+  --drop:#f08a90; --drop-soft:#3a2125; --ok:#8fd1a6; --ok-soft:#18301f;
+  --c-pifia:#e0666e; --c-fallo:#9a93ad; --c-parcial:#e0aa42; --c-exito:#86a9ec; --c-critico:#5cc3a0;
+  --shadow:0 1px 3px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.5 var(--serif);-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:3px}
+[id]{scroll-margin-top:84px}
+
+/* ---------- chrome ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:12px;padding:10px 16px;min-height:58px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);flex:none}
+.dice{display:flex;gap:4px}
+.dice i{display:block;width:17px;height:17px;border-radius:4px;background:var(--red);transform:rotate(-8deg)}
+.dice i+i{background:var(--blue);transform:rotate(10deg)}
+.brand b{font:800 25px/1 var(--display);letter-spacing:.06em}
+.brand small{font:600 11px/1 var(--mono);color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase}
+.products{display:flex;gap:6px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none}
+.products a,.products span{font:600 11.5px/1 var(--mono);text-transform:uppercase;letter-spacing:.04em;color:var(--ink-2);text-decoration:none;border:1px solid var(--rule);border-radius:6px;padding:8px 10px;white-space:nowrap}
+.products a:hover{border-color:var(--ink-3);color:var(--ink)}
+.products [aria-current="page"]{color:var(--paper);background:var(--ink);border-color:var(--ink)}
+.tool{flex:none;border:1px solid var(--rule);background:var(--paper);color:var(--ink-2);border-radius:6px;padding:8px 10px;font:600 12px/1 var(--mono);cursor:pointer}
+.tool:hover{color:var(--ink);border-color:var(--ink-3)}
+.lang{display:flex;flex:none;border:1px solid var(--ink);border-radius:999px;overflow:hidden}
+.lang button{font:600 12px/1 var(--mono);border:0;background:none;color:var(--ink);padding:8px 11px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.menu-btn{display:none}
+
+.shell{display:grid;grid-template-columns:290px minmax(0,1fr)}
+.side{position:sticky;top:58px;height:calc(100vh - 58px);overflow:auto;background:var(--side);border-right:1px solid var(--rule);padding:16px 14px 40px}
+.search input{width:100%;font:13.5px/1.3 var(--mono);padding:9px 11px;border:1px solid var(--rule);border-radius:8px;background:var(--paper);color:var(--ink)}
+.search label{display:block;font:12px/1.4 var(--mono);color:var(--ink-3);margin:0 2px 6px}
+.stoc{list-style:none;margin:14px 0 0;padding:0}
+.stoc a{display:flex;gap:8px;text-decoration:none;color:var(--ink-2);font:13.5px/1.3 var(--serif);padding:4px 8px;border-radius:5px;border-left:2px solid transparent}
+.stoc a span:first-child{flex:1}
+.stoc a .n{font:12px/1.3 var(--mono);color:var(--ink-3);font-variant-numeric:tabular-nums}
+.stoc li.l2 a{color:var(--ink);font-weight:600;margin-top:8px}
+.stoc li.l3 a{padding-left:18px;font-size:13px}
+.stoc a:hover{background:var(--paper)}
+.stoc a.active{border-left-color:var(--red);background:var(--paper);color:var(--ink)}
+.results{list-style:none;margin:12px 0 0;padding:0}
+.results a{display:block;text-decoration:none;color:var(--ink);padding:7px 8px;border-radius:6px}
+.results a:hover{background:var(--paper)}
+.results .rv{font:600 11px/1 var(--mono);color:var(--ink-3);text-transform:uppercase}
+.results .rs{display:block;font:13px/1.4 var(--serif);color:var(--ink-2);margin-top:3px}
+.results mark{background:var(--amber-soft);color:inherit}
+main{padding:26px 16px 80px;min-width:0;overflow-x:hidden}
+.status{max-width:210mm;margin:0 auto 14px;font:600 12px/1.4 var(--mono);color:var(--ink-3);text-align:center}
+#book{width:210mm;margin:0 auto;transform-origin:top left}
+
+/* ---------- sheet ---------- */
+.sheet{width:210mm;height:297mm;margin:0 0 18px;background:var(--paper);box-shadow:var(--shadow);position:relative;display:flex;flex-direction:column;padding:12mm 17mm 9mm;contain:strict;overflow:hidden}
+.rh{flex:none;display:flex;justify-content:space-between;gap:12px;font:600 8.5pt/1.2 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);padding-bottom:2.5mm;border-bottom:.3mm solid var(--rule);margin-bottom:6mm;white-space:nowrap;overflow:hidden}
+.rh span{overflow:hidden;text-overflow:ellipsis}
+.sb{flex:1 1 auto;min-height:0;overflow:hidden;font-size:10.5pt;line-height:1.48}
+/* el margen inferior del ultimo bloque de una hoja no pinta nada: contaba como
+   desbordamiento sin que se recortara una sola linea de texto */
+.sb > *:last-child{margin-bottom:0}
+.pf{flex:none;display:flex;justify-content:center;align-items:center;gap:6px;padding-top:3mm;font:600 9pt/1 var(--mono);color:var(--ink-3)}
+.pf::before,.pf::after{content:"";width:4mm;height:.3mm;background:var(--rule)}
+.sheet.cover{padding:0;background:var(--ink);color:var(--paper)}
+.sheet.cover .rh,.sheet.cover .pf{display:none}
+.sheet.cover .sb{padding:26mm 20mm;display:flex;flex-direction:column;justify-content:center}
+
+/* ---------- content ---------- */
+.sb h2{font:800 25pt/1.02 var(--display);letter-spacing:.02em;text-transform:uppercase;margin:0 0 5mm;padding-bottom:3mm;border-bottom:.8mm solid var(--ink);text-wrap:balance}
+.sb h3{font:800 16pt/1.1 var(--display);letter-spacing:.03em;text-transform:uppercase;margin:6mm 0 2.5mm;text-wrap:balance;break-after:avoid}
+.sb h3::before{content:"";display:inline-block;width:2.4mm;height:2.4mm;background:var(--red);border-radius:.5mm;margin-right:2.5mm;vertical-align:.12em;transform:rotate(45deg)}
+.sb h4{font:600 12pt/1.3 var(--serif);margin:5mm 0 2mm}
+.sb > :first-child{margin-top:0}
+.sb p{margin:0 0 2.6mm}
+.sb ul,.sb ol{padding-left:5.5mm;margin:0 0 3mm}
+.sb li{margin:0 0 1.4mm}
+.sb dl{margin:0 0 3mm}
+.sb dt{font-weight:600;margin-top:2mm}
+.sb dd{margin:.5mm 0 1.6mm}
+.sb blockquote{margin:3mm 0;padding:1mm 0 1mm 4mm;border-left:.8mm solid var(--blue);color:var(--ink-2);font-style:italic}
+.sb small{font-size:.85em;color:var(--ink-3)}
+.signoff{font:800 16pt/1.2 var(--display);letter-spacing:.04em;text-transform:uppercase;margin-top:5mm!important}
+.running{display:none}
+.lede{font-size:12.5pt}
+
+.tw{margin:2.5mm 0 4mm;border:.3mm solid var(--rule);border-radius:1.5mm;overflow:hidden}
+table.t{border-collapse:collapse;width:100%;font-size:8.7pt;line-height:1.35;table-layout:auto}
+table.t th,table.t td{padding:1.4mm 2mm;text-align:left;vertical-align:top;border-bottom:.25mm solid var(--rule-2);overflow-wrap:anywhere;hyphens:auto}
+table.t thead th{background:var(--ink);color:var(--paper);font:600 7.5pt/1.25 var(--mono);letter-spacing:.03em;text-transform:uppercase}
+table.t tbody th{background:var(--rule-2);font-weight:600}
+table.t tbody tr:last-child>*{border-bottom:0}
+table.t .tag{white-space:normal}
+/* la primera columna suele llevar el nombre de la cosa y se quedaba sin sitio:
+   ni «optimista» ni «opresivo» cabian. Se le da ancho y se le prohibe partir palabras. */
+table.t td:first-child,table.t tbody th:first-child{min-width:34mm;overflow-wrap:normal;hyphens:none}
+table.t thead th:first-child{min-width:34mm}
+/* y cuando la ultima columna es la apretada, que no se parta tampoco en seco */
+table.t td:last-child{overflow-wrap:break-word}
+td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+table.t td.on{color:var(--red);text-align:center}
+table.rejilla td{text-align:center}
+.bar{display:inline-block;height:2.4mm;width:var(--w,0%);min-width:.5mm;background:var(--blue);border-radius:.5mm;vertical-align:middle}
+
+.rule{border:.3mm solid var(--rule);border-left:1.2mm solid var(--ink);background:color-mix(in srgb,var(--ground) 55%,var(--paper));border-radius:1.5mm;padding:3mm 4mm 1mm;margin:3.5mm 0}
+.rule.warn{border-left-color:var(--red)}
+.rule.formula{border-left-color:var(--blue)}
+.rule-title{font:800 12pt/1.2 var(--display);letter-spacing:.05em;text-transform:uppercase;margin:0 0 1.8mm!important}
+.formula-line{font:600 9.5pt/1.45 var(--mono);background:var(--blue-soft);padding:2.2mm 3mm;border-radius:1.2mm}
+.example{border:.3mm dashed var(--rule);border-radius:1.5mm;padding:3mm 4mm 1mm;margin:3.5mm 0}
+.example-title,.step-title{font:600 8.5pt/1.2 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--red);margin:0 0 1.8mm!important}
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin:3mm 0}
+.step{border:.3mm solid var(--rule);border-top:1mm solid var(--blue);border-radius:1.5mm;padding:3mm 3.5mm 1mm}
+aside.meta{font:8.8pt/1.45 var(--mono);color:var(--ink-2);background:var(--amber-soft);border-radius:1.5mm;padding:2.4mm 3.5mm;margin:3mm 0}
+aside.meta p{margin:0}
+aside.meta::before{content:attr(data-label);display:block;font:600 7pt/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:1.4mm}
+.tag{display:inline-block;font:600 7.6pt/1.2 var(--mono);padding:.3mm 1.2mm;border-radius:.8mm;background:var(--rule-2);border:.25mm solid var(--rule);white-space:nowrap;margin:.2mm 0}
+.tag.parca{background:var(--ink);color:var(--paper);border-color:var(--ink);letter-spacing:.02em}
+@media print{.tag.parca{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+.flag{display:inline-block;font:600 6.8pt/1.2 var(--mono);letter-spacing:.03em;text-transform:uppercase;padding:.3mm 1.4mm;border-radius:99px;white-space:nowrap;vertical-align:.1em}
+.flag.proposal{background:var(--amber-soft);color:var(--amber)}
+.flag.pending{background:var(--violet-soft);color:var(--violet)}
+.flag.ed{background:var(--blue-soft);color:var(--blue)}
+.flag.drop{background:var(--drop-soft);color:var(--drop)}
+.src{font:7pt/1 var(--mono);color:var(--ink-3);white-space:nowrap}
+.src::before{content:"↳ "}
+.legend{display:flex;flex-wrap:wrap;gap:1.5mm 5mm;font-size:9pt;margin:3mm 0}
+
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin:3mm 0}
+.card{border:.3mm solid var(--rule);border-top:1.2mm solid var(--ink-3);border-radius:2mm;padding:3mm 3.5mm 2mm;break-inside:avoid}
+#t1{border-top-color:var(--blue)} #t4{border-top-color:var(--red)} #t3,#t5{border-top-color:var(--amber)} #t0{border-top-color:var(--ok)}
+.card-kicker{font:600 7pt/1 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);margin:0 0 1mm!important}
+.card h4{font:800 15pt/1 var(--display);text-transform:uppercase;margin:0 0 1mm}
+.card-axes{font:600 7.8pt/1.3 var(--mono);color:var(--blue);margin:0 0 1.5mm!important}
+.card-quote{font-style:italic;color:var(--ink-2);margin:0 0 1.5mm!important}
+.card-rules{display:grid;grid-template-columns:auto 1fr;gap:.8mm 2.5mm;margin:0 0 1.5mm;font-size:9pt}
+.card-rules dt{margin:0;font:600 7pt/1.6 var(--mono);text-transform:uppercase;color:var(--ink-3)}
+.card-rules dd{margin:0}
+.card-fx{font-size:8.6pt;color:var(--ink-2);border-top:.3mm solid var(--rule);padding-top:1.5mm;margin:0!important}
+.fractal{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5mm;margin:3mm 0}
+.fr-block{border:.5mm solid var(--ink);border-radius:1.5mm;padding:2mm}
+.fr-block p{font:600 7pt/1.2 var(--mono);text-transform:uppercase;margin:0 0 1.5mm}
+.fr-cells{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2mm}
+.fr-cells span{aspect-ratio:1;border:.35mm solid var(--ink-2);border-radius:.7mm;background:radial-gradient(circle at 22% 50%,var(--ink-3) 0 12%,transparent 13%),radial-gradient(circle at 50% 50%,var(--ink-3) 0 12%,transparent 13%),radial-gradient(circle at 78% 50%,var(--ink-3) 0 12%,transparent 13%)}
+.fr-caption{grid-column:1/-1;font:8pt/1.4 var(--mono);color:var(--ink-3);margin:0}
+.recipe{border:.3mm solid var(--rule);border-radius:1.5mm;padding:3mm 4mm 1mm;margin:3mm 0}
+.recipe-title{font:800 13pt/1.15 var(--display);text-transform:uppercase;margin:0 0 .8mm!important}
+.recipe-ref{font:8pt/1.3 var(--mono);color:var(--ink-3);margin:0 0 1.8mm!important}
+.recipe-canon{font-size:9.3pt;color:var(--blue);border-top:.3mm dashed var(--rule);padding-top:1.5mm}
+ol.thread{list-style:none;padding-left:0;border-left:.5mm solid var(--rule);margin-left:1.5mm}
+ol.thread li{position:relative;padding-left:4.5mm}
+ol.thread li::before{content:"";position:absolute;left:-1.6mm;top:.55em;width:2.6mm;height:2.6mm;border-radius:50%;background:var(--paper);border:.5mm solid var(--ink-3)}
+
+/* in-book contents */
+.toc-list{list-style:none;padding:0!important;margin:0}
+.toc-list li{margin:0}
+.toc-list a{display:flex;align-items:baseline;gap:2mm;color:var(--ink);text-decoration:none;padding:.9mm 0}
+.toc-list .l2 a{font-weight:600;font-size:11pt;margin-top:2.5mm}
+.toc-list .l3 a{padding-left:6mm;font-size:9.8pt;color:var(--ink-2)}
+.toc-list .d{flex:1;border-bottom:.3mm dotted var(--ink-3);transform:translateY(-1mm)}
+.toc-list .n{font:600 9pt/1 var(--mono);font-variant-numeric:tabular-nums;min-width:8mm;text-align:right}
+
+/* covers */
+.sheet.cover h2{font:600 9pt/1 var(--mono);letter-spacing:.2em;border:0;color:color-mix(in srgb,var(--paper) 65%,transparent);padding:0;margin:0 0 12mm}
+.acro p{margin:0!important}
+.acro-kicker{font:600 8.5pt/1 var(--mono);text-transform:uppercase;letter-spacing:.12em;opacity:.7;margin-bottom:6mm!important}
+.acro-letters{font:800 68pt/.9 var(--display);letter-spacing:.05em}
+.acro-official{font:600 15pt/1.3 var(--display);letter-spacing:.08em;text-transform:uppercase;margin-top:6mm!important}
+.acro-joke{margin-top:4mm!important}
+.joke{font:italic 400 14pt/1.3 var(--serif);color:inherit;opacity:.8;background:none;border:0;padding:0;cursor:pointer;text-align:left;border-bottom:.3mm dashed currentColor}
+.sheet.cover .lede,.sheet.cover p{max-width:140mm}
+.sheet.cover .lede{margin-top:14mm!important;font-size:13pt}
+.sheet.cover aside.meta{background:rgba(255,255,255,.08);color:inherit;margin-top:8mm}
+.sheet.cover .legend,.sheet.cover .tw,.sheet.cover h3{display:none}
+.sheet.cover a{color:inherit}
+
+/* ---------- responsive / print ---------- */
+@media (max-width:980px){
+  .shell{grid-template-columns:1fr}
+  .side{position:fixed;inset:58px 0 0 0;height:auto;z-index:15;transform:translateX(-102%);transition:transform .2s ease}
+  body.nav-open .side{transform:none}
+  .menu-btn{display:block}
+  .brand small{display:none}
+}
+@media (max-width:600px){ .top{flex-wrap:wrap} .products{order:9;flex-basis:100%} .brand b{font-size:21px} }
+@media (prefers-reduced-motion:reduce){.side{transition:none}}
+@page{size:A4;margin:0}
+@media print{
+  :root{--paper:#fff;--ink:#161b24;--ink-2:#3b4250;--ink-3:#616978;--rule:#c9cfd8;--rule-2:#e4e8ee;--ground:#fff;color-scheme:light}
+  html,body{background:#fff}
+  .top,.side,.status{display:none!important}
+  .shell{display:block} main{padding:0}
+  #book{zoom:1!important;width:auto;margin:0}
+  .sheet{margin:0;box-shadow:none;break-after:page;page-break-after:always}
+  .sheet:last-child{break-after:auto}
+  .sheet.cover{background:#161b24;color:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  table.t thead th,.flag,.tag,aside.meta,.formula-line,.bar{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+.grid-tonal td.hueco{color:var(--ink-3);background:repeating-linear-gradient(135deg,transparent,transparent 6px,var(--rule-2) 6px,var(--rule-2) 7px)}
+
+.recipe-grid{margin:6px 0 0;padding-top:6px;border-top:1px dotted var(--rule-2);font-size:.92em;color:var(--ink-2)}
+
+table.t.idx td,table.t.idx th{padding:2px 6px;font-size:.88em}
+table.t.idx td:first-child{font-weight:600}
+
+/* el pack: las cinco piezas, en la portada de cada una */
+.pack{margin:28px auto 0;max-width:46em;border-top:1px solid var(--rule);padding-top:18px}
+.pack-h{margin:0;font:800 clamp(17px,2.2vw,21px)/1.15 var(--display);text-transform:uppercase;letter-spacing:.03em}
+.pack-t{margin:4px 0 14px;font:12px/1.5 var(--mono);color:var(--ink-3)}
+.pack ol{list-style:none;margin:0;padding:0;counter-reset:pieza}
+.pack li{counter-increment:pieza;display:grid;grid-template-columns:1.6em 1fr;gap:2px 10px;padding:9px 0;border-bottom:1px solid var(--rule-2)}
+.pack li:last-child{border-bottom:none}
+.pack li::before{content:counter(pieza);grid-row:1/3;font:600 12px/1.6 var(--mono);color:var(--ink-3)}
+.pack li a,.pack li strong{font:600 16px/1.3 var(--serif)}
+.pack li a{color:var(--blue)}
+.pack li a:hover{color:var(--red)}
+.pack li em{font:11px/1.6 var(--mono);font-style:normal;text-transform:uppercase;letter-spacing:.05em;color:var(--red);margin-left:8px}
+.pack li span{grid-column:2;font-size:14px;line-height:1.45;color:var(--ink-2)}
+.pack li.aqui{background:var(--ground);border-radius:8px;padding-left:10px;padding-right:10px;margin:0 -10px}
+/* dentro de la portada, que es oscura, el pack se tine del color de la portada:
+   si no, el texto gris de las descripciones se pierde sobre el fondo */
+.sheet.cover .pack{border-top-color:color-mix(in srgb,currentColor 25%,transparent)}
+.sheet.cover .pack li{border-bottom-color:color-mix(in srgb,currentColor 14%,transparent)}
+.sheet.cover .pack-t,.sheet.cover .pack li span{color:color-mix(in srgb,currentColor 68%,transparent)}
+.sheet.cover .pack li::before{color:color-mix(in srgb,currentColor 50%,transparent)}
+.sheet.cover .pack li a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.sheet.cover .pack li a:hover{color:var(--red-soft,#ff8a7a)}
+.sheet.cover .pack li em{color:color-mix(in srgb,currentColor 80%,transparent)}
+.sheet.cover .pack li.aqui{background:rgba(255,255,255,.08)}
+@media print{.pack li a{color:var(--ink)}.sheet.cover .pack li a{color:inherit}}
+
+/* ===== color por capitulo =========================================
+   Cuatro familias, una escala cada una. No es decoracion: es para saber
+   donde estas al pasar paginas. Se usa en hilos finos (el filete de la
+   cabecera, la linea del titulo, el numero de pagina y el indice lateral),
+   nunca en el texto ni en fondos: el manual sigue siendo tinta sobre papel.
+   Y nunca lleva tono: un color de referencia no cuenta una historia. */
+.sheet{--cap:var(--ink-3)}
+/* el motor: azules */
+.sheet[data-cap="como-leer"]{--cap:#6b7382}
+.sheet[data-cap="intro"]{--cap:#4b6ea8}
+.sheet[data-cap="ch1"],.sheet[data-cap="ch1-panel"],.sheet[data-cap="ch1-maquinas"]{--cap:#2a56a0}
+.sheet[data-cap="ch2"]{--cap:#1f6f8b}
+/* la ficha: verdes */
+.sheet[data-cap="ch3"]{--cap:#2e7d6b}
+/* la mesa: ambares y rojos */
+.sheet[data-cap="ch4"]{--cap:#9a6b16}
+.sheet[data-cap="ch5"]{--cap:#a8502a}
+.sheet[data-cap="ch6"]{--cap:#8d3c3c}
+.sheet[data-cap="ch7"]{--cap:#7a3f6d}
+/* los apendices: grises y violetas apagados */
+.sheet[data-cap="ch8"],.sheet[data-cap="ch8b"]{--cap:#5c5470}
+.sheet[data-cap="apx-bazar"],.sheet[data-cap="apx-bazar-b"]{--cap:#4a6a52}
+.sheet[data-cap="apx-mates"]{--cap:#555f6e}
+.sheet[data-cap="apx-glosario"]{--cap:#6b6257}
+/* el cuaderno de edicion */
+.sheet[data-cap="audit-editorial"]{--cap:#2a56a0}
+.sheet[data-cap="audit-descartados"]{--cap:#a8502a}
+.sheet[data-cap="audit-traza"]{--cap:#5c5470}
+.rh{border-bottom-color:color-mix(in srgb,var(--cap) 55%,var(--rule))}
+.rh span:last-child{color:var(--cap)}
+.sb h2{border-bottom-color:var(--cap)}
+.pn{color:var(--cap)}
+@media print{.rh,.sb h2,.pn{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+/* ===== el hueco de figura =========================================
+   Para DIAGRAMAS: el sistema dibujandose a si mismo. Nunca para escenas ni
+   personajes. Toda imagen lleva tono, y este manual no arrastra ninguno: el
+   tono lo pone la mesa, no la portada. Un esquema no cuenta una historia.
+   El hueco reserva su sitio aunque el dibujo no exista todavia, para que el
+   dia que llegue no haya que remaquetar el libro entero. */
+/* graficas: el sistema dibujandose a si mismo */
+svg.nog .gr{stroke:var(--rule-2);stroke-width:1}
+svg.nog .ge{stroke:var(--rule);stroke-width:1}
+svg.nog .gt{font:9.5px var(--mono);fill:var(--ink-3)}
+svg.nog .gh{font:600 10px var(--mono);fill:var(--ink-2)}
+svg.nog .gn{font:600 10.5px var(--mono)}
+svg.nog .gl{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+svg.nog .ok{stroke:var(--ok)}svg.nog .bl{stroke:var(--blue)}svg.nog .rd{stroke:var(--red)}
+svg.nog .f-ok{fill:var(--ok)}svg.nog .f-bl{fill:var(--blue)}svg.nog .f-rd{fill:var(--red)}
+svg.nog .dash{stroke-dasharray:7 3.5}svg.nog .dot{stroke-dasharray:1.5 3}
+svg.nog .bt{font:10px var(--mono);fill:var(--ink-3)}
+svg.nog .bs{font:10px var(--mono);fill:var(--ink-2)}
+svg.nog .k-pifia{fill:var(--c-pifia)}svg.nog .k-fallo{fill:var(--c-fallo)}
+svg.nog .k-parcial{fill:var(--c-parcial)}svg.nog .k-exito{fill:var(--c-exito)}
+svg.nog .k-critico{fill:var(--c-critico)}
+svg.nog .b-g3{fill:var(--ink-3)}svg.nog .b-ok{fill:var(--ok)}
+svg.nog .b-rd{fill:var(--red)}svg.nog .b-bl{fill:var(--blue)}
+
+/* las fichas de las siete tarjetas */
+.t7s{margin:5mm 0}
+.t7{border:.35mm solid var(--rule);border-left:1.6mm solid var(--t7c);border-radius:1.6mm;
+    background:var(--t7b);padding:3.5mm 4mm 3mm;margin:0 0 4mm;break-inside:avoid;page-break-inside:avoid}
+.t7[data-fila="opt"]{--t7c:var(--ok);--t7b:var(--ok-soft)}
+.t7[data-fila="neu"]{--t7c:var(--blue);--t7b:var(--blue-soft)}
+.t7[data-fila="opr"]{--t7c:var(--red);--t7b:var(--red-soft)}
+.t7[data-fila="rec"]{--t7c:var(--violet);--t7b:var(--violet-soft)}
+.t7cab{display:flex;align-items:baseline;justify-content:space-between;gap:3mm;flex-wrap:wrap}
+.t7cab h4{margin:0;font:600 13.5pt/1.15 var(--display);letter-spacing:.01em;color:var(--t7c);
+          text-transform:uppercase}
+.t7ax{font:8.5pt/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);
+      border:.3mm solid var(--rule);border-radius:4mm;padding:1mm 2.4mm;background:var(--paper)}
+.t7frase{margin:1.5mm 0 0;font:italic 11pt/1.35 var(--serif);color:var(--ink-2)}
+.t7cuerpo{display:grid;grid-template-columns:1fr 1fr;gap:4mm;align-items:start;margin:3mm 0 0}
+.t7izq{min-width:0}
+.t7der{min-width:0}
+.t7der p{margin:0 0 2mm}
+.t7der p:last-child{margin-bottom:0}
+.t7how{font:9pt/1.4 var(--mono);color:var(--ink-2)}
+.t7pie{margin:1mm 0 0;font:8.5pt/1.3 var(--mono);color:var(--ink-3);text-align:center}
+.t7g{display:block;width:100%;height:auto}
+.t7leg{display:flex;flex-wrap:wrap;gap:1.5mm 4mm;align-items:center;margin:-3mm 0 4mm;
+       font:8.5pt/1.3 var(--mono);color:var(--ink-2)}
+.t7leg i{display:inline-block;border-radius:1mm;margin-right:1.2mm;vertical-align:.3mm}
+.t7leg i.gruesa{width:5mm;height:1.3mm}
+.t7leg i.fina{width:5mm;height:.7mm}
+.t7leg .sep{color:var(--ink-3)}
+.t7leg .note{margin-left:auto}
+.t7leg .k-exito{background:var(--c-exito)}.t7leg .k-fallo{background:var(--c-fallo)}
+.t7leg .k-critico{background:var(--c-critico)}.t7leg .k-parcial{background:var(--c-parcial)}
+.t7leg .k-pifia{background:var(--c-pifia)}
+svg.nog .gr.fino{opacity:.55;stroke-width:.6}
+svg.nog .t7fina{fill:none;stroke-width:1.6;stroke-dasharray:3 3;opacity:.9;stroke-linejoin:round}
+svg.nog .t7gruesa{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+svg.nog .t7cruce{stroke:var(--ink-3);stroke-width:1;stroke-dasharray:3 3;opacity:.6}
+svg.nog .t7num{font:600 10px var(--mono);fill:var(--c-exito)}
+svg.nog .t7pg{stroke:var(--paper);stroke-width:1.5}
+svg.nog .t7pf{opacity:.9}
+svg.nog .t7fina.k-critico{stroke:var(--c-critico)}svg.nog .t7fina.k-parcial{stroke:var(--c-parcial)}
+svg.nog .t7fina.k-pifia{stroke:var(--c-pifia)}
+svg.nog .t7gruesa.k-exito{stroke:var(--c-exito)}svg.nog .t7gruesa.k-fallo{stroke:var(--c-fallo)}
+svg.nog .t7pf.k-critico{fill:var(--c-critico)}svg.nog .t7pf.k-parcial{fill:var(--c-parcial)}
+svg.nog .t7pf.k-pifia{fill:var(--c-pifia)}
+svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fallo)}
+.t7n{font-size:8.5pt}
+@media (max-width:620px){.t7cuerpo{grid-template-columns:1fr}}
+.fig.auto > .fig-box{aspect-ratio:auto;display:block;padding:3mm 3mm 1mm}
+.graf{margin:3mm 0 4mm;break-inside:avoid;page-break-inside:avoid}
+.graf svg,.fig svg{display:block;width:100%;height:auto}
+.leyenda{display:flex;flex-wrap:wrap;gap:1mm 4mm;margin:-3mm 0 5mm;font:8.5pt var(--mono);color:var(--ink-2)}
+.leyenda i{display:inline-block;width:3.4mm;height:2.2mm;border-radius:.5mm;margin-right:1.2mm}
+.leyenda .k-pifia{background:var(--c-pifia)}.leyenda .k-fallo{background:var(--c-fallo)}
+.leyenda .k-parcial{background:var(--c-parcial)}.leyenda .k-exito{background:var(--c-exito)}
+.leyenda .k-critico{background:var(--c-critico)}
+.leyenda .b-g3{background:var(--ink-3)}.leyenda .b-ok{background:var(--ok)}
+.leyenda .b-rd{background:var(--red)}.leyenda .b-bl{background:var(--blue)}
+.fig{margin:6mm 0;border:.3mm solid var(--rule);border-radius:1.2mm;overflow:hidden;background:var(--ground);break-inside:avoid;page-break-inside:avoid}
+.fig > .fig-box{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center}
+.fig.alta > .fig-box{aspect-ratio:4/3}
+.fig.cuadrada > .fig-box{aspect-ratio:1/1}
+.fig.tira > .fig-box{aspect-ratio:3/1}
+.fig > .fig-box > *{max-width:100%;max-height:100%}
+.fig > .fig-box:empty::after{content:attr(data-nota);font:11px/1.4 var(--mono);color:var(--ink-3);padding:4mm;text-align:center}
+.fig figcaption,.fig > .fig-pie{margin:0;padding:2mm 3mm;font:9pt/1.35 var(--mono);color:var(--ink-2);border-top:.3mm solid var(--rule);background:var(--paper)}
+.fig figcaption b,.fig > .fig-pie b{color:var(--cap)}
+</style>
+<header class="top">
+<button class="tool menu-btn" id="menuBtn" aria-controls="side" aria-expanded="false">Índice</button>
+<span class="brand"><span class="dice" aria-hidden="true"><i></i><i></i></span><b>NOGUM</b><small data-i18n-es="Acelerado" data-i18n-en="Accelerated">Acelerado</small></span>
+<nav class="products" aria-label="NOGUM"><a href="apuesta.html" data-i18n-es="La Apuesta" data-i18n-en="The Wager">La Apuesta</a><a href="juego.html" data-i18n-es="Juego" data-i18n-en="Game">Juego</a><span aria-current="page" data-i18n-es="Acelerado" data-i18n-en="Accelerated">Acelerado</span><a href="app.html" data-i18n-es="App" data-i18n-en="App">App</a></nav>
+<div class="lang" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" aria-pressed="true">ES</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+<button class="tool" id="printBtn" type="button">Imprimir</button>
+<button class="tool" id="themeBtn" type="button">Tema</button>
+</header>
+<div class="shell">
+<aside class="side" id="side">
+<div class="search"><label id="qLabel" for="q">Buscar</label><input id="q" type="search" autocomplete="off"></div>
+<ul class="results" id="results" hidden></ul>
+<ul class="stoc" id="stoc"></ul>
+</aside>
+<main><p class="status" id="status" role="status"></p><div id="book"></div></main>
+</div>
+<script type="application/json" id="cfg">{"product": "acelerado", "title": {"es": "NOGUM Acelerado", "en": "NOGUM Accelerated"}, "langs": ["es", "en"], "chapterBreak": true, "contents": true}</script>
+<template id="src-es"><section class="cover" id="portada">
+<h2>NOGUM Acelerado</h2>
+<div class="acro">
+<p class="acro-kicker">Protocolo de inmersión inmediata</p>
+<p class="acro-letters">N·O·G·U·M</p>
+<p class="acro-official">Acelerado</p>
+<p class="acro-joke"><button type="button" class="joke" data-jokes="Juega ahora, pregúntate por qué funciona luego|Nos Olvidamos de Guardar Una Mesa|No Otro Gato Usando Magia">(Juega ahora, pregúntate por qué funciona luego)</button></p>
+</div>
+<p class="lede">Un juego completo y sencillo para empezar esta misma tarde: cuatro modos de tono, una sola dificultad y nueve casillas de vida —tres en Terror—. Cuando se te quede pequeño, NOGUM te estará esperando.</p>
+<div class="pack"><p class="pack-h">NOGUM son cuatro piezas</p><p class="pack-t">Se leen por separado y se usan juntas. Las otras 3 están a un clic.</p><ol><li><a href="apuesta.html">La Apuesta</a><span>Por qué el juego es así: el argumento entero, sin reglas.</span></li><li><a href="juego.html">Juego</a><span>El manual completo: el motor, los personajes, el peligro, el Bazar y las veinte recetas.</span></li><li class="aqui"><strong>Acelerado</strong> <em>estás aquí</em><span>El mismo juego en quince páginas: cuatro modos de tono y la vida que trae cada uno.</span></li><li><a href="app.html">App</a><span>Monta la mesa con cuatro formularios, haz las fichas y pásalas con el Código.</span></li></ol></div>
+</section>
+<section class="chapter" id="acelerado">
+<h2>NOGUM Acelerado · Protocolo de Inmersión Inmediata</h2>
+<p><em>Juega ahora. Pregúntate luego por qué funciona.</em></p>
+<p><strong>Nota de edición.</strong> Este manual sigue el esbozo final del autor. Los «6 cartuchos de juego» y la «dificultad casi siempre 11» de una versión anterior quedan <strong>sustituidos</strong> por cuatro modos de tono y una sola TN (6). <span class="src">T76</span> <span class="src">T77</span> <span class="src">T135</span></p>
+<aside class="meta"><p>Esto es un juego completo, no un resumen. También es un anuncio gigante: al final de cada regla verás una pregunta. Si alguna te pica, el manual completo te está esperando. Si no, juega y ya está.</p></aside>
+
+<!-- ============================ 0 ============================ -->
+<h3 id="ac-arranque">0 · Arranque</h3>
+<h4>0.1 La promesa</h4>
+<p>Vas a jugar en diez minutos, sin leerte doscientas páginas. Aquí no hay teoría ni explicaciones: solo reglas que funcionan. Con ellas puedes jugar a tu universo favorito, sea el que sea.</p>
+<h4>0.2 Lo que necesitas</h4>
+<ul>
+<li><strong>Dos dados de diez caras de distinto color: uno rojo y otro azul.</strong> Cada jugador, o uno para toda la mesa.</li>
+<li>Una hoja de personaje por jugador (al final de este manual).</li>
+<li>Un Director de Juego (DJ) que haya leído estas páginas. Los jugadores no necesitan leerlas.</li>
+<li>Amigos con ganas de contar una historia juntos.</li>
+</ul>
+<h4>0.3 La caja negra</h4>
+<p>Los jugadores no necesitan conocer las reglas. El trato es sencillo:</p>
+<blockquote><p>Tú declara tu acción y tira. Yo te cuento qué pasa.</p></blockquote>
+<p>El DJ traduce los números a historia. Nadie en la mesa tiene que oír la palabra «modificador» si no quiere.</p>
+<aside class="meta"><p>¿Te parece que al DJ le toca mucho trabajo? Le toca. Es una feature, no un bug. <span class="src">T72</span></p></aside>
+
+<!-- ============================ 1 ============================ -->
+<h3 id="ac-selector">1 · Selector de misión</h3>
+<p>Antes de empezar, el DJ responde dos bloques de preguntas sobre el universo que va a jugar. No preguntes «¿a qué juego jugamos?». Pregunta «¿cómo se siente este mundo?». <span class="src">T76</span></p>
+
+<h4>1.1 ¿Cuánto optimismo hay en tu mundo?</h4>
+<div class="tw"><table class="t">
+<thead><tr><th>Pregunta</th><th>Poco</th><th>Lo normal</th><th>Mucho</th></tr></thead>
+<tbody>
+<tr><td>¿El universo tiene favoritos?</td><td>Sí: los monstruos</td><td>No: a nadie</td><td>Sí: nosotros</td></tr>
+<tr><td>Cuando un plan sale mal, ¿por qué es?</td><td>Porque el enemigo es competente y cruel</td><td>Porque a veces las cosas salen mal</td><td>Casi nunca sale mal; y si sale, hay una liana</td></tr>
+<tr><td>¿Cómo acaban estas historias?</td><td>Sobrevivir ya es ganar</td><td>Depende de lo que hagas</td><td>Los héroes ganan</td></tr>
+</tbody></table></div>
+<p>Quédate con la respuesta que más se repita.</p>
+
+<h4>1.2 ¿Cuánto caos hay en tu mundo?</h4>
+<div class="tw"><table class="t">
+<thead><tr><th>Pregunta</th><th>Poco</th><th>Lo normal</th><th>Mucho</th></tr></thead>
+<tbody>
+<tr><td>¿La física es fiable?</td><td>Es un reloj</td><td>Es una película</td><td>Es una locura</td></tr>
+<tr><td>¿Qué pasa cuando alguien lo hace bien?</td><td>Sale bien, siempre</td><td>Sale bien casi siempre</td><td>Puede salir bien… con un precio</td></tr>
+<tr><td>¿Hay sorpresas absurdas?</td><td>Nunca</td><td>Alguna</td><td>Constantemente</td></tr>
+</tbody></table></div>
+<p>Quédate con la respuesta que más se repita.</p>
+<p>Las preguntas son propias de este manual: el autor fijó el formato (optimismo y caos por separado; poco / lo normal / mucho) y las dos preguntas-madre, no la redacción de las demás. <span class="src">Aprobado por el autor</span></p>
+
+<h4>1.3 Tu modo de juego</h4>
+<p>Cruza tus dos respuestas en la tabla:</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Optimismo \ Caos</th><th>Poco</th><th>Lo normal</th><th>Mucho</th></tr></thead>
+<tbody>
+<tr><td><strong>Mucho</strong></td><td>Optimista</td><td>Optimista</td><td>Optimista</td></tr>
+<tr><td><strong>Lo normal</strong></td><td>Neutro</td><td>Neutro</td><td>Caos</td></tr>
+<tr><td><strong>Poco</strong></td><td>Terror</td><td>Terror</td><td>Terror</td></tr>
+</tbody></table></div>
+<p>El optimismo elige el modo y el caos decide una casilla. Son cuatro, y cada uno cambia una cosa y solo una:</p>
+<ul>
+<li><strong>Optimista</strong> cambia <em>el dado</em>: tiras dos y te quedas el mayor.</li>
+<li><strong>Neutro</strong> no cambia nada. Es la referencia.</li>
+<li><strong>Caos</strong> cambia <em>de qué está hecho el resultado</em>: mismo dado, bandas más anchas y éxitos que cobran peaje.</li>
+<li><strong>Terror</strong> cambia <em>lo que aguantas</em>: mismo dado que Neutro, pero tres casillas de vida en vez de nueve.</li>
+</ul>
+<p>Mira bien el tercero, porque es lo más raro y lo más importante de este manual: <strong>Caos y Neutro sacan adelante exactamente el mismo número de tiradas</strong>, un 50&nbsp;% con la ficha a cero y un 70&nbsp;% con la ficha a +2. El caos no te hace fallar más. Cambia de qué está hecho lo que te pasa: donde Neutro reparte éxitos y fallos limpios, Caos reparte pifias, críticos y victorias con factura.</p>
+<p>Y el cuarto es la otra forma de hacer daño. <strong>En Terror el mundo no es más cruel: tú eres más frágil.</strong> Tiras igual que en Neutro y aciertas igual de a menudo. Lo que cambia es que un cuchillo te mata. El manual completo llama a eso la <em>vida fractal</em> y la deja en tus manos; aquí viene puesta, para que la veas funcionar sin tener que decidir nada.</p>
+<p><strong>ED-A1.</strong> El autor fijó los cuatro modos, sus lecturas y que el 3 de vida va anclado al Terror y no es un interruptor. La tabla de cruce es decisión editorial: optimismo alto = Optimista con cualquier caos; optimismo normal + caos mucho = Caos; optimismo bajo = Terror con cualquier caos.</p>
+<aside class="meta"><p>¿Echas de menos algún tono? ¿Un mundo que sea un reloj suizo y a la vez cruel? ¿Una ruleta rusa donde un 9 ya es un milagro? ¿Oscuro <em>y</em> caótico a la vez? Estos cuatro cubren a grandes rasgos todo y son suficientes para empezar. Y no son un invento aparte: los cuatro existen en el manual completo —Optimista es la Épica, Neutro es la Primera marcha, Caos es la Comedia negra y Terror es la Primera marcha con la vida corta—. Cuando se te queden pequeños, ya conoces cuatro de las siete tarjetas. <span class="src">T135</span></p></aside>
+
+<!-- ============================ 2 ============================ -->
+<h3 id="ac-reglas">2 · Reglas universales</h3>
+
+<h4>2.1 La tirada única</h4>
+<p>Tira siempre los dos dados, el rojo y el azul. Lo que cambia es cómo los lees:</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Modo</th><th>Qué dado cuenta</th><th>Pifia</th><th>Crítico</th><th>Resultado</th></tr></thead>
+<tbody>
+<tr><td><strong>Optimista</strong></td><td>El <strong>mayor</strong> de los dos</td><td>Doble 1</td><td>Un 10 en cualquiera</td><td>Total 6 o más: éxito</td></tr>
+<tr><td><strong>Neutro</strong></td><td><strong>Solo el rojo</strong> (el azul no cuenta)</td><td>1 en el rojo</td><td>10 en el rojo</td><td>Total 6 o más: éxito</td></tr>
+<tr><td><strong>Caos</strong></td><td><strong>Solo el rojo</strong> (el azul no cuenta)</td><td>1 <strong>o 2</strong> en el rojo</td><td>9 <strong>o 10</strong> en el rojo</td><td>Total 5 o menos: fallo · 6 o 7: <strong>éxito parcial</strong> · 8 o más: éxito</td></tr>
+<tr><td><strong>Terror</strong></td><td><strong>Solo el rojo</strong> (el azul no cuenta)</td><td>1 en el rojo</td><td>10 en el rojo</td><td>Total 6 o más: éxito · <strong>y solo 3 casillas de vida</strong> (2.6)</td></tr>
+</tbody></table></div>
+<div class="rule"><p class="rule-title">Cómo se tira</p>
+<ol>
+<li>Lee el dado que toque según el modo.</li>
+<li>Suma tu bono (2.2). Eso es el <strong>total</strong>.</li>
+<li>Compáralo con la <strong>TN 6</strong>. Siempre la misma.</li>
+<li>La <strong>pifia</strong> y el <strong>crítico</strong> se miran en los dados, antes de sumar nada. Una pifia es siempre un desastre y un crítico es siempre algo extraordinario, tengas el bono que tengas.</li>
+</ol>
+</div>
+<p><strong>Éxito parcial (solo en Caos).</strong> Lo consigues, pero pagas un precio. El DJ elige uno:</p>
+<ul>
+<li><strong>Tiempo</strong>: lo logras, pero tarde; los guardias ya están en el pasillo.</li>
+<li><strong>Recurso</strong>: lo logras, pero algo se rompe; el bate se astilla.</li>
+<li><strong>Posición</strong>: lo logras, pero quedas expuesto; te caes de espaldas al otro lado del muro.</li>
+<li><strong>Fuego amigo</strong>: lo logras, pero salpica a otro; la explosión se lleva la única radio.</li>
+</ul>
+<p>Nunca «lo consigues, pero pierdes una casilla de vida». Eso es pereza.</p>
+<p><strong>ED-15.</strong> Las bandas del modo Caos son exactamente las de la tarjeta Comedia negra del manual completo: dado rojo, pifia con 1 o 2, crítico con 9 o 10, y el éxito con coste ocupando la TN y el punto de encima (total 6 o 7). Nunca convierte un fallo en éxito; solo cobra peaje a lo que ya había salido bien. Confirmado por el autor. Consecuencia: en Caos, un profesional (+2) sale adelante un 70&nbsp;% de las veces —lo mismo que en Neutro—, pero tres de cada siete de esas veces pagando un precio. Las cuatro lecturas son las del manual completo: Épica, Primera marcha, Comedia negra y Primera marcha con la vida corta.</p>
+<aside class="meta"><p>Mismo personaje (+2), misma tarea. En <strong>Optimista</strong> lo consigue el 91&nbsp;% de las veces. En <strong>Neutro</strong>, el 70&nbsp;%. En <strong>Caos</strong>, también el 70&nbsp;% —leíste bien, el mismo número— pero tres de cada siete de esas veces pagando un precio, y con el doble de pifias y el doble de críticos. En <strong>Terror</strong>, otra vez el 70&nbsp;%: lo que cambia es que ahora dos golpes le dejan fuera. No has tocado la ficha en ningún momento: has cambiado la atmósfera tres veces de tres maneras distintas.</p></aside>
+
+<h4>2.2 Los bonos</h4>
+<p>Tu bono sale de tu ficha y de la situación. Solo hay seis valores posibles:</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Bono</th><th>Quién eres en esto</th></tr></thead>
+<tbody>
+<tr><td class="num">−2</td><td><strong>Nulo.</strong> No has puesto ni un punto en todo ese ámbito.</td></tr>
+<tr><td class="num">−2</td><td><strong>Nulidad.</strong> No has tocado ese ámbito en toda la ficha.</td></tr>
+<tr><td class="num">−1</td><td><strong>Torpe.</strong> Tienes el ámbito, pero esa columna está vacía: vas con el pie cambiado.</td></tr>
+<tr><td class="num">+0</td><td><strong>Aficionado.</strong> No lo has estudiado, pero sabes cosas de esa misma columna.</td></tr>
+<tr><td class="num">+1</td><td><strong>Me defiendo.</strong> Tienes una habilidad amplia que lo cubre.</td></tr>
+<tr><td class="num">+2</td><td><strong>Es mi trabajo.</strong> Tienes una habilidad concreta que lo cubre.</td></tr>
+<tr><td class="num">+4</td><td><strong>Gran Maestro.</strong> Nadie lo hace mejor.</td></tr>
+</tbody></table></div>
+<p><strong>Dificultad.</strong> Si la tarea es fácil, +2. Si es difícil, −2. Si es heroica, −4. Lo normal es 0. La dificultad se suma al bono; la TN no se mueve nunca.</p>
+<p><strong>Límites.</strong> Suma habilidad, dificultad y cualquier otro modificador. Si el total baja de −2, el DJ elige: o se tira a −2 o se narra el fallo sin tirar. Si pasa de +4, el DJ elige: o se tira a +4 o se narra el éxito sin tirar. El bono final siempre está entre −2 y +4.</p>
+<p><strong>No tires por tirar.</strong> Tira solo si todos los resultados posibles son interesantes. Si fallar no aporta nada, sucede y ya está.</p>
+
+<h4>2.3 Las habilidades</h4>
+<p>Todo personaje tiene <strong>cinco ámbitos</strong>: <strong>Físico</strong>, <strong>Mental</strong>, <strong>Social</strong>, <strong>Técnico</strong> y <strong>Arcano</strong> (la magia, la Fuerza, los poderes psíquicos; si tu mundo no los tiene, ignóralo). Los ámbitos no son habilidades: son los cajones donde las guardas.</p>
+<p>Tienes <strong>12 puntos</strong>, o <strong>14</strong> si tu mundo tiene Arcano (son diez casillas más que cubrir). Cada punto sube un escalón en una rama, y para subir un escalón hay que haber pagado el anterior:</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Escalón</th><th>Qué es</th><th>Ejemplos</th><th>Puntos acumulados</th><th>Bono</th></tr></thead>
+<tbody>
+<tr><td>Habilidad amplia</td><td>Media parte de un ámbito</td><td>Destreza, Vigor, Erudición, Ingenio, Influencia</td><td class="num">1</td><td class="num">+1</td></tr>
+<tr><td>Habilidad concreta</td><td>Un oficio dentro de la amplia</td><td>Vigor → Armas · Erudición → Ciencias · Influencia → Engaño</td><td class="num">2</td><td class="num">+2</td></tr>
+<tr><td>Firma</td><td>Tu especialidad dentro del oficio</td><td>Armas → Armas de fuego · Ciencias → Química · Acrobacia → Parkour</td><td class="num">2</td><td class="num">+4</td></tr>
+<tr><td>Firma de Gran Maestro</td><td>La misma Firma, al máximo</td><td>—</td><td class="num">4</td><td class="num">+4</td></tr>
+</tbody></table></div>
+<ul>
+<li>Cuando tires, usa <strong>solo el escalón más alto que encaje</strong>. Los bonos no se suman.</li>
+<li>En cuanto tengas <strong>un punto en un ámbito</strong>, todo lo demás de ese ámbito se tira a +0. Si el ámbito está vacío, a −2.</li>
+<li>Para ser Gran Maestro en algo, tienes que poder explicar <strong>exactamente</strong> qué haces. «Armas de fuego», sí. «Ser bueno», no.</li>
+<li>Además, todo personaje tiene <strong>Estilo +2</strong>, un regalo que va fuera de los ámbitos (2.8).</li>
+</ul>
+<aside class="meta"><p>¿No sabes qué habilidad poner? ¿Dudas entre «Pilotar» y «Conducción evasiva»? NOGUM tiene una lista cerrada de 10 habilidades amplias y 40 concretas, y un catálogo de Firmas ordenado para que solo mires tu rama. NOGUM te ayuda. <span class="src">T135</span></p></aside>
+
+<h4>2.4 La Rejilla: de qué tamaño son tus hazañas</h4>
+<p>El bono dice <strong>lo bien</strong> que haces algo. La Rejilla dice <strong>a qué escala</strong> lo haces. Cada personaje tiene un nivel por ámbito. Pregúntate: si esto se descontrola, ¿qué sale en las noticias?</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Nivel</th><th>Escala</th><th>Ejemplos</th></tr></thead>
+<tbody>
+<tr><td class="num">1</td><td>Una persona</td><td>Cualquier humano, por experto que sea: El consultor de Baker Street, un boxeador, un hacker.</td></tr>
+<tr><td class="num">2</td><td>Una sala, decenas de personas</td><td>El bárbaro de la estepa, el soldado perfecto: un soldado raso no tiene nada que hacer contra ellos.</td></tr>
+<tr><td class="num">3</td><td>Un edificio, un barrio</td><td>Derribar un castillo, apagar la red eléctrica de un rascacielos.</td></tr>
+<tr><td class="num">4</td><td>Una gran ciudad</td><td>Un escudo místico sobre la ciudad, un monstruo que arrasa distritos.</td></tr>
+<tr><td class="num">5</td><td>Un país</td><td>Cambiar la geografía. Solo para finales de campaña.</td></tr>
+<tr><td class="num">6</td><td>Cósmico</td><td>No se tira: es decorado. El DJ lo narra.</td></tr>
+</tbody></table></div>
+<p>Cada nivel multiplica por cien tu <strong>alcance</strong>: ×1 una persona, ×100 una sala, ×10.000 un edificio, ×1.000.000 una ciudad, ×100.000.000 un país. Cuando alguien te saca un nivel no es que sea mejor que tú: es que juega con dos ceros más, y por eso no hay tirada.</p>
+<p>Si no sabes qué nivel poner, <strong>los humanos son nivel 1 en todo</strong>. Lo que se mide son las herramientas y la escala, no la inteligencia ni los músculos: un químico genial sigue siendo nivel 1.</p>
+<div class="rule"><p class="rule-title">El salto de poder</p>
+<ul>
+<li><strong>Si estás por encima</strong> del desafío (aunque sea un nivel), no tiras: lo consigues. Se narra, o se tira Estilo (2.8).</li>
+<li><strong>Si estás por debajo</strong>, no tiras: es imposible. Salvo que tengas una <strong>Llave</strong>.</li>
+<li><strong>Si estáis al mismo nivel</strong>, se tira normal.</li>
+</ul>
+</div>
+<p><strong>La Llave.</strong> Una Llave es una razón narrativa que te permite afectar a algo de nivel superior: un bazooka, la piedra de su propio mundo, una contraseña de administrador robada, un vídeo del soborno, veinte mercenarios disparando a la vez. Con Llave se tira normal, con tu bono completo y sin penalizaciones. Conseguirla suele ser una aventura en sí misma.</p>
+<div class="rule"><p class="rule-title">Las Llaves se compran</p>
+<ul>
+<li>En la creación, el <strong>bote aparte</strong> te da <strong>5 Llaves</strong>, o <strong>+1 nivel de Rejilla</strong> en un ámbito. No se cambia por puntos de habilidad: todo el mundo llega con un oficio.</li>
+<li>Cada Llave es <strong>una habilidad concreta para siempre</strong> («Armas contra los vampiros») o <strong>un ámbito entero durante una escena</strong>, si es muy específica. Se elige al comprarla y se escribe con su objetivo.</li>
+<li>Para subir más contra la misma cosa: 1, 4, 9 Llaves. Con cinco en el bote, nadie empieza por encima de +2.</li>
+<li>Durante la campaña, el Director da <strong>una Llave por sesión</strong>. Ese grifo es el mando de potencia de la partida: con Llaves se compra también el equipo que rompe la Rejilla.</li>
+<li>Y lo que el Director te regala por una buena idea —«se te ocurre usar el agua bendita»— es una <strong>Llave prestada</strong>: dura una escena y no se apunta.</li>
+</ul></div>
+<aside class="meta"><p>¿Por qué el millonario vigilante puede plantarle cara al alien de mallas y calzoncillos con el mismo bono que un portero de discoteca? Por la Llave. En el manual completo hay un capítulo entero para bajar la Rejilla a tierra, con ejemplos de cultura pop en los cinco ámbitos. NOGUM te espera.</p></aside>
+
+<h4>2.5 Iniciativa</h4>
+<p>Cuando empieza el combate, cada participante tira con el modo activo y suma su <strong>mejor bono en Destreza</strong> (la habilidad amplia o cualquier habilidad concreta suya). Se actúa de mayor a menor total. Si hay empate, decide el DJ.</p>
+<aside class="meta"><p>Si tu personaje va a usar su turno para deducir una pista, hackear una terminal o intimidar al jefe rival… ¿tiene sentido que el orden lo decida su velocidad física? ¿Quieres una iniciativa donde primero eliges tu intención (violencia, treta o especialidad) y después cómo la ejecutas? NOGUM te espera. <span class="src">T135</span></p></aside>
+
+<h4>2.6 El combate</h4>
+<p>El combate es una negociación agresiva. Cada ataque se resuelve en dos pasos.</p>
+<div class="rule"><p class="rule-title">Paso 1 · El impacto (tira el atacante)</p>
+<p>Tira tu habilidad de ataque contra la TN 6. Las circunstancias del defensor (cobertura, niebla, tamaño) cambian la dificultad. Las habilidades del defensor no cuentan aquí.</p>
+<ul>
+<li><strong>Pifia</strong>: no conectas y algo sale mal (te desarmas, das a un aliado…).</li>
+<li><strong>Fallo</strong>: el golpe se pierde.</li>
+<li><strong>Éxito</strong>: conectas. El daño del arma está en el aire.</li>
+<li><strong>Crítico</strong>: conectas en zona vital: <strong>+1 al daño</strong>.</li>
+</ul>
+</div>
+<div class="rule"><p class="rule-title">Paso 2 · La mitigación (tira el defensor)</p>
+<p>Si el arma lo permite (mira sus etiquetas), el defensor hace <strong>una sola reacción</strong>: esquivar (con su mejor bono de Destreza) o absorber (con su mejor bono de Vigor), según la vía que el arma deje abierta.</p>
+<ul>
+<li><strong>Fallo</strong>: recibe todo el daño.</li>
+<li><strong>Éxito</strong>: −1 al daño.</li>
+<li><strong>Crítico</strong>: −2 al daño.</li>
+</ul>
+</div>
+<p><strong>Daño final</strong> = daño del arma (+1 si el atacante sacó crítico) − reducción del defensor, dentro de los límites de las etiquetas.</p>
+<p><strong>La defensa gana los empates.</strong> Los dos tiráis contra la misma TN: si el defensor iguala el nivel del atacante o lo supera, no hay daño; si el atacante queda por encima, el daño baja en 1; si el defensor pifia, el ataque sube un escalón. Y las etiquetas mandan sobre el empate: con <span class="tag">Esq: Parcial</span> comes al menos 1 aunque iguales, y con <span class="tag">Esq: Nula</span> no hay reacción que tirar.</p>
+<p><strong>En Caos</strong>, un éxito parcial en combate cuenta como éxito, pero el DJ añade un coste del menú (el ataque conecta, pero pierdes el arma; esquivas, pero caes al suelo).</p>
+
+<p><strong>Las armas.</strong> Toda arma, poder o peligro se describe con tres etiquetas:</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Etiqueta</th><th>Valores</th><th>Qué significa</th></tr></thead>
+<tbody>
+<tr><td><span class="tag">Daño 1</span></td><td>Leve</td><td>Puños, cuchillos, pistolas ligeras, caídas cortas. «Urgencias».</td></tr>
+<tr><td><span class="tag">Daño 2</span></td><td>Serio</td><td>Espadas de guerra, magnum, garras. «UCI».</td></tr>
+<tr><td><span class="tag parca">La Parca</span></td><td>No es un valor de daño</td><td>Artillería, explosivos de guerra, un coche a toda velocidad. Lleva nivel de Rejilla: por debajo de él mueres, a su altura hace Daño 2.</td></tr>
+<tr><td><span class="tag">Esq: Total</span></td><td>Esquiva libre</td><td>Cuerpo a cuerpo, proyectiles lentos. Esquivando puedes quedarte en 0.</td></tr>
+<tr><td><span class="tag">Esq: Parcial</span></td><td>Esquiva limitada</td><td>Área, ráfagas, fuego. Aunque esquives, recibes al menos 1.</td></tr>
+<tr><td><span class="tag">Esq: Nula</span></td><td>Sin esquiva</td><td>Instantáneos, mentales, disparo por sorpresa.</td></tr>
+<tr><td><span class="tag">Esq: Difícil</span> / <span class="tag">Esq: Fácil</span></td><td>Modificador</td><td>−2 / +2 a la tirada de esquiva.</td></tr>
+<tr><td><span class="tag">Abs: Total</span></td><td>Absorción libre</td><td>La protección funciona: absorbiendo puedes quedarte en 0.</td></tr>
+<tr><td><span class="tag">Abs: Máx 1</span></td><td>Absorción limitada</td><td>Martillos, perforantes: se reduce como mucho 1.</td></tr>
+<tr><td><span class="tag">Abs: Nula</span></td><td>Sin absorción</td><td>Láser, veneno de contacto, magia psíquica.</td></tr>
+</tbody></table></div>
+<p>Ejemplos para empezar:</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Arma</th><th>Ficha técnica</th></tr></thead>
+<tbody>
+<tr><td>Puños, cuchillo</td><td><span class="tag">Daño 1</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Total</span></td></tr>
+<tr><td>Espada, hacha de guerra</td><td><span class="tag">Daño 2</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Total</span></td></tr>
+<tr><td>Maza, martillo de guerra</td><td><span class="tag">Daño 2</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Máx 1</span></td></tr>
+<tr><td>Arco, pistola</td><td><span class="tag">Daño 1</span> <span class="tag">Esq: Difícil</span> <span class="tag">Abs: Total</span></td></tr>
+<tr><td>Magnum, escopeta</td><td><span class="tag">Daño 2</span> <span class="tag">Esq: Difícil</span> <span class="tag">Abs: Total</span></td></tr>
+<tr><td>Granada, bola de fuego</td><td><span class="tag parca">La Parca · Rejilla 2</span> <span class="tag">Esq: Parcial</span> <span class="tag">Abs: Nula</span></td></tr>
+<tr><td>Rifle láser</td><td><span class="tag">Daño 2</span> <span class="tag">Esq: Difícil</span> <span class="tag">Abs: Nula</span></td></tr>
+<tr><td>Francotirador (por sorpresa)</td><td><span class="tag parca">La Parca · Rejilla 2</span> <span class="tag">Esq: Nula</span> <span class="tag">Abs: Nula</span></td></tr>
+</tbody></table></div>
+<aside class="meta"><p>¿Quieres que un arma solo pueda dañar a algo de nivel superior si es la adecuada? ¿Un catálogo de cientos de armas, poderes y vehículos de diez ambientaciones? El Bazar del Multiverso está en el manual completo.</p></aside>
+
+<h4>2.7 La vida</h4>
+<p>Todo personaje tiene <strong>9 casillas de vida</strong>, en tres bloques de tres. Cada punto de daño tacha una casilla.</p>
+<div class="rule"><p class="rule-title">Salvo en Terror</p>
+<p>En el modo <strong>Terror</strong> no son nueve: son <strong>3 casillas</strong>, un solo bloque. Al llenarlo estás fuera de combate. Con el daño de este manual eso significa que <strong>dos impactos serios te sacan de la escena</strong>, y que la granada de la tabla de armas no es una amenaza: es el final.</p>
+<p>No es un interruptor que tengas que acordarte de encender. Viene con el modo, y es la única pieza de este manual que te deja asomarte a lo que el completo llama <strong>vida fractal</strong>: ahí la letalidad es un mando y lo giras tú, con tres, nueve o veintisiete casillas.</p></div>
+<div class="tw"><table class="t">
+<thead><tr><th>Bloque</th><th>Casillas</th><th>Al llenarlo</th></tr></thead>
+<tbody>
+<tr><td>Primero</td><td class="num">1–3</td><td><strong>−2</strong> a las acciones que la herida estorbe (un ojo hinchado, una mano rota).</td></tr>
+<tr><td>Segundo</td><td class="num">4–6</td><td><strong>−4</strong> (sustituye al −2) y pierdes las acciones complejas (una pierna inútil, una hemorragia).</td></tr>
+<tr><td>Tercero</td><td class="num">7–9</td><td><strong>Fuera de combate.</strong></td></tr>
+</tbody></table></div>
+<ul>
+<li><strong>Fuera de combate no es muerte.</strong> Estás incapacitado y no participas. Si despiertas lo decide la historia o tu jugador, nunca los dados. En NOGUM nadie muere por una mala tirada.</li>
+<li>Las casillas se borran al acabar el combate, pero <strong>las heridas se quedan</strong>: el penalizador del bloque que llenaste sigue hasta que te cures (horas o días para el primero, días o semanas para el segundo).</li>
+<li>Los penalizadores respetan los límites de 2.2: nunca bajas de −2.</li>
+</ul>
+<aside class="meta"><p>¿Te gustaría jugar a un mundo sucio donde una bala perdida te haga temer por tu vida? ¿O a un anime donde el jefe final aguanta cien golpes? ¿Y a una historia donde una mirada al abismo duele tanto como un tiro? En el manual completo, la misma ficha sirve para tres golpes y fuera, para veintisiete puntos de desgaste y para heridas en la mente y en el alma. NOGUM te espera. <span class="src">T135</span></p></aside>
+
+<h4>2.8 Masillas y Estilo</h4>
+<div class="rule"><p class="rule-title">La regla del Estilo</p>
+<p>Todo personaje tiene <strong>Estilo +2</strong>. Cuando te enfrentas a enemigos <strong>por debajo de tu nivel</strong> en la Rejilla, o a simples masillas (el decorado de la escena), <strong>no se tira para ver si ganas: se da por hecho</strong>. Tiras con el modo activo y sumas tu Estilo para ver <strong>cómo</strong> ganas:</p>
+<ul>
+<li><strong>Pifia</strong>: ganas, pero haces el ridículo. Si tu personaje se toma muy en serio, puede dolerle.</li>
+<li><strong>Fallo</strong> (y, en Caos, el éxito parcial): ganas, pero de forma sucia o sin lucirte.</li>
+<li><strong>Éxito</strong>: ganas con estilo, limpio y espectacular.</li>
+<li><strong>Crítico</strong>: legendario. Coreografía de cine, caen varios a la vez y nacen rumores.</li>
+</ul>
+<p>A los masillas no se les cuentan casillas de vida.</p>
+</div>
+<p>El Estilo encaja con el anime, el wuxia, la space opera y el cine de acción. <strong>No se recomienda en universos muy serios</strong>: en una guerra realista, hasta el último soldado tira.</p>
+<aside class="meta"><p>¿Por qué el héroe barre a veinte matones y luego suda contra uno solo? En el manual completo verás cómo la Rejilla, la Llave y el Estilo se reparten el trabajo, y cómo hacer fichas de enemigos en diez segundos. NOGUM te espera.</p></aside>
+
+<!-- ============================ 3 ============================ -->
+<h4>2.9 El equipo: lo que puedes permitirte</h4>
+<p>Aquí el equipo <strong>solo cuesta dinero</strong>, y el dinero es tu bono en <em>Recursos</em> (Social → Jerarquía → Recursos). Nada de puntos, nada de Llaves: si tu cajón llega, lo tienes.</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Recursos</th><th>Quién eres</th><th>Lo que llevas encima</th></tr></thead>
+<tbody>
+<tr><td class="num">−2</td><td>No tienes nada y nadie te fía</td><td>Ropa, un cuchillo, lo que encuentres o te presten</td></tr>
+<tr><td class="num">+0</td><td>Un sueldo, o un grupo que te cubre</td><td>Un arma pequeña, herramientas, un trasto con ruedas</td></tr>
+<tr><td class="num">+1</td><td>Ahorros y contactos</td><td>Un arma seria, protección ligera, un vehículo decente</td></tr>
+<tr><td class="num">+2</td><td>Dinero de verdad, o un patrón que paga</td><td>Material militar, armadura, un vehículo blindado</td></tr>
+<tr><td class="num">+4</td><td>Mueves presupuestos que no son tuyos y el dinero ha dejado de ser el problema</td><td>Un equipo de gente, y lo que no debería existir</td></tr>
+</tbody></table></div>
+<ul>
+<li><strong>Un escalón por encima, una vez por arco.</strong> Puedes conseguir algo que no te toca, pero nunca sale gratis: un favor que te van a cobrar, una deuda, un rastro, alguien que ahora sabe tu nombre.</li>
+<li><strong>Lo robado o prestado funciona una escena entera.</strong> Después decides si te lo quedas, y entonces sí tiene que caber en tu cajón.</li>
+<li><strong>El arma no te hace mejor, hace otra cosa.</strong> Lo que cambia son sus etiquetas: cuánto daño hace, si se puede esquivar y si la armadura sirve (2.6).</li>
+</ul>
+<aside class="meta"><p>En el manual completo el equipo tiene una economía entera detrás: lo que te hace <em>mejor</em> se paga con puntos de habilidad y lo que te deja hacer lo <em>imposible</em> se paga con Llaves, y hay un taller para ponerle precio a cualquier cosa que os inventéis. Aquí basta con el dinero. NOGUM te espera.</p></aside>
+
+<h3 id="ac-interfaz">3 · Interfaz del Director</h3>
+<p>Los jugadores no oyen reglas: oyen historia. Esta tabla traduce lo que dice la regla a lo que tú narras.</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Si la regla es…</th><th>Narra algo como…</th></tr></thead>
+<tbody>
+<tr><td>Empezamos en modo Optimista</td><td>«La música sube. Sentís que hoy no podéis fallar.»</td></tr>
+<tr><td>Empezamos en modo Neutro</td><td>«El mundo no está de vuestra parte ni en vuestra contra. Lo que hagáis, eso tendréis.»</td></tr>
+<tr><td>Empezamos en modo Terror</td><td>«Sentís un peso en el estómago. Aquí nadie va a venir a salvaros.»</td></tr>
+<tr><td>Éxito parcial</td><td>«Lo consigues… pero» + un coste del menú: tiempo, recurso, posición o fuego amigo.</td></tr>
+<tr><td>Pifia</td><td>«Algo sale espectacularmente mal.» Y que sea interesante, no solo humillante.</td></tr>
+<tr><td>Crítico del atacante</td><td>«Le das justo donde duele.» (+1 al daño.)</td></tr>
+<tr><td>Arma con <span class="tag">Esq: Nula</span></td><td>«No intentes esquivar. Si disparan, te darán. Solo puedes cubrirte.»</td></tr>
+<tr><td>Arma con <span class="tag">Abs: Nula</span></td><td>«Tu armadura no sirve de nada contra esto.»</td></tr>
+<tr><td>Primer bloque de vida lleno (−2)</td><td>«Te han marcado. Cada movimiento te lo recuerda.»</td></tr>
+<tr><td>Segundo bloque lleno (−4)</td><td>«Olvida los rasguños. El último golpe ha roto algo dentro. Luchas por mantenerte en pie.»</td></tr>
+<tr><td>Fuera de combate</td><td>«Todo se vuelve negro.» Y luego, a la historia: ¿quién te encuentra?</td></tr>
+<tr><td>Desafío por encima de la Rejilla, sin Llave</td><td>«Sí, es un tanque. Sí, eres humano. No tiras. Corres.»</td></tr>
+<tr><td>Hay una Llave posible</td><td>«Esa cosa es invulnerable… a menos que encontréis lo que la hiere.»</td></tr>
+<tr><td>Enemigos por debajo (Estilo)</td><td>«No es si los tumbas. Es cómo.»</td></tr>
+<tr><td>Tirada innecesaria</td><td>No digas nada de dados: «Lo haces.»</td></tr>
+</tbody></table></div>
+<p>Las frases de modo, bloque 2 y arma sin esquiva vienen de la interfaz verbal del manual completo. Las demás son propias de este manual. <span class="src">Aprobado por el autor</span></p>
+<p><strong>Improvisar un enemigo en diez segundos.</strong> Pregúntate si importa. Si no importa, es decorado: Estilo. Si importa un poco, dale un nivel de Rejilla, una habilidad a +2 (todo lo demás a +0) y las casillas de vida que quieras que dure la pelea (3 por defecto). Si es el villano, hazle una ficha completa como la de un jugador.</p>
+
+<!-- ============================ 4 ============================ -->
+<h3 id="ac-puente">4 · ¿Quieres romper el juego?</h3>
+<p>Ya tienes todo lo necesario para jugar a tu propio universo.</p>
+<p>Pero habrás notado los límites. Aquí el tono es fijo: si empiezas en Optimista, juegas en Optimista toda la tarde. ¿Y si quieres que la aventura empiece como una fantasía luminosa y acabe como una pesadilla? ¿Que la escena del jefe final cambie la física a mitad de combate? ¿Que un personaje concreto viva en su propio tono?</p>
+<p>En NOGUM aprendes por qué funciona cada regla de este manual, y con eso:</p>
+<ul>
+<li>Nueve modos de tono y el panel de tarjetas para moverlos escena a escena.</li>
+<li>La vida fractal: tres golpes, nueve casillas o veintisiete puntos, con la misma ficha.</li>
+<li>La iniciativa por intenciones: violencia, treta o especialidad.</li>
+<li>Las barras de daño mental y espiritual, el combate social y el menú de consecuencias.</li>
+<li>La lista completa de habilidades y el catálogo de Firmas.</li>
+<li>El baúl de reglas, el Bazar del Multiverso y veinte recetas para emular los universos más famosos del rol.</li>
+</ul>
+<p>Pruébalo, toquetéalo y, si te gusta y te suscita preguntas, vuelve. Si quieres ver ejemplos de cómo emular universos con este motor, el manual completo te está esperando. <span class="src">T76</span> <span class="src">T135</span></p>
+<aside class="meta"><p>Si has llegado aquí desde el manual completo: bienvenido de vuelta. Esto es la autoescuela; allí estaba el manual de ingeniería.</p></aside>
+
+<!-- ============================ Apéndice ============================ -->
+<h3 id="ac-apendice">Apéndice · Hoja de personaje y pregenerados</h3>
+<h4>Hoja de personaje</h4>
+<div class="tw"><table class="t">
+<thead><tr><th>Campo</th><th>Qué anotar</th></tr></thead>
+<tbody>
+<tr><td>Nombre y concepto</td><td>Quién eres en una frase.</td></tr>
+<tr><td>Modo de la partida</td><td>Optimista / Neutro / Caos / Terror.</td></tr>
+<tr><td>Físico · nivel de Rejilla</td><td>Habilidades (amplias, concretas y Firmas) con su bono.</td></tr>
+<tr><td>Mental · nivel de Rejilla</td><td>Habilidades con su bono.</td></tr>
+<tr><td>Social · nivel de Rejilla</td><td>Habilidades con su bono.</td></tr>
+<tr><td>Técnico · nivel de Rejilla</td><td>Habilidades con su bono.</td></tr>
+<tr><td>Arcano · nivel de Rejilla</td><td>Habilidades con su bono (o «no existe en este mundo»).</td></tr>
+<tr><td>Puntos gastados</td><td>__ / 12 (14 si hay Arcano)</td></tr>
+<tr><td>Bote aparte</td><td>+1 nivel de Rejilla en el ámbito que permita tu mundo <strong>o</strong> 5 Llaves. No se cambia por puntos.</td></tr>
+<tr><td>Estilo</td><td>+2</td></tr>
+<tr><td>Iniciativa</td><td>Mejor bono en Destreza.</td></tr>
+<tr><td>Vida</td><td>□□□ (−2) · □□□ (−4) · □□□ (fuera de combate)</td></tr>
+<tr><td>Equipo <small>(lo que te permita Recursos)</small></td><td>Nombre + <span class="tag">Daño</span> <span class="tag">Esq</span> <span class="tag">Abs</span></td></tr>
+<tr><td>Llaves</td><td>Cada una, con su objetivo escrito: una habilidad concreta para siempre, o un ámbito entero en una escena.</td></tr>
+<tr><td>Heridas y notas</td><td>Lo que la historia te ha dejado.</td></tr>
+</tbody></table></div>
+
+<h4>Personajes pregenerados</h4>
+<p>Tres ejemplos para empezar ya, de tres mundos distintos. Kira gasta 12 porque en su mundo no hay magia; los otros dos gastan 14. Cada uno usa además su bote aparte. <span class="src">Aprobado por el autor</span></p>
+
+<div class="rule"><p class="rule-title">Kira «Grapa» Ortega · mercenaria urbana (ciberpunk / actualidad)</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Ámbito</th><th>Rejilla</th><th>Habilidades</th><th>Puntos</th></tr></thead>
+<tbody>
+<tr><td>Físico</td><td class="num">1</td><td>Vigor +1 → Armas +2 → Armas de fuego +4 · Vigor → Entereza +2 · Destreza +1 → Acrobacia +2</td><td class="num">7</td></tr>
+<tr><td>Mental</td><td class="num">1</td><td>Ingenio +1 → Alerta +2</td><td class="num">2</td></tr>
+<tr><td>Social</td><td class="num">1</td><td>Jerarquía +1 → Intimidación +2 · Jerarquía → Contactos +2</td><td class="num">3</td></tr>
+<tr><td>Técnico</td><td class="num">1</td><td>Vacío: −2</td><td class="num">0</td></tr>
+<tr><td>Arcano</td><td>—</td><td>No existe en su mundo</td><td class="num">0</td></tr>
+</tbody></table></div>
+<p><strong>Estilo</strong> +2 · <strong>Iniciativa</strong> +2 (Acrobacia) · <strong>Esquiva</strong> +2 · <strong>Absorción</strong> +1 (Vigor).</p>
+<p><strong>Equipo:</strong> pistola pesada <span class="tag">Daño 2</span> <span class="tag">Esq: Difícil</span> <span class="tag">Abs: Total</span> · cuchillo <span class="tag">Daño 1</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Total</span>.</p>
+<p><strong>Bote aparte:</strong> 5 Llaves — «Armas de fuego contra drones», «Intimidación contra corredores» y tres sin gastar, para la sesión cero.</p>
+<p><strong>En mesa:</strong> dispara a +4 y esquiva bien, pero con cualquier aparato es una Nula (−2): si hay que abrir una puerta electrónica, que lo haga otro.</p>
+</div>
+
+<div class="rule"><p class="rule-title">Dr. Tomás Areces · investigador de lo oculto (horror contemporáneo)</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Ámbito</th><th>Rejilla</th><th>Habilidades</th><th>Puntos</th></tr></thead>
+<tbody>
+<tr><td>Mental</td><td class="num">1</td><td>Erudición +1 → Ocultismo +2 → Cultos y grimorios +4 · Erudición → Humanidades +2 · Erudición → Ciencias +2 · Ingenio +1 → Investigación +2 → Archivos y bibliotecas +4 · Ingenio → Alerta +2</td><td class="num">9</td></tr>
+<tr><td>Social</td><td class="num">1</td><td>Influencia +1 → Empatía +2 · Influencia → Engaño +2 · Influencia → Persuasión +2</td><td class="num">4</td></tr>
+<tr><td>Físico</td><td class="num">1</td><td>Destreza +1</td><td class="num">1</td></tr>
+<tr><td>Técnico</td><td class="num">1</td><td>Vacío: −2</td><td class="num">0</td></tr>
+<tr><td>Arcano</td><td class="num">1</td><td>Vacío: −2</td><td class="num">0</td></tr>
+</tbody></table></div>
+<p><strong>Estilo</strong> +2 · <strong>Iniciativa</strong> +1 (Destreza) · <strong>Esquiva</strong> +1 · <strong>Absorción</strong> +0 (tiene algo en Físico, aunque no Vigor).</p>
+<p><strong>Equipo:</strong> revólver viejo <span class="tag">Daño 1</span> <span class="tag">Esq: Difícil</span> <span class="tag">Abs: Total</span> · linterna · cuaderno de notas.</p>
+<p><strong>Bote aparte:</strong> 5 Llaves, que son su personaje entero — «Ocultismo contra los Profundos», «Investigación contra la secta», y tres por descubrir.</p>
+<p><strong>En mesa:</strong> sabe más que nadie de lo que no debería existir, pero no puede tocarlo (Arcano vacío) y cualquier monstruo está por encima de su nivel. Su juego es encontrar Llaves. Con modo Terror, perfecto.</p>
+</div>
+
+<div class="rule"><p class="rule-title">Ysolde de Brasa · canalizadora errante (fantasía)</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Ámbito</th><th>Rejilla</th><th>Habilidades</th><th>Puntos</th></tr></thead>
+<tbody>
+<tr><td>Arcano</td><td class="num">2</td><td>Don +1 → Proyección +2 → Fuego +4 · Don → Protección +2 · Ritual +1 → Invocación +2</td><td class="num">7</td></tr>
+<tr><td>Mental</td><td class="num">1</td><td>Erudición +1 → Ocultismo +2 · Erudición → Humanidades +2</td><td class="num">3</td></tr>
+<tr><td>Físico</td><td class="num">1</td><td>Destreza +1 → Sigilo +2</td><td class="num">2</td></tr>
+<tr><td>Social</td><td class="num">1</td><td>Influencia +1 → Persuasión +2</td><td class="num">2</td></tr>
+<tr><td>Técnico</td><td class="num">1</td><td>Vacío: −2</td><td class="num">0</td></tr>
+</tbody></table></div>
+<p><strong>Estilo</strong> +2 · <strong>Iniciativa</strong> +2 (Sigilo) · <strong>Esquiva</strong> +2 · <strong>Absorción</strong> +0 · <strong>Escudo mágico</strong>: puede absorber con Protección (+2) si el DJ lo permite.</p>
+<p><strong>Equipo:</strong> bola de fuego <span class="tag parca">La Parca · Rejilla 2</span> <span class="tag">Esq: Parcial</span> <span class="tag">Abs: Total</span> · bastón <span class="tag">Daño 1</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Total</span>.</p>
+<p><strong>En mesa:</strong> con Arcano 2, su fuego limpia una taberna llena de bandidos de nivel 1 sin tirar para acertar: tira Estilo. Contra un dragón necesita una Llave. Su nivel 2 en Arcano <strong>es su bote aparte</strong>: ha gastado ahí lo que los otros dos se gastan en Llaves. Por defecto, los personajes empiezan en nivel 1 en todo.</p>
+</div>
+
+<p><strong>Decisiones editoriales de este manual.</strong></p>
+<ul>
+<li><strong>ED-A1.</strong> Tabla de cruce del selector: optimismo alto → Optimista; optimismo bajo → Terror; optimismo normal → Neutro, salvo con caos «mucho», que va a Caos.</li>
+<li><strong>ED-15.</strong> Éxito con coste en el modo Caos, sobre el dado rojo: total 6 o 7, con bandas de pifia y crítico anchas (1–2 / 9–10). Es la tarjeta Comedia negra del manual completo, sin cambiar una coma. En combate y en Estilo, el parcial se lee como éxito con coste o como «ganas, pero sucio». <span class="src">T146</span></li>
+<li>Pifias y críticos de los cuatro modos: los de las tarjetas Épica, Primera marcha y Comedia negra del manual completo (lecturas naturales, ED-1). Terror comparte los de la Primera marcha.</li>
+</ul>
+</section>
+<section class="chapter colofon" id="es-licencia"><h2>Licencia</h2><p class="lede">Esta obra se publica bajo <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" target="_blank" rel="noopener">Creative Commons Atribución-CompartirIgual 4.0</a>. Puedes copiarla, traducirla, modificarla y construir encima, también con ánimo de lucro, con dos condiciones: <strong>cita al autor</strong> y <strong>publica lo que construyas bajo la misma licencia</strong>.</p><p><strong>Cómo se cita.</strong> «NOGUM, de Daniel Martín · CC BY-SA 4.0», con enlace al original donde el medio lo permita.</p><p><strong>Las reglas son libres.</strong> Las mecánicas de juego no son objeto de derechos de autor. Puedes escribir material compatible con este sistema sin pedirle permiso a nadie: la licencia cubre este <em>texto</em>, no el motor. Si lo que quieres es construir sobre NOGUM, ya puedes.</p><p><strong>Lo que la licencia no cubre.</strong> El nombre <strong>NOGUM</strong> y sus signos de identidad. El contenido es libre; el nombre se queda con su autor, para que nadie firme en su lugar.</p><p class="note">Daniel Martín · CC BY-SA 4.0</p></section>
+</template>
+<template id="src-en"><section class="cover" id="portada">
+<h2>NOGUM Accelerated</h2>
+<div class="acro">
+<p class="acro-kicker">Immediate immersion protocol</p>
+<p class="acro-letters">N·O·G·U·M</p>
+<p class="acro-official">Accelerated</p>
+<p class="acro-joke"><button type="button" class="joke" data-jokes="Play now, wonder why it works later|No One Gets Ur Mechanics|Not Our Game, U Mad?">(Play now, wonder why it works later)</button></p>
+</div>
+<p class="lede">A complete, simple game you can start this very evening: four tone modes, one difficulty and nine health boxes —three in Terror—. When you outgrow it, NOGUM will be waiting.</p>
+<div class="pack"><p class="pack-h">NOGUM is four pieces</p><p class="pack-t">They are read separately and used together. The other 3 are one click away.</p><ol><li><a href="apuesta.html">The Wager</a><span>Why the game is like this: the whole argument, with no rules.</span></li><li><a href="juego.html">Game</a><span>The complete manual: the engine, characters, danger, the Bazaar and the twenty recipes.</span></li><li class="aqui"><strong>Accelerated</strong> <em>you are here</em><span>The same game in fifteen pages: four tone modes and the health each one brings.</span></li><li><a href="app.html">App</a><span>Set up the table with four forms, build the sheets and pass them on with the Code.</span></li></ol></div>
+</section>
+<section class="chapter" id="acelerado">
+<h2>NOGUM Accelerated · Immediate Immersion Protocol</h2>
+<p><em>Play now. Ask yourself why it works later.</em></p>
+<p><strong>Editorial note.</strong> This rulebook follows the author's final outline. The “6 game cartridges” and the “difficulty almost always 11” from an earlier version are <strong>replaced</strong> by four tone modes and a single TN (6). <span class="src">T76</span> <span class="src">T77</span> <span class="src">T135</span></p>
+<aside class="meta"><p>This is a complete game, not a summary. It is also a giant advert: at the end of each rule you will find a question. If one of them gets under your skin, the Complete Game is waiting for you. If not, just play.</p></aside>
+
+<!-- ============================ 0 ============================ -->
+<h3 id="ac-arranque">0 · Start-up</h3>
+<h4>0.1 The promise</h4>
+<p>You will be playing in ten minutes, without reading two hundred pages. There is no theory and no explanation here: only rules that work. With them you can play in your favourite universe, whichever it is.</p>
+<h4>0.2 What you need</h4>
+<ul>
+<li><strong>Two ten-sided dice of different colours: one red and one blue.</strong> One pair per player, or one pair for the whole table.</li>
+<li>One character sheet per player (at the end of this rulebook).</li>
+<li>A Game Master (GM) who has read these pages. The players do not need to read them.</li>
+<li>Friends who want to tell a story together.</li>
+</ul>
+<h4>0.3 The black box</h4>
+<p>The players do not need to know the rules. The deal is simple:</p>
+<blockquote><p>You declare your action and roll. I tell you what happens.</p></blockquote>
+<p>The GM translates the numbers into story. Nobody at the table has to hear the word “modifier” if they don't want to.</p>
+<aside class="meta"><p>Does it feel like the GM gets a lot of the work? They do. It's a feature, not a bug. <span class="src">T72</span></p></aside>
+
+<!-- ============================ 1 ============================ -->
+<h3 id="ac-selector">1 · Mission selector</h3>
+<p>Before starting, the GM answers two sets of questions about the universe they are going to play. Don't ask “which game are we playing?”. Ask “how does this world feel?”. <span class="src">T76</span></p>
+
+<h4>1.1 How much optimism is there in your world?</h4>
+<div class="tw"><table class="t">
+<thead><tr><th>Question</th><th>Little</th><th>Normal</th><th>A lot</th></tr></thead>
+<tbody>
+<tr><td>Does the universe have favourites?</td><td>Yes: the monsters</td><td>No: nobody</td><td>Yes: us</td></tr>
+<tr><td>When a plan goes wrong, why?</td><td>Because the enemy is competent and cruel</td><td>Because sometimes things go wrong</td><td>It hardly ever goes wrong; and if it does, there's a vine to swing from</td></tr>
+<tr><td>How do these stories end?</td><td>Surviving is already winning</td><td>It depends on what you do</td><td>The heroes win</td></tr>
+</tbody></table></div>
+<p>Go with the answer that comes up most often.</p>
+
+<h4>1.2 How much chaos is there in your world?</h4>
+<div class="tw"><table class="t">
+<thead><tr><th>Question</th><th>Little</th><th>Normal</th><th>A lot</th></tr></thead>
+<tbody>
+<tr><td>Is physics reliable?</td><td>It's clockwork</td><td>It's a film</td><td>It's madness</td></tr>
+<tr><td>What happens when someone does it right?</td><td>It works, always</td><td>It works, almost always</td><td>It may work… at a price</td></tr>
+<tr><td>Are there absurd surprises?</td><td>Never</td><td>Some</td><td>Constantly</td></tr>
+</tbody></table></div>
+<p>Go with the answer that comes up most often.</p>
+<p>The questions are this rulebook's own: the author set the format (optimism and chaos separately; little / normal / a lot) and the two parent questions, not the wording of the others. <span class="src">Approved by the author</span></p>
+
+<h4>1.3 Your game mode</h4>
+<p>Cross your two answers on the table:</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Optimism \ Chaos</th><th>Little</th><th>Normal</th><th>A lot</th></tr></thead>
+<tbody>
+<tr><td><strong>A lot</strong></td><td>Optimistic</td><td>Optimistic</td><td>Optimistic</td></tr>
+<tr><td><strong>Normal</strong></td><td>Neutral</td><td>Neutral</td><td>Chaos</td></tr>
+<tr><td><strong>Little</strong></td><td>Terror</td><td>Terror</td><td>Terror</td></tr>
+</tbody></table></div>
+<p>Optimism picks the mode and chaos decides one box. There are four, and each changes one thing and one thing only:</p>
+<ul>
+<li><strong>Optimistic</strong> changes <em>the die</em>: you roll two and keep the higher.</li>
+<li><strong>Neutral</strong> changes nothing. It is the reference.</li>
+<li><strong>Chaos</strong> changes <em>what the result is made of</em>: same die, wider bands and successes that charge a toll.</li>
+<li><strong>Terror</strong> changes <em>what you can take</em>: the same die as Neutral, but three health boxes instead of nine.</li>
+</ul>
+<p>Look hard at the third one, because it is the strangest and the most important thing in this book: <strong>Chaos and Neutral bring exactly the same number of rolls home</strong>, 50&nbsp;% with the sheet at zero and 70&nbsp;% with the sheet at +2. Chaos does not make you fail more. It changes what happens to you is made of: where Neutral deals clean successes and clean failures, Chaos deals fumbles, criticals and wins that come with an invoice.</p>
+<p>And the fourth is the other way to hurt. <strong>In Terror the world is not crueller: you are more fragile.</strong> You roll as in Neutral and you hit just as often. What changes is that a knife kills you. The Complete Game calls that <em>fractal health</em> and leaves it in your hands; here it comes preset, so you can watch it work without having to decide anything.</p>
+<p><strong>ED-A1.</strong> The author set the four modes, their readings, and that the 3 health boxes are anchored to Terror rather than being a switch. The crossing table is an editorial decision: high optimism = Optimistic with any chaos; normal optimism + a lot of chaos = Chaos; low optimism = Terror with any chaos.</p>
+<aside class="meta"><p>Missing a tone? A world that is Swiss clockwork and cruel at the same time? A game of Russian roulette where a 9 is already a miracle? Dark <em>and</em> chaotic at once? These four cover roughly everything and are enough to start with. And they are not a separate invention: all four exist in the Complete Game —Optimistic is Epic, Neutral is First Gear, Chaos is Black comedy and Terror is First Gear with the short health track—. By the time they feel small, you already know four of the seven cards. <span class="src">T135</span></p></aside>
+
+<!-- ============================ 2 ============================ -->
+<h3 id="ac-reglas">2 · Universal rules</h3>
+
+<h4>2.1 The single roll</h4>
+<p>Always roll both dice, the red one and the blue one. What changes is how you read them:</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Mode</th><th>Which die counts</th><th>Fumble</th><th>Critical</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td><strong>Optimistic</strong></td><td>The <strong>higher</strong> of the two</td><td>Double 1</td><td>A 10 on either</td><td>Total 6 or more: success</td></tr>
+<tr><td><strong>Neutral</strong></td><td><strong>Only the red one</strong> (the blue one doesn't count)</td><td>1 on the red</td><td>10 on the red</td><td>Total 6 or more: success</td></tr>
+<tr><td><strong>Chaos</strong></td><td><strong>Red die only</strong> (the blue one does not count)</td><td>A 1 <strong>or 2</strong> on the red</td><td>A 9 <strong>or 10</strong> on the red</td><td>Total 5 or less: failure · 6 or 7: <strong>partial success</strong> · 8 or more: success</td></tr>
+<tr><td><strong>Terror</strong></td><td><strong>Red die only</strong> (the blue one does not count)</td><td>A 1 on the red</td><td>A 10 on the red</td><td>Total 6 or more: success · <strong>and only 3 health boxes</strong> (2.6)</td></tr>
+</tbody></table></div>
+<div class="rule"><p class="rule-title">How to roll</p>
+<ol>
+<li>Read the die the mode tells you to.</li>
+<li>Add your bonus (2.2). That is the <strong>total</strong>.</li>
+<li>Compare it with <strong>TN 6</strong>. Always the same one.</li>
+<li><strong>Fumbles</strong> and <strong>criticals</strong> are read on the dice, before adding anything. A fumble is always a disaster and a critical is always something extraordinary, whatever your bonus.</li>
+</ol>
+</div>
+<p><strong>Partial success (Chaos only).</strong> You pull it off, but you pay a price. The GM picks one:</p>
+<ul>
+<li><strong>Time</strong>: you manage it, but late; the guards are already in the corridor.</li>
+<li><strong>Resource</strong>: you manage it, but something breaks; the bat splinters.</li>
+<li><strong>Position</strong>: you manage it, but you are left exposed; you fall flat on your back on the other side of the wall.</li>
+<li><strong>Friendly fire</strong>: you manage it, but someone else gets caught in it; the explosion takes out the only radio.</li>
+</ul>
+<p>Never “you pull it off, but you lose a health box”. That is laziness.</p>
+<p><strong>ED-15.</strong> The Chaos mode bands are exactly those of the Black comedy card in the Complete Game: red die, fumble on 1 or 2, critical on 9 or 10, and success at a cost taking the TN and the point above it (total 6 or 7). It never turns a failure into a success; it only charges a toll on what had already worked out. Consequence: in Chaos a professional (+2) works it out 70&nbsp;% of the time —the same as in Neutral— but three out of every seven of those times paying a price. All four readings come from the Complete Game: Epic, First Gear, Black comedy, and First Gear with the short health track.</p>
+<aside class="meta"><p>Same character (+2), same task. In <strong>Optimistic</strong> they pull it off 91&nbsp;% of the time. In <strong>Neutral</strong>, 70&nbsp;%. In <strong>Chaos</strong>, also 70&nbsp;% —you read that right, the same number— but three out of every seven of those times paying a price, and with twice the fumbles and twice the criticals. In <strong>Terror</strong>, 70&nbsp;% again: what changes is that two hits now put them out. You have not touched the sheet once: you have changed the atmosphere three times in three different ways.</p></aside>
+
+<h4>2.2 Bonuses</h4>
+<p>Your bonus comes from your sheet and from the situation. There are only six possible values:</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Bonus</th><th>Who you are at this</th></tr></thead>
+<tbody>
+<tr><td class="num">−2</td><td><strong>Null.</strong> You haven't put a single point into that whole sphere.</td></tr>
+<tr><td class="num">−2</td><td><strong>Null.</strong> You have not touched that sphere anywhere on the sheet.</td></tr>
+<tr><td class="num">−1</td><td><strong>Clumsy.</strong> You have the sphere, but that column is empty: you are on the wrong foot.</td></tr>
+<tr><td class="num">+0</td><td><strong>Amateur.</strong> You haven't studied it, but you know things from that same column.</td></tr>
+<tr><td class="num">+1</td><td><strong>I get by.</strong> You have a broad skill that covers it.</td></tr>
+<tr><td class="num">+2</td><td><strong>It's my job.</strong> You have a specific skill that covers it.</td></tr>
+<tr><td class="num">+4</td><td><strong>Grand Master.</strong> Nobody does it better.</td></tr>
+</tbody></table></div>
+<p><strong>Difficulty.</strong> If the task is easy, +2. If it is hard, −2. If it is heroic, −4. Normal is 0. Difficulty is added to the bonus; the TN never moves.</p>
+<p><strong>Limits.</strong> Add up skill, difficulty and any other modifier. If the total drops below −2, the GM chooses: either roll at −2 or narrate the failure without rolling. If it goes above +4, the GM chooses: either roll at +4 or narrate the success without rolling. The final bonus is always between −2 and +4.</p>
+<p><strong>Don't roll for the sake of it.</strong> Roll only if every possible result is interesting. If failing adds nothing, it just happens.</p>
+
+<h4>2.3 Skills</h4>
+<p>Every character has <strong>five spheres</strong>: <strong>Physical</strong>, <strong>Mental</strong>, <strong>Social</strong>, <strong>Technical</strong> and <strong>Arcane</strong> (magic, the Force, psychic powers; if your world doesn't have them, ignore it). Spheres are not skills: they are the drawers you keep them in.</p>
+<p>You have <strong>12 points</strong>, or <strong>14</strong> if your world has an Arcane sphere (that is ten more slots to cover). Each point raises one step in a branch, and to raise a step you must have paid for the previous one:</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Step</th><th>What it is</th><th>Examples</th><th>Cumulative points</th><th>Bonus</th></tr></thead>
+<tbody>
+<tr><td>Broad skill</td><td>Half of a sphere</td><td>Dexterity, Vigour, Erudition, Wits, Influence</td><td class="num">1</td><td class="num">+1</td></tr>
+<tr><td>Specific skill</td><td>A trade within the broad skill</td><td>Vigour → Weapons · Erudition → Sciences · Influence → Deception</td><td class="num">2</td><td class="num">+2</td></tr>
+<tr><td>Signature</td><td>Your specialty within the trade</td><td>Weapons → Firearms · Sciences → Chemistry · Acrobatics → Parkour</td><td class="num">2</td><td class="num">+4</td></tr>
+</tbody></table></div>
+<ul>
+<li>When you roll, use <strong>only the highest step that fits</strong>. Bonuses don't stack.</li>
+<li>As soon as you have <strong>one point in a sphere</strong>, everything else in that sphere is rolled at +0. If the sphere is empty, at −2.</li>
+<li>To be a Grand Master at something, you must be able to explain <strong>exactly</strong> what you do. “Firearms”, yes. “Being good”, no.</li>
+<li>In addition, every character has <strong>Style +2</strong>, a gift that sits outside the spheres (2.8).</li>
+</ul>
+<aside class="meta"><p>Not sure which skill to pick? Torn between “Piloting” and “Evasive driving”? NOGUM has a closed list of 10 broad skills and 40 specific ones, plus a catalogue of Signatures sorted so you only look at your branch. NOGUM has your back. <span class="src">T135</span></p></aside>
+
+<h4>2.4 The Grid: how big your feats are</h4>
+<p>The bonus says <strong>how well</strong> you do something. The Grid says <strong>at what scale</strong> you do it. Each character has one level per sphere. Ask yourself: if this gets out of hand, what makes the news?</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Level</th><th>Scale</th><th>Examples</th></tr></thead>
+<tbody>
+<tr><td class="num">1</td><td>One person</td><td>Any human, however expert: The consultant from Baker Street, a boxer, a hacker.</td></tr>
+<tr><td class="num">2</td><td>A room, dozens of people</td><td>The barbarian of the steppe, the perfect soldier: a rank-and-file soldier stands no chance against them.</td></tr>
+<tr><td class="num">3</td><td>A building, a neighbourhood</td><td>Bringing down a castle, cutting the power grid of a skyscraper.</td></tr>
+<tr><td class="num">4</td><td>A big city</td><td>A mystic shield over the city, a monster razing districts.</td></tr>
+<tr><td class="num">5</td><td>A country</td><td>Changing the geography. Only for campaign finales.</td></tr>
+<tr><td class="num">6</td><td>Cosmic</td><td>No rolling: it's scenery. The GM narrates it.</td></tr>
+</tbody></table></div>
+<p>Each level multiplies your <strong>reach</strong> by a hundred: ×1 one person, ×100 a room, ×10,000 a building, ×1,000,000 a city, ×100,000,000 a country. When someone has a level on you they are not better than you: they are playing with two more zeros, and that is why there is no roll.</p>
+<p>If you don't know which level to give, <strong>humans are level 1 in everything</strong>. What is measured is tools and scale, not intelligence or muscle: a brilliant chemist is still level 1.</p>
+<div class="rule"><p class="rule-title">The power gap</p>
+<ul>
+<li><strong>If you are above</strong> the challenge (even by one level), you don't roll: you succeed. It is narrated, or you roll Style (2.8).</li>
+<li><strong>If you are below</strong>, you don't roll: it's impossible. Unless you have a <strong>Key</strong>.</li>
+<li><strong>If you are at the same level</strong>, roll as normal.</li>
+</ul>
+</div>
+<p><strong>The Key.</strong> A Key is a narrative reason that lets you affect something of a higher level: a bazooka, the stone from his own world, a stolen admin password, a video of the bribe, twenty mercenaries firing at once. With a Key you roll as normal, with your full bonus and no penalties. Getting one is often an adventure in itself.</p>
+<div class="rule"><p class="rule-title">Keys are bought</p>
+<ul>
+<li>At creation, the <strong>separate pot</strong> gives you <strong>5 Keys</strong>, or <strong>+1 Grid level</strong> in one sphere. It does not trade for skill points: everyone turns up with a trade.</li>
+<li>Each Key is <strong>one specific skill for ever</strong> (“Weapons against vampires”) or <strong>a whole sphere for one scene</strong>, if it is very specific. You choose when you buy it, and you write down its target.</li>
+<li>To climb further against the same thing: 1, 4, 9 Keys. With five in the pot, nobody starts above +2.</li>
+<li>During the campaign the Director hands out <strong>one Key per session</strong>. That tap is the game’s power dial: Keys also buy the equipment that breaks the Grid.</li>
+<li>And what the Director gives you for a good idea —“it occurs to you to use the holy water”— is a <strong>lent Key</strong>: it lasts one scene and is not written down.</li>
+</ul></div>
+<aside class="meta"><p>Why can the vigilante millionaire stand up to the alien in tights and trunks with the same bonus as a nightclub bouncer? Because of the Key. The Complete Game has a whole chapter bringing the Grid down to earth, with pop-culture examples in all five spheres. NOGUM is waiting for you.</p></aside>
+
+<h4>2.5 Initiative</h4>
+<p>When combat starts, each participant rolls with the active mode and adds their <strong>best Dexterity bonus</strong> (the broad skill or any of their specific skills under it). Act from highest to lowest total. On a tie, the GM decides.</p>
+<aside class="meta"><p>If your character is going to spend their turn deducing a clue, hacking a terminal or intimidating the rival boss… does it make sense for their physical speed to decide the order? Want an initiative where you first choose your intent (violence, trick or specialty) and then how you carry it out? NOGUM is waiting for you. <span class="src">T135</span></p></aside>
+
+<h4>2.6 Combat</h4>
+<p>Combat is an aggressive negotiation. Each attack is resolved in two steps.</p>
+<div class="rule"><p class="rule-title">Step 1 · Impact (the attacker rolls)</p>
+<p>Roll your attack skill against TN 6. The defender's circumguards (cover, fog, size) change the difficulty. The defender's skills don't count here.</p>
+<ul>
+<li><strong>Fumble</strong>: you don't connect and something goes wrong (you disarm yourself, hit an ally…).</li>
+<li><strong>Failure</strong>: the blow goes astray.</li>
+<li><strong>Success</strong>: you connect. The weapon's damage is in the air.</li>
+<li><strong>Critical</strong>: you hit a vital spot: <strong>+1 damage</strong>.</li>
+</ul>
+</div>
+<div class="rule"><p class="rule-title">Step 2 · Mitigation (the defender rolls)</p>
+<p>If the weapon allows it (check its tags), the defender makes <strong>a single reaction</strong>: dodge (with their best Dexterity bonus) or soak (with their best Vigour bonus), depending on which route the weapon leaves open.</p>
+<ul>
+<li><strong>Failure</strong>: takes all the damage.</li>
+<li><strong>Success</strong>: −1 damage.</li>
+<li><strong>Critical</strong>: −2 damage.</li>
+</ul>
+</div>
+<p><strong>Final damage</strong> = weapon damage (+1 if the attacker rolled a critical) − the defender's reduction, within the limits set by the tags.</p>
+<p><strong>The defender wins ties.</strong> You both roll against the same TN: if the defender matches the attacker’s level or beats it, there is no damage; if the attacker ends up above, damage drops by 1; if the defender fumbles, the attack goes up one step. And tags override the tie: with <span class="tag">Dodge: Partial</span> you eat at least 1 even when you match it, and with <span class="tag">Dodge: None</span> there is no reaction to roll.</p>
+<p><strong>In Chaos</strong>, a partial success in combat counts as a success, but the GM adds a cost from the menu (the attack connects, but you lose your weapon; you dodge, but you hit the floor).</p>
+
+<p><strong>Weapons.</strong> Every weapon, power or hazard is described with three tags:</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Tag</th><th>Values</th><th>What it means</th></tr></thead>
+<tbody>
+<tr><td><span class="tag">Dmg 1</span></td><td>Light</td><td>Fists, knives, light pistols, short falls. “A&amp;E”.</td></tr>
+<tr><td><span class="tag">Dmg 2</span></td><td>Serious</td><td>War swords, magnums, claws. “ICU”.</td></tr>
+<tr><td><span class="tag parca">The Reaper</span></td><td>Not a damage value</td><td>Explosives, heavy weapons, war magic, lethal falls. “Lunch with Saint Peter”.</td></tr>
+<tr><td><span class="tag">Dodge: Full</span></td><td>Free dodge</td><td>Melee, slow projectiles. Dodging can bring you down to 0.</td></tr>
+<tr><td><span class="tag">Dodge: Partial</span></td><td>Limited dodge</td><td>Area, bursts, fire. Even if you dodge, you take at least 1.</td></tr>
+<tr><td><span class="tag">Dodge: None</span></td><td>No dodge</td><td>Instantaneous, mental, surprise shots.</td></tr>
+<tr><td><span class="tag">Dodge: Hard</span> / <span class="tag">Dodge: Easy</span></td><td>Modifier</td><td>−2 / +2 to the dodge roll.</td></tr>
+<tr><td><span class="tag">Soak: Full</span></td><td>Free soak</td><td>Protection works: soaking can bring you down to 0.</td></tr>
+<tr><td><span class="tag">Soak: Max 1</span></td><td>Limited soak</td><td>Hammers, piercing weapons: reduced by 1 at most.</td></tr>
+<tr><td><span class="tag">Soak: None</span></td><td>No soak</td><td>Lasers, contact poison, psychic magic.</td></tr>
+</tbody></table></div>
+<p>Examples to get you started:</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Weapon</th><th>Stat line</th></tr></thead>
+<tbody>
+<tr><td>Fists, knife</td><td><span class="tag">Dmg 1</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Full</span></td></tr>
+<tr><td>Sword, war axe</td><td><span class="tag">Dmg 2</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Full</span></td></tr>
+<tr><td>Mace, war hammer</td><td><span class="tag">Dmg 2</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Max 1</span></td></tr>
+<tr><td>Bow, pistol</td><td><span class="tag">Dmg 1</span> <span class="tag">Dodge: Hard</span> <span class="tag">Soak: Full</span></td></tr>
+<tr><td>Magnum, shotgun</td><td><span class="tag">Dmg 2</span> <span class="tag">Dodge: Hard</span> <span class="tag">Soak: Full</span></td></tr>
+<tr><td>Grenade, fireball</td><td><span class="tag parca">The Reaper · Grid 2</span> <span class="tag">Dodge: Partial</span> <span class="tag">Soak: Full</span></td></tr>
+<tr><td>Laser rifle</td><td><span class="tag">Dmg 2</span> <span class="tag">Dodge: Hard</span> <span class="tag">Soak: None</span></td></tr>
+<tr><td>Sniper (by surprise)</td><td><span class="tag parca">The Reaper · Grid 2</span> <span class="tag">Dodge: None</span> <span class="tag">Soak: None</span></td></tr>
+</tbody></table></div>
+<aside class="meta"><p>Want a weapon that can only harm something of a higher level if it's the right one? A catalogue of hundreds of weapons, powers and vehicles from ten settings? The Multiverse Bazaar is in the Complete Game.</p></aside>
+
+<h4>2.7 Health</h4>
+<p>Every character has <strong>9 health boxes</strong>, in three blocks of three. Each point of damage crosses off one box.</p>
+<div class="rule"><p class="rule-title">Except in Terror</p>
+<p>In <strong>Terror</strong> mode there are not nine: there are <strong>3 boxes</strong>, a single block. Fill it and you are out of the fight. With the damage in this book that means <strong>two serious hits take you off the scene</strong>, and the grenade in the weapons table is not a threat: it is the ending.</p>
+<p>It is not a switch you have to remember to turn on. It comes with the mode, and it is the one piece of this book that lets you look in on what the Complete Game calls <strong>fractal health</strong>: there, lethality is a dial and you turn it, with three, nine or twenty-seven boxes.</p></div>
+<div class="tw"><table class="t">
+<thead><tr><th>Block</th><th>Boxes</th><th>When filled</th></tr></thead>
+<tbody>
+<tr><td>First</td><td class="num">1–3</td><td><strong>−2</strong> to actions the wound gets in the way of (a swollen eye, a broken hand).</td></tr>
+<tr><td>Second</td><td class="num">4–6</td><td><strong>−4</strong> (replaces the −2) and you lose complex actions (a useless leg, a haemorrhage).</td></tr>
+<tr><td>Third</td><td class="num">7–9</td><td><strong>Out of the fight.</strong></td></tr>
+</tbody></table></div>
+<ul>
+<li><strong>Out of the fight is not death.</strong> You are incapacitated and take no part. Whether you wake up is decided by the story or by your player, never by the dice. In NOGUM nobody dies because of a bad roll.</li>
+<li>Boxes are cleared when combat ends, but <strong>the wounds remain</strong>: the penalty of the block you filled stays until you heal (hours or days for the first, days or weeks for the second).</li>
+<li>Penalties respect the limits in 2.2: you never go below −2.</li>
+</ul>
+<aside class="meta"><p>Would you like to play in a grimy world where a stray bullet makes you fear for your life? Or in an anime where the final boss takes a hundred hits? Or in a story where a glance into the abyss hurts as much as a gunshot? In the Complete Game, the same sheet works for three hits and you're out, for twenty-seven points of attrition, and for wounds to the mind and the soul. NOGUM is waiting for you. <span class="src">T135</span></p></aside>
+
+<h4>2.8 Mooks and Style</h4>
+<div class="rule"><p class="rule-title">The Style Rule</p>
+<p>Every character has <strong>Style +2</strong>. When you face enemies <strong>below your level</strong> on the Grid, or mere mooks (the scenery of the scene), <strong>you don't roll to see if you win: it's a given</strong>. You roll with the active mode and add your Style to see <strong>how</strong> you win:</p>
+<ul>
+<li><strong>Fumble</strong>: you win, but you make a fool of yourself. If your character takes themselves very seriously, it may sting.</li>
+<li><strong>Failure</strong> (and, in Chaos, partial success): you win, but messily or without shining.</li>
+<li><strong>Success</strong>: you win in style, clean and spectacular.</li>
+<li><strong>Critical</strong>: legendary. Film-grade choreography, several go down at once and rumours are born.</li>
+</ul>
+<p>Mooks don't get health boxes tracked.</p>
+</div>
+<p>Style suits anime, wuxia, space opera and action films. <strong>It is not recommended for very serious universes</strong>: in a realistic war, even the lowliest soldier rolls.</p>
+<aside class="meta"><p>Why does the hero sweep aside twenty thugs and then sweat against a single one? In the Complete Game you'll see how the Grid, the Key and Style share the work, and how to make enemy sheets in ten seconds. NOGUM is waiting for you.</p></aside>
+
+<!-- ============================ 3 ============================ -->
+<h4>2.9 Equipment: what you can afford</h4>
+<p>Here equipment <strong>costs money and nothing else</strong>, and money is your bonus in <em>Resources</em> (Social → Hierarchy → Resources). No points, no Keys: if your drawer reaches, you have it.</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Resources</th><th>Who you are</th><th>What you carry</th></tr></thead>
+<tbody>
+<tr><td class="num">−2</td><td>You have nothing and nobody gives you credit</td><td>Clothes, a knife, whatever you find or are lent</td></tr>
+<tr><td class="num">+0</td><td>A wage, or a crew that covers you</td><td>A small weapon, tools, something with wheels</td></tr>
+<tr><td class="num">+1</td><td>Savings and contacts</td><td>A serious weapon, light protection, a decent vehicle</td></tr>
+<tr><td class="num">+2</td><td>Real money, or a patron who pays</td><td>Military hardware, armour, an armoured vehicle</td></tr>
+<tr><td class="num">+4</td><td>You move budgets that are not yours and money has stopped being the problem</td><td>All of the above, and a team of people to use it</td></tr>
+
+</tbody></table></div>
+<ul>
+<li><strong>One step above, once per arc.</strong> You can get hold of something out of your league, but it is never free: a favour that will be called in, a debt, a trail, somebody who now knows your name.</li>
+<li><strong>Stolen or borrowed gear works for a whole scene.</strong> Afterwards you decide whether to keep it, and then it does have to fit in your drawer.</li>
+<li><strong>The weapon does not make you better, it does something else.</strong> What changes are its tags: how much damage it does, whether it can be dodged and whether armour helps (2.6).</li>
+</ul>
+<aside class="meta"><p>In the complete rulebook equipment has a whole economy behind it: what makes you <em>better</em> is paid for with skill points and what lets you do the <em>impossible</em> is paid for with Keys, and there is a workshop for pricing anything you invent. Here money is enough. NOGUM is waiting.</p></aside>
+
+<h3 id="ac-interfaz">3 · Game Master interface</h3>
+<p>The players don't hear rules: they hear story. This table translates what the rule says into what you narrate.</p>
+<div class="tw"><table class="t">
+<thead><tr><th>If the rule is…</th><th>Narrate something like…</th></tr></thead>
+<tbody>
+<tr><td>We start in Optimistic mode</td><td>“The music swells. You feel that today you cannot fail.”</td></tr>
+<tr><td>We start in Neutral mode</td><td>“The world is neither on your side nor against you. What you do is what you'll get.”</td></tr>
+<tr><td>We start in Terror mode</td><td>“You feel a weight in your stomach. Nobody is coming to save you here.”</td></tr>
+<tr><td>Partial success</td><td>“You pull it off… but” + a cost from the menu: time, resource, position or friendly fire.</td></tr>
+<tr><td>Fumble</td><td>“Something goes spectacularly wrong.” And make it interesting, not just humiliating.</td></tr>
+<tr><td>Attacker's critical</td><td>“You hit them right where it hurts.” (+1 damage.)</td></tr>
+<tr><td>Weapon with <span class="tag">Dodge: None</span></td><td>“Don't try to dodge. If they shoot, they'll hit you. All you can do is take cover.”</td></tr>
+<tr><td>Weapon with <span class="tag">Soak: None</span></td><td>“Your armour is useless against this.”</td></tr>
+<tr><td>First health block filled (−2)</td><td>“They've marked you. Every movement reminds you.”</td></tr>
+<tr><td>Second block filled (−4)</td><td>“Forget the scratches. That last blow broke something inside. You're fighting to stay on your feet.”</td></tr>
+<tr><td>Out of the fight</td><td>“Everything goes black.” And then, back to the story: who finds you?</td></tr>
+<tr><td>Challenge above you on the Grid, no Key</td><td>“Yes, it's a tank. Yes, you're human. You don't roll. You run.”</td></tr>
+<tr><td>A Key is possible</td><td>“That thing is invulnerable… unless you find what hurts it.”</td></tr>
+<tr><td>Enemies below you (Style)</td><td>“It's not whether you take them down. It's how.”</td></tr>
+<tr><td>Unnecessary roll</td><td>Say nothing about dice: “You do it.”</td></tr>
+</tbody></table></div>
+<p>The mode, block 2 and no-dodge weapon lines come from the verbal interface in the Complete Game. The rest are this rulebook's own. <span class="src">Approved by the author</span></p>
+<p><strong>Improvising an enemy in ten seconds.</strong> Ask yourself whether it matters. If it doesn't, it's scenery: Style. If it matters a little, give it a Grid level, one skill at +2 (everything else at +0) and as many health boxes as you want the fight to last (3 by default). If it's the villain, give it a full sheet like a player's.</p>
+
+<!-- ============================ 4 ============================ -->
+<h3 id="ac-puente">4 · Want to break the game?</h3>
+<p>You now have everything you need to play in your own universe.</p>
+<p>But you will have noticed the limits. Here the tone is fixed: if you start in Optimistic, you play in Optimistic all afternoon. What if you want the adventure to start as a bright fantasy and end as a nightmare? For the final boss scene to change physics mid-fight? For one particular character to live in their own tone?</p>
+<p>In NOGUM you learn why each rule in this rulebook works, and with that:</p>
+<ul>
+<li>Nine tone modes and the card panel to shift them scene by scene.</li>
+<li>Fractal Health: three hits, nine boxes or twenty-seven points, with the same sheet.</li>
+<li>Intent-based initiative: violence, trick or specialty.</li>
+<li>The mental and spiritual damage tracks, social combat and the consequence menu.</li>
+<li>The full list of skills and the catalogue of Signatures.</li>
+<li>The Rules Chest, the Multiverse Bazaar and twenty recipes to emulate the most famous universes in roleplaying.</li>
+</ul>
+<p>Try it, tinker with it and, if you like it and it raises questions, come back. If you want to see examples of how to emulate universes with this engine, the Complete Game is waiting for you. <span class="src">T76</span> <span class="src">T135</span></p>
+<aside class="meta"><p>If you've arrived here from the Complete Game: welcome back. This is driving school; over there was the engineering manual.</p></aside>
+
+<!-- ============================ Apéndice ============================ -->
+<h3 id="ac-apendice">Appendix · Character sheet and pregenerated characters</h3>
+<h4>Character sheet</h4>
+<div class="tw"><table class="t">
+<thead><tr><th>Field</th><th>What to write</th></tr></thead>
+<tbody>
+<tr><td>Name and concept</td><td>Who you are in one sentence.</td></tr>
+<tr><td>Game mode</td><td>Optimistic / Neutral / Chaos / Terror.</td></tr>
+<tr><td>Physical · Grid level</td><td>Skills (broad, specific and Signatures) with their bonus.</td></tr>
+<tr><td>Mental · Grid level</td><td>Skills with their bonus.</td></tr>
+<tr><td>Social · Grid level</td><td>Skills with their bonus.</td></tr>
+<tr><td>Technical · Grid level</td><td>Skills with their bonus.</td></tr>
+<tr><td>Arcane · Grid level</td><td>Skills with their bonus (or “doesn't exist in this world”).</td></tr>
+<tr><td>Points spent</td><td>__ / 12 (14 if there is an Arcane sphere)</td></tr>
+<tr><td>Separate pot</td><td>+1 Grid level in whichever sphere your world allows <strong>or</strong> 5 Keys. It does not trade for points.</td></tr>
+<tr><td>Style</td><td>+2</td></tr>
+<tr><td>Initiative</td><td>Best Dexterity bonus.</td></tr>
+<tr><td>Health</td><td>□□□ (−2) · □□□ (−4) · □□□ (out of the fight)</td></tr>
+<tr><td>Equipment <small>(whatever Resources allows)</small></td><td>Name + <span class="tag">Dmg</span> <span class="tag">Dodge</span> <span class="tag">Soak</span></td></tr>
+<tr><td>Keys</td><td>Each one with its target written down: one specific skill for ever, or a whole sphere for one scene.</td></tr>
+<tr><td>Wounds and notes</td><td>What the story has left you with.</td></tr>
+</tbody></table></div>
+
+<h4>Pregenerated characters</h4>
+<p>Three examples to start right away, from three different worlds. Kira spends 12 because there is no magic in her world; the other two spend 14. Each also uses their separate pot. <span class="src">Approved by the author</span></p>
+
+<div class="rule"><p class="rule-title">Kira “Staple” Ortega · urban mercenary (cyberpunk / present day)</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Sphere</th><th>Grid</th><th>Skills</th><th>Points</th></tr></thead>
+<tbody>
+<tr><td>Physical</td><td class="num">1</td><td>Vigour +1 → Weapons +2 → Firearms +4 · Vigour → Fortitude +2 · Dexterity +1 → Acrobatics +2</td><td class="num">7</td></tr>
+<tr><td>Mental</td><td class="num">1</td><td>Wits +1 → Alertness +2</td><td class="num">2</td></tr>
+<tr><td>Social</td><td class="num">1</td><td>Hierarchy +1 → Intimidation +2 · Hierarchy → Contacts +2</td><td class="num">3</td></tr>
+<tr><td>Technical</td><td class="num">1</td><td>Empty: −2</td><td class="num">0</td></tr>
+<tr><td>Arcane</td><td>—</td><td>Doesn't exist in her world</td><td class="num">0</td></tr>
+</tbody></table></div>
+<p><strong>Style</strong> +2 · <strong>Initiative</strong> +2 (Acrobatics) · <strong>Dodge</strong> +2 · <strong>Soak</strong> +1 (Vigour).</p>
+<p><strong>Equipment:</strong> heavy pistol <span class="tag">Dmg 2</span> <span class="tag">Dodge: Hard</span> <span class="tag">Soak: Full</span> · knife <span class="tag">Dmg 1</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Full</span>.</p>
+<p><strong>Separate pot:</strong> 5 Keys — “Firearms against drones”, “Intimidation against runners” and three left unspent for session zero.</p>
+<p><strong>At the table:</strong> she shoots at +4 and dodges well, but with any gadget she's Null (−2): if an electronic door needs opening, let someone else do it.</p>
+</div>
+
+<div class="rule"><p class="rule-title">Dr Tomás Areces · occult investigator (contemporary horror)</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Sphere</th><th>Grid</th><th>Skills</th><th>Points</th></tr></thead>
+<tbody>
+<tr><td>Mental</td><td class="num">1</td><td>Erudition +1 → Occultism +2 → Cults and grimoires +4 · Erudition → Humanities +2 · Erudition → Sciences +2 · Wits +1 → Investigation +2 → Archives and libraries +4 · Wits → Alertness +2</td><td class="num">9</td></tr>
+<tr><td>Social</td><td class="num">1</td><td>Influence +1 → Empathy +2 · Influence → Deception +2 · Influence → Persuasion +2</td><td class="num">4</td></tr>
+<tr><td>Physical</td><td class="num">1</td><td>Dexterity +1</td><td class="num">1</td></tr>
+<tr><td>Technical</td><td class="num">1</td><td>Empty: −2</td><td class="num">0</td></tr>
+<tr><td>Arcane</td><td class="num">1</td><td>Empty: −2</td><td class="num">0</td></tr>
+</tbody></table></div>
+<p><strong>Style</strong> +2 · <strong>Initiative</strong> +1 (Dexterity) · <strong>Dodge</strong> +1 · <strong>Soak</strong> +0 (he has something in Physical, though not Vigour).</p>
+<p><strong>Equipment:</strong> old revolver <span class="tag">Dmg 1</span> <span class="tag">Dodge: Hard</span> <span class="tag">Soak: Full</span> · torch · notebook.</p>
+<p><strong>Separate pot:</strong> 5 Keys, which are his whole character — “Occultism against the Deep Ones”, “Investigation against the cult”, and three still to be discovered.</p>
+<p><strong>At the table:</strong> he knows more than anyone about what shouldn't exist, but he can't touch it (Arcane empty) and every monster is above his level. His game is finding Keys. In Terror mode, perfect.</p>
+</div>
+
+<div class="rule"><p class="rule-title">Ysolde of the Embers · wandering channeller (fantasy)</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Sphere</th><th>Grid</th><th>Skills</th><th>Points</th></tr></thead>
+<tbody>
+<tr><td>Arcane</td><td class="num">2</td><td>Gift +1 → Projection +2 → Fire +4 · Gift → Protection +2 · Ritual +1 → Summoning +2</td><td class="num">7</td></tr>
+<tr><td>Mental</td><td class="num">1</td><td>Erudition +1 → Occultism +2 · Erudition → Humanities +2</td><td class="num">3</td></tr>
+<tr><td>Physical</td><td class="num">1</td><td>Dexterity +1 → Stealth +2</td><td class="num">2</td></tr>
+<tr><td>Social</td><td class="num">1</td><td>Influence +1 → Persuasion +2</td><td class="num">2</td></tr>
+<tr><td>Technical</td><td class="num">1</td><td>Empty: −2</td><td class="num">0</td></tr>
+</tbody></table></div>
+<p><strong>Style</strong> +2 · <strong>Initiative</strong> +2 (Stealth) · <strong>Dodge</strong> +2 · <strong>Soak</strong> +0 · <strong>Magic shield</strong>: she can soak with Protection (+2) if the GM allows it.</p>
+<p><strong>Equipment:</strong> fireball <span class="tag parca">The Reaper · Grid 2</span> <span class="tag">Dodge: Partial</span> <span class="tag">Soak: Full</span> · staff <span class="tag">Dmg 1</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Full</span>.</p>
+<p><strong>At the table:</strong> with Arcane 2, her fire clears a tavern full of level 1 bandits without rolling to hit: she rolls Style. Against a dragon she needs a Key. Her level 2 in Arcane <strong>is her separate pot</strong>: she has spent there what the other two spend on Keys. By default, characters start at level 1 in everything.</p>
+</div>
+
+<p><strong>Editorial decisions in this rulebook.</strong></p>
+<ul>
+<li><strong>ED-A1.</strong> Selector crossing table: high optimism → Optimistic; low optimism → Terror; normal optimism → Neutral, except with “a lot” of chaos, which goes to Chaos.</li>
+<li><strong>ED-15.</strong> Success at a cost in Chaos mode, on the red die: total 6 or 7, with wide fumble and critical bands (1–2 / 9–10). It is the Black comedy card from the Complete Game, unchanged. In combat and in Style, the partial is read as success at a cost or as “you win, but messily”. <span class="src">T146</span></li>
+<li>Fumbles and criticals of the four modes: those of the Epic, First Gear and Black comedy cards in the Complete Game (natural readings, ED-1). Terror shares First Gear’s.</li>
+</ul>
+</section>
+<section class="chapter colofon" id="en-licencia"><h2>Licence</h2><p class="lede">This work is published under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-ShareAlike 4.0</a>. You may copy it, translate it, modify it and build on it, commercially included, on two conditions: <strong>credit the author</strong> and <strong>release whatever you build under the same licence</strong>.</p><p><strong>How to credit it.</strong> “NOGUM, by Daniel Martín · CC BY-SA 4.0”, with a link to the original wherever the medium allows one.</p><p><strong>The rules are free.</strong> Game mechanics are not subject to copyright. You can write material compatible with this system without asking anyone: the licence covers this <em>text</em>, not the engine. If what you want is to build on NOGUM, you already can.</p><p><strong>What the licence does not cover.</strong> The name <strong>NOGUM</strong> and its identifying marks. The content is free; the name stays with its author, so that nobody signs in his place.</p><p class="note">Daniel Martín · CC BY-SA 4.0</p></section>
+</template>
+<script>(function(){
+  'use strict';
+  var CFG = JSON.parse(document.getElementById('cfg').textContent);
+  var UI = {
+    es:{contents:'Índice',search:'Buscar en el libro',ph:'Llave, Estilo, Vorpalina…',print:'Imprimir',theme:'Tema',menu:'Índice',typeset:'Maquetando páginas…',pages:'páginas',none:'Sin resultados para',meta:'Columna meta',page:'pág.'},
+    en:{contents:'Contents',search:'Search the book',ph:'Key, Style, Vorpal…',print:'Print',theme:'Theme',menu:'Contents',typeset:'Typesetting pages…',pages:'pages',none:'No results for',meta:'Meta column',page:'p.'}
+  };
+  function $(id){ return document.getElementById(id); }
+  function store(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+  function read(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); }
+
+  var book = $('book'), status = $('status');
+  var KEY = 'nogum-' + CFG.product;
+  var lang = (location.search.match(/lang=(es|en)/) || [])[1] || read('nogum-lang') || CFG.langs[0];
+  if (CFG.langs.indexOf(lang) < 0) lang = CFG.langs[0];
+
+  /* ---------- typesetter ---------- */
+  var cur, body, placed, running, stack, clones, runCap = '';
+  var SPLIT = 'div.tw, table, ul, ol, dl, div.rule, div.example, div.cards, div.steps, div.step, div.recipe, blockquote, section, div.acro, div.legend';
+  var HEAD = /^(H2|H3|H4)$/;
+  function isHead(el){ return el.nodeType===1 && (HEAD.test(el.tagName) || (el.matches && el.matches('.rule-title,.example-title,.step-title,.recipe-title,.card-kicker'))); }
+
+  function newSheet(kind){
+    var s = document.createElement('article');
+    s.className = 'sheet' + (kind ? ' ' + kind : '');
+    /* el color de capitulo viaja con la hoja: lo pinta el CSS, no el JS */
+    if (runCap) s.setAttribute('data-cap', runCap);
+    s.innerHTML = '<header class="rh"><span></span><span></span></header><div class="sb"></div><footer class="pf"><span class="pn"></span></footer>';
+    s.firstChild.firstChild.textContent = CFG.title[lang];
+    s.firstChild.lastChild.textContent = running || '';
+    book.appendChild(s);
+    cur = s; body = s.querySelector('.sb'); placed = 0;
+    return s;
+  }
+  function over(){ var l = body.lastElementChild; if (!l) return false; var top = body.getBoundingClientRect().top; return l.getBoundingClientRect().bottom - top > body.clientHeight - 4 || body.scrollHeight > body.clientHeight + 1; }
+  function target(){ return clones.length ? clones[clones.length-1].t : body; }
+  function shallow(node, cont){
+    var c = node.cloneNode(false);
+    if (cont) { c.removeAttribute('id'); c.classList.add('cont'); }
+    var t = c;
+    if (node.tagName === 'TABLE') {
+      Array.prototype.forEach.call(node.children, function(ch){ if (ch.tagName !== 'TBODY') c.appendChild(ch.cloneNode(true)); });
+      t = document.createElement('tbody'); c.appendChild(t);
+    }
+    return {c:c, t:t};
+  }
+  function units(node){
+    if (node.tagName === 'TABLE') {
+      var rows = [], out = [];
+      Array.prototype.forEach.call(node.tBodies, function(tb){ rows = rows.concat(Array.prototype.slice.call(tb.rows)); });
+      for (var i=0; i<rows.length; ) {
+        var span = 1;
+        Array.prototype.forEach.call(rows[i].cells, function(td){ span = Math.max(span, td.rowSpan || 1); });
+        out.push(rows.slice(i, i+span)); i += span;
+      }
+      return out;
+    }
+    return Array.prototype.filter.call(node.childNodes, function(n){ return n.nodeType===1 || (n.nodeType===3 && n.nodeValue.trim()); }).map(function(n){ return [n]; });
+  }
+  function canSplit(node){ if (node.nodeType!==1 || !node.matches(SPLIT)) return false; var u = units(node); return u.length > 1 || (u.length === 1 && u[0].length === 1 && canSplit(u[0][0])); }
+  function realCount(el){ return Array.prototype.filter.call(el.childNodes, function(n){ return (n.nodeType===1 && !isHead(n) && n.tagName!=='THEAD' && n.tagName!=='CAPTION' && n.tagName!=='COLGROUP' && !(n.tagName==='TBODY' && !n.rows.length)) || (n.nodeType===3 && n.nodeValue.trim()); }).length; }
+
+  function breakPage(){
+    // carry trailing headings of the innermost target to the next page
+    var t = target(), carry = [];
+    while (t.lastChild && t.lastChild.nodeType===1 && isHead(t.lastChild) && realCount(t) + t.querySelectorAll(':scope > h2,:scope > h3,:scope > h4').length > 1) { carry.unshift(t.lastChild); t.removeChild(t.lastChild); }
+    var old = clones.slice();
+    newSheet();
+    var parent = body;
+    clones = old.map(function(o, i){
+      var s = shallow(stack[i], true);
+      parent.appendChild(s.c); parent = s.t;
+      return s;
+    });
+    carry.forEach(function(n){ target().appendChild(n); });
+    // drop empty fragments left behind, keeping their anchors
+    for (var i = old.length - 1; i >= 0; i--) {
+      if (realCount(old[i].t) === 0 && !old[i].t.querySelector('[id]')) {
+        if (old[i].c.id) { clones[i].c.id = old[i].c.id; }
+        Array.prototype.slice.call(old[i].c.childNodes).forEach(function(n){ if (isHead(n) || n.nodeType===3) clones[i].t.insertBefore(n, clones[i].t.firstChild); });
+        old[i].c.remove();
+      } else break;
+    }
+  }
+  function put(node){
+    var t = target();
+    t.appendChild(node);
+    if (!over()) { if (!isHead(node)) placed++; return; }
+    t.removeChild(node);
+    if (canSplit(node) && (placed > 0 || true)) { split(node); return; }
+    if (placed === 0) { t.appendChild(node); placed++; return; }
+    breakPage();
+    target().appendChild(node);
+    if (over() && canSplit(node)) { target().removeChild(node); split(node); return; }
+    placed++;
+  }
+  function split(node){
+    var s = shallow(node, false);
+    target().appendChild(s.c);
+    if (over()) {
+      target().removeChild(s.c);
+      if (placed > 0) { breakPage(); }
+      target().appendChild(s.c);
+    }
+    stack.push(node); clones.push(s);
+    var us = units(node);
+    us.forEach(function(group){
+      var t = target();
+      group.forEach(function(n){ t.appendChild(n); });
+      if (!over()) { if (!(group.length===1 && isHead(group[0]))) placed++; return; }
+      group.forEach(function(n){ t.removeChild(n); });
+      if (group.length===1 && canSplit(group[0])) { split(group[0]); return; }
+      if (placed > 0) { breakPage(); t = target(); }
+      group.forEach(function(n){ t.appendChild(n); });
+      if (over() && group.length===1 && canSplit(group[0])) { group.forEach(function(n){ t.removeChild(n); }); split(group[0]); return; }
+      placed++;
+    });
+    stack.pop(); clones.pop();
+  }
+
+  function contentsBlock(entries){
+    var h = document.createElement('div');
+    var h2 = document.createElement('h2'); h2.textContent = UI[lang].contents; h2.id = 'contents';
+    var ol = document.createElement('ol'); ol.className = 'toc-list';
+    entries.forEach(function(e){
+      var li = document.createElement('li'); li.className = 'l' + e.level;
+      li.innerHTML = '<a href="#' + esc(e.id) + '"><span class="t"></span><span class="d"></span><span class="n" data-for="' + esc(e.id) + '">00</span></a>';
+      li.querySelector('.t').textContent = e.title;
+      ol.appendChild(li);
+    });
+    return [h2, ol];
+  }
+  function cleanTitle(el){
+    var c = el.cloneNode(true);
+    c.querySelectorAll('.flag,.src').forEach(function(x){ x.remove(); });
+    return c.textContent.replace(/\s+/g,' ').trim();
+  }
+
+  function typeset(done){
+    book.style.zoom = '';
+    book.innerHTML = '';
+    document.documentElement.lang = lang;
+    status.textContent = UI[lang].typeset;
+    var tpl = document.getElementById('src-' + lang);
+    var frag = tpl.content.cloneNode(true);
+    var sections = Array.prototype.slice.call(frag.children).filter(function(n){ return n.tagName==='SECTION'; });
+    // prep: ids on h2, numbered lists, meta labels
+    var entries = [];
+    sections.forEach(function(sec){
+      sec.querySelectorAll('ol').forEach(function(ol){ var st = parseInt(ol.getAttribute('start') || '1', 10); Array.prototype.forEach.call(ol.children, function(li, i){ if (li.tagName==='LI' && !li.hasAttribute('value')) li.value = st + i; }); });
+      sec.querySelectorAll('aside.meta').forEach(function(a){ a.setAttribute('data-label', UI[lang].meta); });
+      if (sec.classList.contains('cover')) return;
+      var h2 = sec.querySelector(':scope > h2');
+      if (h2) {
+        if (!h2.id) { h2.id = sec.id || ('s-' + entries.length); sec.setAttribute('data-cap', sec.id || h2.id); sec.removeAttribute('id'); }
+        entries.push({id:h2.id, title:cleanTitle(h2), level:2});
+      }
+      sec.querySelectorAll('h3[id]').forEach(function(h3){ entries.push({id:h3.id, title:cleanTitle(h3), level:3}); });
+    });
+    stack = []; clones = []; running = ''; runCap = '';
+    var queue = [];
+    sections.forEach(function(sec, idx){
+      if (sec.classList.contains('cover')) { queue.push({cover:sec}); if (CFG.contents) queue.push({contents:true}); return; }
+      if (idx === 0 && CFG.contents) queue.push({contents:true});
+      queue.push({sec:sec});
+    });
+    var i = 0, first = true;
+    function step(){
+      var t0 = performance.now();
+      while (i < queue.length && performance.now() - t0 < 40) {
+        var q = queue[i++];
+        if (q.cover) {
+          running = ''; runCap = ''; newSheet('cover');
+          Array.prototype.slice.call(q.cover.childNodes).forEach(function(n){ body.appendChild(n); });
+          if (q.cover.id) body.firstElementChild && (body.firstElementChild.id = body.firstElementChild.id || q.cover.id);
+          first = false; cur = null;
+        } else if (q.contents) {
+          running = UI[lang].contents; newSheet();
+          contentsBlock(entries).forEach(put);
+          cur = null;
+        } else {
+          var h2 = q.sec.querySelector(':scope > h2');
+          running = h2 ? cleanTitle(h2) : running;
+          var capId = q.sec.getAttribute('data-cap') || q.sec.id;
+          if (capId) { runCap = capId; if (cur) cur.setAttribute('data-cap', runCap); }
+          if (!cur || CFG.chapterBreak || first) newSheet();
+          else if (placed > 0) { /* continue on same sheet */ }
+          Array.prototype.slice.call(q.sec.childNodes).forEach(function(n){
+            if (n.nodeType===3 && !n.nodeValue.trim()) return;
+            if (n.nodeType===1 && n.tagName==='H2' && placed > 0) {
+              // keep a heading with at least some content: start a new sheet if little room is left
+              if (body.clientHeight - body.scrollHeight < 120) { running = cleanTitle(n); breakPage(); }
+            }
+            if (n.nodeType===1 && n.tagName==='H2') { running = cleanTitle(n); cur.firstChild.lastChild.textContent = running; }
+            put(n);
+          });
+          first = false;
+        }
+      }
+      if (i < queue.length) { status.textContent = UI[lang].typeset + ' ' + book.children.length; setTimeout(step, 0); return; }
+      finish(entries); if (done) done();
+    }
+    step();
+  }
+
+  /* ---------- after layout ---------- */
+  var sheetInfo = [];
+  function finish(entries){
+    var sheets = Array.prototype.slice.call(book.querySelectorAll('.sheet'));
+    sheets.forEach(function(s, k){ s.querySelector('.pn').textContent = String(k + 1); s.setAttribute('data-page', k + 1); });
+    var pageOf = {};
+    entries.forEach(function(e){ var el = document.getElementById(e.id); if (el) { var s = el.closest('.sheet'); pageOf[e.id] = s ? +s.getAttribute('data-page') : 0; } });
+    book.querySelectorAll('.toc-list .n').forEach(function(n){ n.textContent = pageOf[n.getAttribute('data-for')] || '–'; });
+    // side contents
+    var ul = $('stoc'); ul.innerHTML = '';
+    entries.forEach(function(e){
+      var li = document.createElement('li'); li.className = 'l' + e.level;
+      li.innerHTML = '<a href="#' + esc(e.id) + '"><span></span><span class="n">' + (pageOf[e.id] || '') + '</span></a>';
+      li.querySelector('span').textContent = e.title;
+      ul.appendChild(li);
+    });
+    sheetInfo = sheets.map(function(s){ return {page:+s.getAttribute('data-page'), text:s.querySelector('.sb').textContent.replace(/\s+/g,' ')}; });
+    status.textContent = sheets.length + ' ' + UI[lang].pages + ' · A4';
+    fit();
+    labels();
+    trackActive(entries, pageOf);
+  }
+  function fit(){
+    book.style.zoom = '';
+    var avail = document.querySelector('main').clientWidth - 32;
+    var w = book.getBoundingClientRect().width || 794;
+    var z = Math.min(1, avail / w);
+    book.style.zoom = z < 1 ? String(z) : '';
+  }
+  var fitT; window.addEventListener('resize', function(){ clearTimeout(fitT); fitT = setTimeout(fit, 120); });
+
+  var activeHandler;
+  function trackActive(entries, pageOf){
+    var links = Array.prototype.slice.call(document.querySelectorAll('#stoc a'));
+    if (activeHandler) window.removeEventListener('scroll', activeHandler);
+    var ticking = false;
+    activeHandler = function(){
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(function(){
+        ticking = false;
+        var best = null, bestY = -Infinity;
+        entries.forEach(function(e, k){
+          var el = document.getElementById(e.id); if (!el) return;
+          var y = el.getBoundingClientRect().top;
+          if (y < 140 && y > bestY) { bestY = y; best = k; }
+        });
+        links.forEach(function(a, k){ a.classList.toggle('active', k === best); });
+        if (best !== null) {
+          var a = links[best], side = $('side'), r = a.getBoundingClientRect(), sr = side.getBoundingClientRect();
+          if (r.top < sr.top + 60 || r.bottom > sr.bottom - 20) side.scrollTop += r.top - sr.top - 120;
+          store(KEY + '-at', entries[best].id);
+        }
+      });
+    };
+    window.addEventListener('scroll', activeHandler, {passive:true});
+    activeHandler();
+  }
+
+  /* ---------- search ---------- */
+  var q = $('q'), res = $('results'), stoc = $('stoc');
+  q.addEventListener('input', function(){
+    var term = q.value.trim();
+    if (term.length < 2) { res.hidden = true; stoc.hidden = false; return; }
+    var nt = norm(term), out = [];
+    sheetInfo.forEach(function(s){
+      var nx = norm(s.text), p = nx.indexOf(nt); if (p < 0) return;
+      var from = Math.max(0, p - 45), snip = s.text.substr(from, term.length + 100), k = norm(snip).indexOf(nt);
+      out.push('<li><a href="#" data-page="' + s.page + '"><span class="rv">' + UI[lang].page + ' ' + s.page + '</span><span class="rs">' + (from ? '…' : '') + esc(snip.slice(0,k)) + '<mark>' + esc(snip.substr(k, term.length)) + '</mark>' + esc(snip.slice(k + term.length)) + '…</span></a></li>');
+    });
+    res.innerHTML = out.length ? out.slice(0, 60).join('') : '<li><span class="rs">' + UI[lang].none + ' «' + esc(term) + '»</span></li>';
+    res.hidden = false; stoc.hidden = true;
+  });
+  res.addEventListener('click', function(e){
+    var a = e.target.closest('a[data-page]'); if (!a) return; e.preventDefault();
+    var s = book.querySelector('.sheet[data-page="' + a.getAttribute('data-page') + '"]');
+    if (s) s.scrollIntoView({block:'start'});
+    closeMenu();
+  });
+
+  /* ---------- chrome ---------- */
+  function labels(){
+    var u = UI[lang];
+    $('qLabel').textContent = u.search; q.placeholder = u.ph;
+    $('printBtn').textContent = u.print; $('themeBtn').textContent = u.theme; $('menuBtn').textContent = u.menu;
+    document.querySelectorAll('[data-i18n-es]').forEach(function(el){ el.textContent = el.getAttribute('data-i18n-' + lang); });
+    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false'); });
+    document.title = CFG.title[lang];
+  }
+  function closeMenu(){ document.body.classList.remove('nav-open'); $('menuBtn').setAttribute('aria-expanded','false'); }
+  document.addEventListener('click', function(e){
+    var j = e.target.closest('.joke');
+    if (j) { var list = j.getAttribute('data-jokes').split('|'); var i = (list.indexOf(j.textContent.replace(/^\(|\)$/g,'')) + 1) % list.length; j.textContent = '(' + list[i] + ')'; return; }
+    var a = e.target.closest('#stoc a, .toc-list a');
+    if (a) { e.preventDefault(); var el = document.getElementById(a.getAttribute('href').slice(1)); if (el) el.scrollIntoView({block:'start'}); closeMenu(); }
+  });
+  $('menuBtn').addEventListener('click', function(){ var o = document.body.classList.toggle('nav-open'); this.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+  $('printBtn').addEventListener('click', function(){ window.print(); });
+  var root = document.documentElement, th = read('nogum-theme'); if (th) root.setAttribute('data-theme', th);
+  $('themeBtn').addEventListener('click', function(){
+    var c = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    var n = c === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', n); store('nogum-theme', n);
+  });
+  document.querySelectorAll('.lang button').forEach(function(b){
+    if (CFG.langs.indexOf(b.getAttribute('data-lang')) < 0) b.parentNode.hidden = true;
+    b.addEventListener('click', function(){
+      var l = b.getAttribute('data-lang'); if (l === lang) return;
+      var at = read(KEY + '-at');
+      lang = l; store('nogum-lang', l);
+      typeset(function(){ var el = at && document.getElementById(at); if (el) el.scrollIntoView({block:'start'}); });
+    });
+  });
+  window.addEventListener('beforeprint', function(){ book.dataset.z = book.style.zoom; book.style.zoom = ''; });
+  window.addEventListener('afterprint', function(){ book.style.zoom = book.dataset.z || ''; });
+
+  /* ---------- start ---------- */
+  labels();
+  var started = false;
+  function start(){
+    if (started) return; started = true;
+    typeset(function(){
+      var id = location.hash.slice(1) || read(KEY + '-at');
+      var el = id && document.getElementById(id);
+      if (el) el.scrollIntoView({block:'start'});
+    });
+  }
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(start); setTimeout(start, 2500); } else start();
+})();
+</script>

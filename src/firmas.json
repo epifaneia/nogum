@@ -1,0 +1,2322 @@
+[
+ {
+  "dis": [
+   "Atletismo",
+   "Athletics"
+  ],
+  "items": [
+   {
+    "n": [
+     "Maratón / Resistencia",
+     "Marathon / Endurance"
+    ],
+    "d": [
+     "Mantenimiento del ritmo en carreras prolongadas sin acumular fatiga.",
+     "Holding the pace over long runs without building up fatigue."
+    ]
+   },
+   {
+    "n": [
+     "Salto Imposible",
+     "Impossible Leap"
+    ],
+    "d": [
+     "Superación de brechas verticales u horizontales límite.",
+     "Clearing vertical or horizontal gaps at the very limit."
+    ]
+   },
+   {
+    "n": [
+     "Escalada Libre",
+     "Free Climbing"
+    ],
+    "d": [
+     "Ascenso rápido por superficies verticales sin necesidad de arnés o equipo.",
+     "Scaling vertical surfaces quickly, with no harness or gear."
+    ]
+   },
+   {
+    "n": [
+     "Natación Extrema",
+     "Extreme Swimming"
+    ],
+    "d": [
+     "Desplazamiento y maniobra en aguas bravas, corrientes o bajo presión.",
+     "Moving and manoeuvring through rough water, currents or under pressure."
+    ]
+   },
+   {
+    "n": [
+     "Esquiva Refleja",
+     "Reflex Dodge"
+    ],
+    "d": [
+     "Movimientos de evasión lateral y cobertura rápida ante proyectiles o impactos.",
+     "Sidesteps and snap cover against projectiles or impacts."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Acrobacia",
+   "Acrobatics"
+  ],
+  "items": [
+   {
+    "n": [
+     "Caída Controlada",
+     "Controlled Fall"
+    ],
+    "d": [
+     "Absorción o disipación del impacto de caídas desde grandes alturas.",
+     "Absorbing or dispersing the impact of falls from great heights."
+    ]
+   },
+   {
+    "n": [
+     "Contorsionismo",
+     "Contortionism"
+    ],
+    "d": [
+     "Paso del cuerpo por espacios extremadamente reducidos o zafado de ataduras.",
+     "Squeezing through extremely tight spaces or slipping out of bonds."
+    ]
+   },
+   {
+    "n": [
+     "Equilibrio Extremo",
+     "Extreme Balance"
+    ],
+    "d": [
+     "Desplazamiento estable sobre repisas estrechas, cables o tendidos de alta tensión.",
+     "Moving steadily along narrow ledges, cables or power lines."
+    ]
+   },
+   {
+    "n": [
+     "Piruetas y Fintas",
+     "Flips and Feints"
+    ],
+    "d": [
+     "Maniobras aéreas para cambiar la orientación en combate o despistar al rival.",
+     "Aerial moves to change facing in combat or wrong-foot an opponent."
+    ]
+   },
+   {
+    "n": [
+     "Parkour Urbano",
+     "Urban Parkour"
+    ],
+    "d": [
+     "Fluidez para superar obstáculos arquitectónicos a máxima velocidad.",
+     "Flowing over architectural obstacles at top speed."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Sigilo",
+   "Stealth"
+  ],
+  "items": [
+   {
+    "n": [
+     "Camuflaje en Sombras",
+     "Shadow Cloak"
+    ],
+    "d": [
+     "Desplazamiento usando los puntos ciegos de iluminación y entorno.",
+     "Moving through the blind spots of lighting and surroundings."
+    ]
+   },
+   {
+    "n": [
+     "Movimiento Silencioso",
+     "Silent Movement"
+    ],
+    "d": [
+     "Insonorización de pasos sobre cualquier tipo de superficie (cristal, madera, metal).",
+     "Muffling footsteps on any surface (glass, wood, metal)."
+    ]
+   },
+   {
+    "n": [
+     "Mimetismo / Cobertura",
+     "Mimicry / Cover"
+    ],
+    "d": [
+     "Mantenerse inmóvil adaptando el contorno del cuerpo al entorno visual.",
+     "Staying motionless, blending the body's outline into the scenery."
+    ]
+   },
+   {
+    "n": [
+     "Rastro Cero",
+     "Zero Trace"
+    ],
+    "d": [
+     "Desplazamiento sin dejar huellas, olores ni alteraciones en el entorno.",
+     "Moving without leaving footprints, scents or any disturbance behind."
+    ]
+   },
+   {
+    "n": [
+     "Infiltración en Sombras",
+     "Shadowing"
+    ],
+    "d": [
+     "Seguimiento y acecho a objetivos a corta distancia sin ser detectado.",
+     "Tailing and stalking targets at close range without being spotted."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Juego de Manos",
+   "Sleight of Hand"
+  ],
+  "items": [
+   {
+    "n": [
+     "Hurto Sutil (Pickpocket)",
+     "Light Fingers (Pickpocket)"
+    ],
+    "d": [
+     "Robo o colocación de objetos en bolsillos o equipo ajeno sin que se entere.",
+     "Lifting or planting objects in someone's pockets or kit without them noticing."
+    ]
+   },
+   {
+    "n": [
+     "Juego de Naipes / Trampas",
+     "Card Tricks / Cheating"
+    ],
+    "d": [
+     "Manipulación física de dados, cartas u objetos pequeños de azar.",
+     "Physically rigging dice, cards or other small games of chance."
+    ]
+   },
+   {
+    "n": [
+     "Desarme Rápido",
+     "Quick Disarm"
+    ],
+    "d": [
+     "Inhabilitación o arrebato mecánico de armas al descuido.",
+     "Mechanically disabling or snatching a weapon from an unwary foe."
+    ]
+   },
+   {
+    "n": [
+     "Ocultamiento en Cuerpo",
+     "Body Concealment"
+    ],
+    "d": [
+     "Camuflaje de pequeñas herramientas, llaves o armas entre la ropa o la piel.",
+     "Hiding small tools, keys or weapons in clothing or against the skin."
+    ]
+   },
+   {
+    "n": [
+     "Ganzuado / Cerrajería Física",
+     "Lockpicking"
+    ],
+    "d": [
+     "Apertura y manipulación de cerraduras mecánicas tradicionales.",
+     "Opening and manipulating traditional mechanical locks."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Potencia",
+   "Might"
+  ],
+  "items": [
+   {
+    "n": [
+     "Embestida / Rompepuertas",
+     "Battering Ram / Door Breaker"
+    ],
+    "d": [
+     "Fuerza bruta aplicada para derribar estructuras, barricadas o puertas.",
+     "Brute force to bring down structures, barricades or doors."
+    ]
+   },
+   {
+    "n": [
+     "Levantamiento Pesado",
+     "Heavy Lifting"
+    ],
+    "d": [
+     "Elevación y sostén de peso estático masivo (vigas, vehículos, escombros).",
+     "Raising and holding massive static loads (beams, vehicles, rubble)."
+    ]
+   },
+   {
+    "n": [
+     "Presión / Agarre Mortal",
+     "Death Grip"
+    ],
+    "d": [
+     "Fuerza de apriete para inmovilizar, estrangular o romper presas.",
+     "Crushing strength to pin, choke or break holds."
+    ]
+   },
+   {
+    "n": [
+     "Lanzamiento de Pesados",
+     "Heavy Throw"
+    ],
+    "d": [
+     "Arrojar objetos pesados como proyectiles improvisados a distancia.",
+     "Hurling heavy objects as improvised projectiles at range."
+    ]
+   },
+   {
+    "n": [
+     "Proeza Estructural",
+     "Structural Feat"
+    ],
+    "d": [
+     "Sostener techos o pesos a punto de colapsar para dar tiempo a otros.",
+     "Holding up ceilings or collapsing loads to buy others time."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Entereza",
+   "Fortitude"
+  ],
+  "items": [
+   {
+    "n": [
+     "Tolerancia al Dolor",
+     "Pain Tolerance"
+    ],
+    "d": [
+     "Ignorar penalizadores por heridas, dolor físico o tortura.",
+     "Ignoring penalties from wounds, physical pain or torture."
+    ]
+   },
+   {
+    "n": [
+     "Resistencia a Toxinas",
+     "Toxin Resistance"
+    ],
+    "d": [
+     "Filtrado metabólico ante venenos, drogas, gases o intoxicaciones.",
+     "Metabolic filtering of poisons, drugs, gases or intoxicants."
+    ]
+   },
+   {
+    "n": [
+     "Inmunidad Térmica / Ambiental",
+     "Thermal / Environmental Immunity"
+    ],
+    "d": [
+     "Soportar temperaturas extremas (congelación/calor) o privación de aire.",
+     "Withstanding extreme temperatures (freezing or heat) or lack of air."
+    ]
+   },
+   {
+    "n": [
+     "Aguante Cardio-Pulmonar",
+     "Cardio-Pulmonary Stamina"
+    ],
+    "d": [
+     "Sostener el esfuerzo físico con niveles mínimos de oxígeno (apnea).",
+     "Sustaining physical effort on minimal oxygen (breath-holding)."
+    ]
+   },
+   {
+    "n": [
+     "Estabilización Rápida",
+     "Rapid Stabilisation"
+    ],
+    "d": [
+     "Reducción de tiempos de sangrado y recuperación fisiológica tras trauma.",
+     "Cutting bleeding time and speeding physiological recovery after trauma."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Pelea",
+   "Brawling"
+  ],
+  "items": [
+   {
+    "n": [
+     "Proyecciones y Llaves",
+     "Throws and Locks"
+    ],
+    "d": [
+     "Uso de la fuerza del rival para derribos, proyecciones o llaves articulares.",
+     "Using an opponent's strength for takedowns, throws or joint locks."
+    ]
+   },
+   {
+    "n": [
+     "Boxeo / Golpes Contundentes",
+     "Boxing / Heavy Blows"
+    ],
+    "d": [
+     "Impactos directos (puños, codos) dirigidos a noquear o causar trauma.",
+     "Direct strikes (fists, elbows) aimed to knock out or cause trauma."
+    ]
+   },
+   {
+    "n": [
+     "Pelea Callejera / Sucia",
+     "Street / Dirty Fighting"
+    ],
+    "d": [
+     "Uso del entorno, mordiscos, cabezazos y golpes a zonas blandas.",
+     "Using the surroundings, biting, headbutts and blows to soft spots."
+    ]
+   },
+   {
+    "n": [
+     "Sumisión Táctica",
+     "Tactical Submission"
+    ],
+    "d": [
+     "Agarres enfocados a dormir o neutralizar sin causar daño permanente.",
+     "Holds meant to put someone to sleep or subdue them without lasting harm."
+    ]
+   },
+   {
+    "n": [
+     "Bloqueo y Absorción",
+     "Block and Absorb"
+    ],
+    "d": [
+     "Posicionamiento del cuerpo para reducir el daño de impactos desarmados.",
+     "Positioning the body to reduce damage from unarmed strikes."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Armas",
+   "Weapons"
+  ],
+  "items": [
+   {
+    "n": [
+     "Hojas Cortas / Dagas",
+     "Short Blades / Daggers"
+    ],
+    "d": [
+     "Manejo de cuchillos, dagas, katanas o armas blancas de ataque rápido.",
+     "Wielding knives, daggers, katanas or other fast-striking blades."
+    ]
+   },
+   {
+    "n": [
+     "Armas Contundentes / Pesadas",
+     "Blunt / Heavy Weapons"
+    ],
+    "d": [
+     "Uso de mazas, martillos, mandobles, hachas y armas de gran inercia.",
+     "Maces, hammers, greatswords, axes and other high-momentum weapons."
+    ]
+   },
+   {
+    "n": [
+     "Armas de Asta",
+     "Polearms"
+    ],
+    "d": [
+     "Control de distancia con lanzas, alabardas, bastones y varas.",
+     "Controlling distance with spears, halberds, staves and poles."
+    ]
+   },
+   {
+    "n": [
+     "Armas de Fuego Ligeras",
+     "Light Firearms"
+    ],
+    "d": [
+     "Precisión y disparo con pistolas, revólveres y subfusiles en distancias cortas.",
+     "Accurate shooting with pistols, revolvers and submachine guns at close range."
+    ]
+   },
+   {
+    "n": [
+     "Armas de Precisión / Distancia",
+     "Precision / Ranged Weapons"
+    ],
+    "d": [
+     "Manejo de rifles de francotirador, arcos, ballestas o proyectiles pesados.",
+     "Handling sniper rifles, bows, crossbows or heavy projectiles."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Ciencias",
+   "Sciences"
+  ],
+  "items": [
+   {
+    "n": [
+     "Física Teórica y Aplicada",
+     "Theoretical and Applied Physics"
+    ],
+    "d": [
+     "Cálculo de trayectorias, vectores de impacto, balística y gravedad.",
+     "Calculating trajectories, impact vectors, ballistics and gravity."
+    ]
+   },
+   {
+    "n": [
+     "Química y Farmacología",
+     "Chemistry and Pharmacology"
+    ],
+    "d": [
+     "Análisis y creación de compuestos, venenos, explosivos y antídotos.",
+     "Analysing and creating compounds, poisons, explosives and antidotes."
+    ]
+   },
+   {
+    "n": [
+     "Biología y Anatomía",
+     "Biology and Anatomy"
+    ],
+    "d": [
+     "Conocimiento de la estructura fisiológica para hallar puntos débiles o curar.",
+     "Knowing the body's structure to find weak points or to heal."
+    ]
+   },
+   {
+    "n": [
+     "Matemáticas y Criptografía",
+     "Mathematics and Cryptography"
+    ],
+    "d": [
+     "Descifrado de códigos analógicos, algoritmos y patrones complejos.",
+     "Cracking analogue codes, algorithms and complex patterns."
+    ]
+   },
+   {
+    "n": [
+     "Geología y Ciencias de la Tierra",
+     "Geology and Earth Sciences"
+    ],
+    "d": [
+     "Lectura de estratos, estabilidad de terrenos y minerales.",
+     "Reading strata, ground stability and minerals."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Humanidades",
+   "Humanities"
+  ],
+  "items": [
+   {
+    "n": [
+     "Historia y Precedentes",
+     "History and Precedent"
+    ],
+    "d": [
+     "Análisis de eventos pasados, tácticas históricas y genealogías.",
+     "Analysing past events, historical tactics and lineages."
+    ]
+   },
+   {
+    "n": [
+     "Filosofía y Lógica",
+     "Philosophy and Logic"
+    ],
+    "d": [
+     "Detección de falacias, debates teóricos y estructuración de argumentos.",
+     "Spotting fallacies, theoretical debate and structuring arguments."
+    ]
+   },
+   {
+    "n": [
+     "Políglota y Lingüística",
+     "Polyglot and Linguistics"
+    ],
+    "d": [
+     "Traducción, análisis de dialectos y descifrado de lenguas muertas.",
+     "Translation, dialect analysis and deciphering dead languages."
+    ]
+   },
+   {
+    "n": [
+     "Sociología y Antropología",
+     "Sociology and Anthropology"
+    ],
+    "d": [
+     "Comprensión de estructuras sociales, costumbres y ritos culturales.",
+     "Understanding social structures, customs and cultural rites."
+    ]
+   },
+   {
+    "n": [
+     "Arqueología y Peritaje",
+     "Archaeology and Appraisal"
+    ],
+    "d": [
+     "Autenticación de artefactos, datación y evaluación de reliquias.",
+     "Authenticating, dating and valuing artefacts and relics."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Ocultismo",
+   "Occultism"
+  ],
+  "items": [
+   {
+    "n": [
+     "Demonología y Criptozoología",
+     "Demonology and Cryptozoology"
+    ],
+    "d": [
+     "Identificación de criaturas, mitos, debilidades y comportamiento.",
+     "Identifying creatures and myths, their weaknesses and behaviour."
+    ]
+   },
+   {
+    "n": [
+     "Grimorios y Textos Prohibidos",
+     "Grimoires and Forbidden Texts"
+    ],
+    "d": [
+     "Lectura e interpretación de tomos antiguos, runas y fórmulas.",
+     "Reading and interpreting ancient tomes, runes and formulae."
+    ]
+   },
+   {
+    "n": [
+     "Simbología Esotérica",
+     "Esoteric Symbology"
+    ],
+    "d": [
+     "Reconocimiento de sellos, marcas místicas y geometrías sagradas.",
+     "Recognising seals, mystic marks and sacred geometry."
+    ]
+   },
+   {
+    "n": [
+     "Profecías y Presagios",
+     "Prophecies and Omens"
+    ],
+    "d": [
+     "Análisis de augurios, lecturas estelares o líneas temporales implícitas.",
+     "Interpreting auguries, star readings or implied timelines."
+    ]
+   },
+   {
+    "n": [
+     "Lore del Multiverso",
+     "Multiverse Lore"
+    ],
+    "d": [
+     "Conocimiento de planos, dimensiones paralelas y leyes no terrenales.",
+     "Knowledge of planes, parallel dimensions and unearthly laws."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Actualidad",
+   "Current Affairs"
+  ],
+  "items": [
+   {
+    "n": [
+     "Cultura Pop y Tendencias",
+     "Pop Culture and Trends"
+    ],
+    "d": [
+     "Manejo de referencias, jerga urbana y cultura de consumo.",
+     "Command of references, street slang and consumer culture."
+    ]
+   },
+   {
+    "n": [
+     "Geopolítica y Macroeconomía",
+     "Geopolitics and Macroeconomics"
+    ],
+    "d": [
+     "Rastrear flujos de dinero, mercados corporativos y fronteras políticas.",
+     "Tracking money flows, corporate markets and political borders."
+    ]
+   },
+   {
+    "n": [
+     "Prensa y Redes Sociales",
+     "Press and Social Media"
+    ],
+    "d": [
+     "Rastreo de bulos, filtraciones de datos e información en tiempo real.",
+     "Tracing hoaxes, data leaks and real-time information."
+    ]
+   },
+   {
+    "n": [
+     "Submundo y Crimen Organizado",
+     "Underworld and Organised Crime"
+    ],
+    "d": [
+     "Conocimiento de bandas, rutas de contrabando y códigos callejeros.",
+     "Knowing the gangs, smuggling routes and street codes."
+    ]
+   },
+   {
+    "n": [
+     "Burocracia y Leyes Locales",
+     "Bureaucracy and Local Law"
+    ],
+    "d": [
+     "Navegación por trámites, normativas corporativas y vacíos legales.",
+     "Navigating red tape, corporate regulations and legal loopholes."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Investigación",
+   "Investigation"
+  ],
+  "items": [
+   {
+    "n": [
+     "Deducción en Escena",
+     "Scene Deduction"
+    ],
+    "d": [
+     "Reconstrucción de hechos analizando rastros, manchas y desorden.",
+     "Reconstructing events from traces, stains and disarray."
+    ]
+   },
+   {
+    "n": [
+     "Interrogatorio Técnico",
+     "Technical Interrogation"
+    ],
+    "d": [
+     "Extracción de datos cruzando contradicciones y presión lógica.",
+     "Extracting information by cross-checking contradictions and applying logical pressure."
+    ]
+   },
+   {
+    "n": [
+     "Análisis Forense",
+     "Forensic Analysis"
+    ],
+    "d": [
+     "Inspección visual de heridas, causas de muerte y muestras en el sitio.",
+     "On-site visual examination of wounds, causes of death and samples."
+    ]
+   },
+   {
+    "n": [
+     "Conexión de Pistas",
+     "Connecting the Dots"
+    ],
+    "d": [
+     "Identificación de patrones o hilos conductores entre datos inconexos.",
+     "Finding patterns or common threads between unrelated data."
+    ]
+   },
+   {
+    "n": [
+     "Búsqueda Documental",
+     "Records Search"
+    ],
+    "d": [
+     "Rastreo rápido de información específica en archivos físicos o digitales.",
+     "Quickly tracking down specific information in physical or digital archives."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Alerta",
+   "Alertness"
+  ],
+  "items": [
+   {
+    "n": [
+     "Percepción de Emboscadas",
+     "Ambush Sense"
+    ],
+    "d": [
+     "Lectura del entorno para detectar peligro inminente o emboscadas.",
+     "Reading the surroundings to detect imminent danger or ambushes."
+    ]
+   },
+   {
+    "n": [
+     "Lectura Corporal",
+     "Body Reading"
+    ],
+    "d": [
+     "Identificación de microexpresiones, nerviosismo o mentiras en tiempo real.",
+     "Spotting micro-expressions, nerves or lies in real time."
+    ]
+   },
+   {
+    "n": [
+     "Detección de Trampas",
+     "Trap Detection"
+    ],
+    "d": [
+     "Localización de sensores, cables, mecanismos o minas antes de activarlos.",
+     "Locating sensors, tripwires, mechanisms or mines before they go off."
+    ]
+   },
+   {
+    "n": [
+     "Aislamiento Auditivo",
+     "Auditory Focus"
+    ],
+    "d": [
+     "Filtrado de ruidos de fondo para escuchar conversaciones o pasos lejanos.",
+     "Filtering out background noise to catch distant conversations or footsteps."
+    ]
+   },
+   {
+    "n": [
+     "Conciencia Perimétrica",
+     "Perimeter Awareness"
+    ],
+    "d": [
+     "Mantenimiento del mapa mental de dónde está cada elemento a su alrededor.",
+     "Keeping a mental map of where everything around you is."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Táctica",
+   "Tactics"
+  ],
+  "items": [
+   {
+    "n": [
+     "Emboscadas y Enfiladas",
+     "Ambushes and Enfilades"
+    ],
+    "d": [
+     "Planificación y ejecución de ataques sorpresa con ventaja de posición.",
+     "Planning and springing surprise attacks from a positional advantage."
+    ]
+   },
+   {
+    "n": [
+     "Lectura del Terreno",
+     "Reading the Ground"
+    ],
+    "d": [
+     "Identificación rápida de coberturas pesadas, cuellos de botella y rutas de escape.",
+     "Quickly identifying hard cover, choke points and escape routes."
+    ]
+   },
+   {
+    "n": [
+     "Coordinación de Escuadra",
+     "Squad Coordination"
+    ],
+    "d": [
+     "Optimización de ataques combinados y fuego de supresión con aliados.",
+     "Optimising combined attacks and suppressing fire with allies."
+    ]
+   },
+   {
+    "n": [
+     "Anticipación de Errores",
+     "Anticipating Mistakes"
+    ],
+    "d": [
+     "Prever los movimientos del enemigo basados en sus patrones de combate.",
+     "Predicting enemy moves from their combat patterns."
+    ]
+   },
+   {
+    "n": [
+     "Retirada Táctica",
+     "Tactical Retreat"
+    ],
+    "d": [
+     "Organización de reagrupamientos o evacuaciones sin sufrir bajas en la huida.",
+     "Organising regroups or evacuations without taking losses on the way out."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Supervivencia",
+   "Survival"
+  ],
+  "items": [
+   {
+    "n": [
+     "Rastreo",
+     "Tracking"
+    ],
+    "d": [
+     "Seguimiento de huellas, vegetación rota o rastros en entornos naturales o urbanos.",
+     "Following footprints, broken plants or trails in natural or urban settings."
+    ]
+   },
+   {
+    "n": [
+     "Recolección de Recursos",
+     "Foraging"
+    ],
+    "d": [
+     "Búsqueda de agua potable, alimento seguro y refugio de fortuna.",
+     "Finding drinking water, safe food and makeshift shelter."
+    ]
+   },
+   {
+    "n": [
+     "Navegación / Orientación",
+     "Navigation / Orienteering"
+    ],
+    "d": [
+     "Ubicación espacial sin mapas ni brújulas (por estrellas, terreno o clima).",
+     "Finding your way without maps or compass (by stars, terrain or weather)."
+    ]
+   },
+   {
+    "n": [
+     "Primeros Auxilios de Campo",
+     "Field First Aid"
+    ],
+    "d": [
+     "Torniquetes, cauterización y estabilización de emergencia sin quirófano.",
+     "Tourniquets, cauterisation and emergency stabilisation without an operating theatre."
+    ]
+   },
+   {
+    "n": [
+     "Trampas de Caza",
+     "Hunting Traps"
+    ],
+    "d": [
+     "Construcción de mecanismos de captura, contención o alarma improvisados.",
+     "Building improvised snares, holding pens or alarms."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Persuasión",
+   "Persuasion"
+  ],
+  "items": [
+   {
+    "n": [
+     "Oratoria Dialéctica",
+     "Dialectical Oratory"
+    ],
+    "d": [
+     "Convencer a grupos o audiencias mediante argumentos estructurados y datos.",
+     "Winning over groups or audiences with structured arguments and facts."
+    ]
+   },
+   {
+    "n": [
+     "Negociación Táctica",
+     "Tactical Negotiation"
+    ],
+    "d": [
+     "Consecución de acuerdos, intercambios y pactos de beneficio mutuo.",
+     "Securing deals, trades and mutually beneficial pacts."
+    ]
+   },
+   {
+    "n": [
+     "Apelación Moral",
+     "Moral Appeal"
+    ],
+    "d": [
+     "Manipulación del sentido de culpa, deber o ética del interlocutor.",
+     "Playing on the other party's sense of guilt, duty or ethics."
+    ]
+   },
+   {
+    "n": [
+     "Diplomacia de Crisis",
+     "Crisis Diplomacy"
+    ],
+    "d": [
+     "Desescalada verbal de situaciones de alta tensión o conflicto inminente.",
+     "Verbally de-escalating tense situations or imminent conflict."
+    ]
+   },
+   {
+    "n": [
+     "Alineación de Intereses",
+     "Aligned Interests"
+    ],
+    "d": [
+     "Convencer a un tercero de que tus objetivos coinciden con los suyos.",
+     "Convincing a third party that your goals match their own."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Engaño",
+   "Deception"
+  ],
+  "items": [
+   {
+    "n": [
+     "Suplantación de Identidad",
+     "Impersonation"
+    ],
+    "d": [
+     "Hacerse pasar por otra persona mediante vestimenta, voz y actitud.",
+     "Passing yourself off as someone else through clothing, voice and manner."
+    ]
+   },
+   {
+    "n": [
+     "Construcción de Coartadas",
+     "Alibi Building"
+    ],
+    "d": [
+     "Invención y mantenimiento de mentiras complejas resistentes a verificación.",
+     "Inventing and sustaining complex lies that stand up to scrutiny."
+    ]
+   },
+   {
+    "n": [
+     "Ofuscación Verbal / Gaslighting",
+     "Verbal Obfuscation / Gaslighting"
+    ],
+    "d": [
+     "Confundir al rival haciéndole dudar de sus propios datos o percepción.",
+     "Confusing a rival until they doubt their own facts or perception."
+    ]
+   },
+   {
+    "n": [
+     "Falsificación Documental",
+     "Forgery"
+    ],
+    "d": [
+     "Creación o alteración de pases, credenciales y documentos oficiales.",
+     "Creating or altering passes, credentials and official documents."
+    ]
+   },
+   {
+    "n": [
+     "Distracción Táctica",
+     "Tactical Distraction"
+    ],
+    "d": [
+     "Desviar la atención o generar falsas alarmas mediante representación dramática.",
+     "Diverting attention or raising false alarms through a dramatic performance."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Empatía",
+   "Empathy"
+  ],
+  "items": [
+   {
+    "n": [
+     "Lectura de Intenciones",
+     "Reading Intentions"
+    ],
+    "d": [
+     "Detección del estado emocional subyacente y motivaciones reales del objetivo.",
+     "Sensing the target's underlying emotional state and true motives."
+    ]
+   },
+   {
+    "n": [
+     "Calmado de Ánimos",
+     "Soothing Tempers"
+    ],
+    "d": [
+     "Reducción del estrés, histeria o hostilidad en una persona alterada.",
+     "Easing stress, hysteria or hostility in an agitated person."
+    ]
+   },
+   {
+    "n": [
+     "Detección de Vulnerabilidades",
+     "Finding Weak Spots"
+    ],
+    "d": [
+     "Identificar los miedos, complejos o deseos secretos de un objetivo.",
+     "Identifying a target's fears, hang-ups or secret desires."
+    ]
+   },
+   {
+    "n": [
+     "Validación Emocional",
+     "Emotional Validation"
+    ],
+    "d": [
+     "Crear un vínculo rápido de confianza demostrando comprensión absoluta.",
+     "Building instant trust by showing complete understanding."
+    ]
+   },
+   {
+    "n": [
+     "Análisis de Dinámicas de Grupo",
+     "Group Dynamics"
+    ],
+    "d": [
+     "Identificar quién manda, quién sufre y quién es el eslabón débil en un grupo.",
+     "Working out who is in charge, who is suffering and who is the weak link in a group."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Seducción",
+   "Seduction"
+  ],
+  "items": [
+   {
+    "n": [
+     "Atracción Magnética",
+     "Magnetic Allure"
+    ],
+    "d": [
+     "Generación de fascinación o deseo mediante presencia, carisma y lenguaje corporal.",
+     "Stirring fascination or desire through presence, charisma and body language."
+    ]
+   },
+   {
+    "n": [
+     "Encanto Superficial",
+     "Easy Charm"
+    ],
+    "d": [
+     "Ganarse el favor inmediato de desconocidos en entornos distendidos o festivos.",
+     "Winning strangers over instantly in relaxed or festive settings."
+    ]
+   },
+   {
+    "n": [
+     "Llamado de Auxilio",
+     "Cry for Help"
+    ],
+    "d": [
+     "Proyectar vulnerabilidad para que otros actúen como protectores o aliados.",
+     "Projecting vulnerability so that others step in as protectors or allies."
+    ]
+   },
+   {
+    "n": [
+     "Flirteo Táctico",
+     "Tactical Flirting"
+    ],
+    "d": [
+     "Extracción de información o favores menores mediante insinuación o coquetería.",
+     "Coaxing out information or small favours through innuendo or coquetry."
+    ]
+   },
+   {
+    "n": [
+     "Adulación Calculada",
+     "Calculated Flattery"
+    ],
+    "d": [
+     "Manipular el ego del interlocutor mediante cumplidos específicos.",
+     "Working the other person's ego with well-aimed compliments."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Liderazgo",
+   "Leadership"
+  ],
+  "items": [
+   {
+    "n": [
+     "Arenga Táctica",
+     "Rallying Cry"
+    ],
+    "d": [
+     "Otorgar bonificaciones o mantener la moral de los aliados en momentos de crisis.",
+     "Granting bonuses or keeping allies' morale up in moments of crisis."
+    ]
+   },
+   {
+    "n": [
+     "Mando y Disciplina",
+     "Command and Discipline"
+    ],
+    "d": [
+     "Emitir órdenes directas que se ejecutan sin vacilación en situaciones límite.",
+     "Giving direct orders that are carried out without hesitation when it counts."
+    ]
+   },
+   {
+    "n": [
+     "Asignación de Roles",
+     "Role Assignment"
+    ],
+    "d": [
+     "Coordinación de un equipo distribuyendo tareas según las fortalezas de cada uno.",
+     "Coordinating a team by handing out tasks to suit each member's strengths."
+    ]
+   },
+   {
+    "n": [
+     "Mantenimiento del Orden",
+     "Keeping Order"
+    ],
+    "d": [
+     "Evitar el pánico, la desbandada o la insubordinación en un grupo.",
+     "Preventing panic, rout or insubordination within a group."
+    ]
+   },
+   {
+    "n": [
+     "Inspiración por el Ejemplo",
+     "Leading by Example"
+    ],
+    "d": [
+     "Encabezar la acción para que otros superen sus propios límites o miedos.",
+     "Heading the charge so that others push past their own limits or fears."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Intimidación",
+   "Intimidation"
+  ],
+  "items": [
+   {
+    "n": [
+     "Coacción Física / Violencia Explícita",
+     "Physical Coercion / Open Violence"
+    ],
+    "d": [
+     "Demostración de fuerza directa para amedrentar e imponer silencio.",
+     "A direct show of force to cow people and impose silence."
+    ]
+   },
+   {
+    "n": [
+     "Presión Fría / Amenaza Implícita",
+     "Cold Pressure / Veiled Threat"
+    ],
+    "d": [
+     "Sugerir consecuencias nefastas sin levantar la voz ni perder las formas.",
+     "Hinting at dire consequences without raising your voice or losing your composure."
+    ]
+   },
+   {
+    "n": [
+     "Dominación Escénica",
+     "Commanding Presence"
+    ],
+    "d": [
+     "Uso de la talla, postura o mirada para empequeñecer la presencia del rival.",
+     "Using size, posture or stare to make a rival feel small."
+    ]
+   },
+   {
+    "n": [
+     "Tortura Psicológica",
+     "Psychological Torture"
+    ],
+    "d": [
+     "Romper la voluntad de un cautivo mediante privación o desgaste sostenido.",
+     "Breaking a captive's will through deprivation or sustained attrition."
+    ]
+   },
+   {
+    "n": [
+     "Intimidación de Masas",
+     "Mass Intimidation"
+    ],
+    "d": [
+     "Aterrorizar a una multitud o grupo numeroso con un solo gesto o advertencia.",
+     "Terrifying a crowd or large group with a single gesture or warning."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Contactos",
+   "Contacts"
+  ],
+  "items": [
+   {
+    "n": [
+     "Red Subterránea / Círculos Criminales",
+     "Underground Network / Criminal Circles"
+    ],
+    "d": [
+     "Localización de informadores, peristas y mercenarios en el hampa.",
+     "Finding informants, fences and mercenaries in the underworld."
+    ]
+   },
+   {
+    "n": [
+     "Cúpula Corporativa / Institucional",
+     "Corporate / Institutional Elite"
+    ],
+    "d": [
+     "Enlaces con ejecutivos, diplomáticos y altos cargos gubernamentales.",
+     "Links to executives, diplomats and senior government officials."
+    ]
+   },
+   {
+    "n": [
+     "Búsqueda de Favores",
+     "Calling in Favours"
+    ],
+    "d": [
+     "Cobro de deudas pasadas para obtener cobijo, equipo o paso seguro.",
+     "Collecting old debts to secure shelter, gear or safe passage."
+    ]
+   },
+   {
+    "n": [
+     "Red de Soplones Urbana",
+     "Street Informant Network"
+    ],
+    "d": [
+     "Obtención de rumores y datos frescos en las calles a través de mendigos o taxistas.",
+     "Picking up rumours and fresh intel on the streets via beggars or cabbies."
+    ]
+   },
+   {
+    "n": [
+     "Acceso VIP / Salvoconductos",
+     "VIP Access / Safe-Conducts"
+    ],
+    "d": [
+     "Entrar en zonas restringidas utilizando nombres de padrinos o referencias.",
+     "Getting into restricted areas by dropping the names of patrons or referees."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Recursos",
+   "Resources"
+  ],
+  "items": [
+   {
+    "n": [
+     "Inyección de Capital",
+     "Cash Injection"
+    ],
+    "d": [
+     "Financiación inmediata para adquisiciones caras, sobornos o fianzas.",
+     "Immediate funding for costly purchases, bribes or bail."
+    ]
+   },
+   {
+    "n": [
+     "Logística y Suministros",
+     "Logistics and Supply"
+    ],
+    "d": [
+     "Movilización de almacenes, transporte y aprovisionamiento pesado.",
+     "Mobilising warehouses, transport and heavy provisioning."
+    ]
+   },
+   {
+    "n": [
+     "Especulación / Blanqueo",
+     "Speculation / Laundering"
+    ],
+    "d": [
+     "Manejo y ocultamiento de activos financieros en paraísos fiscales o cripto.",
+     "Managing and hiding financial assets in tax havens or crypto."
+    ]
+   },
+   {
+    "n": [
+     "Monopolio de Mercado",
+     "Market Monopoly"
+    ],
+    "d": [
+     "Control o acaparamiento de un recurso específico en una región.",
+     "Controlling or cornering a specific resource in a region."
+    ]
+   },
+   {
+    "n": [
+     "Línea de Crédito Ilimitada",
+     "Unlimited Credit Line"
+    ],
+    "d": [
+     "Capacidad de gasto sin preguntas en entornos corporativos o bancarios.",
+     "No-questions-asked spending power in corporate or banking circles."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Mecánica",
+   "Mechanics"
+  ],
+  "items": [
+   {
+    "n": [
+     "Reparación de Emergencia",
+     "Emergency Repair"
+    ],
+    "d": [
+     "Parchear motores, estructuras o maquinaria averiada en mitad del combate.",
+     "Patching up engines, structures or broken machinery mid-combat."
+    ]
+   },
+   {
+    "n": [
+     "Modificación de Motores / Subidón",
+     "Engine Tuning / Overdrive"
+    ],
+    "d": [
+     "Forzar el rendimiento de vehículos o sistemas mecánicos por encima del límite.",
+     "Pushing vehicles or mechanical systems beyond their limits."
+    ]
+   },
+   {
+    "n": [
+     "Ingeniería Inversa",
+     "Reverse Engineering"
+    ],
+    "d": [
+     "Desmontar y entender el funcionamiento de un mecanismo desconocido o alienígena.",
+     "Taking apart and understanding an unknown or alien mechanism."
+    ]
+   },
+   {
+    "n": [
+     "Fabricación de Herramientas",
+     "Toolmaking"
+    ],
+    "d": [
+     "Crear utensilios, poleas o mecanismos simples con chatarra o recursos de fortuna.",
+     "Making tools, pulleys or simple mechanisms from scrap or whatever is to hand."
+    ]
+   },
+   {
+    "n": [
+     "Sabotaje Estructural",
+     "Structural Sabotage"
+    ],
+    "d": [
+     "Inhabilitar maquinaria, puentes o elevadores atacando sus puntos débiles mecánicos.",
+     "Disabling machinery, bridges or lifts by hitting their mechanical weak points."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Electrónica",
+   "Electronics"
+  ],
+  "items": [
+   {
+    "n": [
+     "Puenteado de Circuitos",
+     "Hotwiring"
+    ],
+    "d": [
+     "Bypassear paneles de control, encendidos o circuitos físicos sin clave.",
+     "Bypassing control panels, ignitions or physical circuits without a code."
+    ]
+   },
+   {
+    "n": [
+     "Diseño de Microchips / Hardware",
+     "Microchip / Hardware Design"
+    ],
+    "d": [
+     "Creación o reparación de placas, transmisores y componentes lógicos.",
+     "Building or repairing boards, transmitters and logic components."
+    ]
+   },
+   {
+    "n": [
+     "Diagnóstico de Placas",
+     "Board Diagnostics"
+    ],
+    "d": [
+     "Localizar fallos de tensión, cortocircuitos o componentes quemados de un vistazo.",
+     "Spotting voltage faults, short circuits or burnt-out components at a glance."
+    ]
+   },
+   {
+    "n": [
+     "Inhibición de Señal (Jammers)",
+     "Signal Jamming"
+    ],
+    "d": [
+     "Bloquear frecuencias de radio, Wi-Fi, GPS o radares locales.",
+     "Blocking local radio, Wi-Fi, GPS or radar frequencies."
+    ]
+   },
+   {
+    "n": [
+     "Cómputo Análogo / Sensores",
+     "Analogue Computing / Sensors"
+    ],
+    "d": [
+     "Calibrar e instalar sensores de movimiento, visión nocturna o termografía.",
+     "Calibrating and fitting motion sensors, night vision or thermal imaging."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Biotecnia",
+   "Biotech"
+  ],
+  "items": [
+   {
+    "n": [
+     "Implantes y Prótesis",
+     "Implants and Prosthetics"
+    ],
+    "d": [
+     "Instalación, mantenimiento y calibración de cibernética, prótesis o bio-aumentos.",
+     "Fitting, maintaining and calibrating cybernetics, prosthetics or bio-augmentations."
+    ]
+   },
+   {
+    "n": [
+     "Síntesis Biomédica",
+     "Biomedical Synthesis"
+    ],
+    "d": [
+     "Fabricación de estimulantes, sueros de combate, coagulantes o fármacos.",
+     "Producing stimulants, combat serums, coagulants or drugs."
+    ]
+   },
+   {
+    "n": [
+     "Cultivo de Tejidos",
+     "Tissue Culture"
+    ],
+    "d": [
+     "Mantenimiento de muestras biológicas, clonación básica o parches genéticos.",
+     "Maintaining biological samples, basic cloning or genetic patches."
+    ]
+   },
+   {
+    "n": [
+     "Ingeniería Genética",
+     "Genetic Engineering"
+    ],
+    "d": [
+     "Análisis de ADN, secuenciación y detección de mutaciones biológicas.",
+     "DNA analysis, sequencing and detection of biological mutations."
+    ]
+   },
+   {
+    "n": [
+     "Ciber-Diagnóstico",
+     "Cyber-Diagnostics"
+    ],
+    "d": [
+     "Detectar rechazos de cibernética, virus neuronales o incompatibilidades de hardware orgánico.",
+     "Detecting cybernetic rejection, neural viruses or organic-hardware incompatibilities."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Artesanía",
+   "Crafting"
+  ],
+  "items": [
+   {
+    "n": [
+     "Armería y Calibración",
+     "Gunsmithing and Tuning"
+    ],
+    "d": [
+     "Ajuste, mantenimiento y modificación técnica de armas de fuego o cuerpo a cuerpo.",
+     "Adjusting, servicing and technically modifying firearms or melee weapons."
+    ]
+   },
+   {
+    "n": [
+     "Forja y Metalurgia",
+     "Forging and Metallurgy"
+    ],
+    "d": [
+     "Tratamiento de metales, aleaciones, blindajes y soldadura estructural.",
+     "Working metals and alloys, armour plating and structural welding."
+    ]
+   },
+   {
+    "n": [
+     "Sastrería Técnica / Balística",
+     "Technical / Ballistic Tailoring"
+    ],
+    "d": [
+     "Creación de ropa reforzada, disfraces o trajes con protección térmica/química.",
+     "Making reinforced clothing, disguises or suits with thermal or chemical protection."
+    ]
+   },
+   {
+    "n": [
+     "Soplado y Química de Vidrio",
+     "Glassblowing and Glass Chemistry"
+    ],
+    "d": [
+     "Fabricación de lentes, ampollas ópticas y recipientes reactivos.",
+     "Making lenses, optical ampoules and reaction vessels."
+    ]
+   },
+   {
+    "n": [
+     "Carpintería Táctica",
+     "Tactical Carpentry"
+    ],
+    "d": [
+     "Edificación de barricadas, fortificaciones de madera o estructuras de contención.",
+     "Putting up barricades, timber fortifications or containment structures."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Pilotaje",
+   "Driving"
+  ],
+  "items": [
+   {
+    "n": [
+     "Conducción Evasiva",
+     "Evasive Driving"
+    ],
+    "d": [
+     "Maniobras de escape, derrapes y persecuciones con vehículos terrestres.",
+     "Getaway manoeuvres, drifts and chases in land vehicles."
+    ]
+   },
+   {
+    "n": [
+     "Embestida de Vehículos",
+     "Vehicular Ramming"
+    ],
+    "d": [
+     "Usar un coche/camión como arma contra otros vehículos o estructuras.",
+     "Using a car or lorry as a weapon against other vehicles or structures."
+    ]
+   },
+   {
+    "n": [
+     "Pilotaje de Maquinaria Pesada",
+     "Heavy Machinery"
+    ],
+    "d": [
+     "Manejo de grúas, excavadoras, bulldozers o elevadores industriales.",
+     "Operating cranes, diggers, bulldozers or industrial lifts."
+    ]
+   },
+   {
+    "n": [
+     "Navegación Marítima",
+     "Seamanship"
+    ],
+    "d": [
+     "Pilotaje de lanchas, barcos o subacuáticos en condiciones extremas.",
+     "Piloting speedboats, ships or submersibles in extreme conditions."
+    ]
+   },
+   {
+    "n": [
+     "Conducción Off-Road / Todo Terreno",
+     "Off-Road / All-Terrain"
+    ],
+    "d": [
+     "Cruzar desiertos, barro o terrenos rotos a alta velocidad.",
+     "Crossing desert, mud or broken ground at high speed."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Vuelo",
+   "Flight"
+  ],
+  "items": [
+   {
+    "n": [
+     "Combate Aéreo (Dogfight)",
+     "Air Combat (Dogfight)"
+    ],
+    "d": [
+     "Maniobras de caza, interceptación y evasión en jets, cazas o naves de combate.",
+     "Pursuit, interception and evasion manoeuvres in jets, fighters or combat craft."
+    ]
+   },
+   {
+    "n": [
+     "Aterrizaje de Emergencia",
+     "Emergency Landing"
+    ],
+    "d": [
+     "Posar aeronaves, helicópteros o módulos sin motores o en ruinas.",
+     "Setting down aircraft, helicopters or modules with dead engines or in pieces."
+    ]
+   },
+   {
+    "n": [
+     "Vuelo Rasante / Bajo Radar",
+     "Nap-of-the-Earth / Under the Radar"
+    ],
+    "d": [
+     "Navegación aérea esquivando cañones antiaéreos o detección por radar.",
+     "Flying low to dodge anti-aircraft fire or radar detection."
+    ]
+   },
+   {
+    "n": [
+     "Infiltración Aérea",
+     "Air Insertion"
+    ],
+    "d": [
+     "Salto en paracaídas (HALO), descensos en cuerda rápida o entrega de tropas.",
+     "Parachute jumps (HALO), fast-roping or troop drops."
+    ]
+   },
+   {
+    "n": [
+     "Manejo de VTOL / Drones",
+     "VTOL / Drone Handling"
+    ],
+    "d": [
+     "Pilotaje de naves de despegue vertical o enjambres de drones voladores.",
+     "Piloting vertical take-off craft or swarms of flying drones."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Sistemas",
+   "Systems"
+  ],
+  "items": [
+   {
+    "n": [
+     "Intrusión en Redes (Hacking)",
+     "Network Intrusion (Hacking)"
+    ],
+    "d": [
+     "Romper cortafuegos y acceder a servidores o bases de datos privadas.",
+     "Breaking firewalls to get into private servers or databases."
+    ]
+   },
+   {
+    "n": [
+     "Ciberseguridad / Defensas",
+     "Cybersecurity / Defences"
+    ],
+    "d": [
+     "Bloquear intrusiones en tiempo real y rastrear la IP/origen del atacante.",
+     "Blocking intrusions in real time and tracing the attacker's IP or origin."
+    ]
+   },
+   {
+    "n": [
+     "Infiltración en IAs",
+     "AI Infiltration"
+    ],
+    "d": [
+     "Engañar, reprogramar o aislar rutinas de Inteligencias Artificiales.",
+     "Tricking, reprogramming or isolating artificial intelligence routines."
+    ]
+   },
+   {
+    "n": [
+     "Inyección de Malware",
+     "Malware Injection"
+    ],
+    "d": [
+     "Desplegar troyanos, ransomware o virus para paralizar sistemas enteros.",
+     "Deploying trojans, ransomware or viruses to cripple entire systems."
+    ]
+   },
+   {
+    "n": [
+     "Exfiltración de Datos",
+     "Data Exfiltration"
+    ],
+    "d": [
+     "Copia y extracción silenciosa de volúmenes masivos de datos cifrados sin dejar registro.",
+     "Quietly copying and extracting massive volumes of encrypted data without leaving a log."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Seguridad",
+   "Security"
+  ],
+  "items": [
+   {
+    "n": [
+     "Análisis de Vulnerabilidades",
+     "Vulnerability Assessment"
+    ],
+    "d": [
+     "Identificar puntos ciegos en patrullas, cámaras y protocolos de un edificio.",
+     "Finding the blind spots in a building's patrols, cameras and protocols."
+    ]
+   },
+   {
+    "n": [
+     "Bypass de Biometría",
+     "Biometric Bypass"
+    ],
+    "d": [
+     "Burlar escáneres de retina, huella dactilar o patrones de voz.",
+     "Fooling retina, fingerprint or voice-pattern scanners."
+    ]
+   },
+   {
+    "n": [
+     "Control de Cámaras / CCTVs",
+     "Camera Control / CCTV"
+    ],
+    "d": [
+     "Bucleado de vídeo, apagado remoto o manipulación de sensores de alarma.",
+     "Looping footage, remote shutdown or tampering with alarm sensors."
+    ]
+   },
+   {
+    "n": [
+     "Desactivación de Explosivos (EOD)",
+     "Bomb Disposal (EOD)"
+    ],
+    "d": [
+     "Neutralizar minas, trampas, bombas de tiempo o detonadores.",
+     "Neutralising mines, traps, time bombs or detonators."
+    ]
+   },
+   {
+    "n": [
+     "Gestión de Cierres (Lockdown)",
+     "Lockdown Control"
+    ],
+    "d": [
+     "Activar la contención, sellado de puertas blindadas y aislamiento de zonas.",
+     "Triggering containment, sealing blast doors and isolating zones."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Proyección",
+   "Projection"
+  ],
+  "items": [
+   {
+    "n": [
+     "Ráfaga de Energía / Plasma",
+     "Energy / Plasma Blast"
+    ],
+    "d": [
+     "Descarga directa de energía (fuego, telequinesis, plasma) a distancia.",
+     "A direct ranged discharge of energy (fire, telekinesis, plasma)."
+    ]
+   },
+   {
+    "n": [
+     "Proyección Astral / Psíquica",
+     "Astral / Psychic Projection"
+    ],
+    "d": [
+     "Separar la conciencia del cuerpo para explorar o comunicarse mentalmente.",
+     "Separating consciousness from the body to scout or communicate mentally."
+    ]
+   },
+   {
+    "n": [
+     "Onda de Choque Kinética",
+     "Kinetic Shockwave"
+    ],
+    "d": [
+     "Liberar una onda expansiva que repele y derriba objetivos a su alrededor.",
+     "Releasing a blast wave that repels and knocks down targets all around."
+    ]
+   },
+   {
+    "n": [
+     "Emanación Focalizada",
+     "Focused Emanation"
+    ],
+    "d": [
+     "Canalizar energía a través de la mirada o las manos para debilitar o paralizar.",
+     "Channelling energy through the eyes or hands to weaken or paralyse."
+    ]
+   },
+   {
+    "n": [
+     "Duplicación Ficticia / Ilusión",
+     "Phantom Double / Illusion"
+    ],
+    "d": [
+     "Crear copias intangibles o proyecciones mentales/holográficas de sí mismo.",
+     "Creating intangible copies or mental or holographic projections of oneself."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Alteración",
+   "Alteration"
+  ],
+  "items": [
+   {
+    "n": [
+     "Transmutación Fisiológica",
+     "Physiological Transmutation"
+    ],
+    "d": [
+     "Cambiar rasgos corporales (garras, escamas, densidad ósea, rigidez).",
+     "Changing bodily features (claws, scales, bone density, rigidity)."
+    ]
+   },
+   {
+    "n": [
+     "Control Elemental Local",
+     "Local Elemental Control"
+    ],
+    "d": [
+     "Alterar el entorno inmediato (congelar agua, encender fuego, mover tierra).",
+     "Altering the immediate surroundings (freezing water, lighting fires, moving earth)."
+    ]
+   },
+   {
+    "n": [
+     "Telequinesis Fina",
+     "Fine Telekinesis"
+    ],
+    "d": [
+     "Mover y manipular objetos pequeños o mecanismos a distancia con la mente.",
+     "Moving and handling small objects or mechanisms at a distance with the mind."
+    ]
+   },
+   {
+    "n": [
+     "Giro de Fase / Intangibilidad",
+     "Phase Shift / Intangibility"
+    ],
+    "d": [
+     "Volver el cuerpo parcialmente incorpóreo para atravesar sólidos o ataques.",
+     "Making the body partly incorporeal to pass through solids or attacks."
+    ]
+   },
+   {
+    "n": [
+     "Aceleración Metabólica",
+     "Metabolic Acceleration"
+    ],
+    "d": [
+     "Incrementar la velocidad de reacción y desplazamiento durante unos instantes.",
+     "Boosting reaction and movement speed for a few moments."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Adivinación",
+   "Divination"
+  ],
+  "items": [
+   {
+    "n": [
+     "Visión del Pasado (Retrocognición)",
+     "Past Sight (Retrocognition)"
+    ],
+    "d": [
+     "Leer la impronta emocional o histórica que dejó un objeto o lugar.",
+     "Reading the emotional or historical imprint left on an object or place."
+    ]
+   },
+   {
+    "n": [
+     "Presciencia Inmediata (Precognición)",
+     "Immediate Foresight (Precognition)"
+    ],
+    "d": [
+     "Sentir el peligro o prever el movimiento del enemigo un segundo antes.",
+     "Sensing danger or foreseeing an enemy's move a second ahead."
+    ]
+   },
+   {
+    "n": [
+     "Lectura de Auras / Sentidos Místicos",
+     "Aura Reading / Mystic Senses"
+    ],
+    "d": [
+     "Percibir energía vital, nivel de poder o intenciones ocultas.",
+     "Perceiving life energy, power level or hidden intentions."
+    ]
+   },
+   {
+    "n": [
+     "Clariaudiencia / Clarividencia",
+     "Clairaudience / Clairvoyance"
+    ],
+    "d": [
+     "Ver o escuchar lugares lejanos sin estar físicamente allí.",
+     "Seeing or hearing distant places without being physically there."
+    ]
+   },
+   {
+    "n": [
+     "Sintonía Empática / Telepatía",
+     "Empathic Attunement / Telepathy"
+    ],
+    "d": [
+     "Sentir las emociones directas o transmitir pensamientos a otra mente.",
+     "Feeling emotions directly or sending thoughts to another mind."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Protección",
+   "Protection"
+  ],
+  "items": [
+   {
+    "n": [
+     "Escudo de Fuerza / Barrera Kinética",
+     "Force Shield / Kinetic Barrier"
+    ],
+    "d": [
+     "Generar un campo de energía que frena impactos físicos o térmicos.",
+     "Generating an energy field that stops physical or thermal impacts."
+    ]
+   },
+   {
+    "n": [
+     "Aislamiento Místico / Limpieza",
+     "Mystic Ward / Cleansing"
+    ],
+    "d": [
+     "Disipar efectos negativos, maldiciones, venenos o control mental.",
+     "Dispelling harmful effects, curses, poisons or mind control."
+    ]
+   },
+   {
+    "n": [
+     "Reflejo de Daño",
+     "Damage Reflection"
+    ],
+    "d": [
+     "Devolver una parte del impacto o energía recibida directamente al atacante.",
+     "Turning part of the impact or energy received straight back on the attacker."
+    ]
+   },
+   {
+    "n": [
+     "Anclaje Ontológico",
+     "Ontological Anchor"
+    ],
+    "d": [
+     "Inmunidad a desplazamientos forzados, alteración de la gravedad o deformación del espacio.",
+     "Immunity to forced displacement, gravity shifts or warping of space."
+    ]
+   },
+   {
+    "n": [
+     "Camino Velado / Inconspicuo",
+     "Veiled Path / Unseen"
+    ],
+    "d": [
+     "Volverse imperceptible para sentidos místicos, radares o escáneres arcanos.",
+     "Becoming imperceptible to mystic senses, radar or arcane scanners."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Alquimia",
+   "Alchemy"
+  ],
+  "items": [
+   {
+    "n": [
+     "Pociones de Transmutación",
+     "Transmutation Potions"
+    ],
+    "d": [
+     "Elaborar brebajes que otorgan capacidades físicas o curación acelerada.",
+     "Brewing draughts that grant physical abilities or accelerated healing."
+    ]
+   },
+   {
+    "n": [
+     "Ungüentos y Aceites Tácticos",
+     "Tactical Salves and Oils"
+    ],
+    "d": [
+     "Sustancias corrosivas, inflamables o de parálisis aplicables a armas o entorno.",
+     "Corrosive, flammable or paralysing substances applied to weapons or surroundings."
+    ]
+   },
+   {
+    "n": [
+     "Gases y Vapores Reactivos",
+     "Reactive Gases and Vapours"
+    ],
+    "d": [
+     "Creación de granadas/redomas de humo espeso, ácido o alucinógeno.",
+     "Making grenades or flasks of thick smoke, acid or hallucinogens."
+    ]
+   },
+   {
+    "n": [
+     "Catalizadores de Poder",
+     "Power Catalysts"
+    ],
+    "d": [
+     "Preparación de reactivos que potencian las habilidades arcanas de otros.",
+     "Preparing reagents that boost the arcane abilities of others."
+    ]
+   },
+   {
+    "n": [
+     "Polvos de Revelación",
+     "Revealing Powders"
+    ],
+    "d": [
+     "Compuestos que revelan lo invisible, rastros mágicos o estructuras ocultas.",
+     "Compounds that expose the invisible, magical traces or hidden structures."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Invocación",
+   "Summoning"
+  ],
+  "items": [
+   {
+    "n": [
+     "Atadura de Entidades / Familiares",
+     "Binding Entities / Familiars"
+    ],
+    "d": [
+     "Convocar un sirviente místico o criatura para tareas específicas.",
+     "Calling up a mystic servant or creature for specific tasks."
+    ]
+   },
+   {
+    "n": [
+     "Apertura de Portales / Desplazamiento",
+     "Portal Opening / Displacement"
+    ],
+    "d": [
+     "Crear brechas breves entre dos puntos del espacio o dimensiones.",
+     "Tearing brief rifts between two points in space or between dimensions."
+    ]
+   },
+   {
+    "n": [
+     "Invocación de Elementales",
+     "Elemental Summoning"
+    ],
+    "d": [
+     "Traer manifestaciones puras de un elemento para combate o destrucción.",
+     "Bringing forth pure manifestations of an element for combat or destruction."
+    ]
+   },
+   {
+    "n": [
+     "Llamado de Entidades Menores",
+     "Calling Lesser Entities"
+    ],
+    "d": [
+     "Conjurar enjambres o masillas para distracción o cobertura.",
+     "Conjuring swarms or mooks for distraction or cover."
+    ]
+   },
+   {
+    "n": [
+     "Banquete / Suministro Místico",
+     "Feast / Mystic Provision"
+    ],
+    "d": [
+     "Invocar recursos, sustento o refugio temporal fuera de la realidad.",
+     "Summoning supplies, sustenance or temporary shelter from outside reality."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Encantamiento",
+   "Enchantment"
+  ],
+  "items": [
+   {
+    "n": [
+     "Inscripción de Runas / Glifos",
+     "Rune / Glyph Inscription"
+    ],
+    "d": [
+     "Grabar sellos en puertas o suelo que se activan como trampas o cierres.",
+     "Carving seals on doors or floors that trigger as traps or locks."
+    ]
+   },
+   {
+    "n": [
+     "Imbuir Propiedades",
+     "Imbue Properties"
+    ],
+    "d": [
+     "Otorgar temporalmente daño elemental o precisión aumentada a un arma o equipo.",
+     "Temporarily lending elemental damage or heightened accuracy to a weapon or piece of kit."
+    ]
+   },
+   {
+    "n": [
+     "Talismanes de Salvaguarda",
+     "Warding Talismans"
+    ],
+    "d": [
+     "Crear objetos portátiles que absorben un único impacto o maldición fatal.",
+     "Making portable objects that soak up a single fatal blow or curse."
+    ]
+   },
+   {
+    "n": [
+     "Forja de Objetos Místicos",
+     "Forging Mystic Items"
+    ],
+    "d": [
+     "Vinculación permanente de un efecto mágico a un ítem mediante ritual.",
+     "Permanently binding a magical effect to an item through ritual."
+    ]
+   },
+   {
+    "n": [
+     "Sellado de Zonas",
+     "Zone Sealing"
+    ],
+    "d": [
+     "Inhabilitar el uso de magia, tecnología o poderes en un área delimitada.",
+     "Shutting down magic, technology or powers within a defined area."
+    ]
+   }
+  ]
+ },
+ {
+  "dis": [
+   "Vínculos",
+   "Bonds"
+  ],
+  "items": [
+   {
+    "n": [
+     "Pacto de Sangre / Lealtad",
+     "Blood Pact / Loyalty"
+    ],
+    "d": [
+     "Crear un nexo indeleble con un aliado para compartir resistencia o comunicación.",
+     "Forging an unbreakable link with an ally to share resilience or communication."
+    ]
+   },
+   {
+    "n": [
+     "Transferencia de Vitalidad",
+     "Vitality Transfer"
+    ],
+    "d": [
+     "Drenar energía o vida de un objetivo para sanar a uno mismo o a un aliado.",
+     "Draining energy or life from a target to heal yourself or an ally."
+    ]
+   },
+   {
+    "n": [
+     "Maldición de Daño Compartido",
+     "Shared Pain Curse"
+    ],
+    "d": [
+     "Vincular a dos enemigos para que el daño sufrido por uno lo sufra el otro.",
+     "Linking two enemies so that damage suffered by one is suffered by the other."
+    ]
+   },
+   {
+    "n": [
+     "Ancla Psíquica / Rastreación",
+     "Psychic Anchor / Tracking"
+    ],
+    "d": [
+     "Marcar a un objetivo para saber su posición exacta sin importar la distancia.",
+     "Marking a target to know their exact position, however far away."
+    ]
+   },
+   {
+    "n": [
+     "Ruptura de Vínculos / Exorcismo",
+     "Severing Bonds / Exorcism"
+    ],
+    "d": [
+     "Romper lazos místicos, dominaciones mentales o contratos arcanos ajenos.",
+     "Breaking other people's mystic ties, mental domination or arcane contracts."
+    ]
+   }
+  ]
+ }
+]
