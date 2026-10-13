@@ -6,6 +6,12 @@ El producto es un juego de rol universal. Lo interesante desde aquí es el probl
 
 🔗 **[Leerlo publicado](https://epifaneia.dev/nogum/)**
 
+> **Por qué está aquí.** El principio de [Epifaneia](https://epifaneia.dev) es que *el modelo interpreta y el código determinista verifica*. Esto es ese principio llevado al extremo en un dominio donde la especificación era mía de arriba abajo: 150 páginas, dos idiomas, cuatro salidas y una aplicación que consume datos del propio libro.
+>
+> Las tres cosas que se demuestran son las mismas que se piden en un proceso regulado. **Trazabilidad:** cada regla lleva escrito de dónde sale, y el diario de diseño son 154 decisiones con su porqué. **Verificación automática:** las puertas paran la compilación cuando el contenido y los datos dejan de decir lo mismo. **Y restricción deliberada del modelo:** el configurador es determinista porque un árbol de veinte preguntas resuelve eso mejor que un modelo, y al asistente se le recorta el contexto para que nunca lea el diario de trabajo.
+>
+> El problema de fondo es el mismo que ataca [CTSM](https://github.com/epifaneia/ctsm) entre un requisito de cliente y un documento de proveedor: dos textos que debían decir lo mismo y dejaron de decirlo, sin que nadie se enterara. Aquí la diferencia es que el corpus es grande, vivo y bilingüe, y que las puertas llevan meses funcionando.
+
 ---
 
 ## El problema
