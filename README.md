@@ -4,7 +4,7 @@
 
 El producto es un juego de rol universal. Lo interesante desde aquí es el problema: mantener **cuatro productos derivados de una misma fuente, en dos idiomas, con datos compartidos entre un libro y una aplicación**, sin que se desincronicen. Este repositorio es el pipeline que lo resuelve y las puertas de validación que lo vigilan.
 
-🔗 **[Leerlo publicado](https://epifaneia.github.io/nogum/)**
+🔗 **[Leerlo publicado](https://epifaneia.dev/nogum/)**
 
 ---
 
