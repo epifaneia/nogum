@@ -1691,3 +1691,32 @@ gritando y en dos lineas.
 
 Visto de paso y sin tocar: «8.4 Simulacion de manuales» sale dos veces
 seguidas, como titular de seccion y como subtitulo.
+
+---
+
+## T161 · La imagen de cada pieza
+
+Un fichero por pieza (idea, juego, acelerado, app) en `src/img/`; el que
+falte usa `portada.jpg`, asi que hoy las cuatro son la misma. `imagenes.py`
+los pasa a `docs/img/` a dos tamanos: 1280 px para la lamina de cada libro y
+640 px para su tarjeta en la portada del sitio. Cambiar una imagen es dejar el
+original y ejecutar eso, sin tocar codigo. Es el unico paso que usa Pillow; la
+compilacion de los libros sigue siendo biblioteca estandar.
+
+**En los libros, hoja propia y no banda dentro de la portadilla.** La primera
+version metia la imagen arriba de la portadilla. Medido: a las portadillas les
+sobraban entre 8 y 32 mm, la banda pedia casi 90, y la hoja es de alto fijo y
+recorta en silencio lo que no cabe. Ahora cada libro abre con una **lamina**
+(los dados, NOGUM, la imagen a sangre y el nombre de la pieza), como la
+cubierta del PDF retirado, y la portadilla pasa intacta a la pagina 2. El
+lector no pone el indice detras de la lamina sino detras de la portadilla.
+Comprobado en los tres libros y los dos idiomas: la lamina cabe, la portadilla
+conserva su margen, el indice no se duplica (el del Juego son 3 hojas y 91
+entradas, igual que antes) y cada libro tiene una pagina mas.
+
+Solo en las versiones web y local: el artefacto de claude.ai no lleva ficheros
+sueltos.
+
+**En la portada del sitio**, la imagen a sangre arriba de cada tarjeta, en
+16:10, y las cuatro tarjetas en 2 x 2 en escritorio: con 3 + 1 la App se
+quedaba sola, y con imagen se notaba mucho.

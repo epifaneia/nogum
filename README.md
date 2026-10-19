@@ -38,6 +38,7 @@ src/assemble3.py          los tres libros, dos idiomas, tres destinos
 src/build_app3.py         la aplicación
 src/extract_app_data.py   extrae datos del manual hacia la aplicación
 src/make_covers.py        portadas
+src/imagenes.py           la imagen de cada pieza, a los tamaños de la web (usa Pillow)
 ```
 
 Tres destinos con enlaces distintos —carpeta local, artefactos, sitio público— resueltos en compilación, no a mano.
@@ -70,7 +71,8 @@ Sobre esto último: el configurador es determinista **a propósito**. Un árbol 
 docs/      el sitio publicado (GitHub Pages)
 src/       fuentes, datos y pipeline
   frag_*.html      fragmentos del manual (es / en)
-  img/             la imagen de cubierta (de ella sale la vista previa al compartir)
+  img/             las imágenes: portada.jpg y, cuando la haya, una por pieza
+                   (idea, juego, acelerado, app); imagenes.py las pasa a docs/img/
   app4_body.html   la aplicación
   *.json           datos extraídos
   CANON.md         el diario de diseño: 154 decisiones con su porqué

@@ -60,6 +60,11 @@ h1{font:800 clamp(44px,9vw,86px)/.95 var(--display);letter-spacing:.02em;margin:
 .pieza .ir{margin-top:auto;padding-top:10px;font:600 12px/1 var(--mono);text-transform:uppercase;
            letter-spacing:.05em;color:var(--red)}
 .pieza.destaca{border-color:var(--red);border-width:2px}
+/* la imagen de cada pieza, a sangre arriba de su tarjeta (docs/img/, una por pieza) */
+.pieza{overflow:hidden}
+.pieza .foto{display:block;width:calc(100% + 40px);max-width:none;margin:-18px -20px 8px;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:50% 22%;background:#1c1814}
+/* cuatro piezas: dos por fila en escritorio, una en el movil (con 3+1 la App quedaba sola) */
+@media (min-width:640px){.piezas{grid-template-columns:1fr 1fr}}
 h2{font:600 13px/1 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--ink-3);
    margin:52px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--rule)}
 .par{max-width:60ch}
@@ -98,24 +103,28 @@ a{color:var(--red)}
 
 <div class="piezas">
   <a class="pieza destaca" href="idea.html">
+    <img class="foto" src="img/idea-640.jpg" alt="" width="640" height="443" loading="lazy">
     <span class="k">Empieza aquí · 20 min</span>
     <b>La Idea</b>
     <span>Qué pregunta responde NOGUM, con qué reglas, y a qué ha renunciado. Ni una sola regla dentro.</span>
     <span class="ir">Leer →</span>
   </a>
   <a class="pieza" href="acelerado.html">
+    <img class="foto" src="img/acelerado-640.jpg" alt="" width="640" height="443" loading="lazy">
     <span class="k">Jugar esta tarde</span>
     <b>Acelerado</b>
     <span>El juego entero en quince páginas y cuatro modos. Sin leer nada más.</span>
     <span class="ir">Jugar →</span>
   </a>
   <a class="pieza" href="juego.html">
+    <img class="foto" src="img/juego-640.jpg" alt="" width="640" height="443" loading="lazy">
     <span class="k">El manual</span>
     <b>Juego completo</b>
     <span>Motor, personajes, peligro, el Bazar, veinte recetas de mundo y los apéndices con todas las cifras.</span>
     <span class="ir">Abrir →</span>
   </a>
   <a class="pieza" href="app.html">
+    <img class="foto" src="img/app-640.jpg" alt="" width="640" height="443" loading="lazy">
     <span class="k">La herramienta</span>
     <b>App</b>
     <span>Monta la mesa con preguntas sobre escenas, acota el catálogo a tu mundo y hace las fichas.</span>

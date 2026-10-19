@@ -162,7 +162,9 @@
     stack = []; clones = []; running = ''; runCap = '';
     var queue = [];
     sections.forEach(function(sec, idx){
-      if (sec.classList.contains('cover')) { queue.push({cover:sec}); if (CFG.contents) queue.push({contents:true}); return; }
+      // la lamina (la hoja con la imagen) va antes de la portadilla: el indice
+      // va detras de la portadilla, no detras de la lamina
+      if (sec.classList.contains('cover')) { queue.push({cover:sec}); if (CFG.contents && !sec.classList.contains('lamina')) queue.push({contents:true}); return; }
       if (idx === 0 && CFG.contents) queue.push({contents:true});
       queue.push({sec:sec});
     });

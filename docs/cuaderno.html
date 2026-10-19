@@ -100,6 +100,17 @@ main{padding:26px 16px 80px;min-width:0;overflow-x:hidden}
 .sheet.cover{padding:0;background:var(--ink);color:var(--paper)}
 .sheet.cover .rh,.sheet.cover .pf{display:none}
 .sheet.cover .sb{padding:26mm 20mm;display:flex;flex-direction:column;justify-content:center}
+/* la lamina: la primera hoja de cada libro, con la imagen de la pieza a sangre */
+.sheet.cover .sb:has(.lamina){padding:22mm 0 20mm}
+.lamina{display:flex;flex-direction:column;justify-content:space-between;height:100%}
+.lamina-top,.lamina-pie{padding:0 18mm}
+.lamina-dados{display:flex;gap:2.2mm;margin-bottom:6mm}
+.lamina-dados i{display:block;width:7mm;height:7mm;border-radius:1.6mm;background:var(--red)}
+.lamina-dados i+i{background:var(--blue)}
+.sheet.cover .lamina-marca{font:800 74pt/.86 var(--display);letter-spacing:.01em;text-transform:uppercase;margin:0!important;max-width:none}
+.lamina-foto{display:block;width:100%;height:auto}
+.sheet.cover .lamina-t{font:italic 400 30pt/1.05 var(--book);margin:0!important}
+.sheet.cover .lamina-a{display:flex;justify-content:space-between;max-width:none;margin:6mm 0 0!important;padding-top:3mm;border-top:.3mm solid color-mix(in srgb,currentColor 25%,transparent);font:400 7.5pt/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;opacity:.65}
 
 /* ---------- content ---------- */
 .sb h2{font:700 25pt/1.06 var(--book);letter-spacing:-.012em;margin:0 0 5mm;padding-bottom:3mm;border-bottom:.8mm solid var(--ink);text-wrap:balance}
@@ -232,7 +243,7 @@ ol.thread li::before{content:"";position:absolute;left:-1.6mm;top:.55em;width:2.
   #book{zoom:1!important;width:auto;margin:0}
   .sheet{margin:0;box-shadow:none;break-after:page;page-break-after:always}
   .sheet:last-child{break-after:auto}
-  .sheet.cover{background:#161b24;color:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .sheet.cover{background:#1c1814;color:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   table.t thead th,.flag,.tag,aside.meta,.formula-line,.bar{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 
@@ -1319,7 +1330,9 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
     stack = []; clones = []; running = ''; runCap = '';
     var queue = [];
     sections.forEach(function(sec, idx){
-      if (sec.classList.contains('cover')) { queue.push({cover:sec}); if (CFG.contents) queue.push({contents:true}); return; }
+      // la lamina (la hoja con la imagen) va antes de la portadilla: el indice
+      // va detras de la portadilla, no detras de la lamina
+      if (sec.classList.contains('cover')) { queue.push({cover:sec}); if (CFG.contents && !sec.classList.contains('lamina')) queue.push({contents:true}); return; }
       if (idx === 0 && CFG.contents) queue.push({contents:true});
       queue.push({sec:sec});
     });

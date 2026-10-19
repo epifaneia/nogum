@@ -171,6 +171,33 @@ def num_rojo(body):
     return NUM_H.sub(r, body)
 
 
+# La lamina: una hoja de cubierta con la imagen de la pieza, antes de la
+# portadilla, como la primera pagina de un libro. Hoja propia y no banda dentro
+# de la portadilla porque la portadilla es de alto fijo y no cabe: sobraban
+# entre 8 y 32 mm y la imagen pide casi 90 (medido, T161). Solo en web y local:
+# el artefacto de claude.ai no lleva ficheros sueltos. Las imagenes las genera
+# imagenes.py en docs/img/, una por pieza.
+FOTO = {'tesis': ('idea', 'La Idea', 'The Idea'),
+        'juego': ('juego', 'Juego completo', 'Complete game'),
+        'acelerado': ('acelerado', 'Acelerado', 'Accelerated')}
+
+def con_foto(body, me, mode, lang):
+    if mode not in ('web', 'local') or me not in FOTO:
+        return body
+    i = body.find('<section class="cover"')
+    if i < 0:
+        return body
+    img, es, en = FOTO[me]
+    lamina = ('<section class="cover lamina"><div class="lamina">'
+              '<div class="lamina-top"><span class="lamina-dados" aria-hidden="true"><i></i><i></i></span>'
+              '<p class="lamina-marca">NOGUM</p></div>'
+              '<img class="lamina-foto" src="img/%s.jpg" alt="">'
+              '<div class="lamina-pie"><p class="lamina-t">%s</p>'
+              '<p class="lamina-a"><span>%s</span><span>%s</span></p></div></div></section>\n'
+              % (img, es if lang == 'es' else en, AUTOR, LICENCIA))
+    return body[:i] + lamina + body[i:]
+
+
 def con_pack(body, me, mode, lang):
     """Lo mete dentro de la portada, justo antes de cerrarla."""
     i = body.find('<section class="cover"')
@@ -242,6 +269,7 @@ def build(me, mode):
         b = fix_cross(c['src'][l], me, mode)
         if me != 'cuaderno': b = limpia_editorial(b)
         b = con_pack(b, me, mode, l)
+        b = con_foto(b, me, mode, l)
         b = b + colofon(l)
         b = num_rojo(b)
         if mode == 'artifact': check(me, l, b)
@@ -291,3 +319,7 @@ if __name__ == '__main__':
         w = build(p, 'web')
         open(os.path.join(docs, WEB[p]), 'w', encoding='utf-8').write(w)
         print(p, 'KB', len(a.encode()) // 1024)
+    # las imagenes viajan con la version local, que las pide en img/
+    if local_dir and os.path.isdir(os.path.join(docs, 'img')):
+        import shutil
+        shutil.copytree(os.path.join(docs, 'img'), os.path.join(local_dir, 'img'), dirs_exist_ok=True)
