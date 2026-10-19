@@ -1720,3 +1720,24 @@ sueltos.
 **En la portada del sitio**, la imagen a sangre arriba de cada tarjeta, en
 16:10, y las cuatro tarjetas en 2 x 2 en escritorio: con 3 + 1 la App se
 quedaba sola, y con imagen se notaba mucho.
+
+---
+
+## T162 · La portada cuenta la tesis, no el ejemplo
+
+Texto del autor, trabajado en conversacion. La portada abria por el ejemplo (el
+salto de tres metros) y explicaba el mecanismo con cifras; un lector que
+todavia no sabe que es esto no necesita medias ni probabilidades. Ahora el
+orden es el de un argumento: que es NOGUM («no es otro manual universal de rol:
+es una tesis sobre como jugar, que cambia las reglas del juego, literal y
+figuradamente»), las tres formas habituales de disenar reglas, la pregunta que
+casi nadie se hace (como se sienten los jugadores con los dados en la mano, y
+si esa emocion encaja con el universo), el manual que se ajusta a la emocion de
+cada universo, y el feliz accidente, que cumple el «literal» de la primera
+frase. Cierra con «NOGUM te devuelve el mando de lo que siempre vino impuesto y
+sin declarar».
+
+«No es OTRO manual universal», y no «no es un manual universal»: lo es, y el
+Juego completo esta justo debajo. Fuera de la portada quedan el salto, las
+cifras y la seccion «En que consiste la apuesta»; sobre las tarjetas, una linea
+por pieza. Ni un numero en la entrada.
