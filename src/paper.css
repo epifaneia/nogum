@@ -1,31 +1,31 @@
 :root{
-  --ground:#e6e9ee; --paper:#fdfdfc; --ink:#161b24; --ink-2:#434b59; --ink-3:#6b7382;
-  --rule:#cfd5de; --rule-2:#e4e8ee; --side:#dfe3e9;
-  --red:#b8323a; --red-soft:#f6e3e4; --blue:#2a56a0; --blue-soft:#e2eaf7;
-  --amber:#8a5a00; --amber-soft:#f8ecd2; --violet:#5b3f99; --violet-soft:#ece6f7;
-  --drop:#8f2f36; --drop-soft:#f3e2e3; --ok:#2f6b45; --ok-soft:#e1efe6;
+  --ground:#e7ddcb; --paper:#f5efe3; --ink:#1c1814; --ink-2:#4a4237; --ink-3:#655c4e;
+  --rule:#d4c7af; --rule-2:#e8ddc9; --side:#ede4d3;
+  --red:#b8323a; --red-soft:#f0ded4; --blue:#2a56a0; --blue-soft:#e3e1dd;
+  --amber:#8a5a00; --amber-soft:#ebe2cf; --violet:#5b3f99; --violet-soft:#e7dfdc;
+  --drop:#8f2f36; --drop-soft:#ecded3; --ok:#2f6b45; --ok-soft:#e3e3d5;
   --c-pifia:#9b2a32; --c-fallo:#6b6288; --c-parcial:#b98a00; --c-exito:#2f63b5; --c-critico:#0f8f72;
-  --shadow:0 1px 3px rgba(20,30,50,.12),0 10px 30px rgba(20,30,50,.10);
+  --shadow:0 1px 3px rgba(60,40,15,.14),0 10px 30px rgba(60,40,15,.11);
   --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
   --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
   --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --ground:#0e1217; --paper:#171c24; --ink:#e3e7ee; --ink-2:#b3bbc8; --ink-3:#8a93a2;
-  --rule:#303845; --rule-2:#252c37; --side:#12161c;
-  --red:#f07378; --red-soft:#3a1f24; --blue:#86a9ec; --blue-soft:#1b2940;
-  --amber:#e7b95a; --amber-soft:#342a14; --violet:#b9a2ee; --violet-soft:#2a2340;
-  --drop:#f08a90; --drop-soft:#3a2125; --ok:#8fd1a6; --ok-soft:#18301f;
+  --ground:#100e0c; --paper:#1c1916; --ink:#ede6d9; --ink-2:#c5bba9; --ink-3:#9b907e;
+  --rule:#3b342b; --rule-2:#2c2721; --side:#151310;
+  --red:#f07378; --red-soft:#402827; --blue:#86a9ec; --blue-soft:#2e313a;
+  --amber:#e7b95a; --amber-soft:#3f3422; --violet:#b9a2ee; --violet-soft:#37303b;
+  --drop:#f08a90; --drop-soft:#402c2b; --ok:#8fd1a6; --ok-soft:#30382e;
   --c-pifia:#e0666e; --c-fallo:#9a93ad; --c-parcial:#e0aa42; --c-exito:#86a9ec; --c-critico:#5cc3a0;
   --shadow:0 1px 3px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); color-scheme:dark;
 }}
 :root[data-theme="dark"]{
-  --ground:#0e1217; --paper:#171c24; --ink:#e3e7ee; --ink-2:#b3bbc8; --ink-3:#8a93a2;
-  --rule:#303845; --rule-2:#252c37; --side:#12161c;
-  --red:#f07378; --red-soft:#3a1f24; --blue:#86a9ec; --blue-soft:#1b2940;
-  --amber:#e7b95a; --amber-soft:#342a14; --violet:#b9a2ee; --violet-soft:#2a2340;
-  --drop:#f08a90; --drop-soft:#3a2125; --ok:#8fd1a6; --ok-soft:#18301f;
+  --ground:#100e0c; --paper:#1c1916; --ink:#ede6d9; --ink-2:#c5bba9; --ink-3:#9b907e;
+  --rule:#3b342b; --rule-2:#2c2721; --side:#151310;
+  --red:#f07378; --red-soft:#402827; --blue:#86a9ec; --blue-soft:#2e313a;
+  --amber:#e7b95a; --amber-soft:#3f3422; --violet:#b9a2ee; --violet-soft:#37303b;
+  --drop:#f08a90; --drop-soft:#402c2b; --ok:#8fd1a6; --ok-soft:#30382e;
   --c-pifia:#e0666e; --c-fallo:#9a93ad; --c-parcial:#e0aa42; --c-exito:#86a9ec; --c-critico:#5cc3a0;
   --shadow:0 1px 3px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); color-scheme:dark;
 }
@@ -93,6 +93,7 @@ main{padding:26px 16px 80px;min-width:0;overflow-x:hidden}
 /* ---------- content ---------- */
 .sb h2{font:800 25pt/1.02 var(--display);letter-spacing:.02em;text-transform:uppercase;margin:0 0 5mm;padding-bottom:3mm;border-bottom:.8mm solid var(--ink);text-wrap:balance}
 .sb h3{font:800 16pt/1.1 var(--display);letter-spacing:.03em;text-transform:uppercase;margin:6mm 0 2.5mm;text-wrap:balance;break-after:avoid}
+.hn{color:var(--red)}
 .sb h3::before{content:"";display:inline-block;width:2.4mm;height:2.4mm;background:var(--red);border-radius:.5mm;margin-right:2.5mm;vertical-align:.12em;transform:rotate(45deg)}
 .sb h4{font:600 12pt/1.3 var(--serif);margin:5mm 0 2mm}
 .sb > :first-child{margin-top:0}
@@ -109,8 +110,11 @@ main{padding:26px 16px 80px;min-width:0;overflow-x:hidden}
 .lede{font-size:12.5pt}
 
 .tw{margin:2.5mm 0 4mm;border:.3mm solid var(--rule);border-radius:1.5mm;overflow:hidden}
+/* break-word y no anywhere: anywhere hace creer a la tabla que cualquier columna
+   cabe en una letra, estrecha las de etiquetas y trocea «Total» o «Rejilla» sin
+   guion. Medido: 422 palabras partidas en el Juego con anywhere, 5 con break-word. */
 table.t{border-collapse:collapse;width:100%;font-size:8.7pt;line-height:1.35;table-layout:auto}
-table.t th,table.t td{padding:1.4mm 2mm;text-align:left;vertical-align:top;border-bottom:.25mm solid var(--rule-2);overflow-wrap:anywhere;hyphens:auto}
+table.t th,table.t td{padding:1.4mm 2mm;text-align:left;vertical-align:top;border-bottom:.25mm solid var(--rule-2);overflow-wrap:break-word;hyphens:auto}
 table.t thead th{background:var(--ink);color:var(--paper);font:600 7.5pt/1.25 var(--mono);letter-spacing:.03em;text-transform:uppercase}
 table.t tbody th{background:var(--rule-2);font-weight:600}
 table.t tbody tr:last-child>*{border-bottom:0}

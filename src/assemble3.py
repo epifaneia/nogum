@@ -157,6 +157,20 @@ def colofon(lang):
     return COLOFON[lang].format(l=lang, u=LIC[lang], a=AUTOR, c=LICENCIA)
 
 
+# El numero de cada titular, en el rojo del dado: «Capitulo 3 ·», «3.5»,
+# «1 ·», «Apendice D ·» y las recetas del Bazar, «1.». Solo se envuelve el
+# numero; el buscador y el indice lateral leen textContent y no lo notan.
+NUM_H = re.compile(r'(<h[23]\b[^>]*>)(\s*)(?:((?:Capítulo|Chapter|Apéndice|Appendix)\s+)([0-9]+|[A-Z])\b'
+                   r'|([0-9]+(?:\.[0-9]+)*\.?)(?=\s))')
+
+def num_rojo(body):
+    def r(m):
+        if m.group(3):
+            return m.group(1) + m.group(2) + m.group(3) + '<span class="hn">%s</span>' % m.group(4)
+        return m.group(1) + m.group(2) + '<span class="hn">%s</span>' % m.group(5)
+    return NUM_H.sub(r, body)
+
+
 def con_pack(body, me, mode, lang):
     """Lo mete dentro de la portada, justo antes de cerrarla."""
     i = body.find('<section class="cover"')
@@ -229,10 +243,11 @@ def build(me, mode):
         if me != 'cuaderno': b = limpia_editorial(b)
         b = con_pack(b, me, mode, l)
         b = b + colofon(l)
+        b = num_rojo(b)
         if mode == 'artifact': check(me, l, b)
         tpls += f'<template id="src-{l}">{b}</template>\n'
-    sub_es = {'tesis': 'La apuesta de diseño', 'juego': 'Juego completo', 'acelerado': 'Acelerado', 'cuaderno': 'Cuaderno de edición'}[me]
-    sub_en = {'tesis': 'The design wager', 'juego': 'Complete game', 'acelerado': 'Accelerated', 'cuaderno': 'Editing notebook'}[me]
+    sub_es = {'tesis': 'La Idea', 'juego': 'Juego completo', 'acelerado': 'Acelerado', 'cuaderno': 'Cuaderno de edición'}[me]
+    sub_en = {'tesis': 'The Idea', 'juego': 'Complete game', 'acelerado': 'Accelerated', 'cuaderno': 'Editing notebook'}[me]
     head = (f'<title>{c["title"]["es"]}</title>\n'
             '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
             '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap">\n'
@@ -247,7 +262,12 @@ def build(me, mode):
             '<main><p class="status" id="status" role="status"></p><div id="book"></div></main>\n</div>\n'
             f'<script type="application/json" id="cfg">{cfg}</script>\n{tpls}<script>{JS}</script>\n')
     page = head + body
-    if mode == 'local':
+    # El esqueleto lo pone claude.ai en los artefactos, pero NO GitHub Pages:
+    # sin <!doctype> el navegador entra en modo quirks (las tablas, por
+    # ejemplo, dejan de heredar el tamano de letra), sin viewport el movil
+    # dibuja la pagina a ancho de escritorio, y sin charset quien la guarde
+    # o la abra desde disco ve «Ã­ndice». La version web estuvo asi (T159).
+    if mode in ('local', 'web'):
         i = page.index('</style>') + 8
         page = ('<!doctype html>\n<html lang="es">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
                 + page[:i] + '\n</head>\n<body>\n' + page[i:] + '</body>\n</html>\n')

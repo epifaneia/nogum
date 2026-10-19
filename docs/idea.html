@@ -1,35 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>NOGUM · La Idea</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap">
 <style>:root{
-  --ground:#e6e9ee; --paper:#fdfdfc; --ink:#161b24; --ink-2:#434b59; --ink-3:#6b7382;
-  --rule:#cfd5de; --rule-2:#e4e8ee; --side:#dfe3e9;
-  --red:#b8323a; --red-soft:#f6e3e4; --blue:#2a56a0; --blue-soft:#e2eaf7;
-  --amber:#8a5a00; --amber-soft:#f8ecd2; --violet:#5b3f99; --violet-soft:#ece6f7;
-  --drop:#8f2f36; --drop-soft:#f3e2e3; --ok:#2f6b45; --ok-soft:#e1efe6;
+  --ground:#e7ddcb; --paper:#f5efe3; --ink:#1c1814; --ink-2:#4a4237; --ink-3:#655c4e;
+  --rule:#d4c7af; --rule-2:#e8ddc9; --side:#ede4d3;
+  --red:#b8323a; --red-soft:#f0ded4; --blue:#2a56a0; --blue-soft:#e3e1dd;
+  --amber:#8a5a00; --amber-soft:#ebe2cf; --violet:#5b3f99; --violet-soft:#e7dfdc;
+  --drop:#8f2f36; --drop-soft:#ecded3; --ok:#2f6b45; --ok-soft:#e3e3d5;
   --c-pifia:#9b2a32; --c-fallo:#6b6288; --c-parcial:#b98a00; --c-exito:#2f63b5; --c-critico:#0f8f72;
-  --shadow:0 1px 3px rgba(20,30,50,.12),0 10px 30px rgba(20,30,50,.10);
+  --shadow:0 1px 3px rgba(60,40,15,.14),0 10px 30px rgba(60,40,15,.11);
   --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
   --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
   --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --ground:#0e1217; --paper:#171c24; --ink:#e3e7ee; --ink-2:#b3bbc8; --ink-3:#8a93a2;
-  --rule:#303845; --rule-2:#252c37; --side:#12161c;
-  --red:#f07378; --red-soft:#3a1f24; --blue:#86a9ec; --blue-soft:#1b2940;
-  --amber:#e7b95a; --amber-soft:#342a14; --violet:#b9a2ee; --violet-soft:#2a2340;
-  --drop:#f08a90; --drop-soft:#3a2125; --ok:#8fd1a6; --ok-soft:#18301f;
+  --ground:#100e0c; --paper:#1c1916; --ink:#ede6d9; --ink-2:#c5bba9; --ink-3:#9b907e;
+  --rule:#3b342b; --rule-2:#2c2721; --side:#151310;
+  --red:#f07378; --red-soft:#402827; --blue:#86a9ec; --blue-soft:#2e313a;
+  --amber:#e7b95a; --amber-soft:#3f3422; --violet:#b9a2ee; --violet-soft:#37303b;
+  --drop:#f08a90; --drop-soft:#402c2b; --ok:#8fd1a6; --ok-soft:#30382e;
   --c-pifia:#e0666e; --c-fallo:#9a93ad; --c-parcial:#e0aa42; --c-exito:#86a9ec; --c-critico:#5cc3a0;
   --shadow:0 1px 3px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); color-scheme:dark;
 }}
 :root[data-theme="dark"]{
-  --ground:#0e1217; --paper:#171c24; --ink:#e3e7ee; --ink-2:#b3bbc8; --ink-3:#8a93a2;
-  --rule:#303845; --rule-2:#252c37; --side:#12161c;
-  --red:#f07378; --red-soft:#3a1f24; --blue:#86a9ec; --blue-soft:#1b2940;
-  --amber:#e7b95a; --amber-soft:#342a14; --violet:#b9a2ee; --violet-soft:#2a2340;
-  --drop:#f08a90; --drop-soft:#3a2125; --ok:#8fd1a6; --ok-soft:#18301f;
+  --ground:#100e0c; --paper:#1c1916; --ink:#ede6d9; --ink-2:#c5bba9; --ink-3:#9b907e;
+  --rule:#3b342b; --rule-2:#2c2721; --side:#151310;
+  --red:#f07378; --red-soft:#402827; --blue:#86a9ec; --blue-soft:#2e313a;
+  --amber:#e7b95a; --amber-soft:#3f3422; --violet:#b9a2ee; --violet-soft:#37303b;
+  --drop:#f08a90; --drop-soft:#402c2b; --ok:#8fd1a6; --ok-soft:#30382e;
   --c-pifia:#e0666e; --c-fallo:#9a93ad; --c-parcial:#e0aa42; --c-exito:#86a9ec; --c-critico:#5cc3a0;
   --shadow:0 1px 3px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); color-scheme:dark;
 }
@@ -97,6 +102,7 @@ main{padding:26px 16px 80px;min-width:0;overflow-x:hidden}
 /* ---------- content ---------- */
 .sb h2{font:800 25pt/1.02 var(--display);letter-spacing:.02em;text-transform:uppercase;margin:0 0 5mm;padding-bottom:3mm;border-bottom:.8mm solid var(--ink);text-wrap:balance}
 .sb h3{font:800 16pt/1.1 var(--display);letter-spacing:.03em;text-transform:uppercase;margin:6mm 0 2.5mm;text-wrap:balance;break-after:avoid}
+.hn{color:var(--red)}
 .sb h3::before{content:"";display:inline-block;width:2.4mm;height:2.4mm;background:var(--red);border-radius:.5mm;margin-right:2.5mm;vertical-align:.12em;transform:rotate(45deg)}
 .sb h4{font:600 12pt/1.3 var(--serif);margin:5mm 0 2mm}
 .sb > :first-child{margin-top:0}
@@ -113,8 +119,11 @@ main{padding:26px 16px 80px;min-width:0;overflow-x:hidden}
 .lede{font-size:12.5pt}
 
 .tw{margin:2.5mm 0 4mm;border:.3mm solid var(--rule);border-radius:1.5mm;overflow:hidden}
+/* break-word y no anywhere: anywhere hace creer a la tabla que cualquier columna
+   cabe en una letra, estrecha las de etiquetas y trocea «Total» o «Rejilla» sin
+   guion. Medido: 422 palabras partidas en el Juego con anywhere, 5 con break-word. */
 table.t{border-collapse:collapse;width:100%;font-size:8.7pt;line-height:1.35;table-layout:auto}
-table.t th,table.t td{padding:1.4mm 2mm;text-align:left;vertical-align:top;border-bottom:.25mm solid var(--rule-2);overflow-wrap:anywhere;hyphens:auto}
+table.t th,table.t td{padding:1.4mm 2mm;text-align:left;vertical-align:top;border-bottom:.25mm solid var(--rule-2);overflow-wrap:break-word;hyphens:auto}
 table.t thead th{background:var(--ink);color:var(--paper);font:600 7.5pt/1.25 var(--mono);letter-spacing:.03em;text-transform:uppercase}
 table.t tbody th{background:var(--rule-2);font-weight:600}
 table.t tbody tr:last-child>*{border-bottom:0}
@@ -383,9 +392,12 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 .fig figcaption,.fig > .fig-pie{margin:0;padding:2mm 3mm;font:9pt/1.35 var(--mono);color:var(--ink-2);border-top:.3mm solid var(--rule);background:var(--paper)}
 .fig figcaption b,.fig > .fig-pie b{color:var(--cap)}
 </style>
+</head>
+<body>
+
 <header class="top">
 <button class="tool menu-btn" id="menuBtn" aria-controls="side" aria-expanded="false">Índice</button>
-<span class="brand"><span class="dice" aria-hidden="true"><i></i><i></i></span><b>NOGUM</b><small data-i18n-es="La apuesta de diseño" data-i18n-en="The design wager">La apuesta de diseño</small></span>
+<span class="brand"><span class="dice" aria-hidden="true"><i></i><i></i></span><b>NOGUM</b><small data-i18n-es="La Idea" data-i18n-en="The Idea">La Idea</small></span>
 <nav class="products" aria-label="NOGUM"><span aria-current="page" data-i18n-es="La Idea" data-i18n-en="The Idea">La Idea</span><a href="juego.html" data-i18n-es="Juego" data-i18n-en="Game">Juego</a><a href="acelerado.html" data-i18n-es="Acelerado" data-i18n-en="Accelerated">Acelerado</a><a href="app.html" data-i18n-es="App" data-i18n-en="App">App</a></nav>
 <div class="lang" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" aria-pressed="true">ES</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
 <button class="tool" id="printBtn" type="button">Imprimir</button>
@@ -414,7 +426,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </section>
 
 <section class="chapter" id="es-intro">
-<h2>1 · De qué va esto</h2>
+<h2><span class="hn">1</span> · De qué va esto</h2>
 
 <p>NOGUM es un manual universal. Sirve para una espada, para un láser y para un conjuro, igual que sirven los otros. Pero esa no es la parte interesante, porque eso ya lo hacen cinco o seis sistemas excelentes y llevan décadas haciéndolo bien.</p>
 
@@ -460,7 +472,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </section>
 
 <section class="chapter" id="es-diales">
-<h2>2 · La mesa de mezclas</h2>
+<h2><span class="hn">2</span> · La mesa de mezclas</h2>
 
 <p>Si la emoción se elige, hace falta algo con lo que elegirla. NOGUM no te da un interruptor de géneros con «fantasía / ciberpunk / terror» escrito al lado. Te da una <strong>mesa de mezclas</strong>: unos pocos controles independientes que puedes subir y bajar por separado, y que combinados dan muchísimos sitios donde vivir.</p>
 
@@ -490,7 +502,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </section>
 
 <section class="chapter" id="es-rigor">
-<h2>3 · El rigor: la promesa es comprobable</h2>
+<h2><span class="hn">3</span> · El rigor: la promesa es comprobable</h2>
 
 <p>Todo lo anterior suena bien y no vale nada si no se traduce en números. «El tono importa» lo firma cualquiera. Lo difícil es que girar un control <strong>mueva la estadística de una forma concreta, medible y escrita</strong>.</p>
 
@@ -506,7 +518,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </section>
 
 <section class="chapter" id="es-modular">
-<h2>4 · Modular de verdad</h2>
+<h2><span class="hn">4</span> · Modular de verdad</h2>
 
 <p>«Modular» es de esas palabras que aparecen en la contraportada de todo y casi nunca significan nada. Aquí quiere decir algo muy concreto: <strong>el núcleo, sin añadirle nada, ya es un juego completo</strong>.</p>
 
@@ -518,7 +530,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </section>
 
 <section class="chapter" id="es-reglas">
-<h2>5 · Las estrategias, agrupadas</h2>
+<h2><span class="hn">5</span> · Las estrategias, agrupadas</h2>
 
 <p>Estas son las familias de decisiones que salieron de la tesis. No están todas las reglas del manual: están las que existen <em>porque</em> la emoción manda, y que se caerían con ella si la tesis cayera.</p>
 
@@ -554,7 +566,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </section>
 
 <section class="chapter" id="es-listas">
-<h2>6 · El problema de las listas infinitas</h2>
+<h2><span class="hn">6</span> · El problema de las listas infinitas</h2>
 
 <p>Los manuales universales tienen una enfermedad conocida: para servir para todo, acaban listándolo todo. Cuarenta disciplinas. Doscientas especialidades. Catálogos de equipo de cien páginas que cubren desde la espada corta hasta el implante neural.</p>
 
@@ -570,7 +582,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </section>
 
 <section class="chapter" id="es-acelerado">
-<h2>7 · La versión para no esperar</h2>
+<h2><span class="hn">7</span> · La versión para no esperar</h2>
 
 <p>Hay una versión corta, <strong>NOGUM Acelerado</strong>, y no es un resumen cobarde: es la tesis subrayada. Se queda con lo más reconocible y tira lo demás.</p>
 
@@ -584,7 +596,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </section>
 
 <section class="chapter" id="es-cuatro">
-<h2>8 · Cuatro piezas, una cosa</h2>
+<h2><span class="hn">8</span> · Cuatro piezas, una cosa</h2>
 
 <p>NOGUM se publica en cuatro piezas que se leen por separado y se usan juntas. No es una colección: cada una hace un trabajo que las otras no pueden hacer, y es la combinación lo que no existe en ningún otro sitio.</p>
 
@@ -627,7 +639,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </section>
 
 <section class="chapter" id="en-intro" lang="en">
-<h2>1 · What this is about</h2>
+<h2><span class="hn">1</span> · What this is about</h2>
 
 <p>NOGUM is a universal system. It works for a sword, for a laser and for a spell, exactly as the others do. That is not the interesting part, because five or six excellent systems already do it, and they have been doing it well for decades.</p>
 
@@ -673,7 +685,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </section>
 
 <section class="chapter" id="en-dials" lang="en">
-<h2>2 · The mixing desk</h2>
+<h2><span class="hn">2</span> · The mixing desk</h2>
 
 <p>If emotion is something you choose, you need something to choose it with. NOGUM does not hand you a genre switch with "fantasy / cyberpunk / horror" written beside it. It hands you a <strong>mixing desk</strong>: a few independent controls you can raise and lower separately, which combined give a great many places to live.</p>
 
@@ -703,7 +715,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </section>
 
 <section class="chapter" id="en-rigour" lang="en">
-<h2>3 · Rigour: the promise can be checked</h2>
+<h2><span class="hn">3</span> · Rigour: the promise can be checked</h2>
 
 <p>Everything above sounds good and is worth nothing unless it turns into numbers. Anyone can sign "tone matters". The hard part is making a turn of a control <strong>move the statistics in a specific, measurable, written-down way</strong>.</p>
 
@@ -719,7 +731,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </section>
 
 <section class="chapter" id="en-modular" lang="en">
-<h2>4 · Genuinely modular</h2>
+<h2><span class="hn">4</span> · Genuinely modular</h2>
 
 <p>"Modular" is one of those words that appears on the back cover of everything and almost never means anything. Here it means something very specific: <strong>the core, with nothing added to it, is already a complete game</strong>.</p>
 
@@ -731,7 +743,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </section>
 
 <section class="chapter" id="en-rules" lang="en">
-<h2>5 · The strategies, grouped</h2>
+<h2><span class="hn">5</span> · The strategies, grouped</h2>
 
 <p>These are the families of decisions that came out of the thesis. They are not all the rules in the manual: they are the ones that exist <em>because</em> emotion rules, and that would fall with the thesis if it fell.</p>
 
@@ -767,7 +779,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </section>
 
 <section class="chapter" id="en-lists" lang="en">
-<h2>6 · The problem with endless lists</h2>
+<h2><span class="hn">6</span> · The problem with endless lists</h2>
 
 <p>Universal rulebooks have a well-known disease: in order to serve everything, they end up listing everything. Forty disciplines. Two hundred specialities. Hundred-page equipment catalogues covering everything from the short sword to the neural implant.</p>
 
@@ -783,7 +795,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </section>
 
 <section class="chapter" id="en-accelerated" lang="en">
-<h2>7 · The version for the impatient</h2>
+<h2><span class="hn">7</span> · The version for the impatient</h2>
 
 <p>There is a short version, <strong>NOGUM Accelerated</strong>, and it is not a timid summary: it is the thesis underlined. It keeps what is most recognisable and throws out the rest.</p>
 
@@ -797,7 +809,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </section>
 
 <section class="chapter" id="en-four" lang="en">
-<h2>8 · Four pieces, one thing</h2>
+<h2><span class="hn">8</span> · Four pieces, one thing</h2>
 
 <p>NOGUM is published as four pieces that read separately and are used together. It is not a collection: each one does a job the others cannot do, and it is the combination that does not exist anywhere else.</p>
 
@@ -1161,3 +1173,5 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
   if (document.fonts && document.fonts.ready) { document.fonts.ready.then(start); setTimeout(start, 2500); } else start();
 })();
 </script>
+</body>
+</html>

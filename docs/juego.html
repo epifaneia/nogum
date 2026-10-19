@@ -1,35 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>NOGUM · Juego completo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap">
 <style>:root{
-  --ground:#e6e9ee; --paper:#fdfdfc; --ink:#161b24; --ink-2:#434b59; --ink-3:#6b7382;
-  --rule:#cfd5de; --rule-2:#e4e8ee; --side:#dfe3e9;
-  --red:#b8323a; --red-soft:#f6e3e4; --blue:#2a56a0; --blue-soft:#e2eaf7;
-  --amber:#8a5a00; --amber-soft:#f8ecd2; --violet:#5b3f99; --violet-soft:#ece6f7;
-  --drop:#8f2f36; --drop-soft:#f3e2e3; --ok:#2f6b45; --ok-soft:#e1efe6;
+  --ground:#e7ddcb; --paper:#f5efe3; --ink:#1c1814; --ink-2:#4a4237; --ink-3:#655c4e;
+  --rule:#d4c7af; --rule-2:#e8ddc9; --side:#ede4d3;
+  --red:#b8323a; --red-soft:#f0ded4; --blue:#2a56a0; --blue-soft:#e3e1dd;
+  --amber:#8a5a00; --amber-soft:#ebe2cf; --violet:#5b3f99; --violet-soft:#e7dfdc;
+  --drop:#8f2f36; --drop-soft:#ecded3; --ok:#2f6b45; --ok-soft:#e3e3d5;
   --c-pifia:#9b2a32; --c-fallo:#6b6288; --c-parcial:#b98a00; --c-exito:#2f63b5; --c-critico:#0f8f72;
-  --shadow:0 1px 3px rgba(20,30,50,.12),0 10px 30px rgba(20,30,50,.10);
+  --shadow:0 1px 3px rgba(60,40,15,.14),0 10px 30px rgba(60,40,15,.11);
   --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
   --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
   --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --ground:#0e1217; --paper:#171c24; --ink:#e3e7ee; --ink-2:#b3bbc8; --ink-3:#8a93a2;
-  --rule:#303845; --rule-2:#252c37; --side:#12161c;
-  --red:#f07378; --red-soft:#3a1f24; --blue:#86a9ec; --blue-soft:#1b2940;
-  --amber:#e7b95a; --amber-soft:#342a14; --violet:#b9a2ee; --violet-soft:#2a2340;
-  --drop:#f08a90; --drop-soft:#3a2125; --ok:#8fd1a6; --ok-soft:#18301f;
+  --ground:#100e0c; --paper:#1c1916; --ink:#ede6d9; --ink-2:#c5bba9; --ink-3:#9b907e;
+  --rule:#3b342b; --rule-2:#2c2721; --side:#151310;
+  --red:#f07378; --red-soft:#402827; --blue:#86a9ec; --blue-soft:#2e313a;
+  --amber:#e7b95a; --amber-soft:#3f3422; --violet:#b9a2ee; --violet-soft:#37303b;
+  --drop:#f08a90; --drop-soft:#402c2b; --ok:#8fd1a6; --ok-soft:#30382e;
   --c-pifia:#e0666e; --c-fallo:#9a93ad; --c-parcial:#e0aa42; --c-exito:#86a9ec; --c-critico:#5cc3a0;
   --shadow:0 1px 3px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); color-scheme:dark;
 }}
 :root[data-theme="dark"]{
-  --ground:#0e1217; --paper:#171c24; --ink:#e3e7ee; --ink-2:#b3bbc8; --ink-3:#8a93a2;
-  --rule:#303845; --rule-2:#252c37; --side:#12161c;
-  --red:#f07378; --red-soft:#3a1f24; --blue:#86a9ec; --blue-soft:#1b2940;
-  --amber:#e7b95a; --amber-soft:#342a14; --violet:#b9a2ee; --violet-soft:#2a2340;
-  --drop:#f08a90; --drop-soft:#3a2125; --ok:#8fd1a6; --ok-soft:#18301f;
+  --ground:#100e0c; --paper:#1c1916; --ink:#ede6d9; --ink-2:#c5bba9; --ink-3:#9b907e;
+  --rule:#3b342b; --rule-2:#2c2721; --side:#151310;
+  --red:#f07378; --red-soft:#402827; --blue:#86a9ec; --blue-soft:#2e313a;
+  --amber:#e7b95a; --amber-soft:#3f3422; --violet:#b9a2ee; --violet-soft:#37303b;
+  --drop:#f08a90; --drop-soft:#402c2b; --ok:#8fd1a6; --ok-soft:#30382e;
   --c-pifia:#e0666e; --c-fallo:#9a93ad; --c-parcial:#e0aa42; --c-exito:#86a9ec; --c-critico:#5cc3a0;
   --shadow:0 1px 3px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); color-scheme:dark;
 }
@@ -97,6 +102,7 @@ main{padding:26px 16px 80px;min-width:0;overflow-x:hidden}
 /* ---------- content ---------- */
 .sb h2{font:800 25pt/1.02 var(--display);letter-spacing:.02em;text-transform:uppercase;margin:0 0 5mm;padding-bottom:3mm;border-bottom:.8mm solid var(--ink);text-wrap:balance}
 .sb h3{font:800 16pt/1.1 var(--display);letter-spacing:.03em;text-transform:uppercase;margin:6mm 0 2.5mm;text-wrap:balance;break-after:avoid}
+.hn{color:var(--red)}
 .sb h3::before{content:"";display:inline-block;width:2.4mm;height:2.4mm;background:var(--red);border-radius:.5mm;margin-right:2.5mm;vertical-align:.12em;transform:rotate(45deg)}
 .sb h4{font:600 12pt/1.3 var(--serif);margin:5mm 0 2mm}
 .sb > :first-child{margin-top:0}
@@ -113,8 +119,11 @@ main{padding:26px 16px 80px;min-width:0;overflow-x:hidden}
 .lede{font-size:12.5pt}
 
 .tw{margin:2.5mm 0 4mm;border:.3mm solid var(--rule);border-radius:1.5mm;overflow:hidden}
+/* break-word y no anywhere: anywhere hace creer a la tabla que cualquier columna
+   cabe en una letra, estrecha las de etiquetas y trocea «Total» o «Rejilla» sin
+   guion. Medido: 422 palabras partidas en el Juego con anywhere, 5 con break-word. */
 table.t{border-collapse:collapse;width:100%;font-size:8.7pt;line-height:1.35;table-layout:auto}
-table.t th,table.t td{padding:1.4mm 2mm;text-align:left;vertical-align:top;border-bottom:.25mm solid var(--rule-2);overflow-wrap:anywhere;hyphens:auto}
+table.t th,table.t td{padding:1.4mm 2mm;text-align:left;vertical-align:top;border-bottom:.25mm solid var(--rule-2);overflow-wrap:break-word;hyphens:auto}
 table.t thead th{background:var(--ink);color:var(--paper);font:600 7.5pt/1.25 var(--mono);letter-spacing:.03em;text-transform:uppercase}
 table.t tbody th{background:var(--rule-2);font-weight:600}
 table.t tbody tr:last-child>*{border-bottom:0}
@@ -383,6 +392,9 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 .fig figcaption,.fig > .fig-pie{margin:0;padding:2mm 3mm;font:9pt/1.35 var(--mono);color:var(--ink-2);border-top:.3mm solid var(--rule);background:var(--paper)}
 .fig figcaption b,.fig > .fig-pie b{color:var(--cap)}
 </style>
+</head>
+<body>
+
 <header class="top">
 <button class="tool menu-btn" id="menuBtn" aria-controls="side" aria-expanded="false">Índice</button>
 <span class="brand"><span class="dice" aria-hidden="true"><i></i><i></i></span><b>NOGUM</b><small data-i18n-es="Juego completo" data-i18n-en="Complete game">Juego completo</small></span>
@@ -495,12 +507,12 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <p class="signoff">Bienvenido a este experimento.</p>
 </section>
 <section class="chapter" id="ch1">
-<h2>Capítulo 1 · El Motor (La física de la emoción)</h2>
+<h2>Capítulo <span class="hn">1</span> · El Motor (La física de la emoción)</h2>
 <p>Aquí entramos en harina. Este capítulo da forma al concepto de la introducción: cómo la estadística de los dados influye en la emoción de la tirada, y cómo ese ánimo al lanzar los dados influye en la sensación de toda la mesa.</p>
 <p>En el mundo real, la gravedad es una constante: 9,8 m/s². Si sueltas una manzana, cae. Siempre. En la ficción, la gravedad es una opinión. Si un héroe de acción salta de un edificio, cae sobre un toldo y sobrevive. Si un secundario de una película de terror hace lo mismo, se rompe el cuello.</p>
 <p>La física no ha cambiado: ha cambiado la <strong>intención</strong> del universo. NOGUM no simula la física de los objetos; simula la física del guion. Para ello, antes de tocar un solo dado, te entrego el control de los dos motores invisibles que gobiernan esa realidad.</p>
 
-<h3 id="ch1-ejes">1.1 Los dos ejes de la realidad</h3>
+<h3 id="ch1-ejes"><span class="hn">1.1</span> Los dos ejes de la realidad</h3>
 <p>Imagina que tienes delante una consola de mezclas con dos deslizadores principales. Al moverlos, alteras «cómo se siente» existir en tu mundo.</p>
 
 <h4>Eje Y · El Optimismo (la Voluntad)</h4>
@@ -528,7 +540,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <p>Y la vida real es optimismo neutro con caos <strong>bajo</strong>: justa y previsible, no caótica. <span class="src">T4</span></p>
 </div>
 
-<h3 id="ch1-malla">1.2 El Cuadrante (el mapa de tu historia)</h3>
+<h3 id="ch1-malla"><span class="hn">1.2</span> El Cuadrante (el mapa de tu historia)</h3>
 <p>Al cruzar los dos ejes obtenemos el mapa de todos los géneros posibles. Aquí todavía no hay números, solo sensaciones. Busca dónde quieres que vivan tus jugadores (o dónde quieres que vivan <em>en esta escena concreta</em>).</p>
 <div class="tw"><table class="t grid-tonal">
 <thead><tr><th></th><th>Previsible<br><small>El mundo se comporta</small></th><th>La costumbre<br><small>Ni ordena ni hace ruido</small></th><th>Caótico<br><small>Todo tiene un precio</small></th></tr></thead>
@@ -551,7 +563,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <p>El Cuadrante no es un menú cerrado: los tonos son potencialmente infinitos y se invita a cada DJ a crear los suyos <span class="src">T3</span>. En el apartado 1.3 abrimos el capó del coche para ver el motor matemático que hace que esto funcione. <strong>Si no te interesan las matemáticas y solo quieres saber cómo se juega, salta directamente al <a href="#ch1-panel">apartado 1.4</a>.</strong></p>
 </section>
 <section class="chapter" id="ch1-maquinas">
-<h2>1.3 La Sala de Máquinas (Análisis Estadístico)</h2>
+<h2><span class="hn">1.3</span> La Sala de Máquinas (Análisis Estadístico)</h2>
 <aside class="meta"><p>Aviso: esta sección es contenido técnico. Si las probabilidades te dan urticaria, puedes saltar directamente al 1.4 (Panel de Control). Las tarjetas funcionan igual aunque no sepas por qué. Aquí se viene a mirar el motor con la tapa quitada.</p></aside>
 <p>Todas las cifras de esta sección salen de una enumeración exacta de las combinaciones posibles: 10 con un dado y 100 con dos. No son redondeos ni simulaciones. Siguen las reglas canónicas: la pifia y el crítico se leen <strong>en los dados, sin bonos</strong> y tienen prioridad sobre el total. El resto se resuelve con <em>lectura + bono total</em> contra la TN de la tarjeta activa.</p>
 <h3 id="maq-equilibrio">A. El punto de equilibrio: un dado, caos neutro</h3>
@@ -1376,7 +1388,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <p>De ahí la frase que debería estar en la primera página de cualquier campaña larga: <strong>si quieres que la campaña escale, abre el grifo de las Llaves, no el de los puntos.</strong></p>
 
 <section class="chapter" id="ch1-panel">
-<h2>1.4 El Panel de Control (las Tarjetas de Tono)</h2>
+<h2><span class="hn">1.4</span> El Panel de Control (las Tarjetas de Tono)</h2>
 <p>Olvídate de memorizar tablas. Como Director de Juego de NOGUM tu trabajo es llevar el ritmo, no las matemáticas. Todas las reglas de cada modo están condensadas en <strong>tarjetas de tono</strong>. Imprime la hoja o tenla en la pantalla. Cuando la escena cambie, mira la tarjeta que toca: <strong>esa es la única regla que existe en ese momento</strong>.</p>
 <div class="rule">
 <p class="rule-title">Cómo se lee cualquier tarjeta</p>
@@ -1465,11 +1477,11 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <p class="note"><strong>En la app:</strong> cada tarjeta puede traer su música. Arrastras tus propios ficheros de audio, le asignas uno a cada tarjeta y ahí se queda, con un altavoz en cada casilla del Cuadrante para que suene en bucle. No subimos nada ni te damos ninguna lista: la música de tu mesa la eliges tú, tus ficheros se quedan en tu máquina y nadie los redistribuye. Lo que sí hace la app es acordarse de cuál va con cuál.</p>
 </section>
 <section class="chapter" id="ch2">
-<h2>Capítulo 2 · El Ancla (La Rejilla de Potencia)</h2>
+<h2>Capítulo <span class="hn">2</span> · El Ancla (La Rejilla de Potencia)</h2>
 <p>En el capítulo anterior rompimos la realidad. Te dimos las herramientas para convertir una historia seria en una comedia absurda o en una pesadilla letal simplemente cambiando la forma de leer los dados. Pero si el mundo es tan volátil… ¿qué impide que el personaje se disuelva? ¿Qué define quién eres si la física cambia constantemente?</p>
 <p>Necesitamos un <strong>ancla</strong>. Necesitamos separar, de una vez por todas, <strong>«qué tan bueno eres»</strong> de <strong>«qué tan grandes son tus hazañas»</strong>.</p>
 
-<h3 id="ch2-competencia">2.1 La competencia inmutable (el «quién»)</h3>
+<h3 id="ch2-competencia"><span class="hn">2.1</span> La competencia inmutable (el «quién»)</h3>
 <p>Empecemos por una verdad estadística: <strong>ser un maestro significa no fallar</strong>. En la mayoría de juegos de rol, subir de nivel significa inflar tus números hasta el absurdo. En NOGUM, la competencia es un valor absoluto y cerrado. Definimos la maestría no por la cantidad de daño que haces, sino por la <strong>fiabilidad</strong> con la que ejecutas tu voluntad.</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Bono</th><th>Perfil</th><th>Significado</th></tr></thead>
@@ -1483,7 +1495,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <p>Pero si todos tienen el mismo número… ¿por qué el puñetazo del pirata de goma rompe una isla y el del sicario que venga perros solo rompe una mandíbula?</p>
 <aside class="meta"><p>Por eso NOGUM nunca añade dados al subir de poder. En los juegos donde se tiran montones de dados, la probabilidad de pifia se rompe. Aquí anclamos la estadística y lo que se mueve es el mundo. <span class="src">T26</span></p></aside>
 
-<h3 id="ch2-escala">2.2 La escala de impacto (arquitectura del caos)</h3>
+<h3 id="ch2-escala"><span class="hn">2.2</span> La escala de impacto (arquitectura del caos)</h3>
 <p>Para adjudicar el nivel de potencia de un personaje, un arma o un hechizo, no mires sus estadísticas. Mira su <strong>escenario</strong> y pregúntate: <em>si esto se descontrola al máximo, ¿qué sale en las noticias?</em></p>
 <div class="tw"><table class="t">
 <thead><tr><th>Nivel</th><th>Escenario</th><th>Alcance</th><th>Ejemplos</th><th>La lógica</th></tr></thead>
@@ -1507,7 +1519,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <li><em>Estás en nivel 1 (hacker) y usas una herramienta de nivel 3 (virus militar):</em> usas la <strong>Llave</strong>. Ahora operas en nivel 3 y puedes lanzar un ataque contra un edificio corporativo completo.</li>
 </ul>
 
-<h3 id="ch2-llave">2.3 Explicando la Llave</h3>
+<h3 id="ch2-llave"><span class="hn">2.3</span> Explicando la Llave</h3>
 <p>La Llave es cualquier explicación narrativa que te permita interactuar con un nivel superior de la Rejilla. Sin ella, la hazaña del siguiente escalón es <strong>imposible</strong>. Con ella, <strong>tiras con tu ficha y con el tono de la campaña, sin ninguna penalización</strong>: sigues siendo el mejor en lo tuyo. <span class="src">T28</span></p>
 <ul>
 <li><strong>El bárbaro de la estepa</strong> es un héroe épico. Aunque no tenga superpoderes, los cómics dejan claro que puede pelear con decenas de hombres «normales» a la vez. Un soldado raso no tiene derecho en ficha a hacerle un rasguño (igual que nunca lo veremos en ninguna historieta). Pero es mortal, y podemos diseñar un escenario en el que sea vulnerable: tras una batalla, celebra, bebe hidromiel y cae rendido en un sueño tan profundo como las entrañas de la Tierra. Algo tan simple puede ser la Llave: un soldado raso lo sorprende en su cama, y el sistema le permite dañar a alguien que, sin esa llave narrativa, estaría fuera de su alcance.</li>
@@ -1567,7 +1579,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <p>Y hay una línea que resuelve casi todos los casos de mesa: <strong>lo que se lleva en la mano se presta; lo que se lleva en la cabeza, no.</strong> El agua bendita cambia de dueño. Saber el nombre verdadero, no.</p>
 <p>El equipo que rompe la Rejilla —el cañón de riel que agujerea un tanque— también se compra con Llaves, y tiene sus tres cerrojos en <a href="#ch4-equipo">4.3</a>.</p>
 
-<h3 id="ch2-rejilla">2.4 Categorizando los niveles de poder: la Rejilla (el zoom narrativo)</h3>
+<h3 id="ch2-rejilla"><span class="hn">2.4</span> Categorizando los niveles de poder: la Rejilla (el zoom narrativo)</h3>
 <p>Para gestionar todo esto sin volvernos locos con las matemáticas introducimos <strong>la Rejilla</strong>, una herramienta conceptual que le dice al Director de Juego <strong>dónde está la cámara</strong>. Imagina una lente de zoom: cuando está cerrada (nivel 1), vemos los detalles sucios de la calle y un navajazo es un problema mortal. Cuando se abre (nivel 5), vemos imperios y dioses; un navajazo es irrelevante, aquí se lanzan montañas.</p>
 <p>Cada personaje tiene un nivel de poder <strong>para cada ámbito</strong>:</p>
 <div class="tw"><table class="t rejilla">
@@ -1641,7 +1653,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <p>El <strong>nivel inicial</strong> lo pone la campaña; el <strong>techo</strong> lo pone el universo. En una partida cyberpunk no existe un Mental 2 por mucho que la campaña dure veinte sesiones: no hay ingenio por cien. Lo que sí hay son cromados al borde de la psicosis, que llegan a Físico 2, y ahí se acaba el género. Cada una de las veinte recetas (<a href="#ch8-recetas">8.4</a>) trae su techo por ámbito, y ese techo es, más que el tono o que el equipo, lo que hace que un universo se sienta como ese universo.</p>
 <p>La Rejilla sigue subiendo con la historia, pero contra ese techo. Y la Llave es la excepción pactada: <strong>en cyberpunk no puedes tener un ingenio por cien, pero sí puedes tener el exploit que funciona contra esa IA.</strong> Un techo sin excepciones aburre; una excepción sin techo rompe. Aquí el techo es permanente y la excepción se compra.</p>
 
-<h3 id="ch2-sintesis">2.5 La síntesis: el Ancla y la Vela</h3>
+<h3 id="ch2-sintesis"><span class="hn">2.5</span> La síntesis: el Ancla y la Vela</h3>
 <p>Así es como NOGUM consigue ser universal sin ser genérico.</p>
 <ul>
 <li>El <strong>bono (+4) es tu ancla</strong>. Te dice que eres competente, que no cometes errores tontos y que tus manos son firmes. Mantiene la coherencia interna del personaje, y la estadística mantiene siempre la emoción de los dados anclada al tono de la partida (o de la escena).</li>
@@ -1650,7 +1662,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <p>En el siguiente capítulo veremos cómo repartir esos bonos para crear, por fin, a los protagonistas de nuestra historia.</p>
 </section>
 <section class="chapter" id="ch3">
-<h2>Capítulo 3 · Los Protagonistas (Creación de personajes)</h2>
+<h2>Capítulo <span class="hn">3</span> · Los Protagonistas (Creación de personajes)</h2>
 <p>En NOGUM nos encanta encontrar salidas inesperadas. Los manuales que nos han servido de referencia eligen bando: o habilidades muy genéricas y narrativas, o habilidades muy precisas que convierten elegirlas en un calvario. Nosotros queremos, al menos es la intención, quedarnos con lo mejor de los dos mundos.</p>
 <p>Por eso hemos diseñado cuatro niveles de «zoom»: las habilidades van de más abiertas a más específicas. La tesis de NOGUM es que una habilidad general supone las bases: saber de qué va la cosa. Pongamos <strong>Historia</strong>. Alguien que sabe historia en general seguramente conozca la fecha de la independencia estadounidense, pero para dominar los detalles del periodo de los Tres Reinos de Corea (y, dentro de él, el auge y la caída de la confederación de Gaya) hablamos de alguien <strong>especializado</strong>: en ese lugar, en ese periodo, o en <strong>ambos</strong>. En las reglas, eso se traduce en que el bono de una habilidad general está limitado. Para brillar, debes <strong>especializarte</strong>. Así, el sistema es piramidal: compras la habilidad general como base para poder especializarte en el siguiente escalón.</p>
 <div class="rule">
@@ -1658,7 +1670,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <p>En NOGUM no existen Fuerza, Destreza, Reflejos ni Inteligencia. Los campos amplios de la pirámide son lo bastante grandes como para sustituirlos. <span class="src">T47–T48</span> Todo en la ficha va directamente a los bonos, de −2 a +4.</p>
 </div>
 
-<h3 id="ch3-piramide">3.1 La pirámide (los cuatro niveles de zoom)</h3>
+<h3 id="ch3-piramide"><span class="hn">3.1</span> La pirámide (los cuatro niveles de zoom)</h3>
 <p>Piensa en un mapa por satélite: el <strong>Ámbito</strong> es el continente, el <strong>Dominio</strong> la ciudad, la <strong>Disciplina</strong> la calle y la <strong>Firma</strong> el número del portal. Cuanto más cierras el zoom, más poder tienes y más estrecha es la visión.</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Nivel</th><th>Qué es</th><th>Coste</th><th>Coste acumulado</th><th>Bono</th><th>Lista</th></tr></thead>
@@ -1693,7 +1705,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </ol>
 <p>Si una habilidad amplia de tu ficha «se parece» lo bastante a lo que intentas, lo negociáis con el DJ en pie de igualdad. <span class="src">T82</span></p>
 
-<h3 id="ch3-lista">3.2 La lista cerrada (el esqueleto de tu personaje)</h3>
+<h3 id="ch3-lista"><span class="hn">3.2</span> La lista cerrada (el esqueleto de tu personaje)</h3>
 <p class="note"><strong>Antes de que te abrume:</strong> una lista de cuarenta Disciplinas asusta en una página, y con razón. La hemos mantenido porque <strong>la app la acota por ti</strong>: te enseña solo lo que tu mundo permite y te lleva por ella sin que tengas que leerla entera. Este manual está escrito para que <strong>no tengas que consultar ninguna lista</strong>. Si en cambio te gusta leer catálogos largos a la vieja usanza, los tienes enteros en los apéndices (<a href="#ch8-skills">8.2</a>) y en el Bazar (<a href="#apx-bazar">8.3</a>): están ahí por gusto, no por obligación.</p>
 <p>NOGUM quiere ponértelo fácil y no compartir <em>destino</em> con algunos manuales perezosos que hay por ahí. Por eso damos una lista cerrada y universal para los tres primeros niveles: es el esqueleto de NOGUM. La Firma, mucho más amplia, te invitamos a crearla; si no te sientes inspirado, al final del manual hay un catálogo de estilo <em>old school</em> con centenares, ordenado por disciplinas para que buscar sea muy sencillo. Creemos que esta estructura ayuda a los jugadores a pintar a sus personajes primero con trazo grueso y, cuando toca el detalle, saber exactamente dónde poner el lápiz. <span class="src">Borrador</span></p>
 <aside class="meta"><p>Sí, «no compartir destino» es una indirecta a los narrativos de aspectos (que significa «destino» en inglés) y a sus habilidades etéreas. Se queda. <span class="src">T129</span></p></aside>
@@ -1718,7 +1730,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <p>Lo académico es <strong>Mental</strong>: la biología teórica vive en Erudición → Ciencias. Curar de verdad es <strong>Técnico</strong>: Artificio → Biotecnia. <span class="src">T102</span></p>
 </div>
 
-<h3 id="ch3-firmas">3.3 Las Firmas</h3>
+<h3 id="ch3-firmas"><span class="hn">3.3</span> Las Firmas</h3>
 <ul>
 <li>Son amplias, como las habilidades de otros juegos: <em>Armas de fuego</em> y no <em>Francotirador</em>; <em>Maestro de la espada</em> y no un modelo de espada concreto. <span class="src">T49, T98, T100</span></li>
 <li>Cuelgan lógicamente de una Disciplina. Ejemplos: Armas → <em>Esgrima antigua</em>; Sistemas → <em>Criptografía</em>; Biotecnia → <em>Neurocirugía</em>; Ciencias → <em>Química</em>; Acrobacia → <em>Parkour</em> (que solo vale para moverse por la ciudad, no para nadar).</li>
@@ -1750,7 +1762,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <p class="small">Si en tu mesa tres se os hace mucho o poco, es el único número que tiene este acordeón: subidlo a cuatro para que la maestría total sea casi inalcanzable, o bajadlo a dos para campañas de héroes competentes desde el principio.</p>
 </div>
 
-<h3 id="ch3-extras">3.4 Estilo, magia y aspectos</h3>
+<h3 id="ch3-extras"><span class="hn">3.4</span> Estilo, magia y aspectos</h3>
 <dl>
 <dt>Estilo (+2)</dt>
 <dd>Toda ficha completa tiene un apartado <strong>Estilo</strong> fuera de la pirámide, con un valor fijo de <strong>+2</strong>. Es un regalo del sistema y una firma de NOGUM. Se usa con la Regla del Estilo (<a href="#ch4-malla">4.5</a>). <span class="src">T113</span></dd>
@@ -1760,7 +1772,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <dd>Rasgos permanentes que no son habilidades: visión nocturna, un implante, una fobia… Aquí también va la etiqueta <strong>[Lento]</strong> para las habilidades que en tu universo no son ágiles en combate (ver <a href="#ch5-iniciativa">5.1</a>). <span class="src">T87</span> Los dones y las lacras no tienen coste en puntos, porque no se compran: la lacra es la cicatriz de un bloque lleno (<a href="#ch5-dano">5.5</a>, ED-35). Y la etiqueta <strong>[Lento]</strong> ya tiene regla: una habilidad marcada así <strong>no sirve para tirar iniciativa</strong>. O entras con otra disposición, o vas el último. <span class="src">Decisión del autor</span></dd>
 </dl>
 
-<h3 id="ch3-economia">3.5 La economía de la escasez</h3>
+<h3 id="ch3-economia"><span class="hn">3.5</span> La economía de la escasez</h3>
 <p>NOGUM reparte <strong>12 puntos</strong> de habilidad, o <strong>14</strong> si el universo tiene Arcano. El número no es un capricho: sin magia hay cuatro Ámbitos, ocho Dominios y treinta y dos Disciplinas, cuarenta casillas; con magia son cincuenta. Doce sobre cuarenta y catorce sobre cincuenta son la misma proporción, así que la ficha se siente igual de escasa se juegue donde se juegue.</p>
 <p>Doce puntos te obligan a gestionar la escasez: si quieres destacar en algo, casi te obligan a ser una nulidad en algún sitio. Más puntos abren la puerta a fichas sin debilidades, que suelen ser menos interesantes. Pero jugar a NOGUM es un pacto entre caballeros: este manual no dedicará una sola línea a diseñar cortafuegos contra el juego sucio. El tipo de personajes que pide la historia se acuerda en la mesa, de forma madura. Dicho esto, da tantos puntos como te apetezca: el manual está para ajustarse a tu campaña. <span class="src">Borrador, T107</span></p>
 
@@ -1839,7 +1851,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <p><strong>¿Y qué de esto puedes pagar el día uno?</strong> Todo. El Ajuste no es un lujo de campaña avanzada, porque multiplica los mismos doce puntos y el mismo bote: un poder de <strong>+3 Desatado</strong> son nueve puntos de doce, y te quedan tres. Es una ficha legal y es una ficha dura —has comprado algo enorme y no te queda casi oficio debajo—, y así es como el sistema cobra en vez de prohibir. Es la misma frase de toda esta sección: <strong>el precio de las Firmas es ser una nulidad</strong>, y el precio de lo imposible es no tener oficio.</p>
 <p>El procedimiento completo —las dos pruebas que evitan el 90 % de los errores, la pregunta de calibración y las cuatro categorías de lo fabricable— está en el taller del <a href="#apx-bazar">Bazar del Multiverso</a>. Aquí basta con saber que existe, porque es donde se gastan los puntos que no caben en la pirámide.</p>
 
-<h3 id="ch3-progreso">3.6 Progresión: los dos monederos</h3>
+<h3 id="ch3-progreso"><span class="hn">3.6</span> Progresión: los dos monederos</h3>
 <p>Casi todos los juegos meten en el mismo saco de puntos tres cosas que no se parecen en nada, y así les va: el guerrero de nivel quince es a la vez más hábil, más poderoso en el mundo y más curtido, porque solo hay un contador. Aquí se separan, y cada una tiene un dueño distinto.</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Qué cambia</th><th>Quién es su dueño</th><th>Cómo se mueve</th></tr></thead>
@@ -1909,7 +1921,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <p><strong>Tesis del autor:</strong> crecimiento rápido, bonificación por el buen juego narrativo y experiencia fija en los hitos de campaña. Los hitos sirven como incentivo; la experiencia sirve para gestionar las expectativas de la campaña. <span class="src">T37</span></p>
 </section>
 <section class="chapter" id="ch4">
-<h2>Capítulo 4 · Dinámicas (Reglas de resolución)</h2>
+<h2>Capítulo <span class="hn">4</span> · Dinámicas (Reglas de resolución)</h2>
 <p>Con los ejes (el universo) y los personajes (los actores) definidos, necesitamos un protocolo para resolver el conflicto. Este capítulo describe cómo tirar, cómo aplicar los bonos y qué significan. El combate añade algunas reglas propias, así que tiene su capítulo aparte.</p>
 
 <div class="rule formula">
@@ -1918,7 +1930,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <p>Bono total = habilidad (nivel más alto aplicable) + dificultad + equipo + efectos. <strong>Siempre entre −2 y +4.</strong></p>
 </div>
 
-<h3 id="ch4-dificultad">4.1 Dificultad de la tirada (el filtro de la complejidad)</h3>
+<h3 id="ch4-dificultad"><span class="hn">4.1</span> Dificultad de la tirada (el filtro de la complejidad)</h3>
 <p>La dificultad no depende de la habilidad del personaje, sino de la complejidad intrínseca de la tarea. El <strong>número objetivo (TN)</strong> lo fija la tarjeta de tono activa (6 en las tarjetas de un dado o de mejor/peor, y 11 en la Realista). La dificultad de la tarea se expresa como un <strong>modificador</strong>:</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Modificador</th><th>Dificultad</th><th>Ejemplos</th></tr></thead>
@@ -1941,7 +1953,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <aside class="meta"><p>¿Tu Gran Maestro va a acertar el 99 % en modo Héroe? Perfecto: es lo que pide el género. No inflamos la dificultad para compensar. Si la tarea es mundana, <strong>no tires</strong>. Y si el jugador quiere lucirse, que se suba él mismo la dificultad: una mano a la espalda. <span class="src">T21–T22</span></p></aside>
 <p>Pifias, críticos y éxitos parciales dependen de la tarjeta de tono activa (<a href="#ch1-panel">1.4</a>).</p>
 
-<h3 id="ch4-habilidad">4.2 Habilidad: el peso de la competencia</h3>
+<h3 id="ch4-habilidad"><span class="hn">4.2</span> Habilidad: el peso de la competencia</h3>
 <p>Qué significa matemáticamente lo que escribiste en tu ficha (capítulo 3). Cifras con la tarjeta Primera marcha (dado rojo contra TN 6):</p>
 <ul>
 <li><strong>El Torpe (−1): el pie cambiado.</strong> Tienes el ámbito pero esa columna está vacía. Tu probabilidad baja del 50&nbsp;% al 40&nbsp;%: un poco, y se nota. Con el peor de 2d10 (tarjeta Angustia) cae al 16&nbsp;%, y ahí ya no es poco. Es lo que le pasa al forzudo cuando le piden una acrobacia.</li>
@@ -1951,7 +1963,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <li><strong>El Gran Maestro (+4): la certeza.</strong> Con +4, en una tarea estándar solo fallas con el 1 natural, que es la pifia (90 % de éxito). Si el tono es optimista (tarjeta Épica), eres matemáticamente infalible en lo mundano (99 %).</li>
 </ul>
 
-<h3 id="ch4-equipo">4.3 Equipo: bonificadores, llaves y efectos</h3>
+<h3 id="ch4-equipo"><span class="hn">4.3</span> Equipo: bonificadores, llaves y efectos</h3>
 <p>En NOGUM el equipo no sirve solo para sumar números: sirve para <strong>habilitar acciones</strong>.</p>
 <ol>
 <li><strong>Bonificador de calidad (+1 / +2).</strong> Solo el equipo de manufactura excepcional da bonos numéricos. Un rifle de francotirador estándar da +0; un rifle personalizado de maestro armero da +1.</li>
@@ -1979,7 +1991,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p>Así el saqueo vuelve a ser una decisión en vez de una escalada, que es el problema clásico de todos los juegos con catálogo de equipo. Y encaja con la distinción de las Llaves: la Llave del equipo es la que <strong>se puede perder</strong> —vive en el objeto, te la quitan, se gasta, se rompe—; la Llave propia es la que <strong>eres tú</strong>.</p>
 </div>
 
-<h3 id="ch4-modificadores">4.4 Modificadores temporales y permanentes</h3>
+<h3 id="ch4-modificadores"><span class="hn">4.4</span> Modificadores temporales y permanentes</h3>
 <dl>
 <dt>Temporales (duran una escena, unos turnos o hasta que se cumpla una condición)</dt>
 <dd>Aturdido, Inspirado, Dopado, Derribado… Pueden ser de los tres tipos anteriores: <strong>bonos</strong> (numéricos, modifican tu tirada), <strong>llaves</strong> (narrativas, modifican tu nivel de Rejilla) o <strong>efectos</strong> (mecánicos o narrativos). Define siempre la condición bajo la que desaparecen (fin de escena, curación, ritual, número de turnos…). Todo efecto que venga de una pieza de equipo es temporal, porque desaparece si no la llevas encima.</dd>
@@ -1987,7 +1999,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <dd>Son cambios en la hoja: cicatrices, traumas, corrupción, prótesis. No necesitan ninguna condición para estar ahí: simplemente están. Solo se eliminan o modifican con puntos de experiencia (o, en el caso de las secuelas, con otro arco significativo; ver <a href="#ch5-consecuencias">5.6</a>).</dd>
 </dl>
 
-<h3 id="ch4-malla">4.5 La Rejilla y la Regla del Estilo</h3>
+<h3 id="ch4-malla"><span class="hn">4.5</span> La Rejilla y la Regla del Estilo</h3>
 <p>Esta regla anula todo lo anterior. Antes de calcular nada, el Director de Juego consulta <strong>la Rejilla</strong> (<a href="#ch2-rejilla">capítulo 2</a>). Pedagógicamente va al final del capítulo, pero en mesa es el primer filtro.</p>
 <div class="rule">
 <p class="rule-title">A · La regla del salto de poder</p>
@@ -2029,11 +2041,11 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 </div>
 </section>
 <section class="chapter" id="ch5">
-<h2>Capítulo 5 · El Peligro (Violencia y consecuencias)</h2>
+<h2>Capítulo <span class="hn">5</span> · El Peligro (Violencia y consecuencias)</h2>
 <p>Los combates tienen un peso especial en todo manual de rol, y NOGUM no es distinto. Hay algunas diferencias con las tiradas normales que merecen un capítulo aparte.</p>
 <p>NOGUM es un sistema universal, pero <strong>siempre narrativo</strong>. El combate es sencillo y narrativo a propósito. No habrá modos opcionales para hacerlo más granular o táctico: ese cambio no alteraría el tono ni el universo, solo moverías el juego en el eje <em>narrativo–táctico</em>, y este manual está anclado filosóficamente en el lado narrativo. Se recomienda que todo PNJ que vaya a interactuar tenga su ficha, o al menos las pinceladas necesarias para las pocas tiradas que hagan falta. <span class="src">Texto del autor sobre combate</span></p>
 
-<h3 id="ch5-iniciativa">5.1 Iniciativa: ¿quién ataca primero?</h3>
+<h3 id="ch5-iniciativa"><span class="hn">5.1</span> Iniciativa: ¿quién ataca primero?</h3>
 <p>Al eliminar los atributos surgió la pregunta: ¿cuál es la forma más cinematográfica de repartir los turnos en una situación de peligro? NOGUM parte de una idea que se siente profundamente intuitiva: <strong>la velocidad viene de la maestría</strong>. El pistolero desenfunda rápido porque lo ha hecho diez mil veces; el hacker teclea rápido porque es un maestro. Por defecto, <strong>todas las habilidades sirven para tirar iniciativa</strong>.</p>
 <p>Si solo decidimos quién va primero, ¿qué se tira? ¿Hay que decidir la acción antes? Uno de los pilares de NOGUM es entender el rol como improvisación fluida, así que cualquier invitación a frenar el juego está muy desaconsejada. La acción no se elige de antemano. <strong>La intención, sí.</strong></p>
 <div class="rule">
@@ -2055,7 +2067,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <aside class="meta"><p>Ejemplo. Guerrera: Violencia con Espada +4 → saca 13 y va primera. Hacker: Especialidad con Sistemas +2 → saca 9. Ladrón: Treta con Sigilo +2 → saca 7. Cuando le toca al hacker, la guerrera ya ha reventado las luces que él pensaba apagar, así que, sin salir de su especialidad, hackea las comunicaciones enemigas.</p></aside>
 <p><strong>Nada de iniciativa fija.</strong> También los PNJ declaran guardia y tiran: es una tirada enfrentada con la habilidad de la disposición elegida, y las masillas llevan sus dos o tres números básicos para resolverla sin ficha. <span class="src">Decisión del autor</span></p>
 
-<h3 id="ch5-golpes">5.2 La secuencia de ataque: impacto contra mitigación</h3>
+<h3 id="ch5-golpes"><span class="hn">5.2</span> La secuencia de ataque: impacto contra mitigación</h3>
 <p>Para evitar la aritmética lenta (restar esquivas a ataques), NOGUM usa dos pasos. No hay tirada enfrentada.</p>
 <div class="steps">
 <div class="step">
@@ -2105,7 +2117,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p>Habilidades habituales de defensa: Destreza → Acrobacia para esquivar; Vigor → Entereza (con la protección que lleves) para absorber. <strong>Siempre se absorbe con la habilidad</strong>, se lleve armadura o no: el cuerpo es la primera protección. Lo que decide si sirve de algo son las etiquetas del arma —<span class="tag">Abs: Máx N</span> y <span class="tag">Abs: Nula</span>, que es donde vive «esto te atraviesa la piel»— y los bonos que sume la protección que lleves. Por defecto, normal. <span class="src">Decisión del autor</span></p>
 
 
-<h3 id="ch5-armas">5.3 Arsenal y jerarquía de la inevitabilidad: la ficha técnica</h3>
+<h3 id="ch5-armas"><span class="hn">5.3</span> Arsenal y jerarquía de la inevitabilidad: la ficha técnica</h3>
 <p>En lugar de listas infinitas de dados (1d4, 1d8, 2d6), cada arma de NOGUM se define por sus <strong>propiedades físicas</strong>. Todas llevan tres etiquetas que dictan las reglas del paso 2, y a veces una cuarta para la Rejilla. Combinándolas salen muchísimas armas distintas y con mucho sabor, sin añadir complejidad. <span class="src">T45</span></p>
 <div class="tw"><table class="t">
 <thead><tr><th>Etiqueta</th><th>Valor</th><th>Qué significa</th><th>Ejemplos</th></tr></thead>
@@ -2150,7 +2162,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p class="note">En el Mundo Animado la Parca también existe y también mata — durante dos viñetas. El yunque cae, el personaje queda plano, y en la escena siguiente está entero. Ahí lo que se tacha es la dignidad.</p>
 
 
-<h3 id="ch5-vida">5.4 La vida fractal (la muñeca rusa)</h3>
+<h3 id="ch5-vida"><span class="hn">5.4</span> La vida fractal (la muñeca rusa)</h3>
 <p>La vida en NOGUM funciona siempre igual: hay <strong>cuatro estados</strong> de salud (Sano, Herido, Crítico y Fuera de combate). Pero, como dijimos al principio, la letalidad es una de las formas más potentes de imprimir tono. La solución de NOGUM vuelve a ser modular: no se cambian los cuatro estados, sino <strong>cuántos golpes hacen falta para llegar a cada uno</strong>. <span class="src">Borrador, T35</span></p>
 <div class="fractal" aria-label="Estructura fractal: 3 bloques, cada uno con 3 casillas, cada una con 3 puntos">
 <div class="fr-block"><p>Bloque 1 · Sano</p><div class="fr-cells"><span></span><span></span><span></span></div></div>
@@ -2177,7 +2189,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 
 </div>
 
-<h3 id="ch5-dano">5.5 Sistemas de daño: físico, mental y espiritual</h3>
+<h3 id="ch5-dano"><span class="hn">5.5</span> Sistemas de daño: físico, mental y espiritual</h3>
 <p>NOGUM usa la misma barra fractal para las tres dimensiones del personaje. El estrés y la moral funcionan exactamente igual que el daño físico.</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Barra</th><th>Fuentes</th><th>Recuperación</th><th>Al llenarse</th></tr></thead>
@@ -2225,7 +2237,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p>El don funciona igual por el otro lado, cuando la ficción te lo debe: la cicatriz que te hace reconocible, el favor del moribundo, la calma rara de quien ya ha estado allí.</p>
 </div>
 
-<h3 id="ch5-consecuencias">5.6 Catálogo de consecuencias</h3>
+<h3 id="ch5-consecuencias"><span class="hn">5.6</span> Catálogo de consecuencias</h3>
 <p>Cuando el daño acumulado llena un <strong>bloque grande</strong> (por un golpe letal o por acumulación de puntos), el personaje cruza un umbral y recibe una consecuencia narrativa y mecánica.</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Umbral</th><th>Efecto</th><th>Físico</th><th>Mental</th><th>Espiritual</th></tr></thead>
@@ -2265,10 +2277,10 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 </ol>
 </section>
 <section class="chapter" id="ch6">
-<h2>Capítulo 6 · La Oposición (Creación de fichas)</h2>
+<h2>Capítulo <span class="hn">6</span> · La Oposición (Creación de fichas)</h2>
 <p>En el cine no se ilumina igual al protagonista que al camarero que pasa por el fondo. En NOGUM no deberías tardar lo mismo en hacer la ficha del héroe que la del guardia que muere en el minuto 5. Para mantener el ritmo, el sistema usa tres niveles de resolución para los actores.</p>
 
-<h3 id="ch6-tipos">6.1 Tres tipos de ficha</h3>
+<h3 id="ch6-tipos"><span class="hn">6.1</span> Tres tipos de ficha</h3>
 <p>La diferencia entre estas fichas no es de poder, sino de <strong>tiempo de gestión</strong> y <strong>detalle dramático</strong>.</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Ficha</th><th>Quiénes son</th><th>Profundidad</th><th>Mecánica</th></tr></thead>
@@ -2278,10 +2290,10 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Ficha completa</strong><br><small>Protagonistas y jefes finales: el némesis</small></td><td>Los jugadores y el gran villano.</td><td>Total: historia, traumas, inventario.</td><td>El sistema completo: Ámbitos, Dominios, Disciplinas y Firmas, Estilo, vida fractal y equipo detallado.</td></tr>
 </tbody></table></div>
 
-<h3 id="ch6-decorado">6.2 Fichas de decorado y la Regla del Estilo</h3>
+<h3 id="ch6-decorado"><span class="hn">6.2</span> Fichas de decorado y la Regla del Estilo</h3>
 <p>Contra el decorado y contra todo lo que esté por debajo de tu nivel se aplica la <a href="#ch4-malla">Regla del Estilo</a>: no se tira para ver si ganas, se tira para ver cómo de bien quedas. Contra el decorado que está por encima, no se tira: se sobrevive, se huye o se busca una Llave.</p>
 
-<h3 id="ch6-rapida">6.3 Fichas rápidas: cómo y cuándo usarlas</h3>
+<h3 id="ch6-rapida"><span class="hn">6.3</span> Fichas rápidas: cómo y cuándo usarlas</h3>
 <p class="note"><strong>En la app:</strong> el quinto formulario, <em>El reparto</em>, hace estas dos fichas —la de decorado y la rápida— con tres toques, y te dice de paso si contra ese PNJ se aplica la Regla del Estilo (6.2), si hay pelea de verdad o si no hay nada que tirar. El némesis no: ese se hace en la ficha, con las mismas reglas que un personaje jugador.</p>
 <p>El Director de Juego nunca debería usar una ficha completa para un PNJ que no sea crucial. Para improvisar, usa la <strong>ficha rápida</strong> (la tarjeta), que se hace en diez segundos respondiendo a dos preguntas:</p>
 <ol>
@@ -2291,13 +2303,13 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p><strong>Salud:</strong> usa el fractal, pero no elijas su vida según su fuerza «real». Pregúntate cuánto quieres que dure la pelea. Por defecto, tres casillas: sano, herido y fuera.</p>
 
 
-<h3 id="ch6-completa">6.4 Fichas completas: la recomendación del sistema</h3>
+<h3 id="ch6-completa"><span class="hn">6.4</span> Fichas completas: la recomendación del sistema</h3>
 <p>Es la ficha que enseñamos a construir en el capítulo 3: compleja y detallada. <strong>Recomendación:</strong> el DJ solo debería tener <strong>una</strong> ficha completa en la mesa, la del <strong>antagonista principal</strong>. Tratar al villano con las mismas reglas que a los héroes (Firmas a +4, Estilo, vida fractal de 27 puntos) es lo que convierte el combate final en un acontecimiento memorable y no en una piñata de puntos de vida. El borrador mencionaba unos «puntos de suerte» para el villano: <strong>no existen</strong>. El antagonista gasta Llaves como todo el mundo, y si quieres que sobreviva a la escena, dale Llaves y que se note en la ficción. <span class="src">Decisión del autor</span></p>
 <p>Para todo lo demás, simplifica. NOGUM está diseñado para que la cámara enfoque a los protagonistas; el resto del mundo puede estar un poco desenfocado.</p>
 </section>
 
 <section class="chapter" id="ch7">
-<h2>Capítulo 7 · La Consola de Mezclas (Consejos de narración)</h2>
+<h2>Capítulo <span class="hn">7</span> · La Consola de Mezclas (Consejos de narración)</h2>
 <p>En NOGUM, el Director de Juego no es un simulador de física imparcial: es el técnico de una mesa de mezclas. Su trabajo no es aplicar las reglas a ciegas, sino elegir <em>qué reglas</em> se aplican para conseguir la emoción que busca. Si los capítulos anteriores eran la ciencia, este es el arte. Y el arte va de sensaciones, no de matemáticas: respira.</p>
 <div class="rule">
 <p class="rule-title">La caja negra</p>
@@ -2307,7 +2319,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 </div>
 <aside class="meta"><p>¿Que exige mucho al DJ? Es una virtud, no un defecto. Otros juegos son una cámara automática: cualquiera saca una foto decente, pero todas se parecen. NOGUM es una réflex en manual. Puedes fallar, sí, pero es la única forma de sacar exactamente la foto que tienes en la cabeza. <span class="src">T72</span></p></aside>
 
-<h3 id="ch7-diagnostico">7.1 Cómo identificar el tono (el diagnóstico)</h3>
+<h3 id="ch7-diagnostico"><span class="hn">7.1</span> Cómo identificar el tono (el diagnóstico)</h3>
 <p>Antes de empezar una campaña, o incluso una escena, hazte dos preguntas para calibrar los ejes. No preguntes «¿a qué jugamos?», sino «¿cómo se siente el mundo?».</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Pregunta</th><th>Respuesta</th><th>Eje</th><th>Síntoma</th></tr></thead>
@@ -2322,7 +2334,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p>Con las dos respuestas, busca tu casilla en el <a href="#ch1-panel-cuadrante">cuadrante</a> y coge la tarjeta que le corresponde (<a href="#ch1-panel-cuadrante">tabla del 1.4</a>). El borrador asociaba el optimismo neutro a «sumar 2d10»; en el canon la suma es la herramienta del orden (caos bajo) y el neutro es un solo dado.</p>
 <p><strong>¿Malo o raro?</strong> Si dudas entre pesimismo y caos, usa el test del atraco (<a href="#ch1-ejes">1.1</a>): ¿el plan falla porque el enemigo es competente y cruel, o porque pasa algo absurdo?</p>
 
-<h3 id="ch7-defecto">7.2 Tono por defecto (la red de seguridad)</h3>
+<h3 id="ch7-defecto"><span class="hn">7.2</span> Tono por defecto (la red de seguridad)</h3>
 <p>¿Qué pasa si no lo tienes claro? ¿Y si tus jugadores solo quieren «jugar a rol» sin filosofar sobre la narrativa? NOGUM recomienda una configuración estándar que funciona para la inmensa mayoría de aventuras.</p>
 <div class="rule">
 <p class="rule-title">El modo «Aventura clásica» (Primera marcha)</p>
@@ -2334,7 +2346,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p><strong>Consejo:</strong> si te bloqueas, pon la consola en este modo. Es el piloto automático. No hay prisa: empieza a explorar cuando te apetezca.</p>
 </div>
 
-<h3 id="ch7-velocidades">7.3 Las tres velocidades del tono</h3>
+<h3 id="ch7-velocidades"><span class="hn">7.3</span> Las tres velocidades del tono</h3>
 <p>La modularidad de NOGUM puede intimidar. No intentes mezclar en tiempo real desde el primer día: NOGUM crece contigo.</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Velocidad</th><th>Cómo</th><th>Ejemplo</th><th>Para quién</th></tr></thead>
@@ -2367,7 +2379,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 </div>
 <aside class="meta"><p>¿Para quién es esto? Para quien vea que su sistema de siempre no le da el tono de su saga favorita, o que otro tiene los dados raros. Aquí cada decisión es aceptable. <span class="src">T60</span></p></aside>
 
-<h3 id="ch7-disonancia">7.4 Disonancia lúdico-narrativa (el enemigo invisible)</h3>
+<h3 id="ch7-disonancia"><span class="hn">7.4</span> Disonancia lúdico-narrativa (el enemigo invisible)</h3>
 <p>El mayor peligro en el rol es que lo que <em>dice</em> el sistema contradiga lo que <em>siente</em> la mesa. NOGUM te da herramientas para arreglarlo.</p>
 <dl class="symptoms">
 <dt>Síntoma A · Risas cómodas en el terror</dt>
@@ -2380,7 +2392,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 
 </section>
 <section class="chapter" id="ch8">
-<h2>Capítulo 8 · Apéndices (La Caja de Herramientas)</h2>
+<h2>Capítulo <span class="hn">8</span> · Apéndices (La Caja de Herramientas)</h2>
 <p>Hasta aquí has leído la teoría: por qué los dados tienen emociones, por qué el +4 no se mueve y por qué la vida es una muñeca rusa. Este capítulo es la caja de herramientas. No se lee de corrido: se consulta.</p>
 <p>El orden no es casual. Va <strong>de lo general a lo específico y, al final, a la aplicación</strong>:</p>
 <ol>
@@ -2396,7 +2408,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p>El 8.3 (el Bazar del Multiverso) tiene su propio apartado.</p>
 
 <!-- ============================ 8.1 ============================ -->
-<h3 id="ch8-baul">8.1 Baúl de reglas</h3>
+<h3 id="ch8-baul"><span class="hn">8.1</span> Baúl de reglas</h3>
 <p>El baúl es un cajón de sastre: <strong>todas las reglas de otros manuales que puedan aportar algo</strong>, desde los relojes narrativos hasta las tiradas de flashback. Ninguna es obligatoria. Son piezas que el Director saca del baúl cuando la historia las pide y que vuelve a guardar cuando dejan de servir. <span class="src">T117</span></p>
 
 <p>Cada módulo dice qué hace y en qué recetas del 8.4 aparece.</p>
@@ -2696,7 +2708,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 </tbody></table></div>
 <p class="small">Las mutaciones con bono se compran como cualquier otra cosa que te hace mejor (el taller, en <a href="#bz-fabrica">8.3</a>): un punto por cada +1. Si el Director te la regala por la trama, es una lacra con premio y no cuesta nada: ya la estás pagando en la ficción.</p>
 
-<h3 id="ch8-skills">8.2 Listado de competencias</h3>
+<h3 id="ch8-skills"><span class="hn">8.2</span> Listado de competencias</h3>
 <p>Referencia rápida de la pirámide del capítulo 3: <strong>5 ámbitos, 10 Dominios, 40 Disciplinas y un catálogo abierto de Firmas</strong>. Las dos primeras capas de habilidades son listas cerradas; la Firma es tuya. <span class="src">T106</span></p>
 <div class="tw"><table class="t">
 <thead><tr><th>Nivel</th><th>Coste acumulado</th><th>Bono</th><th>Lista</th></tr></thead>
@@ -3056,7 +3068,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 </tbody></table></div>
 </section>
 <section class="chapter" id="apx-bazar">
-<h2>8.3 El Bazar del Multiverso</h2>
+<h2><span class="hn">8.3</span> El Bazar del Multiverso</h2>
 <p>Este apéndice es material de <strong>consulta</strong>, no de estudio. Es el <em>gear porn</em> de NOGUM: un escaparate de armas, armaduras, poderes y cachivaches de diez ambientaciones, más un arsenal social. Nadie tiene que memorizarlo. Ábrelo cuando necesites un arma para un PNJ, cuando un jugador pregunte «¿y esto qué hace?» o cuando quieras ver cómo suena tu género en números.</p>
 <p>Las fichas técnicas son muletas didácticas: enseñan el tono mejor que la teoría. Que un Sable de Energía lleve <span class="tag">Abs: Nula</span> y un Rifle de Plasma <span class="tag">Abs: Máx 1</span> explica la ópera espacial más rápido que tres páginas de ensayo. Un arma no se define por su precio, sino por cómo dobla las reglas: ¿se puede esquivar?, ¿sirve de algo la armadura?, ¿alcanza a quien está por encima en la Rejilla?</p>
 <aside class="meta"><p>El barrido está hecho: en el catálogo no queda ninguna marca registrada. Los nombres que ves son descriptivos a propósito —el filo que nadie puede levantar, la nube de los limpios de corazón, el implante de tiempo lento—, y la prueba de que funcionan es que sabes exactamente de qué objeto te hablo.</p></aside>
@@ -3200,7 +3212,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 </tbody></table></div>
 <p>Y si lo que buscas no existe, ya sabes fabricarlo. El índice por categorías está al final del apéndice.</p>
 
-<h3 id="bz-fantasia">1. La mazmorra y la estepa</h3>
+<h3 id="bz-fantasia"><span class="hn">1.</span> La mazmorra y la estepa</h3>
 <p><em>«Donde el acero pesa y la magia rompe las reglas.»</em> <span class="src">T68</span></p>
 <h4>Armas de filo</h4>
 <div class="tw"><table class="t">
@@ -3252,7 +3264,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Pergamino de Vuelo</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Movimiento en tres dimensiones durante una escena.</td><td>—</td></tr>
 <tr><td><strong>Amuleto Anti-Detección</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Los magos no te detectan.</td><td>El original dice «invisible a la Malla Mística»: se refiere al ámbito Arcano, no a la Rejilla.</td></tr>
 </tbody></table></div>
-<h3 id="bz-neon">2. La Ciudad de Neón</h3>
+<h3 id="bz-neon"><span class="hn">2.</span> La Ciudad de Neón</h3>
 <p><em>«Donde la velocidad mata y el blindaje es temporal.»</em> <span class="src">T68</span></p>
 <h4>Armas de fuego</h4>
 <div class="tw"><table class="t">
@@ -3299,7 +3311,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Piernas Reforzadas</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Caes hasta 20 m sin sufrir daño.</td><td>—</td></tr>
 <tr><td><strong>Siroco (droga de combate)</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Mientras dura, tus tiradas de reflejos (esquiva, Atletismo) usan Mejor de 2d10 (Optimismo Alto). Al terminar, sufres Daño Mental 1.</td><td>El original decía «+1 dado a Reflejos»: NOGUM no añade dados ni tiene atributos.</td></tr>
 </tbody></table></div>
-<h3 id="bz-terror">3. Pulpos antediluvianos</h3>
+<h3 id="bz-terror"><span class="hn">3.</span> Pulpos antediluvianos</h3>
 <p><em>«Donde las armas fallan y el miedo mata.»</em> <span class="src">T68</span></p>
 <p>Esta ambientación tiene <strong>29 ítems</strong>: <strong>faltan 1</strong> para los 30. Ítems fusionados con otra ambientación: Cóctel Molotov → se conserva en Post-Apocalipsis (T69, versión más reciente).</p>
 <h4>Armas improvisadas</h4>
@@ -3346,7 +3358,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Alcohol</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Cura estrés (barra Mental), pero da un penalizador físico.</td><td>—</td></tr>
 <tr><td><strong>Anfetaminas</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Ignoras el cansancio durante 1 escena; después, colapso.</td><td>—</td></tr>
 </tbody></table></div>
-<h3 id="bz-opera">4. Ópera de Estrellas</h3>
+<h3 id="bz-opera"><span class="hn">4.</span> Ópera de Estrellas</h3>
 <p><em>«Donde la tecnología es limpia, los láseres hacen «piu-piu» y la fe mueve naves.»</em> <span class="src">T69</span></p>
 <h4>Armas de energía</h4>
 <div class="tw"><table class="t">
@@ -3394,7 +3406,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Meditación de Batalla</strong></td><td>—</td><td>—</td><td>—</td><td>Durante la escena, todos los aliados hacen sus tiradas con Mejor de 2d10 (Optimismo Alto).</td><td>El original daba «[+1 Dado]».</td></tr>
 <tr><td><strong>Fantasma del Flujo</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Inmortalidad</span> Si el personaje sale de la historia, sigue presente como guía narrativo.</td><td>El original decía «si mueres».</td></tr>
 </tbody></table></div>
-<h3 id="bz-postapo">5. Post-Apocalipsis</h3>
+<h3 id="bz-postapo"><span class="hn">5.</span> Post-Apocalipsis</h3>
 <p><em>«Donde todo está oxidado, sucio y duele mucho.»</em> <span class="src">T69</span></p>
 <p>Esta ambientación tiene <strong>28 ítems</strong>: <strong>faltan 2</strong> para los 30. Ítems fusionados con otra ambientación: Escopeta de Dos Cañones (Recortada) → se conserva en Steampunk (T70); Sangre Ácida → se conserva en Horror Gótico (T70).</p>
 <h4>Chatarra mortal</h4>
@@ -3440,7 +3452,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>El inhalador de combate</strong></td><td>—</td><td>—</td><td>—</td><td>Acciones extra durante 1 turno. Adicción inmediata.</td><td>—</td></tr>
 <tr><td><strong>Mutante Mascota</strong></td><td>—</td><td>—</td><td>—</td><td>PNJ de Nivel 2 que obedece órdenes sencillas.</td><td>—</td></tr>
 </tbody></table></div>
-<h3 id="bz-wuxia">6. Artes marciales, brillos y gritos</h3>
+<h3 id="bz-wuxia"><span class="hn">6.</span> Artes marciales, brillos y gritos</h3>
 <p><em>«Donde gritar te hace más fuerte y la gravedad es opcional.»</em> <span class="src">T70</span></p>
 <h4>Artes marciales (técnicas físicas)</h4>
 <div class="tw"><table class="t">
@@ -3487,7 +3499,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Armadura del guerrero de otro planeta</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Elástica: absorbe hasta 1 punto (<span class="tag">Abs: Máx 1</span>). No se rompe al transformarte.</td><td>—</td></tr>
 <tr><td><strong>Agua Sagrada</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Convierte una habilidad de +2 en +4, pero beberla causa Daño 2.</td><td>—</td></tr>
 </tbody></table></div>
-<h3 id="bz-gotico">7. Horror Gótico</h3>
+<h3 id="bz-gotico"><span class="hn">7.</span> Horror Gótico</h3>
 <p><em>«Donde la sangre es moneda y la política es eterna.»</em> <span class="src">T70</span></p>
 <h4>Poderes de sangre (disciplinas)</h4>
 <div class="tw"><table class="t">
@@ -3534,7 +3546,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Cámara de Seguridad Hackeada</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> <span class="tag">Permiso: Información</span></td><td>—</td></tr>
 <tr><td><strong>Ataúd Blindado</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Te permite descansar de día en zonas de guerra.</td><td>—</td></tr>
 </tbody></table></div>
-<h3 id="bz-supers">8. Capas y mallas</h3>
+<h3 id="bz-supers"><span class="hn">8.</span> Capas y mallas</h3>
 <p><em>«Donde la física es una sugerencia y los calzoncillos se llevan por fuera.»</em> <span class="src">T70</span></p>
 <h4>Superpoderes (como equipo)</h4>
 <div class="tw"><table class="t">
@@ -3581,7 +3593,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Reactor de Pecho</strong></td><td>—</td><td>—</td><td>—</td><td>Fuente de energía inagotable.</td><td>—</td></tr>
 <tr><td><strong>Simbionte Alienígena</strong></td><td>—</td><td>—</td><td>—</td><td>Da poderes físicos, a cambio de Daño Mental constante (corrupción).</td><td>—</td></tr>
 </tbody></table></div>
-<h3 id="bz-steampunk">9. El Oeste Extraño</h3>
+<h3 id="bz-steampunk"><span class="hn">9.</span> El Oeste Extraño</h3>
 <p><em>«Donde el vapor quema, los revólveres tienen 6 tiros y los fantasmas son reales.»</em> <span class="src">T70</span></p>
 <h4>Armas de pólvora y vapor</h4>
 <div class="tw"><table class="t">
@@ -3628,7 +3640,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Reloj de Bolsillo Hipnótico</strong></td><td><span class="tag">Daño Mental 1</span></td><td><span class="tag">Esq: Nula</span></td><td><span class="tag">Abs: Voluntad</span></td><td><span class="tag">Acceso 1</span> <span class="tag">Efecto: aturde</span></td><td>Esq y Abs sin indicar.</td></tr>
 <tr><td><strong>Escopeta Exorcista</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Con inscripciones sagradas: repele a los demonios.</td><td>—</td></tr>
 </tbody></table></div>
-<h3 id="bz-toon">10. El Mundo Animado <span class="src">Escrito a peticion del autor (T124)</span></h3>
+<h3 id="bz-toon"><span class="hn">10.</span> El Mundo Animado <span class="src">Escrito a peticion del autor (T124)</span></h3>
 <p><em>«Donde el daño aplasta pero no mata.»</em> <span class="src">T78</span></p>
 <p>El autor no llegó a elegir entre Comedia/Dibujos y Espionaje Realista (T71). El asistente entregó Dibujos en T78 con 20 ítems (271–290) y dijo que eran «300 clavados», pero nunca llegaron los 10 que faltaban.</p>
 <p>Esta ambientación tiene <strong>19 ítems</strong>: <strong>completo</strong> para los 30. Ítems fusionados con otra ambientación: Caminar en el Aire → se conserva «Caminar por el Aire» en Wuxia / Anime (T70, aprobada).</p>
@@ -4201,8 +4213,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 </section>
 
 <section class="chapter" id="ch8b">
-<h2>8.4 Simulación de manuales</h2>
-<h3 id="ch8-recetas">8.4 Simulación de manuales · El menú degustación</h3>
+<h2><span class="hn">8.4</span> Simulación de manuales</h2>
+<h3 id="ch8-recetas"><span class="hn">8.4</span> Simulación de manuales · El menú degustación</h3>
 <p>Veinte sabores. Cada receta emula el <strong>lore</strong> de uno de los juegos de rol más conocidos y explica qué piezas de NOGUM hay que mover para que la mesa lo sienta. Principios: <span class="src">T119</span> <span class="src">T123</span> <span class="src">T127</span></p>
 <ul>
 <li><strong>Títulos de sarcasmo técnico.</strong> Cada receta lleva un nombre paródico que alude al tropo o a las reglas del original. Este manual es para Directores que se las conocen.</li>
@@ -4490,7 +4502,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <aside class="meta"><p>La palabra que más trabajo dio fue «malla»: llegó a significar cuatro cosas a la vez —el mapa de tonos, la capa de ámbitos, la escala de poder y una etiqueta de equipo—. Ahora son Cuadrante, Ámbito, Rejilla y [Rejilla]. Si en algún rincón del libro se nos ha escapado una malla que no sea la de una cota, es una errata.</p></aside>
 </section>
 <section class="chapter" id="apx-mates">
-<h2>Apéndice D · Tablas completas</h2>
+<h2>Apéndice <span class="hn">D</span> · Tablas completas</h2>
 <p>Aquí están los números que las gráficas de <a href="#maq-siete">1.3&nbsp;H</a> dibujan pero no escriben. Allí se ve la forma de cada tarjeta de un vistazo; aquí están las cinco cifras de cada bono, que es lo que hace falta cuando quieres <em>comprobar</em> una en vez de reconocerla. Probabilidades exactas en&nbsp;%, de −2 a +4. <em>Sale adelante</em> = coste + éxito + crítico, y cada fila suma 100&nbsp;%. La pifia y el crítico son naturales y tienen prioridad; el resto se resuelve con lectura + bono contra la TN de la tarjeta.</p>
 <h3 id="apxd-op">Épica · Optimista · Previsible</h3>
 <p>mejor de 2d10 + bono · TN 6 · bandas 1 / 10.</p>
@@ -4782,12 +4794,12 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p class="signoff">Welcome to this experiment.</p>
 </section>
 <section class="chapter" id="ch1">
-<h2>Chapter 1 · The Engine (The physics of emotion)</h2>
+<h2>Chapter <span class="hn">1</span> · The Engine (The physics of emotion)</h2>
 <p>Now we get down to business. This chapter gives shape to the concept from the introduction: how dice statistics influence the emotion of the roll, and how that mood when the dice are thrown influences the feel of the whole table.</p>
 <p>In the real world, gravity is a constant: 9.8 m/s². If you drop an apple, it falls. Always. In fiction, gravity is an opinion. If an action hero jumps off a building, he lands on an awning and survives. If a supporting character in a horror film does the same, he breaks his neck.</p>
 <p>The physics hasn't changed: the universe's <strong>intention</strong> has. NOGUM does not simulate the physics of objects; it simulates the physics of the script. To that end, before you touch a single die, I am handing you control of the two invisible engines that govern that reality.</p>
 
-<h3 id="ch1-ejes">1.1 The two axes of reality</h3>
+<h3 id="ch1-ejes"><span class="hn">1.1</span> The two axes of reality</h3>
 <p>Imagine you have a mixing desk in front of you with two main faders. By moving them, you change how it “feels” to exist in your world.</p>
 
 <h4>Y axis · Optimism (the Will)</h4>
@@ -4815,7 +4827,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p>And real life is neutral optimism with <strong>low</strong> chaos: fair and predictable, not chaotic. <span class="src">T4</span></p>
 </div>
 
-<h3 id="ch1-malla">1.2 The Quadrant (the map of your story)</h3>
+<h3 id="ch1-malla"><span class="hn">1.2</span> The Quadrant (the map of your story)</h3>
 <p>Crossing the two axes gives us the map of every possible genre. There are no numbers here yet, only feelings. Look for where you want your players to live (or where you want them to live <em>in this particular scene</em>).</p>
 <div class="tw"><table class="t grid-tonal">
 <thead><tr><th></th><th>Predictable<br><small>The world behaves</small></th><th>The habit<br><small>Neither orders nor charges</small></th><th>Chaotic<br><small>Everything has a price</small></th></tr></thead>
@@ -4838,7 +4850,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p>The grid is not a fixed menu: tones are potentially infinite and every GM is invited to create their own <span class="src">T3</span>. In section 1.3 we lift the bonnet to look at the mathematical engine that makes this work. <strong>If you are not interested in the maths and just want to know how to play, skip straight to <a href="#ch1-panel">section 1.4</a>.</strong></p>
 </section>
 <section class="chapter" id="ch1-maquinas">
-<h2>1.3 The Engine Room (Statistical Analysis)</h2>
+<h2><span class="hn">1.3</span> The Engine Room (Statistical Analysis)</h2>
 <aside class="meta"><p>Warning: this section is technical content. If probabilities bring you out in a rash, you can skip straight to 1.4 (Control Panel). The cards work just the same even if you do not know why. This is where you come to look at the engine with the bonnet up.</p></aside>
 <p>Every figure in this section comes from an exact enumeration of the possible combinations: 10 with one die and 100 with two. They are neither rounded nor simulated. They follow the canonical rules: the fumble and the critical are read <strong>on the dice, without bonuses</strong>, and take priority over the total. Everything else is resolved with <em>reading + total bonus</em> against the TN of the active card.</p>
 <h3 id="maq-equilibrio">A. The balance point: one die, neutral chaos</h3>
@@ -5663,7 +5675,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p>Hence the line that belongs on the first page of any long campaign: <strong>if you want the campaign to escalate, open the Key tap, not the points one.</strong></p>
 
 <section class="chapter" id="ch1-panel">
-<h2>1.4 The Control Panel (the Tone Cards)</h2>
+<h2><span class="hn">1.4</span> The Control Panel (the Tone Cards)</h2>
 <p>Forget memorising tables. As a NOGUM game master your job is to carry the pace, not the maths. Every rule of each mode is condensed into <strong>tone cards</strong>. Print the sheet or keep it on screen. When the scene changes, look at the card that applies: <strong>that is the only rule that exists right now</strong>.</p>
 <div class="rule">
 <p class="rule-title">How to read any card</p>
@@ -5752,11 +5764,11 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p class="note"><strong>In the app:</strong> every card can bring its own music. You drag your own audio files in, assign one to each card, and there it stays, with a speaker on every square of the Quadrant so it plays on a loop. We upload nothing and hand you no list: the music at your table is yours to choose, your files stay on your machine and nobody redistributes them. What the app does do is remember which one goes with which.</p>
 </section>
 <section class="chapter" id="ch2">
-<h2>Chapter 2 · The Anchor (The Power Grid)</h2>
+<h2>Chapter <span class="hn">2</span> · The Anchor (The Power Grid)</h2>
 <p>In the previous chapter we broke reality. We gave you the tools to turn a serious story into an absurd comedy or a lethal nightmare simply by changing the way the dice are read. But if the world is so volatile… what stops the character from dissolving? What defines who you are if physics keeps changing?</p>
 <p>We need an <strong>anchor</strong>. We need to separate, once and for all, <strong>“how good you are”</strong> from <strong>“how big your feats are”</strong>.</p>
 
-<h3 id="ch2-competencia">2.1 Immutable competence (the “who”)</h3>
+<h3 id="ch2-competencia"><span class="hn">2.1</span> Immutable competence (the “who”)</h3>
 <p>Let's start with a statistical truth: <strong>being a master means not failing</strong>. In most roleplaying games, levelling up means inflating your numbers to the point of absurdity. In NOGUM, competence is an absolute, closed value. We define mastery not by how much damage you deal, but by the <strong>reliability</strong> with which you carry out your will.</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Bonus</th><th>Profile</th><th>Meaning</th></tr></thead>
@@ -5770,7 +5782,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p>But if they all have the same number… why does the rubber pirate's punch shatter an island while the hitman who avenges dogs's only shatters a jaw?</p>
 <aside class="meta"><p>That's why NOGUM never adds dice as power goes up. In games where you roll fistfuls of dice, the fumble probability breaks. Here we anchor the statistics, and what moves is the world. <span class="src">T26</span></p></aside>
 
-<h3 id="ch2-escala">2.2 The impact scale (the architecture of chaos)</h3>
+<h3 id="ch2-escala"><span class="hn">2.2</span> The impact scale (the architecture of chaos)</h3>
 <p>To assign the power level of a character, a weapon or a spell, don't look at its stats. Look at its <strong>stage</strong> and ask yourself: <em>if this gets completely out of hand, what makes the news?</em></p>
 <div class="tw"><table class="t">
 <thead><tr><th>Level</th><th>Stage</th><th>Reach</th><th>Examples</th><th>The logic</th></tr></thead>
@@ -5794,7 +5806,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <li><em>You are at level 1 (hacker) and using a level 3 tool (military virus):</em> you use the <strong>Key</strong>. Now you operate at level 3 and can launch an attack against an entire corporate building.</li>
 </ul>
 
-<h3 id="ch2-llave">2.3 Explaining the Key</h3>
+<h3 id="ch2-llave"><span class="hn">2.3</span> Explaining the Key</h3>
 <p>The Key is any narrative explanation that lets you interact with a higher level of the Grid. Without it, the feat on the next rung is <strong>impossible</strong>. With it, <strong>you roll with your sheet and with the campaign's tone, with no penalty at all</strong>: you are still the best at what you do. <span class="src">T28</span></p>
 <ul>
 <li><strong>The barbarian of the steppe</strong> is an epic hero. Even without superpowers, the comics make it clear he can fight dozens of “normal” men at once. A rank-and-file soldier has no right, on paper, to so much as scratch him (just as we'll never see it in any comic). But he is mortal, and we can design a scenario in which he is vulnerable: after a battle, he celebrates, drinks mead and collapses into a sleep as deep as the bowels of the Earth. Something that simple can be the Key: a rank-and-file soldier catches him in his bed, and the system lets him harm someone who, without that narrative key, would be out of his reach.</li>
@@ -5854,7 +5866,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p>And one line settles almost every table case: <strong>what you carry in your hand can be lent; what you carry in your head cannot.</strong> The holy water changes owner. Knowing the true name does not.</p>
 <p>Equipment that breaks the Grid —the railgun that punches through a tank— is also bought with Keys, and has its three locks in <a href="#ch4-equipo">4.3</a>.</p>
 
-<h3 id="ch2-rejilla">2.4 Categorising power levels: the Grid (the narrative zoom)</h3>
+<h3 id="ch2-rejilla"><span class="hn">2.4</span> Categorising power levels: the Grid (the narrative zoom)</h3>
 <p>To handle all this without going mad with maths, we introduce <strong>the Grid</strong>, a conceptual tool that tells the Game Master <strong>where the camera is</strong>. Imagine a zoom lens: when it is closed (level 1), we see the dirty details of the street and a knife wound is a deadly problem. When it opens (level 5), we see empires and gods; a knife wound is irrelevant, because here people throw mountains.</p>
 <p>Every character has a power level <strong>for each sphere</strong>:</p>
 <div class="tw"><table class="t rejilla">
@@ -5928,7 +5940,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p>The <strong>starting level</strong> is set by the campaign; the <strong>ceiling</strong> is set by the universe. In a cyberpunk game there is no such thing as a Mental 2, however long the campaign runs: there is no wits-times-a-hundred. What there is are chrome jobs on the edge of psychosis, who reach Physical 2, and there the genre ends. Each of the twenty recipes (<a href="#ch8-recetas">8.4</a>) carries its ceiling per sphere, and that ceiling is what makes a universe feel like that universe — more than tone, more than equipment.</p>
 <p>The Grid still rises with the story, but against that ceiling. And the Key is the agreed exception: <strong>in cyberpunk you cannot have wits times a hundred, but you can have the exploit that works against that AI.</strong> A ceiling with no exceptions is boring; an exception with no ceiling breaks the game. Here the ceiling is permanent and the exception is bought.</p>
 
-<h3 id="ch2-sintesis">2.5 The synthesis: the Anchor and the Sail</h3>
+<h3 id="ch2-sintesis"><span class="hn">2.5</span> The synthesis: the Anchor and the Sail</h3>
 <p>This is how NOGUM manages to be universal without being generic.</p>
 <ul>
 <li>The <strong>bonus (+4) is your anchor</strong>. It tells you that you are competent, that you don't make silly mistakes and that your hands are steady. It keeps the character internally consistent, and the statistics always keep the emotion of the dice anchored to the tone of the game (or of the scene).</li>
@@ -5937,7 +5949,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p>In the next chapter we will see how to distribute those bonuses to finally create the protagonists of our story.</p>
 </section>
 <section class="chapter" id="ch3">
-<h2>Chapter 3 · The Protagonists (Character creation)</h2>
+<h2>Chapter <span class="hn">3</span> · The Protagonists (Character creation)</h2>
 <p>At NOGUM we love finding unexpected ways out. The rulebooks we have used as references pick a side: either very generic, narrative skills, or very precise skills that turn choosing them into an ordeal. We want, or at least that is the intention, to keep the best of both worlds.</p>
 <p>That is why we have designed four levels of “zoom”: skills go from more open to more specific. NOGUM’s thesis is that a general skill covers the basics: knowing what the thing is about. Take <strong>History</strong>. Someone who knows history in general probably knows the date of American independence, but to master the details of Korea’s Three Kingdoms period (and, within it, the rise and fall of the Gaya confederacy) we are talking about someone <strong>specialised</strong>: in that place, in that period, or in <strong>both</strong>. In the rules, this means the bonus of a general skill is capped. To shine, you must <strong>specialise</strong>. So the system is a pyramid: you buy the general skill as a base so you can specialise in the next step up.</p>
 <div class="rule">
@@ -5945,7 +5957,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p>In NOGUM there is no Strength, Dexterity, Reflexes or Intelligence. The broad fields of the pyramid are big enough to replace them. <span class="src">T47–T48</span> Everything on the sheet goes straight to bonuses, from −2 to +4.</p>
 </div>
 
-<h3 id="ch3-piramide">3.1 The pyramid (the four zoom levels)</h3>
+<h3 id="ch3-piramide"><span class="hn">3.1</span> The pyramid (the four zoom levels)</h3>
 <p>Think of a satellite map: <strong>the Sphere</strong> is the continent, the <strong>Domain</strong> the city, the <strong>Discipline</strong> the street and the <strong>Signature</strong> the house number. The closer you zoom in, the more power you have and the narrower your view.</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Level</th><th>What it is</th><th>Cost</th><th>Cumulative cost</th><th>Bonus</th><th>List</th></tr></thead>
@@ -5980,7 +5992,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 </ol>
 <p>If a broad skill on your sheet is close enough to what you are attempting, you negotiate it with the GM on an equal footing. <span class="src">T82</span></p>
 
-<h3 id="ch3-lista">3.2 The closed list (your character’s skeleton)</h3>
+<h3 id="ch3-lista"><span class="hn">3.2</span> The closed list (your character’s skeleton)</h3>
 <p>NOGUM wants to make things easy for you and not share a <em>FATE</em> with some lazy rulebooks out there. That is why we give a closed, universal list for the first three levels: it is NOGUM’s skeleton. The Signature, which is much broader, we invite you to create yourself; if you are not feeling inspired, at the end of the rulebook there is an <em>old school</em>-style catalogue with hundreds of them, sorted by discipline so that searching is very easy. We believe this structure helps players sketch their characters first in broad strokes and, when it is time for detail, know exactly where to put the pencil. <span class="src">Draft</span></p>
 <aside class="meta"><p>Yes, “not share a FATE” is a dig at the aspect-driven narrative games (in the Spanish original the pun needed a translation note; in English it just lands) and its ethereal skills. It stays. <span class="src">T129</span></p></aside>
 
@@ -6004,7 +6016,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p>Academic knowledge is <strong>Mental</strong>: theoretical biology lives in Erudition → Sciences. Actually healing someone is <strong>Technical</strong>: Artifice → Biotech. <span class="src">T102</span></p>
 </div>
 
-<h3 id="ch3-firmas">3.3 Signatures</h3>
+<h3 id="ch3-firmas"><span class="hn">3.3</span> Signatures</h3>
 <ul>
 <li>They are broad, like the skills of other games: <em>Firearms</em> rather than <em>Sniper</em>; <em>Swordmaster</em> rather than a specific model of sword. <span class="src">T49, T98, T100</span></li>
 <li>They hang logically from a Discipline. Examples: Weapons → <em>Historical Fencing</em>; Systems → <em>Cryptography</em>; Biotech → <em>Neurosurgery</em>; Sciences → <em>Chemistry</em>; Acrobatics → <em>Parkour</em> (which only works for moving around the city, not for swimming).</li>
@@ -6036,7 +6048,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p class="small">If three feels like too many or too few at your table, it is the only number this accordion has: raise it to four to make total mastery nearly unreachable, or drop it to two for campaigns of competent heroes from the start.</p>
 </div>
 
-<h3 id="ch3-extras">3.4 Style, magic and aspects</h3>
+<h3 id="ch3-extras"><span class="hn">3.4</span> Style, magic and aspects</h3>
 <dl>
 <dt>Style (+2)</dt>
 <dd>Every full sheet has a <strong>Style</strong> section outside the pyramid, with a fixed value of <strong>+2</strong>. It is a gift from the system and a NOGUM signature. It is used with the Style Rule (<a href="#ch4-malla">4.5</a>). <span class="src">T113</span></dd>
@@ -6046,7 +6058,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <dd>Permanent traits that are not skills: night vision, an implant, a phobia… This is also where the <strong>[Slow]</strong> tag goes for skills that are not quick in combat in your universe (see <a href="#ch5-iniciativa">5.1</a>). <span class="src">T87</span> Gifts and flaws have no point cost, because they are not bought: a flaw is the scar of a filled block (<a href="#ch5-dano">5.5</a>, ED-35). And the <strong>[Slow]</strong> tag now has a rule: a skill marked that way <strong>cannot be used to roll initiative</strong>. Either you enter with a different stance, or you go last. <span class="src">Author’s decision</span></dd>
 </dl>
 
-<h3 id="ch3-economia">3.5 The economy of scarcity</h3>
+<h3 id="ch3-economia"><span class="hn">3.5</span> The economy of scarcity</h3>
 <p>NOGUM hands out <strong>12 skill points</strong>, or <strong>14</strong> if the universe has an Arcane sphere. The number is not a whim: without magic there are four Spheres, eight Domains and thirty-two Disciplines — forty slots; with magic there are fifty. Twelve out of forty and fourteen out of fifty are the same proportion, so the sheet feels equally scarce wherever you play.</p>
 <p>Twelve points force you to manage scarcity: if you want to stand out at something, they practically force you to be Null somewhere. More points open the door to sheets with no weaknesses, which are usually less interesting. But playing NOGUM is a gentlemen’s agreement: this rulebook will not devote a single line to building firewalls against foul play. The kind of characters the story calls for is agreed at the table, like adults. That said, hand out as many points as you like: the rulebook is there to fit your campaign. <span class="src">Draft, T107</span></p>
 
@@ -6123,7 +6135,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p><strong>So how much of this can you pay on day one?</strong> All of it. The Adjustment is not a luxury of late campaigns, because it multiplies the same twelve points and the same side pot: a <strong>+3 Unleashed</strong> power is nine points out of twelve, and you have three left. It is a legal sheet and it is a hard sheet —you have bought something enormous and you have almost no trade underneath—, and that is how the system charges instead of forbidding. It is the same sentence as the rest of this section: <strong>the price of Signatures is being Null somewhere</strong>, and the price of the impossible is having no trade.</p>
 <p>The full procedure —the two tests that avoid 90 % of mistakes, the calibration question and the four categories of what can be built— is in the workshop of the <a href="#apx-bazar">Bazaar of the Multiverse</a>. Here it is enough to know that it exists, because that is where you spend the points that do not fit on the pyramid.</p>
 
-<h3 id="ch3-progreso">3.6 Progression: the two wallets</h3>
+<h3 id="ch3-progreso"><span class="hn">3.6</span> Progression: the two wallets</h3>
 <p>Almost every game throws three completely different things into the same bag of points, and it shows: the level fifteen fighter is at once more skilled, more powerful in the world and more scarred, because there is only one counter. Here they are separated, and each one has a different owner.</p>
 <div class="tw"><table class="t">
 <thead><tr><th>What changes</th><th>Who owns it</th><th>How it moves</th></tr></thead>
@@ -6192,7 +6204,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p><strong>The author’s thesis:</strong> fast growth, a bonus for good narrative play and fixed experience at campaign milestones. Milestones work as incentives; experience is there to manage the campaign’s expectations. <span class="src">T37</span></p>
 </section>
 <section class="chapter" id="ch4">
-<h2>Chapter 4 · Dynamics (Resolution rules)</h2>
+<h2>Chapter <span class="hn">4</span> · Dynamics (Resolution rules)</h2>
 <p>With the axes (the universe) and the characters (the actors) defined, we need a protocol for resolving conflict. This chapter describes how to roll, how to apply bonuses and what they mean. Combat adds a few rules of its own, so it has its own chapter.</p>
 
 <div class="rule formula">
@@ -6201,7 +6213,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p>Total bonus = skill (highest applicable level) + difficulty + equipment + effects. <strong>Always between −2 and +4.</strong></p>
 </div>
 
-<h3 id="ch4-dificultad">4.1 Roll difficulty (the complexity filter)</h3>
+<h3 id="ch4-dificultad"><span class="hn">4.1</span> Roll difficulty (the complexity filter)</h3>
 <p>Difficulty does not depend on the character’s skill, but on the intrinsic complexity of the task. The <strong>target number (TN)</strong> is set by the active Tone Card (6 on single-die or best/worst cards, and 11 on the Realist). The task’s difficulty is expressed as a <strong>modifier</strong>:</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Modifier</th><th>Difficulty</th><th>Examples</th></tr></thead>
@@ -6224,7 +6236,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <aside class="meta"><p>Your Grand Master is going to hit 99% of the time in Epic? Perfect: that is what the genre asks for. We don’t inflate difficulty to compensate. If the task is mundane, <strong>don’t roll</strong>. And if the player wants to show off, let them raise the difficulty themselves: one hand behind the back. <span class="src">T21–T22</span></p></aside>
 <p>Fumbles, criticals and partial successes depend on the active Tone Card (<a href="#ch1-panel">1.4</a>).</p>
 
-<h3 id="ch4-habilidad">4.2 Skill: the weight of competence</h3>
+<h3 id="ch4-habilidad"><span class="hn">4.2</span> Skill: the weight of competence</h3>
 <p>What what you wrote on your sheet (chapter 3) means mathematically. Figures with the First Gear card (red die against TN 6):</p>
 <ul>
 <li><strong>Null (−2): the dead weight.</strong> With the sphere empty you suffer −2. Your chance of success drops from 50% to 30%. With the lower of 2d10 (Anguish card) it falls to 9%: you are practically a walking corpse. Null turns routine tasks into mortal dangers.</li>
@@ -6233,7 +6245,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <li><strong>The Grand Master (+4): certainty.</strong> With +4, on a standard task you only fail on a natural 1, which is the fumble (90% success). If the tone is optimistic (Epic card), you are mathematically infallible at mundane things (99%).</li>
 </ul>
 
-<h3 id="ch4-equipo">4.3 Equipment: modifiers, keys and effects</h3>
+<h3 id="ch4-equipo"><span class="hn">4.3</span> Equipment: modifiers, keys and effects</h3>
 <p>In NOGUM, equipment is not just for adding numbers: it is for <strong>enabling actions</strong>.</p>
 <ol>
 <li><strong>Quality modifier (+1 / +2).</strong> Only equipment of exceptional make gives numerical bonuses. A standard sniper rifle gives +0; a custom rifle from a master gunsmith gives +1.</li>
@@ -6261,7 +6273,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <p>That turns looting back into a decision instead of an escalation, which is the classic problem of every game with an equipment catalogue. And it fits the distinction between Keys: the equipment Key is the one that <strong>can be lost</strong> —it lives in the object, it can be taken, spent or broken—; your own Key is the one that <strong>is you</strong>.</p>
 </div>
 
-<h3 id="ch4-modificadores">4.4 Temporary and permanent modifiers</h3>
+<h3 id="ch4-modificadores"><span class="hn">4.4</span> Temporary and permanent modifiers</h3>
 <dl>
 <dt>Temporary (they last a scene, a few turns or until a condition is met)</dt>
 <dd>Stunned, Inspired, Drugged, Knocked Down… They can be any of the three types above: <strong>bonuses</strong> (numerical, they modify your roll), <strong>keys</strong> (narrative, they modify your Grid level) or <strong>effects</strong> (mechanical or narrative). Always define the condition under which they go away (end of scene, healing, ritual, number of turns…). Any effect that comes from a piece of equipment is temporary, because it disappears if you are not carrying it.</dd>
@@ -6269,7 +6281,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <dd>These are changes to the sheet: scars, traumas, corruption, prostheses. They need no condition to be there: they simply are. They can only be removed or modified with experience points (or, in the case of lasting injuries, with another significant arc; see <a href="#ch5-consecuencias">5.6</a>).</dd>
 </dl>
 
-<h3 id="ch4-malla">4.5 The Grid and the Style Rule</h3>
+<h3 id="ch4-malla"><span class="hn">4.5</span> The Grid and the Style Rule</h3>
 <p>This rule overrides everything above. Before calculating anything, the Game Master checks <strong>the Grid</strong> (<a href="#ch2-rejilla">chapter 2</a>). For teaching purposes it comes at the end of the chapter, but at the table it is the first filter.</p>
 <div class="rule">
 <p class="rule-title">A · The power gap rule</p>
@@ -6311,11 +6323,11 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 </div>
 </section>
 <section class="chapter" id="ch5">
-<h2>Chapter 5 · Danger (Violence and consequences)</h2>
+<h2>Chapter <span class="hn">5</span> · Danger (Violence and consequences)</h2>
 <p>Combat carries special weight in every roleplaying rulebook, and NOGUM is no different. There are a few differences from normal rolls that deserve a chapter of their own.</p>
 <p>NOGUM is a universal system, but <strong>always narrative</strong>. Combat is simple and narrative on purpose. There will be no optional modes to make it more granular or tactical: that change would not alter the tone or the universe, you would only be moving the game along the <em>narrative–tactical</em> axis, and this rulebook is philosophically anchored on the narrative side. It is recommended that every NPC who is going to interact has a sheet, or at least the few brushstrokes needed for the handful of rolls that will be required. <span class="src">Author’s combat notes</span></p>
 
-<h3 id="ch5-iniciativa">5.1 Initiative: who attacks first?</h3>
+<h3 id="ch5-iniciativa"><span class="hn">5.1</span> Initiative: who attacks first?</h3>
 <p>Getting rid of attributes raised a question: what is the most cinematic way to hand out turns in a dangerous situation? NOGUM starts from an idea that feels deeply intuitive: <strong>speed comes from mastery</strong>. The gunslinger draws fast because they have done it ten thousand times; the hacker types fast because they are a master. By default, <strong>every skill can be used to roll initiative</strong>.</p>
 <p>If we are only deciding who goes first, what do you roll? Do you have to decide your action beforehand? One of NOGUM’s pillars is understanding roleplaying as fluid improvisation, so anything that invites slowing the game down is strongly discouraged. The action is not chosen in advance. <strong>The intention is.</strong></p>
 <div class="rule">
@@ -6337,7 +6349,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <aside class="meta"><p>Example. Warrior: Violence with Sword +4 → gets 13 and goes first. Hacker: Specialty with Systems +2 → gets 9. Thief: Trick with Stealth +2 → gets 7. By the time it’s the hacker’s turn, the warrior has already smashed the lights he was planning to switch off, so, without leaving his specialty, he hacks the enemy comms instead.</p></aside>
 <p><strong>No fixed initiative.</strong> NPCs declare a stance and roll too: it is an opposed roll using the skill of the chosen stance, and mooks carry their two or three basic numbers so it can be settled without a sheet. <span class="src">Author’s decision</span></p>
 
-<h3 id="ch5-golpes">5.2 The attack sequence: impact versus mitigation</h3>
+<h3 id="ch5-golpes"><span class="hn">5.2</span> The attack sequence: impact versus mitigation</h3>
 <p>To avoid slow arithmetic (subtracting dodges from attacks), NOGUM uses two steps. There is no opposed roll.</p>
 <div class="steps">
 <div class="step">
@@ -6387,7 +6399,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <p>Usual defence skills: Dexterity → Acrobatics to dodge; Vigour → Fortitude (with whatever protection you are wearing) to soak. <strong>You always soak with the skill</strong>, armour or no armour: the body is the first protection. What decides whether it helps are the weapon’s tags —<span class="tag">Soak: Max N</span> and <span class="tag">Soak: None</span>, which is where “this goes through your skin” lives— and whatever bonus your protection adds. By default, normal. <span class="src">Author’s decision</span></p>
 
 
-<h3 id="ch5-armas">5.3 Arsenal and the Hierarchy of Inevitability: the spec sheet</h3>
+<h3 id="ch5-armas"><span class="hn">5.3</span> Arsenal and the Hierarchy of Inevitability: the spec sheet</h3>
 <p>Instead of endless lists of dice (1d4, 1d8, 2d6), every NOGUM weapon is defined by its <strong>physical properties</strong>. They all carry three tags that dictate the rules of step 2, and sometimes a fourth for the Grid. Combining them yields a huge number of distinct, flavourful weapons without adding complexity. <span class="src">T45</span></p>
 <div class="tw"><table class="t">
 <thead><tr><th>Tag</th><th>Value</th><th>What it means</th><th>Examples</th></tr></thead>
@@ -6432,7 +6444,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <p class="note">In the Animated World the Reaper exists too, and it kills too — for two panels. The anvil falls, the character goes flat, and in the next scene they are whole. What gets crossed out there is their dignity.</p>
 
 
-<h3 id="ch5-vida">5.4 Fractal Health (the Russian doll)</h3>
+<h3 id="ch5-vida"><span class="hn">5.4</span> Fractal Health (the Russian doll)</h3>
 <p>Health in NOGUM always works the same way: there are <strong>four health states</strong> (Healthy, Wounded, Critical and Out of the fight). But, as we said at the start, lethality is one of the most powerful ways to set the tone. NOGUM’s solution is modular once again: the four states don’t change, but <strong>how many hits it takes to reach each one</strong> does. <span class="src">Draft, T35</span></p>
 <div class="fractal" aria-label="Fractal structure: 3 blocks, each with 3 boxes, each with 3 points">
 <div class="fr-block"><p>Block 1 · Healthy</p><div class="fr-cells"><span></span><span></span><span></span></div></div>
@@ -6459,7 +6471,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 
 </div>
 
-<h3 id="ch5-dano">5.5 Damage systems: physical, mental and spiritual</h3>
+<h3 id="ch5-dano"><span class="hn">5.5</span> Damage systems: physical, mental and spiritual</h3>
 <p>NOGUM uses the same fractal track for the character’s three dimensions. Stress and morale work exactly like physical damage.</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Track</th><th>Sources</th><th>Recovery</th><th>When full</th></tr></thead>
@@ -6507,7 +6519,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <p>The gift works the same way from the other side, when the fiction owes you one: the scar that makes you recognisable, the dying man’s favour, the strange calm of someone who has already been there.</p>
 </div>
 
-<h3 id="ch5-consecuencias">5.6 Catalogue of consequences</h3>
+<h3 id="ch5-consecuencias"><span class="hn">5.6</span> Catalogue of consequences</h3>
 <p>When accumulated damage fills a <strong>large block</strong> (through a lethal hit or through piled-up points), the character crosses a threshold and receives a narrative and mechanical consequence.</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Threshold</th><th>Effect</th><th>Physical</th><th>Mental</th><th>Spiritual</th></tr></thead>
@@ -6547,10 +6559,10 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 </ol>
 </section>
 <section class="chapter" id="ch6">
-<h2>Chapter 6 · The Opposition (Building sheets)</h2>
+<h2>Chapter <span class="hn">6</span> · The Opposition (Building sheets)</h2>
 <p>In film, the lead is not lit the same way as the waiter walking past in the background. In NOGUM, the hero's sheet should not take as long to make as the sheet for the guard who dies in minute 5. To keep the pace up, the system uses three levels of resolution for its actors.</p>
 
-<h3 id="ch6-tipos">6.1 Three kinds of sheet</h3>
+<h3 id="ch6-tipos"><span class="hn">6.1</span> Three kinds of sheet</h3>
 <p>The difference between these sheets is not one of power, but of <strong>bookkeeping time</strong> and <strong>dramatic detail</strong>.</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Sheet</th><th>Who they are</th><th>Depth</th><th>Mechanics</th></tr></thead>
@@ -6560,10 +6572,10 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Full sheet</strong><br><small>Protagonists and final bosses: the nemesis</small></td><td>The players and the big villain.</td><td>Total: backstory, traumas, inventory.</td><td>The full system: Spheres, Domains, Disciplines and Signatures, Style, fractal health and detailed equipment.</td></tr>
 </tbody></table></div>
 
-<h3 id="ch6-decorado">6.2 Scenery sheets and the Style Rule</h3>
+<h3 id="ch6-decorado"><span class="hn">6.2</span> Scenery sheets and the Style Rule</h3>
 <p>Against scenery, and against anything below your level, the <a href="#ch4-malla">Style Rule</a> applies: you do not roll to see whether you win, you roll to see how good you look doing it. Against scenery that sits above you, you do not roll: you survive, you run, or you look for a Key.</p>
 
-<h3 id="ch6-rapida">6.3 Quick sheets: how and when to use them</h3>
+<h3 id="ch6-rapida"><span class="hn">6.3</span> Quick sheets: how and when to use them</h3>
 <p class="note"><strong>In the app:</strong> the fifth form, <em>The cast</em>, builds these two sheets —scenery and quick— in three taps, and tells you along the way whether the Style Rule (6.2) applies against that NPC, whether it is a real fight, or whether there is nothing to roll at all. Not the nemesis: that one is made on a sheet, with the same rules as a player character.</p>
 <p>The Game Master should never use a full sheet for an NPC who is not crucial. To improvise, use the <strong>quick sheet</strong> (the card), which takes ten seconds to make by answering two questions:</p>
 <ol>
@@ -6573,13 +6585,13 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <p><strong>Health:</strong> use the fractal, but do not pick its health according to its “real” strength. Ask yourself how long you want the fight to last. By default, three boxes: healthy, wounded and out.</p>
 
 
-<h3 id="ch6-completa">6.4 Full sheets: the system's recommendation</h3>
+<h3 id="ch6-completa"><span class="hn">6.4</span> Full sheets: the system's recommendation</h3>
 <p>This is the sheet we taught you to build in chapter 3: complex and detailed. <strong>Recommendation:</strong> the GM should only have <strong>one</strong> full sheet on the table, the one for the <strong>main antagonist</strong>. Treating the villain under the same rules as the heroes (Signatures at +4, Style, 27-point fractal health) is what turns the final fight into a memorable event rather than a piñata of hit points. The draft mentioned “luck points” for the villain: <strong>they do not exist</strong>. The antagonist spends Keys like everybody else, and if you want them to survive the scene, give them Keys and let it show in the fiction. <span class="src">Author’s decision</span></p>
 <p>For everything else, simplify. NOGUM is designed so that the camera focuses on the protagonists; the rest of the world can be slightly out of focus.</p>
 </section>
 
 <section class="chapter" id="ch7">
-<h2>Chapter 7 · The Mixing Desk (Storytelling advice)</h2>
+<h2>Chapter <span class="hn">7</span> · The Mixing Desk (Storytelling advice)</h2>
 <p>In NOGUM, the Game Master is not an impartial physics simulator: they are the sound engineer at a mixing desk. Their job is not to apply the rules blindly, but to choose <em>which rules</em> apply in order to achieve the emotion they are after. If the previous chapters were the science, this one is the art. And art is about feelings, not maths: breathe.</p>
 <div class="rule">
 <p class="rule-title">The black box</p>
@@ -6589,7 +6601,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 </div>
 <aside class="meta"><p>It asks a lot of the GM? That is a virtue, not a flaw. Other games are a point-and-shoot camera: anyone can take a decent photo, but they all look alike. NOGUM is an SLR on manual. You can mess it up, sure, but it is the only way to take exactly the photo you have in your head. <span class="src">T72</span></p></aside>
 
-<h3 id="ch7-diagnostico">7.1 How to identify the tone (the diagnosis)</h3>
+<h3 id="ch7-diagnostico"><span class="hn">7.1</span> How to identify the tone (the diagnosis)</h3>
 <p>Before starting a campaign, or even a scene, ask yourself two questions to calibrate the axes. Do not ask “what are we playing?”, but “how does the world feel?”.</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Question</th><th>Answer</th><th>Axis</th><th>Symptom</th></tr></thead>
@@ -6604,7 +6616,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <p>With both answers, find your square on the <a href="#ch1-panel-cuadrante">quadrant</a> and take the matching card (<a href="#ch1-panel-cuadrante">table in 1.4</a>). The draft paired neutral optimism with “adding 2d10”; in the canon, the sum is the tool of order (low chaos) and neutral is a single die.</p>
 <p><strong>Nasty or weird?</strong> If you are torn between pessimism and chaos, use the heist test (<a href="#ch1-ejes">1.1</a>): does the plan fail because the enemy is competent and cruel, or because something absurd happens?</p>
 
-<h3 id="ch7-defecto">7.2 Default tone (the safety net)</h3>
+<h3 id="ch7-defecto"><span class="hn">7.2</span> Default tone (the safety net)</h3>
 <p>What if you are not sure? What if your players just want to “play an RPG” without philosophising about narrative? NOGUM recommends a standard setup that works for the vast majority of adventures.</p>
 <div class="rule">
 <p class="rule-title">“Classic Adventure” mode (First Gear)</p>
@@ -6616,7 +6628,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <p><strong>Tip:</strong> if you get stuck, put the desk in this mode. It is the autopilot. There is no rush: start exploring whenever you feel like it.</p>
 </div>
 
-<h3 id="ch7-velocidades">7.3 The three speeds of tone</h3>
+<h3 id="ch7-velocidades"><span class="hn">7.3</span> The three speeds of tone</h3>
 <p>NOGUM's modularity can be intimidating. Do not try to mix live from day one: NOGUM grows with you.</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Speed</th><th>How</th><th>Example</th><th>For whom</th></tr></thead>
@@ -6649,7 +6661,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 </div>
 <aside class="meta"><p>Who is this for? For anyone who finds that their usual system does not give them the tone of their favourite saga, or that some other system has weird dice. Here, every choice is acceptable. <span class="src">T60</span></p></aside>
 
-<h3 id="ch7-disonancia">7.4 Ludonarrative dissonance (the invisible enemy)</h3>
+<h3 id="ch7-disonancia"><span class="hn">7.4</span> Ludonarrative dissonance (the invisible enemy)</h3>
 <p>The greatest danger in roleplaying is when what the system <em>says</em> contradicts what the table <em>feels</em>. NOGUM gives you tools to fix it.</p>
 <dl class="symptoms">
 <dt>Symptom A · Comfortable laughter in horror</dt>
@@ -6662,7 +6674,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 
 </section>
 <section class="chapter" id="ch8">
-<h2>Chapter 8 · Appendices (The Toolbox)</h2>
+<h2>Chapter <span class="hn">8</span> · Appendices (The Toolbox)</h2>
 <p>So far you have read the theory: why the dice have emotions, why the +4 never moves and why health is a Russian doll. This chapter is the toolbox. It is not meant to be read straight through: it is meant to be consulted.</p>
 <p>The order is no accident. It goes <strong>from the general to the specific and, finally, to the application</strong>:</p>
 <ol>
@@ -6678,7 +6690,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <p>Section 8.3 (the Multiverse Bazaar) has its own section.</p>
 
 <!-- ============================ 8.1 ============================ -->
-<h3 id="ch8-baul">8.1 Rules Chest</h3>
+<h3 id="ch8-baul"><span class="hn">8.1</span> Rules Chest</h3>
 <p>The chest is a catch-all: <strong>every rule from other rulebooks that might bring something to the table</strong>, from narrative clocks to flashback rolls. None of them is mandatory. They are pieces the Game Master takes out of the chest when the story calls for them and puts back when they stop being useful. <span class="src">T117</span></p>
 
 <p>Each module says what it does and which 8.4 recipes it appears in.</p>
@@ -6978,7 +6990,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 </tbody></table></div>
 <p class="small">Mutations with a bonus are bought like anything else that makes you better (the workshop, in <a href="#bz-fabrica">8.3</a>): one point per +1. If the Director hands you one for the plot, it is a flaw with a prize and costs nothing: you are already paying for it in the fiction.</p>
 
-<h3 id="ch8-skills">8.2 Skills list</h3>
+<h3 id="ch8-skills"><span class="hn">8.2</span> Skills list</h3>
 <p>Quick reference for the pyramid in chapter 3: <strong>5 spheres, 10 Domains, 40 Disciplines and an open catalogue of Signatures</strong>. The first two skill layers are closed lists; the Signature is yours. <span class="src">T106</span></p>
 <div class="tw"><table class="t">
 <thead><tr><th>Level</th><th>Cumulative cost</th><th>Bonus</th><th>List</th></tr></thead>
@@ -7338,7 +7350,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 </tbody></table></div>
 </section>
 <section class="chapter" id="apx-bazar">
-<h2>8.3 The Multiverse Bazaar</h2>
+<h2><span class="hn">8.3</span> The Multiverse Bazaar</h2>
 <p>This appendix is <strong>reference</strong> material, not study material. It is NOGUM's <em>gear porn</em>: a shop window of weapons, armour, powers and gadgets from ten settings, plus a social arsenal. Nobody has to memorise it. Open it when you need a weapon for an NPC, when a player asks “so what does this do?” or when you want to hear how your genre sounds in numbers.</p>
 <p>The stat blocks are teaching crutches: they convey tone better than theory does. A Energy Sword carrying <span class="tag">Soak: None</span> and a Plasma Rifle carrying <span class="tag">Soak: Max 1</span> explains space opera faster than three pages of essay. A weapon is not defined by its price, but by how it bends the rules: can it be dodged? Is armour any use against it? Can it reach someone higher up the Grid?</p>
 <aside class="meta"><p>The sweep is done: there is no registered trademark left in the catalogue. The names you see are descriptive on purpose —the blade nobody can lift, the cloud of the pure of heart, the slow-time implant— and the proof that they work is that you know exactly which object I mean.</p></aside>
@@ -7482,7 +7494,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 </tbody></table></div>
 <p>And if what you are after does not exist, you now know how to build it. The index by category is at the end of the appendix.</p>
 
-<h3 id="bz-fantasia">1. The Dungeon and the Steppe</h3>
+<h3 id="bz-fantasia"><span class="hn">1.</span> The Dungeon and the Steppe</h3>
 <p><em>“Where steel is heavy and magic breaks the rules.”</em> <span class="src">T68</span></p>
 <h4>Bladed weapons</h4>
 <div class="tw"><table class="t">
@@ -7534,7 +7546,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Scroll of Flight</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> Three-dimensional movement for one scene.</td><td>—</td></tr>
 <tr><td><strong>Anti-Detection Amulet</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> Wizards cannot detect you.</td><td>The original says “invisible to the Mystic Grid”: it refers to the Arcane sphere, not the Grid.</td></tr>
 </tbody></table></div>
-<h3 id="bz-neon">2. The City of Neon</h3>
+<h3 id="bz-neon"><span class="hn">2.</span> The City of Neon</h3>
 <p><em>“Where speed kills and armour is temporary.”</em> <span class="src">T68</span></p>
 <h4>Firearms</h4>
 <div class="tw"><table class="t">
@@ -7581,7 +7593,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Reinforced Legs</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> You can fall up to 20 m without taking damage.</td><td>—</td></tr>
 <tr><td><strong>Sirocco (combat drug)</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> While it lasts, your reflex rolls (dodge, Athletics) use Best of 2d10 (High Optimism). When it wears off, you take Mental Dmg 1.</td><td>The original said “+1 die to Reflexes”: NOGUM neither adds dice nor has attributes.</td></tr>
 </tbody></table></div>
-<h3 id="bz-terror">3. Antediluvian Octopuses</h3>
+<h3 id="bz-terror"><span class="hn">3.</span> Antediluvian Octopuses</h3>
 <p><em>“Where weapons fail and fear kills.”</em> <span class="src">T68</span></p>
 <p>This setting has <strong>29 items</strong>: <strong>1 short</strong> of 30. Items merged with another setting: Molotov Cocktail → kept in Post-Apocalypse (T69, most recent version).</p>
 <h4>Improvised weapons</h4>
@@ -7628,7 +7640,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Booze</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> Heals stress (Mental track), but gives a physical penalty.</td><td>—</td></tr>
 <tr><td><strong>Amphetamines</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> You ignore fatigue for 1 scene; afterwards, collapse.</td><td>—</td></tr>
 </tbody></table></div>
-<h3 id="bz-opera">4. Opera of Stars</h3>
+<h3 id="bz-opera"><span class="hn">4.</span> Opera of Stars</h3>
 <p><em>“Where technology is clean, lasers go ‘pew-pew’ and faith moves starships.”</em> <span class="src">T69</span></p>
 <h4>Energy weapons</h4>
 <div class="tw"><table class="t">
@@ -7676,7 +7688,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Battle Meditation</strong></td><td>—</td><td>—</td><td>—</td><td>For the scene, all allies make their rolls with Best of 2d10 (High Optimism).</td><td>The original gave “[+1 Die]”.</td></tr>
 <tr><td><strong>Flow Ghost</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Immortality</span> If the character leaves the story, they remain present as a narrative guide.</td><td>The original said “if you die”.</td></tr>
 </tbody></table></div>
-<h3 id="bz-postapo">5. Post-Apocalypse</h3>
+<h3 id="bz-postapo"><span class="hn">5.</span> Post-Apocalypse</h3>
 <p><em>“Where everything is rusty, filthy and hurts a lot.”</em> <span class="src">T69</span></p>
 <p>This setting has <strong>28 items</strong>: <strong>2 short</strong> of 30. Items merged with another setting: Double-Barrelled Shotgun (Sawn-Off) → kept in Steampunk (T70); Acid Blood → kept in Gothic Horror (T70).</p>
 <h4>Deadly scrap</h4>
@@ -7722,7 +7734,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Jet (drug)</strong></td><td>—</td><td>—</td><td>—</td><td>Extra actions for 1 turn. Instant addiction.</td><td>—</td></tr>
 <tr><td><strong>Mutant Pet</strong></td><td>—</td><td>—</td><td>—</td><td>A Level 2 NPC that obeys simple orders.</td><td>—</td></tr>
 </tbody></table></div>
-<h3 id="bz-wuxia">6. Martial Arts, Glows and Shouting</h3>
+<h3 id="bz-wuxia"><span class="hn">6.</span> Martial Arts, Glows and Shouting</h3>
 <p><em>“Where shouting makes you stronger and gravity is optional.”</em> <span class="src">T70</span></p>
 <h4>Martial arts (physical techniques)</h4>
 <div class="tw"><table class="t">
@@ -7769,7 +7781,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>The Armour of the Warrior from Another Planet</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> Stretchy: soaks up to 1 point (<span class="tag">Soak: Max 1</span>). Doesn't tear when you transform.</td><td>—</td></tr>
 <tr><td><strong>Sacred Water</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> Turns a +2 skill into +4, but drinking it deals Dmg 2.</td><td>—</td></tr>
 </tbody></table></div>
-<h3 id="bz-gotico">7. Gothic Horror</h3>
+<h3 id="bz-gotico"><span class="hn">7.</span> Gothic Horror</h3>
 <p><em>“Where blood is currency and politics are eternal.”</em> <span class="src">T70</span></p>
 <h4>Blood powers (disciplines)</h4>
 <div class="tw"><table class="t">
@@ -7816,7 +7828,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Hacked Security Camera</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> <span class="tag">Permission: Information</span></td><td>—</td></tr>
 <tr><td><strong>Armoured Coffin</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> Lets you rest by day in war zones.</td><td>—</td></tr>
 </tbody></table></div>
-<h3 id="bz-supers">8. Capes and Tights</h3>
+<h3 id="bz-supers"><span class="hn">8.</span> Capes and Tights</h3>
 <p><em>“Where physics is a suggestion and underpants are worn on the outside.”</em> <span class="src">T70</span></p>
 <h4>Superpowers (as equipment)</h4>
 <div class="tw"><table class="t">
@@ -7863,7 +7875,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Chest Reactor</strong></td><td>—</td><td>—</td><td>—</td><td>Inexhaustible power source.</td><td>—</td></tr>
 <tr><td><strong>Alien Symbiote</strong></td><td>—</td><td>—</td><td>—</td><td>Grants physical powers in exchange for constant Mental Dmg (corruption).</td><td>—</td></tr>
 </tbody></table></div>
-<h3 id="bz-steampunk">9. The Weird West</h3>
+<h3 id="bz-steampunk"><span class="hn">9.</span> The Weird West</h3>
 <p><em>“Where steam burns, revolvers hold 6 shots and ghosts are real.”</em> <span class="src">T70</span></p>
 <h4>Gunpowder and steam weapons</h4>
 <div class="tw"><table class="t">
@@ -7910,7 +7922,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Hypnotic Pocket Watch</strong></td><td><span class="tag">Mental Dmg 1</span></td><td><span class="tag">Dodge: None</span></td><td><span class="tag">Soak: Will</span></td><td><span class="tag">Access 1</span> <span class="tag">Effect: stuns</span></td><td>Dodge and Soak not specified.</td></tr>
 <tr><td><strong>Exorcist Shotgun</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> Engraved with holy inscriptions: repels demons.</td><td>—</td></tr>
 </tbody></table></div>
-<h3 id="bz-toon">10. The Animated World <span class="src">Written at the author’s request (T124)</span></h3>
+<h3 id="bz-toon"><span class="hn">10.</span> The Animated World <span class="src">Written at the author’s request (T124)</span></h3>
 <p><em>“Where damage flattens you but never kills you.”</em> <span class="src">T78</span></p>
 <p>The author never got round to choosing between Comedy/Cartoon and Realistic Espionage (T71). The assistant delivered Cartoon in T78 with 20 items (271–290) and said that made “exactly 300”, but the remaining 10 never arrived.</p>
 <p>This setting has <strong>19 items</strong>: <strong>complete</strong> to reach 30. Items merged with another setting: Walking on Air → “Air Walk” is kept in Wuxia / Anime (T70, approved).</p>
@@ -8483,8 +8495,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 </section>
 
 <section class="chapter" id="ch8b">
-<h2>8.4 Rulebook Emulation</h2>
-<h3 id="ch8-recetas">8.4 Rulebook Emulation · The tasting menu</h3>
+<h2><span class="hn">8.4</span> Rulebook Emulation</h2>
+<h3 id="ch8-recetas"><span class="hn">8.4</span> Rulebook Emulation · The tasting menu</h3>
 <p>Twenty flavours. Each recipe emulates the <strong>lore</strong> of one of the best-known roleplaying games and explains which NOGUM pieces you need to move for the table to feel it. Principles: <span class="src">T119</span> <span class="src">T123</span> <span class="src">T127</span></p>
 <ul>
 <li><strong>Titles full of technical sarcasm.</strong> Each recipe has a parody name that nods to the trope or the rules of the original. This rulebook is for Game Masters who know their stuff.</li>
@@ -8772,7 +8784,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <aside class="meta"><p>The word that gave most trouble was “grid”: it came to mean four things at once —the tone map, the sphere layer, the scale of power and a gear tag. They are now Quadrant, Sphere, Power Grid and [Grid]. If a stray grid is still hiding somewhere in the book, and it is not chainmail, it is a typo.</p></aside>
 </section>
 <section class="chapter" id="apx-mates">
-<h2>Appendix D · Full tables</h2>
+<h2>Appendix <span class="hn">D</span> · Full tables</h2>
 <p>These are the figures the charts in <a href="#maq-siete">1.3&nbsp;H</a> draw but do not write out. There you see the shape of each card at a glance; here are the five numbers for every bonus, which is what you need when you want to <em>check</em> one rather than recognise it. Exact probabilities in&nbsp;%, from −2 to +4. <em>Works out</em> = cost + success + critical, and each row adds up to 100&nbsp;%. Fumble and critical are natural and take priority; the rest resolves as read + bonus against the card’s TN.</p>
 <h3 id="apxd-op">Epic · Optimistic · Predictable</h3>
 <p>higher of 2d10 + bonus · TN 6 · bands 1 / 10.</p>
@@ -9304,3 +9316,5 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
   if (document.fonts && document.fonts.ready) { document.fonts.ready.then(start); setTimeout(start, 2500); } else start();
 })();
 </script>
+</body>
+</html>

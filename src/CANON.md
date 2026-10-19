@@ -1628,3 +1628,48 @@ limpio lo publicado.
 El cambio corrio una palabra el parrafo partido entre las paginas 10 y 11 del
 PDF y descuadro ese pliego. La regla de cajista encontro el mismo reparto con
 el corte una palabra antes; los pliegos vuelven a acabar a la misma altura.
+
+---
+
+## T159 · El PDF se archiva; la web se lleva lo que valia
+
+**El PDF de La Idea se retira.** Era una sola pieza, y su maqueta (margen ancho
+alternado) estaba pensada para los post-its y las notas a mano del prototipo,
+que el autor descarto por ser un equipo de una persona. Sin ellos era papel
+vacio que salta de lado al leer en pantalla. `pdf_idea.py` y su hoja pasan a
+`archivo/`; la imagen de cubierta a `img/`, porque de ella sale la vista previa
+al compartir el enlace, que se queda.
+
+**La version web no tenia esqueleto de documento.** `assemble3` solo lo ponia
+en la version local; el destino web se trato como el de artefacto, donde lo
+pone claude.ai, pero GitHub Pages sirve el fichero tal cual. Sin `<!doctype>`
+los tres libros iban en modo quirks; sin `viewport`, el movil los dibujaba a
+ancho de escritorio; sin `charset`, guardados o abiertos desde disco salia
+«Ã­ndice». En el sitio no se notaba lo ultimo solo porque Pages manda la
+cabecera. Error mio al montar el destino web (T155).
+
+**Las tablas feas eran `overflow-wrap:anywhere`.** Hipotesis medida antes de
+tocar nada, con un navegador real y las 160 tablas del Juego: el modo quirks no
+cambiaba nada (422 palabras partidas antes y despues de arreglarlo). `anywhere`
+hace creer a la tabla que cualquier columna cabe en una letra, y estrechaba las
+de etiquetas hasta trocear «Total», «Acceso» o «Rejilla» sin guion; las peores
+eran las del Bazar. Con `break-word`: 422 -> 5 en el Juego, 8 -> 0 en el
+Acelerado, ninguna tabla mas ancha que su pagina, y sobra una pagina. Las cinco
+que quedan son palabras con guion propio (bio-aumentos, Post-Apocalipsis) que
+se parten en su guion.
+
+**Papel calido**, del prototipo: los neutros pasan de gris azulado a crema, y el
+modo oscuro de negro azulado a negro calido, que es el de la cubierta. Los
+colores de marca no cambian; los fondos suaves se recalculan como mezcla con el
+papel nuevo. Las treinta parejas de texto y fondo que se usan pasan de 4,5 de
+contraste en los dos modos. La App hereda la paleta, porque toma sus tokens de
+`paper.css`.
+
+**El numero de cada titular, en rojo**: «Capitulo 3», «3.5», «1 ·», «Apendice
+D», y las recetas del Bazar. Se envuelve solo el numero.
+
+**Y un resto del cambio de nombre**: la cabecera del libro de La Idea decia
+«La apuesta de diseno», en minuscula, y por eso se escapo de la busqueda.
+
+Pendiente de decidir por el autor: Big Shoulders o Ibarra Real Nova en los
+titulares de dentro de los libros.
