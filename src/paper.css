@@ -9,6 +9,8 @@
   --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
   --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
   --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  /* lo que se lee lleva Ibarra; lo que es marca o tarjeta, Big Shoulders (T160) */
+  --book:"Ibarra Real Nova",Georgia,"Times New Roman",serif;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
@@ -91,8 +93,8 @@ main{padding:26px 16px 80px;min-width:0;overflow-x:hidden}
 .sheet.cover .sb{padding:26mm 20mm;display:flex;flex-direction:column;justify-content:center}
 
 /* ---------- content ---------- */
-.sb h2{font:800 25pt/1.02 var(--display);letter-spacing:.02em;text-transform:uppercase;margin:0 0 5mm;padding-bottom:3mm;border-bottom:.8mm solid var(--ink);text-wrap:balance}
-.sb h3{font:800 16pt/1.1 var(--display);letter-spacing:.03em;text-transform:uppercase;margin:6mm 0 2.5mm;text-wrap:balance;break-after:avoid}
+.sb h2{font:700 25pt/1.06 var(--book);letter-spacing:-.012em;margin:0 0 5mm;padding-bottom:3mm;border-bottom:.8mm solid var(--ink);text-wrap:balance}
+.sb h3{font:700 15pt/1.2 var(--book);letter-spacing:0;margin:6mm 0 2.5mm;text-wrap:balance;break-after:avoid}
 .hn{color:var(--red)}
 .sb h3::before{content:"";display:inline-block;width:2.4mm;height:2.4mm;background:var(--red);border-radius:.5mm;margin-right:2.5mm;vertical-align:.12em;transform:rotate(45deg)}
 .sb h4{font:600 12pt/1.3 var(--serif);margin:5mm 0 2mm}
@@ -105,7 +107,7 @@ main{padding:26px 16px 80px;min-width:0;overflow-x:hidden}
 .sb dd{margin:.5mm 0 1.6mm}
 .sb blockquote{margin:3mm 0;padding:1mm 0 1mm 4mm;border-left:.8mm solid var(--blue);color:var(--ink-2);font-style:italic}
 .sb small{font-size:.85em;color:var(--ink-3)}
-.signoff{font:800 16pt/1.2 var(--display);letter-spacing:.04em;text-transform:uppercase;margin-top:5mm!important}
+.signoff{font:italic 400 17pt/1.25 var(--book);letter-spacing:0;margin-top:5mm!important}
 .running{display:none}
 .lede{font-size:12.5pt}
 
@@ -133,7 +135,7 @@ table.rejilla td{text-align:center}
 .rule{border:.3mm solid var(--rule);border-left:1.2mm solid var(--ink);background:color-mix(in srgb,var(--ground) 55%,var(--paper));border-radius:1.5mm;padding:3mm 4mm 1mm;margin:3.5mm 0}
 .rule.warn{border-left-color:var(--red)}
 .rule.formula{border-left-color:var(--blue)}
-.rule-title{font:800 12pt/1.2 var(--display);letter-spacing:.05em;text-transform:uppercase;margin:0 0 1.8mm!important}
+.rule-title{font:700 12.5pt/1.2 var(--book);letter-spacing:0;margin:0 0 1.8mm!important}
 .formula-line{font:600 9.5pt/1.45 var(--mono);background:var(--blue-soft);padding:2.2mm 3mm;border-radius:1.2mm}
 .example{border:.3mm dashed var(--rule);border-radius:1.5mm;padding:3mm 4mm 1mm;margin:3.5mm 0}
 .example-title,.step-title{font:600 8.5pt/1.2 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--red);margin:0 0 1.8mm!important}

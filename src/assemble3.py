@@ -250,7 +250,7 @@ def build(me, mode):
     sub_en = {'tesis': 'The Idea', 'juego': 'Complete game', 'acelerado': 'Accelerated', 'cuaderno': 'Editing notebook'}[me]
     head = (f'<title>{c["title"]["es"]}</title>\n'
             '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
-            '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap">\n'
+            '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&amp;family=Ibarra+Real+Nova:ital,wght@0,700;1,400&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap">\n'
             f'<style>{CSS}</style>\n')
     body = (f'<header class="top">\n<button class="tool menu-btn" id="menuBtn" aria-controls="side" aria-expanded="false">Índice</button>\n'
             f'<span class="brand"><span class="dice" aria-hidden="true"><i></i><i></i></span><b>NOGUM</b><small data-i18n-es="{sub_es}" data-i18n-en="{sub_en}">{sub_es}</small></span>\n'

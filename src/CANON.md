@@ -1673,3 +1673,21 @@ D», y las recetas del Bazar. Se envuelve solo el numero.
 
 Pendiente de decidir por el autor: Big Shoulders o Ibarra Real Nova en los
 titulares de dentro de los libros.
+
+---
+
+## T160 · Ibarra para lo que se lee
+
+El autor delego la eleccion. Criterio: **lo que se lee lleva Ibarra Real Nova**
+(titulares de capitulo y seccion, recuadros de regla, la despedida), y **lo que
+es marca o tarjeta se queda en Big Shoulders** (el logo, el N·O·G·U·M de las
+portadillas, las tarjetas del pack y las siete de tono). Los titulares largos y
+con parentesis se leian mal en mayusculas condensadas; en minuscula de frase y
+serif se leen como un libro. Token nuevo, `--book`.
+
+Las recetas del Bazar se quedan en Big Shoulders aunque parezcan titulares:
+son tarjetas, y su titulo viene en mayusculas desde la fuente; en serif salia
+gritando y en dos lineas.
+
+Visto de paso y sin tocar: «8.4 Simulacion de manuales» sale dos veces
+seguidas, como titular de seccion y como subtitulo.
