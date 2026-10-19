@@ -7,7 +7,7 @@ exec(open(os.path.join(D, 'make_covers.py'), encoding='utf-8').read())
 URLS = json.load(open(os.path.join(D, 'urls.json'), encoding='utf-8'))
 # tres destinos y cada uno con sus enlaces: la carpeta local, los artefactos
 # de claude.ai y el sitio publico que sirve GitHub Pages.
-WEB = {'tesis': 'apuesta.html', 'juego': 'juego.html', 'acelerado': 'acelerado.html',
+WEB = {'tesis': 'idea.html', 'juego': 'juego.html', 'acelerado': 'acelerado.html',
        'cuaderno': 'cuaderno.html', 'app': 'app.html'}
 LOCAL = {'tesis': 'NOGUM_tesis.html', 'juego': 'NOGUM_juego.html', 'acelerado': 'NOGUM_acelerado.html',
          'cuaderno': 'NOGUM_cuaderno.html', 'app': '../NOGUM_app/NOGUM_app.html'}
@@ -35,7 +35,7 @@ def juego(lang):
 
 drop = R('frag_descartados.html').split('dr-verificacion')[0].count('class="flag drop"')
 PRODUCTS = {
-    'tesis': dict(title={'es': 'NOGUM · La Apuesta', 'en': 'NOGUM · The Wager'}, langs=['es', 'en'], chapterBreak=False, contents=True,
+    'tesis': dict(title={'es': 'NOGUM · La Idea', 'en': 'NOGUM · The Idea'}, langs=['es', 'en'], chapterBreak=False, contents=True,
                   src={'es': R('p3_tesis_es.html'), 'en': R('p3_tesis_en.html')}),
     'juego': dict(title={'es': 'NOGUM · Juego completo', 'en': 'NOGUM · Complete Game'}, langs=['es', 'en'], chapterBreak=True, contents=True,
                   src={'es': juego('es'), 'en': juego('en')}),
@@ -44,7 +44,7 @@ PRODUCTS = {
     'cuaderno': dict(title={'es': 'NOGUM · Cuaderno de edición', 'en': 'NOGUM · Editing Notebook'}, langs=['es'], chapterBreak=True, contents=True,
                      src={'es': R('p3_cuaderno.es.html').replace('%%N_DROP%%', str(drop)) + R('frag_editorial.html') + R('frag_descartados.html') + R('frag_trazabilidad.html')}),
 }
-NAV = {'tesis': ('La Apuesta', 'The Wager'), 'juego': ('Juego', 'Game'), 'acelerado': ('Acelerado', 'Accelerated'),
+NAV = {'tesis': ('La Idea', 'The Idea'), 'juego': ('Juego', 'Game'), 'acelerado': ('Acelerado', 'Accelerated'),
        'cuaderno': ('Cuaderno', 'Notebook'), 'app': ('App', 'App')}
 MANUALS = ['tesis', 'juego', 'acelerado']
 # NOGUM se publica como un pack de cinco piezas, y las cinco se enlazan

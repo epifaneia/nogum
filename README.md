@@ -20,7 +20,7 @@ Una misma fuente alimenta cuatro salidas que se contradicen con facilidad:
 
 | Pieza | Qué es | Formato |
 |---|---|---|
-| La Apuesta | el argumento de diseño, 13 páginas | libro |
+| La Idea | el argumento de diseño, 13 páginas | libro |
 | Juego completo | el manual, ~150 páginas | libro |
 | Acelerado | la versión corta, 16 páginas | libro |
 | App | el configurador y las fichas | aplicación de un fichero |

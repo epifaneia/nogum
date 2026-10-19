@@ -7,7 +7,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 PROD = [('Juego', 'out3/art/juego.html'),
         ('Acelerado', 'out3/art/acelerado.html'),
-        ('La Apuesta', 'out3/art/tesis.html'),
+        ('La Idea', 'out3/art/tesis.html'),
         ('App', 'out3/nogum_app.html')]
 
 SOSPECHOSOS = {

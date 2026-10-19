@@ -1,0 +1,1163 @@
+<title>NOGUM · La Idea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap">
+<style>:root{
+  --ground:#e6e9ee; --paper:#fdfdfc; --ink:#161b24; --ink-2:#434b59; --ink-3:#6b7382;
+  --rule:#cfd5de; --rule-2:#e4e8ee; --side:#dfe3e9;
+  --red:#b8323a; --red-soft:#f6e3e4; --blue:#2a56a0; --blue-soft:#e2eaf7;
+  --amber:#8a5a00; --amber-soft:#f8ecd2; --violet:#5b3f99; --violet-soft:#ece6f7;
+  --drop:#8f2f36; --drop-soft:#f3e2e3; --ok:#2f6b45; --ok-soft:#e1efe6;
+  --c-pifia:#9b2a32; --c-fallo:#6b6288; --c-parcial:#b98a00; --c-exito:#2f63b5; --c-critico:#0f8f72;
+  --shadow:0 1px 3px rgba(20,30,50,.12),0 10px 30px rgba(20,30,50,.10);
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0e1217; --paper:#171c24; --ink:#e3e7ee; --ink-2:#b3bbc8; --ink-3:#8a93a2;
+  --rule:#303845; --rule-2:#252c37; --side:#12161c;
+  --red:#f07378; --red-soft:#3a1f24; --blue:#86a9ec; --blue-soft:#1b2940;
+  --amber:#e7b95a; --amber-soft:#342a14; --violet:#b9a2ee; --violet-soft:#2a2340;
+  --drop:#f08a90; --drop-soft:#3a2125; --ok:#8fd1a6; --ok-soft:#18301f;
+  --c-pifia:#e0666e; --c-fallo:#9a93ad; --c-parcial:#e0aa42; --c-exito:#86a9ec; --c-critico:#5cc3a0;
+  --shadow:0 1px 3px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --ground:#0e1217; --paper:#171c24; --ink:#e3e7ee; --ink-2:#b3bbc8; --ink-3:#8a93a2;
+  --rule:#303845; --rule-2:#252c37; --side:#12161c;
+  --red:#f07378; --red-soft:#3a1f24; --blue:#86a9ec; --blue-soft:#1b2940;
+  --amber:#e7b95a; --amber-soft:#342a14; --violet:#b9a2ee; --violet-soft:#2a2340;
+  --drop:#f08a90; --drop-soft:#3a2125; --ok:#8fd1a6; --ok-soft:#18301f;
+  --c-pifia:#e0666e; --c-fallo:#9a93ad; --c-parcial:#e0aa42; --c-exito:#86a9ec; --c-critico:#5cc3a0;
+  --shadow:0 1px 3px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.5 var(--serif);-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:3px}
+[id]{scroll-margin-top:84px}
+
+/* ---------- chrome ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:12px;padding:10px 16px;min-height:58px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);flex:none}
+.dice{display:flex;gap:4px}
+.dice i{display:block;width:17px;height:17px;border-radius:4px;background:var(--red);transform:rotate(-8deg)}
+.dice i+i{background:var(--blue);transform:rotate(10deg)}
+.brand b{font:800 25px/1 var(--display);letter-spacing:.06em}
+.brand small{font:600 11px/1 var(--mono);color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase}
+.products{display:flex;gap:6px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none}
+.products a,.products span{font:600 11.5px/1 var(--mono);text-transform:uppercase;letter-spacing:.04em;color:var(--ink-2);text-decoration:none;border:1px solid var(--rule);border-radius:6px;padding:8px 10px;white-space:nowrap}
+.products a:hover{border-color:var(--ink-3);color:var(--ink)}
+.products [aria-current="page"]{color:var(--paper);background:var(--ink);border-color:var(--ink)}
+.tool{flex:none;border:1px solid var(--rule);background:var(--paper);color:var(--ink-2);border-radius:6px;padding:8px 10px;font:600 12px/1 var(--mono);cursor:pointer}
+.tool:hover{color:var(--ink);border-color:var(--ink-3)}
+.lang{display:flex;flex:none;border:1px solid var(--ink);border-radius:999px;overflow:hidden}
+.lang button{font:600 12px/1 var(--mono);border:0;background:none;color:var(--ink);padding:8px 11px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.menu-btn{display:none}
+
+.shell{display:grid;grid-template-columns:290px minmax(0,1fr)}
+.side{position:sticky;top:58px;height:calc(100vh - 58px);overflow:auto;background:var(--side);border-right:1px solid var(--rule);padding:16px 14px 40px}
+.search input{width:100%;font:13.5px/1.3 var(--mono);padding:9px 11px;border:1px solid var(--rule);border-radius:8px;background:var(--paper);color:var(--ink)}
+.search label{display:block;font:12px/1.4 var(--mono);color:var(--ink-3);margin:0 2px 6px}
+.stoc{list-style:none;margin:14px 0 0;padding:0}
+.stoc a{display:flex;gap:8px;text-decoration:none;color:var(--ink-2);font:13.5px/1.3 var(--serif);padding:4px 8px;border-radius:5px;border-left:2px solid transparent}
+.stoc a span:first-child{flex:1}
+.stoc a .n{font:12px/1.3 var(--mono);color:var(--ink-3);font-variant-numeric:tabular-nums}
+.stoc li.l2 a{color:var(--ink);font-weight:600;margin-top:8px}
+.stoc li.l3 a{padding-left:18px;font-size:13px}
+.stoc a:hover{background:var(--paper)}
+.stoc a.active{border-left-color:var(--red);background:var(--paper);color:var(--ink)}
+.results{list-style:none;margin:12px 0 0;padding:0}
+.results a{display:block;text-decoration:none;color:var(--ink);padding:7px 8px;border-radius:6px}
+.results a:hover{background:var(--paper)}
+.results .rv{font:600 11px/1 var(--mono);color:var(--ink-3);text-transform:uppercase}
+.results .rs{display:block;font:13px/1.4 var(--serif);color:var(--ink-2);margin-top:3px}
+.results mark{background:var(--amber-soft);color:inherit}
+main{padding:26px 16px 80px;min-width:0;overflow-x:hidden}
+.status{max-width:210mm;margin:0 auto 14px;font:600 12px/1.4 var(--mono);color:var(--ink-3);text-align:center}
+#book{width:210mm;margin:0 auto;transform-origin:top left}
+
+/* ---------- sheet ---------- */
+.sheet{width:210mm;height:297mm;margin:0 0 18px;background:var(--paper);box-shadow:var(--shadow);position:relative;display:flex;flex-direction:column;padding:12mm 17mm 9mm;contain:strict;overflow:hidden}
+.rh{flex:none;display:flex;justify-content:space-between;gap:12px;font:600 8.5pt/1.2 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);padding-bottom:2.5mm;border-bottom:.3mm solid var(--rule);margin-bottom:6mm;white-space:nowrap;overflow:hidden}
+.rh span{overflow:hidden;text-overflow:ellipsis}
+.sb{flex:1 1 auto;min-height:0;overflow:hidden;font-size:10.5pt;line-height:1.48}
+/* el margen inferior del ultimo bloque de una hoja no pinta nada: contaba como
+   desbordamiento sin que se recortara una sola linea de texto */
+.sb > *:last-child{margin-bottom:0}
+.pf{flex:none;display:flex;justify-content:center;align-items:center;gap:6px;padding-top:3mm;font:600 9pt/1 var(--mono);color:var(--ink-3)}
+.pf::before,.pf::after{content:"";width:4mm;height:.3mm;background:var(--rule)}
+.sheet.cover{padding:0;background:var(--ink);color:var(--paper)}
+.sheet.cover .rh,.sheet.cover .pf{display:none}
+.sheet.cover .sb{padding:26mm 20mm;display:flex;flex-direction:column;justify-content:center}
+
+/* ---------- content ---------- */
+.sb h2{font:800 25pt/1.02 var(--display);letter-spacing:.02em;text-transform:uppercase;margin:0 0 5mm;padding-bottom:3mm;border-bottom:.8mm solid var(--ink);text-wrap:balance}
+.sb h3{font:800 16pt/1.1 var(--display);letter-spacing:.03em;text-transform:uppercase;margin:6mm 0 2.5mm;text-wrap:balance;break-after:avoid}
+.sb h3::before{content:"";display:inline-block;width:2.4mm;height:2.4mm;background:var(--red);border-radius:.5mm;margin-right:2.5mm;vertical-align:.12em;transform:rotate(45deg)}
+.sb h4{font:600 12pt/1.3 var(--serif);margin:5mm 0 2mm}
+.sb > :first-child{margin-top:0}
+.sb p{margin:0 0 2.6mm}
+.sb ul,.sb ol{padding-left:5.5mm;margin:0 0 3mm}
+.sb li{margin:0 0 1.4mm}
+.sb dl{margin:0 0 3mm}
+.sb dt{font-weight:600;margin-top:2mm}
+.sb dd{margin:.5mm 0 1.6mm}
+.sb blockquote{margin:3mm 0;padding:1mm 0 1mm 4mm;border-left:.8mm solid var(--blue);color:var(--ink-2);font-style:italic}
+.sb small{font-size:.85em;color:var(--ink-3)}
+.signoff{font:800 16pt/1.2 var(--display);letter-spacing:.04em;text-transform:uppercase;margin-top:5mm!important}
+.running{display:none}
+.lede{font-size:12.5pt}
+
+.tw{margin:2.5mm 0 4mm;border:.3mm solid var(--rule);border-radius:1.5mm;overflow:hidden}
+table.t{border-collapse:collapse;width:100%;font-size:8.7pt;line-height:1.35;table-layout:auto}
+table.t th,table.t td{padding:1.4mm 2mm;text-align:left;vertical-align:top;border-bottom:.25mm solid var(--rule-2);overflow-wrap:anywhere;hyphens:auto}
+table.t thead th{background:var(--ink);color:var(--paper);font:600 7.5pt/1.25 var(--mono);letter-spacing:.03em;text-transform:uppercase}
+table.t tbody th{background:var(--rule-2);font-weight:600}
+table.t tbody tr:last-child>*{border-bottom:0}
+table.t .tag{white-space:normal}
+/* la primera columna suele llevar el nombre de la cosa y se quedaba sin sitio:
+   ni «optimista» ni «opresivo» cabian. Se le da ancho y se le prohibe partir palabras. */
+table.t td:first-child,table.t tbody th:first-child{min-width:34mm;overflow-wrap:normal;hyphens:none}
+table.t thead th:first-child{min-width:34mm}
+/* y cuando la ultima columna es la apretada, que no se parta tampoco en seco */
+table.t td:last-child{overflow-wrap:break-word}
+td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+table.t td.on{color:var(--red);text-align:center}
+table.rejilla td{text-align:center}
+.bar{display:inline-block;height:2.4mm;width:var(--w,0%);min-width:.5mm;background:var(--blue);border-radius:.5mm;vertical-align:middle}
+
+.rule{border:.3mm solid var(--rule);border-left:1.2mm solid var(--ink);background:color-mix(in srgb,var(--ground) 55%,var(--paper));border-radius:1.5mm;padding:3mm 4mm 1mm;margin:3.5mm 0}
+.rule.warn{border-left-color:var(--red)}
+.rule.formula{border-left-color:var(--blue)}
+.rule-title{font:800 12pt/1.2 var(--display);letter-spacing:.05em;text-transform:uppercase;margin:0 0 1.8mm!important}
+.formula-line{font:600 9.5pt/1.45 var(--mono);background:var(--blue-soft);padding:2.2mm 3mm;border-radius:1.2mm}
+.example{border:.3mm dashed var(--rule);border-radius:1.5mm;padding:3mm 4mm 1mm;margin:3.5mm 0}
+.example-title,.step-title{font:600 8.5pt/1.2 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--red);margin:0 0 1.8mm!important}
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin:3mm 0}
+.step{border:.3mm solid var(--rule);border-top:1mm solid var(--blue);border-radius:1.5mm;padding:3mm 3.5mm 1mm}
+aside.meta{font:8.8pt/1.45 var(--mono);color:var(--ink-2);background:var(--amber-soft);border-radius:1.5mm;padding:2.4mm 3.5mm;margin:3mm 0}
+aside.meta p{margin:0}
+aside.meta::before{content:attr(data-label);display:block;font:600 7pt/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:1.4mm}
+.tag{display:inline-block;font:600 7.6pt/1.2 var(--mono);padding:.3mm 1.2mm;border-radius:.8mm;background:var(--rule-2);border:.25mm solid var(--rule);white-space:nowrap;margin:.2mm 0}
+.tag.parca{background:var(--ink);color:var(--paper);border-color:var(--ink);letter-spacing:.02em}
+@media print{.tag.parca{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+.flag{display:inline-block;font:600 6.8pt/1.2 var(--mono);letter-spacing:.03em;text-transform:uppercase;padding:.3mm 1.4mm;border-radius:99px;white-space:nowrap;vertical-align:.1em}
+.flag.proposal{background:var(--amber-soft);color:var(--amber)}
+.flag.pending{background:var(--violet-soft);color:var(--violet)}
+.flag.ed{background:var(--blue-soft);color:var(--blue)}
+.flag.drop{background:var(--drop-soft);color:var(--drop)}
+.src{font:7pt/1 var(--mono);color:var(--ink-3);white-space:nowrap}
+.src::before{content:"↳ "}
+.legend{display:flex;flex-wrap:wrap;gap:1.5mm 5mm;font-size:9pt;margin:3mm 0}
+
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin:3mm 0}
+.card{border:.3mm solid var(--rule);border-top:1.2mm solid var(--ink-3);border-radius:2mm;padding:3mm 3.5mm 2mm;break-inside:avoid}
+#t1{border-top-color:var(--blue)} #t4{border-top-color:var(--red)} #t3,#t5{border-top-color:var(--amber)} #t0{border-top-color:var(--ok)}
+.card-kicker{font:600 7pt/1 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);margin:0 0 1mm!important}
+.card h4{font:800 15pt/1 var(--display);text-transform:uppercase;margin:0 0 1mm}
+.card-axes{font:600 7.8pt/1.3 var(--mono);color:var(--blue);margin:0 0 1.5mm!important}
+.card-quote{font-style:italic;color:var(--ink-2);margin:0 0 1.5mm!important}
+.card-rules{display:grid;grid-template-columns:auto 1fr;gap:.8mm 2.5mm;margin:0 0 1.5mm;font-size:9pt}
+.card-rules dt{margin:0;font:600 7pt/1.6 var(--mono);text-transform:uppercase;color:var(--ink-3)}
+.card-rules dd{margin:0}
+.card-fx{font-size:8.6pt;color:var(--ink-2);border-top:.3mm solid var(--rule);padding-top:1.5mm;margin:0!important}
+.fractal{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5mm;margin:3mm 0}
+.fr-block{border:.5mm solid var(--ink);border-radius:1.5mm;padding:2mm}
+.fr-block p{font:600 7pt/1.2 var(--mono);text-transform:uppercase;margin:0 0 1.5mm}
+.fr-cells{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2mm}
+.fr-cells span{aspect-ratio:1;border:.35mm solid var(--ink-2);border-radius:.7mm;background:radial-gradient(circle at 22% 50%,var(--ink-3) 0 12%,transparent 13%),radial-gradient(circle at 50% 50%,var(--ink-3) 0 12%,transparent 13%),radial-gradient(circle at 78% 50%,var(--ink-3) 0 12%,transparent 13%)}
+.fr-caption{grid-column:1/-1;font:8pt/1.4 var(--mono);color:var(--ink-3);margin:0}
+.recipe{border:.3mm solid var(--rule);border-radius:1.5mm;padding:3mm 4mm 1mm;margin:3mm 0}
+.recipe-title{font:800 13pt/1.15 var(--display);text-transform:uppercase;margin:0 0 .8mm!important}
+.recipe-ref{font:8pt/1.3 var(--mono);color:var(--ink-3);margin:0 0 1.8mm!important}
+.recipe-canon{font-size:9.3pt;color:var(--blue);border-top:.3mm dashed var(--rule);padding-top:1.5mm}
+ol.thread{list-style:none;padding-left:0;border-left:.5mm solid var(--rule);margin-left:1.5mm}
+ol.thread li{position:relative;padding-left:4.5mm}
+ol.thread li::before{content:"";position:absolute;left:-1.6mm;top:.55em;width:2.6mm;height:2.6mm;border-radius:50%;background:var(--paper);border:.5mm solid var(--ink-3)}
+
+/* in-book contents */
+.toc-list{list-style:none;padding:0!important;margin:0}
+.toc-list li{margin:0}
+.toc-list a{display:flex;align-items:baseline;gap:2mm;color:var(--ink);text-decoration:none;padding:.9mm 0}
+.toc-list .l2 a{font-weight:600;font-size:11pt;margin-top:2.5mm}
+.toc-list .l3 a{padding-left:6mm;font-size:9.8pt;color:var(--ink-2)}
+.toc-list .d{flex:1;border-bottom:.3mm dotted var(--ink-3);transform:translateY(-1mm)}
+.toc-list .n{font:600 9pt/1 var(--mono);font-variant-numeric:tabular-nums;min-width:8mm;text-align:right}
+
+/* covers */
+.sheet.cover h2{font:600 9pt/1 var(--mono);letter-spacing:.2em;border:0;color:color-mix(in srgb,var(--paper) 65%,transparent);padding:0;margin:0 0 12mm}
+.acro p{margin:0!important}
+.acro-kicker{font:600 8.5pt/1 var(--mono);text-transform:uppercase;letter-spacing:.12em;opacity:.7;margin-bottom:6mm!important}
+.acro-letters{font:800 68pt/.9 var(--display);letter-spacing:.05em}
+.acro-official{font:600 15pt/1.3 var(--display);letter-spacing:.08em;text-transform:uppercase;margin-top:6mm!important}
+.acro-joke{margin-top:4mm!important}
+.joke{font:italic 400 14pt/1.3 var(--serif);color:inherit;opacity:.8;background:none;border:0;padding:0;cursor:pointer;text-align:left;border-bottom:.3mm dashed currentColor}
+.sheet.cover .lede,.sheet.cover p{max-width:140mm}
+.sheet.cover .lede{margin-top:14mm!important;font-size:13pt}
+.sheet.cover aside.meta{background:rgba(255,255,255,.08);color:inherit;margin-top:8mm}
+.sheet.cover .legend,.sheet.cover .tw,.sheet.cover h3{display:none}
+.sheet.cover a{color:inherit}
+
+/* ---------- responsive / print ---------- */
+@media (max-width:980px){
+  .shell{grid-template-columns:1fr}
+  .side{position:fixed;inset:58px 0 0 0;height:auto;z-index:15;transform:translateX(-102%);transition:transform .2s ease}
+  body.nav-open .side{transform:none}
+  .menu-btn{display:block}
+  .brand small{display:none}
+}
+@media (max-width:600px){ .top{flex-wrap:wrap} .products{order:9;flex-basis:100%} .brand b{font-size:21px} }
+@media (prefers-reduced-motion:reduce){.side{transition:none}}
+@page{size:A4;margin:0}
+@media print{
+  :root{--paper:#fff;--ink:#161b24;--ink-2:#3b4250;--ink-3:#616978;--rule:#c9cfd8;--rule-2:#e4e8ee;--ground:#fff;color-scheme:light}
+  html,body{background:#fff}
+  .top,.side,.status{display:none!important}
+  .shell{display:block} main{padding:0}
+  #book{zoom:1!important;width:auto;margin:0}
+  .sheet{margin:0;box-shadow:none;break-after:page;page-break-after:always}
+  .sheet:last-child{break-after:auto}
+  .sheet.cover{background:#161b24;color:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  table.t thead th,.flag,.tag,aside.meta,.formula-line,.bar{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+.grid-tonal td.hueco{color:var(--ink-3);background:repeating-linear-gradient(135deg,transparent,transparent 6px,var(--rule-2) 6px,var(--rule-2) 7px)}
+
+.recipe-grid{margin:6px 0 0;padding-top:6px;border-top:1px dotted var(--rule-2);font-size:.92em;color:var(--ink-2)}
+
+table.t.idx td,table.t.idx th{padding:2px 6px;font-size:.88em}
+table.t.idx td:first-child{font-weight:600}
+
+/* el pack: las cinco piezas, en la portada de cada una */
+.pack{margin:28px auto 0;max-width:46em;border-top:1px solid var(--rule);padding-top:18px}
+.pack-h{margin:0;font:800 clamp(17px,2.2vw,21px)/1.15 var(--display);text-transform:uppercase;letter-spacing:.03em}
+.pack-t{margin:4px 0 14px;font:12px/1.5 var(--mono);color:var(--ink-3)}
+.pack ol{list-style:none;margin:0;padding:0;counter-reset:pieza}
+.pack li{counter-increment:pieza;display:grid;grid-template-columns:1.6em 1fr;gap:2px 10px;padding:9px 0;border-bottom:1px solid var(--rule-2)}
+.pack li:last-child{border-bottom:none}
+.pack li::before{content:counter(pieza);grid-row:1/3;font:600 12px/1.6 var(--mono);color:var(--ink-3)}
+.pack li a,.pack li strong{font:600 16px/1.3 var(--serif)}
+.pack li a{color:var(--blue)}
+.pack li a:hover{color:var(--red)}
+.pack li em{font:11px/1.6 var(--mono);font-style:normal;text-transform:uppercase;letter-spacing:.05em;color:var(--red);margin-left:8px}
+.pack li span{grid-column:2;font-size:14px;line-height:1.45;color:var(--ink-2)}
+.pack li.aqui{background:var(--ground);border-radius:8px;padding-left:10px;padding-right:10px;margin:0 -10px}
+/* dentro de la portada, que es oscura, el pack se tine del color de la portada:
+   si no, el texto gris de las descripciones se pierde sobre el fondo */
+.sheet.cover .pack{border-top-color:color-mix(in srgb,currentColor 25%,transparent)}
+.sheet.cover .pack li{border-bottom-color:color-mix(in srgb,currentColor 14%,transparent)}
+.sheet.cover .pack-t,.sheet.cover .pack li span{color:color-mix(in srgb,currentColor 68%,transparent)}
+.sheet.cover .pack li::before{color:color-mix(in srgb,currentColor 50%,transparent)}
+.sheet.cover .pack li a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.sheet.cover .pack li a:hover{color:var(--red-soft,#ff8a7a)}
+.sheet.cover .pack li em{color:color-mix(in srgb,currentColor 80%,transparent)}
+.sheet.cover .pack li.aqui{background:rgba(255,255,255,.08)}
+@media print{.pack li a{color:var(--ink)}.sheet.cover .pack li a{color:inherit}}
+
+/* ===== color por capitulo =========================================
+   Cuatro familias, una escala cada una. No es decoracion: es para saber
+   donde estas al pasar paginas. Se usa en hilos finos (el filete de la
+   cabecera, la linea del titulo, el numero de pagina y el indice lateral),
+   nunca en el texto ni en fondos: el manual sigue siendo tinta sobre papel.
+   Y nunca lleva tono: un color de referencia no cuenta una historia. */
+.sheet{--cap:var(--ink-3)}
+/* el motor: azules */
+.sheet[data-cap="como-leer"]{--cap:#6b7382}
+.sheet[data-cap="intro"]{--cap:#4b6ea8}
+.sheet[data-cap="ch1"],.sheet[data-cap="ch1-panel"],.sheet[data-cap="ch1-maquinas"]{--cap:#2a56a0}
+.sheet[data-cap="ch2"]{--cap:#1f6f8b}
+/* la ficha: verdes */
+.sheet[data-cap="ch3"]{--cap:#2e7d6b}
+/* la mesa: ambares y rojos */
+.sheet[data-cap="ch4"]{--cap:#9a6b16}
+.sheet[data-cap="ch5"]{--cap:#a8502a}
+.sheet[data-cap="ch6"]{--cap:#8d3c3c}
+.sheet[data-cap="ch7"]{--cap:#7a3f6d}
+/* los apendices: grises y violetas apagados */
+.sheet[data-cap="ch8"],.sheet[data-cap="ch8b"]{--cap:#5c5470}
+.sheet[data-cap="apx-bazar"],.sheet[data-cap="apx-bazar-b"]{--cap:#4a6a52}
+.sheet[data-cap="apx-mates"]{--cap:#555f6e}
+.sheet[data-cap="apx-glosario"]{--cap:#6b6257}
+/* el cuaderno de edicion */
+.sheet[data-cap="audit-editorial"]{--cap:#2a56a0}
+.sheet[data-cap="audit-descartados"]{--cap:#a8502a}
+.sheet[data-cap="audit-traza"]{--cap:#5c5470}
+.rh{border-bottom-color:color-mix(in srgb,var(--cap) 55%,var(--rule))}
+.rh span:last-child{color:var(--cap)}
+.sb h2{border-bottom-color:var(--cap)}
+.pn{color:var(--cap)}
+@media print{.rh,.sb h2,.pn{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+/* ===== el hueco de figura =========================================
+   Para DIAGRAMAS: el sistema dibujandose a si mismo. Nunca para escenas ni
+   personajes. Toda imagen lleva tono, y este manual no arrastra ninguno: el
+   tono lo pone la mesa, no la portada. Un esquema no cuenta una historia.
+   El hueco reserva su sitio aunque el dibujo no exista todavia, para que el
+   dia que llegue no haya que remaquetar el libro entero. */
+/* graficas: el sistema dibujandose a si mismo */
+svg.nog .gr{stroke:var(--rule-2);stroke-width:1}
+svg.nog .ge{stroke:var(--rule);stroke-width:1}
+svg.nog .gt{font:9.5px var(--mono);fill:var(--ink-3)}
+svg.nog .gh{font:600 10px var(--mono);fill:var(--ink-2)}
+svg.nog .gn{font:600 10.5px var(--mono)}
+svg.nog .gl{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+svg.nog .ok{stroke:var(--ok)}svg.nog .bl{stroke:var(--blue)}svg.nog .rd{stroke:var(--red)}
+svg.nog .f-ok{fill:var(--ok)}svg.nog .f-bl{fill:var(--blue)}svg.nog .f-rd{fill:var(--red)}
+svg.nog .dash{stroke-dasharray:7 3.5}svg.nog .dot{stroke-dasharray:1.5 3}
+svg.nog .bt{font:10px var(--mono);fill:var(--ink-3)}
+svg.nog .bs{font:10px var(--mono);fill:var(--ink-2)}
+svg.nog .k-pifia{fill:var(--c-pifia)}svg.nog .k-fallo{fill:var(--c-fallo)}
+svg.nog .k-parcial{fill:var(--c-parcial)}svg.nog .k-exito{fill:var(--c-exito)}
+svg.nog .k-critico{fill:var(--c-critico)}
+svg.nog .b-g3{fill:var(--ink-3)}svg.nog .b-ok{fill:var(--ok)}
+svg.nog .b-rd{fill:var(--red)}svg.nog .b-bl{fill:var(--blue)}
+
+/* las fichas de las siete tarjetas */
+.t7s{margin:5mm 0}
+.t7{border:.35mm solid var(--rule);border-left:1.6mm solid var(--t7c);border-radius:1.6mm;
+    background:var(--t7b);padding:3.5mm 4mm 3mm;margin:0 0 4mm;break-inside:avoid;page-break-inside:avoid}
+.t7[data-fila="opt"]{--t7c:var(--ok);--t7b:var(--ok-soft)}
+.t7[data-fila="neu"]{--t7c:var(--blue);--t7b:var(--blue-soft)}
+.t7[data-fila="opr"]{--t7c:var(--red);--t7b:var(--red-soft)}
+.t7[data-fila="rec"]{--t7c:var(--violet);--t7b:var(--violet-soft)}
+.t7cab{display:flex;align-items:baseline;justify-content:space-between;gap:3mm;flex-wrap:wrap}
+.t7cab h4{margin:0;font:600 13.5pt/1.15 var(--display);letter-spacing:.01em;color:var(--t7c);
+          text-transform:uppercase}
+.t7ax{font:8.5pt/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);
+      border:.3mm solid var(--rule);border-radius:4mm;padding:1mm 2.4mm;background:var(--paper)}
+.t7frase{margin:1.5mm 0 0;font:italic 11pt/1.35 var(--serif);color:var(--ink-2)}
+.t7cuerpo{display:grid;grid-template-columns:1fr 1fr;gap:4mm;align-items:start;margin:3mm 0 0}
+.t7izq{min-width:0}
+.t7der{min-width:0}
+.t7der p{margin:0 0 2mm}
+.t7der p:last-child{margin-bottom:0}
+.t7how{font:9pt/1.4 var(--mono);color:var(--ink-2)}
+.t7pie{margin:1mm 0 0;font:8.5pt/1.3 var(--mono);color:var(--ink-3);text-align:center}
+.t7g{display:block;width:100%;height:auto}
+.t7leg{display:flex;flex-wrap:wrap;gap:1.5mm 4mm;align-items:center;margin:-3mm 0 4mm;
+       font:8.5pt/1.3 var(--mono);color:var(--ink-2)}
+.t7leg i{display:inline-block;border-radius:1mm;margin-right:1.2mm;vertical-align:.3mm}
+.t7leg i.gruesa{width:5mm;height:1.3mm}
+.t7leg i.fina{width:5mm;height:.7mm}
+.t7leg .sep{color:var(--ink-3)}
+.t7leg .note{margin-left:auto}
+.t7leg .k-exito{background:var(--c-exito)}.t7leg .k-fallo{background:var(--c-fallo)}
+.t7leg .k-critico{background:var(--c-critico)}.t7leg .k-parcial{background:var(--c-parcial)}
+.t7leg .k-pifia{background:var(--c-pifia)}
+svg.nog .gr.fino{opacity:.55;stroke-width:.6}
+svg.nog .t7fina{fill:none;stroke-width:1.6;stroke-dasharray:3 3;opacity:.9;stroke-linejoin:round}
+svg.nog .t7gruesa{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+svg.nog .t7cruce{stroke:var(--ink-3);stroke-width:1;stroke-dasharray:3 3;opacity:.6}
+svg.nog .t7num{font:600 10px var(--mono);fill:var(--c-exito)}
+svg.nog .t7pg{stroke:var(--paper);stroke-width:1.5}
+svg.nog .t7pf{opacity:.9}
+svg.nog .t7fina.k-critico{stroke:var(--c-critico)}svg.nog .t7fina.k-parcial{stroke:var(--c-parcial)}
+svg.nog .t7fina.k-pifia{stroke:var(--c-pifia)}
+svg.nog .t7gruesa.k-exito{stroke:var(--c-exito)}svg.nog .t7gruesa.k-fallo{stroke:var(--c-fallo)}
+svg.nog .t7pf.k-critico{fill:var(--c-critico)}svg.nog .t7pf.k-parcial{fill:var(--c-parcial)}
+svg.nog .t7pf.k-pifia{fill:var(--c-pifia)}
+svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fallo)}
+.t7n{font-size:8.5pt}
+@media (max-width:620px){.t7cuerpo{grid-template-columns:1fr}}
+.fig.auto > .fig-box{aspect-ratio:auto;display:block;padding:3mm 3mm 1mm}
+.graf{margin:3mm 0 4mm;break-inside:avoid;page-break-inside:avoid}
+.graf svg,.fig svg{display:block;width:100%;height:auto}
+.leyenda{display:flex;flex-wrap:wrap;gap:1mm 4mm;margin:-3mm 0 5mm;font:8.5pt var(--mono);color:var(--ink-2)}
+.leyenda i{display:inline-block;width:3.4mm;height:2.2mm;border-radius:.5mm;margin-right:1.2mm}
+.leyenda .k-pifia{background:var(--c-pifia)}.leyenda .k-fallo{background:var(--c-fallo)}
+.leyenda .k-parcial{background:var(--c-parcial)}.leyenda .k-exito{background:var(--c-exito)}
+.leyenda .k-critico{background:var(--c-critico)}
+.leyenda .b-g3{background:var(--ink-3)}.leyenda .b-ok{background:var(--ok)}
+.leyenda .b-rd{background:var(--red)}.leyenda .b-bl{background:var(--blue)}
+.fig{margin:6mm 0;border:.3mm solid var(--rule);border-radius:1.2mm;overflow:hidden;background:var(--ground);break-inside:avoid;page-break-inside:avoid}
+.fig > .fig-box{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center}
+.fig.alta > .fig-box{aspect-ratio:4/3}
+.fig.cuadrada > .fig-box{aspect-ratio:1/1}
+.fig.tira > .fig-box{aspect-ratio:3/1}
+.fig > .fig-box > *{max-width:100%;max-height:100%}
+.fig > .fig-box:empty::after{content:attr(data-nota);font:11px/1.4 var(--mono);color:var(--ink-3);padding:4mm;text-align:center}
+.fig figcaption,.fig > .fig-pie{margin:0;padding:2mm 3mm;font:9pt/1.35 var(--mono);color:var(--ink-2);border-top:.3mm solid var(--rule);background:var(--paper)}
+.fig figcaption b,.fig > .fig-pie b{color:var(--cap)}
+</style>
+<header class="top">
+<button class="tool menu-btn" id="menuBtn" aria-controls="side" aria-expanded="false">Índice</button>
+<span class="brand"><span class="dice" aria-hidden="true"><i></i><i></i></span><b>NOGUM</b><small data-i18n-es="La apuesta de diseño" data-i18n-en="The design wager">La apuesta de diseño</small></span>
+<nav class="products" aria-label="NOGUM"><span aria-current="page" data-i18n-es="La Idea" data-i18n-en="The Idea">La Idea</span><a href="juego.html" data-i18n-es="Juego" data-i18n-en="Game">Juego</a><a href="acelerado.html" data-i18n-es="Acelerado" data-i18n-en="Accelerated">Acelerado</a><a href="app.html" data-i18n-es="App" data-i18n-en="App">App</a></nav>
+<div class="lang" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" aria-pressed="true">ES</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+<button class="tool" id="printBtn" type="button">Imprimir</button>
+<button class="tool" id="themeBtn" type="button">Tema</button>
+</header>
+<div class="shell">
+<aside class="side" id="side">
+<div class="search"><label id="qLabel" for="q">Buscar</label><input id="q" type="search" autocomplete="off"></div>
+<ul class="results" id="results" hidden></ul>
+<ul class="stoc" id="stoc"></ul>
+</aside>
+<main><p class="status" id="status" role="status"></p><div id="book"></div></main>
+</div>
+<script type="application/json" id="cfg">{"product": "tesis", "title": {"es": "NOGUM · La Idea", "en": "NOGUM · The Idea"}, "langs": ["es", "en"], "chapterBreak": false, "contents": true}</script>
+<template id="src-es"><section class="cover" id="es-portada">
+<h2>La Idea</h2>
+<div class="acro">
+<p class="acro-kicker">Edición en español</p>
+<p class="acro-letters">N·O·G·U·M</p>
+<p class="acro-official" lang="en">Narrative Ontology &amp; General Universal Mechanics</p>
+<p class="acro-joke"><button type="button" class="joke" data-jokes="Nos Olvidamos de Guardar Una Mesa|Narrativa Orgánica para Gamers Ultra Motivados|No Otro Gato Usando Magia">(Nos Olvidamos de Guardar Una Mesa)</button></p>
+</div>
+<aside class="meta"><p>Sí, el título «oficial» va en inglés para sonar técnico y de importación. El de verdad es el de abajo. Pulsa sobre él: hay más de uno.</p></aside>
+<p class="lede">Un manual universal de universos que es, sobre todo, un manual universal de emociones. Esto es la presentación: qué idea lo sostiene, qué estrategias salieron de ella y qué hace cada una de las cuatro piezas.</p>
+<div class="pack"><p class="pack-h">NOGUM son cuatro piezas</p><p class="pack-t">Se leen por separado y se usan juntas. Las otras 3 están a un clic.</p><ol><li class="aqui"><strong>La Idea</strong> <em>estás aquí</em><span>Por qué el juego es así: el argumento entero, sin reglas.</span></li><li><a href="juego.html">Juego</a><span>El manual completo: el motor, los personajes, el peligro, el Bazar y las veinte recetas.</span></li><li><a href="acelerado.html">Acelerado</a><span>El mismo juego en quince páginas: cuatro modos de tono y la vida que trae cada uno.</span></li><li><a href="app.html">App</a><span>Monta la mesa con cuatro formularios, haz las fichas y pásalas con el Código.</span></li></ol></div>
+</section>
+
+<section class="chapter" id="es-intro">
+<h2>1 · De qué va esto</h2>
+
+<p>NOGUM es un manual universal. Sirve para una espada, para un láser y para un conjuro, igual que sirven los otros. Pero esa no es la parte interesante, porque eso ya lo hacen cinco o seis sistemas excelentes y llevan décadas haciéndolo bien.</p>
+
+<p>Lo que NOGUM intenta es otra cosa: <strong>ser también un manual universal de emociones</strong>. No de ambientaciones ni de géneros, que al final son decorado. De lo que la gente siente alrededor de la mesa cuando caen los dados.</p>
+
+<h3>Qué es el tono, y por qué no es el género</h3>
+
+<p>Imagina un salto. Un personaje corre por un tejado y tiene que cruzar un hueco de tres metros. Esa acción, exactamente esa, puede producir tres emociones completamente distintas.</p>
+
+<p>Puede producir <em>euforia</em>: el salto es un trámite, lo cruza con margen, y la tirada existe para que la mesa vea cómo de bien lo hace. Puede producir <em>tensión</em>: la cosa está ajustada, podría salir mal, y todo el mundo se calla mientras rueda el dado. O puede producir <em>pavor</em>: probablemente no llegue, y si no llega, lo que viene después no es un rasguño.</p>
+
+<p>Nada de eso lo decide el género. El tejado es el mismo tejado en una historia de superhéroes, en un thriller y en una pesadilla. <strong>Lo decide el reglamento</strong>, porque el reglamento es quien dice cuántas veces de cada diez lo consigues, qué pasa cuando no lo consigues, y si conseguirlo cuesta algo.</p>
+
+<p>A eso le llamamos <strong>el tono</strong>: la emoción que un sistema produce por defecto, tire quien tire y juegue a lo que juegue. No es una nota de ambientación. No es una ilustración. Es lo que el reglamento ya le está haciendo a la mesa, lo haya decidido alguien o no.</p>
+
+<h3>Todo reglamento lleva un tono dentro, aunque no lo diga</h3>
+
+<p>Aquí está la incomodidad de la que salió todo esto, y no es una incomodidad teórica: este manual es la respuesta a <strong>años de incomodidad como diseñador y como narrador</strong>, dirigiendo partidas en las que el sistema y la historia tiraban en direcciones distintas y sabiendo que no era culpa de nadie en la mesa. Los sistemas universales son universales en la <strong>forma</strong> —te dan una ficha que sirve para cualquier cosa— y rígidos en el <strong>fondo</strong>: traen el tono puesto de fábrica.</p>
+
+<p>Los sistemas de comedia negra, con su «éxito con coste», son magníficos para el drama sucio y las consecuencias constantes. Pero intenta jugar la Edad de Plata con ellos. Eres un dios solar, un paragón de virtud y poder infinito, deteniendo a un atracador de bancos, y el sistema te devuelve un éxito parcial: lo consigues, pero tropiezas. En <em>The Boys</em> ese resultado es perfecto. En la fantasía heroica clásica te destroza la escena, y no porque el jugador haya hecho nada mal.</p>
+
+<p>Lo mismo al revés. Los sistemas de aspectos empujan hacia personajes competentes y proactivos, que es justo lo contrario de lo que necesita el horror cósmico purista, donde la gracia es ser pequeño y no poder.</p>
+
+<p>En los dos casos pasa lo mismo y es lo que más duele: <strong>la regla iba a la contra de la narración</strong>. No porque la regla fuera mala —son reglas excelentes—, sino porque llevaba una emoción dentro que nadie había declarado y que no se podía apagar.</p>
+
+<h3>La tesis</h3>
+
+<p class="lede">NOGUM es una tesis lúdico-narrativa sobre cómo las reglas potencian la emoción en la mesa. Si son las reglas las que deciden lo que se siente, entonces la emoción no puede ser lo último que se consulta: tiene que ser lo primero que se elige, y las reglas tienen que venir detrás, a su servicio.</p>
+
+<p>De esa tesis salieron unas estrategias concretas. No un reglamento nuevo desde cero, sino un puñado de <strong>cambios pequeños que cambian la emoción entera</strong>: cómo se leen dos dados, cuánta vida tiene un cuerpo, qué pasa cuando aciertas por los pelos.</p>
+
+<p>Y la promesa que intentan cumplir es exactamente esta: que <strong>un mismo manual sirva, de verdad, para jugar la épica más desenfrenada y el horror más asfixiante</strong>. No con un bestiario distinto, no cambiando las criaturas ni el decorado, sino cambiando lo que siente la mesa.</p>
+
+<h3>El feliz accidente</h3>
+
+<p>Esto se pensó al principio como una modularidad que permitiera a cada Director diseñar sus campañas con las herramientas correctas, fuera cual fuera el tono de su universo. Una decisión por campaña, al empezar, y a jugar.</p>
+
+<p>Pero al diseñar los cambios de reglas de forma tan sencilla y tan fluida, apareció algo que no estaba previsto. Si girar el tono cuesta tan poco, <strong>no hay ninguna razón para girarlo solo una vez</strong>.</p>
+
+<p class="lede">No solo se puede adaptar el tono en cada campaña: se puede jugar una sesión entera con un tono distinto al del resto de la campaña —un alivio cómico, un interludio relajado entre arcos oscuros—. Y la capacidad de cambio es tal que un Director avanzado puede ajustar el tono <strong>en cada escena</strong>… e incluso dar tonos distintos a cada personaje de la misma mesa.</p>
+
+<p>Eso es lo que esta presentación viene a defender, y es lo que no sabe hacer ningún otro manual universal: no que el sistema sirva para todo, sino que <strong>sirva para cosas distintas dentro de la misma tarde</strong>.</p>
+</section>
+
+<section class="chapter" id="es-diales">
+<h2>2 · La mesa de mezclas</h2>
+
+<p>Si la emoción se elige, hace falta algo con lo que elegirla. NOGUM no te da un interruptor de géneros con «fantasía / ciberpunk / terror» escrito al lado. Te da una <strong>mesa de mezclas</strong>: unos pocos controles independientes que puedes subir y bajar por separado, y que combinados dan muchísimos sitios donde vivir.</p>
+
+<p>Son pocos a propósito. Una mesa de mezclas con cuarenta potenciómetros no la usa nadie.</p>
+
+<h3>El optimismo: ¿de parte de quién está el universo?</h3>
+
+<p>El primer control pregunta si el mundo empuja a favor o en contra. Un universo optimista es uno donde las cosas tienden a salir: no porque los personajes sean mejores, sino porque la realidad está de su lado. Un universo opresivo es uno donde las cosas tienden a torcerse aunque hagas todo bien.</p>
+
+<p>Esto no es dificultad. La dificultad la pone la escena —esa puerta es más dura que aquella—. El optimismo es una propiedad del universo entero, constante, que está ahí antes de que aparezca ninguna puerta.</p>
+
+<h3>El caos: ¿cómo de previsible es lo que va a pasar?</h3>
+
+<p>El segundo control es independiente del primero, y esto es lo que lo hace interesante. Un mundo puede ser optimista y previsible —la épica clásica, donde ganas y además ganas limpio— u optimista y caótico —el pulp, donde ganas pero siempre a lo bruto y siempre pasa algo—.</p>
+
+<p>El caos no decide si ganas. Decide <strong>de qué está hecho lo que te pasa</strong>: si los resultados son limpios o vienen con factura, si los extremos son raros o constantes, si la mesa puede planificar o solo puede reaccionar.</p>
+
+<h3>La vida: ¿cuánto aguanta un cuerpo?</h3>
+
+<p>El tercer control es el que menos gente espera, y es el que más miedo imprime. En NOGUM la cantidad de daño que aguanta una persona <strong>no es una propiedad de la anatomía: es un control de tono</strong>.</p>
+
+<p>Con una barra de vida corta, un cuchillo te mata y cada pelea da pánico. Con una barra larga, un combate es una secuencia de acción que dura una sesión entera. Es la misma persona en los dos casos. Lo que ha cambiado es cuánto quiere durar la historia.</p>
+
+<h3>Y los controles que no se tocan en mitad de la partida</h3>
+
+<p>Hay otros —la escala del conflicto, el ritmo al que crece la gente, cuántas reglas opcionales están encendidas— pero esos se eligen al montar la mesa y se quedan quietos. Los tres de arriba son los que se pueden mover sobre la marcha, y son los que hacen posible el feliz accidente.</p>
+</section>
+
+<section class="chapter" id="es-rigor">
+<h2>3 · El rigor: la promesa es comprobable</h2>
+
+<p>Todo lo anterior suena bien y no vale nada si no se traduce en números. «El tono importa» lo firma cualquiera. Lo difícil es que girar un control <strong>mueva la estadística de una forma concreta, medible y escrita</strong>.</p>
+
+<p>En NOGUM se tira siempre lo mismo: un dado de diez caras rojo y uno azul. Lo único que cambia entre tonos es <strong>qué haces con ellos</strong>, y cada forma de leerlos tiene un efecto que se puede calcular.</p>
+
+<p>Quedarte con <strong>el mejor de los dos</strong> sube la media de 5,5 a 7,15 y, además, estrecha la dispersión: no solo sale mejor, sale mejor <em>de forma más fiable</em>. Quedarte con <strong>el peor</strong> la baja a 3,85, con el efecto espejo. <strong>Sumarlos</strong> dibuja una campana que aplasta los extremos hasta el 3&nbsp;%: un mundo de reloj, donde las sorpresas casi no existen. Leer <strong>solo el rojo</strong> es una recta donde cada cara vale exactamente un 10&nbsp;%: el caos neutro, la costumbre del hobby.</p>
+
+<p>Cruzando esas lecturas con la anchura de las bandas de pifia y de crítico salen <strong>siete tarjetas de tono</strong>, ordenadas en una rejilla de tres por tres: optimismo contra caos. Hay dos huecos, y no son un olvido: con un dado plano no existe forma de inclinar el tono sin tocar la dificultad, y preferimos no tocarla.</p>
+
+<p>Las probabilidades de las siete, para cada nivel de competencia, no son estimaciones ni sensaciones. Son el recuento exacto de las cien combinaciones posibles, están calculadas y verificadas, y están impresas en el manual para que cualquiera pueda discutirlas.</p>
+<p>Y ahí es donde están, porque aquí no caben. Si prefieres comprobarlo a creértelo, el manual completo tiene un capítulo entero dedicado a ello: <a href="juego.html">la Sala de Máquinas</a>, con las siete curvas dibujadas, el reparto de cada tarjeta bono a bono y lo que de verdad le cuesta a la mesa cada tono. <strong>Aviso: es el capítulo más denso del libro</strong>, y entrar es bajo tu responsabilidad. Pero la promesa de este capítulo se cumple ahí, hasta la última cifra.</p>
+
+</section>
+
+<section class="chapter" id="es-modular">
+<h2>4 · Modular de verdad</h2>
+
+<p>«Modular» es de esas palabras que aparecen en la contraportada de todo y casi nunca significan nada. Aquí quiere decir algo muy concreto: <strong>el núcleo, sin añadirle nada, ya es un juego completo</strong>.</p>
+
+<p>Tono, competencia, daño, vida y la moneda de lo imposible. Con eso se juega una campaña entera sin abrir ni una página más. Todo lo demás —y hay bastante— vive en un <strong>baúl de dieciséis reglas opcionales</strong> que se encienden de una en una, cada una con su interruptor, su coste de atención declarado por escrito y su aviso de cuándo estorba.</p>
+
+<p>Ninguna es obligatoria. Y hay una regla de uso que importa más que cualquiera de ellas: <strong>si al sacar un módulo tienes que explicarlo durante diez minutos, no lo saques.</strong> La narración debe fluir. Menos es más, y cuando no lo es, el manual lo dice.</p>
+
+<p>La modularidad también va hacia abajo, que es la parte que casi nadie ofrece. El mismo libro sirve para una mesa que disfruta llevando números y para otra que no quiere llevar ninguno: hay preguntas cuya respuesta apaga de un plumazo todo lo que obliga a apuntar cosas. Un sistema que presume de universal y te obliga a usarlo entero no es universal. Es grande.</p>
+</section>
+
+<section class="chapter" id="es-reglas">
+<h2>5 · Las estrategias, agrupadas</h2>
+
+<p>Estas son las familias de decisiones que salieron de la tesis. No están todas las reglas del manual: están las que existen <em>porque</em> la emoción manda, y que se caerían con ella si la tesis cayera.</p>
+
+<h3>Cómo imprimir miedo o euforia</h3>
+
+<p>Aquí viven los dos controles que deciden si la mesa sale de la sesión eufórica o encogida.</p>
+
+<p>El primero es <strong>qué se hace con los dados</strong>. Quedarte el mejor, quedarte el peor, sumarlos o mirar uno solo no son cuatro variantes decorativas: son cuatro universos distintos con cuatro medias distintas y cuatro formas distintas de repartir las sorpresas. Elegir la lectura <em>es</em> elegir el género emocional.</p>
+
+<p>El segundo es <strong>la letalidad</strong>, y es el que la mayoría de sistemas tratan como un detalle de realismo cuando es un control de tono de primer orden. Una barra de vida corta no hace el mundo más realista: lo hace <em>más terrorífico</em>. Hace que la gente se esconda, que negocie, que huya. Una barra larga no hace a los personajes más fuertes: hace que las peleas puedan tener tres actos. Cuando quieras imprimir miedo, acorta la vida antes de tocar ninguna otra cosa.</p>
+
+<h3>Cómo administrar el caos</h3>
+
+<p>La familia del caos agrupa todo lo que decide <strong>cuánto manda el azar frente al plan</strong>: lo anchas que son las bandas de desastre y de hazaña, y si acertar por los pelos sale gratis o cobra peaje.</p>
+
+<p>Dos ideas lo gobiernan. La primera es que <strong>el desastre y la hazaña se leen en los dados antes de sumar nada</strong>: un uno natural es un uno natural con cualquier nivel de competencia, y eso significa que el mundo no se dobla ante tu ficha por mucho que subas. La segunda es más rara de lo que parece: subir el caos <em>no</em> te hace fallar más. Cambia la textura de todo lo que ocurre, no su frecuencia.</p>
+
+<h3>Por qué la estadística nunca se rompe</h3>
+
+<p>Todas las promesas anteriores tienen una condición: si los números pudieran crecer sin límite, dejarían de significar nada. Una curva calculada para un rango de seis escalones se convierte en basura en cuanto alguien llega al escalón cuarenta.</p>
+
+<p>Por eso la competencia en NOGUM está <strong>anclada</strong>: va de un extremo a otro en seis escalones y ahí se acaba, siempre, para todo el mundo y para siempre. No hay inflación, no hay que rehacer tablas a mitad de campaña, y —lo importante— <strong>las gráficas de este manual siguen siendo verdad en la sesión cien</strong>. El tono sigue mandando cuando los personajes son veteranos, que es justo cuando los demás sistemas dejan de poder prometer nada.</p>
+
+<p>Pero un ancla crea un problema: si nadie pasa de seis escalones, ¿cómo se expresa la diferencia entre un aldeano y un dragón? No con bonificadores, porque no caben. Con una <strong>malla</strong>: una segunda dimensión, de niveles de escala, que dice a qué distancia está la cámara. Dentro de un nivel de la malla, todo el mundo compite con los mismos seis escalones y las gráficas valen. Entre niveles distintos, la pregunta ya no es quién tira mejor: es si la escena admite siquiera que se tire. Eso resuelve de un plumazo los enfrentamientos imposibles sin inventar un solo número nuevo.</p>
+
+<h3>El ritmo al que crece la gente</h3>
+
+<p>Y hay una última decisión que casi nunca se trata como lo que es. <strong>La velocidad a la que progresan los personajes, y la potencia con la que empiezan, imprimen tanta personalidad como cualquiera de las reglas anteriores.</strong></p>
+
+<p>Una campaña donde se crece rápido se siente a aventura y a promesa: lo mejor está por llegar. Una donde se crece despacio, o casi nada, se siente a supervivencia y a oficio: lo que tienes es lo que hay. Y empezar poderoso no es lo mismo que llegar a poderoso, aunque el número final coincida.</p>
+
+<p>Por eso la progresión no viene fijada: se elige <strong>según lo que el tono pida</strong>, igual que se elige la lectura de los dados o la longitud de la barra de vida. Es un control más de la mesa de mezclas, y de los que más se notan.</p>
+</section>
+
+<section class="chapter" id="es-listas">
+<h2>6 · El problema de las listas infinitas</h2>
+
+<p>Los manuales universales tienen una enfermedad conocida: para servir para todo, acaban listándolo todo. Cuarenta disciplinas. Doscientas especialidades. Catálogos de equipo de cien páginas que cubren desde la espada corta hasta el implante neural.</p>
+
+<p>Esas listas no se leen. Asustan en la página, se consultan dos veces y se abandonan, y hacen que un sistema ligero parezca pesado antes de haberlo probado. Pero quitarlas tampoco funciona, porque entonces el manual deja de ser específico y te devuelve el trabajo: «invéntate tú el equipo cyberpunk, majo».</p>
+
+<p class="lede">NOGUM se niega a elegir entre las dos cosas. Las listas están, completas y específicas. Y hay una <strong>app</strong> que te enseña exclusivamente el trozo que tu mundo usa.</p>
+
+<p>Montas la mesa con unos formularios que no preguntan nada técnico: te cuentan situaciones y eliges la que suena a tu partida. De ahí salen el tono, la escala, la letalidad y las reglas opcionales, sin que nadie haya tenido que entender una curva.</p>
+
+<p>Y a partir de ese momento el catálogo se acota solo. Si tu mundo no tiene magia, no ves las disciplinas arcanas: no es que estén escondidas, es que no existen en tu partida. Si tiene ciberimplantes, el buscador te los encuentra por lo que hacen y no por cómo se llaman. La ficha se imprime, el equipo se descuenta de lo que ese personaje puede pagar, los secundarios se montan en diez segundos y cada tarjeta de tono trae su música.</p>
+
+<p><strong>Lo mejor de los dos mundos: un manual rápido de usar y a la vez específico.</strong> El libro guarda todo lo que pueda hacer falta; la app decide qué parte te toca ver hoy.</p>
+</section>
+
+<section class="chapter" id="es-acelerado">
+<h2>7 · La versión para no esperar</h2>
+
+<p>Hay una versión corta, <strong>NOGUM Acelerado</strong>, y no es un resumen cobarde: es la tesis subrayada. Se queda con lo más reconocible y tira lo demás.</p>
+
+<p>Cuatro modos en lugar de siete tarjetas, y cada uno cambia una cosa y solo una. <strong>Optimista</strong> cambia el dado: tiras dos y te quedas el mayor. <strong>Neutro</strong> no cambia nada, es la referencia. <strong>Caos</strong> cambia de qué está hecho el resultado: mismo dado, bandas más anchas y éxitos que cobran peaje. <strong>Terror</strong> cambia lo que aguantas: mismo dado que Neutro, pero tres casillas de vida en vez de nueve. Una sola dificultad, sin baúl y sin diales que operar.</p>
+
+<p>Y ahí pasa algo que no suele pasar en un manual de entrada: <strong>enseña la tesis con sus propios dados</strong>. Caos y Neutro sacan adelante exactamente el mismo número de tiradas. El caos no te hace fallar más; cambia lo que te pasa cuando tiras. Donde Neutro reparte éxitos y fallos limpios, Caos reparte el doble de desastres, el doble de hazañas y victorias con factura.</p>
+
+<p>Y Terror hace el otro truco: <strong>la oscuridad no viene de la tirada, viene de la vida</strong>. Aciertas igual de a menudo que en Neutro; lo que cambia es que dos impactos serios te sacan de la escena. Esas tres casillas van ancladas al modo y no son un interruptor que haya que acordarse de encender, así que la mesa se asoma al control de la letalidad sin tener que operarlo.</p>
+
+<p>Lo mejor es que <strong>no es un juego aparte</strong>. Los cuatro modos son configuraciones legales del manual completo. Cuando se os quede pequeño no empezáis de cero: ya conocéis cuatro de las siete tarjetas.</p>
+</section>
+
+<section class="chapter" id="es-cuatro">
+<h2>8 · Cuatro piezas, una cosa</h2>
+
+<p>NOGUM se publica en cuatro piezas que se leen por separado y se usan juntas. No es una colección: cada una hace un trabajo que las otras no pueden hacer, y es la combinación lo que no existe en ningún otro sitio.</p>
+
+<h3>La Idea</h3>
+<p>Esto que estás leyendo. Responde a <em>por qué</em>: de dónde sale la idea, qué estrategias salieron de ella y qué promete el sistema. Se lee en una sentada y no contiene una sola regla. Si alguien quiere saber qué tiene NOGUM de distinto sin comprometerse a nada, empieza y acaba aquí.</p>
+
+<h3>El Juego completo</h3>
+<p>El manual de verdad. El motor, la creación de personajes, el peligro, el equipo, el baúl de reglas opcionales, veinte recetas de mundo listas para jugar y los apéndices con todas las cifras exactas, por si quieres discutirlas. Responde a <em>cómo</em>, y lo responde hasta el final: cada regla trae escrito de dónde viene y qué tono imprime.</p>
+
+<h3>El Acelerado</h3>
+<p>El mismo juego en quince páginas y cuatro modos. Responde a <em>ya</em>: se puede empezar esta misma tarde sin haber leído nada más. Y como sus cuatro modos son configuraciones reales del completo, jugarlo no es una demo: es haber aprendido cuatro séptimas partes del cuadrante sin darse cuenta.</p>
+
+<h3>La App</h3>
+<p>La pieza que ningún otro sistema universal tiene. Responde a <em>contigo</em>: te entrevista con situaciones en vez de con preguntas técnicas, monta la mesa, acota el catálogo a tu mundo, hace las fichas y los secundarios, lleva la cuenta de lo que cuesta cada cosa y le pone música a cada tono. Convierte el problema clásico del rol universal —«universal significa que lo tienes que decidir todo»— en veinte preguntas que se contestan solas.</p>
+
+<h3>Y por qué juntas son otra cosa</h3>
+
+<p>Un manual universal normal te da un libro y te desea suerte. La carga de decidir, de acotar y de recordar recae entera sobre el Director, y por eso «universal» acaba significando, en la práctica, «prepárate un fin de semana».</p>
+
+<p>Aquí ese peso está repartido. <strong>El libro guarda todo lo que puede hacer falta. La app decide qué parte te toca ver hoy. El Acelerado te deja sentirlo antes de leer nada. Y esta presentación te cuenta por qué todo lo anterior está así.</strong></p>
+
+<p class="lede">El resultado es un sistema que no te pide que elijas entre profundo y jugable, y una mesa que puede cambiar de emoción entre dos escenas sin cambiar de manual. Esa es la apuesta, y está toda sobre la mesa.</p>
+
+<p>Bien. Ya estás listo. Puedes jugar al <strong>Acelerado</strong> esta misma tarde: quince páginas y una app que te lleva de la mano.</p>
+<p class="signoff">Bienvenido al experimento.</p>
+</section>
+<section class="chapter colofon" id="es-licencia"><h2>Licencia</h2><p class="lede">Esta obra se publica bajo <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" target="_blank" rel="noopener">Creative Commons Atribución-CompartirIgual 4.0</a>. Puedes copiarla, traducirla, modificarla y construir encima, también con ánimo de lucro, con dos condiciones: <strong>cita al autor</strong> y <strong>publica lo que construyas bajo la misma licencia</strong>.</p><p><strong>Cómo se cita.</strong> «NOGUM, de Daniel Martín · CC BY-SA 4.0», con enlace al original donde el medio lo permita.</p><p><strong>Las reglas son libres.</strong> Las mecánicas de juego no son objeto de derechos de autor. Puedes escribir material compatible con este sistema sin pedirle permiso a nadie: la licencia cubre este <em>texto</em>, no el motor. Si lo que quieres es construir sobre NOGUM, ya puedes.</p><p><strong>Lo que la licencia no cubre.</strong> El nombre <strong>NOGUM</strong> y sus signos de identidad. El contenido es libre; el nombre se queda con su autor, para que nadie firme en su lugar.</p><p class="note">Daniel Martín · CC BY-SA 4.0</p></section>
+</template>
+<template id="src-en"><section class="cover" id="en-cover" lang="en">
+<h2>The Idea</h2>
+<div class="acro">
+<p class="acro-kicker">English edition</p>
+<p class="acro-letters">N·O·G·U·M</p>
+<p class="acro-official" lang="es">Narrativa Ontológica General Universal y Metafísica</p>
+<p class="acro-joke"><button type="button" class="joke" data-jokes="No One Gets Ur Mechanics|Not Our Game, U Mad?|Narrative Orgasm Generates Ultimate Mayhem">(No One Gets Ur Mechanics)</button></p>
+</div>
+<aside class="meta"><p>Yes, the "official" title is in Spanish, purely to leave you slightly lost. The real one is underneath. Click it: there is more than one.</p></aside>
+<p class="lede">A universal rulebook for universes that is, above all, a universal rulebook for emotions. This is the introduction: the idea holding it up, the strategies that came out of it, and what each of the four pieces does.</p>
+<div class="pack"><p class="pack-h">NOGUM is four pieces</p><p class="pack-t">They are read separately and used together. The other 3 are one click away.</p><ol><li class="aqui"><strong>The Idea</strong> <em>you are here</em><span>Why the game is like this: the whole argument, with no rules.</span></li><li><a href="juego.html">Game</a><span>The complete manual: the engine, characters, danger, the Bazaar and the twenty recipes.</span></li><li><a href="acelerado.html">Accelerated</a><span>The same game in fifteen pages: four tone modes and the health each one brings.</span></li><li><a href="app.html">App</a><span>Set up the table with four forms, build the sheets and pass them on with the Code.</span></li></ol></div>
+</section>
+
+<section class="chapter" id="en-intro" lang="en">
+<h2>1 · What this is about</h2>
+
+<p>NOGUM is a universal system. It works for a sword, for a laser and for a spell, exactly as the others do. That is not the interesting part, because five or six excellent systems already do it, and they have been doing it well for decades.</p>
+
+<p>What NOGUM is after is something else: <strong>to be a universal rulebook for emotions as well</strong>. Not for settings or genres, which in the end are scenery. For what the people around the table feel when the dice land.</p>
+
+<h3>What tone is, and why it is not genre</h3>
+
+<p>Picture a jump. A character runs along a rooftop and has to clear a three-metre gap. That action, exactly that one, can produce three completely different emotions.</p>
+
+<p>It can produce <em>elation</em>: the jump is a formality, they clear it easily, and the roll exists so the table can see how well they do it. It can produce <em>tension</em>: it is close, it could go wrong, and everybody goes quiet while the die rolls. Or it can produce <em>dread</em>: they probably will not make it, and if they do not, what comes next is not a scratch.</p>
+
+<p>None of that is decided by the genre. The rooftop is the same rooftop in a superhero story, in a thriller and in a nightmare. <strong>It is decided by the rules</strong>, because the rules are what says how many times out of ten you make it, what happens when you do not, and whether making it costs you anything.</p>
+
+<p>That is what we call <strong>tone</strong>: the emotion a system produces by default, whoever is rolling and whatever they are playing. It is not a setting note. It is not an illustration. It is what the rules are already doing to the table, whether anybody decided it or not.</p>
+
+<h3>Every rulebook carries a tone inside, even when it does not say so</h3>
+
+<p>Here is the discomfort all of this came from, and it is not a theoretical one: this manual is the answer to <strong>years of discomfort as a designer and as a storyteller</strong>, running games where the system and the story pulled in different directions and knowing it was nobody at the table’s fault. Universal systems are universal in <strong>form</strong> —they give you a sheet that works for anything— and rigid underneath: the tone comes factory-fitted.</p>
+
+<p>Black-comedy systems, with their "success at a cost", are magnificent for grimy drama and constant consequences. But try playing the Silver Age with them. You are a sun god, a paragon of virtue and infinite power, stopping a bank robber, and the system hands you a partial success: you do it, but you stumble. In <em>The Boys</em> that result is perfect. In classic heroic fantasy it wrecks the scene, and not because the player did anything wrong.</p>
+
+<p>The same thing in reverse. Aspect-driven systems push towards competent, proactive characters, which is the exact opposite of what purist cosmic horror needs, where the whole point is to be small and unable.</p>
+
+<p>In both cases the same thing happens, and it is the part that stings: <strong>the rule was working against the story</strong>. Not because the rule was bad —they are excellent rules— but because it carried an emotion inside that nobody had declared and that could not be switched off.</p>
+
+<h3>The thesis</h3>
+
+<p class="lede">NOGUM is a ludo-narrative thesis about how rules amplify emotion at the table. If the rules are what decide what people feel, then emotion cannot be the last thing you consult: it has to be the first thing you choose, and the rules have to come afterwards, in its service.</p>
+
+<p>Specific strategies came out of that thesis. Not a new rulebook from scratch, but a handful of <strong>small changes that change the whole emotion</strong>: how two dice are read, how much health a body has, what happens when you only just make it.</p>
+
+<p>And the promise they try to keep is exactly this: that <strong>one single rulebook genuinely serves both the most unleashed epic and the most suffocating horror</strong>. Not with a different bestiary, not by swapping the creatures or the scenery, but by changing what the table feels.</p>
+
+<h3>The happy accident</h3>
+
+<p>This began as a modularity that would let each GM design their campaigns with the right tools, whatever the tone of their universe. One decision per campaign, at the start, and then play.</p>
+
+<p>But by designing the rule changes to be that simple and that fluid, something unplanned turned up. If turning the tone costs so little, <strong>there is no reason at all to turn it only once</strong>.</p>
+
+<p class="lede">It is not only that the tone can be adapted for each campaign: you can play an entire session in a different tone from the rest of the campaign —a comic relief, a relaxed interlude between dark arcs. And the capacity for change is such that an advanced GM can adjust the tone <strong>in every scene</strong>… and even give different tones to different characters at the same table.</p>
+
+<p>That is what this introduction is here to argue, and it is what no other universal rulebook knows how to do: not that the system works for everything, but that <strong>it works for different things within the same afternoon</strong>.</p>
+</section>
+
+<section class="chapter" id="en-dials" lang="en">
+<h2>2 · The mixing desk</h2>
+
+<p>If emotion is something you choose, you need something to choose it with. NOGUM does not hand you a genre switch with "fantasy / cyberpunk / horror" written beside it. It hands you a <strong>mixing desk</strong>: a few independent controls you can raise and lower separately, which combined give a great many places to live.</p>
+
+<p>There are few of them on purpose. Nobody uses a mixing desk with forty faders.</p>
+
+<h3>Optimism: whose side is the universe on?</h3>
+
+<p>The first control asks whether the world pushes with you or against you. An optimistic universe is one where things tend to work out: not because the characters are better, but because reality is on their side. An oppressive universe is one where things tend to go wrong even when you do everything right.</p>
+
+<p>This is not difficulty. Difficulty is set by the scene —that door is harder than this one. Optimism is a property of the entire universe, constant, there before any door shows up.</p>
+
+<h3>Chaos: how predictable is what is about to happen?</h3>
+
+<p>The second control is independent of the first, and that is what makes it interesting. A world can be optimistic and predictable —classic epic, where you win and you win cleanly— or optimistic and chaotic —pulp, where you win but always the hard way and something always happens.</p>
+
+<p>Chaos does not decide whether you win. It decides <strong>what the thing that happens to you is made of</strong>: whether results come clean or with an invoice, whether extremes are rare or constant, whether the table can plan or can only react.</p>
+
+<h3>Health: how much can a body take?</h3>
+
+<p>The third control is the one fewest people expect, and the one that prints the most fear. In NOGUM, how much damage a person can take <strong>is not a property of anatomy: it is a tone control</strong>.</p>
+
+<p>With a short health track, a knife kills you and every fight is frightening. With a long one, a fight is an action sequence that lasts a whole session. It is the same person in both cases. What changed is how long the story wants to last.</p>
+
+<h3>And the controls you do not touch mid-game</h3>
+
+<p>There are others —the scale of the conflict, the rate at which people grow, how many optional rules are switched on— but those are chosen when you set the table up and then they stay put. The three above are the ones that can move on the fly, and they are what makes the happy accident possible.</p>
+</section>
+
+<section class="chapter" id="en-rigour" lang="en">
+<h2>3 · Rigour: the promise can be checked</h2>
+
+<p>Everything above sounds good and is worth nothing unless it turns into numbers. Anyone can sign "tone matters". The hard part is making a turn of a control <strong>move the statistics in a specific, measurable, written-down way</strong>.</p>
+
+<p>In NOGUM you always roll the same thing: a red ten-sided die and a blue one. The only thing that changes between tones is <strong>what you do with them</strong>, and every way of reading them has an effect you can calculate.</p>
+
+<p>Keeping <strong>the higher of the two</strong> lifts the average from 5.5 to 7.15 and, on top of that, narrows the spread: it does not just come out better, it comes out better <em>more reliably</em>. Keeping <strong>the lower</strong> drops it to 3.85, with the mirror effect. <strong>Adding them</strong> draws a bell that crushes the extremes down to 3%: a clockwork world, where surprises barely exist. Reading <strong>the red die alone</strong> is a straight line where every face is worth exactly 10%: neutral chaos, the hobby's habit.</p>
+
+<p>Crossing those readings with the width of the fumble and critical bands gives <strong>seven tone cards</strong>, laid out on a three-by-three grid: optimism against chaos. There are two gaps, and they are not an oversight: with a flat die there is no way to tilt the tone without touching the difficulty, and we would rather not touch it.</p>
+
+<p>The probabilities for all seven, at every level of competence, are not estimates or impressions. They are the exact count of all one hundred possible combinations, calculated and verified, and printed in the manual so that anybody can argue with them.</p>
+<p>And that is where they are, because they do not fit here. If you would rather check it than take our word for it, the Complete Game has a whole chapter for exactly that: <a href="juego.html">the Engine Room</a>, with the seven curves drawn, each card’s outcome split bonus by bonus, and what every tone really costs the table. <strong>Fair warning: it is the densest chapter in the book</strong>, and going in is at your own risk. But this chapter’s promise is kept there, down to the last figure.</p>
+
+</section>
+
+<section class="chapter" id="en-modular" lang="en">
+<h2>4 · Genuinely modular</h2>
+
+<p>"Modular" is one of those words that appears on the back cover of everything and almost never means anything. Here it means something very specific: <strong>the core, with nothing added to it, is already a complete game</strong>.</p>
+
+<p>Tone, competence, damage, health and the currency of the impossible. You can run an entire campaign on that without opening another page. Everything else —and there is plenty— lives in a <strong>chest of sixteen optional rules</strong> that come on one at a time, each with its switch, its attention cost declared in writing, and its warning about when it gets in the way.</p>
+
+<p>None is compulsory. And there is one house rule that matters more than any of them: <strong>if pulling out a module means explaining it for ten minutes, do not pull it out.</strong> The story has to flow. Less is more, and when it is not, the manual says so.</p>
+
+<p>Modularity also runs downward, which is the part almost nobody offers. The same book serves a table that enjoys tracking numbers and one that wants to track none: some questions, answered a certain way, switch off everything that makes you write things down. A system that boasts of being universal and makes you use all of it is not universal. It is big.</p>
+</section>
+
+<section class="chapter" id="en-rules" lang="en">
+<h2>5 · The strategies, grouped</h2>
+
+<p>These are the families of decisions that came out of the thesis. They are not all the rules in the manual: they are the ones that exist <em>because</em> emotion rules, and that would fall with the thesis if it fell.</p>
+
+<h3>How to print fear or elation</h3>
+
+<p>This is where the two controls live that decide whether the table leaves the session elated or hunched.</p>
+
+<p>The first is <strong>what you do with the dice</strong>. Keeping the higher, keeping the lower, adding them or looking at one alone are not four decorative variants: they are four different universes with four different averages and four different ways of handing out surprises. Choosing the reading <em>is</em> choosing the emotional genre.</p>
+
+<p>The second is <strong>lethality</strong>, which most systems treat as a realism detail when it is a first-order tone control. A short health track does not make the world more realistic: it makes it <em>more terrifying</em>. It makes people hide, negotiate, run. A long one does not make the characters stronger: it lets fights have three acts. When you want to print fear, shorten the health track before touching anything else.</p>
+
+<h3>How to administer chaos</h3>
+
+<p>The chaos family covers everything that decides <strong>how much chance rules over plan</strong>: how wide the bands of disaster and of glory are, and whether only just making it comes free or charges a toll.</p>
+
+<p>Two ideas govern it. The first is that <strong>disaster and glory are read on the dice before anything is added</strong>: a natural one is a natural one at any level of competence, which means the world does not bend to your sheet however high you climb. The second is stranger than it sounds: raising chaos does <em>not</em> make you fail more. It changes the texture of everything that happens, not its frequency.</p>
+
+<h3>Why the statistics never break</h3>
+
+<p>All the promises above come with a condition: if the numbers could grow without limit, they would stop meaning anything. A curve calculated for a range of six rungs turns into rubbish the moment somebody reaches rung forty.</p>
+
+<p>That is why competence in NOGUM is <strong>anchored</strong>: it runs from one end to the other in six rungs and stops there, always, for everyone, forever. No inflation, no redoing tables halfway through a campaign, and —the important part— <strong>the charts in this manual are still true in session one hundred</strong>. Tone still rules when the characters are veterans, which is exactly when other systems stop being able to promise anything.</p>
+
+<p>But an anchor creates a problem: if nobody goes past six rungs, how do you express the difference between a villager and a dragon? Not with bonuses, because they do not fit. With a <strong>mesh</strong>: a second dimension, of scale levels, saying how far away the camera is. Within one level of the mesh, everyone competes on the same six rungs and the charts hold. Between different levels, the question is no longer who rolls better: it is whether the scene allows a roll at all. That settles impossible confrontations without inventing a single new number.</p>
+
+<h3>The rate at which people grow</h3>
+
+<p>And there is one last decision that is almost never treated as what it is. <strong>The speed at which characters progress, and the power they start with, print as much personality as any of the rules above.</strong></p>
+
+<p>A campaign where you grow quickly feels like adventure and promise: the best is yet to come. One where you grow slowly, or barely at all, feels like survival and craft: what you have is what there is. And starting powerful is not the same as becoming powerful, even when the final number is identical.</p>
+
+<p>So progression is not fixed: it is chosen <strong>according to what the tone asks for</strong>, exactly like the reading of the dice or the length of the health track. It is one more control on the mixing desk, and one of the most noticeable.</p>
+</section>
+
+<section class="chapter" id="en-lists" lang="en">
+<h2>6 · The problem with endless lists</h2>
+
+<p>Universal rulebooks have a well-known disease: in order to serve everything, they end up listing everything. Forty disciplines. Two hundred specialities. Hundred-page equipment catalogues covering everything from the short sword to the neural implant.</p>
+
+<p>Those lists do not get read. They frighten on the page, get consulted twice and are abandoned, and they make a light system look heavy before anyone has tried it. But removing them does not work either, because then the manual stops being specific and hands the work back to you: "make up your own cyberpunk gear, mate".</p>
+
+<p class="lede">NOGUM refuses to choose between the two. The lists are there, complete and specific. And there is an <strong>app</strong> that shows you only the slice your world uses.</p>
+
+<p>You set the table up with forms that ask nothing technical: they describe situations and you pick the one that sounds like your game. Out of that come tone, scale, lethality and the optional rules, without anyone having had to understand a curve.</p>
+
+<p>And from that moment the catalogue narrows itself. If your world has no magic, you never see the arcane disciplines: they are not hidden, they do not exist in your game. If it has cyberware, the search finds it by what it does, not by what it is called. The sheet prints, equipment comes off what that character can actually pay, supporting cast is built in ten seconds, and every tone card brings its own music.</p>
+
+<p><strong>The best of both worlds: a manual that is fast to use and specific at the same time.</strong> The book keeps everything that might be needed; the app decides which part you get to see today.</p>
+</section>
+
+<section class="chapter" id="en-accelerated" lang="en">
+<h2>7 · The version for the impatient</h2>
+
+<p>There is a short version, <strong>NOGUM Accelerated</strong>, and it is not a timid summary: it is the thesis underlined. It keeps what is most recognisable and throws out the rest.</p>
+
+<p>Four modes instead of seven cards, and each changes one thing and one only. <strong>Optimistic</strong> changes the die: you roll two and keep the higher. <strong>Neutral</strong> changes nothing, it is the reference. <strong>Chaos</strong> changes what the result is made of: same die, wider bands and successes that charge a toll. <strong>Terror</strong> changes what you can take: the same die as Neutral, but three health boxes instead of nine. One difficulty, no chest, no dials to operate.</p>
+
+<p>And something happens there that entry-level rulebooks rarely do: <strong>it teaches the thesis with its own dice</strong>. Chaos and Neutral bring exactly the same number of rolls home. Chaos does not make you fail more; it changes what happens to you when you roll. Where Neutral deals clean successes and clean failures, Chaos deals twice the disasters, twice the glories, and wins that come with an invoice.</p>
+
+<p>And Terror pulls the other trick: <strong>the darkness does not come from the roll, it comes from the health track</strong>. You hit just as often as in Neutral; what changes is that two serious hits take you off the scene. Those three boxes are anchored to the mode rather than being a switch you have to remember, so the table gets a look at the lethality control without having to operate it.</p>
+
+<p>Best of all, <strong>it is not a separate game</strong>. All four modes are legal configurations of the Complete Game. When it starts to feel small you do not begin from scratch: you already know four of the seven cards.</p>
+</section>
+
+<section class="chapter" id="en-four" lang="en">
+<h2>8 · Four pieces, one thing</h2>
+
+<p>NOGUM is published as four pieces that read separately and are used together. It is not a collection: each one does a job the others cannot do, and it is the combination that does not exist anywhere else.</p>
+
+<h3>The Idea</h3>
+<p>What you are reading. It answers <em>why</em>: where the idea comes from, what strategies came out of it, and what the system promises. It reads in one sitting and contains not a single rule. If somebody wants to know what is different about NOGUM without committing to anything, they start and finish here.</p>
+
+<h3>The Complete Game</h3>
+<p>The actual manual. The engine, character creation, danger, equipment, the chest of optional rules, twenty ready-to-play world recipes and the appendices with every exact figure, in case you want to argue with them. It answers <em>how</em>, and answers it all the way down: every rule says where it came from and what tone it prints.</p>
+
+<h3>Accelerated</h3>
+<p>The same game in fifteen pages and four modes. It answers <em>now</em>: you can start this very afternoon without having read anything else. And since its four modes are real configurations of the complete game, playing it is not a demo: it is having learned four sevenths of the grid without noticing.</p>
+
+<h3>The App</h3>
+<p>The piece no other universal system has. It answers <em>with you</em>: it interviews you with situations instead of technical questions, sets the table up, narrows the catalogue to your world, builds the sheets and the supporting cast, keeps track of what everything costs and puts music to every tone. It turns the classic problem of universal roleplaying —"universal means you have to decide everything"— into twenty questions that answer themselves.</p>
+
+<h3>And why together they are something else</h3>
+
+<p>A normal universal rulebook gives you a book and wishes you luck. The load of deciding, narrowing and remembering falls entirely on the GM, which is why "universal" ends up meaning, in practice, "set aside a weekend".</p>
+
+<p>Here that weight is shared out. <strong>The book keeps everything that might be needed. The app decides which part you see today. Accelerated lets you feel it before reading anything. And this introduction tells you why all of the above is the way it is.</strong></p>
+
+<p class="lede">The result is a system that does not ask you to choose between deep and playable, and a table that can change emotion between two scenes without changing rulebook. That is the wager, and all of it is on the table.</p>
+
+<p>Right. You are ready. You can play <strong>Accelerated</strong> this very afternoon: fifteen pages and an app that walks you through it.</p>
+<p class="signoff">Welcome to the experiment.</p>
+</section>
+<section class="chapter colofon" id="en-licencia"><h2>Licence</h2><p class="lede">This work is published under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-ShareAlike 4.0</a>. You may copy it, translate it, modify it and build on it, commercially included, on two conditions: <strong>credit the author</strong> and <strong>release whatever you build under the same licence</strong>.</p><p><strong>How to credit it.</strong> “NOGUM, by Daniel Martín · CC BY-SA 4.0”, with a link to the original wherever the medium allows one.</p><p><strong>The rules are free.</strong> Game mechanics are not subject to copyright. You can write material compatible with this system without asking anyone: the licence covers this <em>text</em>, not the engine. If what you want is to build on NOGUM, you already can.</p><p><strong>What the licence does not cover.</strong> The name <strong>NOGUM</strong> and its identifying marks. The content is free; the name stays with its author, so that nobody signs in his place.</p><p class="note">Daniel Martín · CC BY-SA 4.0</p></section>
+</template>
+<script>(function(){
+  'use strict';
+  var CFG = JSON.parse(document.getElementById('cfg').textContent);
+  var UI = {
+    es:{contents:'Índice',search:'Buscar en el libro',ph:'Llave, Estilo, Vorpalina…',print:'Imprimir',theme:'Tema',menu:'Índice',typeset:'Maquetando páginas…',pages:'páginas',none:'Sin resultados para',meta:'Columna meta',page:'pág.'},
+    en:{contents:'Contents',search:'Search the book',ph:'Key, Style, Vorpal…',print:'Print',theme:'Theme',menu:'Contents',typeset:'Typesetting pages…',pages:'pages',none:'No results for',meta:'Meta column',page:'p.'}
+  };
+  function $(id){ return document.getElementById(id); }
+  function store(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+  function read(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); }
+
+  var book = $('book'), status = $('status');
+  var KEY = 'nogum-' + CFG.product;
+  var lang = (location.search.match(/lang=(es|en)/) || [])[1] || read('nogum-lang') || CFG.langs[0];
+  if (CFG.langs.indexOf(lang) < 0) lang = CFG.langs[0];
+
+  /* ---------- typesetter ---------- */
+  var cur, body, placed, running, stack, clones, runCap = '';
+  var SPLIT = 'div.tw, table, ul, ol, dl, div.rule, div.example, div.cards, div.steps, div.step, div.recipe, blockquote, section, div.acro, div.legend';
+  var HEAD = /^(H2|H3|H4)$/;
+  function isHead(el){ return el.nodeType===1 && (HEAD.test(el.tagName) || (el.matches && el.matches('.rule-title,.example-title,.step-title,.recipe-title,.card-kicker'))); }
+
+  function newSheet(kind){
+    var s = document.createElement('article');
+    s.className = 'sheet' + (kind ? ' ' + kind : '');
+    /* el color de capitulo viaja con la hoja: lo pinta el CSS, no el JS */
+    if (runCap) s.setAttribute('data-cap', runCap);
+    s.innerHTML = '<header class="rh"><span></span><span></span></header><div class="sb"></div><footer class="pf"><span class="pn"></span></footer>';
+    s.firstChild.firstChild.textContent = CFG.title[lang];
+    s.firstChild.lastChild.textContent = running || '';
+    book.appendChild(s);
+    cur = s; body = s.querySelector('.sb'); placed = 0;
+    return s;
+  }
+  function over(){ var l = body.lastElementChild; if (!l) return false; var top = body.getBoundingClientRect().top; return l.getBoundingClientRect().bottom - top > body.clientHeight - 4 || body.scrollHeight > body.clientHeight + 1; }
+  function target(){ return clones.length ? clones[clones.length-1].t : body; }
+  function shallow(node, cont){
+    var c = node.cloneNode(false);
+    if (cont) { c.removeAttribute('id'); c.classList.add('cont'); }
+    var t = c;
+    if (node.tagName === 'TABLE') {
+      Array.prototype.forEach.call(node.children, function(ch){ if (ch.tagName !== 'TBODY') c.appendChild(ch.cloneNode(true)); });
+      t = document.createElement('tbody'); c.appendChild(t);
+    }
+    return {c:c, t:t};
+  }
+  function units(node){
+    if (node.tagName === 'TABLE') {
+      var rows = [], out = [];
+      Array.prototype.forEach.call(node.tBodies, function(tb){ rows = rows.concat(Array.prototype.slice.call(tb.rows)); });
+      for (var i=0; i<rows.length; ) {
+        var span = 1;
+        Array.prototype.forEach.call(rows[i].cells, function(td){ span = Math.max(span, td.rowSpan || 1); });
+        out.push(rows.slice(i, i+span)); i += span;
+      }
+      return out;
+    }
+    return Array.prototype.filter.call(node.childNodes, function(n){ return n.nodeType===1 || (n.nodeType===3 && n.nodeValue.trim()); }).map(function(n){ return [n]; });
+  }
+  function canSplit(node){ if (node.nodeType!==1 || !node.matches(SPLIT)) return false; var u = units(node); return u.length > 1 || (u.length === 1 && u[0].length === 1 && canSplit(u[0][0])); }
+  function realCount(el){ return Array.prototype.filter.call(el.childNodes, function(n){ return (n.nodeType===1 && !isHead(n) && n.tagName!=='THEAD' && n.tagName!=='CAPTION' && n.tagName!=='COLGROUP' && !(n.tagName==='TBODY' && !n.rows.length)) || (n.nodeType===3 && n.nodeValue.trim()); }).length; }
+
+  function breakPage(){
+    // carry trailing headings of the innermost target to the next page
+    var t = target(), carry = [];
+    while (t.lastChild && t.lastChild.nodeType===1 && isHead(t.lastChild) && realCount(t) + t.querySelectorAll(':scope > h2,:scope > h3,:scope > h4').length > 1) { carry.unshift(t.lastChild); t.removeChild(t.lastChild); }
+    var old = clones.slice();
+    newSheet();
+    var parent = body;
+    clones = old.map(function(o, i){
+      var s = shallow(stack[i], true);
+      parent.appendChild(s.c); parent = s.t;
+      return s;
+    });
+    carry.forEach(function(n){ target().appendChild(n); });
+    // drop empty fragments left behind, keeping their anchors
+    for (var i = old.length - 1; i >= 0; i--) {
+      if (realCount(old[i].t) === 0 && !old[i].t.querySelector('[id]')) {
+        if (old[i].c.id) { clones[i].c.id = old[i].c.id; }
+        Array.prototype.slice.call(old[i].c.childNodes).forEach(function(n){ if (isHead(n) || n.nodeType===3) clones[i].t.insertBefore(n, clones[i].t.firstChild); });
+        old[i].c.remove();
+      } else break;
+    }
+  }
+  function put(node){
+    var t = target();
+    t.appendChild(node);
+    if (!over()) { if (!isHead(node)) placed++; return; }
+    t.removeChild(node);
+    if (canSplit(node) && (placed > 0 || true)) { split(node); return; }
+    if (placed === 0) { t.appendChild(node); placed++; return; }
+    breakPage();
+    target().appendChild(node);
+    if (over() && canSplit(node)) { target().removeChild(node); split(node); return; }
+    placed++;
+  }
+  function split(node){
+    var s = shallow(node, false);
+    target().appendChild(s.c);
+    if (over()) {
+      target().removeChild(s.c);
+      if (placed > 0) { breakPage(); }
+      target().appendChild(s.c);
+    }
+    stack.push(node); clones.push(s);
+    var us = units(node);
+    us.forEach(function(group){
+      var t = target();
+      group.forEach(function(n){ t.appendChild(n); });
+      if (!over()) { if (!(group.length===1 && isHead(group[0]))) placed++; return; }
+      group.forEach(function(n){ t.removeChild(n); });
+      if (group.length===1 && canSplit(group[0])) { split(group[0]); return; }
+      if (placed > 0) { breakPage(); t = target(); }
+      group.forEach(function(n){ t.appendChild(n); });
+      if (over() && group.length===1 && canSplit(group[0])) { group.forEach(function(n){ t.removeChild(n); }); split(group[0]); return; }
+      placed++;
+    });
+    stack.pop(); clones.pop();
+  }
+
+  function contentsBlock(entries){
+    var h = document.createElement('div');
+    var h2 = document.createElement('h2'); h2.textContent = UI[lang].contents; h2.id = 'contents';
+    var ol = document.createElement('ol'); ol.className = 'toc-list';
+    entries.forEach(function(e){
+      var li = document.createElement('li'); li.className = 'l' + e.level;
+      li.innerHTML = '<a href="#' + esc(e.id) + '"><span class="t"></span><span class="d"></span><span class="n" data-for="' + esc(e.id) + '">00</span></a>';
+      li.querySelector('.t').textContent = e.title;
+      ol.appendChild(li);
+    });
+    return [h2, ol];
+  }
+  function cleanTitle(el){
+    var c = el.cloneNode(true);
+    c.querySelectorAll('.flag,.src').forEach(function(x){ x.remove(); });
+    return c.textContent.replace(/\s+/g,' ').trim();
+  }
+
+  function typeset(done){
+    book.style.zoom = '';
+    book.innerHTML = '';
+    document.documentElement.lang = lang;
+    status.textContent = UI[lang].typeset;
+    var tpl = document.getElementById('src-' + lang);
+    var frag = tpl.content.cloneNode(true);
+    var sections = Array.prototype.slice.call(frag.children).filter(function(n){ return n.tagName==='SECTION'; });
+    // prep: ids on h2, numbered lists, meta labels
+    var entries = [];
+    sections.forEach(function(sec){
+      sec.querySelectorAll('ol').forEach(function(ol){ var st = parseInt(ol.getAttribute('start') || '1', 10); Array.prototype.forEach.call(ol.children, function(li, i){ if (li.tagName==='LI' && !li.hasAttribute('value')) li.value = st + i; }); });
+      sec.querySelectorAll('aside.meta').forEach(function(a){ a.setAttribute('data-label', UI[lang].meta); });
+      if (sec.classList.contains('cover')) return;
+      var h2 = sec.querySelector(':scope > h2');
+      if (h2) {
+        if (!h2.id) { h2.id = sec.id || ('s-' + entries.length); sec.setAttribute('data-cap', sec.id || h2.id); sec.removeAttribute('id'); }
+        entries.push({id:h2.id, title:cleanTitle(h2), level:2});
+      }
+      sec.querySelectorAll('h3[id]').forEach(function(h3){ entries.push({id:h3.id, title:cleanTitle(h3), level:3}); });
+    });
+    stack = []; clones = []; running = ''; runCap = '';
+    var queue = [];
+    sections.forEach(function(sec, idx){
+      if (sec.classList.contains('cover')) { queue.push({cover:sec}); if (CFG.contents) queue.push({contents:true}); return; }
+      if (idx === 0 && CFG.contents) queue.push({contents:true});
+      queue.push({sec:sec});
+    });
+    var i = 0, first = true;
+    function step(){
+      var t0 = performance.now();
+      while (i < queue.length && performance.now() - t0 < 40) {
+        var q = queue[i++];
+        if (q.cover) {
+          running = ''; runCap = ''; newSheet('cover');
+          Array.prototype.slice.call(q.cover.childNodes).forEach(function(n){ body.appendChild(n); });
+          if (q.cover.id) body.firstElementChild && (body.firstElementChild.id = body.firstElementChild.id || q.cover.id);
+          first = false; cur = null;
+        } else if (q.contents) {
+          running = UI[lang].contents; newSheet();
+          contentsBlock(entries).forEach(put);
+          cur = null;
+        } else {
+          var h2 = q.sec.querySelector(':scope > h2');
+          running = h2 ? cleanTitle(h2) : running;
+          var capId = q.sec.getAttribute('data-cap') || q.sec.id;
+          if (capId) { runCap = capId; if (cur) cur.setAttribute('data-cap', runCap); }
+          if (!cur || CFG.chapterBreak || first) newSheet();
+          else if (placed > 0) { /* continue on same sheet */ }
+          Array.prototype.slice.call(q.sec.childNodes).forEach(function(n){
+            if (n.nodeType===3 && !n.nodeValue.trim()) return;
+            if (n.nodeType===1 && n.tagName==='H2' && placed > 0) {
+              // keep a heading with at least some content: start a new sheet if little room is left
+              if (body.clientHeight - body.scrollHeight < 120) { running = cleanTitle(n); breakPage(); }
+            }
+            if (n.nodeType===1 && n.tagName==='H2') { running = cleanTitle(n); cur.firstChild.lastChild.textContent = running; }
+            put(n);
+          });
+          first = false;
+        }
+      }
+      if (i < queue.length) { status.textContent = UI[lang].typeset + ' ' + book.children.length; setTimeout(step, 0); return; }
+      finish(entries); if (done) done();
+    }
+    step();
+  }
+
+  /* ---------- after layout ---------- */
+  var sheetInfo = [];
+  function finish(entries){
+    var sheets = Array.prototype.slice.call(book.querySelectorAll('.sheet'));
+    sheets.forEach(function(s, k){ s.querySelector('.pn').textContent = String(k + 1); s.setAttribute('data-page', k + 1); });
+    var pageOf = {};
+    entries.forEach(function(e){ var el = document.getElementById(e.id); if (el) { var s = el.closest('.sheet'); pageOf[e.id] = s ? +s.getAttribute('data-page') : 0; } });
+    book.querySelectorAll('.toc-list .n').forEach(function(n){ n.textContent = pageOf[n.getAttribute('data-for')] || '–'; });
+    // side contents
+    var ul = $('stoc'); ul.innerHTML = '';
+    entries.forEach(function(e){
+      var li = document.createElement('li'); li.className = 'l' + e.level;
+      li.innerHTML = '<a href="#' + esc(e.id) + '"><span></span><span class="n">' + (pageOf[e.id] || '') + '</span></a>';
+      li.querySelector('span').textContent = e.title;
+      ul.appendChild(li);
+    });
+    sheetInfo = sheets.map(function(s){ return {page:+s.getAttribute('data-page'), text:s.querySelector('.sb').textContent.replace(/\s+/g,' ')}; });
+    status.textContent = sheets.length + ' ' + UI[lang].pages + ' · A4';
+    fit();
+    labels();
+    trackActive(entries, pageOf);
+  }
+  function fit(){
+    book.style.zoom = '';
+    var avail = document.querySelector('main').clientWidth - 32;
+    var w = book.getBoundingClientRect().width || 794;
+    var z = Math.min(1, avail / w);
+    book.style.zoom = z < 1 ? String(z) : '';
+  }
+  var fitT; window.addEventListener('resize', function(){ clearTimeout(fitT); fitT = setTimeout(fit, 120); });
+
+  var activeHandler;
+  function trackActive(entries, pageOf){
+    var links = Array.prototype.slice.call(document.querySelectorAll('#stoc a'));
+    if (activeHandler) window.removeEventListener('scroll', activeHandler);
+    var ticking = false;
+    activeHandler = function(){
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(function(){
+        ticking = false;
+        var best = null, bestY = -Infinity;
+        entries.forEach(function(e, k){
+          var el = document.getElementById(e.id); if (!el) return;
+          var y = el.getBoundingClientRect().top;
+          if (y < 140 && y > bestY) { bestY = y; best = k; }
+        });
+        links.forEach(function(a, k){ a.classList.toggle('active', k === best); });
+        if (best !== null) {
+          var a = links[best], side = $('side'), r = a.getBoundingClientRect(), sr = side.getBoundingClientRect();
+          if (r.top < sr.top + 60 || r.bottom > sr.bottom - 20) side.scrollTop += r.top - sr.top - 120;
+          store(KEY + '-at', entries[best].id);
+        }
+      });
+    };
+    window.addEventListener('scroll', activeHandler, {passive:true});
+    activeHandler();
+  }
+
+  /* ---------- search ---------- */
+  var q = $('q'), res = $('results'), stoc = $('stoc');
+  q.addEventListener('input', function(){
+    var term = q.value.trim();
+    if (term.length < 2) { res.hidden = true; stoc.hidden = false; return; }
+    var nt = norm(term), out = [];
+    sheetInfo.forEach(function(s){
+      var nx = norm(s.text), p = nx.indexOf(nt); if (p < 0) return;
+      var from = Math.max(0, p - 45), snip = s.text.substr(from, term.length + 100), k = norm(snip).indexOf(nt);
+      out.push('<li><a href="#" data-page="' + s.page + '"><span class="rv">' + UI[lang].page + ' ' + s.page + '</span><span class="rs">' + (from ? '…' : '') + esc(snip.slice(0,k)) + '<mark>' + esc(snip.substr(k, term.length)) + '</mark>' + esc(snip.slice(k + term.length)) + '…</span></a></li>');
+    });
+    res.innerHTML = out.length ? out.slice(0, 60).join('') : '<li><span class="rs">' + UI[lang].none + ' «' + esc(term) + '»</span></li>';
+    res.hidden = false; stoc.hidden = true;
+  });
+  res.addEventListener('click', function(e){
+    var a = e.target.closest('a[data-page]'); if (!a) return; e.preventDefault();
+    var s = book.querySelector('.sheet[data-page="' + a.getAttribute('data-page') + '"]');
+    if (s) s.scrollIntoView({block:'start'});
+    closeMenu();
+  });
+
+  /* ---------- chrome ---------- */
+  function labels(){
+    var u = UI[lang];
+    $('qLabel').textContent = u.search; q.placeholder = u.ph;
+    $('printBtn').textContent = u.print; $('themeBtn').textContent = u.theme; $('menuBtn').textContent = u.menu;
+    document.querySelectorAll('[data-i18n-es]').forEach(function(el){ el.textContent = el.getAttribute('data-i18n-' + lang); });
+    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false'); });
+    document.title = CFG.title[lang];
+  }
+  function closeMenu(){ document.body.classList.remove('nav-open'); $('menuBtn').setAttribute('aria-expanded','false'); }
+  document.addEventListener('click', function(e){
+    var j = e.target.closest('.joke');
+    if (j) { var list = j.getAttribute('data-jokes').split('|'); var i = (list.indexOf(j.textContent.replace(/^\(|\)$/g,'')) + 1) % list.length; j.textContent = '(' + list[i] + ')'; return; }
+    var a = e.target.closest('#stoc a, .toc-list a');
+    if (a) { e.preventDefault(); var el = document.getElementById(a.getAttribute('href').slice(1)); if (el) el.scrollIntoView({block:'start'}); closeMenu(); }
+  });
+  $('menuBtn').addEventListener('click', function(){ var o = document.body.classList.toggle('nav-open'); this.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+  $('printBtn').addEventListener('click', function(){ window.print(); });
+  var root = document.documentElement, th = read('nogum-theme'); if (th) root.setAttribute('data-theme', th);
+  $('themeBtn').addEventListener('click', function(){
+    var c = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    var n = c === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', n); store('nogum-theme', n);
+  });
+  document.querySelectorAll('.lang button').forEach(function(b){
+    if (CFG.langs.indexOf(b.getAttribute('data-lang')) < 0) b.parentNode.hidden = true;
+    b.addEventListener('click', function(){
+      var l = b.getAttribute('data-lang'); if (l === lang) return;
+      var at = read(KEY + '-at');
+      lang = l; store('nogum-lang', l);
+      typeset(function(){ var el = at && document.getElementById(at); if (el) el.scrollIntoView({block:'start'}); });
+    });
+  });
+  window.addEventListener('beforeprint', function(){ book.dataset.z = book.style.zoom; book.style.zoom = ''; });
+  window.addEventListener('afterprint', function(){ book.style.zoom = book.dataset.z || ''; });
+
+  /* ---------- start ---------- */
+  labels();
+  var started = false;
+  function start(){
+    if (started) return; started = true;
+    typeset(function(){
+      var id = location.hash.slice(1) || read(KEY + '-at');
+      var el = id && document.getElementById(id);
+      if (el) el.scrollIntoView({block:'start'});
+    });
+  }
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(start); setTimeout(start, 2500); } else start();
+})();
+</script>

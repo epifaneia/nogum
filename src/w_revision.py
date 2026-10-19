@@ -9,7 +9,7 @@ mismo: es bitacora.
 import io, os, re, sys
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-PROD = [('La Apuesta', 'out3/art/tesis.html'),
+PROD = [('La Idea', 'out3/art/tesis.html'),
         ('Juego', 'out3/art/juego.html'),
         ('Acelerado', 'out3/art/acelerado.html'),
         ('App', 'out3/nogum_app.html')]
@@ -30,7 +30,7 @@ MUERTOS = [
     (r'(?:Daño|Dmg|Damage)[ \t]*:?[ \t]*[3-9]\b(?![^.]{0,25}\[Inevitable\])', 'el dano maximo es +2; encima, la Parca (T131)'),
     (r'son cinco piezas|is five pieces', 'el pack es de cuatro (T135)'),
     (r'tres modos de tono|three tone modes', 'son cuatro (T146)'),
-    (r'Tesis filosófica|Philosophical thesis', 'el producto es La Apuesta (T144)'),
+    (r'Tesis filosófica|Philosophical thesis', 'el producto es La Idea (T144)'),
     (r'bancos de música|music banks', 'la musica es solo arrastrar (T151)'),
 ]
 
@@ -43,7 +43,7 @@ INV = [
     ('Acelerado', r'Optimista', 'modo Optimista'),
     ('Acelerado', r'\bTerror\b', 'modo Terror'),
     ('Acelerado', r'\bCaos\b', 'modo Caos'),
-    ('La Apuesta', r'feliz accidente', 'el feliz accidente'),
+    ('La Idea', r'feliz accidente', 'el feliz accidente'),
 ]
 
 fallos = []

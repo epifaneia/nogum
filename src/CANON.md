@@ -1455,3 +1455,87 @@ compilarlo.
 **GitHub Pages es el alojamiento**, no hace falta dominio: `epifaneia.github.io/nogum/`
 ya es publico e indexable. El dominio propio es una capa opcional que se puede
 anadir despues sin mover nada.
+
+---
+
+## T156 · La Idea, y el Ajuste se muda al capitulo 3
+
+**La Apuesta pasa a llamarse La Idea** (`The Idea`), y la URL publica pasa de
+`apuesta.html` a `idea.html` con un reenvio en la vieja, porque ya era publica.
+El autor propuso primero «La Epifania»; se descarto por dos razones. Reclama la
+revelacion, y la voz de la pieza hace lo contrario: dice a que ha renunciado y
+se hace las preguntas, asi que un titulo que anuncia el hallazgo firma algo que
+el texto se niega a cobrar. Y alojada en epifaneia.dev convertiria NOGUM en un
+producto de Epifaneia en lugar de un proyecto personal que vive ahi. «La Idea»
+empareja con el marco nuevo de la portada —una idea, cuatro piezas— y explica
+sin prometer.
+
+**La palabra «apuesta» no se retira**: se asciende a concepto. Titula la seccion
+de presentacion de la portada («Una apuesta, cuatro piezas») y sigue cerrando la
+propia pieza («esa es la apuesta, y esta toda sobre la mesa»). Lo que cambia es
+el nombre del producto, no el vocabulario.
+
+**ED-37, el Ajuste, se muda a 3.5.** Estaba escrito entero y publicado, pero en
+el taller del Bazar (8.3), un apendice del catalogo de equipo. Y no es una regla
+de catalogo: es la regla que dice como los puntos y las Llaves se convierten en
+cosas que no estan en la piramide. El capitulo 3 no la mencionaba y 4.3 tampoco,
+asi que **un jugador haciendose una ficha no se la encontraba nunca**. Al autor
+le parecio que faltaba una de las partes mas controversiales del sistema; no
+faltaba, estaba en el capitulo equivocado.
+
+Y estaba contada del reves. El taller la presenta como la herramienta del
+Director para tasar lo que no esta en la lista. La version del autor es la
+contraria y es mejor: **los puntos y las Llaves no contienen todo, y en vez de
+intentarlo con mil reglas, se compra un modificador y una etiqueta lo corrige**.
+Eso es una frase de tesis y estaba escrita como un factor de correccion. El 3.5
+se lleva el concepto y un ejemplo; el 8.3 se queda las tablas, sin duplicar.
+
+**El ejemplo pasa a ser el dron, no la capa.** La limitacion de la capa es «se
+te puede caer», que es el Director quitandote algo. La del dron es estructural:
++2 a lo que mires con el son dos puntos, pero se ve, se le dispara y es un
+cuerpo mas en la escena, tuyo. El jugador ve por que vale la mitad sin confiar
+en el juicio de nadie, y Limitado se siente ganado en vez de negociado. Lo que
+el ejemplo demuestra es lo que no hizo falta: ni alcance, ni bateria, ni tabla
+de aparatos voladores.
+
+**Regla nueva: por debajo de 1, gratis, una escena.** El Ajuste decia «redondeo
+hacia arriba y nada baja de 1». Ahora, cuando Limitado deja el precio por debajo
+de 1 —la cuenta decia un punto, o una Llave—, sale **gratis**, y el precio de
+que salga gratis es la correa obligatoria de que **dura una sola escena**. La
+granada, el brebaje, el parche de un uso. Si quieres que dure mas, el minimo
+vuelve a ser 1: por eso la capa de invisibilidad sigue costando 1 Llave, porque
+te la quitas y te la pones toda la campana. Tapa el hueco de lo consumible sin
+inventar una categoria para el.
+
+**Correccion de una lectura mia que era falsa.** Dije que Desatado era
+inalcanzable en creacion porque el bote son 5 Llaves y un poder de 2 Llaves
+Desatado cuesta 6. Mire solo el bote: el Ajuste multiplica **puntos y Llaves**.
+Un poder de 0 Llaves y +3, Desatado, son 9 puntos de 12, y quedan 3. Cabe, es
+legal, y es una ficha dura: has comprado algo enorme y no te queda oficio
+debajo. El sistema cobra en vez de prohibir, que es la misma frase de 3.5 con
+las Firmas y la nulidad.
+
+**El -1 de Torpe entra en la tabla de la piramide (3.1).** Daba el -2 de la
+Nulidad pero no el -1 del Dominio que no tocas, que vivia solo en el cuadro de
+regla de mas abajo. Ahora esta en los dos sitios, con enlace entre ellos.
+
+**Las dos primeras preguntas del eje del optimismo median el eje de al lado.**
+La de la cuerda tenia un fallo de diseno y no de redaccion: el modo de fallo de
+«no me llega la cuerda» es quedarse colgado, no caerse, asi que una pregunta
+sobre letalidad tenia un fallo que no era letal. La sustituye una tirada limpia
+—eres buen escalador, nadie en contra, sin prisa— que es exactamente
+mejor-de-dos contra peor-de-dos y no deja entrar al caos. La del guardia cambia
+«girar la cabeza» por que su atencion se vaya con nuestra distraccion, que si
+dice hacia donde mira, y gradua las consecuencias de «suena la alarma en todo el
+local» a «el pasillo se queda solo». Fuera «medio plan» y los dos «se tira y se
+ve»: hablaban de preparacion, que es caos.
+
+**Y el formulario declara lo que pregunta**: no que pasaria de verdad, sino que
+esperais que pase. Una pregunta leida como suceso invita a contestar que
+ocurriria en vez de que se quiere sentir.
+
+**La portada presentaba el proyecto por sus cifras.** Abria por 7,15, 3,85 y las
+cien combinaciones, que son el recibo y no el argumento, y las cuatro tarjetas
+se leian como cuatro descargas. Entra delante una seccion que dice que es esto
+—una idea y su desarrollo completo, en cuatro piezas— y las cifras bajan a una
+linea de cierre.
