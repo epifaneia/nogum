@@ -747,20 +747,20 @@ function sc1(fid, sid){ return ans(fid, sid)[0] || 0; }
 /* --------------------------------- 1. EL TONO --------------------------------- */
 var S_TONO = [
  {id:'opt', k:['El optimismo','Optimism'], qs:[
-   O(['Alguien se descuelga por la fachada y a mitad de bajada descubre que la cuerda no llega. Debajo hay quince metros de nada.',
-      'Somebody is rappelling down a façade and halfway down finds the rope is too short. Below there are fifteen metres of nothing.'],
-     ['La cuerda no llega y eso es todo lo que hay que saber. Se cae.','The rope is too short and that is all there is to know. They fall.'],
-     ['Se cae, pero cae mal, no muerto. Y el mundo sigue.','They fall, and land badly rather than dead. And the world moves on.'],
-     ['Se tira y se ve. Nadie ha preparado nada para esto.','You roll and see. Nobody prepared anything for this.'],
-     ['Hay algo abajo que amortigua: un toldo roto, un montón de basura. Algo.','There is something below that breaks the fall: a torn awning, a pile of rubbish. Something.'],
-     ['Justo debajo hay un toldo, y detrás del toldo una ventana abierta. Pasan esas cosas.','Right below there is an awning, and behind the awning an open window. Those things happen.']),
-   O(['El plan entero dependía de que el guardia girase la cabeza en el momento justo.',
-      'The whole plan depended on the guard turning their head at exactly the right moment.'],
-     ['El guardia mira donde le toca mirar, y lo que le toca mirar sois vosotros.','The guard looks where they are supposed to look, and what they are supposed to look at is you.'],
-     ['Mira hacia allí, y encima se acerca a comprobarlo.','They look over, and then come to check.'],
-     ['Se tira y se ve. Un guardia es un guardia.','You roll and see. A guard is a guard.'],
-     ['La gira, pero deja a otro mirando. Medio plan.','They turn it, but leave somebody else watching. Half a plan.'],
-     ['Claro que la gira. Estas cosas salen cuando tienen que salir.','Of course they turn it. These things work out when they need to.']),
+   O(['Alguien de la mesa es un gran escalador. Y le toca escalar: nadie en contra, sin prisa, con buen material. Coge los dados. ¿Qué esperáis los demás?',
+      'Somebody at the table is a great climber. And climbing is what they have to do: nobody against them, no hurry, good gear. They pick up the dice. What do the rest of you expect?'],
+     ['Que hoy pueda ser el día del calambre. Ser bueno no te salva de un mal día.','That today could be the day of the cramp. Being good does not save you from a bad day.'],
+     ['Que suba, pero que la pared le cobre algo por el camino.','That they get up, but that the wall charges them something on the way.'],
+     ['Que casi siempre suba, y que de vez en cuando no. Para eso se tira.','That they usually make it, and now and then they do not. That is what rolling is for.'],
+     ['Que suba, salvo que pase algo muy raro.','That they make it, unless something very strange happens.'],
+     ['Que brille. Se tira para vérselo hacer bien, no para saber si lo consigue.','That they shine. You roll to watch them do it well, not to find out whether they manage.']),
+   O(['Lanzáis algo al otro extremo del pasillo. El plan entero depende de que la atención del guardia se vaya con el ruido. ¿Qué esperáis?',
+      'You throw something to the far end of the corridor. The whole plan depends on the guard’s attention going with the noise. What do you expect?'],
+     ['Que reconozca el truco. Que suene la alarma en todo el local y vengan refuerzos.','That they see through the trick. That the alarm goes off in the whole building and reinforcements come.'],
+     ['Que mire el ruido sin creérselo, y avise por radio por si acaso.','That they look at the noise without buying it, and call it in on the radio just in case.'],
+     ['Que mire, se acerque a comprobarlo y vuelva. Unos segundos, y no sabéis si bastan.','That they look, come over to check and go back. A few seconds, and you do not know whether that is enough.'],
+     ['Que la atención se le vaya con el ruido, y que no os vea.','That their attention goes with the noise, and that they do not see you.'],
+     ['Que se le vaya, y que además arrastre al compañero. El pasillo se queda solo.','That it goes, and that it drags their colleague along too. The corridor empties.']),
    A(['En vuestras partidas el mundo echa una mano a los protagonistas. La suerte no es neutral: está de su lado, y eso se nota en cuanto alguien toca un dado.',
       'In your games the world lends the protagonists a hand. Luck is not neutral: it is on their side, and you can tell the moment anyone touches a die.'])]},
  {id:'caos', k:['El caos','Chaos'], qs:[
@@ -1372,6 +1372,9 @@ function renderPasos(fid){
     ps.forEach(function(x){ if (x.t === 'q' && x.s === p.s) { tot++; if (x.i <= p.i) pos++; } });
     h += '<p class="kick">' + esc(pick(p.s.k)) + ' · ' + pos + ' / ' + tot + '</p>';
     h += escala(p.s.qs[p.i], ans(fid, p.s.id)[p.i] || 0);
+    // El formulario lee una preferencia, no un hecho: si la pregunta se lee
+    // como un suceso, la mesa contesta que pasaria en vez de que quiere sentir.
+    if (i === 0 && fid === 'tono') h += '<p class="eqnote">' + esc(t('Ninguna pregunta busca qué pasaría de verdad. Buscan qué esperáis que pase: cómo se siente vuestra mesa, no cómo funciona el mundo.','No question here asks what would really happen. They ask what you expect to happen: how your table feels, not how the world works.')) + '</p>';
     if (i === 0) h += '<p class="eqnote">' + esc(t('Elige, y cuando lo tengas pulsa «Siguiente». Nada se guarda hasta el final y puedes volver atrás.','Pick one, and press “Next” when you are happy. Nothing is final and you can always go back.')) + '</p>';
   } else if (p.t === 'gate' || p.t === 'one') {
     h += '<p class="kick">' + esc(p.g === 'toon' ? t('La última','The last one') : t('Delimitando','Setting the boundaries')) + '</p>';
