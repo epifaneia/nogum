@@ -18,7 +18,10 @@
 
   /* ---------- typesetter ---------- */
   var cur, body, placed, running, stack, clones, runCap = '';
-  var SPLIT = 'div.tw, table, ul, ol, dl, div.rule, div.example, div.cards, div.steps, div.step, div.recipe, blockquote, section, div.acro, div.legend';
+  // contenedores que se pueden repartir entre hojas. div.t7s son las siete
+  // tarjetas de tono: sin estar aqui iban como un solo bloque de dos paginas
+  // y la hoja recortaba en silencio lo que no cabia (T163)
+  var SPLIT = 'div.tw, table, ul, ol, dl, div.rule, div.example, div.cards, div.steps, div.step, div.recipe, blockquote, section, div.acro, div.legend, div.t7s';
   var HEAD = /^(H2|H3|H4)$/;
   function isHead(el){ return el.nodeType===1 && (HEAD.test(el.tagName) || (el.matches && el.matches('.rule-title,.example-title,.step-title,.recipe-title,.card-kicker'))); }
 

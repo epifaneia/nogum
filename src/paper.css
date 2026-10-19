@@ -136,6 +136,9 @@ table.t .tag{white-space:normal}
    ni «optimista» ni «opresivo» cabian. Se le da ancho y se le prohibe partir palabras. */
 table.t td:first-child,table.t tbody th:first-child{min-width:34mm;overflow-wrap:normal;hyphens:none}
 table.t thead th:first-child{min-width:34mm}
+/* ...salvo si la primera columna es un numero (el zoom 1, 2, 3): esos 34 mm se
+   los quitaba a la columna de al lado, y «Letal» o «Tactico» no cabian (T163) */
+table.t td.num:first-child,table.t:has(tbody td.num:first-child) thead th:first-child{min-width:0}
 /* y cuando la ultima columna es la apretada, que no se parta tampoco en seco */
 table.t td:last-child{overflow-wrap:break-word}
 td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}

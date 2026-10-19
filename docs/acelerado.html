@@ -145,6 +145,9 @@ table.t .tag{white-space:normal}
    ni «optimista» ni «opresivo» cabian. Se le da ancho y se le prohibe partir palabras. */
 table.t td:first-child,table.t tbody th:first-child{min-width:34mm;overflow-wrap:normal;hyphens:none}
 table.t thead th:first-child{min-width:34mm}
+/* ...salvo si la primera columna es un numero (el zoom 1, 2, 3): esos 34 mm se
+   los quitaba a la columna de al lado, y «Letal» o «Tactico» no cabian (T163) */
+table.t td.num:first-child,table.t:has(tbody td.num:first-child) thead th:first-child{min-width:0}
 /* y cuando la ultima columna es la apretada, que no se parta tampoco en seco */
 table.t td:last-child{overflow-wrap:break-word}
 td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
@@ -580,7 +583,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <thead><tr><th>Nivel</th><th>Escala</th><th>Ejemplos</th></tr></thead>
 <tbody>
 <tr><td class="num">1</td><td>Una persona</td><td>Cualquier humano, por experto que sea: El consultor de Baker Street, un boxeador, un hacker.</td></tr>
-<tr><td class="num">2</td><td>Una sala, decenas de personas</td><td>El bárbaro de la estepa, el soldado perfecto: un soldado raso no tiene nada que hacer contra ellos.</td></tr>
+<tr><td class="num">2</td><td>Una sala, cientos de personas</td><td>El bárbaro de la estepa, el soldado perfecto: un soldado raso no tiene nada que hacer contra ellos.</td></tr>
 <tr><td class="num">3</td><td>Un edificio, un barrio</td><td>Derribar un castillo, apagar la red eléctrica de un rascacielos.</td></tr>
 <tr><td class="num">4</td><td>Una gran ciudad</td><td>Un escudo místico sobre la ciudad, un monstruo que arrasa distritos.</td></tr>
 <tr><td class="num">5</td><td>Un país</td><td>Cambiar la geografía. Solo para finales de campaña.</td></tr>
@@ -991,7 +994,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <thead><tr><th>Level</th><th>Scale</th><th>Examples</th></tr></thead>
 <tbody>
 <tr><td class="num">1</td><td>One person</td><td>Any human, however expert: The consultant from Baker Street, a boxer, a hacker.</td></tr>
-<tr><td class="num">2</td><td>A room, dozens of people</td><td>The barbarian of the steppe, the perfect soldier: a rank-and-file soldier stands no chance against them.</td></tr>
+<tr><td class="num">2</td><td>A room, hundreds of people</td><td>The barbarian of the steppe, the perfect soldier: a rank-and-file soldier stands no chance against them.</td></tr>
 <tr><td class="num">3</td><td>A building, a neighbourhood</td><td>Bringing down a castle, cutting the power grid of a skyscraper.</td></tr>
 <tr><td class="num">4</td><td>A big city</td><td>A mystic shield over the city, a monster razing districts.</td></tr>
 <tr><td class="num">5</td><td>A country</td><td>Changing the geography. Only for campaign finales.</td></tr>
@@ -1269,7 +1272,10 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 
   /* ---------- typesetter ---------- */
   var cur, body, placed, running, stack, clones, runCap = '';
-  var SPLIT = 'div.tw, table, ul, ol, dl, div.rule, div.example, div.cards, div.steps, div.step, div.recipe, blockquote, section, div.acro, div.legend';
+  // contenedores que se pueden repartir entre hojas. div.t7s son las siete
+  // tarjetas de tono: sin estar aqui iban como un solo bloque de dos paginas
+  // y la hoja recortaba en silencio lo que no cabia (T163)
+  var SPLIT = 'div.tw, table, ul, ol, dl, div.rule, div.example, div.cards, div.steps, div.step, div.recipe, blockquote, section, div.acro, div.legend, div.t7s';
   var HEAD = /^(H2|H3|H4)$/;
   function isHead(el){ return el.nodeType===1 && (HEAD.test(el.tagName) || (el.matches && el.matches('.rule-title,.example-title,.step-title,.recipe-title,.card-kicker'))); }
 

@@ -16,7 +16,9 @@ SOSPECHOSOS = {
    'Vampiro: la Mascarada', 'Vampire: the Masquerade', 'Mundo de Tinieblas', 'World of Darkness',
    'Call of Cthulhu', 'La Llamada de Cthulhu', 'Traveller', 'Cyberpunk 2020', 'Cyberpunk 2077',
    'Blades in the Dark', 'Dungeon World', 'Numenera', 'Cypher', 'Genesys', 'Nosolorol',
-   'Paizo', 'Wizards of the Coast', 'Chaosium', 'Evil Hat', 'Steve Jackson'],
+   'Paizo', 'Wizards of the Coast', 'Chaosium', 'Evil Hat', 'Steve Jackson',
+   # Dread y Trophy no: son palabras corrientes en ingles y darian falsos avisos
+   'Ten Candles', 'Trophy Dark', 'Trophy Gold'],
  'Fantasia': [
    'Tolkien', 'Gandalf', 'Frodo', 'Sauron', 'Mordor', 'Hobbit', 'Rivendel', 'Rivendell',
    'Conan', 'Cimmeri', 'Elric', 'Drizzt', 'Reinos Olvidados', 'Forgotten Realms',

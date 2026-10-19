@@ -1741,3 +1741,43 @@ sin declarar».
 Juego completo esta justo debajo. Fuera de la portada quedan el salto, las
 cifras y la seccion «En que consiste la apuesta»; sobre las tarjetas, una linea
 por pieza. Ni un numero en la entrada.
+
+---
+
+## T163 · Repaso del autor al Juego completo
+
+**Las siete tarjetas de tono se recortaban.** Iban en un solo contenedor y el
+lector no reparte entre hojas lo que no esta en su lista de partibles: un
+bloque de dos paginas en una hoja de alto fijo, y 318 mm recortados en
+silencio. `div.t7s` entra en esa lista; el lector reparte tarjeta a tarjeta sin
+partir ninguna. Queda como pidio el autor: Epica, Pulp y Realista en una
+pagina, y Primera marcha abre la siguiente. Comprobado despues: ningun texto
+de los tres libros sale de su hoja.
+
+**Ten Candles, Dread y Trophy** se habian escapado del barrido de marcas (no
+estaban en el inventario). Ahora son una descripcion: juegos de terror de una
+sola noche que apagan velas o sacan piezas de una torre. Ten Candles y Trophy
+Dark/Gold entran en el inventario; Dread no, porque es una palabra corriente.
+
+**La Llave prestada se apunta en la ficha, a lapiz.** Antes decia que no se
+apuntaba.
+
+**El rockero de 2.4 deja de ser Social 4.** Decision del autor: la fama no sube
+la Rejilla, da Llaves, atadas al estatus y a la capacidad de convocar. Con
+cuatro (dos peldaños, 2.3) saca a miles a la calle como un nivel 3, y solo para
+eso. Y se subraya que subir la Rejilla es algo serio: en cyberpunk el unico que
+pasa del 1 es el super cromado, con un 2. Por eso **los techos de la receta 8
+pasan de 2 · 1 · 4 · 2 a 2 · 1 · 1 · 1**: el Social 4 y el Tecnico 2 venian del
+rockero de antes (linea del canon de 2.4) y contradecian la regla. La App lee
+los techos del manual y ya los tiene.
+
+**La escala de N2 pasa de decenas a centenas**, que es lo que dice el x100 por
+peldano: el encabezado de la tabla de 2.4, la tabla de escala de 2.2, el
+barbaro, el jefe de secta, dos piezas del Bazar y la tabla del Acelerado, en
+los dos idiomas. La «mejor decena» de 1.3 habla del d100 y se queda.
+
+**La primera columna numerica ya no reserva 34 mm.** La regla general daba ese
+minimo a toda primera columna, pensado para nombres; en la tabla de la vida
+fractal el zoom (1, 2, 3) se lo quitaba a «Letal», «Tactico» y «Guerra». Afecta
+a unas 37 tablas; medidas antes y despues, igual: 5 palabras partidas (las de
+guion propio) y ninguna tabla mas ancha que su pagina.

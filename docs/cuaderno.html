@@ -145,6 +145,9 @@ table.t .tag{white-space:normal}
    ni «optimista» ni «opresivo» cabian. Se le da ancho y se le prohibe partir palabras. */
 table.t td:first-child,table.t tbody th:first-child{min-width:34mm;overflow-wrap:normal;hyphens:none}
 table.t thead th:first-child{min-width:34mm}
+/* ...salvo si la primera columna es un numero (el zoom 1, 2, 3): esos 34 mm se
+   los quitaba a la columna de al lado, y «Letal» o «Tactico» no cabian (T163) */
+table.t td.num:first-child,table.t:has(tbody td.num:first-child) thead th:first-child{min-width:0}
 /* y cuando la ultima columna es la apretada, que no se parta tampoco en seco */
 table.t td:last-child{overflow-wrap:break-word}
 td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
@@ -1186,7 +1189,10 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 
   /* ---------- typesetter ---------- */
   var cur, body, placed, running, stack, clones, runCap = '';
-  var SPLIT = 'div.tw, table, ul, ol, dl, div.rule, div.example, div.cards, div.steps, div.step, div.recipe, blockquote, section, div.acro, div.legend';
+  // contenedores que se pueden repartir entre hojas. div.t7s son las siete
+  // tarjetas de tono: sin estar aqui iban como un solo bloque de dos paginas
+  // y la hoja recortaba en silencio lo que no cabia (T163)
+  var SPLIT = 'div.tw, table, ul, ol, dl, div.rule, div.example, div.cards, div.steps, div.step, div.recipe, blockquote, section, div.acro, div.legend, div.t7s';
   var HEAD = /^(H2|H3|H4)$/;
   function isHead(el){ return el.nodeType===1 && (HEAD.test(el.tagName) || (el.matches && el.matches('.rule-title,.example-title,.step-title,.recipe-title,.card-kicker'))); }
 
