@@ -1539,3 +1539,71 @@ cien combinaciones, que son el recibo y no el argumento, y las cuatro tarjetas
 se leian como cuatro descargas. Entra delante una seccion que dice que es esto
 —una idea y su desarrollo completo, en cuatro piezas— y las cifras bajan a una
 linea de cierre.
+
+---
+
+## T157 · La Idea en papel, compuesta a mano
+
+**El autor pidio el PDF a mano**, despues de que yo defendiera paginarlo con un
+motor (Paged.js). Mi objecion era una sola: el prototipo de hace meses tenia
+cajas A4 fijas con `overflow:hidden`, y eso se come en silencio lo que no cabe.
+Su decision fue a mano; se hizo a mano, y la objecion se resolvio de otra
+forma: **componer a mano, con una regla al lado**.
+
+**El texto no se copia.** `pdf_idea.py` lee `p_tesis_es.html` como los otros
+tres productos. Lo que se decide a mano es donde empieza cada pagina: la lista
+`CORTES`, escrita con las palabras exactas del corte y el porque de cada uno,
+como las notas de un cajista. Si un corte cae dentro de un parrafo, se parte
+por la marca, cerrando y reabriendo la negrita que quede a medias.
+
+**La puerta, medida en el mismo Chrome que imprime y con las mismas fuentes:**
+nada se desborda de su caja; todo parrafo de texto empieza en una linea entera
+de la rejilla de 15 pt; ningun titular se queda al pie ni sin dos lineas
+detras; un parrafo partido deja dos lineas a cada lado; las dos paginas de cada
+pliego acaban a la misma altura (salvo las que cierran seccion o estan frente a
+un mueble); lo que vive en el margen se ve de verdad; el mobiliario no se pisa
+ni se sale; y el total es multiplo de 4, para imprimirlo como cuadernillo.
+
+**Los pliegos mandan, no las paginas.** De la 7 a la 12 hay 309 composiciones
+validas y ninguna con todas las paginas llenas: el texto no lo permite. La
+elegida iguala cada pliego (46|46, 44|44, 45|45). La 5 suelta cinco lineas a
+proposito: esta frente al indice, donde un pie corto no se compara con nada, y
+asi la 6 acaba en «no hay ninguna razon para girarlo solo una vez» y la
+entradilla que lo remata abre la 7 al pasar la hoja.
+
+**Cuatro fallos que la regla encontro antes que el ojo:**
+- La raya bajo el titular de seccion sumaba 0,8 pt y sacaba de la rejilla todo
+  lo que venia detras. Ahora es una sombra que no ocupa sitio.
+- Una entradilla detras de un subtitulo perdia media linea por colapso de
+  margenes de CSS. Las entradillas usan relleno, que no colapsa.
+- Los numerales de seccion y la nota al margen no se veian: los recortaba el
+  `overflow:hidden` de la caja de texto, justo el peligro del prototipo. Fuera
+  el recorte, y la puerta comprueba la visibilidad.
+- **La primera comprobacion de visibilidad mentia.** Usaba `scrollIntoView()`,
+  y una caja con `overflow:hidden` se puede desplazar por codigo: desplazaba el
+  texto hasta que el numeral entraba y lo daba por visible. Solo cazaba las
+  paginas pares. Se rehizo con pura geometria y se probo en negativo: con el
+  recorte puesto, caza los nueve elementos del margen.
+
+**La flecha caia a Consolas.** Google Fonts reparte cada fuente por rangos de
+Unicode y U+2192 no esta en el subconjunto latino de JetBrains Mono. La
+portadilla pasa a «N·O·G·U·M = ...», que ademas es lo que es: una definicion.
+
+**Lo que sale del propio texto, sin copy nuevo:** la contracubierta es el
+salto, las tres emociones y quien decide cual (seccion 1); la pagina 15, «Tres
+puertas», son las frases de la seccion 8 («responde a ya / a como / a
+contigo») con su enlace vivo; los creditos salen de `colofon()`, el mismo de
+los otros tres productos.
+
+**La cubierta queda fuera de la licencia.** Es una imagen generada con IA y su
+autoria es dudosa en varias jurisdicciones: incluirla en CC BY-SA cederia
+derechos que quiza no existen. Lo dicen el PDF y el LICENSE. Es la opcion
+conservadora y el autor puede cambiarla.
+
+**Pendiente, avisado y sin tocar:** La Idea dice «malla» / «mesh» dos veces
+donde el manual dice Rejilla / Grid.
+
+**Limitacion conocida:** las fuentes variables de Google Fonts entran en el PDF
+como Type 3. Se ven bien y el texto se copia (las 33 llevan ToUnicode), pero
+una imprenta las marcaria en el control previo. Si algun dia va a imprenta,
+toca servir instancias estaticas.

@@ -38,6 +38,7 @@ src/assemble3.py          los tres libros, dos idiomas, tres destinos
 src/build_app3.py         la aplicación
 src/extract_app_data.py   extrae datos del manual hacia la aplicación
 src/make_covers.py        portadas
+src/pdf_idea.py           La Idea en PDF, compuesta a mano
 ```
 
 Tres destinos con enlaces distintos —carpeta local, artefactos, sitio público— resueltos en compilación, no a mano.
@@ -49,6 +50,7 @@ Nada se publica sin pasar por aquí:
 - **`src/w_revision.py`** — barre los productos compilados buscando vocabulario retirado, comprueba invariantes del sistema y revisa anclas rotas, identificadores duplicados y enlaces entre piezas.
 - **`src/w_marcas_inv.py`** — inventario de marcas y nombres con derechos sobre lo publicado, con su contexto.
 - **Aserciones en compilación** — que el número de recetas cuadre con el de tablas de techos; que el catálogo de reglas opcionales siga siendo de 16, porque el código de partida usa 16 bits; que los veinte mundos del atajo apunten a las veinte recetas una vez cada uno; que el documento JSON embebido en la aplicación siga siendo válido.
+- **`src/pdf_idea.py`** — el PDF se pagina a mano (una lista de cortes con las palabras exactas de cada uno), y por eso pasa por su propia puerta, medida en el mismo Chrome que imprime: nada se desborda de su caja, todo párrafo empieza en la rejilla de 15 pt, ningún titular se queda al pie, un párrafo partido deja dos líneas a cada lado, las dos páginas de cada pliego acaban a la misma altura, lo del margen se ve de verdad y el total es múltiplo de 4 para imprimirlo como cuadernillo.
 - **`src/curvas.py`** — el modelo de probabilidad del sistema, contrastado contra las tablas impresas del propio manual: 42 filas comparadas, 0 discrepancias. De ahí salen también las gráficas SVG del libro, generadas desde los datos y no dibujadas a mano.
 
 Tres ejemplos de fallos que estas puertas encontraron y que ninguna lectura humana había visto: un catálogo que repartía un valor de daño retirado **solo en la versión inglesa**; texto que la aplicación arrastraba con vocabulario que el manual ya había cambiado; y dos rutas de salida que en Windows eran el mismo fichero, de modo que los enlaces publicados apuntaban a copias locales inexistentes.
@@ -70,6 +72,7 @@ Sobre esto último: el configurador es determinista **a propósito**. Un árbol 
 docs/      el sitio publicado (GitHub Pages)
 src/       fuentes, datos y pipeline
   frag_*.html      fragmentos del manual (es / en)
+  pdf/             hoja de estilos e imagen de cubierta del PDF
   app4_body.html   la aplicación
   *.json           datos extraídos
   CANON.md         el diario de diseño: 154 decisiones con su porqué
@@ -84,10 +87,11 @@ cd src
 python extract_app_data.py   # datos del manual -> aplicación
 python assemble3.py          # los tres libros, tres destinos
 python build_app3.py         # la aplicación
+python pdf_idea.py           # La Idea en PDF (necesita Chrome y red para las fuentes)
 python w_revision.py         # la puerta de validación
 ```
 
-Sin dependencias: biblioteca estándar de Python 3.
+Sin dependencias: biblioteca estándar de Python 3. El PDF usa además Chrome o Edge en modo headless, que mide e imprime.
 
 ## Licencia
 
