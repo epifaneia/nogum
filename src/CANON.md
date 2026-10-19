@@ -1781,3 +1781,48 @@ minimo a toda primera columna, pensado para nombres; en la tabla de la vida
 fractal el zoom (1, 2, 3) se lo quitaba a «Letal», «Tactico» y «Guerra». Afecta
 a unas 37 tablas; medidas antes y despues, igual: 5 palabras partidas (las de
 guion propio) y ninguna tabla mas ancha que su pagina.
+
+---
+
+## T164 · Ajustes: la IA con tu clave, y la mesa entera en un archivo
+
+**En la web, la IA estaba muerta.** Las seis funciones que la usan (preguntar
+reglas, la memoria de campana, el analisis de sesiones, la conversacion para
+montar la mesa y la lectura de los formularios) llamaban a la capacidad de
+claude.ai, que fuera de claude.ai no existe: en epifaneia.dev salia siempre
+«Sin IA».
+
+**BYOK.** Una segunda fuente con la misma forma que la de la plataforma, asi
+que las seis funciones no se tocan: dentro de claude.ai se usa la suya; fuera,
+la clave de Anthropic que pegue el lector, con el SDK oficial (0.131.0, desde
+jsDelivr, sin paso de compilacion). Comprobado en un navegador real hasta la
+API: la peticion sale del navegador sin servidor y una clave falsa da el 401
+esperado. Lo que no se ha podido probar es una respuesta de verdad, porque no
+hay clave real en el taller.
+- La clave **no viaja en ningun archivo** ni en el Codigo, por decision del
+  autor; por defecto se olvida al cerrar la pestana, con una casilla para
+  recordarla en ese dispositivo y un boton para borrarla.
+- Por defecto **Sonnet 5.5**: paga el lector. Haiku 5.5 y Opus 5.5 se pueden
+  elegir. Se pide poco esfuerzo y sin pensamiento previo donde el modelo lo
+  admite; si la API rechazara esos ajustes, se repite una vez sin ellos.
+- En una conversacion, el primer bloque (instrucciones y canon) se cachea: las
+  preguntas seguidas cuestan mucho menos.
+- Un rechazo de la API (sin saldo, peticion invalida) se cuenta con sus
+  palabras, no como un fallo de conexion.
+
+**La mesa entera en un archivo.** Ya existia el boton «Archivo» (mesa,
+respuestas, fichas, historia), pero escondido al final de una barra. Ahora
+esta en Ajustes, y con una segunda opcion: **guardar la mesa con musica**, con
+las pistas de cada tarjeta dentro del archivo. Al abrirlo, las pistas vuelven a
+su tarjeta y las que ocupaban esas tarjetas aqui se sueltan. Y el archivo lleva
+**sello de version** (las preguntas y el catalogo): si se abre con otras, avisa
+en vez de cargar las respuestas como si nada. Probado de punta a punta: una
+pista guardada, borrada y recuperada byte a byte; la clave, ausente del
+archivo.
+
+**La imagen de la App, solo de bienvenida.** Con la mesa vacia, arriba de los
+formularios; en cuanto hay universo o fichas, desaparece. La ruta la pone el
+compilador segun el destino; en el artefacto de claude.ai no hay imagen.
+
+El boton se llama «Ajustes» y no «Configuracion»: con el nombre largo la
+cabecera dejaba de caber y se cortaba la ultima pestana.

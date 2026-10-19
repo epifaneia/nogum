@@ -33,7 +33,11 @@ def prods(modo):
 
 DATA = js(dict(dat, firmas=json.load(open(os.path.join(D, 'firmas.json'), encoding='utf-8'))))
 CANON = js(R('CANON.md'))
-MARCAS = ('%' + '%BASECSS%' + '%', '%' + '%PRODS%' + '%')
+MARCAS = ('%' + '%BASECSS%' + '%', '%' + '%PRODS%' + '%', '%' + '%IMG_APP%' + '%')
+# La imagen de bienvenida de la App: en la web esta al lado; la version local la
+# pide a la carpeta de productos, donde assemble3 copia las imagenes; el
+# artefacto de claude.ai no lleva ficheros sueltos, asi que va sin imagen.
+IMG_APP = {'web': 'img/app.jpg', 'local': '../NOGUM_productos/img/app.jpg', 'artifact': ''}
 BLOBS = ('%' + '%DATA%' + '%', '%' + '%CANON%' + '%')
 
 
@@ -46,7 +50,7 @@ def armar(modo):
     pisa tambien la aparicion de dentro del blob, mete comillas sin escapar en
     una cadena JSON y revienta la app entera. Paso por eso una vez.
     """
-    p = src.replace(MARCAS[0], base).replace(MARCAS[1], prods(modo))
+    p = src.replace(MARCAS[0], base).replace(MARCAS[1], prods(modo)).replace(MARCAS[2], IMG_APP[modo])
     for m in MARCAS:
         assert m not in p, 'queda %s sin resolver' % m
     return p.replace(BLOBS[0], DATA).replace(BLOBS[1], CANON)

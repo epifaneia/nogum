@@ -345,14 +345,40 @@ label.tool.file{cursor:pointer;display:inline-flex;align-items:center}
 
 .fold{font:600 9.5px/1 var(--mono);text-transform:uppercase;letter-spacing:.04em;color:var(--red);background:var(--red-soft);border-radius:999px;padding:2px 6px;margin-left:5px}
 .fold.big{margin-left:auto}
+
+/* el indicador de IA es un boton: lleva a la Configuracion */
+button.status{border:0;cursor:pointer}
+/* la configuracion */
+.cfg{max-width:860px;margin:0 auto}
+.cfgsec{margin-top:18px;padding-top:14px;border-top:1px solid var(--rule)}
+.cfgsec:first-of-type{border-top:0;padding-top:4px}
+.cfgest{font:13px/1.45 var(--mono);color:var(--ink-2);margin:0 0 8px}
+.cfgok{font:13px/1.45 var(--mono);color:var(--ok);background:var(--ok-soft);border-radius:8px;padding:8px 12px;margin:0 0 10px}
+.cfgmsg{font:13px/1.45 var(--mono);color:var(--ok);margin:6px 0 0}
+.cfgmsg.bad{color:var(--red)}
+.cfgchk{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--ink-2);margin:2px 0 10px}
+.cfg input[type=password]{flex:1 1 260px;min-width:0;font:13.5px/1.3 var(--mono);padding:8px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--paper);color:var(--ink)}
+.cfgpriv{margin-top:12px;font-size:13.5px;line-height:1.5;color:var(--ink-2);background:var(--blue-soft);border-radius:8px;padding:10px 14px}
+.cfgpriv p{margin:0}
+.cfgpriv a{color:inherit;font-weight:600}
+.cfg .rbf select{width:auto;min-width:min(330px,100%);max-width:100%}
+.cfgjson{width:100%;min-height:90px;margin-top:8px;font:12px/1.4 var(--mono)}
+/* la bienvenida: la imagen de la App mientras la mesa esta vacia */
+.bienvenida{position:relative;max-width:1500px;margin:0 auto 14px;border-radius:12px;overflow:hidden;background:#1c1814}
+.bienvenida img{display:block;width:100%;height:clamp(170px,28vw,340px);object-fit:cover;object-position:50% 40%}
+.bienvenida figcaption{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:baseline;gap:12px;padding:40px 18px 14px;
+  background:linear-gradient(rgba(12,10,8,0),rgba(12,10,8,.85));color:#f5efe3}
+.bienvenida b{font:800 clamp(28px,4.4vw,44px)/1 var(--display);text-transform:uppercase;letter-spacing:.02em}
+.bienvenida span{font:600 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.14em;opacity:.8}
 .srow.folded .nm{font-weight:600}
 </style>
 
 <header class="top">
   <span class="brand"><span class="dice" aria-hidden="true"><i></i><i></i></span><b>NOGUM</b><small id="brandSub"></small></span>
   <nav class="tabs" id="tabs" role="tablist"></nav>
-  <span class="status" id="aiStatus"></span>
+  <button type="button" class="status" id="aiStatus"></button>
   <div class="lang" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button></div>
+  <button class="tool" id="cfgBtn" type="button"></button>
   <button class="tool" id="themeBtn" type="button"></button>
 </header>
 <nav class="products noprint" id="prods" aria-label="NOGUM"></nav>
@@ -970,7 +996,7 @@ function resBaul(gi){
 /* ======================= UI STRINGS ======================= */
 var U = {
   sub:['App del director','GM app'], form:['Formularios','Forms'], tpl:['Ficha plantilla','Template sheet'], ask:['Preguntas','Questions'], ses:['Sesiones','Sessions'], dice:['Dados','Dice'], story:['Historia','Story'],
-  theme:['Tema','Theme'], back:['Atrás','Back'], next:['Siguiente','Next'], toSum:['Ir al resumen','Go to summary'], help:['Ayuda','Help'],
+  theme:['Tema','Theme'], cfg:['Ajustes','Settings'], back:['Atrás','Back'], next:['Siguiente','Next'], toSum:['Ir al resumen','Go to summary'], help:['Ayuda','Help'],
   start:['Empezar','Start'], edit:['Editar todo','Edit everything'], change:['Cambiar','Change'], lockGo:['Fijar y ver la ficha plantilla','Lock and view the template sheet'],
   print:['Imprimir','Print'], create:['Crear ficha','Create sheet'], del:['Borrar ficha','Delete sheet'], pc:['Personaje','Character'], page:['Página','Page'],
   disclaimer:['Este formulario aplica un tono y una escala a la partida completa. Puedes repetirlo siempre que quieras cambiar de tono: para una sesión nueva, una escena nueva o incluso a mitad de escena. Las fichas se actualizan solas, porque ninguna tirada pasa nunca de +4.','This form applies one tone and one scale to the whole game. You can run it again whenever you want to change tone: for a new session, a new scene or even mid-scene. Sheets update on their own, because no roll ever goes above +4.']
@@ -982,6 +1008,7 @@ function renderTop(){
   $('brandSub').textContent = u('sub'); document.documentElement.lang = S.lang;
   document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-lang')===S.lang ? 'true':'false'); });
   $('themeBtn').textContent = u('theme');
+  var cb = $('cfgBtn'); cb.textContent = u('cfg'); cb.classList.toggle('on', S.tab === 'cfg');
   var h = tabBtn('form', u('form')) + tabBtn('tpl', u('tpl'));
   S.chars.forEach(function(c, i){ h += tabBtn(c.id, c.name || (u('pc') + ' ' + (i+1))); });
   h += tabBtn('dice', u('dice'), 'right') + tabBtn('story', u('story')) + tabBtn('ask', u('ask')) + tabBtn('ses', u('ses'));
@@ -992,6 +1019,10 @@ $('tabs').addEventListener('click', function(e){ var b = e.target.closest('[data
 document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click', function(){ S.lang = b.getAttribute('data-lang'); persist(); render(); }); });
 var root = document.documentElement, th = load('nogum-theme-app', null); if (th) root.setAttribute('data-theme', th);
 $('themeBtn').addEventListener('click', function(){ var c = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light'); var n = c==='dark'?'light':'dark'; root.setAttribute('data-theme', n); save('nogum-theme-app', n); });
+// la Configuracion: desde su boton y desde el indicador de IA («Sin IA» lleva a donde se arregla)
+function abreCfg(){ S.tab = 'cfg'; S.form = null; persist(); render(); window.scrollTo(0, 0); }
+$('cfgBtn').addEventListener('click', abreCfg);
+$('aiStatus').addEventListener('click', abreCfg);
 
 /* Las otras tres piezas, para que la app no sea un callejon sin salida.
    Las URL las pone el compilador: relativas en local, de artefacto al publicar. */
@@ -1050,8 +1081,17 @@ function formEstado(id){
     : !S.chars.length ? [t('Hace falta una ficha hecha','Needs a finished sheet'), false]
     : [S.chars.length + ' ' + t(S.chars.length === 1 ? 'ficha' : 'fichas', S.chars.length === 1 ? 'sheet' : 'sheets'), true];
 }
+// La imagen de la App, como en la lamina de los libros, pero solo de bienvenida:
+// con la mesa vacia. En cuanto hay universo o fichas, la herramienta queda limpia.
+// La ruta la pone build_app3 segun el destino; en el artefacto no hay ficheros sueltos.
+var IMG_APP = '%%IMG_APP%%';
+function bienvenida(){
+  if (!IMG_APP || M.known !== null || S.chars.length) return '';
+  return '<figure class="bienvenida"><img src="' + IMG_APP + '" alt="" onerror="this.parentNode.remove()">' +
+    '<figcaption><b>NOGUM</b><span>' + esc(u('sub')) + '</span></figcaption></figure>';
+}
 function renderHub(){
-  var h = '<div class="wiz"><p class="disclaimer">' + esc(t(
+  var h = '<div class="wiz">' + bienvenida() + '<p class="disclaimer">' + esc(t(
       'Cuatro formularios y ninguno obligatorio. Los tres primeros montan la mesa y viajan en el Código: valen para la partida entera y para todas las fichas. El cuarto escribe en una ficha y no viaja, porque el equipo es de quien lo lleva.',
       'Four forms and none of them compulsory. The first three set up the table and travel in the Code: they apply to the whole game and every sheet. The fourth writes on one sheet and does not travel, because equipment belongs to whoever carries it.')) + '</p>';
   h += '<div class="hubedi"><span>' + esc(t('¿Cuánto juego queréis?','How much game do you want?')) + '</span>' +
@@ -1357,11 +1397,16 @@ var IAERR = {
   session_expired:['Hay que volver a entrar en la cuenta.','You need to sign in again.'],
   refused:['No he querido contestar a eso. Cambia alguna respuesta y vuelve a pedirlo.','Claude declined to answer that. Change an answer and ask again.'],
   empty_completion:['No ha salido texto. Vuelve a pedirlo.','No text came out. Ask again.'],
-  prompt_too_large:['Hay demasiadas respuestas para leerlas de una vez.','There are too many answers to read at once.']
+  prompt_too_large:['Hay demasiadas respuestas para leerlas de una vez.','There are too many answers to read at once.'],
+  clave_mala:['La clave no es válida o se ha revocado. Revísala en Ajustes.','The key is not valid or has been revoked. Check it in Settings.'],
+  clave_permiso:['Esa clave no puede usar este modelo. Prueba otro en Ajustes.','That key cannot use this model. Try another one in Settings.'],
+  sin_sdk:['No se ha podido cargar la conexión con Anthropic; revisa tu red.','Could not load the connection to Anthropic; check your network.'],
+  upstream_error:['Fallo de conexión. Vuelve a intentarlo.','Connection error. Try again.']
 };
 function pideLectura(fid){
-  if (!window.claude || !window.claude.use) {
-    S.ia[fid] = t('Esta lectura solo funciona en la versión publicada de la app, que es la que puede preguntarme.','This reading only works in the published version of the app, which is the one that can ask Claude.');
+  // la misma puerta que el resto de la IA: la de claude.ai o la de tu clave
+  if (!sample || aiDenied) {
+    S.ia[fid] = t('Esta lectura necesita la IA. Fuera de claude.ai, pega tu clave de Anthropic en Ajustes.','This reading needs AI. Outside claude.ai, paste your Anthropic key in Settings.');
     persist(); render(true); return;
   }
   var refresca = !!S.ia[fid];
@@ -1375,7 +1420,7 @@ function pideLectura(fid){
     var box = $('iabox-' + fid);
     if (box) box.textContent = txt; else render(true);
   }
-  window.claude.use('sample').then(function(sample){
+  Promise.resolve(sample).then(function(sample){
     if (!sample) {
       iaEstado[fid] = '';
       S.ia[fid] = t('La lectura no está disponible en esta vista.','The reading is not available in this view.');
@@ -1402,6 +1447,7 @@ function pideLectura(fid){
     iaEstado[fid] = '';
     var c = e && e.code;
     if (c === 'cancelled') S.ia[fid] = (e && e.text) || '';
+    else if (c === 'api') S.ia[fid] = t('La API de Anthropic ha rechazado la petición: ','The Anthropic API rejected the request: ') + (e.message || '');
     else S.ia[fid] = (IAERR[c] ? pick(IAERR[c]) : t('No se ha podido leer. Vuelve a intentarlo.','Could not read it. Try again.')) + (e && e.text ? '\n\n' + e.text : '');
     persist(); render(true);
   });
@@ -2188,10 +2234,117 @@ function onChar(e, c){
 
 /* ======================= AI: questions & sessions ======================= */
 var sample = null, aiDenied = false, turns = [], ctl = null;
-function aiStatus(){ var s = $('aiStatus'); if (sample && !aiDenied) { s.className = 'status on'; s.textContent = t('IA disponible','AI on'); } else if (sample === false || aiDenied) { s.className = 'status off'; s.textContent = t('Sin IA','No AI'); } else { s.className = 'status'; s.textContent = 'IA…'; } }
-if (window.claude && window.claude.use) window.claude.use('sample').then(function(x){ sample = x || false; aiStatus(); }, function(){ sample = false; aiStatus(); }); else sample = false;
-var ERR = {not_granted:['No se ha dado permiso para usar Claude.','Permission to use Claude was not granted.'], rate_limited:['Demasiadas consultas; prueba en un rato.','Too many requests; try again later.'], prompt_too_large:['Texto demasiado largo; recórtalo.','Text too long; shorten it.'], invalid_json:['Formato inesperado; reinténtalo.','Unexpected format; try again.'], upstream_error:['Fallo de conexión; reinténtalo.','Connection error; try again.']};
-function errText(e){ var c = e && e.code; if (['not_granted','sampling_disabled','not_declared','capability_disabled','capability_removed'].indexOf(c) > -1) { aiDenied = true; aiStatus(); } return c === 'cancelled' ? t('Detenido.','Stopped.') : pick(ERR[c] || ERR.upstream_error); }
+
+/* ----------------- la IA: la de claude.ai o la de tu clave (BYOK) -----------------
+   Dos fuentes con la misma forma, sample(entrada, opciones) -> {text, truncated}
+   y sample.json(), asi que las seis funciones que usan IA no saben cual tienen.
+   Dentro de claude.ai se usa la de la plataforma. Fuera, en la web, la de la
+   clave de Anthropic que pegue el lector: va de su navegador a Anthropic y a
+   ningun otro sitio (esta web no tiene servidor), no viaja en el archivo de la
+   mesa ni en el Codigo, y por defecto se olvida al cerrar la pestana (T164). */
+var SDK_URL = 'https://cdn.jsdelivr.net/npm/@anthropic-ai/sdk@0.131.0/+esm';
+var MODELOS = [['claude-haiku-5-5', 'Haiku 5.5', 'rápido y barato', 'fast and cheap'],
+               ['claude-sonnet-5-5', 'Sonnet 5.5', 'el equilibrio · recomendado', 'balanced · recommended'],
+               ['claude-opus-5-5', 'Opus 5.5', 'el más capaz y el más caro', 'most capable, most expensive']];
+var CLAVE_K = 'nogum-clave', MODELO_K = 'nogum-modelo', samplePlat = null, sdkP = null;
+function leeK(st, k){ try { return st.getItem(k); } catch(e){ return null; } }
+function claveActual(){ return leeK(sessionStorage, CLAVE_K) || leeK(localStorage, CLAVE_K) || ''; }
+function claveRecordada(){ return !!leeK(localStorage, CLAVE_K); }
+function guardaClave(v, recordar){
+  try { sessionStorage.removeItem(CLAVE_K); } catch(e){}
+  try { localStorage.removeItem(CLAVE_K); } catch(e){}
+  if (!v) return;
+  try { (recordar ? localStorage : sessionStorage).setItem(CLAVE_K, v); } catch(e){}
+}
+function modeloActual(){ var m = leeK(localStorage, MODELO_K); return MODELOS.some(function(x){ return x[0] === m; }) ? m : 'claude-sonnet-5-5'; }
+function sdk(){
+  if (!sdkP) sdkP = import(SDK_URL).then(function(m){ return m.default || m.Anthropic; }, function(){ sdkP = null; throw {code:'sin_sdk'}; });
+  return sdkP;
+}
+// Por defecto, rapido y barato: paga el lector. Haiku y Sonnet sin pensamiento
+// previo; Opus 5.5 piensa siempre y solo se le baja el esfuerzo.
+function ajustesIA(p){
+  var q = Object.assign({}, p, {output_config: {effort: 'low'}});
+  if (p.model === 'claude-haiku-5-5') q.thinking = {type: 'disabled'};
+  else if (p.model === 'claude-sonnet-5-5') q.thinking = {type: 'between_tools'};
+  return q;
+}
+// La API quiere turnos alternos: los seguidos del mismo rol se juntan. En una
+// conversacion, el primer bloque (instrucciones + canon) es igual en cada
+// pregunta y se cachea: las preguntas seguidas cuestan mucho menos.
+function aMensajes(entrada){
+  var conv = Array.isArray(entrada), out = [];
+  (conv ? entrada : [{role:'user', content:entrada}]).forEach(function(m){
+    var b = {type:'text', text:String(m.content)}, u2 = out[out.length - 1];
+    if (u2 && u2.role === m.role) u2.content.push(b); else out.push({role:m.role, content:[b]});
+  });
+  if (conv && out[0] && out[0].content[0].text.length > 4000) out[0].content[0].cache_control = {type:'ephemeral'};
+  return out;
+}
+function apiMsg(e){ try { return (e.error && e.error.error && e.error.error.message) || e.message; } catch(x){ return e && e.message; } }
+function aCodigo(e, A){
+  if (e && e.code) return e;
+  if (A && e instanceof A.APIUserAbortError) return {code:'cancelled'};
+  if (A && e instanceof A.AuthenticationError) return {code:'clave_mala'};
+  if (A && e instanceof A.PermissionDeniedError) return {code:'clave_permiso'};
+  if (A && e instanceof A.RateLimitError) return {code:'rate_limited'};
+  if (A && e instanceof A.BadRequestError) return {code:'api', message:apiMsg(e)};
+  return {code:'upstream_error'};
+}
+function byokSample(entrada, opts){
+  opts = opts || {};
+  var A = null;
+  return sdk().then(function(Ant){
+    A = Ant;
+    var cli = new A({apiKey:claveActual(), dangerouslyAllowBrowser:true, maxRetries:1});
+    var base = {model:(opts.modelTier === 'quick' ? 'claude-haiku-5-5' : modeloActual()), max_tokens:(opts.max || 2000), messages:aMensajes(entrada)};
+    var intenta = function(p, segunda){
+      var acc = '', st = cli.messages.stream(p);
+      if (opts.signal) { if (opts.signal.aborted) st.abort(); else opts.signal.addEventListener('abort', function(){ st.abort(); }); }
+      st.on('text', function(d){ acc += d; if (opts.onText) opts.onText({text:acc, delta:d}); });
+      return st.finalMessage().then(function(m){
+        if (m.stop_reason === 'refusal') throw {code:'refused'};
+        var txt = m.content.filter(function(b){ return b.type === 'text'; }).map(function(b){ return b.text; }).join('');
+        if (!txt) throw {code:'empty_completion'};
+        return {text:txt, truncated:m.stop_reason === 'max_tokens'};
+      }, function(e){
+        // si la API no acepta los ajustes de ahorro para ese modelo, se repite una vez sin ellos
+        if (!segunda && e instanceof A.BadRequestError && (p.thinking || p.output_config)) return intenta(base, true);
+        throw e;
+      });
+    };
+    return intenta(ajustesIA(base), false);
+  }).catch(function(e){ throw aCodigo(e, A); });
+}
+byokSample.json = function(entrada, opts){
+  return byokSample(entrada, Object.assign({}, opts || {}, {onText:null, max:4000})).then(function(r){
+    var s = r.text.trim().replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/, '');
+    var i = s.search(/[\[{]/), j = Math.max(s.lastIndexOf('}'), s.lastIndexOf(']'));
+    try { return JSON.parse(s.slice(i, j + 1)); } catch(e){ throw {code:'invalid_json'}; }
+  });
+};
+function eligeIA(){ sample = samplePlat || (claveActual() ? byokSample : false); aiDenied = false; aiStatus(); }
+function aiStatus(){
+  var s = $('aiStatus'); if (!s) return;
+  s.title = t('Ajustes de la IA','AI settings');
+  if (sample && !aiDenied) { s.className = 'status on'; s.textContent = sample === byokSample ? t('IA · tu clave','AI · your key') : t('IA disponible','AI on'); }
+  else if (sample === false || aiDenied) { s.className = 'status off'; s.textContent = t('Sin IA','No AI'); }
+  else { s.className = 'status'; s.textContent = 'IA…'; }
+}
+if (window.claude && window.claude.use) window.claude.use('sample').then(function(x){ samplePlat = x || null; eligeIA(); }, function(){ samplePlat = null; eligeIA(); }); else eligeIA();
+var ERR = {not_granted:['No se ha dado permiso para usar Claude.','Permission to use Claude was not granted.'], rate_limited:['Demasiadas consultas, o se ha agotado tu cuota; prueba en un rato.','Too many requests, or your quota ran out; try again later.'], prompt_too_large:['Texto demasiado largo; recórtalo.','Text too long; shorten it.'], invalid_json:['Formato inesperado; reinténtalo.','Unexpected format; try again.'], upstream_error:['Fallo de conexión; reinténtalo.','Connection error; try again.'],
+  clave_mala:['La clave no es válida o se ha revocado. Revísala en Ajustes.','The key is not valid or has been revoked. Check it in Settings.'],
+  clave_permiso:['Esa clave no tiene permiso para usar este modelo. Prueba otro en Ajustes.','That key is not allowed to use this model. Try another one in Settings.'],
+  sin_sdk:['No se ha podido cargar la conexión con Anthropic; revisa tu red.','Could not load the connection to Anthropic; check your network.'],
+  refused:['El modelo ha preferido no contestar a eso.','The model declined to answer that.'],
+  empty_completion:['No ha salido texto; vuelve a pedirlo.','No text came out; ask again.']};
+function errText(e){
+  var c = e && e.code;
+  if (['not_granted','sampling_disabled','not_declared','capability_disabled','capability_removed'].indexOf(c) > -1) { aiDenied = true; aiStatus(); }
+  // un rechazo de la API (sin saldo, peticion invalida...) se cuenta con sus palabras
+  if (c === 'api') return t('La API de Anthropic ha rechazado la petición: ','The Anthropic API rejected the request: ') + (e.message || '');
+  return c === 'cancelled' ? t('Detenido.','Stopped.') : pick(ERR[c] || ERR.upstream_error);
+}
 function ctx(){ return 'CURRENT TABLE: ' + JSON.stringify({world:worldName(), edition:edition(), mode:pick(card().n), health:zoomK(), grid:grid(), style:estilo(), extra:baul().map(function(k){ return DATA.baul[k][1]; })}); }
 function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); }
 function localSearch(q){ var w = norm(q).match(/[a-z0-9]{4,}/g) || []; return CANON.split(/\n(?=##|- )/).map(function(c){ var n = norm(c), sc = 0; w.forEach(function(x){ if (n.indexOf(x) > -1) sc++; }); return {c:c, sc:sc}; }).filter(function(x){ return x.sc; }).sort(function(a,b){ return b.sc - a.sc; }).slice(0,3).map(function(x){ return x.c.replace(/\*\*/g,''); }); }
@@ -2886,27 +3039,88 @@ function applyCode(str){
   return true;
 }
 
-/* --- la partida en archivo --- */
-function gameJson(){ return JSON.stringify({app:'NOGUM', v:1, saved:new Date().toISOString(), lang:S.lang, locked:S.locked, q:S.q, m:M, chars:S.chars, story:S.story, askMode:S.askMode}, null, 1); }
+/* --- la partida en archivo ---
+   Lleva la mesa, las respuestas de los formularios, las fichas, la historia y,
+   si se pide, la musica. Nunca la clave de la IA: esa vive aparte (T164). */
+// La version de las preguntas y del catalogo. Si una mesa se guardo con otras,
+// al abrirla se avisa en vez de cargar sus respuestas como si nada.
+function appVer(){
+  var s = JSON.stringify([S_TONO, S_UNI, S_BAUL, DATA.recipes.length, DATA.baul.length]), h = 2166136261;
+  for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return (h >>> 0).toString(36);
+}
+function gameObj(){ return {app:'NOGUM', v:2, ver:appVer(), saved:new Date().toISOString(), lang:S.lang, locked:S.locked, q:S.q, m:M, chars:S.chars, story:S.story, askMode:S.askMode}; }
+function gameJson(){ return JSON.stringify(gameObj(), null, 1); }
 function gameName(){ var n = worldName().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 26); return 'nogum-' + (n || 'mesa') + '.json'; }
-function exportGame(){
-  var data = gameJson(), name = gameName();
-  if (DL) { DL.save({filename:name, data:data}).then(function(){ rbMsg = t('Archivo guardado.','File saved.'); rbBad = false; render(true); }, function(){ var ta = $('rbJson'); if (ta) ta.value = data; rbMsg = t('El navegador no deja guardar: copia el texto de abajo y guardalo tu.','The browser will not save it: copy the text below and keep it yourself.'); rbBad = true; render(true); }); return t('Guardando...','Saving...');
-  }
+var NO_GUARDA = ['El navegador no deja guardar: copia el texto de abajo y guárdalo tú.','The browser will not save it: copy the text below and keep it yourself.'];
+// Bajar un archivo: por la plataforma si estamos en claude.ai, si no por el navegador,
+// y si tampoco, el texto en la caja para copiarlo a mano.
+// lo que no se ha podido bajar se guarda aqui, porque la pantalla se redibuja y la caja se vacia
+var TEXTO_CAIDO = {};
+function bajaArchivo(data, name, idTexto){
+  var cae = function(){ TEXTO_CAIDO[idTexto] = data; var ta = $(idTexto); if (ta) ta.value = data; return pick(NO_GUARDA); };
+  TEXTO_CAIDO[idTexto] = '';
+  if (DL) return DL.save({filename:name, data:data}).then(function(){ return t('Archivo guardado.','File saved.'); }, cae);
   try {
     var b = new Blob([data], {type:'application/json'}), a = document.createElement('a');
     a.href = URL.createObjectURL(b); a.download = name; document.body.appendChild(a); a.click();
     setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 2000);
-    return t('Archivo guardado.','File saved.');
+    return Promise.resolve(t('Archivo guardado.','File saved.'));
   } catch(e){}
-  var ta2 = $('rbJson'); if (ta2) ta2.value = data;
-  return t('El navegador no deja guardar: copia el texto de abajo y guardalo tu.','The browser will not save it: copy the text below and keep it yourself.');
+  return Promise.resolve(cae());
 }
-function importGame(txt){
+function exportGame(){
+  bajaArchivo(gameJson(), gameName(), 'rbJson').then(function(m){ rbMsg = m; rbBad = m === pick(NO_GUARDA); render(true); });
+  return t('Guardando...','Saving...');
+}
+// La musica viaja dentro del archivo como texto. Pesa: por eso es un boton aparte.
+function musicaParaArchivo(){
+  return musPide(function(st){ return st.getAll(); }).then(function(ps){
+    return Promise.all((ps || []).filter(function(p){ return p && p.blob; }).map(function(p){
+      return new Promise(function(ok){
+        var r = new FileReader();
+        r.onload = function(){ ok({id:p.id, nom:p.nom, tipo:p.tipo, carta:p.carta, data:r.result}); };
+        r.onerror = function(){ ok(null); };
+        r.readAsDataURL(p.blob);
+      });
+    }));
+  }).then(function(xs){ return xs.filter(Boolean); });
+}
+function dataABlob(d){
+  var i = d.indexOf(','), tipo = d.slice(5, i).split(';')[0], b = atob(d.slice(i + 1)), u8 = new Uint8Array(b.length);
+  for (var k = 0; k < b.length; k++) u8[k] = b.charCodeAt(k);
+  return new Blob([u8], {type:tipo});
+}
+// Al abrir: las pistas del archivo se guardan, y las tarjetas que ellas ocupan
+// se sueltan aqui, para que no haya dos pistas en la misma tarjeta.
+function musicaDesdeArchivo(lista){
+  var cartas = lista.map(function(x){ return x.carta; }).filter(Boolean);
+  return musRefresca().then(function(locales){
+    return Promise.all(locales.filter(function(p){ return p.carta && cartas.indexOf(p.carta) > -1; }).map(function(p){
+      return musPide(function(st){ return st.get(p.id); }).then(function(reg){ if (reg) { reg.carta = null; return musGuarda(reg); } });
+    }));
+  }).then(function(){
+    return Promise.all(lista.map(function(x){ return musGuarda({id:x.id, nom:x.nom, tipo:x.tipo, carta:x.carta, blob:dataABlob(x.data)}); }));
+  }).then(function(){ return musRefresca(); });
+}
+function nPistas(n){ return n === 1 ? t('1 pista', '1 music track') : n + t(' pistas', ' music tracks'); }
+function guardaMesa(conMusica){
+  if (!conMusica) return bajaArchivo(gameJson(), gameName(), 'cfgJson');
+  return musicaParaArchivo().then(function(m){
+    var o = gameObj(); o.musica = m;
+    return bajaArchivo(JSON.stringify(o), gameName().replace(/\.json$/, '-con-musica.json'), 'cfgJson').then(function(msg){
+      return msg + ' ' + (m.length ? t('Lleva ' + nPistas(m.length) + ' de música.', 'It carries ' + nPistas(m.length) + '.') : t('No había música que guardar.','There was no music to save.'));
+    });
+  });
+}
+function importGame(txt, alAcabarMusica){
   var o = null;
   try { o = JSON.parse(txt); } catch(e){}
   if (!o || o.app !== 'NOGUM' || !o.m) { rbBad = true; return t('Eso no es una partida de NOGUM.','That is not a NOGUM game.'); }
-  if (!confirm(t('La partida del archivo reemplaza esta mesa y todas sus fichas. ¿Seguir?','The game in the file replaces this table and all its sheets. Continue?'))) { rbBad = false; return ''; }
+  var aviso = t('La partida del archivo reemplaza esta mesa y todas sus fichas. ¿Seguir?','The game in the file replaces this table and all its sheets. Continue?');
+  if (o.ver && o.ver !== appVer()) aviso = t('Esta mesa se guardó con otra versión de las preguntas de la app. La mesa, las fichas y la historia se abren igual, pero las respuestas de los formularios pueden no coincidir.',
+    'This table was saved with another version of the app’s questions. The table, sheets and story open the same, but the form answers may not match.') + '\n\n' + aviso;
+  if (!confirm(aviso)) { rbBad = false; return ''; }
   rbUndo = null;
   restoreM(JSON.stringify(o.m));
   S.chars = Array.isArray(o.chars) ? o.chars : [];
@@ -2916,7 +3130,85 @@ function importGame(txt){
   if (o.q && typeof o.q === 'object') S.q = o.q;
   S.locked = o.locked !== false; S.scene = null; S.fix = null; S.tab = 'tpl'; S.form = null; S.st = {}; S.ia = {};
   rbBad = false;
+  if (Array.isArray(o.musica) && o.musica.length) {
+    var fin = alAcabarMusica || function(m){ rbMsg = m; render(true); }, n = o.musica.length;
+    musicaDesdeArchivo(o.musica).then(function(){ fin(t('Partida abierta, con ' + nPistas(n) + ' de música.', 'Game loaded, with ' + nPistas(n) + '.')); },
+      function(){ fin(t('Partida abierta, pero la música no ha cabido en este navegador.','Game loaded, but the music did not fit in this browser.')); });
+    return t('Partida abierta: mesa, fichas e historia. Metiendo la música…','Game loaded: table, sheets and story. Loading the music…');
+  }
   return t('Partida abierta: mesa, fichas e historia.','Game loaded: table, sheets and story.');
+}
+
+/* ======================= CONFIGURACION =======================
+   Dos cosas que no se parecen: tu clave, que es privada y no sale del
+   navegador, y tu mesa, que se guarda en un archivo para pasarla al grupo. */
+var cfgMsg = '', cfgIAmsg = '', cfgIAok = null;
+function modeloNombre(){ var m = MODELOS.filter(function(x){ return x[0] === modeloActual(); })[0]; return m ? m[1] : modeloActual(); }
+function renderCfg(){
+  var k = claveActual();
+  var h = '<div class="panel cfg"><div class="formhead"><h2>' + esc(u('cfg')) + '</h2></div>';
+  // 1 · la IA
+  h += '<section class="cfgsec"><p class="rbp-h">' + esc(t('La IA · tu clave de Anthropic','AI · your Anthropic key')) + '</p>';
+  if (samplePlat) h += '<p class="cfgok">' + esc(t('Estás dentro de claude.ai: la IA ya funciona y aquí no hace falta clave.','You are inside claude.ai: AI already works and no key is needed here.')) + '</p>';
+  h += '<p class="rbp-t">' + esc(t('Fuera de claude.ai, las preguntas sobre reglas, la memoria de la campaña, el análisis de sesiones y la lectura de los formularios necesitan una clave de la API de Anthropic. La pagas tú, pregunta a pregunta. Las preguntas seguidas reaprovechan las reglas ya enviadas y cuestan mucho menos.',
+    'Outside claude.ai, rules questions, campaign memory, session analysis and the form readings need an Anthropic API key. You pay for it, question by question. Consecutive questions reuse the rules already sent and cost much less.')) + '</p>';
+  h += '<p class="cfgest">' + esc(k ? t('Hay una clave guardada, terminada en …','A key is saved, ending in …') + k.slice(-4) + ' · ' + (claveRecordada() ? t('recordada en este dispositivo','remembered on this device') : t('se olvida al cerrar la pestaña','forgotten when the tab closes')) : t('No hay ninguna clave.','No key yet.')) + '</p>';
+  h += '<div class="rbcode"><input type="password" id="cfgKey" autocomplete="off" spellcheck="false" placeholder="sk-ant-…" aria-label="' + esc(t('Clave de la API de Anthropic','Anthropic API key')) + '">' +
+    '<button type="button" class="tool" id="cfgSave">' + esc(t('Guardar la clave','Save the key')) + '</button>' +
+    (k ? '<button type="button" class="tool" id="cfgDel">' + esc(t('Borrar la clave','Delete the key')) + '</button>' : '') + '</div>';
+  h += '<label class="cfgchk"><input type="checkbox" id="cfgRec"' + (claveRecordada() ? ' checked' : '') + '> ' + esc(t('Recordarla en este dispositivo','Remember it on this device')) + '</label>';
+  h += '<div class="rbcode"><label class="rbf"><span>' + esc(t('Modelo','Model')) + '</span><select id="cfgModel">' + MODELOS.map(function(m){
+      return '<option value="' + m[0] + '"' + (m[0] === modeloActual() ? ' selected' : '') + '>' + esc(m[1] + ' · ' + (S.lang === 'en' ? m[3] : m[2])) + '</option>'; }).join('') + '</select></label>' +
+    (k ? '<button type="button" class="tool" id="cfgTest">' + esc(t('Probar la conexión','Test the connection')) + '</button>' : '') + '</div>';
+  if (cfgIAmsg) h += '<p class="cfgmsg' + (cfgIAok === false ? ' bad' : '') + '">' + esc(cfgIAmsg) + '</p>';
+  h += '<div class="cfgpriv"><p>' + esc(t('Tu clave va de tu navegador a Anthropic y a ningún otro sitio: esta web no tiene servidor. No viaja en el archivo de la mesa ni en el Código. Te recomendamos crear una clave solo para esto, con un límite de gasto, en la consola de Anthropic: ',
+    'Your key goes from your browser to Anthropic and nowhere else: this site has no server. It does not travel in the table file or the Code. We recommend creating a key just for this, with a spending limit, in the Anthropic console: ')) +
+    '<a href="https://platform.claude.com/" target="_blank" rel="noopener">platform.claude.com</a></p></div></section>';
+  // 2 · la mesa
+  h += '<section class="cfgsec"><p class="rbp-h">' + esc(t('Tu mesa','Your table')) + '</p>';
+  h += '<p class="rbp-t">' + esc(t('El archivo lleva la mesa entera, para guardarla o pasársela a tu grupo: la configuración, las respuestas de los formularios, las fichas, la historia y el lore. Con música, también las pistas de cada tarjeta, y pesa bastante más. Tu clave, nunca. Para pasar solo la configuración en un mensaje está el Código, en la barra de la mesa.',
+    'The file carries the whole table, to keep it or hand it to your group: the setup, form answers, sheets, story and lore. With music, the tracks of every card too, and it weighs much more. Your key, never. To pass just the setup in a message there is the Code, in the table bar.')) + '</p>';
+  h += '<div class="rbcode"><button type="button" class="tool" id="cfgExp">' + esc(t('Guardar la mesa','Save the table')) + '</button>' +
+    '<button type="button" class="tool" id="cfgExpM">' + esc(t('Guardar la mesa con música','Save the table with music')) + '</button>' +
+    '<label class="tool file">' + esc(t('Abrir una mesa…','Open a table…')) + '<input type="file" id="cfgImp" accept=".json,application/json" hidden></label></div>';
+  if (cfgMsg) h += '<p class="cfgmsg">' + esc(cfgMsg) + '</p>';
+  if (TEXTO_CAIDO.cfgJson) h += '<textarea id="cfgJson" class="cfgjson" readonly>' + esc(TEXTO_CAIDO.cfgJson) + '</textarea>';
+  else h += '<textarea id="cfgJson" class="cfgjson" hidden></textarea>';
+  return h + '</section></div>';
+}
+function bindCfg(){
+  var aviso = function(m, ok){ cfgIAmsg = m; cfgIAok = ok; render(true); };
+  $('cfgSave').addEventListener('click', function(){
+    var v = ($('cfgKey').value || '').trim();
+    if (!v) { aviso(t('Pega primero la clave.','Paste the key first.'), false); return; }
+    guardaClave(v, $('cfgRec').checked); eligeIA();
+    aviso(t('Clave guardada. Compruébala con «Probar la conexión».','Key saved. Check it with “Test the connection”.'), null);
+  });
+  var d = $('cfgDel'); if (d) d.addEventListener('click', function(){ guardaClave('', false); eligeIA(); aviso(t('Clave borrada de este navegador.','Key deleted from this browser.'), null); });
+  $('cfgRec').addEventListener('change', function(){ var k = claveActual(); if (k) guardaClave(k, this.checked); render(true); });
+  $('cfgModel').addEventListener('change', function(){ try { localStorage.setItem(MODELO_K, this.value); } catch(e){} cfgIAmsg = ''; render(true); });
+  var p = $('cfgTest'); if (p) p.addEventListener('click', function(){
+    aviso(t('Probando…','Testing…'), null);
+    byokSample(t('Contesta solo con la palabra: funciona','Reply with just the word: works'), {max:400}).then(function(r){
+      aviso(t('Funciona. ','It works. ') + modeloNombre() + t(' ha contestado: «',' replied: “') + r.text.trim().slice(0, 60) + t('».','”.'), true);
+    }, function(e){ aviso(errText(e), false); });
+  });
+  var hecho = function(m){ cfgMsg = m; render(true); };
+  $('cfgExp').addEventListener('click', function(){ hecho(t('Guardando…','Saving…')); guardaMesa(false).then(hecho); });
+  $('cfgExpM').addEventListener('click', function(){
+    hecho(t('Preparando la mesa con su música…','Preparing the table with its music…'));
+    guardaMesa(true).then(hecho, function(){ hecho(t('No se ha podido leer la música de este navegador.','Could not read the music from this browser.')); });
+  });
+  $('cfgImp').addEventListener('change', function(){
+    var f = this.files && this.files[0]; if (!f) return;
+    var r = new FileReader();
+    r.onload = function(){
+      var m = importGame(String(r.result), function(fin){ cfgMsg = fin; persist(); render(true); });
+      if (m && !rbBad) S.tab = 'cfg';       // se queda aqui para leer el resultado
+      cfgMsg = m; persist(); render();
+    };
+    r.readAsText(f);
+  });
 }
 
 /* --- la barra --- */
@@ -3057,6 +3349,7 @@ function render(keep){
   else if (S.tab === 'dice') { v.innerHTML = renderDice(); bindDice(); }
   else if (S.tab === 'story') { v.innerHTML = renderStory(); bindStory(); }
   else if (S.tab === 'ses') { v.innerHTML = renderSes(); $('sesBtn').addEventListener('click', analyse); }
+  else if (S.tab === 'cfg') { v.innerHTML = renderCfg(); bindCfg(); }
   else {
     var c = S.chars.filter(function(x){ return x.id === S.tab; })[0];
     if (!c) { S.tab = 'tpl'; return render(); }
