@@ -2060,7 +2060,16 @@ function keysBlock(c){
   var forms = [['dis', t('una Disciplina, para siempre','one Discipline, for ever')],
                ['amb', t('un Ámbito entero, una escena','a whole Sphere, one scene')]];
   var h = '<div class="sec">' + esc(t('Bote aparte y Llaves','Separate pot and Keys')) + '<span class="note">' +
-    esc(t('+1 de Rejilla en el ámbito que permita tu mundo, o 5 Llaves. No se cambia por puntos.','+1 Grid in whichever sphere your world allows, or 5 Keys. It does not trade for points.')) + '</span></div>';
+    esc(t('+1 de Rejilla en el ámbito que permita tu mundo, o 5 Llaves. No se cambia por puntos. ¿Dudas? ¿Le gana a cualquier cosa de ese ámbito, o solo a una? Si es solo a una, son Llaves.',
+          '+1 Grid in whichever sphere your world allows, or 5 Keys. It does not trade for points. Unsure? Does it beat anything in that sphere, or just one thing? If just one thing, those are Keys.')) + '</span></div>';
+  // La confusion mas comun en la mesa: Rejilla alta para lo que en la ficcion
+  // suena enorme (la fama, el talento, el cacharro), cuando apunta a algo
+  // concreto y son Llaves. Si la ficha pasa del nivel de la mesa, se pregunta (T165).
+  var altos = c ? AMB.filter(function(a){ return (c.grid[a.id] || grid()) > grid(); }) : [];
+  if (altos.length) h += '<p class="lockmsg">' + esc(t('Tienes la Rejilla por encima de la mesa en ', 'Your Grid is above the table in ') +
+    altos.map(function(a){ return pick(a.n); }).join(', ') + '. ' +
+    t('Antes de dejarlo así: ¿le gana a cualquier cosa de ese ámbito, o solo a una? Si es solo a una —sus fans, su ordenador, los vampiros—, es una Llave, no Rejilla (manual, 2.4).',
+      'Before you leave it like that: does it beat anything in that sphere, or just one thing? If just one thing —their fans, their computer, vampires—, it is a Key, not Grid (manual, 2.4).')) + '</p>';
   if (!c) {
     h += '<div class="keys"><div class="potrow"><button type="button" class="potb" disabled>' + esc(t('+1 Rejilla','+1 Grid')) + '</button><button type="button" class="potb" disabled>' + esc(t('5 Llaves','5 Keys')) + '</button></div>';
     for (var i = 0; i < 5; i++) h += '<div class="krow blank"><span class="line"></span><span class="kf">' + esc(t('Disciplina / Ámbito','Discipline / Sphere')) + '</span><span class="kc">□</span></div>';

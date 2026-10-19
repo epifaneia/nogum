@@ -1826,3 +1826,24 @@ compilador segun el destino; en el artefacto de claude.ai no hay imagen.
 
 El boton se llama «Ajustes» y no «Configuracion»: con el nombre largo la
 cabecera dejaba de caber y se cortaba la ultima pestana.
+
+---
+
+## T165 · ¿Rejilla o Llave?
+
+Lo que mas se discute en la mesa al crear la ficha, segun el autor despues de
+jugarlo: las ganas de ponerse Rejilla alta en lo que en la ficcion suena enorme
+(la fama, el talento, el cacharro), cuando apunta a algo concreto y son Llaves.
+Al propio autor le paso con el rockero de 2.4. El concepto se explicaba, pero
+despues del error; ahora la prueba esta donde se decide, en una sola pregunta:
+**¿le gana a cualquier cosa de ese ambito, o solo a una?** Si es solo a una, es
+una Llave.
+
+- **Manual:** un recuadro de regla en 2.4, justo despues del rockero, que es el
+  ejemplo del error; y en 3.5, en el parrafo que compara el +1 de Rejilla con
+  las cinco Llaves, la remision a esa prueba.
+- **App:** la pregunta, siempre, en la nota de «Bote aparte y Llaves»; y un
+  aviso en ambar, con el nombre del ambito, si la ficha queda por encima del
+  nivel de la mesa. Probado con una mesa de cyberpunk: con +1 de Rejilla avisa
+  en Fisico, el unico ambito que alli puede pasar de 1; con cinco Llaves, el
+  aviso desaparece.
