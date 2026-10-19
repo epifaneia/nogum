@@ -63,7 +63,7 @@ CORTES = [
     'La vida: ¿cuánto aguanta un cuerpo?',                          # p.8, abre con el subtitulo
     ('Las probabilidades de las siete', 'y verificadas, y'),        # p.9
     'El primero es qué se hace con los dados',                      # p.10
-    ('Pero un ancla crea un problema', 'mundo compite con'),        # p.11
+    ('Pero un ancla crea un problema', 'el mundo compite'),         # p.11 (T158: «la Rejilla» corrio una palabra)
     ('Y a partir de ese momento el catálogo', 'hacen y no'),        # p.12, cierra la seccion 7
     # p.13 · El cierre abre pagina: es el final del libro y tiene que tener
     # su propia entrada. La 12 se queda corta, que es lo normal al acabar

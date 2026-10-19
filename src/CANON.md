@@ -1607,3 +1607,24 @@ donde el manual dice Rejilla / Grid.
 como Type 3. Se ven bien y el texto se copia (las 33 llevan ToUnicode), pero
 una imprenta las marcaria en el control previo. Si algun dia va a imprenta,
 toca servir instancias estaticas.
+
+---
+
+## T158 · La malla era la Rejilla
+
+La Idea decia «malla» dos veces (y «mesh» en ingles) donde todo el manual dice
+**Rejilla** / **Grid**. Estaba ahi desde el primer commit: un resto del
+borrador, cuando «malla» llego a nombrar cuatro cosas a la vez. El autor lo
+confirma: malla es Rejilla. Cambiado en los dos idiomas.
+
+La puerta de vocabulario retirado la vigila desde ahora, pero no a ciegas: la
+primera version de la regla cazaba ocho apariciones mas y las ocho eran
+legitimas. La armadura («cota de malla», tres veces), la cita del autor en T67
+entre comillas latinas («que ignore la malla y sea la corta dioses») y el
+glosario, que habla DE la palabra. La regla deja pasar esos tres usos y se
+probo en los dos sentidos: caza las dos erratas viejas de cada idioma y deja
+limpio lo publicado.
+
+El cambio corrio una palabra el parrafo partido entre las paginas 10 y 11 del
+PDF y descuadro ese pliego. La regla de cajista encontro el mismo reparto con
+el corte una palabra antes; los pliegos vuelven a acabar a la misma altura.

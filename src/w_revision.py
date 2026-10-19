@@ -32,6 +32,12 @@ MUERTOS = [
     (r'tres modos de tono|three tone modes', 'son cuatro (T146)'),
     (r'Tesis filosófica|Philosophical thesis', 'el producto es La Idea (T144)'),
     (r'bancos de música|music banks', 'la musica es solo arrastrar (T151)'),
+    # «malla» por Rejilla es errata, pero la palabra tiene usos legitimos que
+    # no se tocan: la armadura («cota de malla»), las citas entre comillas
+    # latinas (lo que dijo el autor o el original) y el glosario, que habla DE
+    # la palabra. En singular: «mallas» (las de superheroe) tampoco es esto.
+    (r'(?<!cota de )(?<!palabra )(?<!«)(?<!escapado una )\bmalla\b(?![^«»\n]{0,80}»)|\bmesh\b',
+     'es la Rejilla / the Grid (T158)'),
 ]
 
 INV = [
