@@ -3,11 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NOGUM · un manual universal de emociones</title>
+<title>NOGUM · una tesis sobre cómo jugar</title>
 <meta name="description" content="NOGUM no es otro manual universal de rol: es una tesis sobre cómo jugar. Un mismo manual que, con pocos ajustes, se hace a la medida de la emoción de tu universo, y que se puede cambiar cuando la mesa quiera sentir otra cosa. Libre, bajo CC BY-SA 4.0.">
-<meta property="og:title" content="NOGUM · un manual universal de emociones">
+<meta property="og:title" content="NOGUM · una tesis sobre cómo jugar">
 <meta property="og:description" content="Una tesis sobre cómo jugar, que cambia las reglas del juego. Literal y figuradamente. Cuatro piezas, libres.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_GB">
 <meta property="og:url" content="https://epifaneia.dev/nogum/">
 <meta property="og:image" content="https://epifaneia.dev/nogum/portada-social.jpg">
 <meta property="og:image:width" content="1200">
@@ -17,6 +19,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap">
+<script>
+/* El idioma, antes de pintar nada, para que no parpadee: ?lang= de la URL,
+   luego la preferencia guardada (la misma clave que usan los libros) y si no
+   hay ninguna, el idioma del navegador. Sin JavaScript se queda en espanol. */
+(function(){
+  var d = document.documentElement, q = (location.search.match(/lang=(es|en)/) || [])[1], s = null;
+  try { s = localStorage.getItem('nogum-lang'); } catch (e) {}
+  var n = (navigator.language || 'es').slice(0, 2).toLowerCase() === 'es' ? 'es' : 'en';
+  d.lang = q || s || n; d.className += ' js';
+})();
+</script>
 <style>
 :root{
   --ground:#e7ddcb; --paper:#f5efe3; --ink:#1c1814; --ink-2:#4a4237; --ink-3:#655c4e;
@@ -30,6 +43,8 @@
   --rule:#3b342b; --rule-2:#2c2721; --red:#f07378; --blue:#86a9ec; --ok:#8fd1a6;
   color-scheme:dark;}}
 *{box-sizing:border-box}
+/* cada texto va en los dos idiomas; se ve el del documento */
+html[lang="es"] body [lang="en"],html[lang="en"] body [lang="es"]{display:none!important}
 body{margin:0;background:var(--ground);color:var(--ink);font:400 17px/1.6 var(--serif);
      -webkit-text-size-adjust:100%}
 .wrap{max-width:62rem;margin:0 auto;padding:0 16px 64px}
@@ -72,9 +87,12 @@ h2{font:600 13px/1 var(--mono);text-transform:uppercase;letter-spacing:.12em;col
 footer{margin:56px 0 0;padding:20px 0 0;border-top:1px solid var(--rule);font-size:14px;color:var(--ink-2)}
 footer p{margin:0 0 6px;max-width:68ch}
 a{color:var(--red)}
-.lang{display:flex;gap:8px;margin:0 0 0 auto}
-.lang a{font:600 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;text-decoration:none;
-        color:var(--ink-2);border:1px solid var(--rule);border-radius:6px;padding:7px 10px}
+/* el selector de idioma; sin JavaScript no sirve, asi que no se ensena */
+.lang{display:none;margin:0 0 0 auto;border:1px solid var(--rule);border-radius:999px;overflow:hidden}
+.js .lang{display:flex}
+.lang button{font:600 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);
+             background:transparent;border:0;padding:8px 12px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 </style>
 </head>
 <body>
@@ -83,69 +101,118 @@ a{color:var(--red)}
 <header>
   <div class="marca">
     <span class="dados" aria-hidden="true"><i></i><i></i></span>
-    <p class="sub">Narrative Ontology &amp; General Universal Mechanics</p>
+    <!-- el titulo pedante va en el otro idioma: en la edicion espanola, ingles; en la inglesa, al reves (canon) -->
+    <p class="sub" lang="es">Narrative Ontology &amp; General Universal Mechanics</p>
+    <p class="sub" lang="en">Narrativa Ontológica General Universal y Metafísica</p>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="es" aria-pressed="true">ES</button><button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
   </div>
   <h1>NOGUM</h1>
-  <p class="lede">NOGUM no es otro manual universal de rol. Es una tesis sobre cómo jugar, que cambia las reglas del juego. <strong>Literal y figuradamente.</strong></p>
+  <p class="lede" lang="es">NOGUM no es otro manual universal de rol. Es una tesis sobre cómo jugar, que cambia las reglas del juego. <strong>Literal y figuradamente.</strong></p>
+  <p class="lede" lang="en">NOGUM is not another universal roleplaying manual. It is a thesis about how to play, one that changes the rules of the game. <strong>Literally and figuratively.</strong></p>
 </header>
 
-<div class="tesis">
+<div class="tesis" lang="es">
   <p>Cada regla de un manual produce muchas cosas en la mesa. Puede ser precisa y fiel a la realidad que simula, para que cada golpe y cada caída resulten creíbles. Puede ser vaga y abierta, para que la narración se lleve el foco. O puede abrir una combinatoria casi infinita de poderes, para que la diversión esté en encontrar tu combo.</p>
   <p>Hay un aspecto del que se habla mucho menos: <strong>cómo se sienten los jugadores con los dados en la mano.</strong> ¿Contienen la respiración? ¿Se ríen antes de ver el resultado? ¿Les da igual? Y sobre todo: ¿encaja esa emoción con el universo que están jugando? Un sistema en el que casi todo sale bien le quita el miedo a una historia de terror. Uno en el que cualquier cosa puede torcerse convierte una aventura heroica en un calvario.</p>
   <p>Tirando de ese hilo nació todo lo demás: un mismo manual que, con pequeños cambios, sirva para un universo de terror en el que los jugadores temen cada tirada, y para uno cómico en el que tirar los dados es abrir una caja de sorpresas. Pocos ajustes, y el manual queda hecho a la medida de la emoción de tu universo.</p>
   <p>Y entonces llegó el feliz accidente. Esos ajustes resultaron tan sencillos que no había ninguna razón para hacerlos una sola vez. Se pueden cambiar entre campañas, entre sesiones, incluso entre escenas: un respiro cómico en mitad de una campaña oscura, una noche de terror en mitad de una aventura luminosa. <strong>Literalmente, cambias las reglas del juego cuando la mesa quiera sentir otra cosa. NOGUM te devuelve el mando de lo que siempre vino impuesto y sin declarar.</strong></p>
 </div>
+<div class="tesis" lang="en">
+  <p>Every rule in a manual does many things at the table. It can be precise and faithful to the reality it simulates, so that every blow and every fall feels believable. It can be loose and open, so that the story takes the spotlight. Or it can unlock an almost endless combination of powers, so that the fun lies in finding your combo.</p>
+  <p>There is one aspect that gets far less discussion: <strong>how the players feel with the dice in their hands.</strong> Do they hold their breath? Do they laugh before they see the result? Do they not care? And above all: does that emotion fit the universe they are playing? A system where almost everything goes well takes the fear out of a horror story. One where anything can go wrong turns a heroic adventure into an ordeal.</p>
+  <p>Everything else grew from pulling on that thread: a single manual that, with small changes, works for a horror universe where the players dread every roll, and for a comic one where rolling the dice is opening a box of surprises. A few adjustments, and the manual is cut to the measure of your universe’s emotion.</p>
+  <p>And then came the happy accident. Those adjustments turned out to be so simple that there was no reason to make them only once. They can change between campaigns, between sessions, even between scenes: a comic breather in the middle of a dark campaign, a night of horror in the middle of a bright adventure. <strong>Literally, you change the rules of the game whenever the table wants to feel something else. NOGUM hands you back the controls of what always came imposed, and undeclared.</strong></p>
+</div>
 
-<h2>Una apuesta, cuatro piezas</h2>
-<div class="idea">
+<h2 lang="es">Una apuesta, cuatro piezas</h2>
+<h2 lang="en">One bet, four pieces</h2>
+<div class="idea" lang="es">
   <p>Euforia, miedo, imprevisibilidad… cada emoción, una herramienta.</p>
   <p>Cada pregunta, cada respuesta, cada palanca: el manual completo.</p>
   <p>Una versión acelerada que destila lo esencial, lista para jugar esa misma tarde.</p>
   <p>Y una app que te lleva de la mano por todo el proceso.</p>
 </div>
+<div class="idea" lang="en">
+  <p>Euphoria, fear, unpredictability… every emotion, a tool.</p>
+  <p>Every question, every answer, every lever: the complete manual.</p>
+  <p>An accelerated version that distils the essentials, ready to play that very evening.</p>
+  <p>And an app that takes you by the hand through the whole process.</p>
+</div>
 
 <div class="piezas">
   <a class="pieza destaca" href="idea.html">
     <img class="foto" src="img/idea-640.jpg" alt="" width="640" height="443" loading="lazy">
-    <span class="k">Empieza aquí · 20 min</span>
-    <b>La Idea</b>
-    <span>Qué pregunta responde NOGUM, con qué reglas, y a qué ha renunciado. Ni una sola regla dentro.</span>
-    <span class="ir">Leer →</span>
+    <span class="k" lang="es">Empieza aquí · 20 min</span><span class="k" lang="en">Start here · 20 min</span>
+    <b lang="es">La Idea</b><b lang="en">The Idea</b>
+    <span lang="es">Qué pregunta responde NOGUM, con qué reglas, y a qué ha renunciado. Ni una sola regla dentro.</span>
+    <span lang="en">What question NOGUM answers, with which rules, and what it has given up. Not a single rule inside.</span>
+    <span class="ir" lang="es">Leer →</span><span class="ir" lang="en">Read →</span>
   </a>
   <a class="pieza" href="acelerado.html">
     <img class="foto" src="img/acelerado-640.jpg" alt="" width="640" height="443" loading="lazy">
-    <span class="k">Jugar esta tarde</span>
-    <b>Acelerado</b>
-    <span>El juego entero en quince páginas y cuatro modos. Sin leer nada más.</span>
-    <span class="ir">Jugar →</span>
+    <span class="k" lang="es">Jugar esta tarde</span><span class="k" lang="en">Play this evening</span>
+    <b lang="es">Acelerado</b><b lang="en">Accelerated</b>
+    <span lang="es">El juego entero en quince páginas y cuatro modos. Sin leer nada más.</span>
+    <span lang="en">The whole game in fifteen pages and four modes. Nothing else to read.</span>
+    <span class="ir" lang="es">Jugar →</span><span class="ir" lang="en">Play →</span>
   </a>
   <a class="pieza" href="juego.html">
     <img class="foto" src="img/juego-640.jpg" alt="" width="640" height="443" loading="lazy">
-    <span class="k">El manual</span>
-    <b>Juego completo</b>
-    <span>Motor, personajes, peligro, el Bazar, veinte recetas de mundo y los apéndices con todas las cifras.</span>
-    <span class="ir">Abrir →</span>
+    <span class="k" lang="es">El manual</span><span class="k" lang="en">The manual</span>
+    <b lang="es">Juego completo</b><b lang="en">Complete Game</b>
+    <span lang="es">Motor, personajes, peligro, el Bazar, veinte recetas de mundo y los apéndices con todas las cifras.</span>
+    <span lang="en">Engine, characters, danger, the Bazaar, twenty world recipes and the appendices with every figure.</span>
+    <span class="ir" lang="es">Abrir →</span><span class="ir" lang="en">Open →</span>
   </a>
   <a class="pieza" href="app.html">
     <img class="foto" src="img/app-640.jpg" alt="" width="640" height="443" loading="lazy">
-    <span class="k">La herramienta</span>
+    <span class="k" lang="es">La herramienta</span><span class="k" lang="en">The tool</span>
     <b>App</b>
-    <span>Monta la mesa con preguntas sobre escenas, acota el catálogo a tu mundo y hace las fichas.</span>
-    <span class="ir">Probar →</span>
+    <span lang="es">Monta la mesa con preguntas sobre escenas, acota el catálogo a tu mundo y hace las fichas.</span>
+    <span lang="en">Sets up the table with questions about scenes, narrows the catalogue to your world and makes the character sheets.</span>
+    <span class="ir" lang="es">Probar →</span><span class="ir" lang="en">Try →</span>
   </a>
 </div>
 
-<h2>Libre</h2>
-<div class="par">
+<h2 lang="es">Libre</h2>
+<h2 lang="en">Free</h2>
+<div class="par" lang="es">
   <p>Todo esto se publica bajo <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>: puedes copiarlo, traducirlo y construir encima, también con ánimo de lucro, citando al autor y manteniendo la licencia.</p>
   <p><strong>Y las reglas son libres.</strong> Las mecánicas de juego no son objeto de derechos de autor: puedes escribir suplementos, ambientaciones o herramientas compatibles sin pedirle permiso a nadie. Si quieres construir sobre NOGUM, ya puedes.</p>
 </div>
+<div class="par" lang="en">
+  <p>All of this is published under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>: you may copy it, translate it and build on it, commercially included, as long as you credit the author and keep the licence.</p>
+  <p><strong>And the rules are free.</strong> Game mechanics are not subject to copyright: you can write compatible supplements, settings or tools without asking anyone’s permission. If you want to build on NOGUM, you already can.</p>
+</div>
 
 <footer>
-  <p><strong>NOGUM</strong> · de Daniel Martín · <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a> · <a href="https://github.com/epifaneia/nogum">código y fuentes</a></p>
-  <p>El nombre NOGUM no entra en la licencia. Todo lo demás, sí.</p>
+  <p lang="es"><strong>NOGUM</strong> · de Daniel Martín · <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a> · <a href="https://github.com/epifaneia/nogum">código y fuentes</a></p>
+  <p lang="en"><strong>NOGUM</strong> · by Daniel Martín · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="https://github.com/epifaneia/nogum">code and sources</a></p>
+  <p lang="es">El nombre NOGUM no entra en la licencia. Todo lo demás, sí.</p>
+  <p lang="en">The name NOGUM is not covered by the licence. Everything else is.</p>
 </footer>
 
 </div>
+<script>
+(function(){
+  var d = document.documentElement;
+  var TIT = {es: 'NOGUM · una tesis sobre cómo jugar', en: 'NOGUM · a thesis about how to play'};
+  function pon(l, recuerda){
+    d.lang = l; document.title = TIT[l];
+    document.querySelectorAll('.lang button').forEach(function(b){
+      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === l ? 'true' : 'false'); });
+    // los libros abren en el mismo idioma: va en el enlace por si no hay localStorage
+    document.querySelectorAll('a.pieza').forEach(function(a){
+      a.setAttribute('href', a.getAttribute('href').split('?')[0] + (l === 'es' ? '' : '?lang=' + l)); });
+    if (recuerda) { try { localStorage.setItem('nogum-lang', l); } catch (e) {} }
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){ pon(b.getAttribute('data-lang'), true); }); });
+  // lo deducido del navegador no se guarda: solo lo que el lector elige, o lo que trae ?lang=
+  pon(d.lang === 'en' ? 'en' : 'es', /lang=(es|en)/.test(location.search));
+})();
+</script>
 </body>
 </html>
