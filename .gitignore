@@ -15,3 +15,5 @@ __pycache__/
 # el pack sin conexion se regenera desde los libros
 lanzamiento/**/*.zip
 lanzamiento/**/*.mp4
+lanzamiento/**/*.mp3
+lanzamiento/**/*.wav

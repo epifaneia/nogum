@@ -1,0 +1,19 @@
+NOGUM · Una partida en Innsmouth, de principio a fin, con la App del Director.
+
+NOGUM no es otro manual universal de rol. Es una tesis sobre cómo jugar, que cambia las reglas del juego. Literal y figuradamente.
+
+Todo gratis, en español y en inglés, en el navegador:
+https://epifaneia.dev/nogum/
+
+Licencia del juego: CC BY-SA 4.0 · Código y diario de diseño: https://github.com/epifaneia/nogum
+
+────────────
+Música
+Song: Shattered Glass
+Composer: Cjbeards
+Website: https://www.youtube.com/channel/UCarvKz1XSCON68oeSZ1mlkg
+License: Free To Use YouTube license youtube-free
+Music powered by BreakingCopyright: https://breakingcopyright.com
+
+Gracias a Cjbeards y a BreakingCopyright por compartir su música.
+────────────
