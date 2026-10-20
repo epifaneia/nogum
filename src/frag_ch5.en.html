@@ -26,6 +26,7 @@
 <p><strong>No fixed initiative.</strong> NPCs declare a stance and roll too: it is an opposed roll using the skill of the chosen stance, and mooks carry their two or three basic numbers so it can be settled without a sheet. <span class="src">Author’s decision</span></p>
 
 <h3 id="ch5-golpes">5.2 The attack sequence: impact versus mitigation</h3>
+<p><strong>First of all, the power gap</strong> (<a href="#ch4-malla">4.5</a>). If attacker and defender are not at the same Grid level in the sphere of the attack, there is no Step 1 or Step 2 roll for that clash: the one above hits without rolling, with their weapon damage, and the one below neither tickles them nor defends against them, unless they have a Key that applies. <span class="src">T170</span></p>
 <p>To avoid slow arithmetic (subtracting dodges from attacks), NOGUM uses two steps. There is no opposed roll.</p>
 <div class="steps">
 <div class="step">
@@ -41,21 +42,19 @@
 <div class="step">
 <p class="step-title">Step 2 · Mitigation (defender)</p>
 <p>The defender can <em>only</em> try to avoid the damage if the weapon’s spec sheet allows it (5.3). They choose <strong>one</strong> permitted route, dodge or soak, and roll their defence skill against the TN of the active card.</p>
-<ul>
-<li><strong>Failure:</strong> you take all the damage.</li>
-<li><strong>Success:</strong> you reduce the damage by <strong>1 point</strong>.</li>
-<li><strong>Critical:</strong> you reduce the damage by <strong>2 points</strong>.</li>
-</ul>
+<p>The roll does not subtract points on its own. What counts is its <strong>result level</strong> —fumble, failure, success at a cost, success or critical—, which is compared with the attacker’s as the box below explains. <span class="src">T170</span></p>
 </div>
 </div>
 <div class="rule"><p class="rule-title">The defender wins ties <span class="flag ed">ED-25</span></p>
-<p>Both of you rolled against the same TN, so all you have to look at is <strong>who got further up</strong>. Totals and margins are never compared: levels are.</p>
-<ul>
-<li><strong>The defender matches or beats the attacker</strong> (both successes, both criticals, or the defender above): no damage at all. A perfect parry.</li>
-<li><strong>The attacker ends up above</strong> and the defender rolled a success or a success at a cost: weapon damage <strong>−1</strong>.</li>
-<li><strong>The defender fails</strong>: full damage.</li>
-<li><strong>The defender fumbles</strong>: the attack <strong>goes up one step</strong> on the active card’s ladder, and then the levels are compared. A failure becomes a success (or a success at a cost on the cards that carry it), and a success becomes a critical. The critical is the ceiling: it goes no higher.</li>
-</ul>
+<p>Both of you rolled against the same TN, so all you have to look at is <strong>who got further up</strong>. Totals and margins are never compared: <strong>result levels</strong> are.</p>
+<div class="tw"><table class="t">
+<thead><tr><th>The defender rolls…</th><th>Damage taken</th></tr></thead>
+<tbody>
+<tr><td>A result level <strong>equal to or better</strong> than the attacker’s (both successes, both criticals, or the defender above)</td><td><strong>None.</strong> A perfect parry.</td></tr>
+<tr><td><strong>Success or success at a cost</strong>, but below the attacker</td><td>Weapon damage <strong>−1</strong></td></tr>
+<tr><td><strong>Failure</strong></td><td>Full damage</td></tr>
+<tr><td><strong>Fumble</strong></td><td>The attack <strong>goes up one step</strong> on the active card’s ladder, and then the result levels are compared. A failure becomes a success (or a success at a cost on the cards that carry it), and a success becomes a critical. The critical is the ceiling: it goes no higher.</td></tr>
+</tbody></table></div>
 <p><strong>Tags override the tie.</strong> A weapon with <span class="tag">Dodge: Partial</span> leaves you eating at least 1 point even when you match it, because it is an area, a burst or fire: it cannot be fully avoided. And with <span class="tag">Dodge: None</span> there is no reaction to roll at all. That is the difference between a duel and a gunfight.</p>
 <p><strong>Defence at a cost</strong> (on the cards that carry it): it reduces like a success, −1, and the GM also charges a price from the cost menu. You walk away alive, but you drop the weapon, lose the position or end up where you did not want to be.</p>
 <p><strong>Double fumble:</strong> the attacker’s fumble rules. The blow does not connect anyway —the defender’s only bumps it up to a failure— and both of them look ridiculous in front of whoever was watching.</p></div>
@@ -78,8 +77,8 @@
 <li><strong>Named ones only.</strong> Mooks roll on the table’s card: a cultist dropping his dagger is horror too.</li>
 <li><strong>Out loud.</strong> “This one rolls on First Gear.” NOGUM exists to declare what used to be done in secret; changing it behind the screen breaks the deal.</li>
 </ul>
-<p><strong>Use it with great care.</strong> Oppression already brings frustration, and being frustrated against someone who does not even miss can multiply it. And with Lethal health (three boxes), a monster that hits 70&nbsp;% instead of 49&nbsp;% kills a good deal faster. <span class="src">Author’s decision · T169</span></p></div>
-<p class="formula-line">Damage taken = weapon damage (+1 if the attacker rolled a critical) − the defender’s reduction, within the limits of the spec sheet.</p>
+<p><strong>Use it with great care.</strong> Oppression already brings frustration, and being frustrated against someone who does not even miss can multiply it. And with Lethal health (three boxes), a monster that hits 70&nbsp;% instead of 49&nbsp;% takes people out of the fight a good deal faster. <span class="src">Author’s decision · T169</span></p></div>
+<p class="formula-line">Damage taken = weapon damage (+1 if the attacker rolled a critical): nothing if the defender matches or beats their result level; −1 if the defender succeeded but stayed below; all of it if the defender failed. Always within the limits of the spec sheet.</p>
 <p><strong>Summary:</strong> first we see whether you get hit. Then, whether your armour or your reflexes save your life.</p>
 <p>Usual defence skills: Dexterity → Acrobatics to dodge; Vigour → Fortitude (with whatever protection you are wearing) to soak. <strong>You always soak with the skill</strong>, armour or no armour: the body is the first protection. What decides whether it helps are the weapon’s tags —<span class="tag">Soak: Max N</span> and <span class="tag">Soak: None</span>, which is where “this goes through your skin” lives— and whatever bonus your protection adds. By default, normal. <span class="src">Author’s decision</span></p>
 <p><span class="flag ed">ED-17</span> The initial sketch in which the dodge difficulty added the margin by which the attacker had beaten their roll is withdrawn. The author agreed to replace it with a fixed roll against the TN <span class="src">T45</span> and settled that the attacker’s critical is the only arithmetic <span class="src">T129</span>.</p>
@@ -122,11 +121,11 @@
 <p><strong>A weapon’s maximum damage is 2.</strong> That is the ceiling, and it is deliberate: 1 and 2 are <em>the damage it makes sense to roll for</em>. A weapon of war is told apart from a knife by its other three tags —no dodging, no soaking, long reach— not by a bigger number.</p>
 <p>What lies above that is not a better weapon: it is <strong>an event</strong>. A siege gun, a car at seventy, a dragon’s breath, a bomb. We call that <strong>the Reaper</strong>, and it works like the Grid, not like damage:</p>
 <div class="rule"><p class="rule-title">The Reaper</p>
-<p>Every Reaper carries a <strong>Grid level</strong>. Against anyone <strong>below</strong> that level there is no damage roll: they <strong>die</strong>, or leave the story in whatever way that track implies. Against anyone <strong>at that level or above</strong>, it deals <strong>Damage 2</strong> and plays like any other blow.</p>
-<p>It is the same old sentence (<a href="#ch2-llave">2.4</a>): below the level it is impossible, and the Key is the agreed exception. Here, what is impossible is surviving.</p></div>
-<p><strong>This is not dodged: it is avoided.</strong> The Reaper is not a combat problem, it is a fiction problem. It is not solved with a better roll; it is solved by not being there, by cutting the fuse, by talking down whoever is holding it, or by climbing the Grid before it arrives. A Director who points a Reaper at a character who cannot take it is not proposing a fight: they are announcing a death. Let that show at the table, and let it be seen coming.</p>
-<p><strong>And it exists on all four tracks.</strong> The physical Reaper kills you. The <strong>social</strong> one kills your face: there is evidence, and tomorrow you are nobody. The <strong>mental</strong> one kills your head. The <strong>spiritual</strong> one kills whatever you carry inside, whatever your world calls it. It does not empty the track: it <strong>crosses it out</strong>.</p>
-<p class="note">In the Animated World the Reaper exists too, and it kills too — for two panels. The anvil falls, the character goes flat, and in the next scene they are whole. What gets crossed out there is their dignity.</p>
+<p>Every Reaper carries a <strong>Grid level</strong>. Against anyone <strong>below</strong> that level there is no damage roll: they are <strong>out of the fight</strong>, in whatever way that track implies. Death, madness or transformation only come if they are agreed narratively (ED-12). Against anyone <strong>at that level or above</strong>, it deals <strong>Damage 2</strong> and plays like any other blow. <span class="src">T170</span></p>
+<p>It is the same old sentence (<a href="#ch4-malla">4.5</a>): below the level it is impossible, and the Key is the agreed exception. Here, what is impossible is staying on your feet.</p></div>
+<p><strong>This is not dodged: it is avoided.</strong> The Reaper is not a combat problem, it is a fiction problem. It is not solved with a better roll; it is solved by not being there, by cutting the fuse, by talking down whoever is holding it, or by climbing the Grid before it arrives. A Director who points a Reaper at a character who cannot take it is not proposing a fight: they are announcing that the character is leaving it. Let that show at the table, and let it be seen coming.</p>
+<p><strong>And it exists on all three tracks.</strong> The physical Reaper floors you. The <strong>mental</strong> one takes you out of the scene through your head, and also through your face: there is evidence, and tomorrow you are nobody, because social attacks go to the Mental track (ED-11). The <strong>spiritual</strong> one takes whatever you carry inside, whatever your world calls it. It does not empty the track: it <strong>crosses it out</strong>. And whatever comes after is agreed by the table, not by the Reaper.</p>
+<p class="note">In the Animated World the Reaper exists too, and it floors you too — for two panels. The anvil falls, the character goes flat, and in the next scene they are whole. What gets crossed out there is their dignity.</p>
 <p><span class="flag drop">Dropped</span> The named damage types (Dirty, Lethal, Absolute) and the tags [SWIFT], [LETHAL], [AREA] and [INEVITABLE] were replaced by this explicit spec sheet <span class="src">T68</span>. “Hierarchy of Inevitability” remains as the name of the concept.</p>
 
 <h3 id="ch5-vida">5.4 Fractal Health (the Russian doll)</h3>
@@ -180,7 +179,7 @@
 <ul>
 <li><strong>Interrogation:</strong> five hours of aggressive questioning. The cop rolls Intimidation and, on a hit, deals <span class="tag">Mental Dmg 1</span>. When the suspect fills a block, they crack and confess.</li>
 <li><strong>Horror:</strong> watching an abyssal creature devour a friend is a passive attack <span class="tag">Mental Dmg 2</span> <span class="tag">Dodge: None</span>, straight to the sanity.</li>
-<li><strong>Trial or royal court:</strong> a lawyer corners a witness by rolling Persuasion or Deception: <span class="tag">Social Dmg 2</span>. If she empties their track, the witness makes a fool of themselves, loses all credibility and is dropped from the case.</li>
+<li><strong>Trial or royal court:</strong> a lawyer corners a witness by rolling Persuasion or Deception: <span class="tag">Mental Dmg 2</span> (social attacks go to the Mental track, ED-11). If she empties their track, the witness makes a fool of themselves, loses all credibility and is dropped from the case.</li>
 </ul>
 <p>There is a list of social weapons in <a href="#bz-social">the Bazaar</a>.</p>
 

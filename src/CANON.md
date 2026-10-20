@@ -1922,3 +1922,34 @@ tira como el Neutro.
 
 De paso: una sustitucion antigua stance -> guard habia dejado en ingles
 «circumguards» y «subguard(s)»; vuelven a ser circumstances y substance(s).
+
+---
+
+## T170 · La lectura critica: lo que se cerro
+
+Tres lecturas criticas independientes (Acelerado, Juego, App frente a libros).
+El autor decidio, y se aplico en los dos idiomas y en la App:
+
+- **Torpe −1 en todas partes.** Lo comprado en un ambito abre su columna; la
+  otra columna del ambito se tira a −1. Consecuencia: el +0 deja de ser un
+  escalon de ficha (solo sale como total con dificultad, o en los PNJ rapidos).
+- **La defensa gana los empates (ED-25), sin la lista contradictoria del Paso 2.**
+  Se comparan niveles de resultado.
+- **El salto de poder va en las dos direcciones.** Mismo nivel: se tira. El de
+  arriba no tira (Estilo si importa como), tambien el monstruo contra los PJ.
+  El de abajo no afecta ni se defiende sin Llave. La Parca deja fuera de
+  combate, nunca mata (ED-12). Regla canonica en 4.5; el resto remite.
+- **La Rejilla 2 inicial es un valor por defecto,** en cualquier ambito con
+  techo ≥2; el techo del universo es otra cosa. La App permite mas puntos
+  iniciales a conciencia (+2/+4/+6, con aviso; viaja en el Codigo como -P).
+- El Acelerado trae la lista de habilidades y define «columna».
+- La App se alinea con el Acelerado: el equipo solo cuesta dinero (Llaves solo
+  si rompe la Rejilla), el Terror es un bloque de 3 casillas, el Estilo nunca
+  cuesta en el Juego y suma solo +2, el acordeon tira a +4.
+- Erratas: la ficha de Tomas (16 → 14), el Caso B ilegal, «dos de cada siete»,
+  «igual hasta +3», Pulp 28 %, nombres viejos de tarjetas, tablas de problemas
+  a d10, y una expresion regular que cobraba puntos a las armaduras.
+
+Abiertos, para hablar: el precio en Llaves de la Rejilla y del equipo que la
+rompe; el tono por escena por defecto; si el bono de un arma se paga con
+puntos; el Bazar con dano por encima de 2; la barra de la Identidad.
