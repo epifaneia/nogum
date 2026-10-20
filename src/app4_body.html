@@ -473,8 +473,8 @@ var BAUL_TIP = [
   ['6 clones: al quedar fuera de combate llega el siguiente, con la vida llena.','6 clones: when one is taken out, the next arrives at full health.'],
   ['El DJ tira detrás de la pantalla y solo narra el resultado.','The GM rolls behind the screen and only narrates the outcome.'],
   ['Tablas de heridas, enfermedades, fallos de equipo y mutaciones: ejemplos por género en «Tablas de problemas» (cap. 8).','Tables for wounds, diseases, equipment failures and mutations: examples by genre in “Problem tables” (ch. 8).'],
-  ['En combate sube 1 nivel de Rejilla en un ámbito; se acaba siempre al acabar la escena.','In a fight, go up 1 Grid level in one sphere; it always ends when the scene ends.'],
-  ['Al pilotar o fusionarte heredas el nivel y el zoom de daño del vehículo.','When piloting or merging you inherit the vehicle’s level and damage zoom.'],
+  ['En combate sube 1 nivel de Rejilla en un ámbito; se acaba siempre al acabar la escena. Nunca sale gratis: se paga como lo que sube (5·x² un ámbito); a voluntad, precio completo; con limitaciones importantes, Limitada (la mitad, al alza).','In a fight, go up 1 Grid level in one sphere; it always ends when the scene ends. It is never free: it is paid as what it raises (5·x² for a sphere); at will, full price; with important limitations, Limited (half, rounded up).'],
+  ['Al pilotar un mecha o meterte en un traje o exoesqueleto, o al fusionarte, heredas su nivel y su zoom de daño. Un vehículo normal no presta nada: se dispara al vehículo o a quien va dentro.','When piloting a mecha, wearing a suit or exoskeleton, or merging, you inherit its level and damage zoom. A normal vehicle lends nothing: you shoot the vehicle or whoever is inside.'],
   ['Un entorno hostil hace daño en cada escena, sin tirada; la protección lo evita.','A hostile environment deals damage every scene, no roll; protection prevents it.'],
   ['Una barra más (Honor, Reputación, Sangre…) con bloques y umbrales como las demás.','An extra track (Honour, Reputation, Blood…) with blocks and thresholds like the others.'],
   ['2–3 personas queridas: protegerlas funciona como Llave.','2–3 loved ones: protecting them works as a Key.'],
@@ -861,10 +861,10 @@ function resUni(sec){
     var r = rung5(s), bz = uniName(TECBZ[TECID[r]]);
     /* el equipo contemporaneo vive dentro de la seccion de horror: se dice, para
        que nadie se extrane de que le abran los pulpos para jugar a detectives */
-    var d = r === 2
-      ? [['El Bazar abre el equipo contemporáneo, que vive dentro de «','The Bazaar opens contemporary gear, which lives inside “'][L()] + bz + ['».','”.'][L()], '']
-      : [['El Bazar abre «','The Bazaar opens “'][L()] + bz + ['».','”.'][L()], ''];
-    return {t:TECT[r], d:d};
+    var dd = r === 2
+      ? ['El Bazar abre el equipo contemporáneo, que vive dentro de «','The Bazaar opens contemporary gear, which lives inside “'][L()] + bz + ['».','”.'][L()]
+      : ['El Bazar abre «','The Bazaar opens “'][L()] + bz + ['».','”.'][L()];
+    return {t:TECT[r], d:[dd, dd]};
   }
   if (sec.id === 'magia') return b === 2 ? {t:['Hay magia y se aprende','There is magic, and it is learned'], d:['Entra el Arcano: la quinta barra, el quinto ámbito y catorce puntos de habilidad en vez de doce.','The Arcane comes in: the fifth track, the fifth sphere and fourteen skill points instead of twelve.']}
     : {t:['Sin magia de oficio','No magic as a trade'], d:['Lo que haya de raro no se estudia ni se compra.','Whatever is strange is neither studied nor bought.']};
@@ -879,7 +879,9 @@ function resUni(sec){
   if (sec.id === 'roto') return b === 2 ? {t:['El mundo ya se rompió','The world already broke'], d:['Entra el Post-Apocalipsis: chatarra, agua y gasolina.','Post-Apocalypse comes in: scrap, water and fuel.']}
     : {t:['El mundo sigue en pie','The world is still standing'], d:['Hay tiendas, hay hospitales y hay quien pasa la factura.','There are shops, there are hospitals and there is somebody sending the bill.']};
   var g = rungGrid(s) + 1;
-  return {t:[GRIDN[g][0], GRIDN[g][1]], d:[['Rejilla de Potencia: nivel inicial ','Power Grid: starting level '][L()] + g + '.', '']};
+  /* la escala es de la partida (tamano de las amenazas), no el nivel de los personajes */
+  return {t:[GRIDN[g][0], GRIDN[g][1]], d:['Escala de la partida: ' + g + '. Dice el tamaño de las hazañas y de las amenazas, no el de los personajes: ellos salen en 1·1·1·1·2 como mucho.',
+    'Game scale: ' + g + '. It sets the size of deeds and threats, not of the characters: they start at 1·1·1·1·2 at most.']};
 }
 function aplicaUni(){
   if (M.known && M.world !== null) return;
@@ -1086,9 +1088,9 @@ var FORMS = [
  {id:'equipo', num:'4', cap:['La ficha','The sheet'], n:['El equipo','Equipment'],
   d:['De compras. Se elige para quién, se busca por lo que hace el objeto, y el coste se descuenta de sus puntos y sus Llaves.',
      'Shopping. Pick who it is for, search by what the item does, and the cost comes off their points and Keys.'],
-  /* el Acelerado (2.9): el equipo solo cuesta dinero; Llaves solo si rompe la Rejilla */
-  dA:['De compras. Se elige para quién y se busca por lo que hace el objeto. En el Acelerado solo cuesta dinero —su nivel en Recursos—; Llaves, solo lo que rompe la Rejilla.',
-      'Shopping. Pick who it is for and search by what the item does. In Accelerated it only costs money —their Resources level—; Keys only for what breaks the Grid.']},
+  /* el Acelerado (2.9): el equipo solo cuesta dinero; Llaves si rompe la Rejilla o da un permiso */
+  dA:['De compras. Se elige para quién y se busca por lo que hace el objeto. En el Acelerado solo cuesta dinero —su nivel en Recursos—; Llaves, solo lo que rompe la Rejilla o da un permiso que ninguna habilidad da (volar, ver a través de las paredes).',
+      'Shopping. Pick who it is for and search by what the item does. In Accelerated it only costs money —their Resources level—; Keys only for what breaks the Grid or grants a permission no skill grants (flying, seeing through walls).']},
  {id:'pnj', num:'5', cap:['El Director','The GM'], n:['El reparto','The cast'],
   d:['Los PNJ que no son el némesis: el decorado y las fichas rápidas. Se hacen en diez segundos y te dicen si contra ese hay que pelear o solo lucirse.',
      'The NPCs who are not the nemesis: scenery and quick sheets. Ten seconds each, and they tell you whether that one calls for a fight or just for showing off.']}
@@ -1493,7 +1495,15 @@ function nuevoPnj(){ return {step:0, tipo:null, rel:null, amb:null, hab:null, du
 function habName(k){ var p = String(k).split('.'), a = AMB[+p[0]], d = a && a.doms[+p[1]]; return d ? pick(d.n) + ' › ' + pick(d.dis[+p[2]]) : '—'; }
 function ambOf(id){ return AMB.filter(function(a){ return a.id === id; })[0] || null; }
 function pnjs(){ S.pnjs = S.pnjs || []; return S.pnjs; }
-function pnjNivel(rel){ var g = grid(); return Math.max(1, Math.min(5, g + (rel === 'bajo' ? -1 : rel === 'alto' ? 1 : 0))); }
+/* El nivel del grupo NO es la escala de la partida (grid()): es la Rejilla mas
+   alta que tenga cualquier personaje en el ambito que importa (en cualquiera,
+   si aun no hay ambito), o 1 si no hay fichas. */
+function pjNivel(amb){
+  var n = 1;
+  (S.chars || []).forEach(function(c){ AMB.forEach(function(a, ai){ if (!amb || a.id === amb) n = Math.max(n, ambLvl(c, ai)); }); });
+  return n;
+}
+function pnjNivel(rel, amb){ var g = pjNivel(amb); return Math.max(1, Math.min(5, g + (rel === 'bajo' ? -1 : rel === 'alto' ? 1 : 0))); }
 /* Acelerado (3, improvisar un enemigo): un nivel de Rejilla, UNA habilidad a +2
    (todo lo demas a +0) y las casillas que quieras que dure la pelea, 3 por
    defecto. En el completo, un Ambito entero a +2 y la vida fractal. */
@@ -1511,8 +1521,8 @@ function pnjPasos(P){
    esta noche o, tres arcos mas adelante, algo a lo que ya no haceis caso. Por
    eso el veredicto de una ficha guardada se recalcula cada vez: si el grupo
    sube, el PNJ baja solo. */
-function veredictoEstilo(tipo, n){
-  var g = grid();
+function veredictoEstilo(tipo, n, amb){
+  var g = pjNivel(amb);
   if (n > g) return ['bad', t('No se le gana', 'You do not beat this'),
     (tipo === 'decorado'
       ? t('Esto es de lo que no se describe en detalle: son hormigas o dioses, y este es un dios. Contra esto no se tira.',
@@ -1523,15 +1533,15 @@ function veredictoEstilo(tipo, n){
     (tipo === 'decorado' && n >= g
       ? t('Es decorado, y contra el decorado siempre se aplica: no se tira para ver si ganan, se tira para ver cómo de bien quedan.',
           'They are scenery, and the rule always applies against scenery: you do not roll to see if the players win, you roll to see how good they look.')
-      : t('Está por debajo del grupo. No se tira para ver si ganan: se tira para ver cómo de bien quedan.',
-          'They are below the group. You do not roll to see if the players win: you roll to see how good they look.'))];
+      : t('Está por debajo de los personajes. No se tira para ver si ganan: se tira para ver cómo de bien quedan.',
+          'They are below the characters. You do not roll to see if the players win: you roll to see how good they look.'))];
   return ['mid', t('Pelea de verdad', 'A real fight'),
     t('Está a vuestra altura. Se tira como contra cualquier rival y puede salir mal.',
       'They are on your level. You roll as against any rival, and it can go badly.')];
 }
 /* Como se lee el numero: siempre contra el vuestro, nunca solo. */
-function rejillaTxt(n){
-  var g = grid(), d = n - g;
+function rejillaTxt(n, amb){
+  var g = pjNivel(amb), d = n - g;
   if (d === 0) return t('la vuestra', 'the same as yours');
   return (Math.abs(d) === 1 ? t('uno ', 'one ') : (Math.abs(d) + ' '))
     + (d > 0 ? t('por encima de la vuestra', 'above yours') : t('por debajo de la vuestra', 'below yours'))
@@ -1570,10 +1580,10 @@ function pnjOpciones(ops, cur, attr){
   return h + '</div>';
 }
 function pnjFicha(P, guardado){
-  var n = guardado ? P.nivel : pnjNivel(P.rel), v = veredictoEstilo(P.tipo, n), cas = guardado ? P.cas : pnjCasillas(P);
+  var n = guardado ? P.nivel : pnjNivel(P.rel, P.amb), v = veredictoEstilo(P.tipo, n, P.amb), cas = guardado ? P.cas : pnjCasillas(P);
   var h = '<div class="pnjcard"><p class="kick">' + esc(P.tipo === 'decorado' ? t('Ficha de decorado','Scenery sheet') : t('Ficha rápida','Quick sheet')) + '</p>';
   h += '<p class="big">' + esc(P.nom || (P.tipo === 'decorado' ? t('Sin nombre: solo una función','No name: just a function') : t('Sin nombre todavía','No name yet'))) + '</p>';
-  h += '<table class="summary"><tr><td>' + esc(t('Rejilla','Grid')) + '</td><td>' + n + ' · ' + esc(rejillaTxt(n)) +
+  h += '<table class="summary"><tr><td>' + esc(t('Rejilla','Grid')) + '</td><td>' + n + ' · ' + esc(rejillaTxt(n, P.amb)) +
     '<span class="tech">' + esc(t('Alcance: ','Reach: ') + pick(GRIDN[n])) + '</span></td></tr>';
   if (P.tipo === 'rapida' && P.hab) {
     h += '<tr><td>' + esc(t('Habilidad','Skill')) + '</td><td><b>' + esc(habName(P.hab)) + '</b> +2' +
@@ -1613,15 +1623,20 @@ function renderPnj(){
       'It is the only number that really changes the scene: it decides whether you roll to win, roll to show off, or do not roll at all.')) + '</p>';
     h += pnjOpciones(PNJ_REL, P.rel, 'pnr');
     if (P.rel) {
-      var n = pnjNivel(P.rel), v = veredictoEstilo(P.tipo, n);
-      h += '<p class="eqnote"><b>' + esc(t('Rejilla ','Grid ') + n + ' · ' + rejillaTxt(n)) + '</b> — ' +
+      var n = pnjNivel(P.rel, P.amb), v = veredictoEstilo(P.tipo, n, P.amb), gp = pjNivel(P.amb);
+      h += '<p class="eqnote"><b>' + esc(t('Rejilla ','Grid ') + n + ' · ' + rejillaTxt(n, P.amb)) + '</b> — ' +
         esc(v[1] + '. ' + v[2]) + '<br>' + esc(t('Alcance: ','Reach: ') + pick(GRIDN[n])) + '</p>';
-      if ((P.rel === 'bajo' && n >= grid()) || (P.rel === 'alto' && n <= grid()))
+      h += '<p class="note">' + esc((S.chars || []).length
+        ? t('Se compara con vuestros personajes: la Rejilla más alta que tenga alguno, ' + gp + '. No con la escala de la partida, que dice el tamaño de las amenazas.',
+            'It is compared with your characters: the highest Grid any of them has, ' + gp + '. Not with the game scale, which sets the size of the threats.')
+        : t('Aún no hay fichas: se compara con Rejilla 1, donde salen los personajes. No con la escala de la partida, que dice el tamaño de las amenazas.',
+            'No sheets yet: it is compared with Grid 1, where characters start. Not with the game scale, which sets the size of the threats.')) + '</p>';
+      if ((P.rel === 'bajo' && n >= gp) || (P.rel === 'alto' && n <= gp))
         h += '<p class="note">' + esc(P.rel === 'bajo'
-          ? t('Vuestro grupo está en Rejilla 1: por debajo ya no hay números. Si querías algo menor, eso es decorado.',
-              'Your group is at Grid 1: below that there are no numbers left. If you wanted something smaller, that is scenery.')
-          : t('Vuestro grupo está en Rejilla 5: por encima ya no hay números. Lo que esté por encima de eso es decorado —un dios—, no una ficha rápida.',
-              'Your group is at Grid 5: above that there are no numbers left. Anything above it is scenery —a god— not a quick sheet.')) + '</p>';
+          ? t('Vuestros personajes están en Rejilla 1: por debajo ya no hay números. Si querías algo menor, eso es decorado.',
+              'Your characters are at Grid 1: below that there are no numbers left. If you wanted something smaller, that is scenery.')
+          : t('Vuestros personajes están en Rejilla 5: por encima ya no hay números. Lo que esté por encima de eso es decorado —un dios—, no una ficha rápida.',
+              'Your characters are at Grid 5: above that there are no numbers left. Anything above it is scenery —a god— not a quick sheet.')) + '</p>';
     }
   } else if (paso === 'etiq' && isAcc()) {
     h += '<p class="kick">' + esc(t('Lo que sabe hacer','What they know how to do')) + '</p><p class="big">' + esc(t('¿Qué sabe hacer bien?','What are they good at?')) + '</p>';
@@ -1685,9 +1700,9 @@ function renderReparto(){
   if (!L.length) return '';
   var h = '<div class="page" style="margin-top:14px"><p class="kick">' + esc(t('El reparto','The cast')) + ' · ' + L.length + '</p><div class="hub">';
   L.forEach(function(p, i){
-    var v = veredictoEstilo(p.tipo, p.nivel);
+    var v = veredictoEstilo(p.tipo, p.nivel, p.amb);
     h += '<div class="hubcard est"><span class="hubkick">' + esc(p.tipo === 'decorado' ? t('Decorado','Scenery') : t('Rápida','Quick')) +
-      ' · ' + esc(t('Rejilla ','Grid ') + p.nivel + ' · ' + rejillaTxt(p.nivel)) + '</span><b>' + esc(p.nom) + '</b>' +
+      ' · ' + esc(t('Rejilla ','Grid ') + p.nivel + ' · ' + rejillaTxt(p.nivel, p.amb)) + '</span><b>' + esc(p.nom) + '</b>' +
       '<span class="hubdesc">' + esc(p.tipo === 'rapida'
         ? ((p.hab ? habName(p.hab) : ambOf(p.amb) ? pick(ambOf(p.amb).n) : (p.etiq || '—')) + ' +2 · ' + p.cas + ' ' + t('casillas','boxes'))
         : t('Sin vida ni habilidades','No health, no skills')) + '</span>' +
@@ -1722,7 +1737,7 @@ function bindPnj(){
     else if (k === 'otro') { P.tipo = null; P.step = 0; }
     else if (k === 'tpl') { S.tab = 'tpl'; S.form = null; S.pnj = nuevoPnj(); }
     else if (k === 'guardar') {
-      pnjs().push({tipo:P.tipo, nom:P.nom.trim(), nivel:pnjNivel(P.rel), amb:P.amb, hab:P.hab || null, cas:pnjCasillas(P)});
+      pnjs().push({tipo:P.tipo, nom:P.nom.trim(), nivel:pnjNivel(P.rel, P.amb), amb:P.amb, hab:P.hab || null, cas:pnjCasillas(P)});
       S.pnj = nuevoPnj();
     }
     persist(); render(); window.scrollTo(0, 0);
@@ -2000,24 +2015,31 @@ function reminders(){
   var c = card(), h = '<div class="remind">';
   h += '<div class="rbox card"><h3>' + esc(t('Cómo se tira','How to roll')) + '</h3><dl><dt>' + esc(t('Modo','Mode')) + '</dt><dd><b>' + esc(pick(c.n)) + '</b></dd><dt>' + esc(t('Dados','Dice')) + '</dt><dd>' + esc(pick(c.roll)) + '</dd><dt>TN</dt><dd>' + (c.tn || 6) + ' ' + esc(t('(iguala o supera)','(meet or beat)')) + '</dd><dt>' + esc(t('Pifia','Fumble')) + '</dt><dd>' + esc(pick(c.fum)) + '</dd><dt>' + esc(t('Crítico','Critical')) + '</dt><dd>' + esc(pick(c.cri)) + '</dd>' + (c.bands ? '<dt>' + esc(c.coste ? t('Éxito con coste','Success at a cost') : t('Resultado','Result')) + '</dt><dd>' + esc(pick(c.bands)) + '</dd>' : '') + '</dl><p class="note">' + esc(t('Pifia y crítico se miran en los dados, antes de sumar. Tira solo si todos los resultados son interesantes.','Fumble and critical are read on the dice, before adding. Roll only if every outcome is interesting.')) + '</p></div>';
   h += '<div class="rbox"><h3>' + esc(t('Tu bono','Your bonus')) + '</h3><table><tr><td>−2</td><td>' + esc(t('Ámbito vacío (Nulo)','Empty sphere (Null)')) + '</td></tr><tr><td>−1</td><td>' + esc(t('La otra columna de un ámbito con algo (Torpe)','The other column of a sphere with something (Clumsy)')) + '</td></tr><tr><td>+1</td><td>' + esc(t('Dominio: habilidad amplia','Domain: broad skill')) + '</td></tr><tr><td>+2</td><td>' + esc(t('Disciplina: habilidad concreta','Discipline: specific skill')) + '</td></tr><tr><td>+4</td><td>' + esc(t('Firma','Signature')) + '</td></tr></table><p class="note">' + esc(t('Usa solo el escalón más alto. Dificultad: +2 fácil · 0 · −2 difícil · −4 heroica. El total siempre entre −2 y +4.','Use only the highest step. Difficulty: +2 easy · 0 · −2 hard · −4 heroic. The total always stays between −2 and +4.')) + '</p></div>';
-  h += '<div class="rbox"><h3>' + esc(t('Rejilla y Llave','Grid and Key')) + '</h3><ul><li>' + esc(t('Escala de la partida: ','Game scale: ') + grid() + ' (' + pick(GRIDN[grid()]) + ')') + '</li><li>' + esc(t('La escala dice el tamaño de las hazañas y de las amenazas; no sube tus ámbitos. Los unos abundan: se sale en 1·1·1·1·1 con 5 Llaves (más la experiencia de salida que dé la mesa). Rejilla por encima de 1: 5·n² Llaves por ámbito, nunca por encima del techo.','The scale sets the size of deeds and threats; it does not raise your spheres. Ones are plentiful: you start at 1·1·1·1·1 with 5 Keys (plus any starting experience the table gives). Grid above 1: 5·n² Keys per sphere, never above the ceiling.')) + '</li><li>' + esc(t('Mismo nivel: se tira.','Same level: roll.')) + '</li><li>' + esc(t('Por encima del desafío: lo consigues sin tirar' + (estilo() ? ' (si importa cómo, tira Estilo).' : '.') + ' Vale igual para un monstruo frente a un personaje.', 'Above the challenge: you succeed without rolling' + (estilo() ? ' (if how matters, roll Style).' : '.') + ' The same goes for a monster against a character.')) + '</li><li>' + esc(t('Por debajo: no puedes afectarle —ni defenderte de él— sin una Llave (arma, debilidad, ayuda…). Con Llave se juega como al mismo nivel: se tira y se comparan resultados. Ser más es una Llave de un momento: un nivel por encima en lo que cubre, mientras la ficción lo sostenga.','Below: you cannot affect it —nor defend against it— without a Key (weapon, weakness, help…). With a Key you play as if on the same level: roll and compare results. Numbers are a Key of the moment: one level above in what they cover, while the fiction holds it up.')) + '</li>' + (isAcc() ? '' : '<li>' + esc(t('El acordeón: 3 Firmas pliegan la Disciplina entera en +4, 3 Disciplinas el Dominio, y los 2 Dominios el Ámbito.','The accordion: 3 Signatures fold the whole Discipline into +4, 3 Disciplines the Domain, and both Domains the Sphere.')) + '</li>') + '<li>' + esc(t('Cada nivel multiplica por cien tu alcance. Un nivel de diferencia son dos ceros: por eso no hay tirada.','Each level multiplies your reach by a hundred. One level of difference is two zeros: that is why there is no roll.')) + '</li><li>' + esc(t('Llave estrecha: una Disciplina contra su objetivo, para siempre (nunca una Firma). Ancha: el ámbito entero contra su objetivo, una escena; se tacha al acabarla. Subir más contra lo mismo: 1, 4, 9 Llaves. Las Llaves que cobras por no subir en un salto solo se gastan en ese ámbito.','Narrow Key: one Discipline against its target, for ever (never a Signature). Wide: the whole sphere against its target, one scene; cross it out when it ends. Climbing further against the same thing: 1, 4, 9 Keys. Keys you collect for not climbing in a jump can only be spent in that sphere.')) + '</li>' + (isAcc() ? '' : '<li>' + esc(t('El techo lo pone el universo. Por encima solo valen Llaves con objetivo: nada comprado con Llaves sube «contra todo» por encima del techo.','The ceiling is set by the universe. Above it only Keys with a target work: nothing bought with Keys climbs «against everything» above the ceiling.')) + '</li>') + '</ul></div>';
+  h += '<div class="rbox"><h3>' + esc(t('Rejilla y Llave','Grid and Key')) + '</h3><ul><li>' + esc(t('Escala de la partida: ','Game scale: ') + grid() + ' (' + pick(GRIDN[grid()]) + ')') + '</li><li>' + esc(t('La escala dice el tamaño de las hazañas y de las amenazas; no sube tus ámbitos. Los unos abundan: se sale en 1·1·1·1·1 con 5 Llaves (más la experiencia de salida que dé la mesa). Rejilla por encima de 1: 5·n² Llaves por ámbito, nunca por encima del techo.','The scale sets the size of deeds and threats; it does not raise your spheres. Ones are plentiful: you start at 1·1·1·1·1 with 5 Keys (plus any starting experience the table gives). Grid above 1: 5·n² Keys per sphere, never above the ceiling.')) + '</li><li>' + esc(t('Mismo nivel: se tira.','Same level: roll.')) + '</li><li>' + esc(t('Por encima del desafío: lo consigues sin tirar' + (estilo() ? ' (si importa cómo, tira Estilo).' : '.') + ' Vale igual para un monstruo frente a un personaje.', 'Above the challenge: you succeed without rolling' + (estilo() ? ' (if how matters, roll Style).' : '.') + ' The same goes for a monster against a character.')) + '</li><li>' + esc(t('Por debajo: no puedes afectarle —ni defenderte de él— sin una Llave (arma, debilidad, ayuda…). Una Llave te pone un nivel por encima, pero solo en lo que cubre: lo que te superaba queda a tu altura (se tira) y lo que estaba a tu altura queda por debajo (lo consigues sin tirar). Ser más es una Llave de un momento: un nivel por encima en lo que cubre, mientras la ficción lo sostenga.','Below: you cannot affect it —nor defend against it— without a Key (weapon, weakness, help…). A Key puts you one level above, but only in what it covers: what was above you is now on your level (roll) and what was on your level is now below you (you succeed without rolling). Numbers are a Key of the moment: one level above in what they cover, while the fiction holds it up.')) + '</li>' + (isAcc() ? '' : '<li>' + esc(t('El acordeón: 3 Firmas pliegan la Disciplina entera en +4, 3 Disciplinas el Dominio, y los 2 Dominios el Ámbito.','The accordion: 3 Signatures fold the whole Discipline into +4, 3 Disciplines the Domain, and both Domains the Sphere.')) + '</li>') + '<li>' + esc(t('Cada nivel multiplica por cien tu alcance. Un nivel de diferencia son dos ceros: por eso no hay tirada.','Each level multiplies your reach by a hundred. One level of difference is two zeros: that is why there is no roll.')) + '</li><li>' + esc(t('Llave estrecha: una Disciplina contra su objetivo, para siempre (nunca una Firma). Ancha: el ámbito entero contra su objetivo, una escena; se tacha al acabarla. Subir más contra lo mismo: 1, 4, 9 Llaves. Las Llaves que cobras por no subir en un salto solo se gastan en ese ámbito.','Narrow Key: one Discipline against its target, for ever (never a Signature). Wide: the whole sphere against its target, one scene; cross it out when it ends. Climbing further against the same thing: 1, 4, 9 Keys. Keys you collect for not climbing in a jump can only be spent in that sphere.')) + '</li>' + (isAcc() ? '' : '<li>' + esc(t('El techo lo pone el universo. Por encima solo valen Llaves con objetivo: nada comprado con Llaves sube «contra todo» por encima del techo.','The ceiling is set by the universe. Above it only Keys with a target work: nothing bought with Keys climbs «against everything» above the ceiling.')) + '</li>') + '</ul></div>';
   h += '<div class="rbox"><h3>' + esc(t('Equipo y Llaves','Equipment and Keys')) + '</h3><ul><li>' + esc(isAcc()
     ? t('Cuesta dinero (tu nivel en Recursos frente al Acceso del objeto) y las Llaves que lleve su precio, sea Rejilla o permiso. Nada de puntos.','It costs money (your Resources level against the item’s Access) and the Keys in its price, Grid or permission alike. No points.')
     : t('Tres cerrojos: el dinero (tu nivel en Recursos, el Acceso del objeto), el permiso narrativo y las Llaves que lleve su precio (Rejilla o permiso).','Three locks: money (your Resources level, the item’s Access), narrative permission, and the Keys in its price (Grid or permission).')) + '</li><li>' + esc(isAcc()
     ? t('Lo robado o prestado funciona una escena entera; después, si te lo quedas, tiene que caber en tu Recursos.','Looted or borrowed gear works for a whole scene; after that, if you keep it, it has to fit your Resources.')
-    : t('Lo robado o prestado funciona una escena entera gratis; después, se paga o se deja.','Looted or borrowed gear works free for a whole scene; after that you pay for it or leave it.')) + '</li><li>' + esc(t('Si pierdes el equipo, pierdes sus Llaves. Lo que presta la trama se sincroniza gratis mientras lo preste. Monedero por defecto: 1 Llave por sesión. Es el mando de potencia de la campaña.','Lose the equipment and you lose its Keys. What the plot lends syncs for free while the plot lends it. Default wallet: 1 Key per session. It is the campaign’s power dial.')) + '</li></ul></div>';
+    : t('Lo robado o prestado funciona una escena entera gratis; después, se paga o se deja.','Looted or borrowed gear works free for a whole scene; after that you pay for it or leave it.')) + '</li><li>' + esc(t('El equipo siempre se puede devolver: cuando ya no lo usas —lo vendes, se rompe, lo dejas—, ' + (isAcc() ? 'sus Llaves vuelven' : 'sus puntos y sus Llaves vuelven') + ' a quedar libres. Lo de una escena (prestado, robado, el robot de la misión) no costó nada y no devuelve nada.','Equipment can always be given back: once you no longer use it —you sell it, it breaks, you leave it—, ' + (isAcc() ? 'its Keys are' : 'its points and Keys are') + ' free again. One-scene things (borrowed, looted, the mission’s robot) cost nothing and give nothing back.')) + '</li><li>' + esc(t('Sincronización (heredar la ficha y la escala): para mechas, trajes, exoesqueletos y fusiones; lo que presta la trama se sincroniza gratis mientras lo preste. Un vehículo normal no presta su nivel: se dispara al vehículo (su propia vida) o a quien va dentro, si las balas entran.','Synchronisation (inheriting the sheet and the scale): for mechas, suits, exoskeletons and mergers; what the plot lends syncs for free while it lends it. A normal vehicle does not lend its level: you shoot the vehicle (its own health) or whoever is inside, if bullets get in.')) + '</li><li>' + esc(t('Monedero por defecto: 1 Llave por sesión. Es el mando de potencia de la campaña.','Default wallet: 1 Key per session. It is the campaign’s power dial.')) + '</li></ul></div>';
   h += '<div class="rbox"><h3>' + esc(t('Combate','Combat')) + '</h3><ul>' +
     (isAcc() ? '<li>' + esc(t('Iniciativa: tu mejor bono en Destreza.','Initiative: your best Dexterity bonus.')) + '</li>' : '<li>' + esc(t('Iniciativa: declara tu guardia (Violencia, Treta, Especialidad) y tira tu mejor habilidad de esa disposición. Si cambias, vas el último. Si nadie elige, vale el marcador de tu ficha.','Initiative: declare a stance (Violence, Trick, Specialty) and roll your best skill for it. If you switch, you go last. If nobody chooses, your sheet’s marker applies.')) + '</li>') +
-    '<li>' + esc(t('Atacar: tirada contra TN. Crítico: +1 al daño.','Attack: roll vs TN. Critical: +1 damage.')) + '</li><li>' + esc(t('Defenderse (el empate es del defensor): si tu resultado iguala o supera el del atacante, no hay daño. Si él queda por encima y tú sacas éxito o éxito con coste, daño −1. Si fallas, daño completo. Si pifias, el ataque sube un escalón.','Defend (ties go to the defender): if your result matches or beats the attacker’s, no damage. If they end up above and you got a success or a success at a cost, damage −1. If you fail, full damage. If you fumble, the attack goes up one step.')) + '</li><li>' + esc(t('Etiquetas: Daño 1–2 · La Parca · Esq Total / Parcial (mín. 1) / Nula / Difícil −2 / Fácil +2 · Abs Total / Máx N / Nula · Rejilla. Las etiquetas mandan sobre el empate: Parcial come 1 como mínimo, Nula no deja reaccionar. La Parca: contra quien está por debajo de su nivel, fuera de combate sin defensa; a su altura, Daño 2 y defensa normal; por encima, nada sin Llave. Nunca mata.','Tags: Dmg 1–2 · The Reaper · Dodge Full / Partial (min 1) / None / Hard −2 / Easy +2 · Soak Full / Max N / None · Grid. Tags rule over ties: Partial eats at least 1, None allows no reaction. The Reaper: against anyone below its level, out of the fight with no defence; at its level, Dmg 2 and normal defence; above, nothing without a Key. It never kills.')) + '</li>' +
+    '<li>' + esc(t('Atacar: tirada contra TN. Crítico: +1 al daño.','Attack: roll vs TN. Critical: +1 damage.')) + '</li><li>' + esc(t('Defenderse (el empate es del defensor): si tu resultado iguala o supera el del atacante, no hay daño. Si él queda por encima y tú sacas éxito o éxito con coste, daño −1. Si fallas, daño completo. Si pifias, el ataque sube un escalón.','Defend (ties go to the defender): if your result matches or beats the attacker’s, no damage. If they end up above and you got a success or a success at a cost, damage −1. If you fail, full damage. If you fumble, the attack goes up one step.')) + '</li><li>' + esc(t('Etiquetas: Daño 1–2 · La Parca · Esq Total / Parcial (mín. 1) / Nula / Difícil −2 / Fácil +2 · Abs Total / Máx N / Nula · Rejilla. Las etiquetas mandan sobre el empate: Parcial come 1 como mínimo, Nula no deja reaccionar. La Parca es una Llave al daño: si te alcanza y estás por debajo de su nivel, quedas fuera de combate, sin absorción que valga. Si se puede esquivar lo dice su Esq: el francotirador que no ves (Nula) no se esquiva, se evita; una granada, por su área, Difícil −2. A su altura, Daño 2 y defensa normal; por encima, nada sin Llave. Nunca mata.','Tags: Dmg 1–2 · The Reaper · Dodge Full / Partial (min 1) / None / Hard −2 / Easy +2 · Soak Full / Max N / None · Grid. Tags rule over ties: Partial eats at least 1, None allows no reaction. The Reaper is a Key to damage: if it reaches you and you are below its level, you are out of the fight, no soak allowed. Whether it can be dodged is its Dodge tag: the sniper you cannot see (None) is not dodged, it is avoided; a grenade, being an area, Hard −2. At its level, Dmg 2 and normal defence; above, nothing without a Key. It never kills.')) + '</li>' +
     (estilo() ? '<li>' + esc(isAcc()
       ? t('Estilo +2: contra enemigos por debajo o masillas ganas seguro; tiras el modo + 2 solo para ver cómo. Pifia: ridículo. Fallo (y en Caos, el éxito parcial): sucio o sin lucirte. Éxito: con estilo. Crítico: legendario.','Style +2: against foes below you or mooks you win for sure; you roll the mode + 2 only to see how. Fumble: ridiculous. Failure (and in Chaos, partial success): messy or without flair. Success: with style. Critical: legendary.')
-      : t('Estilo +2: contra enemigos menores ganas seguro; tiras la tarjeta + 2 solo para ver cómo. Nunca cuesta: la banda de éxito con coste se lee como éxito. Pifia: ridículo. Fallo: olvidable. Éxito: molas. Crítico: lúcete.','Style +2: against lesser foes you win for sure; you roll the card + 2 only to see how. It never costs: the success-at-a-cost band reads as a success. Fumble: ridiculous. Failure: forgettable. Success: magnificent. Critical: show off.')) + '</li>' + '<li>' + esc(t('El decorado lo declara el DJ y no te hace daño: se tira Estilo y cada tirada tumba a uno; con crítico, a varios. Si un enemigo puede hacerte daño, no es decorado: tiene ficha rápida y se tira normal.','The GM declares the scenery, and scenery does not hurt you: roll Style, each roll drops one; on a critical, several. If an enemy can hurt you, it is not scenery: it gets a quick sheet and you roll as normal.')) + '</li>' : '') + '</ul></div>';
+      : t('Estilo +2: contra enemigos menores ganas seguro; tiras la tarjeta + 2 solo para ver cómo. Nunca cuesta: la banda de éxito con coste se lee como éxito. Pifia: ridículo. Fallo: olvidable. Éxito: molas. Crítico: lúcete.','Style +2: against lesser foes you win for sure; you roll the card + 2 only to see how. It never costs: the success-at-a-cost band reads as a success. Fumble: ridiculous. Failure: forgettable. Success: magnificent. Critical: show off.')) + '</li>' : '') +
+    /* nucleo: el decorado sale aunque el Estilo este apagado */
+    '<li>' + esc(t('El decorado lo declara el DJ y no te hace daño' + (estilo() ? ': se tira Estilo y cada tirada tumba a uno; con crítico, a varios.' : '.') + ' Si un enemigo puede hacerte daño, no es decorado: tiene ficha rápida y se tira normal.','The GM declares the scenery, and scenery does not hurt you' + (estilo() ? ': roll Style, each roll drops one; on a critical, several.' : '.') + ' If an enemy can hurt you, it is not scenery: it gets a quick sheet and you roll as normal.')) + '</li></ul></div>';
   var terror3 = isAcc() && ZOOM[zoomK()].units === 3;
   h += '<div class="rbox"><h3>' + esc(t('Vida','Health')) + '</h3><ul>' + (isAcc()
     ? (terror3
       ? '<li>' + esc(t('Modo Terror: 3 casillas, un solo bloque.','Terror mode: 3 boxes, a single block.')) + '</li><li>' + esc(t('Al llenarlo, fuera de combate. Sin −2 ni −4 por el camino.','When it fills, you are out of the fight. No −2 or −4 on the way.')) + '</li>'
       : '<li>' + esc(t('9 casillas de vida, en tres bloques de tres.','9 health boxes, in three blocks of three.')) + '</li><li>' + esc(t('1.er bloque lleno: −2 a lo que la herida estorbe. 2.º: −4 y pierdes las acciones complejas. 3.º: fuera de combate.','1st block full: −2 to whatever the wound hinders. 2nd: −4 and you lose complex actions. 3rd: out of the fight.')) + '</li>')
-    : '<li>' + esc(pick(ZOOM[zoomK()].n) + ' · ' + ZOOM[zoomK()].units + t(' casillas por barra.',' boxes per track.')) + '</li><li>' + esc(t('1.er bloque lleno: −2. 2.º: −4. 3.º: fuera de combate.','1st block full: −2. 2nd: −4. 3rd: out of the fight.')) + '</li>') + '<li>' + esc(t('Nadie muere por una tirada: la muerte se pacta.','Nobody dies from a roll: death is agreed.')) + '</li></ul></div>';
+    : '<li>' + esc(pick(ZOOM[zoomK()].n) + ' · ' + ZOOM[zoomK()].units + t(' casillas por barra.',' boxes per track.')) + '</li><li>' + esc(t('1.er bloque lleno: −2. 2.º: −4. 3.º: fuera de combate.','1st block full: −2. 2nd: −4. 3rd: out of the fight.')) + '</li>') +
+    /* T181: la barra es tension y vuelve entera; la consecuencia es la grieta y se queda */
+    '<li>' + esc(isAcc()
+      ? t('Cuando termina la amenaza y el DJ os declara a salvo, las casillas se borran. Las heridas se quedan: el penalizador del bloque que llenaste sigue hasta que te cures. Leves, cura sencilla; graves, cura grave; qué significa cada una lo decide el universo.','When the threat is over and the GM declares you safe, the boxes are cleared. Wounds stay: the penalty of the block you filled lasts until you heal. Light ones, simple cure; serious ones, serious cure; what each means is up to the universe.')
+      : t('Cuando termina la amenaza y el DJ os declara a salvo, todas las barras vuelven enteras (también las del género). Un golpe que cruza un umbral deja una consecuencia, que ya no está en la barra sino en tu ficha: leves, cura sencilla; graves, cura grave; qué significa cada una lo decide el universo.','When the threat is over and the GM declares you safe, every track comes back whole (genre tracks too). A hit that crosses a threshold leaves a consequence, no longer on the track but on your sheet: light ones, simple cure; serious ones, serious cure; what each means is up to the universe.')) + '</li>' +
+    '<li>' + esc(t('Nadie muere por una tirada: la muerte se pacta.','Nobody dies from a roll: death is agreed.')) + '</li></ul></div>';
   if (c.partial) h += '<div class="rbox"><h3>' + esc(t('Éxito parcial','Partial success')) + '</h3><p>' + esc(t('Lo consigues, pero el DJ elige un coste: tiempo, recurso, posición o fuego amigo.','You get it, but the GM picks a cost: time, resource, position or friendly fire.')) + '</p></div>';
   if (!isAcc()) h += '<div class="rbox"><h3>' + esc(t('Reglas extra','Extra rules')) + '</h3><ul>' + baul().map(function(k){ return '<li><b>' + esc(pick(DATA.baul[k])) + '.</b> ' + esc(pick(BAUL_TIP[k])) + '</li>'; }).join('') + '</ul><div class="lines"><div class="line">' + esc(t('Otras reglas de la mesa','Other table rules')) + '</div><div class="line"></div></div></div>';
   return h + '</div>';
@@ -2837,6 +2859,8 @@ var OUTSTYLE = {
   fum:['Ganas, pero haces el ridículo.','You win, but look ridiculous.'],
   fail:['Ganas, pero sucio o sin lucirte.','You win, but messily or without flair.'],
   part:['Ganas, pero sucio o sin lucirte.','You win, but messily or without flair.'],
+  /* el completo (4.5): el fallo de Estilo es olvidable y anodino; el Acelerado guarda el suyo */
+  failF:['Ganas, pero de la forma más olvidable y anodina: funciona, se acabó, y quizá nadie miraba.','You win, but in the most forgettable, bland way: it works, it is over, and maybe nobody was looking.'],
   ok:['Ganas con estilo: limpio y espectacular.','You win with style: clean and spectacular.'],
   cri:['Legendario: coreografía de cine, caen varios, nacen rumores.','Legendary: film choreography, several fall, rumours are born.']
 };
@@ -2873,7 +2897,7 @@ function renderDice(){
   h += '</div>';
   if (L2) {
     var o = OUT[L2.out];
-    h += '<p class="dmath">' + esc(t('Natural ','Natural ') + L2.nat + ' ' + bonusTxt(L2.bonus) + ' = ' + L2.tot + ' · TN ' + L2.tn) + '</p><p class="dout ' + L2.out + '">' + esc(L2.style ? t('Estilo: ','Style: ') + pick(o[0]) : pick(o[0])) + '</p><p class="dexp">' + esc(L2.style ? pick(OUTSTYLE[L2.out]) : pick(o[1])) + '</p>';
+    h += '<p class="dmath">' + esc(t('Natural ','Natural ') + L2.nat + ' ' + bonusTxt(L2.bonus) + ' = ' + L2.tot + ' · TN ' + L2.tn) + '</p><p class="dout ' + L2.out + '">' + esc(L2.style ? t('Estilo: ','Style: ') + pick(o[0]) : pick(o[0])) + '</p><p class="dexp">' + esc(L2.style ? pick(OUTSTYLE[L2.out === 'fail' && !isAcc() ? 'failF' : L2.out]) : pick(o[1])) + '</p>';
   } else h += '<p class="note" style="text-align:center">' + esc(t('Rojo y azul: la tarjeta decide cuál se lee.','Red and blue: the card decides which one is read.')) + '</p>';
   if (diceLog.length) h += '<ol class="dlog">' + diceLog.map(function(x){ return '<li>' + esc((x.who ? x.who + ' · ' : '') + x.mode + ' · ' + x.nat + ' ' + bonusTxt(x.bonus) + ' = ' + x.tot + ' → ' + (x.style ? t('Estilo ','Style ') : '') + pick(OUT[x.out][0])) + '</li>'; }).join('') + '</ol>';
   return h + '</div></div>';

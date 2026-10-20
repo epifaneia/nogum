@@ -2125,3 +2125,32 @@ zombis de tu nivel: ganas sin tirar. La superioridad numerica no «solo
 iguala»: es una Llave de un momento, un nivel por encima en lo que cubre,
 mientras la ficcion la sostenga. Y la entrada de 2.6 deja de decir que el
 autor lo ve evidente: el tono no mira desde arriba.
+
+---
+
+## T181 · Las aclaraciones del autor
+
+1. El equipo siempre se puede devolver: lo vendes, se rompe o lo dejas, y sus
+   puntos y Llaves quedan libres. Lo de una escena no costo nada y no devuelve
+   nada. Traspasar: quien libera recupera, quien recibe paga.
+2. La Rejilla la sube el Director, por defecto a todo el grupo a la vez; nunca
+   un nivel entero a uno solo. Quien rechaza un salto que se le ofrece cobra su
+   valor, en ese ambito.
+3. «A salvo» lo declara el Director: peligro objetivo, no una sensacion.
+4. Todas las barras vuelven enteras al estar a salvo: la barra es tension, una
+   goma; la consecuencia es la grieta, y va a la ficha.
+5. Heredar la ficha (Sincronizacion) es para mechas, trajes y fusiones; un
+   vehiculo normal no hereda nada y cuesta como una Llave (1 a nivel 2, 4 a 3).
+6. La Parca es una Llave al daño: si te alcanza por debajo de su nivel, fuera
+   de combate sin absorcion; si se esquiva lo dice su etiqueta (la granada, −2
+   por el area; el francotirador que no ves, no). Las Parcas con Esq: Parcial
+   pasan a Difícil (−2).
+7. Las partidas de vampiros recomiendan empezar en Fisico 2 y Arcano 2; el
+   valor por defecto no cambia.
+8. Las consecuencias nunca desaparecen por escena: leves, cura sencilla;
+   graves, cura grave; lo decide el universo.
+9. En el Acelerado cuesta Llaves lo que rompe la Rejilla o da un permiso; la
+   App deja de tratar la escala como nivel de los personajes; caso nuevo en
+   2.6, el enemigo con ficha por debajo de ti.
+Erratas: «El filo imposible» (se habia quedado «La el filo» y «bladeine»), y
+el Acceso de las Botas Magneticas y del Monoculo en ingles.
