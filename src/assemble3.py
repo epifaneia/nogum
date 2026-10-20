@@ -223,6 +223,13 @@ def limpia_editorial(body):
         body = re.sub(r'<' + tag + r'[^>]*>\s*<span class="' + CL + r'"[^>]*>.*?</' + tag + '>', '', body, flags=re.S)
     # 2. marcas sueltas dentro de texto que si vale
     body = re.sub(r'\s*<span class="' + CL + r'"[^>]*>.*?</span>', '', body, flags=re.S)
+    # 2b. referencias sueltas a decisiones editoriales escritas a mano en el
+    #     texto, «(ED-12)», «(5.5, ED-35)», «(ED-39: …)»: el lector no tiene
+    #     donde buscarlas; se quedan en el Cuaderno
+    ED = r'ED-[A-Z]?\d+'
+    body = re.sub(r'\(\s*' + ED + r'\s*\)', '', body)
+    body = re.sub(r'\s*,\s*' + ED + r'(?=\s*\))', '', body)
+    body = re.sub(r'\((?:con\s+|with\s+|under\s+)?' + ED + r'[:,]\s*', '(', body)
     # 3. parentesis y comas que quedan colgando
     body = re.sub(r'\(\s*\)', '', body)
     body = re.sub(r'\s+([.,;:])', r'\1', body)
