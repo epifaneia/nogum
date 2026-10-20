@@ -2109,3 +2109,19 @@ capitulo 2, en un recuadro, y se desarrollan en un apartado nuevo, 2.6
 Precios: Velo absoluto 8, Fuerza de sala 5, Fuerza de edificio 20, Oido y
 Mando de multitud 2, el ejemplo Indetectable 8. El Acelerado lleva cinco de
 las siete en un recuadro.
+
+---
+
+## T180 · La Llave te pone por encima; la limita lo que cubre
+
+Correccion del autor a T179: una Llave SI te pone un nivel por encima, tambien
+de lo que estaba a tu altura. Lo que la limita es lo que dice. El bazuca es una
+Llave al daño: si te da, te revienta (no se aguanta a pecho), pero hay que
+acertar y se puede esquivar o buscar cobertura. Un misil teledirigido con tu
+cara en la memoria cubre el daño y el acierto: no se para ni se esquiva, y para
+sobrevivirlo hace falta otra Llave, que puede ser narrativa (la hacker que le
+corta el guiado un segundo). «Armas contra zombis» te pone por encima de los
+zombis de tu nivel: ganas sin tirar. La superioridad numerica no «solo
+iguala»: es una Llave de un momento, un nivel por encima en lo que cubre,
+mientras la ficcion la sostenga. Y la entrada de 2.6 deja de decir que el
+autor lo ve evidente: el tono no mira desde arriba.
