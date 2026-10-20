@@ -1847,3 +1847,25 @@ una Llave.
   nivel de la mesa. Probado con una mesa de cyberpunk: con +1 de Rejilla avisa
   en Fisico, el unico ambito que alli puede pasar de 1; con cinco Llaves, el
   aviso desaparece.
+
+---
+
+## T166 · El kit de itch.io
+
+Todo lo que pide la pagina de itch.io, en `lanzamiento/itch/`, salvo la cuenta,
+que es del autor: la descripcion (la de la portada, ingles primero y espanol
+debajo, con cada pieza enlazada en su idioma), la hoja de campos, la portada a
+1260 x 1000, cinco capturas y un **pack sin conexion** con los tres libros, la
+App, sus imagenes y la licencia.
+
+El pack se probo como lo abriria quien lo descarga, desde el disco y sin
+servidor: los tres libros se paginan con su lamina, todos los enlaces entre
+piezas apuntan a ficheros que existen y la App carga su bienvenida.
+
+En local, La Idea pasa a llamarse `NOGUM_idea.html`: seguia como
+`NOGUM_tesis.html`, el nombre de antes del cambio, y quien descargara el pack
+lo habria visto.
+
+La hoja recomienda declarar en itch que hay material hecho con IA (las
+cubiertas, y texto y codigo escritos con un asistente). En rol es un tema
+sensible, y esconderlo hace mas dano que decirlo.

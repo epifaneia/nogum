@@ -11,3 +11,6 @@ Conversacioncompleta.docx
 .claude/
 __pycache__/
 *.pyc
+
+# el pack sin conexion se regenera desde los libros
+lanzamiento/**/*.zip

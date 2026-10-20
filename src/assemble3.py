@@ -9,7 +9,7 @@ URLS = json.load(open(os.path.join(D, 'urls.json'), encoding='utf-8'))
 # de claude.ai y el sitio publico que sirve GitHub Pages.
 WEB = {'tesis': 'idea.html', 'juego': 'juego.html', 'acelerado': 'acelerado.html',
        'cuaderno': 'cuaderno.html', 'app': 'app.html'}
-LOCAL = {'tesis': 'NOGUM_tesis.html', 'juego': 'NOGUM_juego.html', 'acelerado': 'NOGUM_acelerado.html',
+LOCAL = {'tesis': 'NOGUM_idea.html', 'juego': 'NOGUM_juego.html', 'acelerado': 'NOGUM_acelerado.html',
          'cuaderno': 'NOGUM_cuaderno.html', 'app': '../NOGUM_app/NOGUM_app.html'}
 CSS = R('paper.css'); JS = R('paper.js')
 

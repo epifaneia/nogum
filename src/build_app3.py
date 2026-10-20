@@ -21,7 +21,7 @@ assert sorted(_rs) == list(range(_n)), (
 # una URL distinta: relativa en la carpeta local, de artefacto en claude.ai.
 URLS = json.load(open(os.path.join(D, 'urls.json'), encoding='utf-8'))
 # tres destinos: la carpeta local, los artefactos y el sitio publico
-PIEZAS = [('tesis', 'La Idea', 'The Idea', '../NOGUM_productos/NOGUM_tesis.html', 'idea.html'),
+PIEZAS = [('tesis', 'La Idea', 'The Idea', '../NOGUM_productos/NOGUM_idea.html', 'idea.html'),
           ('juego', 'Juego', 'Game', '../NOGUM_productos/NOGUM_juego.html', 'juego.html'),
           ('acelerado', 'Acelerado', 'Accelerated', '../NOGUM_productos/NOGUM_acelerado.html', 'acelerado.html'),
           ('app', 'App', 'App', None, None)]
