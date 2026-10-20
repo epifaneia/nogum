@@ -150,6 +150,23 @@ table.t thead th:first-child{min-width:34mm}
 table.t td.num:first-child,table.t:has(tbody td.num:first-child) thead th:first-child{min-width:0}
 /* y cuando la ultima columna es la apretada, que no se parta tampoco en seco */
 table.t td:last-child{overflow-wrap:break-word}
+/* Nada de guiones en las tablas. Con hyphens:auto el navegador que trae
+   diccionarios (el Chrome del lector) partia «NI-VEL» o «RECUPE-RACION» para
+   estrechar columnas, y el Chrome automatico de las pruebas, que no los trae,
+   no lo veia. Sin guiones, cada columna mide al menos su palabra mas larga y
+   el sitio sale de las columnas de texto largo. */
+table.t th,table.t td{hyphens:manual}
+table.t thead th{overflow-wrap:normal}
+/* una cabecera que debe ir en una sola linea */
+table.t th.nw{white-space:nowrap}
+/* El arsenal del Bazar: las 35 tablas de objetos, con el mismo reparto */
+table.t.arsenal{table-layout:fixed}
+table.t.arsenal thead th:nth-child(1){width:30mm;min-width:0}
+table.t.arsenal thead th:nth-child(2){width:19mm}
+table.t.arsenal thead th:nth-child(3){width:21mm}
+table.t.arsenal thead th:nth-child(4){width:18mm}
+table.t.arsenal thead th:nth-child(5){width:33mm}
+table.t.arsenal td:first-child{min-width:0}
 td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
 table.t td.on{color:var(--red);text-align:center}
 table.rejilla td{text-align:center}
@@ -1881,7 +1898,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 <h3 id="ch3-progreso"><span class="hn">3.6</span> Progresión: los dos monederos</h3>
 <p>Casi todos los juegos meten en el mismo saco de puntos tres cosas que no se parecen en nada, y así les va: el guerrero de nivel quince es a la vez más hábil, más poderoso en el mundo y más curtido, porque solo hay un contador. Aquí se separan, y cada una tiene un dueño distinto.</p>
 <div class="tw"><table class="t">
-<thead><tr><th>Qué cambia</th><th>Quién es su dueño</th><th>Cómo se mueve</th></tr></thead>
+<thead><tr><th>Qué cambia</th><th class="nw">Quién es su dueño</th><th>Cómo se mueve</th></tr></thead>
 <tbody>
 <tr><td><strong>El mundo</strong> · la Rejilla</td><td>El Director</td><td>No se compra. Sube cuando los hechos lo justifican, pactada en la mesa, y contra el techo del universo</td></tr>
 <tr><td><strong>Las cicatrices</strong> · dones y lacras</td><td>La ficción</td><td>No se compran: ocurren durante la partida</td></tr>
@@ -3253,8 +3270,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <h3 id="bz-fantasia"><span class="hn">1.</span> La mazmorra y la estepa</h3>
 <p><em>«Donde el acero pesa y la magia rompe las reglas.»</em> <span class="src">T68</span></p>
 <h4>Armas de filo</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Daga de Ladrón</strong></td><td><span class="tag">Daño 1</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Acceso 0</span> <span class="tag">Rejilla: Estándar</span></td><td>+1 al ataque si atacas por la espalda (bonificador de situación; el total sigue dentro de [−2, +4]).</td></tr>
 <tr><td><strong>Espada Corta</strong></td><td><span class="tag">Daño 1</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Acceso 0</span> <span class="tag">Rejilla: Estándar</span></td><td>Fiable y rápida.</td></tr>
@@ -3268,8 +3285,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>La el filo imposible (Corta-Dioses)</strong></td><td><span class="tag">Daño: Infinito</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Nula</span></td><td><span class="tag">Acceso 3</span> <span class="tag">Rejilla: Ignora todo</span></td><td>Aprobada expresamente por el autor (T67): «que ignore la malla y sea la corta dioses». Si impacta y no se esquiva, el objetivo queda fuera de combate de un solo golpe, sea un dios, un dragón o una montaña. La decapitación es la narración; la muerte, solo si se pacta. No se puede tanquear.</td></tr>
 </tbody></table></div>
 <h4>Armas a distancia</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Arco Corto</strong></td><td><span class="tag">Daño 1</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Acceso 0</span></td><td>—</td></tr>
 <tr><td><strong>Arco Largo Élfico</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Parcial</span></td><td><span class="tag">Abs: Máx 1</span></td><td><span class="tag">Acceso 1</span></td><td>La flecha atraviesa mallas ligeras.</td></tr>
@@ -3278,8 +3295,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Hachas Arrojadizas</strong></td><td><span class="tag">Daño 1</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Acceso 0</span></td><td>Corto alcance.</td></tr>
 </tbody></table></div>
 <h4>Magia y sobrenatural</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Proyectil Mágico</strong></td><td><span class="tag">Daño 1</span></td><td><span class="tag">Esq: Nula</span></td><td><span class="tag">Abs: Nula</span></td><td><span class="tag">Acceso 1</span></td><td>Perseguidor y etéreo: solo lo paran los escudos mágicos.</td></tr>
 <tr><td><strong>Bola de Fuego</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Parcial (área)</span></td><td><span class="tag">Abs: Máx 1</span></td><td><span class="tag">Acceso 2</span></td><td>La armadura se calienta y quema igualmente. El original decía «si esquivas, te quitas la mitad»; en el canon, Parcial significa que siempre entra al menos 1 punto (ED-9).</td></tr>
@@ -3288,8 +3305,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Aliento de Dragón</strong></td><td><span class="tag parca">La Parca · Rejilla 3</span></td><td><span class="tag">Esq: Parcial</span></td><td><span class="tag">Abs: Nula</span></td><td><span class="tag">Acceso 2</span></td><td>Funde la armadura. Tirarse al suelo es la esquiva parcial: el daño baja a 2.</td></tr>
 </tbody></table></div>
 <h4>Protección y utilidad</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Escudo de Torre</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Permite intentar absorber ataques con <span class="tag">Esq: Nula</span> (como las flechas).</td><td>—</td></tr>
 <tr><td><strong>Cota de Malla</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Absorbe hasta 1 punto de daño de armas de filo.</td><td>El tope de la etiqueta Abs del arma atacante sigue mandando.</td></tr>
@@ -3305,8 +3322,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <h3 id="bz-neon"><span class="hn">2.</span> La Ciudad de Neón</h3>
 <p><em>«Donde la velocidad mata y el blindaje es temporal.»</em> <span class="src">T68</span></p>
 <h4>Armas de fuego</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Pistola Ligera (9 mm)</strong></td><td><span class="tag">Daño 1</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Acceso 0</span> <span class="tag">Rejilla: Estándar</span></td><td>—</td></tr>
 <tr><td><strong>Pistola Pesada (.44 Magnum)</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Máx 1</span></td><td><span class="tag">Acceso 1</span></td><td>Te rompe las costillas aunque lleves chaleco.</td></tr>
@@ -3320,8 +3337,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Táser / Arma de Choque</strong></td><td><span class="tag">Daño 1 (aturdimiento)</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Nula (Metal)</span></td><td><span class="tag">Acceso 0</span></td><td>Valor fuera de la leyenda. Contra quien lleva armadura metálica o ciberimplantes, Abs: Nula y el daño se duplica; en los demás casos se lee como Abs: Total.</td></tr>
 </tbody></table></div>
 <h4>Cuerpo a cuerpo (alta tecnología)</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Cuchillo de Combate</strong></td><td><span class="tag">Daño 1</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Acceso 0</span></td><td>—</td></tr>
 <tr><td><strong>Katana Monofilo</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Nula</span></td><td><span class="tag">Acceso 1</span></td><td>Corta a nivel molecular: ignora el kevlar y las placas cerámicas.</td></tr>
@@ -3330,8 +3347,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Nanocable (Látigo)</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Difícil (−2)</span></td><td><span class="tag">Abs: Nula</span></td><td><span class="tag">Acceso 1</span></td><td>Corta extremidades. Alcance medio.</td></tr>
 </tbody></table></div>
 <h4>Tecnología y gadgets</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Chaleco Kevlar</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Absorbe 1 punto de daño balístico. Inútil contra el monofilo.</td><td>—</td></tr>
 <tr><td><strong>Blindaje Dérmico (implante)</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 1</span> Tu piel cuenta como armadura: absorbe siempre 1 punto.</td><td>—</td></tr>
@@ -3353,8 +3370,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p><em>«Donde las armas fallan y el miedo mata.»</em> <span class="src">T68</span></p>
 <p>Esta ambientación tiene <strong>29 ítems</strong>: <strong>faltan 1</strong> para los 30. Ítems fusionados con otra ambientación: Cóctel Molotov → se conserva en Post-Apocalipsis (T69, versión más reciente).</p>
 <h4>Armas improvisadas</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Bate de Béisbol</strong></td><td><span class="tag">Daño 1</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Acceso 0</span></td><td>Se rompe con una pifia.</td></tr>
 <tr><td><strong>Hacha de Bombero</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Acceso 1</span></td><td>Pesada: requiere las dos manos.</td></tr>
@@ -3367,8 +3384,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Piedra / Ladrillo</strong></td><td><span class="tag">Daño 1</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Acceso 0</span></td><td>—</td></tr>
 </tbody></table></div>
 <h4>Artefactos y magia sucia</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Libro Maldito</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Permite lanzar hechizos a cambio de Daño Mental al usuario.</td><td>—</td></tr>
 <tr><td><strong>Símbolo Arcano (tiza)</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Barrera que los monstruos de Nivel 1 no pueden cruzar.</td><td>En el banco de ideas de T67 (formato sustituido) bloqueaba hasta Nivel 3.</td></tr>
@@ -3382,8 +3399,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Muñeco Vudú</strong></td><td><span class="tag">Daño 1</span></td><td><span class="tag">Esq: Nula</span></td><td><span class="tag">Abs: Nula</span></td><td><span class="tag">Acceso 1</span></td><td>Requiere un enlace (pelo o sangre).</td></tr>
 </tbody></table></div>
 <h4>Equipo de supervivencia</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Linterna</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Anula los penalizadores por oscuridad. Las pilas se agotan (recurso).</td><td>—</td></tr>
 <tr><td><strong>Botiquín</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Estabiliza a un herido grave; no cura al instante.</td><td>El original dice «a un moribundo».</td></tr>
@@ -3399,8 +3416,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <h3 id="bz-opera"><span class="hn">4.</span> Ópera de Estrellas</h3>
 <p><em>«Donde la tecnología es limpia, los láseres hacen «piu-piu» y la fe mueve naves.»</em> <span class="src">T69</span></p>
 <h4>Armas de energía</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Pistola Bláster</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Máx 1</span></td><td><span class="tag">Acceso 1</span></td><td>Cauteriza la herida. Inútil contra escudos de energía. Variante <span class="src">T107</span> «Rifle Bláster» con <span class="tag">Esq: Parcial</span>, nunca validada: se conserva la de T69.</td></tr>
 <tr><td><strong>Rifle de Plasma</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Parcial</span></td><td><span class="tag">Abs: Máx 1</span></td><td><span class="tag">Acceso 2</span></td><td>Bola lenta pero devastadora: si impacta, funde blindajes ligeros. <span class="src">T110</span> lo repite igual.</td></tr>
@@ -3414,8 +3431,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Lanza Vibratoria</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Máx 1</span></td><td><span class="tag">Acceso 1</span></td><td>Arma noble. Puede parar un sable de luz.</td></tr>
 </tbody></table></div>
 <h4>Escudos y trajes</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Escudo Deflector Personal</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> <span class="tag">Abs: Total</span> contra el primer ataque de energía de cada turno; <span class="tag">Abs: Nula</span> contra ataques físicos (cuchillos, puños).</td><td><span class="src">T107</span> y <span class="src">T110</span> lo repiten y añaden que un cuchillo lento lo atraviesa.</td></tr>
 <tr><td><strong>Armadura de Soldado de Asalto</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> <span class="tag">Abs: Total</span> contra armas primitivas (flechas, balas); <span class="tag">Abs: Nula</span> contra blásteres.</td><td>—</td></tr>
@@ -3430,8 +3447,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 </tbody></table></div>
 <h4>Poderes (la Fuerza / biótica)</h4>
 <p>Se compran como equipo, pero se usan con el ámbito Arcano («El Flujo»; el original dice «Mente/Espíritu»). En T107 y T110 se repiten 111–112, y en T88 se resumen todos sin cambios.</p>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Empujón del Flujo</strong></td><td><span class="tag">Daño 1</span></td><td><span class="tag">Esq: Difícil (−2)</span></td><td><span class="tag">Abs: Nula</span></td><td><span class="tag">Efecto: derriba y aleja</span></td><td>Si el objetivo choca contra una pared, Daño 2.</td></tr>
 <tr><td><strong>Rayo del Flujo</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Nula</span></td><td><span class="tag">Abs: Nula</span></td><td>—</td><td>Tortura pura. Paraliza.</td></tr>
@@ -3448,8 +3465,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p><em>«Donde todo está oxidado, sucio y duele mucho.»</em> <span class="src">T69</span></p>
 <p>Esta ambientación tiene <strong>28 ítems</strong>: <strong>faltan 2</strong> para los 30. Ítems fusionados con otra ambientación: Escopeta de Dos Cañones (Recortada) → se conserva en Steampunk (T70); Sangre Ácida → se conserva en Horror Gótico (T70).</p>
 <h4>Chatarra mortal</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Bate con Clavos</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Máx 1</span></td><td><span class="tag">Acceso 1</span></td><td>Causa tétanos (consecuencia: Infección). Igual en <span class="src">T107</span> y <span class="src">T110</span>.</td></tr>
 <tr><td><strong>Rifle de Clavos</strong></td><td><span class="tag">Daño 1</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Acceso 0</span></td><td>Silencioso. Si es el golpe de gracia, clava al enemigo a la pared.</td></tr>
@@ -3462,8 +3479,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>El «Gordo» (lanzabombas)</strong></td><td><span class="tag">Daño: Masivo</span></td><td><span class="tag">Esq: Parcial</span></td><td><span class="tag">Abs: Nula</span></td><td><span class="tag">Acceso 3</span></td><td>Mini-bomba nuclear: deja fuera de combate a todo lo que haya en la zona y deja radiación residual. El original decía «mata todo en la zona». <span class="src">T110</span> lo repite.</td></tr>
 </tbody></table></div>
 <h4>Vehículos y supervivencia</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Interceptor V8</strong></td><td><span class="tag parca">La Parca · Rejilla 2</span></td><td><span class="tag">Esq: Difícil (−2)</span></td><td><span class="tag">Abs: Máx 1</span></td><td><span class="tag">Acceso 3</span> <span class="tag">4 Llaves</span> <span class="tag">Rejilla: Nivel 2</span> Blindaje ligero.</td><td>—</td></tr>
 <tr><td><strong>Buggy de Arena</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 2</span> <span class="tag">Rejilla: Nivel 1</span> Rápido y sin blindaje: ideal para huir.</td><td>—</td></tr>
@@ -3477,8 +3494,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Agua Purificada</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> «El oro azul». Restaura Mente y Cuerpo.</td><td>Cantidad sin fijar.</td></tr>
 </tbody></table></div>
 <h4>Mutaciones y artefactos</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Brazo Extra</strong></td><td>—</td><td>—</td><td>—</td><td>Sostienes un escudo y un arma a dos manos.</td><td>—</td></tr>
 <tr><td><strong>Piel de Escamas</strong></td><td>—</td><td>—</td><td>—</td><td>Armadura natural: absorbe hasta 1 punto. −2 a tiradas sociales por el aspecto.</td><td>El original escribe «[Abs: 1]» y «−2 Carisma» (NOGUM no tiene atributos).</td></tr>
@@ -3493,8 +3510,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <h3 id="bz-wuxia"><span class="hn">6.</span> Artes marciales, brillos y gritos</h3>
 <p><em>«Donde gritar te hace más fuerte y la gravedad es opcional.»</em> <span class="src">T70</span></p>
 <h4>Artes marciales (técnicas físicas)</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>El Puño de los Cien Puños</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Nula</span></td><td><span class="tag">Abs: Nula</span></td><td>—</td><td>Puntos de presión: el enemigo queda fuera de combate al final del turno («ya estás muerto»). El original decía «muere».</td></tr>
 <tr><td><strong>Patada Huracán</strong></td><td><span class="tag">Daño 1</span></td><td><span class="tag">Esq: Parcial</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Efecto: área</span></td><td>Golpea a todos los enemigos adyacentes.</td></tr>
@@ -3508,8 +3525,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Los Ocho Puntos (Desbloqueo)</strong></td><td>—</td><td>—</td><td>—</td><td>Sufres Daño 1 cada turno, pero todas tus tiradas usan Mejor de 2d10 (Optimismo Alto).</td><td>El original daba «[+1 Dado] a todo».</td></tr>
 </tbody></table></div>
 <h4>Técnicas de ki / energía</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Onda de energía a dos manos (rayo)</strong></td><td><span class="tag parca">La Parca · Rejilla 3</span></td><td><span class="tag">Esq: Difícil (−2)</span></td><td><span class="tag">Abs: Máx 1</span></td><td>—</td><td>1 turno de carga gritando. Destruye el terreno. Igual en <span class="src">T107</span> y <span class="src">T110</span>.</td></tr>
 <tr><td><strong>Disco Destructor</strong></td><td><span class="tag parca">La Parca · Rejilla 3</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Nula</span></td><td>—</td><td>Corta montañas. Lento pero imparable.</td></tr>
@@ -3523,8 +3540,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Regeneración (unión definitiva)</strong></td><td>—</td><td>—</td><td>—</td><td>Recuperas 1 bloque de vida si pierdes una extremidad.</td><td>—</td></tr>
 </tbody></table></div>
 <h4>Artefactos místicos</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Nube de los limpios de corazón</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 3</span> <span class="tag">4 Llaves</span> <span class="tag">Rejilla: Nivel 2</span> Vehículo volador. Solo para puros de corazón.</td><td>—</td></tr>
 <tr><td><strong>Báculo Sagrado</strong></td><td><span class="tag">Daño 1</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Acceso 0</span> Cambia de tamaño: alcance infinito.</td><td>Esq y Abs sin indicar.</td></tr>
@@ -3540,8 +3557,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <h3 id="bz-gotico"><span class="hn">7.</span> Horror Gótico</h3>
 <p><em>«Donde la sangre es moneda y la política es eterna.»</em> <span class="src">T70</span></p>
 <h4>Poderes de sangre (disciplinas)</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Garras de la Bestia</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Nula</span></td><td>—</td><td>Daño agravado: la armadura no para lo sobrenatural. Deja cicatriz permanente. «Agravado» no está en el canon: se lee como una consecuencia que no sigue los plazos normales de curación. Igual en <span class="src">T107</span>.</td></tr>
 <tr><td><strong>La Mirada (Dominación)</strong></td><td><span class="tag">Daño Mental 2</span></td><td><span class="tag">Esq: Nula</span></td><td><span class="tag">Abs: Mente</span></td><td>—</td><td>Si entra daño, das una orden sencilla que hay que obedecer.</td></tr>
@@ -3555,8 +3572,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Invisibilidad Mental (Ofuscación)</strong></td><td>—</td><td>—</td><td>—</td><td>La gente pasa por alto que estás ahí. Se rompe si interactúas.</td><td>—</td></tr>
 </tbody></table></div>
 <h4>Armas de cazadores y monstruos</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Estaca de Madera</strong></td><td><span class="tag">Daño 1</span></td><td><span class="tag">Esq: Difícil (−2)</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Acceso 0</span></td><td>Con un crítico en el corazón, el vampiro queda paralizado al instante (incapacitado). Igual en <span class="src">T107</span>.</td></tr>
 <tr><td><strong>Balas de Plata</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> <span class="tag">Llave: licántropos</span> Contra hombres lobo, el daño pasa a <span class="tag">Abs: Nula</span> y cuenta como agravado.</td><td>El original decía «convierten el Daño Sucio en Daño Agravado (X)»; «Sucio» era el antiguo Tipo A. Valor fuera de la leyenda: es una Llave narrativa contra una criatura, no un nivel.</td></tr>
@@ -3570,8 +3587,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Trampa para Osos</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Difícil (−2)</span></td><td><span class="tag">Abs: Máx 1</span></td><td><span class="tag">Acceso 1</span> <span class="tag">Efecto: Inmovilizar</span> Velocidad 0.</td><td>Esq y Abs sin indicar.</td></tr>
 </tbody></table></div>
 <h4>Artefactos y recursos</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Bolsa de Sangre Médica</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> <span class="tag">Fractal: Reset Parcial</span> Cura 3 casillas a un vampiro; a un humano no le hace nada.</td><td>—</td></tr>
 <tr><td><strong>Elixir de Vitae (sangre de anciano)</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 3</span> <span class="tag">9 Llaves</span> <span class="tag">Rejilla: Nivel 3</span> Tu nivel de Rejilla pasa a 3 durante una escena, pero quedas vinculado al donante (esclavitud).</td><td>—</td></tr>
@@ -3587,8 +3604,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <h3 id="bz-supers"><span class="hn">8.</span> Capas y mallas</h3>
 <p><em>«Donde la física es una sugerencia y los calzoncillos se llevan por fuera.»</em> <span class="src">T70</span></p>
 <h4>Superpoderes (como equipo)</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Visión Láser / Calorífica</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Nula</span></td><td><span class="tag">Abs: Máx 1</span></td><td>—</td><td>Alcance visual. <span class="src">T107</span>: «Miras y explota».</td></tr>
 <tr><td><strong>Superfuerza (Golpe)</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Nula</span></td><td><span class="tag">Rejilla: Llave N4</span></td><td>Lanzas coches, rompes tanques. <span class="src">T107</span> omitía Esq y Abs.</td></tr>
@@ -3602,8 +3619,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Control del Clima (Rayo)</strong></td><td><span class="tag parca">La Parca · Rejilla 3</span></td><td><span class="tag">Esq: Difícil (−2)</span></td><td><span class="tag">Abs: Nula</span></td><td>—</td><td>—</td></tr>
 </tbody></table></div>
 <h4>Gadgets de justiciero</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Cinturón de Artilugios</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> <span class="tag">Permiso: Solución</span> Una vez por sesión sacas justo el objeto que necesitas (espray antitiburones, ganzúa, antídoto).</td><td>Igual en <span class="src">T107</span>.</td></tr>
 <tr><td><strong>Bumerán afilado / Shuriken Explosivo</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Máx 1</span></td><td><span class="tag">Acceso 1</span></td><td>—</td></tr>
@@ -3617,8 +3634,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Cuerda de la Confesión</strong></td><td>—</td><td>—</td><td><span class="tag">Abs: Nula</span></td><td><span class="tag">Acceso 0</span> Si te atrapa (presa), no puedes mentir.</td><td>—</td></tr>
 </tbody></table></div>
 <h4>Objetos cósmicos</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Anillo de Voluntad</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Permiso: Creación</span> Crea objetos de luz sólida que duran mientras te concentres.</td><td>—</td></tr>
 <tr><td><strong>Cubo de Poder Estelar (fragmento)</strong></td><td>—</td><td>—</td><td>—</td><td>Altera la realidad local: mientras actúa, las tiradas de la escena usan la tarjeta Comedia negra (caos alto). Peligroso.</td><td>El original daba «[Motor: Caos Alto]».</td></tr>
@@ -3634,8 +3651,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <h3 id="bz-steampunk"><span class="hn">9.</span> El Oeste Extraño</h3>
 <p><em>«Donde el vapor quema, los revólveres tienen 6 tiros y los fantasmas son reales.»</em> <span class="src">T70</span></p>
 <h4>Armas de pólvora y vapor</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Revólver «Pacificador» (.45)</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Máx 1</span></td><td><span class="tag">Acceso 1</span></td><td>6 balas.</td></tr>
 <tr><td><strong>Rifle Winchester</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Acceso 1</span></td><td>De palanca. Alcance largo.</td></tr>
@@ -3649,8 +3666,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Lanzallamas de Queroseno</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Parcial</span></td><td><span class="tag">Abs: Nula</span></td><td><span class="tag">Acceso 1</span></td><td>Mochila pesada.</td></tr>
 </tbody></table></div>
 <h4>Inventos de ciencia extraña</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Brazo Mecánico a Vapor</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Acceso 1</span> <span class="tag">Rejilla: Físico +1</span> Requiere carbón.</td><td>Mientras funciona, sube un nivel tu Rejilla en el ámbito Físico. Esq y Abs del golpe sin indicar.</td></tr>
 <tr><td><strong>Monóculo de Análisis</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Ves el flujo de la magia y a los fantasmas.</td><td>—</td></tr>
@@ -3664,8 +3681,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Sierra Mecánica de Combate</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Máx 1</span></td><td><span class="tag">Acceso 2</span></td><td>Atraviesa puertas.</td></tr>
 </tbody></table></div>
 <h4>Ocultismo y póker</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Baraja de Cartas Maldita</strong></td><td><span class="tag">Daño 1 (mágico)</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Nula</span></td><td><span class="tag">Acceso 0</span> Lanzas una carta cortante.</td><td>El original escribe «Daño Mágico 1». Esq y Abs sin indicar.</td></tr>
 <tr><td><strong>Mineral fantasma (combustible)</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span> Los inventos que la queman hacen sus tiradas con Mejor de 2d10 (Optimismo Alto), pero atrae a los demonios.</td><td>El original daba «[Motor: +1 Dado]».</td></tr>
@@ -3683,8 +3700,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p>El autor no llegó a elegir entre Comedia/Dibujos y Espionaje Realista (T71). El asistente entregó Dibujos en T78 con 20 ítems (271–290) y dijo que eran «300 clavados», pero nunca llegaron los 10 que faltaban.</p>
 <p>Esta ambientación tiene <strong>19 ítems</strong>: <strong>completo</strong> para los 30. Ítems fusionados con otra ambientación: Caminar en el Aire → se conserva «Caminar por el Aire» en Wuxia / Anime (T70, aprobada).</p>
 <h4>Armas de tienda de bromas</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>El Yunque (Caída)</strong></td><td><span class="tag parca">La Parca · Rejilla 2</span></td><td><span class="tag">Esq: Fácil (+2)</span></td><td><span class="tag">Abs: Nula</span></td><td><span class="tag">Acceso 2</span></td><td>Te deja como un acordeón (consecuencia: Plano).</td></tr>
 <tr><td><strong>Mazo Gigante de Madera</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Acceso 1</span></td><td>Chichones instantáneos.</td></tr>
@@ -3704,8 +3721,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>La Pintura de Túnel</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 2</span></td><td>Pintas un túnel en una pared y es un túnel. Solo funciona para quien lo pintó: los demás se dan contra el muro.</td></tr>
 </tbody></table></div>
 <h4>Poderes toon</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Espacio en los Bolsillos</strong></td><td>—</td><td>—</td><td>—</td><td>Sacas cualquier objeto que tenga gracia en la escena.</td><td>—</td></tr>
 <tr><td><strong>Disfraz Instantáneo</strong></td><td>—</td><td>—</td><td>—</td><td>Te disfrazas de mujer o de abuela en 1 segundo. Engaña a cualquiera de nivel de Rejilla inferior.</td><td>—</td></tr>
@@ -3725,8 +3742,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <h3 id="bz-social">El Duelo Social (intriga cortesana) <span class="src">Escrito a peticion del autor (T124)</span></h3>
 <p><em>«Donde la lengua corta más que la espada.»</em> <span class="src">T78</span></p>
 <h4>Arsenal social</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>El Rumor Sutil</strong></td><td><span class="tag">Daño Social 1</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Total</span></td><td>—</td><td>Funciona como una daga: la buena reputación lo absorbe y la astucia lo desvía.</td></tr>
 <tr><td><strong>El Insulto Público</strong></td><td><span class="tag">Daño Social 2</span></td><td><span class="tag">Esq: Parcial</span></td><td><span class="tag">Abs: Máx 1</span></td><td>—</td><td>Funciona como una espada larga: siempre entra algo de humillación, aunque tengas estatus.</td></tr>
@@ -3749,8 +3766,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <h3 id="bz-piezas">Piezas sueltas: el catálogo genérico</h3>
 <p>Lo de arriba son diez mundos con sus marcas y su sabor. Esto es lo contrario: <strong>las piezas desnudas</strong>, sin ambientación y con el precio hecho en las tres monedas. Sirven en cualquier universo, valen de plantilla para fabricar lo tuyo y son la respuesta rápida cuando alguien saca algo que no está en ninguna lista.</p>
 <h4>Armas</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Hoja corta</strong></td><td><span class="tag">Daño 1</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Acceso 0</span></td><td>El cuchillo, la daga, el punzón. Existe en todos los mundos y no cuesta nada tenerlo.</td></tr>
 <tr><td><strong>Hoja larga</strong></td><td><span class="tag">Daño 2</span></td><td><span class="tag">Esq: Total</span></td><td><span class="tag">Abs: Total</span></td><td><span class="tag">Acceso 1</span></td><td>La espada, el machete, el hacha de mano.</td></tr>
@@ -3773,8 +3790,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 </tbody></table></div>
 <h4>Defensas</h4>
 <p class="small">Una defensa no ataca: por eso no lleva las tres etiquetas de combate. Lo que hace está en las notas, y lo que cuesta, en su columna.</p>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Ropa reforzada</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 0</span></td><td>Absorbe 1 punto cuando el arma lo permite.</td></tr>
 <tr><td><strong>Cota ligera</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 1</span> <span class="tag">1 punto</span></td><td><strong>+1 a defender.</strong> El punto es el entrenamiento de llevarla puesta.</td></tr>
@@ -3788,8 +3805,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <tr><td><strong>Piel endurecida</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">1 punto</span></td><td>Artefacto o poder: <strong>+1 a defender</strong> siempre, y no te lo pueden quitar. Si además nunca falla, es Potenciado: 2 puntos.</td></tr>
 </tbody></table></div>
 <h4>Vehículos</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Montura</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 1</span></td><td>Te mueve campo a través y no pelea por ti.</td></tr>
 <tr><td><strong>Vehículo de calle</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Acceso 1</span></td><td>Mueve al grupo. Decorado, salvo que lo uses como arma.</td></tr>
@@ -3804,8 +3821,8 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 </tbody></table></div>
 <h4>Artefactos y poderes</h4>
 <p class="small">Un artefacto es un poder con asas: se puede perder. Un poder innato es lo mismo sin asas, y cuesta igual. Las dos últimas filas están ahí a propósito: son las dos trampas más comunes.</p>
-<div class="tw"><table class="t">
-<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso / Rejilla</th><th>Notas</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th>Acceso&nbsp;/ Rejilla</th><th>Notas</th></tr></thead>
 <tbody>
 <tr><td><strong>Ojo que atraviesa</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">1 Llave</span></td><td>Ves a través de una pared. <em>La cuenta:</em> permiso: 1 Llave. <em>Ajuste:</em> Completo.</td></tr>
 <tr><td><strong>Alas</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">1 Llave</span></td><td>Vuelas. <em>La cuenta:</em> permiso: 1 Llave. <em>Ajuste:</em> Completo.</td></tr>
@@ -6189,7 +6206,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <h3 id="ch3-progreso"><span class="hn">3.6</span> Progression: the two wallets</h3>
 <p>Almost every game throws three completely different things into the same bag of points, and it shows: the level fifteen fighter is at once more skilled, more powerful in the world and more scarred, because there is only one counter. Here they are separated, and each one has a different owner.</p>
 <div class="tw"><table class="t">
-<thead><tr><th>What changes</th><th>Who owns it</th><th>How it moves</th></tr></thead>
+<thead><tr><th>What changes</th><th class="nw">Who owns it</th><th>How it moves</th></tr></thead>
 <tbody>
 <tr><td><strong>The world</strong> · the Grid</td><td>The Director</td><td>Not bought. It rises when the facts justify it, agreed at the table, and against the universe’s ceiling</td></tr>
 <tr><td><strong>The scars</strong> · gifts and flaws</td><td>The fiction</td><td>Not bought: they happen in play</td></tr>
@@ -7560,8 +7577,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <h3 id="bz-fantasia"><span class="hn">1.</span> The Dungeon and the Steppe</h3>
 <p><em>“Where steel is heavy and magic breaks the rules.”</em> <span class="src">T68</span></p>
 <h4>Bladed weapons</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Thief's Dagger</strong></td><td><span class="tag">Dmg 1</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Access 0</span> <span class="tag">Grid: Standard</span></td><td>+1 to the attack if you strike from behind (situational modifier; the total stays within [−2, +4]).</td></tr>
 <tr><td><strong>Short Sword</strong></td><td><span class="tag">Dmg 1</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Access 0</span> <span class="tag">Grid: Standard</span></td><td>Reliable and quick.</td></tr>
@@ -7575,8 +7592,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>The impossible bladeine (Godslayer)</strong></td><td><span class="tag">Dmg: Infinite</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: None</span></td><td><span class="tag">Access 3</span> <span class="tag">Grid: Ignores all</span></td><td>Expressly approved by the author (T67): “it should ignore the grid and be the godslayer”. If it hits and is not dodged, the target is out of the fight in a single blow, be it a god, a dragon or a mountain. Beheading is the narration; death, only if agreed. It cannot be tanked.</td></tr>
 </tbody></table></div>
 <h4>Ranged weapons</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Shortbow</strong></td><td><span class="tag">Dmg 1</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Access 0</span></td><td>—</td></tr>
 <tr><td><strong>Elven Longbow</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Partial</span></td><td><span class="tag">Soak: Max 1</span></td><td><span class="tag">Access 1</span></td><td>The arrow punches through light mail.</td></tr>
@@ -7585,8 +7602,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Throwing Axes</strong></td><td><span class="tag">Dmg 1</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Access 0</span></td><td>Short range.</td></tr>
 </tbody></table></div>
 <h4>Magic and the supernatural</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Magic Missile</strong></td><td><span class="tag">Dmg 1</span></td><td><span class="tag">Dodge: None</span></td><td><span class="tag">Soak: None</span></td><td><span class="tag">Access 1</span></td><td>Homing and ethereal: only magic shields stop it.</td></tr>
 <tr><td><strong>Fireball</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Partial (area)</span></td><td><span class="tag">Soak: Max 1</span></td><td><span class="tag">Access 2</span></td><td>Armour heats up and burns you anyway. The original said “if you dodge, you shed half”; in the canon, Partial means at least 1 point always gets through (ED-9).</td></tr>
@@ -7595,8 +7612,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Dragon's Breath</strong></td><td><span class="tag parca">The Reaper · Grid 3</span></td><td><span class="tag">Dodge: Partial</span></td><td><span class="tag">Soak: None</span></td><td><span class="tag">Access 2</span></td><td>Melts armour. Hitting the ground is the partial dodge: damage drops to 2.</td></tr>
 </tbody></table></div>
 <h4>Protection and utility</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Tower Shield</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> Lets you try to soak attacks with <span class="tag">Dodge: None</span> (such as arrows).</td><td>—</td></tr>
 <tr><td><strong>Chainmail</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> Soaks up to 1 point of damage from bladed weapons.</td><td>The cap on the attacking weapon's Soak tag still rules.</td></tr>
@@ -7612,8 +7629,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <h3 id="bz-neon"><span class="hn">2.</span> The City of Neon</h3>
 <p><em>“Where speed kills and armour is temporary.”</em> <span class="src">T68</span></p>
 <h4>Firearms</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Light Pistol (9 mm)</strong></td><td><span class="tag">Dmg 1</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Access 0</span> <span class="tag">Grid: Standard</span></td><td>—</td></tr>
 <tr><td><strong>Heavy Pistol (.44 Magnum)</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Max 1</span></td><td><span class="tag">Access 1</span></td><td>Breaks your ribs even through a vest.</td></tr>
@@ -7627,8 +7644,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Taser / Shock Weapon</strong></td><td><span class="tag">Dmg 1 (stun)</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: None (Metal)</span></td><td><span class="tag">Access 0</span></td><td>Value outside the legend. Against someone with metal armour or cyberware, Soak: None and the damage doubles; otherwise read it as Soak: Full.</td></tr>
 </tbody></table></div>
 <h4>Melee (high tech)</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Combat Knife</strong></td><td><span class="tag">Dmg 1</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Access 0</span></td><td>—</td></tr>
 <tr><td><strong>Monowire Katana</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: None</span></td><td><span class="tag">Access 1</span></td><td>Cuts at a molecular level: ignores Kevlar and ceramic plates.</td></tr>
@@ -7637,8 +7654,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Nanowire (Whip)</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Hard (−2)</span></td><td><span class="tag">Soak: None</span></td><td><span class="tag">Access 1</span></td><td>Severs limbs. Medium range.</td></tr>
 </tbody></table></div>
 <h4>Tech and gadgets</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Kevlar Vest</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> Soaks 1 point of ballistic damage. Useless against monowire.</td><td>—</td></tr>
 <tr><td><strong>Subdermal Armour (implant)</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 1</span> Your skin counts as armour: it always soaks 1 point.</td><td>—</td></tr>
@@ -7660,8 +7677,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <p><em>“Where weapons fail and fear kills.”</em> <span class="src">T68</span></p>
 <p>This setting has <strong>29 items</strong>: <strong>1 short</strong> of 30. Items merged with another setting: Molotov Cocktail → kept in Post-Apocalypse (T69, most recent version).</p>
 <h4>Improvised weapons</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Baseball Bat</strong></td><td><span class="tag">Dmg 1</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Access 0</span></td><td>Breaks on a fumble.</td></tr>
 <tr><td><strong>Fire Axe</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Access 1</span></td><td>Heavy: needs both hands.</td></tr>
@@ -7674,8 +7691,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Rock / Brick</strong></td><td><span class="tag">Dmg 1</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Access 0</span></td><td>—</td></tr>
 </tbody></table></div>
 <h4>Artefacts and dirty magic</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Cursed Book</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> Lets you cast spells at the cost of Mental Dmg to the user.</td><td>—</td></tr>
 <tr><td><strong>Arcane Sigil (chalk)</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> A barrier that Level 1 monsters cannot cross.</td><td>In the T67 idea bank (replaced format) it blocked up to Level 3.</td></tr>
@@ -7689,8 +7706,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Voodoo Doll</strong></td><td><span class="tag">Dmg 1</span></td><td><span class="tag">Dodge: None</span></td><td><span class="tag">Soak: None</span></td><td><span class="tag">Access 1</span></td><td>Requires a link (hair or blood).</td></tr>
 </tbody></table></div>
 <h4>Survival gear</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Torch</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> Cancels darkness penalties. The batteries run out (resource).</td><td>—</td></tr>
 <tr><td><strong>First-Aid Kit</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> Stabilises someone badly wounded; it does not heal instantly.</td><td>The original says “someone dying”.</td></tr>
@@ -7706,8 +7723,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <h3 id="bz-opera"><span class="hn">4.</span> Opera of Stars</h3>
 <p><em>“Where technology is clean, lasers go ‘pew-pew’ and faith moves starships.”</em> <span class="src">T69</span></p>
 <h4>Energy weapons</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Blaster Pistol</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Max 1</span></td><td><span class="tag">Access 1</span></td><td>Cauterises the wound. Useless against energy shields. Variant <span class="src">T107</span> “Blaster Rifle” with <span class="tag">Dodge: Partial</span>, never validated: the T69 version is kept.</td></tr>
 <tr><td><strong>Plasma Rifle</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Partial</span></td><td><span class="tag">Soak: Max 1</span></td><td><span class="tag">Access 2</span></td><td>A slow but devastating bolt: if it hits, it melts light armour. <span class="src">T110</span> repeats it unchanged.</td></tr>
@@ -7721,8 +7738,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Vibro-Lance</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Max 1</span></td><td><span class="tag">Access 1</span></td><td>A noble weapon. Can parry a lightsaber.</td></tr>
 </tbody></table></div>
 <h4>Shields and suits</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Personal Deflector Shield</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> <span class="tag">Soak: Full</span> against the first energy attack each turn; <span class="tag">Soak: None</span> against physical attacks (knives, fists).</td><td><span class="src">T107</span> and <span class="src">T110</span> repeat it and add that a slow knife gets through.</td></tr>
 <tr><td><strong>Assault Trooper Armour</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> <span class="tag">Soak: Full</span> against primitive weapons (arrows, bullets); <span class="tag">Soak: None</span> against blasters.</td><td>—</td></tr>
@@ -7737,8 +7754,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 </tbody></table></div>
 <h4>Powers (the Force / biotics)</h4>
 <p>They are bought like equipment, but used with the Arcane sphere (“the Flow”; the original says “Mind/Spirit”). T107 and T110 repeat 111–112, and T88 summarises them all unchanged.</p>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Flow Push</strong></td><td><span class="tag">Dmg 1</span></td><td><span class="tag">Dodge: Hard (−2)</span></td><td><span class="tag">Soak: None</span></td><td><span class="tag">Effect: knocks down and back</span></td><td>If the target slams into a wall, Dmg 2.</td></tr>
 <tr><td><strong>Flow Lightning</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: None</span></td><td><span class="tag">Soak: None</span></td><td>—</td><td>Pure torture. Paralyses.</td></tr>
@@ -7755,8 +7772,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <p><em>“Where everything is rusty, filthy and hurts a lot.”</em> <span class="src">T69</span></p>
 <p>This setting has <strong>28 items</strong>: <strong>2 short</strong> of 30. Items merged with another setting: Double-Barrelled Shotgun (Sawn-Off) → kept in Steampunk (T70); Acid Blood → kept in Gothic Horror (T70).</p>
 <h4>Deadly scrap</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Nail Bat</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Max 1</span></td><td><span class="tag">Access 1</span></td><td>Causes tetanus (consequence: Infection). Same in <span class="src">T107</span> and <span class="src">T110</span>.</td></tr>
 <tr><td><strong>Nail Rifle</strong></td><td><span class="tag">Dmg 1</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Access 0</span></td><td>Silent. If it is the finishing blow, it pins the enemy to the wall.</td></tr>
@@ -7769,8 +7786,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>The “Fat Boy” (bomb launcher)</strong></td><td><span class="tag">Dmg: Massive</span></td><td><span class="tag">Dodge: Partial</span></td><td><span class="tag">Soak: None</span></td><td><span class="tag">Access 3</span></td><td>A mini nuke: takes everything in the area out of the fight and leaves residual radiation. The original said “kills everything in the area”. <span class="src">T110</span> repeats it.</td></tr>
 </tbody></table></div>
 <h4>Vehicles and survival</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>V8 Interceptor</strong></td><td><span class="tag parca">The Reaper · Grid 2</span></td><td><span class="tag">Dodge: Hard (−2)</span></td><td><span class="tag">Soak: Max 1</span></td><td><span class="tag">Access 3</span> <span class="tag">4 Keys</span> <span class="tag">Grid: Level 2</span> Light armour.</td><td>—</td></tr>
 <tr><td><strong>Dune Buggy</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 1</span> <span class="tag">Grid: Level 1</span> Fast and unarmoured: ideal for running away.</td><td>—</td></tr>
@@ -7784,8 +7801,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Purified Water</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> “Blue gold”. Restores Mind and Body.</td><td>Amount not set.</td></tr>
 </tbody></table></div>
 <h4>Mutations and artefacts</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Extra Arm</strong></td><td>—</td><td>—</td><td>—</td><td>You hold a shield and a two-handed weapon.</td><td>—</td></tr>
 <tr><td><strong>Scaly Skin</strong></td><td>—</td><td>—</td><td>—</td><td>Natural armour: soaks up to 1 point. −2 to social rolls because of how you look.</td><td>The original writes “[Soak: 1]” and “−2 Charisma” (NOGUM has no attributes).</td></tr>
@@ -7800,8 +7817,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <h3 id="bz-wuxia"><span class="hn">6.</span> Martial Arts, Glows and Shouting</h3>
 <p><em>“Where shouting makes you stronger and gravity is optional.”</em> <span class="src">T70</span></p>
 <h4>Martial arts (physical techniques)</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Fist of a Hundred Fists</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: None</span></td><td><span class="tag">Soak: None</span></td><td>—</td><td>Pressure points: the enemy is out of the fight at the end of the turn (“you are already dead”). The original said “dies”.</td></tr>
 <tr><td><strong>Hurricane Kick</strong></td><td><span class="tag">Dmg 1</span></td><td><span class="tag">Dodge: Partial</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Effect: area</span></td><td>Hits every adjacent enemy.</td></tr>
@@ -7815,8 +7832,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>The Eight Points (Release)</strong></td><td>—</td><td>—</td><td>—</td><td>You take Dmg 1 every turn, but all your rolls use best of 2d10 (High Optimism).</td><td>The original gave “[+1 Die] to everything”.</td></tr>
 </tbody></table></div>
 <h4>Ki / energy techniques</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Two-Handed Energy Wave (beam)</strong></td><td><span class="tag parca">The Reaper · Grid 3</span></td><td><span class="tag">Dodge: Hard (−2)</span></td><td><span class="tag">Soak: Max 1</span></td><td>—</td><td>1 turn of charging while shouting. Destroys the terrain. Same in <span class="src">T107</span> and <span class="src">T110</span>.</td></tr>
 <tr><td><strong>Destroyer Disc</strong></td><td><span class="tag parca">The Reaper · Grid 3</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: None</span></td><td>—</td><td>Slices mountains. Slow but unstoppable.</td></tr>
@@ -7830,8 +7847,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Regeneration (final merge)</strong></td><td>—</td><td>—</td><td>—</td><td>You recover 1 health block if you lose a limb.</td><td>—</td></tr>
 </tbody></table></div>
 <h4>Mystic artefacts</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Cloud of the Pure of Heart</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 3</span> <span class="tag">4 Keys</span> <span class="tag">Grid: Level 2</span> Flying vehicle. Pure of heart only.</td><td>—</td></tr>
 <tr><td><strong>Sacred Staff</strong></td><td><span class="tag">Dmg 1</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Access 0</span> Changes size: infinite reach.</td><td>Dodge and Soak not specified.</td></tr>
@@ -7847,8 +7864,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <h3 id="bz-gotico"><span class="hn">7.</span> Gothic Horror</h3>
 <p><em>“Where blood is currency and politics are eternal.”</em> <span class="src">T70</span></p>
 <h4>Blood powers (disciplines)</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Claws of the Beast</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: None</span></td><td>—</td><td>Aggravated damage: armour doesn't stop the supernatural. Leaves a permanent scar. “Aggravated” isn't in the canon: it is read as a consequence that doesn't follow the normal healing timescales. Same in <span class="src">T107</span>.</td></tr>
 <tr><td><strong>The Gaze (Dominate)</strong></td><td><span class="tag">Mental Dmg 2</span></td><td><span class="tag">Dodge: None</span></td><td><span class="tag">Soak: Mind</span></td><td>—</td><td>If damage gets through, you give a simple command that must be obeyed.</td></tr>
@@ -7862,8 +7879,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Mental Invisibility (Obfuscate)</strong></td><td>—</td><td>—</td><td>—</td><td>People overlook the fact that you are there. Breaks if you interact.</td><td>—</td></tr>
 </tbody></table></div>
 <h4>Hunter and monster weapons</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Wooden Stake</strong></td><td><span class="tag">Dmg 1</span></td><td><span class="tag">Dodge: Hard (−2)</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Access 0</span></td><td>On a critical to the heart, the vampire is instantly paralysed (incapacitated). Same in <span class="src">T107</span>.</td></tr>
 <tr><td><strong>Silver Bullets</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> <span class="tag">Key: lycanthropes</span> Against werewolves, the damage becomes <span class="tag">Soak: None</span> and counts as aggravated.</td><td>The original said “turn Dirty Damage into Aggravated Damage (X)”; “Dirty” was the old Type A. Off-legend value: it is a narrative Key against a creature, not a level.</td></tr>
@@ -7877,8 +7894,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Bear Trap</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Hard (−2)</span></td><td><span class="tag">Soak: Max 1</span></td><td><span class="tag">Access 1</span> <span class="tag">Effect: Immobilise</span> Speed 0.</td><td>Dodge and Soak not specified.</td></tr>
 </tbody></table></div>
 <h4>Artefacts and resources</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Medical Blood Bag</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> <span class="tag">Fractal: Partial Reset</span> Heals 3 boxes on a vampire; does nothing for a human.</td><td>—</td></tr>
 <tr><td><strong>Vitae Elixir (elder's blood)</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 3</span> <span class="tag">9 Keys</span> <span class="tag">Grid: Level 3</span> Your Power Grid level becomes 3 for one scene, but you become bound to the donor (enslavement).</td><td>—</td></tr>
@@ -7894,8 +7911,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <h3 id="bz-supers"><span class="hn">8.</span> Capes and Tights</h3>
 <p><em>“Where physics is a suggestion and underpants are worn on the outside.”</em> <span class="src">T70</span></p>
 <h4>Superpowers (as equipment)</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Laser / Heat Vision</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: None</span></td><td><span class="tag">Soak: Max 1</span></td><td>—</td><td>Line-of-sight range. <span class="src">T107</span>: “You look and it explodes”.</td></tr>
 <tr><td><strong>Super Strength (Punch)</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: None</span></td><td><span class="tag">Grid: Key L4</span></td><td>You throw cars and smash tanks. <span class="src">T107</span> left out Dodge and Soak.</td></tr>
@@ -7909,8 +7926,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Weather Control (Lightning)</strong></td><td><span class="tag parca">The Reaper · Grid 3</span></td><td><span class="tag">Dodge: Hard (−2)</span></td><td><span class="tag">Soak: None</span></td><td>—</td><td>—</td></tr>
 </tbody></table></div>
 <h4>Vigilante gadgets</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Gadget Belt</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> <span class="tag">Permission: Solution</span> Once per session you pull out exactly the item you need (shark repellent spray, lockpick, antidote).</td><td>Same in <span class="src">T107</span>.</td></tr>
 <tr><td><strong>Sharpened boomerang / Explosive Shuriken</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Max 1</span></td><td><span class="tag">Access 1</span></td><td>—</td></tr>
@@ -7924,8 +7941,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Confession Rope</strong></td><td>—</td><td>—</td><td><span class="tag">Soak: None</span></td><td><span class="tag">Access 0</span> If it catches you (grapple), you cannot lie.</td><td>—</td></tr>
 </tbody></table></div>
 <h4>Cosmic items</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Will Ring</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Permission: Creation</span> Creates hard-light objects that last as long as you concentrate.</td><td>—</td></tr>
 <tr><td><strong>Stellar Power Cube (fragment)</strong></td><td>—</td><td>—</td><td>—</td><td>Alters local reality: while it is active, rolls in the scene use the Black comedy card (high chaos). Dangerous.</td><td>The original gave “[Engine: High Chaos]”.</td></tr>
@@ -7941,8 +7958,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <h3 id="bz-steampunk"><span class="hn">9.</span> The Weird West</h3>
 <p><em>“Where steam burns, revolvers hold 6 shots and ghosts are real.”</em> <span class="src">T70</span></p>
 <h4>Gunpowder and steam weapons</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>“Peacemaker” Revolver (.45)</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Max 1</span></td><td><span class="tag">Access 1</span></td><td>6 bullets.</td></tr>
 <tr><td><strong>Winchester Rifle</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Access 1</span></td><td>Lever-action. Long range.</td></tr>
@@ -7956,8 +7973,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Kerosene Flamethrower</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Partial</span></td><td><span class="tag">Soak: None</span></td><td><span class="tag">Access 1</span></td><td>Heavy backpack.</td></tr>
 </tbody></table></div>
 <h4>Weird science inventions</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Steam-Powered Mechanical Arm</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Access 1</span> <span class="tag">Power Grid: Physical +1</span> Requires coal.</td><td>While it runs, your Power Grid goes up one level in the Physical sphere. Dodge and Soak for the punch not specified.</td></tr>
 <tr><td><strong>Analysis Monocle</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 1</span> You see the flow of magic and ghosts.</td><td>—</td></tr>
@@ -7971,8 +7988,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Mechanical Combat Saw</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Max 1</span></td><td><span class="tag">Access 2</span></td><td>Cuts through doors.</td></tr>
 </tbody></table></div>
 <h4>Occultism and poker</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Cursed Deck of Cards</strong></td><td><span class="tag">Dmg 1 (magical)</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: None</span></td><td><span class="tag">Access 0</span> You throw a razor-sharp card.</td><td>The original writes “Magical Dmg 1”. Dodge and Soak not specified.</td></tr>
 <tr><td><strong>Ghost Rock (fuel)</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span> Inventions that burn it make their rolls with best of 2d10 (High Optimism), but it attracts demons.</td><td>The original gave “[Engine: +1 Die]”.</td></tr>
@@ -7990,8 +8007,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <p>The author never got round to choosing between Comedy/Cartoon and Realistic Espionage (T71). The assistant delivered Cartoon in T78 with 20 items (271–290) and said that made “exactly 300”, but the remaining 10 never arrived.</p>
 <p>This setting has <strong>19 items</strong>: <strong>complete</strong> to reach 30. Items merged with another setting: Walking on Air → “Air Walk” is kept in Wuxia / Anime (T70, approved).</p>
 <h4>Joke-shop weapons</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>The Anvil (Falling)</strong></td><td><span class="tag parca">The Reaper · Grid 2</span></td><td><span class="tag">Dodge: Easy (+2)</span></td><td><span class="tag">Soak: None</span></td><td><span class="tag">Access 2</span></td><td>Squashes you into an accordion (consequence: Flat).</td></tr>
 <tr><td><strong>Giant Wooden Mallet</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Access 1</span></td><td>Instant bumps on the head.</td></tr>
@@ -8011,8 +8028,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Tunnel Paint</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 2</span></td><td>You paint a tunnel on a wall and it is a tunnel. It only works for whoever painted it: everybody else hits the wall.</td></tr>
 </tbody></table></div>
 <h4>Cartoon powers</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Hammerspace Pockets</strong></td><td>—</td><td>—</td><td>—</td><td>You pull out any item that would be funny in the scene.</td><td>—</td></tr>
 <tr><td><strong>Instant Disguise</strong></td><td>—</td><td>—</td><td>—</td><td>You disguise yourself as a woman or a granny in 1 second. Fools anyone with a lower Power Grid level.</td><td>—</td></tr>
@@ -8032,8 +8049,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <h3 id="bz-social">The Social Duel (court intrigue) <span class="src">Written at the author’s request (T124)</span></h3>
 <p><em>“Where the tongue cuts deeper than the sword.”</em> <span class="src">T78</span></p>
 <h4>Social arsenal</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>The Subtle Rumour</strong></td><td><span class="tag">Social Dmg 1</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Full</span></td><td>—</td><td>Works like a dagger: a good reputation soaks it and cunning deflects it.</td></tr>
 <tr><td><strong>The Public Insult</strong></td><td><span class="tag">Social Dmg 2</span></td><td><span class="tag">Dodge: Partial</span></td><td><span class="tag">Soak: Max 1</span></td><td>—</td><td>Works like a longsword: some humiliation always gets through, even if you have status.</td></tr>
@@ -8056,8 +8073,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <h3 id="bz-piezas">Loose parts: the generic catalogue</h3>
 <p>Above are ten worlds with their brands and their flavour. This is the opposite: <strong>the bare parts</strong>, with no setting and with the price already worked out in all three currencies. They work in any universe, they serve as templates for building your own, and they are the quick answer when somebody produces something that is on no list at all.</p>
 <h4>Weapons</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Short blade</strong></td><td><span class="tag">Dmg 1</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Access 0</span></td><td>The knife, the dagger, the shiv. It exists in every world and costs nothing to own.</td></tr>
 <tr><td><strong>Long blade</strong></td><td><span class="tag">Dmg 2</span></td><td><span class="tag">Dodge: Full</span></td><td><span class="tag">Soak: Full</span></td><td><span class="tag">Access 1</span></td><td>The sword, the machete, the hand axe.</td></tr>
@@ -8080,8 +8097,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 </tbody></table></div>
 <h4>Defences</h4>
 <p class="small">A defence does not attack: that is why it carries none of the three combat tags. What it does is in the notes, what it costs is in its column.</p>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Reinforced clothing</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 0</span></td><td>Soaks 1 point when the weapon allows it.</td></tr>
 <tr><td><strong>Light mail</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 1</span> <span class="tag">1 point</span></td><td><strong>+1 to defend.</strong> The point is the training of wearing it.</td></tr>
@@ -8095,8 +8112,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <tr><td><strong>Hardened skin</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">1 point</span></td><td>Artefact or power: <strong>+1 to defend</strong> always, and it cannot be taken from you. If it also never fails, it is Enhanced: 2 points.</td></tr>
 </tbody></table></div>
 <h4>Vehicles</h4>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Mount</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 1</span></td><td>It carries you cross-country and does not fight for you.</td></tr>
 <tr><td><strong>Street vehicle</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">Access 1</span></td><td>It moves the group. Scenery, unless you use it as a weapon.</td></tr>
@@ -8111,8 +8128,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 </tbody></table></div>
 <h4>Artefacts and powers</h4>
 <p class="small">An artefact is a power with handles: it can be lost. An innate power is the same thing without handles, and costs the same. The last two rows are there on purpose: they are the two commonest traps.</p>
-<div class="tw"><table class="t">
-<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access / Grid</th><th>Notes</th></tr></thead>
+<div class="tw"><table class="t arsenal">
+<thead><tr><th>Item</th><th>Dmg</th><th>Dodge</th><th>Soak</th><th>Access&nbsp;/ Grid</th><th>Notes</th></tr></thead>
 <tbody>
 <tr><td><strong>Piercing eye</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">1 Key</span></td><td>You see through a wall. <em>The sum:</em> permission: 1 Key. <em>Adjustment:</em> Complete.</td></tr>
 <tr><td><strong>Wings</strong></td><td>—</td><td>—</td><td>—</td><td><span class="tag">1 Key</span></td><td>You fly. <em>The sum:</em> permission: 1 Key. <em>Adjustment:</em> Complete.</td></tr>

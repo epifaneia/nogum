@@ -150,6 +150,23 @@ table.t thead th:first-child{min-width:34mm}
 table.t td.num:first-child,table.t:has(tbody td.num:first-child) thead th:first-child{min-width:0}
 /* y cuando la ultima columna es la apretada, que no se parta tampoco en seco */
 table.t td:last-child{overflow-wrap:break-word}
+/* Nada de guiones en las tablas. Con hyphens:auto el navegador que trae
+   diccionarios (el Chrome del lector) partia «NI-VEL» o «RECUPE-RACION» para
+   estrechar columnas, y el Chrome automatico de las pruebas, que no los trae,
+   no lo veia. Sin guiones, cada columna mide al menos su palabra mas larga y
+   el sitio sale de las columnas de texto largo. */
+table.t th,table.t td{hyphens:manual}
+table.t thead th{overflow-wrap:normal}
+/* una cabecera que debe ir en una sola linea */
+table.t th.nw{white-space:nowrap}
+/* El arsenal del Bazar: las 35 tablas de objetos, con el mismo reparto */
+table.t.arsenal{table-layout:fixed}
+table.t.arsenal thead th:nth-child(1){width:30mm;min-width:0}
+table.t.arsenal thead th:nth-child(2){width:19mm}
+table.t.arsenal thead th:nth-child(3){width:21mm}
+table.t.arsenal thead th:nth-child(4){width:18mm}
+table.t.arsenal thead th:nth-child(5){width:33mm}
+table.t.arsenal td:first-child{min-width:0}
 td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
 table.t td.on{color:var(--red);text-align:center}
 table.rejilla td{text-align:center}

@@ -1967,3 +1967,17 @@ por arco; +4 llega a 3). El Acelerado gana la columna de Acceso en su tabla,
 igual que el Juego, y la fila +4 del ingles vuelve a decir lo mismo que el
 espanol. Se descarto dar a todos Recursos +0 por defecto: no hacia falta tocar
 la regla.
+
+---
+
+## T172 · Las tablas no parten palabras
+
+El autor veia «NI-VEL», «MODIFI-CADOR» o «RECUPE-RACION» partidas en las
+cabeceras, y las pruebas no lo veian: las tablas tenian hyphens:auto, su Chrome
+trae diccionarios de guion y el Chrome automatico de las pruebas no. Ahora las
+tablas no usan guiones: cada columna mide al menos su palabra mas larga y el
+sitio sale de las columnas de texto largo. Las cabeceras no se parten nunca, y
+«Quien es su dueño» va en una linea. Las 35 tablas del arsenal del Bazar llevan
+el mismo reparto de columnas (clase arsenal, ancho fijo), y «Acceso / Rejilla»
+se parte como mucho en dos lineas. Las pruebas usan desde ahora un perfil con
+los diccionarios de guion, para ver lo mismo que ve el lector.
