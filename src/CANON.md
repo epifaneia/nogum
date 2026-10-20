@@ -2083,3 +2083,29 @@ Acelerado; fuera de combate sigue esta misma regla.
 
 El autor: en el Acelerado la armadura ligera da +1 y la pesada +2 a la tirada
 de absorcion, si el arma deja absorber.
+
+---
+
+## T179 · Siete ideas y un capitulo para desenredar
+
+El autor: casi todos los agujeros que encontraron las pruebas salian de no
+tener claros los principios, no de reglas que faltaran. «Todo lo que me has
+preguntado deberia salir solo de la logica del juego.» Se escriben arriba del
+capitulo 2, en un recuadro, y se desarrollan en un apartado nuevo, 2.6
+«Desenredando», con las preguntas reales como casos:
+1. La Rejilla es escala, no habilidad, y casi nunca es humana (escalera Social:
+   el vampiro 2, las sirenas 3, Orfeo 4, los dioses de la locura 5; la estrella
+   del rock es un 1 con Llaves). Los unos abundan.
+2. Si algo da un permiso o rompe la Rejilla, tiene Llaves.
+3. La Parca es una Llave.
+4. Lo prestado y lo robado duran una escena, lo use quien lo use.
+5. «Contra todo» es la compra completa; «contra una cosa» es Limitado. Una
+   Disciplina contra todo cuesta 2·x²; con objetivo o solo para el daño, x²;
+   nunca mas que la Rejilla del ambito.
+6. Lo que hace una Llave lo dice la Llave: alcanzar lo de arriba, no ganar sin
+   tirar. El bazuca es Rejilla para el daño, no para acertar.
+7. Nada se invoca al margen de la mesa; las Llaves de un momento las establece
+   la ficcion y no se saltan la progresion.
+Precios: Velo absoluto 8, Fuerza de sala 5, Fuerza de edificio 20, Oido y
+Mando de multitud 2, el ejemplo Indetectable 8. El Acelerado lleva cinco de
+las siete en un recuadro.
