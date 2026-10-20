@@ -1869,3 +1869,15 @@ lo habria visto.
 La hoja recomienda declarar en itch que hay material hecho con IA (las
 cubiertas, y texto y codigo escritos con un asistente). En rol es un tema
 sensible, y esconderlo hace mas dano que decirlo.
+
+---
+
+## T167 · La serie de imagenes
+
+Imagenes nuevas del autor para La Idea (los planos), el Acelerado (una sola
+mesa) y la App (los brazos mecanicos); el Juego conserva la original. Corrigen
+lo que fallaba en la primera tanda: el personaje vuelve a ser el mismo
+(sombrero y abrigo), el estudio es el mismo, el Acelerado deja los platos de
+DJ modernos por una mesa analogica, y las cuatro comparten el tratamiento de
+la original (centro casi en blanco y negro, color en los bordes). Las laminas
+siguen cabiendo en su hoja; el kit de itch.io se ha regenerado con ellas.
