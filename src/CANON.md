@@ -2005,3 +2005,23 @@ nunca en una Firma. El equipo que rompe la Rejilla cobra x² Llaves con x
 relativo a quien lo lleva, y va Limitado (÷2) si solo sirve para una Firma. El
 recuadro del bote decia «diez casillas por cinco monedas, la libertad se paga
 al doble»: son ocho Disciplinas, y la libertad cuesta un 60 % mas.
+
+---
+
+## T174 · Los precios del Bazar con la unidad de cambio
+
+El Bazar ponia precio a lo que rompe la Rejilla por el nivel del objeto
+(nivel 2 = 4 Llaves, 3 = 9…). Con T173 se recalcula para un portador de
+nivel 1, con x = niveles que el objeto le sube:
+- Lo que sube Disciplinas sueltas: x² por Disciplina, y nunca mas que la
+  Rejilla del ambito (5·x²). Armas, bombas, la Espada Ancestral, «La lista»,
+  el canon de riel (4), el arma de asedio (1). El Brazo Gorila sube dos (2).
+  Los poderes de ejemplo del taller: Velo absoluto 4, Fuerza de sala 4 (las
+  cuatro de Vigor), Fuerza de edificio 16, Oido y Mando de multitud 1.
+- Lo que sincroniza un ambito entero (vehiculos, exoesqueletos, armaduras
+  motorizadas): Rejilla Limitada, 5·x²÷2 al alza: 3 a nivel 2, 10 a nivel 3.
+- El Elixir de Vitae da la Rejilla una escena: es una Llave ancha, x² = 4.
+- Sin precio, como estaban: la Servoarmadura, la Bomba de energia prestada y
+  el Martillo Digno, que concede el Director.
+Las etiquetas «Rejilla: Llave N» pasan a «Rejilla: Nivel N». El Buggy de Arena
+tenia Acceso 1 en ingles y 2 en español: manda el español.
