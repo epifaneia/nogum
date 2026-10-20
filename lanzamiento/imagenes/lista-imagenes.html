@@ -62,6 +62,7 @@ li.item input[type=checkbox]:checked::after{content:"";width:6px;height:11px;bor
 li.item input[type=checkbox]:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .donde{font:600 12px/1.3 var(--mono);color:var(--ink-3);letter-spacing:.04em;text-transform:uppercase}
 .idea{margin:0;color:var(--ink)}
+.evoca{display:block;font:400 11px/1.4 var(--mono);color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;margin:2px 0 1px}
 .mundo{display:flex;align-items:center;gap:8px;margin-top:4px}
 .mundo span{font:400 12px/1 var(--mono);color:var(--ink-3);white-space:nowrap}
 .mundo input{flex:1;min-width:0;font:15px/1.3 var(--serif);color:var(--ink);background:var(--chip);border:1px solid transparent;border-radius:6px;padding:5px 8px}
@@ -98,7 +99,7 @@ footer button:hover{border-color:var(--ink-3)}
       <li>Foto antigua: bordes gastados, el centro apagado. Fondo también fotográfico, no ilustración.</li>
       <li>Cambian el universo y la distancia: a veces enorme en primer plano, a veces diminuto al fondo.</li>
     </ol>
-    <p>Cada imagen, en un universo distinto. Anota cuál en su casilla y al final los veinte mundos habrán salido solos.</p>
+    <p>De cada imagen, aquí solo está lo que tiene que transmitir; la metáfora es tuya. Cada una en un universo distinto: anota cuál en su casilla y al final los veinte mundos habrán salido solos.</p>
   </div>
 
   <div id="libros"></div>
@@ -112,42 +113,42 @@ footer button:hover{border-color:var(--ink-3)}
 <script>
 var LIBROS = [
   {id:'idea', n:'La Idea', grita:[
-    ['1 · Qué es el tono, y por qué no es el género', 'El mismo sitio dos veces: una calle a pleno sol y la misma calle en clave de terror. El observador está en las dos y nada más ha cambiado.'],
-    ['1 · Todo reglamento lleva un tono dentro', 'El observador levanta el tablero de la mesa y debajo hay un termostato que siempre estuvo ahí.'],
-    ['1 · El feliz accidente', 'Gira una rueda sin querer y el cielo de la ventana pasa de tormenta a amanecer.'],
-    ['2 · La mesa de mezclas', 'Tres faders —optimismo, caos, vida— delante de un universo en miniatura.']
+    ['1 · Qué es el tono, y por qué no es el género', 'El género es el decorado; el tono es cómo se siente estar dentro. El mismo mundo puede doler o hacer gracia.'],
+    ['1 · Todo reglamento lleva un tono dentro', 'Las reglas ya deciden cómo te sientes, aunque nadie lo diga. Algo oculto que siempre estuvo funcionando.'],
+    ['1 · El feliz accidente', 'Descubrir sin buscar: lo que parecía fijo se puede mover, y con muy poco.'],
+    ['2 · La mesa de mezclas', 'Control en manos de la mesa: pocas palancas, cada una con un efecto claro.']
   ], pide:[
-    ['3 · El rigor: la promesa es comprobable', 'Una lupa sobre dos dados, o una balanza de precisión con un dado en cada plato.'],
-    ['6 · El problema de las listas infinitas', 'Un almacén sin fondo de estanterías, y el observador con una sola hoja en la mano.'],
-    ['8 · Cuatro piezas, una cosa', 'Cuatro fotos viejas clavadas en un corcho, unidas con hilo rojo como en un caso de detective.']
+    ['3 · El rigor: la promesa es comprobable', 'La promesa se puede comprobar. Precisión, medida, nada de humo.'],
+    ['6 · El problema de las listas infinitas', 'El agobio de lo inabarcable frente a lo justo y suficiente.'],
+    ['8 · Cuatro piezas, una cosa', 'Partes distintas que solo cobran sentido juntas.']
   ]},
   {id:'juego', n:'El Juego completo', grita:[
-    ['Capítulo 1 · La física de la emoción', 'Dos dados, rojo y azul, suspendidos en el aire sobre la mesa, y todo el mundo aguantando la respiración.'],
-    ['1.4 · Las tarjetas de tono', 'Una pared con nueve fotos en cuadrícula de 3 × 3 y dos huecos vacíos.'],
-    ['Capítulo 2 · La Rejilla', 'El robot gigante delante del observador. Ya está hecha.'],
-    ['2.3 · La Llave', 'Una llave diminuta delante de una puerta colosal.'],
-    ['2.4 · El zoom narrativo', 'El mismo observador a cinco escalas: persona, sala, edificio, ciudad, país.'],
-    ['3.5 · La economía de la escasez', 'Catorce monedas sobre la mesa y demasiadas cosas que comprar.'],
-    ['4.5 · El Estilo', 'Un duelo ya ganado: los matones por el suelo y el observador apuntando solo cómo ha sido.'],
-    ['5.3 · La Parca', 'Una sombra al fondo del pasillo y el observador dándose la vuelta. No se esquiva: se evita.'],
-    ['5.4 · La vida fractal', 'Una matrioska agrietada.'],
-    ['Capítulo 6 · La Oposición', 'Un recorte de cartón, un boceto y un retrato completo: decorado, ficha rápida y ficha completa.'],
-    ['8.3 · El Bazar del Multiverso', 'Una espada, una pistola de rayos y una varita en el mismo mostrador.'],
-    ['El menú degustación · las recetas', 'Platos con un universo en miniatura en cada uno.']
+    ['Capítulo 1 · La física de la emoción', 'El instante con los dados en la mano: la emoción llega antes que el resultado.'],
+    ['1.4 · Las tarjetas de tono', 'Un sistema ordenado de emociones, con lo que existe y con los huecos que se dejaron a propósito.'],
+    ['Capítulo 2 · La Rejilla', 'Una diferencia de escala que ninguna tirada salva. Hay cosas fuera de tu alcance.'],
+    ['2.3 · La Llave', 'Lo pequeño y concreto que abre lo imposible: una buena razón vale más que la fuerza.'],
+    ['2.4 · El zoom narrativo', 'La misma persona pesa distinto según la escala del mundo. Cada nivel, dos ceros más.'],
+    ['3.5 · La economía de la escasez', 'Elegir es renunciar. No llega para todo, y lo que eliges dice quién eres.'],
+    ['4.5 · El Estilo', 'Cuando ganar ya no está en duda, lo que importa es cómo.'],
+    ['5.3 · La Parca', 'Lo inevitable no se esquiva: se evita antes, con la cabeza.'],
+    ['5.4 · La vida fractal', 'Capas dentro de capas: el mismo daño, contado a distinta escala.'],
+    ['Capítulo 6 · La Oposición', 'No todo enemigo merece el mismo detalle: cada uno pesa lo que pesa en la historia.'],
+    ['8.3 · El Bazar del Multiverso', 'Lo de todos los mundos a la vez, al alcance de quien pueda pagarlo.'],
+    ['El menú degustación · las recetas', 'Muchos universos, cada uno con su receta, salidos de la misma cocina.']
   ], pide:[
-    ['1.1 · Los dos ejes', 'Un cruce de caminos con dos postes indicadores.'],
-    ['2.5 · El Ancla y la Vela', 'Un barco en la tormenta.'],
-    ['3.3 · Las Firmas', 'Una sola herramienta gastada por el uso.'],
-    ['5.1 · La iniciativa por guardias', 'Tres sombras en tres posturas: violencia, treta, especialidad.'],
-    ['7.4 · La disonancia', 'Una nariz de payaso en un funeral.'],
-    ['8.1 · El Baúl', 'Un baúl abierto con dieciséis compartimentos.']
+    ['1.1 · Los dos ejes', 'Dos decisiones independientes que, juntas, dibujan un mapa.'],
+    ['2.5 · El Ancla y la Vela', 'Lo que te sujeta y lo que te empuja: estabilidad frente a movimiento.'],
+    ['3.3 · Las Firmas', 'La maestría absoluta en algo muy concreto.'],
+    ['5.1 · La iniciativa por guardias', 'Antes de actuar, cada uno decide qué clase de jugada va a hacer.'],
+    ['7.4 · La disonancia', 'Algo que no encaja con el tono y lo estropea todo sin que nadie sepa por qué.'],
+    ['8.1 · El Baúl', 'Opciones guardadas para quien las quiera. Solo se abre si hace falta.']
   ]},
   {id:'acel', n:'El Acelerado', grita:[
-    ['Apertura', 'El coche, en marcha, con el cuaderno de tres líneas.'],
-    ['4 · ¿Quieres romper el juego?', 'El observador sale por el borde de su foto vieja hacia una foto más grande.']
+    ['Apertura', 'Prisa y ligereza: empezar ya, con lo justo.'],
+    ['4 · ¿Quieres romper el juego?', 'Hay mucho más allá de este marco. La invitación a salir.']
   ], pide:[
-    ['1 · Selector de misión', 'Cuatro puertas, una por modo.'],
-    ['3 · Interfaz del Director', 'Un enemigo improvisado en diez segundos: un boceto en una servilleta.']
+    ['1 · Selector de misión', 'Una sola decisión al principio que marca toda la tarde.'],
+    ['3 · Interfaz del Director', 'Improvisar algo lo bastante bueno en un momento.']
   ]}
 ];
 var CLAVE = 'nogum-lista-imagenes';
@@ -169,7 +170,7 @@ LIBROS.forEach(function(L){
       html += '<li class="item' + (e.h ? ' hecho' : '') + '" data-id="' + id + '" data-libro="' + L.id + '">' +
         '<label class="check"><input type="checkbox" aria-label="Hecha: ' + esc(it[0]) + '"' + (e.h ? ' checked' : '') + '></label>' +
         '<span class="donde">' + esc(it[0]) + '</span>' +
-        '<p class="idea">' + esc(it[1]) + '</p>' +
+        '<div><span class="evoca">Debe transmitir</span><p class="idea">' + esc(it[1]) + '</p></div>' +
         '<div class="mundo"><span>Universo</span><input type="text" placeholder="¿en qué mundo pasa?" value="' + esc(e.m || '') + '" aria-label="Universo de ' + esc(it[0]) + '"></div></li>';
     });
     html += '</ul>';
