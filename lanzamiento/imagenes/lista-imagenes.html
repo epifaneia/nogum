@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imágenes de NOGUM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Ibarra+Real+Nova:ital,wght@0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --ground:#e7ddcb; --paper:#f5efe3; --ink:#1c1814; --ink-2:#4a4237; --ink-3:#655c4e;
+  --rule:#d4c7af; --red:#b8323a; --blue:#2c56a0; --done:#8a8070; --chip:#ece3d2;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --book:"Ibarra Real Nova",Georgia,serif;
+  --serif:"Source Serif 4",Georgia,serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#100e0c; --paper:#1c1916; --ink:#ede6d9; --ink-2:#c9bfae; --ink-3:#9c9282;
+    --rule:#3a332b; --red:#f07378; --blue:#7fa6ea; --done:#6f675b; --chip:#26211b;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#100e0c; --paper:#1c1916; --ink:#ede6d9; --ink-2:#c9bfae; --ink-3:#9c9282;
+  --rule:#3a332b; --red:#f07378; --blue:#7fa6ea; --done:#6f675b; --chip:#26211b;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font:17px/1.55 var(--serif)}
+.wrap{max-width:860px;margin:0 auto;padding:28px 16px 64px}
+header{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.marca{display:flex;align-items:center;gap:10px}
+.dados{display:flex;gap:4px}
+.dados i{width:20px;height:20px;border-radius:5px;display:block}
+.dados i:first-child{background:var(--red)} .dados i:last-child{background:var(--blue)}
+h1{font:800 46px/1 var(--display);letter-spacing:.01em;margin:0;text-transform:uppercase}
+.sub{font:400 13px/1.4 var(--mono);color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;margin:6px 0 0}
+.total{font:600 13px/1 var(--mono);color:var(--ink-2);text-align:right}
+.total b{font:800 32px/1 var(--display);color:var(--ink);display:block;margin-bottom:4px}
+.barra{height:6px;background:var(--rule);border-radius:3px;overflow:hidden;margin:6px 0 0;width:180px}
+.barra span{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--blue));width:0;transition:width .3s}
+.biblia{background:var(--paper);border:1px solid var(--rule);border-left:4px solid var(--red);border-radius:10px;padding:16px 20px;margin:0 0 26px}
+.biblia h2{font:600 22px/1.2 var(--book);margin:0 0 8px}
+.biblia ol{margin:0;padding-left:22px}
+.biblia li{margin:3px 0}
+.biblia p{margin:10px 0 0;color:var(--ink-2);font-size:15px}
+section.libro{margin:0 0 30px}
+.libro-cab{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:12px}
+.libro-cab h2{font:800 30px/1 var(--display);text-transform:uppercase;margin:0;letter-spacing:.02em}
+.libro-cab span{font:600 13px/1 var(--mono);color:var(--ink-3)}
+h3{font:600 13px/1 var(--mono);text-transform:uppercase;letter-spacing:.1em;margin:18px 0 8px;display:flex;align-items:center;gap:8px}
+h3.grita{color:var(--red)} h3.pide{color:var(--blue)}
+h3::after{content:"";flex:1;height:1px;background:var(--rule)}
+ul.items{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+li.item{background:var(--paper);border:1px solid var(--rule);border-radius:10px;padding:12px 14px 12px 12px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;transition:opacity .2s}
+li.item label.check{grid-row:span 3;display:flex;padding-top:2px;cursor:pointer}
+li.item input[type=checkbox]{appearance:none;-webkit-appearance:none;width:22px;height:22px;border:2px solid var(--ink-3);border-radius:6px;margin:0;cursor:pointer;display:grid;place-content:center;background:transparent}
+li.item input[type=checkbox]:checked{background:var(--red);border-color:var(--red)}
+li.item input[type=checkbox]:checked::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+li.item input[type=checkbox]:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.donde{font:600 12px/1.3 var(--mono);color:var(--ink-3);letter-spacing:.04em;text-transform:uppercase}
+.idea{margin:0;color:var(--ink)}
+.mundo{display:flex;align-items:center;gap:8px;margin-top:4px}
+.mundo span{font:400 12px/1 var(--mono);color:var(--ink-3);white-space:nowrap}
+.mundo input{flex:1;min-width:0;font:15px/1.3 var(--serif);color:var(--ink);background:var(--chip);border:1px solid transparent;border-radius:6px;padding:5px 8px}
+.mundo input:focus{outline:none;border-color:var(--blue)}
+.mundo input::placeholder{color:var(--ink-3);font-style:italic}
+li.item.hecho{opacity:.62}
+li.item.hecho .idea{text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px;color:var(--done)}
+footer{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:14px;font:400 13px/1.4 var(--mono);color:var(--ink-3)}
+footer button{font:600 12px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);background:transparent;border:1px solid var(--rule);border-radius:8px;padding:8px 12px;cursor:pointer}
+footer button:hover{border-color:var(--ink-3)}
+@media (max-width:560px){
+  h1{font-size:38px}
+  .total{text-align:left}
+  .libro-cab h2{font-size:26px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="marca"><div class="dados"><i></i><i></i></div><h1>Las imágenes</h1></div>
+      <p class="sub">NOGUM · el observador en cada universo</p>
+    </div>
+    <div class="total"><b id="cuenta">0 / 29</b>hechas<div class="barra"><span id="barra"></span></div></div>
+  </header>
+
+  <div class="biblia">
+    <h2>La biblia de la serie</h2>
+    <ol>
+      <li>El observador, siempre de espaldas o en silueta. Nunca la cara.</li>
+      <li>Siempre con su cuaderno, abierto y con pocas líneas.</li>
+      <li>El rojo sale de una luz de la escena a la izquierda; el azul, de otra a la derecha.</li>
+      <li>Foto antigua: bordes gastados, el centro apagado. Fondo también fotográfico, no ilustración.</li>
+      <li>Cambian el universo y la distancia: a veces enorme en primer plano, a veces diminuto al fondo.</li>
+    </ol>
+    <p>Cada imagen, en un universo distinto. Anota cuál en su casilla y al final los veinte mundos habrán salido solos.</p>
+  </div>
+
+  <div id="libros"></div>
+
+  <footer>
+    <span>Se guarda en este navegador.</span>
+    <button type="button" id="borrar">Empezar de cero</button>
+  </footer>
+</div>
+
+<script>
+var LIBROS = [
+  {id:'idea', n:'La Idea', grita:[
+    ['1 · Qué es el tono, y por qué no es el género', 'El mismo sitio dos veces: una calle a pleno sol y la misma calle en clave de terror. El observador está en las dos y nada más ha cambiado.'],
+    ['1 · Todo reglamento lleva un tono dentro', 'El observador levanta el tablero de la mesa y debajo hay un termostato que siempre estuvo ahí.'],
+    ['1 · El feliz accidente', 'Gira una rueda sin querer y el cielo de la ventana pasa de tormenta a amanecer.'],
+    ['2 · La mesa de mezclas', 'Tres faders —optimismo, caos, vida— delante de un universo en miniatura.']
+  ], pide:[
+    ['3 · El rigor: la promesa es comprobable', 'Una lupa sobre dos dados, o una balanza de precisión con un dado en cada plato.'],
+    ['6 · El problema de las listas infinitas', 'Un almacén sin fondo de estanterías, y el observador con una sola hoja en la mano.'],
+    ['8 · Cuatro piezas, una cosa', 'Cuatro fotos viejas clavadas en un corcho, unidas con hilo rojo como en un caso de detective.']
+  ]},
+  {id:'juego', n:'El Juego completo', grita:[
+    ['Capítulo 1 · La física de la emoción', 'Dos dados, rojo y azul, suspendidos en el aire sobre la mesa, y todo el mundo aguantando la respiración.'],
+    ['1.4 · Las tarjetas de tono', 'Una pared con nueve fotos en cuadrícula de 3 × 3 y dos huecos vacíos.'],
+    ['Capítulo 2 · La Rejilla', 'El robot gigante delante del observador. Ya está hecha.'],
+    ['2.3 · La Llave', 'Una llave diminuta delante de una puerta colosal.'],
+    ['2.4 · El zoom narrativo', 'El mismo observador a cinco escalas: persona, sala, edificio, ciudad, país.'],
+    ['3.5 · La economía de la escasez', 'Catorce monedas sobre la mesa y demasiadas cosas que comprar.'],
+    ['4.5 · El Estilo', 'Un duelo ya ganado: los matones por el suelo y el observador apuntando solo cómo ha sido.'],
+    ['5.3 · La Parca', 'Una sombra al fondo del pasillo y el observador dándose la vuelta. No se esquiva: se evita.'],
+    ['5.4 · La vida fractal', 'Una matrioska agrietada.'],
+    ['Capítulo 6 · La Oposición', 'Un recorte de cartón, un boceto y un retrato completo: decorado, ficha rápida y ficha completa.'],
+    ['8.3 · El Bazar del Multiverso', 'Una espada, una pistola de rayos y una varita en el mismo mostrador.'],
+    ['El menú degustación · las recetas', 'Platos con un universo en miniatura en cada uno.']
+  ], pide:[
+    ['1.1 · Los dos ejes', 'Un cruce de caminos con dos postes indicadores.'],
+    ['2.5 · El Ancla y la Vela', 'Un barco en la tormenta.'],
+    ['3.3 · Las Firmas', 'Una sola herramienta gastada por el uso.'],
+    ['5.1 · La iniciativa por guardias', 'Tres sombras en tres posturas: violencia, treta, especialidad.'],
+    ['7.4 · La disonancia', 'Una nariz de payaso en un funeral.'],
+    ['8.1 · El Baúl', 'Un baúl abierto con dieciséis compartimentos.']
+  ]},
+  {id:'acel', n:'El Acelerado', grita:[
+    ['Apertura', 'El coche, en marcha, con el cuaderno de tres líneas.'],
+    ['4 · ¿Quieres romper el juego?', 'El observador sale por el borde de su foto vieja hacia una foto más grande.']
+  ], pide:[
+    ['1 · Selector de misión', 'Cuatro puertas, una por modo.'],
+    ['3 · Interfaz del Director', 'Un enemigo improvisado en diez segundos: un boceto en una servilleta.']
+  ]}
+];
+var CLAVE = 'nogum-lista-imagenes';
+var estado = {};
+try { estado = JSON.parse(localStorage.getItem(CLAVE) || '{}') || {}; } catch (e) { estado = {}; }
+// la Rejilla ya existe
+if (!('juego-g-2' in estado)) estado['juego-g-2'] = {h:true, m:'Robots gigantes'};
+function guarda(){ try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) {} }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+var total = 0, html = '';
+LIBROS.forEach(function(L){
+  var n = L.grita.length + L.pide.length; total += n;
+  html += '<section class="libro"><div class="libro-cab"><h2>' + esc(L.n) + '</h2><span data-libro="' + L.id + '">0 / ' + n + '</span></div>';
+  [['grita','A gritos'],['pide','La piden']].forEach(function(g){
+    html += '<h3 class="' + g[0] + '">' + g[1] + '</h3><ul class="items">';
+    L[g[0]].forEach(function(it, i){
+      var id = L.id + '-' + g[0][0] + '-' + i, e = estado[id] || {};
+      html += '<li class="item' + (e.h ? ' hecho' : '') + '" data-id="' + id + '" data-libro="' + L.id + '">' +
+        '<label class="check"><input type="checkbox" aria-label="Hecha: ' + esc(it[0]) + '"' + (e.h ? ' checked' : '') + '></label>' +
+        '<span class="donde">' + esc(it[0]) + '</span>' +
+        '<p class="idea">' + esc(it[1]) + '</p>' +
+        '<div class="mundo"><span>Universo</span><input type="text" placeholder="¿en qué mundo pasa?" value="' + esc(e.m || '') + '" aria-label="Universo de ' + esc(it[0]) + '"></div></li>';
+    });
+    html += '</ul>';
+  });
+  html += '</section>';
+});
+document.getElementById('libros').innerHTML = html;
+
+function cuenta(){
+  var hechas = 0;
+  LIBROS.forEach(function(L){
+    var items = document.querySelectorAll('li.item[data-libro="' + L.id + '"]'), h = 0;
+    items.forEach(function(li){ if (li.classList.contains('hecho')) h++; });
+    hechas += h;
+    document.querySelector('span[data-libro="' + L.id + '"]').textContent = h + ' / ' + items.length;
+  });
+  document.getElementById('cuenta').textContent = hechas + ' / ' + total;
+  document.getElementById('barra').style.width = (100 * hechas / total) + '%';
+}
+document.querySelectorAll('li.item').forEach(function(li){
+  var id = li.getAttribute('data-id');
+  li.querySelector('input[type=checkbox]').addEventListener('change', function(){
+    estado[id] = estado[id] || {}; estado[id].h = this.checked;
+    li.classList.toggle('hecho', this.checked); guarda(); cuenta();
+  });
+  li.querySelector('.mundo input').addEventListener('input', function(){
+    estado[id] = estado[id] || {}; estado[id].m = this.value; guarda();
+  });
+});
+document.getElementById('borrar').addEventListener('click', function(){
+  if (!confirm('¿Borrar todas las marcas y los universos anotados?')) return;
+  estado = {}; guarda(); location.reload();
+});
+guarda(); cuenta();
+</script>
+</body>
+</html>
