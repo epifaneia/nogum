@@ -264,7 +264,7 @@ process.on('unhandledRejection', async e => { console.error(e.message); try { aw
   await pulsa('#eqres [data-eqadd]', 800, 800);
   await pulsa('[data-eq=cuenta]', 800, 1000);
   await foto('cuenta');
-  await sub('La cuenta: lo que cuesta en puntos, en Llaves, y si está a su alcance.');
+  await sub('La cuenta. En el Acelerado, el equipo solo cuesta dinero: y lo tiene a su alcance.');
   await ESPERA(1200);
   await pulsa('[data-eq=add]', 900, 1100);
   await sub('Lo que no está en la lista se apunta a mano: <b>un cuaderno de tapas negras</b>.');
