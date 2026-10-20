@@ -1780,9 +1780,12 @@ function itemKeysOf(it){ if (isAcc() && !rompeRejilla(it)) return 0; var m = RE_
 function accSem(c, it){
   var a = accOf(it);
   if (a === 9) return ['na', t('no se compra con dinero','not bought with money')];
-  var r = resBonus(c);
-  if (r >= a) return ['ok', t('a tu alcance','within reach')];
-  if (a - r <= 1) return ['mid', t('con una tirada o un favor','with a roll or a favour')];
+  /* la tabla de los cajones (8.3): lo cotidiano (Acceso 0) esta siempre al
+     alcance, tambien con Recursos −1 o −2; de +0 a +2 se llega un escalon mas
+     arriba con esfuerzo, una vez por arco; +4 llega a 3 y no hay mas arriba */
+  var r = resBonus(c), siempre = r >= 4 ? 3 : Math.max(0, r), esfuerzo = (r >= 0 && r <= 2) ? siempre + 1 : siempre;
+  if (a <= siempre) return ['ok', t('a tu alcance','within reach')];
+  if (a <= esfuerzo) return ['mid', t('con esfuerzo: una vez por arco, y con precio','with effort: once per arc, and at a price')];
   return ['bad', t('fuera de tu alcance aquí','out of reach here')];
 }
 function eqRef(r){ return r.u + '|' + r.b + '|' + r.i; }

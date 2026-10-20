@@ -1953,3 +1953,17 @@ El autor decidio, y se aplico en los dos idiomas y en la App:
 Abiertos, para hablar: el precio en Llaves de la Rejilla y del equipo que la
 rompe; el tono por escena por defecto; si el bono de un arma se paga con
 puntos; el Bazar con dano por encima de 2; la barra de la Identidad.
+
+---
+
+## T171 · Lo corriente siempre esta al alcance
+
+Con el Torpe a −1, casi ningun personaje tiene Recursos +0, y la App dejaba a
+un detective sin poder comprarse una camara. No era la regla: la tabla de los
+cajones del Bazar (8.3) ya decia que con −1, y con −2, el Acceso 0 esta
+«siempre» al alcance. La App comparaba Recursos con Acceso a pelo; ahora sigue
+la tabla (Acceso 0 siempre; de +0 a +2, un escalon mas con esfuerzo, una vez
+por arco; +4 llega a 3). El Acelerado gana la columna de Acceso en su tabla,
+igual que el Juego, y la fila +4 del ingles vuelve a decir lo mismo que el
+espanol. Se descarto dar a todos Recursos +0 por defecto: no hacia falta tocar
+la regla.
