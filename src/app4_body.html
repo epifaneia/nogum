@@ -175,6 +175,8 @@
 .rblab{align-self:center;font:600 10.5px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin-right:2px}
 .rbf{display:flex;flex-direction:column;gap:3px;min-width:0}
 .rbf>span{font:600 9.5px/1 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3)}
+.rbxp{display:flex;align-items:center;gap:3px;font:13px/1.2 var(--serif);color:var(--ink-2);white-space:nowrap}
+.rbxp input{width:48px;font:14px/1.2 var(--mono);color:var(--ink);background:var(--ground);border:1px solid var(--rule);border-radius:7px;padding:4px 5px}
 .rbf select{max-width:230px;font:14px/1.2 var(--serif);color:var(--ink);background:var(--ground);border:1px solid var(--rule);border-radius:7px;padding:5px 6px}
 .rulesbar .tool.on{border-color:var(--red);background:var(--red-soft);color:var(--red)}
 .rulesbar .spacer{flex:1 1 10px}
@@ -511,7 +513,7 @@ var FAMILIES = [
 ];
 
 /* ======================= STATE ======================= */
-S.m = S.m || {known:null, family:null, world:null, era:null, tech:null, sup:[], xtra:[], edition:null, opt:null, caos:null, flavor:null, hueco:null, card:null, unis:null, zoom:null, estilo:null, grid:null, pts:0, b0:[], b1:[], b2:[], b3:[]};
+S.m = S.m || {known:null, family:null, world:null, era:null, tech:null, sup:[], xtra:[], edition:null, opt:null, caos:null, flavor:null, hueco:null, card:null, unis:null, zoom:null, estilo:null, grid:null, pts:0, kx:0, b0:[], b1:[], b2:[], b3:[]};
 S.chars = S.chars || [];
 S.tab = S.tab || 'form';
 S.form = null; /* al abrir la app se entra por el repartidor, no a mitad de un formulario */
@@ -542,8 +544,12 @@ function baul(){ return isAcc() ? [] : [].concat(M.b0, M.b1, M.b2, M.b3).filter(
 /* En el Acelerado todo personaje tiene Estilo +2 (2.8): no hay interruptor.
    M.estilo guarda lo que eligio la mesa para el completo y es lo que viaja. */
 function estilo(){ return isAcc() || M.estilo !== false; }
-/* Puntos de habilidad de mas que la mesa decide dar, a conciencia (D5) */
-function ptsExtra(){ var n = +M.pts || 0; return (n === 2 || n === 4 || n === 6) ? n : 0; }
+/* Experiencia de salida (D5, T176): puntos de habilidad y Llaves de mas que la
+   mesa da antes de jugar, a conciencia. Asi se empieza mas arriba, no con una
+   lista de niveles. Los -P2/-P4/-P6 de los Codigos viejos siguen valiendo. */
+function xpNum(v){ var n = Math.floor(+v || 0); return n > 0 ? Math.min(n, 999) : 0; }
+function ptsExtra(){ return xpNum(M.pts); }
+function keysExtra(){ return xpNum(M.kx); }
 function grid(){ return M.grid || 1; }
 function universes(){ var u = universesBase(); return u.indexOf('piezas') < 0 ? u.concat(['piezas']) : u; }
 function universesBase(){
@@ -1407,7 +1413,7 @@ function respuestasTexto(fid){
 }
 function resultadoTexto(fid){
   if (fid === 'tono') return 'Tarjeta: ' + card().n[0] + '. Optimismo: ' + opt() + '. Caos: ' + caos() + '. Vida fractal: ' + ZOOM[zoomK()].n[0] + '. Estilo: ' + (estilo() ? 'sí' : 'no') + '.';
-  if (fid === 'uni') return 'Mundo: ' + worldName() + '. Secciones del Bazar: ' + universes().map(uniName).join(', ') + '. Rejilla inicial: ' + grid() + '. Arcano: ' + (arcOpen() ? 'sí' : 'no') + '.';
+  if (fid === 'uni') return 'Mundo: ' + worldName() + '. Secciones del Bazar: ' + universes().map(uniName).join(', ') + '. Escala de la partida (no sube los ámbitos: se sale en 1): ' + grid() + '. Arcano: ' + (arcOpen() ? 'sí' : 'no') + '.';
   return 'Reglas activas: ' + (baul().length ? baul().map(function(k){ return DATA.baul[k][0]; }).join(', ') : 'ninguna') + '.';
 }
 var iaEstado = {}, iaCtl = null;
@@ -1771,12 +1777,11 @@ function resBonus(c){ return bonoDis(c, 2, 1, 3); }   /* Social > Jerarquia > Re
    hasta 1 punto» de las armaduras se cobraba como un punto de habilidad. */
 var RE_PTS = /^(?:(?:Acceso|Access) \S+\s+)?(\d+)\s*(?:puntos?|points?)\b/;
 var RE_KEYS = /^(?:(?:Acceso|Access) \S+\s+)?(\d+)\s*(?:Llaves?|Keys?)\b/;
-/* rompe la Rejilla: el objeto trae su propio nivel */
-function rompeRejilla(it){ return /(?:Rejilla|Grid): (?:Nivel|Level) \d/.test(pick(it.m) || ''); }
-/* Acelerado (2.9): el equipo solo cuesta dinero. Ni puntos, ni Llaves salvo
-   lo que rompe la Rejilla, que se compra con las Llaves de la campana. */
+/* Acelerado (2.9): el equipo no cuesta puntos de habilidad. Las Llaves si:
+   las que lleve el precio, sea Rejilla o permiso (T176). Antes solo se
+   cobraba lo que rompe la Rejilla y Velo absoluto salia gratis. */
 function itemPtsOf(it){ if (isAcc()) return 0; var m = RE_PTS.exec(pick(it.m) || ''); return m ? +m[1] : 0; }
-function itemKeysOf(it){ if (isAcc() && !rompeRejilla(it)) return 0; var m = RE_KEYS.exec(pick(it.m) || ''); return m ? +m[1] : 0; }
+function itemKeysOf(it){ var m = RE_KEYS.exec(pick(it.m) || ''); return m ? +m[1] : 0; }
 function accSem(c, it){
   var a = accOf(it);
   if (a === 9) return ['na', t('no se compra con dinero','not bought with money')];
@@ -1853,7 +1858,7 @@ function renderEq(){
   if (!E.who || !eqChar()) {
     h += '<div class="page"><p class="kick">' + esc(t('Lo primero','First things first')) + '</p><p class="big">' + esc(t('¿Para quién es?','Who is it for?')) + '</p>' +
       '<p class="hint">' + esc(isAcc()
-        ? t('El equipo no es de la mesa, es de alguien. En el Acelerado solo cuesta dinero: su nivel en Recursos. Nada de puntos; Llaves, solo lo que rompe la Rejilla.','Equipment does not belong to the table, it belongs to someone. In Accelerated it only costs money: their Resources level. No points; Keys only for what breaks the Grid.')
+        ? t('El equipo no es de la mesa, es de alguien. En el Acelerado se paga con su nivel en Recursos y con las Llaves que lleve su precio (Rejilla o permiso). Nada de puntos.','Equipment does not belong to the table, it belongs to someone. In Accelerated it is paid with their Resources level and with the Keys in its price (Grid or permission). No points.')
         : t('El equipo no es de la mesa, es de alguien: se paga con sus puntos, sus Llaves y su nivel en Recursos.','Equipment does not belong to the table, it belongs to someone: it is paid with their points, their Keys and their Resources level.')) + '</p><div class="eqwho">';
     S.chars.forEach(function(c, ci){
       var p = cost(c), k = keysUsed(c);
@@ -1891,7 +1896,7 @@ function renderEq(){
     h += '<p class="eqtot">' + esc(t('Puntos de habilidad: ','Skill points: ')) + '<b class="' + (pA > budget() ? 'over' : '') + '">' + pA + ' / ' + budget() + '</b>' +
       ' · ' + esc(t('Llaves: ','Keys: ')) + '<b class="' + (kA > keysHave(c) ? 'over' : '') + '">' + kA + ' / ' + keysHave(c) + '</b><br>' +
       esc(t('El Acceso no se resta de nada: no es un monedero, es un umbral. Lo mide tu nivel en Recursos (ahora ','Access is not subtracted from anything: it is not a wallet, it is a threshold. Your Resources level measures it (now ')) + bonusTxt(resBonus(c)) + esc(t('), y quien decide si lo consigues es la mesa.','), and the table decides whether you get it.')) +
-      (isAcc() ? '<br>' + esc(t('Acelerado (2.9): el equipo no gasta puntos de habilidad. Las únicas Llaves de esta cuenta son las de lo que rompe la Rejilla.','Accelerated (2.9): equipment spends no skill points. The only Keys on this bill are for what breaks the Grid.')) : '') + '</p>';
+      (isAcc() ? '<br>' + esc(t('Acelerado (2.9): el equipo no gasta puntos de habilidad. Las Llaves sí: las que lleve su precio, sea Rejilla o permiso.','Accelerated (2.9): equipment spends no skill points. Keys it does: those in its price, Grid or permission alike.')) : '') + '</p>';
     if (pA > budget() || kA > keysHave(c)) h += '<p class="eqnote">' + esc(t('Te pasas del presupuesto. Puedes añadirlo igual —la ficha lo marca en rojo y lo arregláis en la mesa—, o quitar algo.','You are over budget. You can add it anyway —the sheet flags it in red and you sort it out at the table— or drop something.')) + '</p>';
     h += '<div class="nav"><button type="button" class="btn" data-eq="list">← ' + esc(E.cat ? t('Volver a la lista','Back to the list') : t('Volver al buscador','Back to the search')) + '</button>' +
       '<button type="button" class="btn" data-eq="more">' + esc(t('Buscar otra cosa','Look for something else')) + '</button>' +
@@ -1995,18 +2000,18 @@ function reminders(){
   var c = card(), h = '<div class="remind">';
   h += '<div class="rbox card"><h3>' + esc(t('Cómo se tira','How to roll')) + '</h3><dl><dt>' + esc(t('Modo','Mode')) + '</dt><dd><b>' + esc(pick(c.n)) + '</b></dd><dt>' + esc(t('Dados','Dice')) + '</dt><dd>' + esc(pick(c.roll)) + '</dd><dt>TN</dt><dd>' + (c.tn || 6) + ' ' + esc(t('(iguala o supera)','(meet or beat)')) + '</dd><dt>' + esc(t('Pifia','Fumble')) + '</dt><dd>' + esc(pick(c.fum)) + '</dd><dt>' + esc(t('Crítico','Critical')) + '</dt><dd>' + esc(pick(c.cri)) + '</dd>' + (c.bands ? '<dt>' + esc(c.coste ? t('Éxito con coste','Success at a cost') : t('Resultado','Result')) + '</dt><dd>' + esc(pick(c.bands)) + '</dd>' : '') + '</dl><p class="note">' + esc(t('Pifia y crítico se miran en los dados, antes de sumar. Tira solo si todos los resultados son interesantes.','Fumble and critical are read on the dice, before adding. Roll only if every outcome is interesting.')) + '</p></div>';
   h += '<div class="rbox"><h3>' + esc(t('Tu bono','Your bonus')) + '</h3><table><tr><td>−2</td><td>' + esc(t('Ámbito vacío (Nulo)','Empty sphere (Null)')) + '</td></tr><tr><td>−1</td><td>' + esc(t('La otra columna de un ámbito con algo (Torpe)','The other column of a sphere with something (Clumsy)')) + '</td></tr><tr><td>+1</td><td>' + esc(t('Dominio: habilidad amplia','Domain: broad skill')) + '</td></tr><tr><td>+2</td><td>' + esc(t('Disciplina: habilidad concreta','Discipline: specific skill')) + '</td></tr><tr><td>+4</td><td>' + esc(t('Firma','Signature')) + '</td></tr></table><p class="note">' + esc(t('Usa solo el escalón más alto. Dificultad: +2 fácil · 0 · −2 difícil · −4 heroica. El total siempre entre −2 y +4.','Use only the highest step. Difficulty: +2 easy · 0 · −2 hard · −4 heroic. The total always stays between −2 and +4.')) + '</p></div>';
-  h += '<div class="rbox"><h3>' + esc(t('Rejilla y Llave','Grid and Key')) + '</h3><ul><li>' + esc(t('Nivel de la partida: ','Game level: ') + grid() + ' (' + pick(GRIDN[grid()]) + ')') + '</li><li>' + esc(t('Mismo nivel: se tira.','Same level: roll.')) + '</li><li>' + esc(t('Por encima del desafío: lo consigues sin tirar' + (estilo() ? ' (si importa cómo, tira Estilo).' : '.') + ' Vale igual para un monstruo frente a un personaje.', 'Above the challenge: you succeed without rolling' + (estilo() ? ' (if how matters, roll Style).' : '.') + ' The same goes for a monster against a character.')) + '</li><li>' + esc(t('Por debajo: no puedes afectarle —ni defenderte de él— sin una Llave (arma, debilidad, ayuda…). Con Llave tiras normal.','Below: you cannot affect it —nor defend against it— without a Key (weapon, weakness, help…). With a Key you roll as normal.')) + '</li>' + (isAcc() ? '' : '<li>' + esc(t('El acordeón: 3 Firmas pliegan la Disciplina entera en +4, 3 Disciplinas el Dominio, y los 2 Dominios el Ámbito.','The accordion: 3 Signatures fold the whole Discipline into +4, 3 Disciplines the Domain, and both Domains the Sphere.')) + '</li>') + '<li>' + esc(t('Cada nivel multiplica por cien tu alcance. Un nivel de diferencia son dos ceros: por eso no hay tirada.','Each level multiplies your reach by a hundred. One level of difference is two zeros: that is why there is no roll.')) + '</li><li>' + esc(t('Una Llave es una Disciplina para siempre, o un Ámbito entero durante una escena. Subir más contra lo mismo: 1, 4, 9 Llaves.','A Key is one Discipline for ever, or a whole Sphere for one scene. Climbing further against the same thing: 1, 4, 9 Keys.')) + '</li>' + (isAcc() ? '' : '<li>' + esc(t('El techo lo pone el universo; la Llave es la excepción pactada.','The ceiling is set by the universe; the Key is the agreed exception.')) + '</li>') + '</ul></div>';
+  h += '<div class="rbox"><h3>' + esc(t('Rejilla y Llave','Grid and Key')) + '</h3><ul><li>' + esc(t('Escala de la partida: ','Game scale: ') + grid() + ' (' + pick(GRIDN[grid()]) + ')') + '</li><li>' + esc(t('La escala dice el tamaño de las hazañas y de las amenazas; no sube tus ámbitos. Los unos abundan: se sale en 1·1·1·1·1 con 5 Llaves (más la experiencia de salida que dé la mesa). Rejilla por encima de 1: 5·n² Llaves por ámbito, nunca por encima del techo.','The scale sets the size of deeds and threats; it does not raise your spheres. Ones are plentiful: you start at 1·1·1·1·1 with 5 Keys (plus any starting experience the table gives). Grid above 1: 5·n² Keys per sphere, never above the ceiling.')) + '</li><li>' + esc(t('Mismo nivel: se tira.','Same level: roll.')) + '</li><li>' + esc(t('Por encima del desafío: lo consigues sin tirar' + (estilo() ? ' (si importa cómo, tira Estilo).' : '.') + ' Vale igual para un monstruo frente a un personaje.', 'Above the challenge: you succeed without rolling' + (estilo() ? ' (if how matters, roll Style).' : '.') + ' The same goes for a monster against a character.')) + '</li><li>' + esc(t('Por debajo: no puedes afectarle —ni defenderte de él— sin una Llave (arma, debilidad, ayuda…). Con Llave se juega como al mismo nivel: se tira y se comparan resultados. Ser más solo iguala, como una Llave; nunca pone a nadie por encima.','Below: you cannot affect it —nor defend against it— without a Key (weapon, weakness, help…). With a Key you play as if on the same level: roll and compare results. Numbers only even things out, like a Key; they never put anyone above.')) + '</li>' + (isAcc() ? '' : '<li>' + esc(t('El acordeón: 3 Firmas pliegan la Disciplina entera en +4, 3 Disciplinas el Dominio, y los 2 Dominios el Ámbito.','The accordion: 3 Signatures fold the whole Discipline into +4, 3 Disciplines the Domain, and both Domains the Sphere.')) + '</li>') + '<li>' + esc(t('Cada nivel multiplica por cien tu alcance. Un nivel de diferencia son dos ceros: por eso no hay tirada.','Each level multiplies your reach by a hundred. One level of difference is two zeros: that is why there is no roll.')) + '</li><li>' + esc(t('Llave estrecha: una Disciplina contra su objetivo, para siempre (nunca una Firma). Ancha: el ámbito entero contra su objetivo, una escena; se tacha al acabarla. Subir más contra lo mismo: 1, 4, 9 Llaves. Las Llaves que cobras por no subir en un salto solo se gastan en ese ámbito.','Narrow Key: one Discipline against its target, for ever (never a Signature). Wide: the whole sphere against its target, one scene; cross it out when it ends. Climbing further against the same thing: 1, 4, 9 Keys. Keys you collect for not climbing in a jump can only be spent in that sphere.')) + '</li>' + (isAcc() ? '' : '<li>' + esc(t('El techo lo pone el universo. Por encima solo valen Llaves con objetivo: nada comprado con Llaves sube «contra todo» por encima del techo.','The ceiling is set by the universe. Above it only Keys with a target work: nothing bought with Keys climbs «against everything» above the ceiling.')) + '</li>') + '</ul></div>';
   h += '<div class="rbox"><h3>' + esc(t('Equipo y Llaves','Equipment and Keys')) + '</h3><ul><li>' + esc(isAcc()
-    ? t('Solo cuesta dinero: tu nivel en Recursos frente al Acceso del objeto. Nada de puntos; Llaves, solo para lo que rompe la Rejilla.','It only costs money: your Resources level against the item’s Access. No points; Keys only for what breaks the Grid.')
-    : t('Tres cerrojos: el dinero (tu nivel en Recursos, el Acceso del objeto), el permiso narrativo y las Llaves si rompe la Rejilla.','Three locks: money (your Resources level, the item’s Access), narrative permission, and Keys if it breaks the Grid.')) + '</li><li>' + esc(isAcc()
+    ? t('Cuesta dinero (tu nivel en Recursos frente al Acceso del objeto) y las Llaves que lleve su precio, sea Rejilla o permiso. Nada de puntos.','It costs money (your Resources level against the item’s Access) and the Keys in its price, Grid or permission alike. No points.')
+    : t('Tres cerrojos: el dinero (tu nivel en Recursos, el Acceso del objeto), el permiso narrativo y las Llaves que lleve su precio (Rejilla o permiso).','Three locks: money (your Resources level, the item’s Access), narrative permission, and the Keys in its price (Grid or permission).')) + '</li><li>' + esc(isAcc()
     ? t('Lo robado o prestado funciona una escena entera; después, si te lo quedas, tiene que caber en tu Recursos.','Looted or borrowed gear works for a whole scene; after that, if you keep it, it has to fit your Resources.')
-    : t('Lo robado o prestado funciona una escena entera gratis; después, se paga o se deja.','Looted or borrowed gear works free for a whole scene; after that you pay for it or leave it.')) + '</li><li>' + esc(t('Monedero por defecto: 1 Llave por sesión. Es el mando de potencia de la campaña.','Default wallet: 1 Key per session. It is the campaign’s power dial.')) + '</li></ul></div>';
+    : t('Lo robado o prestado funciona una escena entera gratis; después, se paga o se deja.','Looted or borrowed gear works free for a whole scene; after that you pay for it or leave it.')) + '</li><li>' + esc(t('Si pierdes el equipo, pierdes sus Llaves. Lo que presta la trama se sincroniza gratis mientras lo preste. Monedero por defecto: 1 Llave por sesión. Es el mando de potencia de la campaña.','Lose the equipment and you lose its Keys. What the plot lends syncs for free while the plot lends it. Default wallet: 1 Key per session. It is the campaign’s power dial.')) + '</li></ul></div>';
   h += '<div class="rbox"><h3>' + esc(t('Combate','Combat')) + '</h3><ul>' +
     (isAcc() ? '<li>' + esc(t('Iniciativa: tu mejor bono en Destreza.','Initiative: your best Dexterity bonus.')) + '</li>' : '<li>' + esc(t('Iniciativa: declara tu guardia (Violencia, Treta, Especialidad) y tira tu mejor habilidad de esa disposición. Si cambias, vas el último. Si nadie elige, vale el marcador de tu ficha.','Initiative: declare a stance (Violence, Trick, Specialty) and roll your best skill for it. If you switch, you go last. If nobody chooses, your sheet’s marker applies.')) + '</li>') +
-    '<li>' + esc(t('Atacar: tirada contra TN. Crítico: +1 al daño.','Attack: roll vs TN. Critical: +1 damage.')) + '</li><li>' + esc(t('Defenderse (el empate es del defensor): si tu resultado iguala o supera el del atacante, no hay daño. Si él queda por encima y tú sacas éxito o éxito con coste, daño −1. Si fallas, daño completo. Si pifias, el ataque sube un escalón.','Defend (ties go to the defender): if your result matches or beats the attacker’s, no damage. If they end up above and you got a success or a success at a cost, damage −1. If you fail, full damage. If you fumble, the attack goes up one step.')) + '</li><li>' + esc(t('Etiquetas: Daño 1–2 · La Parca · Esq Total / Parcial (mín. 1) / Nula / Difícil −2 / Fácil +2 · Abs Total / Máx N / Nula · Rejilla. Las etiquetas mandan sobre el empate: Parcial come 1 como mínimo, Nula no deja reaccionar. La Parca tacha todas las casillas: fuera de combate, nunca muerte.','Tags: Dmg 1–2 · The Reaper · Dodge Full / Partial (min 1) / None / Hard −2 / Easy +2 · Soak Full / Max N / None · Grid. Tags rule over ties: Partial eats at least 1, None allows no reaction. The Reaper marks every box: out of the fight, never death.')) + '</li>' +
+    '<li>' + esc(t('Atacar: tirada contra TN. Crítico: +1 al daño.','Attack: roll vs TN. Critical: +1 damage.')) + '</li><li>' + esc(t('Defenderse (el empate es del defensor): si tu resultado iguala o supera el del atacante, no hay daño. Si él queda por encima y tú sacas éxito o éxito con coste, daño −1. Si fallas, daño completo. Si pifias, el ataque sube un escalón.','Defend (ties go to the defender): if your result matches or beats the attacker’s, no damage. If they end up above and you got a success or a success at a cost, damage −1. If you fail, full damage. If you fumble, the attack goes up one step.')) + '</li><li>' + esc(t('Etiquetas: Daño 1–2 · La Parca · Esq Total / Parcial (mín. 1) / Nula / Difícil −2 / Fácil +2 · Abs Total / Máx N / Nula · Rejilla. Las etiquetas mandan sobre el empate: Parcial come 1 como mínimo, Nula no deja reaccionar. La Parca: contra quien está por debajo de su nivel, fuera de combate sin defensa; a su altura, Daño 2 y defensa normal; por encima, nada sin Llave. Nunca mata.','Tags: Dmg 1–2 · The Reaper · Dodge Full / Partial (min 1) / None / Hard −2 / Easy +2 · Soak Full / Max N / None · Grid. Tags rule over ties: Partial eats at least 1, None allows no reaction. The Reaper: against anyone below its level, out of the fight with no defence; at its level, Dmg 2 and normal defence; above, nothing without a Key. It never kills.')) + '</li>' +
     (estilo() ? '<li>' + esc(isAcc()
       ? t('Estilo +2: contra enemigos por debajo o masillas ganas seguro; tiras el modo + 2 solo para ver cómo. Pifia: ridículo. Fallo (y en Caos, el éxito parcial): sucio o sin lucirte. Éxito: con estilo. Crítico: legendario.','Style +2: against foes below you or mooks you win for sure; you roll the mode + 2 only to see how. Fumble: ridiculous. Failure (and in Chaos, partial success): messy or without flair. Success: with style. Critical: legendary.')
-      : t('Estilo +2: contra enemigos menores ganas seguro; tiras la tarjeta + 2 solo para ver cómo. Nunca cuesta: la banda de éxito con coste se lee como éxito. Pifia: ridículo. Fallo: olvidable. Éxito: molas. Crítico: lúcete.','Style +2: against lesser foes you win for sure; you roll the card + 2 only to see how. It never costs: the success-at-a-cost band reads as a success. Fumble: ridiculous. Failure: forgettable. Success: magnificent. Critical: show off.')) + '</li>' : '') + '</ul></div>';
+      : t('Estilo +2: contra enemigos menores ganas seguro; tiras la tarjeta + 2 solo para ver cómo. Nunca cuesta: la banda de éxito con coste se lee como éxito. Pifia: ridículo. Fallo: olvidable. Éxito: molas. Crítico: lúcete.','Style +2: against lesser foes you win for sure; you roll the card + 2 only to see how. It never costs: the success-at-a-cost band reads as a success. Fumble: ridiculous. Failure: forgettable. Success: magnificent. Critical: show off.')) + '</li>' + '<li>' + esc(t('El decorado lo declara el DJ y no te hace daño: se tira Estilo y cada tirada tumba a uno; con crítico, a varios. Si un enemigo puede hacerte daño, no es decorado: tiene ficha rápida y se tira normal.','The GM declares the scenery, and scenery does not hurt you: roll Style, each roll drops one; on a critical, several. If an enemy can hurt you, it is not scenery: it gets a quick sheet and you roll as normal.')) + '</li>' : '') + '</ul></div>';
   var terror3 = isAcc() && ZOOM[zoomK()].units === 3;
   h += '<div class="rbox"><h3>' + esc(t('Vida','Health')) + '</h3><ul>' + (isAcc()
     ? (terror3
@@ -2072,7 +2077,8 @@ function folds(c){
 function skillGrid(c){
   var blank = !c, FD = folds(c), h = '<div class="skillgrid">';
   AMB.forEach(function(a, ai){
-    var has = !blank && ambHas(c, ai), lvl = blank ? grid() : (c.grid[a.id] || grid());
+    /* el nivel del ambito es del personaje, no de la mesa: se sale en 1 (T176) */
+    var has = !blank && ambHas(c, ai), lvl = blank ? 1 : (c.grid[a.id] || 1);
     var best = blank ? null : (has ? -1 : -2);   /* ya no hay +0: Torpe −1 o Nulo −2 */
     var body = '';
     a.doms.forEach(function(d, di){
@@ -2105,7 +2111,7 @@ function skillGrid(c){
     }
     seg += '</span>';
     h += '<div class="acard' + (!blank && !has ? ' null' : '') + (techo(ai) === 0 ? ' noexiste' : '') + '"><div class="acard-h"><b>' + esc(pick(a.n)) + '</b>' + (blank ? '' : (has ? '' : '<span class="base neg">' + t('Nulo −2','Null −2') + '</span>') + '<span class="best">' + esc(t('Mejor ','Best ')) + bonusTxt(best) + '</span>' + (FD.amb[ai] ? '<span class="fold big">' + esc(t('ÁMBITO PLEGADO','SPHERE FOLDED')) + '</span>' : '') + '') + '</div>' +
-      '<div class="power"><span class="lab">' + esc(t('Rejilla','Grid')) + '</span>' + seg + '<span class="lab"><b>' + lvl + '</b> · ' + esc(lvl >= 6 ? t('Cósmico','Cosmic') : pick(GRIDN[lvl])) + '</span>' + (cap === 0 ? '<span class="techo">' + esc(t('no existe aquí','not in this world')) + '</span>' : cap < 5 ? '<span class="techo">' + esc(t('techo ','ceiling ') + cap) + '</span>' : '') + '</div><div class="dcols">' + body + '</div></div>';
+      '<div class="power"><span class="lab">' + esc(t('Rejilla','Grid')) + '</span>' + seg + '<span class="lab"><b>' + lvl + '</b> · ' + esc(lvl >= 6 ? t('Cósmico','Cosmic') : pick(GRIDN[lvl])) + (!blank && lvl > 1 ? ' · ' + esc(gridCost(lvl - 1) + t(' Llaves',' Keys')) : '') + '</span>' + (cap === 0 ? '<span class="techo">' + esc(t('no existe aquí','not in this world')) + '</span>' : cap < 5 ? '<span class="techo">' + esc(t('techo ','ceiling ') + cap) + '</span>' : '') + '</div><div class="dcols">' + body + '</div></div>';
   });
   return h + '</div>';
 }
@@ -2120,49 +2126,57 @@ function gearTable(c){
   for (var i = 0; i < empty; i++) h += '<tr class="emptyrow"><td></td><td></td><td></td><td></td><td></td>' + (c ? '<td class="noprint"></td>' : '') + '</tr>';
   return h + '</tbody></table>';
 }
-/* El +1 de Rejilla del bote va a cualquier ambito cuyo techo lo permita: techo 2
-   o mas, y por encima del nivel de la mesa, que si no el +1 no sube nada. */
-function potOk(ai){ return techo(ai) >= Math.max(2, grid() + 1); }
-function setPot(c){
+/* El +1 de Rejilla ya no es gratis (T176): sube un nivel el ambito elegido y
+   cobra la diferencia en Llaves (de 1 a 2: 5; de 2 a 3: 15 mas). Vale para
+   cualquier ambito que no este ya en su techo. */
+function potOk(c, ai){ return ambLvl(c, ai) < (techo(ai) || 1); }
+function potStep(c, ai){ var n = ambLvl(c, ai) - 1; return gridCost(n + 1) - gridCost(n); }
+function potAi(c){
   var ai = AMB.map(function(x){ return x.id; }).indexOf(c.potAmb);
-  if (ai < 0) return;
-  var cap = techo(ai) || 1;
-  c.grid[c.potAmb] = Math.min(grid() + 1, cap);
+  if (ai > -1 && potOk(c, ai)) return ai;
+  for (var i = 0; i < AMB.length; i++) if (potOk(c, i)) return i;
+  return -1;
 }
 function keysBlock(c){
-  var forms = [['dis', t('una Disciplina, para siempre','one Discipline, for ever')],
-               ['amb', t('un Ámbito entero, una escena','a whole Sphere, one scene')]];
+  var forms = [['dis', t('Estrecha · una Disciplina, para siempre','Narrow · one Discipline, for ever')],
+               ['amb', t('Ancha · el ámbito entero, una escena','Wide · the whole Sphere, one scene')]];
   var h = '<div class="sec">' + esc(t('Bote aparte y Llaves','Separate pot and Keys')) + '<span class="note">' +
-    esc(t('+1 de Rejilla en el ámbito que permita tu mundo, o 5 Llaves. No se cambia por puntos. ¿Dudas? ¿Le gana a cualquier cosa de ese ámbito, o solo a una? Si es solo a una, son Llaves.',
-          '+1 Grid in whichever sphere your world allows, or 5 Keys. It does not trade for points. Unsure? Does it beat anything in that sphere, or just one thing? If just one thing, those are Keys.')) + '</span></div>';
+    esc(t('Sales con 5 Llaves, más las de la experiencia de salida si la mesa la da. Cinco dan para +1 de Rejilla en un ámbito (de 1 a 2 cuesta 5) o para Llaves. La Rejilla por encima de 1 cuesta 5·n² por ámbito: +1, 5; +2, 20; +3, 45. No se cambia por puntos. ¿Dudas? ¿Le gana a cualquier cosa de ese ámbito, o solo a una? Si es solo a una, son Llaves.',
+          'You start with 5 Keys, plus any starting experience the table gives. Five are enough for +1 Grid in one sphere (1 to 2 costs 5) or for Keys. Grid above 1 costs 5·n² per sphere: +1, 5; +2, 20; +3, 45. It does not trade for points. Unsure? Does it beat anything in that sphere, or just one thing? If just one thing, those are Keys.')) + '</span></div>';
   // La confusion mas comun en la mesa: Rejilla alta para lo que en la ficcion
   // suena enorme (la fama, el talento, el cacharro), cuando apunta a algo
-  // concreto y son Llaves. Si la ficha pasa del nivel de la mesa, se pregunta (T165).
-  var altos = c ? AMB.filter(function(a){ return (c.grid[a.id] || grid()) > grid(); }) : [];
-  if (altos.length) h += '<p class="lockmsg">' + esc(t('Tienes la Rejilla por encima de la mesa en ', 'Your Grid is above the table in ') +
+  // concreto y son Llaves. Los unos abundan (T176): todo ambito por encima
+  // de 1 se pregunta (T165), sea cual sea la escala de la mesa.
+  var altos = c ? AMB.filter(function(a, ai){ return ambLvl(c, ai) > 1; }) : [];
+  if (altos.length) h += '<p class="lockmsg">' + esc(t('Tienes la Rejilla por encima de 1 en ', 'Your Grid is above 1 in ') +
     altos.map(function(a){ return pick(a.n); }).join(', ') + '. ' +
     t('Antes de dejarlo así: ¿le gana a cualquier cosa de ese ámbito, o solo a una? Si es solo a una —sus fans, su ordenador, los vampiros—, es una Llave, no Rejilla (manual, 2.4).',
       'Before you leave it like that: does it beat anything in that sphere, or just one thing? If just one thing —their fans, their computer, vampires—, it is a Key, not Grid (manual, 2.4).')) + '</p>';
   if (!c) {
-    h += '<div class="keys"><div class="potrow"><button type="button" class="potb" disabled>' + esc(t('+1 Rejilla','+1 Grid')) + '</button><button type="button" class="potb" disabled>' + esc(t('5 Llaves','5 Keys')) + '</button></div>';
-    for (var i = 0; i < 5; i++) h += '<div class="krow blank"><span class="line"></span><span class="kf">' + esc(t('Disciplina / Ámbito','Discipline / Sphere')) + '</span><span class="kc">□</span></div>';
+    h += '<div class="keys"><div class="potrow"><button type="button" class="potb" disabled>' + esc(t('+1 Rejilla = 5 Llaves','+1 Grid = 5 Keys')) + '</button><span class="kcount">__ / ' + (5 + keysExtra()) + ' ' + esc(t('Llaves','Keys')) + '</span></div>';
+    for (var i = 0; i < 5; i++) h += '<div class="krow blank"><span class="line"></span><span class="kf">' + esc(t('Estrecha / Ancha (□ una escena)','Narrow / Wide (□ one scene)')) + '</span><span class="kc">□</span></div>';
     return h + '</div>';
   }
-  var used = keysUsed(c), have = keysHave(c), gear = keysGear(c);
+  var used = keysUsed(c), have = keysHave(c), gear = keysGear(c), kg = keysGrid(c), pai = potAi(c);
   h += '<div class="keys"><div class="potrow">' +
-    '<button type="button" class="potb" data-pot="rejilla" aria-pressed="' + (c.pot === 'rejilla') + '"' + (AMB.some(function(a, ai){ return potOk(ai); }) || c.pot === 'rejilla' ? '' : ' disabled') + '>' + esc(t('+1 Rejilla','+1 Grid')) + '</button>' +
-    (c.pot === 'rejilla' ? '<select data-potamb>' + AMB.map(function(a, ai){ return potOk(ai) ? '<option value="' + a.id + '"' + (c.potAmb === a.id ? ' selected' : '') + '>' + esc(pick(a.n)) + '</option>' : ''; }).join('') + '</select>' : '') +
-    '<button type="button" class="potb" data-pot="llaves" aria-pressed="' + (c.pot !== 'rejilla') + '">' + esc(t('5 Llaves','5 Keys')) + '</button>' +
+    (pai > -1 ? '<select data-potamb>' + AMB.map(function(a, ai){ return potOk(c, ai) ? '<option value="' + a.id + '"' + (ai === pai ? ' selected' : '') + '>' + esc(pick(a.n) + ' ' + ambLvl(c, ai) + '→' + (ambLvl(c, ai) + 1)) + '</option>' : ''; }).join('') + '</select>' : '') +
+    '<button type="button" class="potb" data-potup="1"' + (pai > -1 ? '' : ' disabled') + '>' + esc(t('+1 Rejilla','+1 Grid') + (pai > -1 ? ' · ' + potStep(c, pai) + t(' Llaves',' Keys') : '')) + '</button>' +
     '<span class="kcount' + (used > have ? ' over' : '') + '">' + used + ' / ' + have + ' ' + esc(t('Llaves','Keys')) + '</span>' +
-    '<label class="kw noprint">' + esc(t('Ganadas','Earned')) + ' <input type="number" min="0" max="99" id="f-kw" value="' + (+c.kw || 0) + '"></label></div>';
+    '<label class="kw noprint">' + esc(t('Ganadas','Earned')) + ' <input type="number" min="0" max="99" id="f-kw" value="' + (+c.kw || 0) + '"></label>' +
+    '<label class="kw noprint">' + esc(t('Gastadas en escenas','Spent in scenes')) + ' <input type="number" min="0" max="999" id="f-ksp" value="' + (+c.ksp || 0) + '"></label></div>' +
+    '<p class="note">' + esc(t('Rejilla ','Grid ') + kg + ' · ' + t('Llaves de la lista ','Listed Keys ') + keysOwn(c) + ' · ' + t('equipo ','gear ') + gear + ' · ' + t('gastadas ','spent ') + (+c.ksp || 0)) + '</p>';
   (c.klist || []).forEach(function(k, ki){
+    var ancha = k.w === 'amb';
     h += '<div class="krow"><input type="text" data-ktxt="' + ki + '" placeholder="' + esc(t('contra qué…','against what…')) + '" value="' + esc(k.t || '') + '">' +
       '<select data-kform="' + ki + '">' + forms.map(function(f){ return '<option value="' + f[0] + '"' + (k.w === f[0] ? ' selected' : '') + '>' + esc(f[1]) + '</option>'; }).join('') + '</select>' +
       '<select data-klv="' + ki + '">' + [1,2,3,4,5].map(function(n){ return '<option value="' + n + '"' + (+k.lv === n ? ' selected' : '') + '>+' + n + '</option>'; }).join('') + '</select>' +
-      '<span class="kc">' + keyCost(k) + '</span><button type="button" class="plus noprint" data-kdel="' + ki + '">×</button></div>';
+      '<span class="kc">' + keyCost(k) + '</span>' +
+      (ancha ? '<button type="button" class="tool noprint" data-kspend="' + ki + '" title="' + esc(t('De una escena: al acabarla se tacha y sus Llaves pasan a gastadas','One scene only: when it ends it is crossed out and its Keys count as spent')) + '">' + esc(t('Tachar (fin de escena)','Cross out (scene over)')) + '</button>' : '') +
+      '<button type="button" class="plus noprint" data-kdel="' + ki + '">×</button></div>';
   });
   h += '<div class="krow noprint"><button type="button" class="tool" data-kadd="1">' + esc(t('Añadir Llave','Add Key')) + '</button>' +
-    (gear ? '<span class="note">' + esc(t('El equipo que rompe la Rejilla se lleva ','Grid-breaking equipment takes ') + gear + t(' Llaves.',' Keys.')) + '</span>' : '') + '</div>';
+    '<span class="note">' + esc(t('La ancha dura una escena: se tacha al acabarla.','A wide Key lasts one scene: cross it out when it ends.')) +
+    (gear ? ' ' + esc(t('El equipo se lleva ','Equipment takes ') + gear + t(' Llaves.',' Keys.')) : '') + '</span></div>';
   return h + '</div>';
 }
 function stanceBlock(c){
@@ -2199,10 +2213,18 @@ function budget(){ return (arcOpen() ? 14 : 12) + ptsExtra(); }
 function keyCost(k){ var n = k.lv || 1; return n * n; }
 function keysOwn(c){ var n = 0; (c.klist || []).forEach(function(k){ n += keyCost(k); }); return n; }
 function keysGear(c){ return gearNum(c, itemKeysOf); }
-function keysHave(c){ return (c.pot === 'rejilla' ? 0 : 5) + (+c.kw || 0); }
-function keysUsed(c){ return keysOwn(c) + keysGear(c); }
+/* Los unos abundan (T176): la escala de la mesa no sube los ambitos ni da mas
+   bote. Se sale en 1·1·1·1·1 con 5 Llaves; la Rejilla por encima de 1 se paga
+   de ahi, 5·n² por ambito (n = niveles por encima de 1), sin pasar del techo.
+   Empezar mas arriba es un salto pactado: Llaves ganadas, con su precio. */
+function keysHave(c){ return 5 + keysExtra() + (+c.kw || 0); }
+function ambLvl(c, ai){ var a = AMB[ai], v = +(c.grid && c.grid[a.id]) || 1, cap = techo(ai) || 1; return Math.max(1, Math.min(v, cap)); }
+function gridCost(n){ return n > 0 ? 5 * n * n : 0; }
+function keysGrid(c){ var n = 0; AMB.forEach(function(a, ai){ n += gridCost(ambLvl(c, ai) - 1); }); return n; }
+/* la Llave ancha dura una escena: al tacharla sus Llaves pasan a gastadas (ksp) */
+function keysUsed(c){ return keysOwn(c) + keysGear(c) + keysGrid(c) + (+c.ksp || 0); }
 
-function newChar(){ var c = {id:'pc' + Date.now().toString(36), name:'', concept:'', grid:{}, dom:{}, dis:{}, fir:[], gear:[], stance:'violencia', dmg:{fis:0,men:0,esp:0}, keys:'', notes:'', klist:[], pot:'llaves', potAmb:'', kw:0}; AMB.forEach(function(a, ai){ c.grid[a.id] = Math.min(grid(), techo(ai) || 1); }); return c; }
+function newChar(){ var c = {id:'pc' + Date.now().toString(36), name:'', concept:'', grid:{}, dom:{}, dis:{}, fir:[], gear:[], stance:'violencia', dmg:{fis:0,men:0,esp:0}, keys:'', notes:'', klist:[], potAmb:'', kw:0, ksp:0}; AMB.forEach(function(a){ c.grid[a.id] = 1; }); return c; }
 function gearNum(c, fn){
   var n = 0;
   (c.gear || []).forEach(function(g){
@@ -2305,15 +2327,11 @@ function onChar(e, c){
   else if ((a = b.getAttribute('data-flv'))) { c.fir.splice(+a, 1); }
   else if ((a = b.getAttribute('data-fdel'))) c.fir.splice(+a, 1);
   else if ((a = b.getAttribute('data-gridset'))) { var ai = AMB.map(function(x){ return x.id; }).indexOf(a), cap = techo(ai); var n = +b.getAttribute('data-n'); c.grid[a] = (cap && n > cap) ? cap : n; }
-  else if ((a = b.getAttribute('data-pot'))) {
-    if (a === 'rejilla') {
-      c.pot = 'rejilla';
-      var pa = AMB.map(function(x){ return x.id; }).indexOf(c.potAmb);
-      if (pa < 0 || !potOk(pa)) { c.potAmb = ''; for (var pi = 0; pi < AMB.length; pi++) if (potOk(pi)) { c.potAmb = AMB[pi].id; break; } }
-      setPot(c);
-    } else { if (c.potAmb) c.grid[c.potAmb] = Math.min(grid(), techo(AMB.map(function(x){ return x.id; }).indexOf(c.potAmb)) || 1); c.pot = 'llaves'; }
-  }
+  /* +1 Rejilla: sube un nivel el ambito elegido; las Llaves las cobra keysGrid */
+  else if (b.getAttribute('data-potup')) { var pa = potAi(c); if (pa > -1) { c.potAmb = AMB[pa].id; c.grid[c.potAmb] = ambLvl(c, pa) + 1; } }
   else if (b.getAttribute('data-kadd')) { c.klist = c.klist || []; c.klist.push({t:'', w:'dis', lv:1}); }
+  /* la Llave ancha se tacha al acabar la escena: sale de la lista, sus Llaves quedan gastadas */
+  else if ((a = b.getAttribute('data-kspend')) !== null && a !== undefined) { var kx = c.klist[+a]; if (kx) { c.ksp = (+c.ksp || 0) + keyCost(kx); c.klist.splice(+a, 1); } }
   else if ((a = b.getAttribute('data-kdel')) !== null && a !== undefined) { c.klist.splice(+a, 1); }
   else if ((a = b.getAttribute('data-gdel'))) c.gear.splice(+a, 1);
   else if (b.hasAttribute('data-bar')) { var bar = b.getAttribute('data-bar'), hi = +b.getAttribute('data-hi'), lo = +b.getAttribute('data-lo'); c.dmg[bar] = (c.dmg[bar] >= hi && c.dmg[bar] < hi + ZOOM[zoomK()].size) ? lo : hi; }
@@ -3114,6 +3132,7 @@ function codeMake(){
   /* puntos de mas: solo si la mesa los da, asi los Codigos de siempre no cambian
      y una app vieja que lea este simplemente lo ignora */
   if (ptsExtra()) p.push('P' + ptsExtra());
+  if (keysExtra()) p.push('K' + keysExtra());
   return p.join('-');
 }
 function codeLink(){ return location.origin + location.pathname + '#c=' + codeMake(); }
@@ -3131,6 +3150,7 @@ function codeParse(str){
     else if (k === 'U') o.unis = parseInt(v, 16) || 0;
     else if (k === 'E') o.edition = (v === 'A') ? 'acelerado' : 'completo';
     else if (k === 'P') o.pts = +v || 0;
+    else if (k === 'K') o.kx = +v || 0;
   }
   return o.card ? o : null;
 }
@@ -3148,6 +3168,7 @@ function applyCode(str){
   M.grid = c.grid || 1;
   M.estilo = c.estilo !== false;
   M.pts = c.pts || 0;
+  M.kx = c.kx || 0;
   setBaulMask(c.baul || 0);
   S.scene = null; S.locked = true; S.fix = null;
   return true;
@@ -3351,15 +3372,16 @@ function rulesBar(){
   h += rbSel('grid', grid(), {lab:t('Rejilla','Grid'), list:[1,2,3,4,5].map(function(i){
     return [i, i + ' · ' + pick(GRIDN[i]).split(' · ')[0]];
   })});
-  /* D5: la mesa puede dar mas puntos a conciencia; el manual piensa en los de siempre */
+  /* D5, T176: experiencia de salida, puntos y Llaves de mas; el manual piensa en 0 */
   var pb = budget() - ptsExtra();
-  h += rbSel('pts', ptsExtra(), {lab:t('Puntos','Points'), list:[[0, pb + ' ' + t('(por defecto)','(default)')], [2, '+2 (' + (pb + 2) + ')'], [4, '+4 (' + (pb + 4) + ')'], [6, '+6 (' + (pb + 6) + ')']]});
+  h += '<div class="rbf"><span>' + esc(t('Experiencia de salida','Starting experience')) + '</span><span class="rbxp">+<input type="number" min="0" max="999" data-rb="pts" value="' + ptsExtra() + '" title="' + esc(t('Puntos de habilidad de más (por defecto ','Extra skill points (default ') + pb + ')') + '"> ' + esc(t('puntos','points')) +
+    ' · +<input type="number" min="0" max="999" data-rb="kx" value="' + keysExtra() + '" title="' + esc(t('Llaves de más (por defecto 5)','Extra Keys (default 5)')) + '"> ' + esc(t('Llaves','Keys')) + '</span></div>';
   /* en el Acelerado todo personaje tiene Estilo: no hay boton que apagar */
   if (!isAcc()) h += '<button type="button" class="tool' + (estilo() ? ' on' : '') + '" data-rbb="estilo">' + esc(t('Estilo +2','Style +2')) + '</button>';
   if (!isAcc()) h += '<button type="button" class="tool' + (rbOpen === 'baul' ? ' on' : '') + '" data-rbb="baul">' + esc(t('Reglas extra','Extra rules')) + ' (' + baul().length + ')</button>';
   h += '<span class="spacer"></span><button type="button" class="tool' + (rbOpen === 'code' ? ' on' : '') + '" data-rbb="code">' + esc(t('Código','Code')) + '</button>';
   h += '<button type="button" class="tool' + (rbOpen === 'file' ? ' on' : '') + '" data-rbb="file">' + esc(t('Archivo','File')) + '</button></div>';
-  if (ptsExtra()) h += '<p class="rbmsg">' + esc(t('Más puntos de los previstos: personajes más fuertes y con menos motivos para buscar Llaves. NOGUM lo permite; la idea del manual es la otra.','More points than intended: stronger characters with fewer reasons to look for Keys. NOGUM allows it; the book’s idea is the other one.')) + '</p>';
+  if (ptsExtra() || keysExtra()) h += '<p class="rbmsg">' + esc(t('Empezáis con personajes tochos: más experiencia de la que pide la idea del manual. NOGUM lo permite.','You start with heavyweight characters: more experience than the rulebook’s idea asks for. NOGUM allows it.')) + '</p>';
   if (rbOpen === 'baul') h += rbBaul();
   if (rbOpen === 'code') h += rbCode();
   if (rbOpen === 'file') h += rbFile();
@@ -3440,7 +3462,8 @@ document.addEventListener('change', function(e){
   else if (f2 === 'acc') setAccMode(v);
   else if (f2 === 'zoom') M.zoom = v;
   else if (f2 === 'grid') M.grid = +v;
-  else if (f2 === 'pts') M.pts = +v || 0;
+  else if (f2 === 'pts') M.pts = xpNum(v);
+  else if (f2 === 'kx') M.kx = xpNum(v);
   persist(); render(true);
 });
 function fromHash(live){
@@ -3482,7 +3505,9 @@ function render(keep){
     sh.querySelectorAll('[data-ktxt]').forEach(function(x){ x.addEventListener('input', function(){ c.klist[+x.getAttribute('data-ktxt')].t = x.value; persist(); }); });
     sh.querySelectorAll('[data-kform]').forEach(function(x){ x.addEventListener('change', function(){ c.klist[+x.getAttribute('data-kform')].w = x.value; persist(); render(true); }); });
     sh.querySelectorAll('[data-klv]').forEach(function(x){ x.addEventListener('change', function(){ c.klist[+x.getAttribute('data-klv')].lv = +x.value; persist(); render(true); }); });
-    sh.querySelectorAll('[data-potamb]').forEach(function(x){ x.addEventListener('change', function(){ var old = c.potAmb; if (old) c.grid[old] = Math.min(grid(), techo(AMB.map(function(y){ return y.id; }).indexOf(old)) || 1); c.potAmb = x.value; setPot(c); persist(); render(true); }); });
+    if ($('f-ksp')) $('f-ksp').addEventListener('input', function(){ c.ksp = Math.max(0, +this.value || 0); persist(); render(true); });
+    /* elegir el ambito no sube nada: sube el boton +1 Rejilla, y se paga */
+    sh.querySelectorAll('[data-potamb]').forEach(function(x){ x.addEventListener('change', function(){ c.potAmb = x.value; persist(); render(true); }); });
     sh.querySelectorAll('select[data-grid]').forEach(function(s){ s.addEventListener('change', function(){ c.grid[s.getAttribute('data-grid')] = +s.value; persist(); }); });
     sh.querySelectorAll('select[data-fsel]').forEach(function(s){ s.addEventListener('change', function(){ c.fir[+s.getAttribute('data-fsel')].s = s.value; persist(); render(true); }); });
     var gs = groups();

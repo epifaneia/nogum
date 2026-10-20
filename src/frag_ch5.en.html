@@ -16,7 +16,7 @@
 <dt>Trick</dt><dd>You have a bright idea: you deceive, hide, use the terrain to your advantage, build a gadget or pull one out of your magic pocket. You roll Stealth, Deception, Sleight of Hand… Flexibility is encouraged. On your turn you can switch to another skill, as long as it is still sideways and sly.</dd>
 <dt>Specialty</dt><dd>You are going to use one specific skill: driving, hacking, healing. “I don’t know exactly what I’ll do, but I’ll do it with the computer.” There is no wiggle room here: whatever you do must fit that skill like a glove.</dd>
 </dl></li>
-<li>Actions go from highest to lowest result. On your turn you specify what you do within your guard.</li>
+<li>Actions go from highest to lowest result. On your turn you specify what you do within your guard. <strong>Tie:</strong> whoever has the higher bonus goes first; if it is still tied, PCs before NPCs. <strong>Critical:</strong> you act first. <strong>Fumble:</strong> last. <span class="src">T176</span></li>
 </ol>
 </div>
 <p><strong>The guard marker.</strong> Every sheet carries a marker with the three guards. It is not a rule as such, just a reminder: if the table forgets to choose before acting, the guard on the marker from last time applies. <span class="src">Author's decision, 17 Sep</span></p>
@@ -26,7 +26,7 @@
 <p><strong>No fixed initiative.</strong> NPCs declare a stance and roll too: it is an opposed roll using the skill of the chosen stance, and mooks carry their two or three basic numbers so it can be settled without a sheet. <span class="src">Author’s decision</span></p>
 
 <h3 id="ch5-golpes">5.2 The attack sequence: impact versus mitigation</h3>
-<p><strong>First of all, the power gap</strong> (<a href="#ch4-malla">4.5</a>). If attacker and defender are not at the same Grid level in the sphere of the attack, there is no Step 1 or Step 2 roll for that clash: the one above hits without rolling, with their weapon damage, and the one below neither tickles them nor defends against them, unless they have a Key that applies. <span class="src">T170</span></p>
+<p><strong>First of all, the power gap</strong> (<a href="#ch4-malla">4.5</a>). If attacker and defender are not at the same Grid level in the sphere of the attack, there is no Step 1 or Step 2 roll for that clash: the one above hits without rolling, with their weapon damage, and the one below neither tickles them nor defends against them, unless they have a Key that applies. With a Key you play as if you were at the same level: the one above rolls their attack and result levels are compared. <span class="src">T170</span> <span class="src">T176</span></p>
 <p>To avoid slow arithmetic (subtracting dodges from attacks), NOGUM uses two steps. There is no opposed roll.</p>
 <div class="steps">
 <div class="step">
@@ -53,7 +53,7 @@
 <tr><td>A result level <strong>equal to or better</strong> than the attacker’s (both successes, both criticals, or the defender above)</td><td><strong>None.</strong> A perfect parry.</td></tr>
 <tr><td><strong>Success or success at a cost</strong>, but below the attacker</td><td>Weapon damage <strong>−1</strong></td></tr>
 <tr><td><strong>Failure</strong></td><td>Full damage</td></tr>
-<tr><td><strong>Fumble</strong></td><td>The attack <strong>goes up one step</strong> on the active card’s ladder, and then the result levels are compared. A failure becomes a success (or a success at a cost on the cards that carry it), and a success becomes a critical. The critical is the ceiling: it goes no higher.</td></tr>
+<tr><td><strong>Fumble</strong></td><td>The attack <strong>goes up one step</strong> on the active card’s ladder, and then the result levels are compared. A failure becomes a success (or a success at a cost on the cards that carry it), and a success becomes a critical. If that makes it a critical, <strong>+1 damage</strong>, like any critical. The critical is the ceiling: it goes no higher. <span class="src">T176</span></td></tr>
 </tbody></table></div>
 <p><strong>Tags override the tie.</strong> A weapon with <span class="tag">Dodge: Partial</span> leaves you eating at least 1 point even when you match it, because it is an area, a burst or fire: it cannot be fully avoided. And with <span class="tag">Dodge: None</span> there is no reaction to roll at all. That is the difference between a duel and a gunfight.</p>
 <p><strong>Defence at a cost</strong> (on the cards that carry it): it reduces like a success, −1, and the GM also charges a price from the cost menu. You walk away alive, but you drop the weapon, lose the position or end up where you did not want to be.</p>
@@ -77,10 +77,12 @@
 <li><strong>Named ones only.</strong> Mooks roll on the table’s card: a cultist dropping his dagger is horror too.</li>
 <li><strong>Out loud.</strong> “This one rolls on First Gear.” NOGUM exists to declare what used to be done in secret; changing it behind the screen breaks the deal.</li>
 </ul>
-<p><strong>Use it with great care.</strong> Oppression already brings frustration, and being frustrated against someone who does not even miss can multiply it. And with Lethal health (three boxes), a monster that hits 70&nbsp;% instead of 49&nbsp;% takes people out of the fight a good deal faster. <span class="src">Author’s decision · T169</span></p></div>
-<p class="formula-line">Damage taken = weapon damage (+1 if the attacker rolled a critical): nothing if the defender matches or beats their result level; −1 if the defender succeeded but stayed below; all of it if the defender failed. Always within the limits of the spec sheet.</p>
+<p><strong>Use it with great care.</strong> Oppression already brings frustration, and being frustrated against someone who does not even miss can multiply it. And with Lethal health (three blocks), a monster that hits 70&nbsp;% instead of 49&nbsp;% takes people out of the fight a good deal faster. <span class="src">Author’s decision · T169</span></p></div>
+<p class="formula-line">Damage taken = weapon damage (+1 if the attack ends up critical, even through the defender’s fumble): nothing if the defender matches or beats their result level; −1 if the defender succeeded but stayed below; all of it if the defender failed. Always within the limits of the spec sheet. <span class="src">T176</span></p>
 <p><strong>Summary:</strong> first we see whether you get hit. Then, whether your armour or your reflexes save your life.</p>
 <p>Usual defence skills: Dexterity → Acrobatics to dodge; Vigour → Fortitude (with whatever protection you are wearing) to soak. <strong>You always soak with the skill</strong>, armour or no armour: the body is the first protection. What decides whether it helps are the weapon’s tags —<span class="tag">Soak: Max N</span> and <span class="tag">Soak: None</span>, which is where “this goes through your skin” lives— and whatever bonus your protection adds. By default, normal. <span class="src">Author’s decision</span></p>
+<p><strong>Mental, social and spiritual defence</strong>, by default (the table can change it to suit the fiction): against the <strong>social</strong>, dodge with Empathy and soak with Hierarchy; against the <strong>mental</strong>, dodge with Alertness and soak with Fortitude; against the <strong>spiritual</strong>, Protection if you have Arcane, and Fortitude if you don’t. <span class="src">T176</span></p>
+<p><strong>Hazards with no attacker.</strong> A fall, fire, the environment: nobody rolls the attack. They count as a successful attack of their level, and you defend if the spec sheet allows it. If they are extreme, as a critical. The huge ones carry a Reaper of their level (<a href="#ch5-parca">5.3</a>). They never kill: they take you out of the fight. <span class="src">T176</span></p>
 <p><span class="flag ed">ED-17</span> The initial sketch in which the dodge difficulty added the margin by which the attacker had beaten their roll is withdrawn. The author agreed to replace it with a fixed roll against the TN <span class="src">T45</span> and settled that the attacker’s critical is the only arithmetic <span class="src">T129</span>.</p>
 
 <h3 id="ch5-armas">5.3 Arsenal and the Hierarchy of Inevitability: the spec sheet</h3>
@@ -109,7 +111,7 @@
 <div class="example">
 <p class="example-title">Horror example</p>
 <p>The GM tells you: “The sniper fires. It’s <span class="tag parca">The Reaper · Grid 2</span> <span class="tag">Dodge: None</span> <span class="tag">Soak: None</span>.”</p>
-<p><em>Translation:</em> if it hits, you are out of the fight. You don’t roll defence. You don’t roll armour. Pray.</p>
+<p><em>Translation:</em> if you are below level 2, there is no roll: you are out of the fight. You don’t roll defence. You don’t roll armour. Pray. <span class="src">T176</span></p>
 </div>
 <div class="rule">
 <p class="rule-title">Anything without tags is not an attack</p>
@@ -121,7 +123,7 @@
 <p><strong>A weapon’s maximum damage is 2.</strong> That is the ceiling, and it is deliberate: 1 and 2 are <em>the damage it makes sense to roll for</em>. A weapon of war is told apart from a knife by its other three tags —no dodging, no soaking, long reach— not by a bigger number.</p>
 <p>What lies above that is not a better weapon: it is <strong>an event</strong>. A siege gun, a car at seventy, a dragon’s breath, a bomb. We call that <strong>the Reaper</strong>, and it works like the Grid, not like damage:</p>
 <div class="rule"><p class="rule-title">The Reaper</p>
-<p>Every Reaper carries a <strong>Grid level</strong>. Against anyone <strong>below</strong> that level there is no damage roll: they are <strong>out of the fight</strong>, in whatever way that track implies. Death, madness or transformation only come if they are agreed narratively (ED-12). Against anyone <strong>at that level or above</strong>, it deals <strong>Damage 2</strong> and plays like any other blow. <span class="src">T170</span></p>
+<p>Every Reaper carries a <strong>Grid level</strong>. Against anyone <strong>below</strong> that level there is no damage roll and no defence: they are <strong>out of the fight</strong>, in whatever way that track implies. Death, madness or transformation only come if they are agreed narratively (ED-12). Against anyone <strong>at its level</strong>, it deals <strong>Damage 2</strong> with normal defence, and plays like any other blow. Against anyone <strong>above</strong> it, nothing without a Key: that is the power gap. And it never kills. <span class="src">T170</span> <span class="src">T176</span></p>
 <p>It is the same old sentence (<a href="#ch4-malla">4.5</a>): below the level it is impossible, and the Key is the agreed exception. Here, what is impossible is staying on your feet.</p></div>
 <p><strong>This is not dodged: it is avoided.</strong> The Reaper is not a combat problem, it is a fiction problem. It is not solved with a better roll; it is solved by not being there, by cutting the fuse, by talking down whoever is holding it, or by climbing the Grid before it arrives. A Director who points a Reaper at a character who cannot take it is not proposing a fight: they are announcing that the character is leaving it. Let that show at the table, and let it be seen coming.</p>
 <p><strong>And it exists on all three tracks.</strong> The physical Reaper floors you. The <strong>mental</strong> one takes you out of the scene through your head, and also through your face: there is evidence, and tomorrow you are nobody, because social attacks go to the Mental track (ED-11). The <strong>spiritual</strong> one takes whatever you carry inside, whatever your world calls it. It does not empty the track: it <strong>crosses it out</strong>. And whatever comes after is agreed by the table, not by the Reaper.</p>
@@ -145,13 +147,15 @@
 </tbody></table></div>
 <ul>
 <li><strong>All three layouts are on the sheet.</strong> Table tip: mark half a cross (a single line) in advance on the active boxes of the chosen zoom and complete the X when you take damage. If you tick off the large block, it is clear you can ignore everything inside it. The sheets for the 20 recipes already come with their health option chosen. <span class="src">T35</span></li>
-<li><strong>The zoom can be changed mid-game</strong> (see Synchronisation, <a href="#ch2-rejilla">2.4</a>). <span class="src">T36</span></li>
-<li><strong>Damage points are only tracked during combat.</strong> When it ends they reset, but any consequences that have come in stay (5.6).</li>
+<li><strong>The zoom can be changed mid-game</strong> (see Synchronisation, <a href="#ch2-rejilla">2.4</a>). <span class="src">T36</span> If damage is already marked, the proportion is kept —how many blocks are full and how much of the next one— and it is rounded in the character’s favour. <span class="src">T176</span></li>
+<li><strong>Damage points reset when the threat ends, not when a fight ends.</strong> The scene is what counts, and the scene is set by what is felt: have they felt <strong>safe</strong>, even for a moment? Then the danger has passed and the points come back. If not —the second fight arrives hot on the heels of the first, nobody has had time to breathe—, it is the same scene and the damage is still there, however many fights there are in between. <span class="src">T177</span></li>
+<li><strong>Consequences are not healed by feeling safe.</strong> They stay (<a href="#ch5-consecuencias">5.6</a>) until something really heals them: treatment, time to recover, a spell, a potion. <span class="src">T177</span></li>
 </ul>
 <div class="rule">
 <p class="rule-title">The fourth state is not called “dead”</p>
 <p>That is no accident. In this rulebook’s philosophy, a protagonist’s death is never down to chance: players own their characters’ lives, and the rules can only take them out of the fight.</p>
 <p><strong>Out of the fight</strong> means incapacitated: you lose consciousness, or you stay conscious clutching your guts and screaming for help. The only non-negotiable point is that <strong>you cannot take part in the fight in any way</strong>: not physically, not with powers, not even by giving useful advice. You can scream or crawl, but you are removed from the action scene. Whether you wake up the next day is decided by the campaign’s tone or the player’s wishes. <strong>Never by the dice.</strong> <span class="src">Author’s combat notes</span></p>
+<p><strong>Out of the fight, you leave the scene.</strong> You come back when it ends, and your health follows the usual rule: damage points are restored when the threat is over and whatever consequences came in stay (<a href="#ch5-consecuencias">5.6</a>). <span class="src">T176</span></p>
 <p><span class="flag ed">ED-12</span> Where the draft says “collapse: death” or “threshold 3: death, madness or transformation”, read “out of the fight”. Death, madness or transformation only happen if agreed narratively.</p>
 </div>
 
@@ -181,6 +185,7 @@
 <li><strong>Horror:</strong> watching an abyssal creature devour a friend is a passive attack <span class="tag">Mental Dmg 2</span> <span class="tag">Dodge: None</span>, straight to the sanity.</li>
 <li><strong>Trial or royal court:</strong> a lawyer corners a witness by rolling Persuasion or Deception: <span class="tag">Mental Dmg 2</span> (social attacks go to the Mental track, ED-11). If she empties their track, the witness makes a fool of themselves, loses all credibility and is dropped from the case.</li>
 </ul>
+<p>And they are stopped like any blow (<a href="#ch5-golpes">5.2</a>). By default, the social is dodged with Empathy and soaked with Hierarchy; the mental is dodged with Alertness and soaked with Fortitude; the spiritual is stopped with Protection if you have Arcane, and with Fortitude if you don’t. The table can change it if the fiction asks for it. <span class="src">T176</span></p>
 <p>There is a list of social weapons in <a href="#bz-social">the Bazaar</a>.</p>
 
 

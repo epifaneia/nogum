@@ -2035,3 +2035,44 @@ Disciplina). El autor: no se arregla, se avisa. Conseguir un arma pesada es
 complicado, caro o pide permisos; el precio de las armas lo administra el
 mundo, con el Acceso y la ficcion, no la cuenta. Aviso en 4.3 y en el taller
 del Bazar.
+
+---
+
+## T176 · La Llave de principio a fin, los unos abundan y los huecos de mesa
+
+Tres simulaciones de partida (una sesion de Acelerado, una campaña del Juego y
+un abogado de reglas) encontraron huecos que paraban la mesa o rompian la
+economia. Decisiones del autor y consecuencias directas:
+- La Llave estrecha es una Disciplina contra su objetivo (no contra todo); la
+  ancha, el ambito contra su objetivo durante una escena, y se tacha. Por
+  encima del techo solo valen Llaves con objetivo. Las Llaves de un salto
+  rechazado solo se gastan en ese ambito. La superioridad numerica solo iguala.
+  La Parca por encima de tu nivel se paga en Llaves. Lo Limitado gratis se
+  consume. La Sincronizacion es Limitada solo si se puede perder. Lo que presta
+  la trama sale gratis mientras la preste. Equipo perdido, Llaves perdidas;
+  traspasar no reembolsa. Los saltos son lo que la mesa pacte, por ambito.
+- Los unos abundan: se empieza siempre en 1·1·1·1·1 mas el +1 del bote. La
+  escala de la partida es el tamaño de las hazañas, no sube todos los ambitos.
+  Para empezar mas arriba: experiencia de salida (puntos y Llaves antes de
+  empezar; la App lo ofrece con aviso) o salto pactado en la sesion cero.
+- Combate: el decorado lo declara el Director y no hace daño; la Parca por
+  encima de su nivel no hace nada sin Llave; con Llave contra alguien superior
+  se tira como al mismo nivel; defensa social, mental y espiritual por defecto;
+  peligros sin atacante; +1 al daño si la pifia del defensor lo lleva a
+  critico; iniciativa con empates; cambio de zoom; tono por personaje.
+- Baul: Vinculos solo con PNJ; la Transformacion se paga (nunca gratis); el
+  Wyrd lo aprueba el Director y puede provocarlo. Recetas 16 y 17 sin «salida
+  alta». Las 16 Parcas sin precio cobran 1 o 4 Llaves.
+- La App: fichas en 1, Rejilla a 5·n², bote de 5 Llaves, Llave ancha que se
+  tacha, poderes del Acelerado con su precio, experiencia de salida.
+
+---
+
+## T177 · La vida vuelve cuando termina la amenaza
+
+El autor: los puntos de daño no se restablecen al terminar un combate sino al
+terminar la amenaza. Manda la escena, y la escena la marca lo que se siente:
+si se han sentido a salvo, aunque sea un instante, son dos escenas; si no, es
+la misma por muchos combates que haya. Las consecuencias no se curan por
+sentirse a salvo: piden curas, tiempo, hechizos o pociones. En 5.4 y en el
+Acelerado; fuera de combate sigue esta misma regla.
