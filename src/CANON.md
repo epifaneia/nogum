@@ -2025,3 +2025,13 @@ nivel 1, con x = niveles que el objeto le sube:
   el Martillo Digno, que concede el Director.
 Las etiquetas «Rejilla: Llave N» pasan a «Rejilla: Nivel N». El Buggy de Arena
 tenia Acceso 1 en ingles y 2 en español: manda el español.
+
+---
+
+## T175 · Las armas, baratas en Llaves: se avisa, no se arregla
+
+Con T174 un arma que rompe la Rejilla cuesta pocas Llaves (sube una sola
+Disciplina). El autor: no se arregla, se avisa. Conseguir un arma pesada es
+complicado, caro o pide permisos; el precio de las armas lo administra el
+mundo, con el Acceso y la ficcion, no la cuenta. Aviso en 4.3 y en el taller
+del Bazar.
