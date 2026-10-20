@@ -1981,3 +1981,27 @@ sitio sale de las columnas de texto largo. Las cabeceras no se parten nunca, y
 el mismo reparto de columnas (clase arsenal, ancho fijo), y «Acceso / Rejilla»
 se parte como mucho en dos lineas. Las pruebas usan desde ahora un perfil con
 los diccionarios de guion, para ver lo mismo que ve el lector.
+
+---
+
+## T173 · La unidad de cambio entre Llaves y Rejilla
+
+El autor: la Rejilla avanza por trama, pero cada salto tiene que ser
+cuantificable para que sea intercambiable. «No se compra» es un permiso de la
+trama (que no rompa el tono ni los niveles), no la ausencia de precio.
+
+La cuenta: una Llave sube una Disciplina; un nivel de Rejilla sube el Ambito
+entero, sus ocho Disciplinas. La Rejilla se cuenta en botes de cinco Llaves y
+sube por la misma escalera: estar n niveles por encima vale 5·n² Llaves, y
+cubrir las ocho Disciplinas Llave a Llave, 8·n². La proporcion es 5/8 en todos
+los peldaños, la misma del bote de creacion, y garantiza lo que pidio el autor:
+las Llaves nunca valen mas que la Rejilla que sustituyen. Quien renuncia a un
+salto cobra su valor (5, luego 15 mas…); quien quiere subir antes lo paga
+cuando la historia da permiso. Empezar en 3 son 20 Llaves: o los demas reciben
+cuatro botes, o la mesa sube su nivel de partida.
+
+Para que la cuenta no se rompa: la Llave va siempre en una Disciplina entera,
+nunca en una Firma. El equipo que rompe la Rejilla cobra x² Llaves con x
+relativo a quien lo lleva, y va Limitado (÷2) si solo sirve para una Firma. El
+recuadro del bote decia «diez casillas por cinco monedas, la libertad se paga
+al doble»: son ocho Disciplinas, y la libertad cuesta un 60 % mas.
