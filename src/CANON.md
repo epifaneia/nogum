@@ -1899,3 +1899,26 @@ alto, Optimista; normal, Neutro, salvo con caos «mucho», que es Caos. Si el
 optimismo no es normal, el caos avisa de que no cambia el modo. La fila
 «Peligro» del resumen de la mesa decia «sin floritura» aunque en el Acelerado
 el Estilo +2 va siempre; ahora dice las casillas de vida y el Estilo.
+
+---
+
+## T169 · El monstruo no tiembla
+
+Feedback de una mesa, recogido por el autor: en las tarjetas duras los
+adversarios tiran con la misma tarjeta que los jugadores, y un horror que pifia
+casi una de cada cinco veces (Pesadilla, cualquier 1) desinfla el miedo.
+
+Regla opcional, recuadro en 5.2 tras el menu de la pifia: un adversario con
+nombre puede hacer todas sus tiradas en Primera marcha (la tarjeta del centro).
+Tres condiciones del autor y de la discusion: siempre hacia el centro, nunca al
+extremo contrario; solo adversarios con nombre, las masillas siguen con la
+tarjeta de la mesa; y se anuncia en voz alta, porque cambiarlo en secreto
+contradice la tesis (declarar lo que venia impuesto). Aviso de uso: la opresion
+ya trae frustracion, y con tres casillas de vida el monstruo mata mas rapido.
+
+No va al Baul: el Codigo de la mesa usa 16 bits y una regla 17 romperia los
+codigos ya compartidos. En el Acelerado no hace falta para el Terror, que ya
+tira como el Neutro.
+
+De paso: una sustitucion antigua stance -> guard habia dejado en ingles
+«circumguards» y «subguard(s)»; vuelven a ser circumstances y substance(s).
