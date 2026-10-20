@@ -2076,3 +2076,10 @@ si se han sentido a salvo, aunque sea un instante, son dos escenas; si no, es
 la misma por muchos combates que haya. Las consecuencias no se curan por
 sentirse a salvo: piden curas, tiempo, hechizos o pociones. En 5.4 y en el
 Acelerado; fuera de combate sigue esta misma regla.
+
+---
+
+## T178 · La armadura del Acelerado
+
+El autor: en el Acelerado la armadura ligera da +1 y la pesada +2 a la tirada
+de absorcion, si el arma deja absorber.
