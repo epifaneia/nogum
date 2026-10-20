@@ -21,7 +21,7 @@ La cuenta y la página las creas tú (**itch.io → Upload new project**). Todo 
 | **Uploads** | `NOGUM-sin-conexion.zip` · ponle de nombre visible *NOGUM — offline pack (ES / EN)* |
 | **Cover image** | `portada-itch.jpg` (1260 × 1000, la proporción que pide itch) |
 | **Screenshots** | `captura-1-portada.png` → `captura-5-app-ficha.png`, en ese orden |
-| **Trailer** | El vídeo de la App, cuando lo grabes |
+| **Trailer** | `../video/nogum-app-innsmouth.mp4` con tu voz (subido a YouTube: itch solo enlaza tráileres de YouTube o Vimeo). El guion de la voz es `nogum-app-innsmouth.srt`. |
 
 ## Detalles
 

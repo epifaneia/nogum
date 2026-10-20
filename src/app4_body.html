@@ -679,6 +679,22 @@ var RES_TONO = {
          [['Cada enemigo cuenta','Every enemy counts'], ['Regla del Estilo apagada: hasta el último matón se tira.','Style Rule off: even the last thug gets rolled for.']],
          [['Con floritura','With a flourish'], ['Regla del Estilo encendida: contra inferiores se tira para quedar bien.','Style Rule on: against lesser foes you roll to look good.']]]
 };
+/* En el Acelerado no hay cartas: el optimismo y el caos eligen uno de cuatro
+   modos (ED-A1), y Terror tira igual que Neutro con tres casillas de vida.
+   Las lecturas de arriba son las del Juego completo («el menor de dos dados» es
+   Angustia o Pesadilla) y en el Acelerado mentian (T168). */
+function resTono(sid){
+  var b = banda3(sc('tono', sid)), r = RES_TONO[sid][b];
+  if (!isAcc() || (sid !== 'opt' && sid !== 'caos')) return r;
+  if (sid === 'opt') return [r[0], [
+    ['En el Acelerado es el modo Terror: el mismo dado rojo que el Neutro, pero solo tres casillas de vida. No fallas más: aguantas menos.','In Accelerated this is Terror mode: the same red die as Neutral, but only three health boxes. You do not fail more often: you last less.'],
+    ['Solo cuenta el dado rojo. Será el modo Neutro, salvo que el caos se dispare.','Only the red die counts. It will be Neutral mode, unless chaos runs wild.'],
+    ['En el Acelerado es el modo Optimista: se lee el mayor de los dos dados.','In Accelerated this is Optimistic mode: the higher of the two dice is read.']][b]];
+  if (opt() !== 'neutro') return [r[0], ['Con vuestro optimismo, el caos no cambia el modo: en el Acelerado solo decide cuando el optimismo es normal.','With your optimism, chaos does not change the mode: in Accelerated it only decides when optimism is normal.']];
+  return [r[0], b === 2
+    ? ['En el Acelerado es el modo Caos: pifias y críticos más anchos, y los aciertos justos salen con coste.','In Accelerated this is Chaos mode: wider fumbles and criticals, and narrow successes come at a cost.']
+    : ['Se queda en el modo Neutro: pifia con un 1 y crítico con un 10 en el dado rojo.','It stays in Neutral mode: a 1 on the red die fumbles and a 10 is a critical.']];
+}
 function sinContestar(fid){ var o = S.q[fid]; if (!o) return true; for (var k in o) if (o[k] && o[k].length) return false; return true; }
 function aplicaTono(){
   if (sinContestar('tono')) return;
@@ -1133,7 +1149,8 @@ function resumenFilas(){
   f.push(['uni', t('Universo','Universe'), worldName(), t('Objetos: ','Items: ') + universes().map(uniName).join(', ')]);
   f.push([null, t('Edición','Edition'), isAcc() ? t('A jugar ya','Play now') : t('Todas las herramientas','Every tool'), isAcc() ? 'NOGUM Acelerado' : t('NOGUM completo','Complete NOGUM')]);
   f.push(['tono', t('Tono','Tone'), {alto:t('El universo está de nuestra parte','The universe is on our side'), neutro:t('El universo es justo','The universe is fair'), bajo:t('El universo nos pone a prueba','The universe puts us to the test')}[opt()] + ' · ' + {bajo:t('mundo de reloj','clockwork world'), medio:t('mundo de película','film-like world'), alto:t('universo caótico','chaotic universe')}[caos()], pick(card().n)]);
-  f.push(['tono', t('Peligro','Danger'), (isAcc() ? t('Vida fija','Fixed health') : pick(ZOOM[zoomK()].n) + ' (' + ZOOM[zoomK()].units + ')') + ' · ' + (estilo() ? t('con floritura','with flourish') : t('sin floritura','no flourish')), t('Vida fractal · Estilo ','Fractal Health · Style ') + (estilo() ? t('sí','on') : t('no','off'))]);
+  f.push(['tono', t('Peligro','Danger'), (isAcc() ? ZOOM[zoomK()].units + t(' casillas de vida',' health boxes') : pick(ZOOM[zoomK()].n) + ' (' + ZOOM[zoomK()].units + ')') + ' · ' + (estilo() || isAcc() ? t('con floritura','with flourish') : t('sin floritura','no flourish')),
+    isAcc() ? t('Vida fija del Acelerado · Estilo +2 siempre','Accelerated fixed health · Style +2 always') : t('Vida fractal · Estilo ','Fractal Health · Style ') + (estilo() ? t('sí','on') : t('no','off'))]);
   f.push(['uni', t('Escala','Scale'), pick(GRIDN[grid()]), t('Rejilla nivel ','Grid level ') + grid()]);
   if (!isAcc()) f.push(['baul', t('Reglas extra','Extra rules'), baul().length ? baul().map(function(k){ return pick(DATA.baul[k]); }).join(', ') : t('Ninguna','None'), t('Baúl de reglas (8.1)','Rules Chest (8.1)')]);
   return f;
@@ -1244,7 +1261,7 @@ function renderPasos(fid){
     h += '<p class="kick">' + esc(p.g === 'toon' ? t('La última','The last one') : t('Delimitando','Setting the boundaries')) + '</p>';
     h += escala(p.q, sc1(fid, p.g));
   } else if (p.t === 'res') {
-    var r = p.gi !== undefined ? resBaul(p.gi) : fid === 'uni' ? resUni(p.s) : {t:RES_TONO[p.s.id][banda3(sc(fid, p.s.id))][0], d:RES_TONO[p.s.id][banda3(sc(fid, p.s.id))][1]};
+    var r = p.gi !== undefined ? resBaul(p.gi) : fid === 'uni' ? resUni(p.s) : {t:resTono(p.s.id)[0], d:resTono(p.s.id)[1]};
     h += '<p class="kick">' + esc(pick(p.s.k)) + '</p><p class="big">' + esc(pick(r.t)) + '</p>' +
       '<p class="hint">' + esc(pick(r.d)) + '</p>' +
       '<p class="eqnote">' + esc(t('Si no es eso, vuelve atrás y mueve cualquiera de las tres. Se puede cambiar luego en la barra de la ficha.','If that is not it, go back and move any of the three. You can also change it later on the sheet bar.')) + '</p>';
@@ -1302,10 +1319,10 @@ function renderFin(fid){
   if (fid === 'tono') {
     S_TONO.forEach(function(s){
       if (isAcc() && (s.id === 'vida' || s.id === 'estilo')) return;
-      var r = RES_TONO[s.id][banda3(sc('tono', s.id))];
+      var r = resTono(s.id);
       h += '<tr><td>' + esc(pick(s.k)) + '</td><td>' + esc(pick(r[0])) + '<span class="tech">' + esc(pick(r[1])) + '</span></td></tr>';
     });
-    h += '<tr><td>' + esc(t('La tarjeta','The card')) + '</td><td>' + esc(pick(card().n)) + '<span class="tech">' + esc(pick(card().roll)) + ' · TN ' + (card().tn || 6) + '</span></td></tr>';
+    h += '<tr><td>' + esc(isAcc() ? t('El modo','The mode') : t('La tarjeta','The card')) + '</td><td>' + esc(pick(card().n)) + '<span class="tech">' + esc(pick(card().roll)) + ' · TN ' + (card().tn || 6) + (isAcc() ? esc(' · ' + ZOOM[zoomK()].units + t(' casillas de vida',' health boxes')) : '') + '</span></td></tr>';
   } else if (fid === 'uni') {
     h += '<tr><td>' + esc(t('Mundo','World')) + '</td><td>' + esc(worldName()) + '<span class="tech">' + esc(universes().map(uniName).join(', ')) + '</span></td></tr>';
     h += '<tr><td>' + esc(t('Escala','Scale')) + '</td><td>' + esc(pick(GRIDN[grid()])) + '<span class="tech">' + esc(t('Rejilla nivel ','Grid level ') + grid()) + '</span></td></tr>';

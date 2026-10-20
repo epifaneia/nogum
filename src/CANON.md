@@ -1881,3 +1881,21 @@ lo que fallaba en la primera tanda: el personaje vuelve a ser el mismo
 DJ modernos por una mesa analogica, y las cuatro comparten el tratamiento de
 la original (centro casi en blanco y negro, color en los bordes). Las laminas
 siguen cabiendo en su hoja; el kit de itch.io se ha regenerado con ellas.
+
+---
+
+## T168 · El Terror del Acelerado no es la Pesadilla
+
+Lo encontro el autor: en la App, con NOGUM Acelerado, el formulario del tono
+leia el optimismo con las lecturas del Juego completo. Un optimismo bajo decia
+«se lee el menor de dos dados», que es Angustia o Pesadilla, cuando el modo
+Terror del Acelerado tira **igual que el Neutro** (solo el dado rojo) y lo que
+cambia son las **3 casillas de vida**. El motor de dados estaba bien; mentian
+los textos.
+
+Ahora, en el Acelerado, el paso de resultado y el resumen final dicen el modo
+al que lleva cada respuesta (tabla de cruce de ED-A1): optimismo bajo, Terror;
+alto, Optimista; normal, Neutro, salvo con caos «mucho», que es Caos. Si el
+optimismo no es normal, el caos avisa de que no cambia el modo. La fila
+«Peligro» del resumen de la mesa decia «sin floritura» aunque en el Acelerado
+el Estilo +2 va siempre; ahora dice las casillas de vida y el Estilo.
