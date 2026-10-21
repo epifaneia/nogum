@@ -199,6 +199,7 @@ label.tool.file{cursor:pointer;display:inline-flex;align-items:center}
 
 .acard .techo{font:600 10px/1 var(--mono);color:var(--red);background:var(--red-soft);border-radius:999px;padding:3px 7px;margin-left:6px}
 .acard.noexiste{opacity:.55}
+.arcchk{display:inline-flex;align-items:center;gap:5px;font:600 11px/1 var(--mono);color:var(--ink-2);margin-left:8px;cursor:pointer}
 .seg button.cap{background:repeating-linear-gradient(135deg,transparent,transparent 3px,var(--rule) 3px,var(--rule) 4px);cursor:not-allowed}
 .keys{border:1px solid var(--rule);border-radius:10px;padding:8px 10px;margin-bottom:10px}
 .potrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
@@ -1881,7 +1882,7 @@ function renderEq(){
     S.chars.forEach(function(c, ci){
       var p = cost(c), k = keysUsed(c);
       h += '<button type="button" data-eqwho="' + c.id + '"><b>' + esc(c.name || (u('pc') + ' ' + (ci + 1))) + '</b>' +
-        '<small>' + esc(c.concept || t('sin concepto','no concept')) + ' · ' + p + '/' + budget() + ' ' + esc(t('puntos','points')) +
+        '<small>' + esc(c.concept || t('sin concepto','no concept')) + ' · ' + p + '/' + budget(c) + ' ' + esc(t('puntos','points')) +
         ' · ' + k + '/' + keysHave(c) + ' ' + esc(t('Llaves','Keys')) + ' · ' + esc(t('Recursos ','Resources ')) + bonusTxt(resBonus(c)) +
         ' · ' + (c.gear || []).length + ' ' + esc(t('objetos','items')) + '</small></button>';
     });
@@ -1911,7 +1912,7 @@ function renderEq(){
       esc(peor === 'na' ? t('nada de esto se compra con dinero','none of this is bought with money') : peor === 'ok' ? t('todo a tu alcance','all within reach') : peor === 'mid' ? t('algo hay que conseguirlo','something has to be obtained') : t('algo está fuera de tu alcance','something is out of reach')) +
       '</span></td><td class="num">' + sp + '</td><td class="num">' + sk + '</td></tr></tbody></table>';
     var pA = cost(c) + sp, kA = keysUsed(c) + sk;
-    h += '<p class="eqtot">' + esc(t('Puntos de habilidad: ','Skill points: ')) + '<b class="' + (pA > budget() ? 'over' : '') + '">' + pA + ' / ' + budget() + '</b>' +
+    h += '<p class="eqtot">' + esc(t('Puntos de habilidad: ','Skill points: ')) + '<b class="' + (pA > budget(c) ? 'over' : '') + '">' + pA + ' / ' + budget(c) + '</b>' +
       ' · ' + esc(t('Llaves: ','Keys: ')) + '<b class="' + (kA > keysHave(c) ? 'over' : '') + '">' + kA + ' / ' + keysHave(c) + '</b><br>' +
       esc(t('El Acceso no se resta de nada: no es un monedero, es un umbral. Lo mide tu nivel en Recursos (ahora ','Access is not subtracted from anything: it is not a wallet, it is a threshold. Your Resources level measures it (now ')) + bonusTxt(resBonus(c)) + esc(t('), y quien decide si lo consigues es la mesa.','), and the table decides whether you get it.')) +
       (isAcc() ? '<br>' + esc(t('Acelerado (2.9): el equipo no gasta puntos de habilidad. Las Llaves sí: las que lleve su precio, sea Rejilla o permiso.','Accelerated (2.9): equipment spends no skill points. Keys it does: those in its price, Grid or permission alike.')) : '') + '</p>';
@@ -2131,10 +2132,10 @@ function skillGrid(c){
     var cap = techo(ai), seg = '<span class="seg">';
     for (var g = 1; g <= 6; g++) {
       var over = cap ? g > cap : true;
-      seg += '<button type="button" class="' + (g <= lvl ? 'on' : '') + (over ? ' cap' : '') + '"' + (blank || !cap ? ' disabled' : ' data-gridset="' + a.id + '" data-n="' + g + '"') + ' aria-label="' + g + '"></button>';
+      seg += '<button type="button" class="' + (g <= lvl ? 'on' : '') + (over ? ' cap' : '') + '"' + (blank || !cap || (a.id === 'arc' && !tieneArc(c)) ? ' disabled' : ' data-gridset="' + a.id + '" data-n="' + g + '"') + ' aria-label="' + g + '"></button>';
     }
     seg += '</span>';
-    h += '<div class="acard' + (!blank && !has ? ' null' : '') + (techo(ai) === 0 ? ' noexiste' : '') + '"><div class="acard-h"><b>' + esc(pick(a.n)) + '</b>' + (blank ? '' : (has ? '' : '<span class="base neg">' + t('Nulo −2','Null −2') + '</span>') + '<span class="best">' + esc(t('Mejor ','Best ')) + bonusTxt(best) + '</span>' + (FD.amb[ai] ? '<span class="fold big">' + esc(t('ÁMBITO PLEGADO','SPHERE FOLDED')) + '</span>' : '') + '') + '</div>' +
+    h += '<div class="acard' + (!blank && !has ? ' null' : '') + (techo(ai) === 0 || (a.id === 'arc' && !blank && !tieneArc(c)) ? ' noexiste' : '') + '"><div class="acard-h"><b>' + esc(pick(a.n)) + '</b>' + (blank ? '' : (has ? '' : '<span class="base neg">' + t('Nulo −2','Null −2') + '</span>') + '<span class="best">' + esc(t('Mejor ','Best ')) + bonusTxt(best) + '</span>' + (FD.amb[ai] ? '<span class="fold big">' + esc(t('ÁMBITO PLEGADO','SPHERE FOLDED')) + '</span>' : '') + '') + '</div>' +
       '<div class="power"><span class="lab">' + esc(t('Rejilla','Grid')) + '</span>' + seg + '<span class="lab"><b>' + lvl + '</b> · ' + esc(lvl >= 6 ? t('Cósmico','Cosmic') : pick(GRIDN[lvl])) + (!blank && lvl > 1 ? ' · ' + esc(gridPaid(c, ai) + t(' Llaves',' Keys')) : '') + '</span>' + (!blank && lvl > 1 ? '<select class="noprint gjsel" data-gj="' + a.id + '" title="' + esc(t('Los niveles que os ha dado la historia no se pagan (2.4)','Levels the story gave you are not paid for (2.4)')) + '">' + (function(){ var o = '', f = +((c.gj || {})[a.id]) || 0; for (var q = 0; q < lvl; q++) o += '<option value="' + q + '"' + (q === Math.min(f, lvl - 1) ? ' selected' : '') + '>' + esc(t('dados por la historia: ','given by the story: ') + q) + '</option>'; return o; })() + '</select>' : '') + (cap === 0 ? '<span class="techo">' + esc(t('no existe aquí','not in this world')) + '</span>' : cap < 5 ? '<span class="techo">' + esc(lvl > cap ? t('por encima del techo ' + cap + ': confirmadlo en mesa','above the ceiling ' + cap + ': confirm it at the table') : t('techo ','ceiling ') + cap) + '</span>' : '') + '</div><div class="dcols">' + body + '</div></div>';
   });
   return h + '</div>';
@@ -2234,7 +2235,10 @@ function techos(){
   return [5,5,5,5, arcOpen() ? 5 : 0];
 }
 function techo(ai){ var v = techos()[ai]; return v === undefined ? 5 : v; }
-function budget(){ return (arcOpen() ? 14 : 12) + ptsExtra(); }
+/* 12 puntos, o 14 si el personaje tiene Arcano (T188): un humano en un mundo
+   de vampiros tiene 12. Sin personaje (la plantilla), lo que permita el mundo. */
+function tieneArc(c){ return arcOpen() && !(c && c.arc === false); }
+function budget(c){ return (tieneArc(c) ? 14 : 12) + ptsExtra(); }
 function keyCost(k){ var n = k.lv || 1; return n * n * (k.w === 'all' ? 2 : 1); }
 function keysOwn(c){ var n = 0; (c.klist || []).forEach(function(k){ n += keyCost(k); }); return n; }
 /* Los precios del Bazar son para un portador de nivel 1. Para otro nivel se
@@ -2251,7 +2255,7 @@ function keysGear(c){ return gearNum(c, function(it, g){ return gearKeys(c, g, i
 function keysHave(c){ return 5 + keysExtra() + (+c.kw || 0); }
 /* El techo es una propuesta de la receta que confirma la mesa (T184): se puede
    pasar, con aviso. Solo el ambito que no existe en el mundo (techo 0) se queda en 1. */
-function ambLvl(c, ai){ var a = AMB[ai], v = +(c.grid && c.grid[a.id]) || 1; return techo(ai) === 0 ? 1 : Math.max(1, v); }
+function ambLvl(c, ai){ var a = AMB[ai], v = +(c.grid && c.grid[a.id]) || 1; return (techo(ai) === 0 || (a.id === 'arc' && !tieneArc(c))) ? 1 : Math.max(1, v); }
 function gridCost(n){ return n > 0 ? 5 * n * n : 0; }
 /* los niveles que da la historia no se pagan; se pagan los que sube uno por su cuenta (T185) */
 function gridPaid(c, ai){ var n = ambLvl(c, ai) - 1, f = Math.min(+((c.gj || {})[AMB[ai].id]) || 0, n); return gridCost(n) - gridCost(f); }
@@ -2339,11 +2343,11 @@ function finder(){
 function renderChar(c, idx){
   var p = cost(c);
   var title = c.name || (u('pc') + ' ' + (idx + 1));
-  var extra = '<span class="pts' + (p > budget() ? ' over' : '') + '">' + p + ' / ' + budget() + '</span>' + (estilo() || isAcc() ? '<span class="badge red">' + esc(t('Estilo +2','Style +2')) + '</span>' : '') + (isAcc() ? '<span class="badge amber">' + esc(t('Iniciativa ','Initiative ')) + bonusTxt(bestDex(c)) + '</span>' : '');
+  var extra = '<span class="pts' + (p > budget(c) ? ' over' : '') + '">' + p + ' / ' + budget(c) + '</span>' + (arcOpen() ? '<label class="arcchk noprint" title="' + esc(t('Con Arcano reparte 14 puntos; sin él, 12','With Arcane it spends 14 points; without it, 12')) + '"><input type="checkbox" id="f-arc"' + (c.arc !== false ? ' checked' : '') + '> ' + esc(t('Tiene Arcano','Has Arcane')) + '</label>' : '') + (estilo() || isAcc() ? '<span class="badge red">' + esc(t('Estilo +2','Style +2')) + '</span>' : '') + (isAcc() ? '<span class="badge amber">' + esc(t('Iniciativa ','Initiative ')) + bonusTxt(bestDex(c)) + '</span>' : '');
   var p1 = sheetHead(title, extra) +
     '<div class="fields"><div><label for="f-name">' + esc(t('Nombre','Name')) + '</label><input type="text" id="f-name" value="' + esc(c.name) + '"></div><div><label for="f-concept">' + esc(t('Concepto','Concept')) + '</label><input type="text" id="f-concept" value="' + esc(c.concept) + '"></div></div>' +
     stanceBlock(c) + '<div class="sec">' + esc(t('Rejilla y habilidades','Grid and skills')) + '<span class="note noprint">' + esc(t('pulsa los puntos para subir o bajar','tap the dots to raise or lower')) + '</span></div>' + skillGrid(c) +
-    (p > budget() ? '<p class="lockmsg">' + esc(t('Te has pasado de los ','You are over the ') + budget() + t(' puntos.',' points.')) + '</p>' : '');
+    (p > budget(c) ? '<p class="lockmsg">' + esc(t('Te has pasado de los ','You are over the ') + budget(c) + t(' puntos.',' points.')) + '</p>' : '');
   var gs = groups();
   var p2 = '<div class="sec">' + esc(t('Vida','Health')) + '<span class="note noprint">' + esc(t('pulsa para marcar; la última otra vez para borrar','tap to mark; tap the last one again to clear')) + '</span></div>' + tracks(c) +
     '<div class="sec">' + esc(t('Equipo','Equipment')) + '</div>' + gearTable(c) +
@@ -3694,6 +3698,7 @@ function render(keep){
     sh.addEventListener('click', function(e){ onChar(e, c); });
     $('f-name').addEventListener('input', function(){ c.name = this.value; persist(); renderTop(); var h2 = sh.querySelector('.sheethead h2'); if (h2) h2.textContent = c.name || (u('pc') + ' ' + (S.chars.indexOf(c) + 1)); });
     ['concept','keys','notes'].forEach(function(k){ $('f-' + k).addEventListener('input', function(){ c[k] = this.value; persist(); }); });
+    if ($('f-arc')) $('f-arc').addEventListener('change', function(){ c.arc = this.checked; persist(); render(true); });
     if ($('f-kw')) $('f-kw').addEventListener('input', function(){ c.kw = Math.max(0, +this.value || 0); persist(); render(true); });
     sh.querySelectorAll('[data-ktxt]').forEach(function(x){ x.addEventListener('input', function(){ c.klist[+x.getAttribute('data-ktxt')].t = x.value; persist(); }); });
     sh.querySelectorAll('[data-kform]').forEach(function(x){ x.addEventListener('change', function(){ c.klist[+x.getAttribute('data-kform')].w = x.value; persist(); render(true); }); });

@@ -2269,3 +2269,25 @@ una ficha policial antigua, con una banda negra en los ojos que pone la página
 de la receta 13, que sale a Físico 2 y Arcano 2 con diez Llaves de experiencia
 de salida pactadas en la sesión 0 (rompe el 1·1·1·1·2 a conciencia, y se
 explica). El lector gana la clase .nueva-hoja, que empieza página nueva.
+
+---
+
+## T188 · Las dos lecturas de la Rejilla
+
+Decisión del autor: la Rejilla tiene dos caras y el tono decide cuál se lee.
+Tangible en los mundos realistas (lo posible y lo narrativo coinciden: casi
+nunca es humana). Narrativa en los heroicos: no significa esquiva ni armadura,
+significa que a la historia ya no le interesa que el de abajo tenga tirada (el
+enano en la horda, el arquero al que ningún guardia acierta). La prueba en las
+dos: ¿le interesa a la historia que el de abajo tire? Todo el ámbito, Rejilla;
+una cosa, Llave. Quien deba poder herirle trae su Llave (el cazador): es pedir
+permiso a la mesa; y al revés, un PNJ por encima no se toca sin Llave.
+Amplía la idea 1, no la corrige. Techo (lo que un mundo deja alcanzar) ≠
+salida (1·1·1·1·2). Puntos: 12, o 14 si el PERSONAJE tiene Arcano (un humano
+en un mundo de vampiros tiene 12). Vampiros: lo que los separa de un humano es
+tener Arcano; los hechizos piden un punto en Arcano y se pagan con Llaves (el
+permiso es el hechizo), Limitados si el manual emulado los hace difíciles,
+enteros si son a voluntad, y en medio decide la mesa; en vampiro, caros.
+Receta 13: dos partidas, primeras noches (Rejilla 1, Llaves quirúrgicas) o la
+corte (Físico 2), sin salto entre ellas: se elige en la sesión 0. La vampira
+de los expedientes pasa a dos fichas seguidas. La App: casilla «Tiene Arcano».
