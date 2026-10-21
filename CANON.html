@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Canon de NOGUM</title>
+<style>
+:root{--bg:#f5efe3;--card:#fbf8f1;--ink:#1c1814;--ink2:#4a4237;--ink3:#776c5c;--rule:#d9ccb4;--red:#b8323a;--ok:#2f6b45;--ok-soft:#e1ecdf;--no-soft:#f3e0dc;--duda:#8a5a00;--duda-soft:#f1e6cc;
+  --serif:Georgia,"Times New Roman",serif;--mono:ui-monospace,Consolas,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1916;--card:#25211c;--ink:#ede6d9;--ink2:#cfc6b6;--ink3:#a39886;--rule:#3d362d;--red:#f07378;--ok:#7fc29a;--ok-soft:#21342a;--no-soft:#3a2523;--duda:#e0b45c;--duda-soft:#3a3020;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1c1916;--card:#25211c;--ink:#ede6d9;--ink2:#cfc6b6;--ink3:#a39886;--rule:#3d362d;--red:#f07378;--ok:#7fc29a;--ok-soft:#21342a;--no-soft:#3a2523;--duda:#e0b45c;--duda-soft:#3a3020;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 var(--serif)}
+main{max-width:860px;margin:0 auto;padding:28px 16px 80px}
+h1{font:800 34px/1.1 var(--serif);margin:0 0 8px}
+.intro{color:var(--ink2);margin:0 0 18px}
+.barra{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--rule);padding:10px 0;margin-bottom:18px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.cuenta{font:600 13px/1.2 var(--mono);color:var(--ink2);margin-right:auto}
+.cuenta b{color:var(--ink)}
+button{font:600 13px/1 var(--mono);border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:7px;padding:9px 12px;cursor:pointer}
+button:hover{border-color:var(--ink3)}
+button.prim{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.filtros button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+h2{font:700 13px/1 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--red);margin:30px 0 10px}
+.item{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;margin:0 0 10px}
+.item.si{border-left:5px solid var(--ok)}
+.item.no{border-left:5px solid var(--red)}
+.cab{display:flex;gap:10px;align-items:baseline}
+.num{font:600 12px/1 var(--mono);color:var(--ink3);flex:none;min-width:2.6em}
+.tit{font-weight:700}
+.duda{font:600 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--duda);background:var(--duda-soft);border-radius:999px;padding:4px 8px;margin-left:auto;flex:none}
+.yo{margin:6px 0 10px calc(2.6em + 10px);color:var(--ink2)}
+.yo::before{content:"Lo que yo entiendo · ";font:600 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink3)}
+.resp{margin-left:calc(2.6em + 10px);display:flex;gap:8px}
+.resp button[data-v="si"][aria-pressed="true"]{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.resp button[data-v="no"][aria-pressed="true"]{background:var(--no-soft);border-color:var(--red);color:var(--red)}
+textarea{display:block;width:calc(100% - 2.6em - 10px);margin:10px 0 0 calc(2.6em + 10px);min-height:84px;font:15px/1.45 var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--rule);border-radius:8px;padding:9px 11px;resize:vertical}
+textarea[hidden]{display:none}
+.oculto{display:none}
+.aviso{font:12px/1.4 var(--mono);color:var(--ink3);margin-top:28px}
+@media (max-width:560px){.yo,.resp{margin-left:0}textarea{width:100%;margin-left:0}.cab{flex-wrap:wrap}.duda{margin-left:0}}
+</style>
+</head>
+<body>
+<main>
+<h1>Canon de NOGUM</h1>
+<p class="intro">Los conceptos del núcleo, uno a uno, con lo que yo entiendo de cada uno. Marca <strong>Sí</strong> si es así, o <strong>No</strong> y escribe tu versión. Se guarda solo en este navegador; con <strong>Guardar con mis respuestas</strong> te llevas un archivo con todo dentro, que es el que usaremos para la macrorrevisión en una sesión nueva. Los marcados <em>Duda</em> son sitios donde sé que el libro dice una cosa y tú me has dicho otra.</p>
+
+<div class="barra">
+<span class="cuenta" id="cuenta"></span>
+<span class="filtros" role="group" aria-label="Filtrar">
+<button type="button" data-f="todas" aria-pressed="true">Todas</button>
+<button type="button" data-f="pend" aria-pressed="false">Pendientes</button>
+<button type="button" data-f="no" aria-pressed="false">Los «no»</button>
+</span>
+<button type="button" id="copiar">Copiar resumen</button>
+<button type="button" class="prim" id="guardar">Guardar con mis respuestas</button>
+</div>
+
+<div id="lista"></div>
+<p class="aviso" id="aviso"></p>
+</main>
+
+<script id="respuestas" type="application/json">{}</script>
+<script>
+var CANON = [
+ ['El marco', [
+  ['m1','La mesa manda','Las reglas son herramientas para que el tono y el progreso se controlen, y se ignoran cuando impiden lo que la trama pide. NOGUM es para adultos: no hay cortafuegos contra el combo barato; la mesa puede decir «esto no vale».'],
+  ['m2','Sesión 0','Antes de la campaña: las líneas rojas de cada uno (no se impone nada que haga sentir genuinamente mal a alguien; basta una persona; se puede decir en privado al Director), qué se va a sentir, qué soluciones pide el género y hasta dónde puede llegar el tono. De ahí salen los números.'],
+  ['m3','La muerte se pacta','Ningún protagonista muere por una tirada. Fuera de combate no es muerte; la muerte se pacta con argumentos de arco.'],
+  ['m4','Tira solo si vale la pena','Solo se tira si todos los resultados posibles son interesantes.']
+ ]],
+ ['El motor', [
+  ['t1','Dos dados de diez','Dos d10 de colores distintos (rojo y azul). La tarjeta de tono dice cómo se leen: el rojo solo, la suma, el mejor de dos o el peor de dos.'],
+  ['t2','El cuadrante','Siete tarjetas: la fila es de qué lado está el universo (optimista, neutral, opresivo); la columna, a qué precio (previsible, la costumbre, caótico). Dos huecos, a propósito.'],
+  ['t3','TN y dificultad','TN 6 (11 con la suma). La dificultad es un modificador sobre la tirada (+2 fácil, 0, −2 difícil, −4 heroico); la TN no se mueve.'],
+  ['t4','Pifias y críticos','Se leen en el número que usas, sin bonos, con bandas estrecha, normal o ancha según la tarjeta.'],
+  ['t5','Éxito con coste','Un total igual a la TN o un punto por encima: lo consigues y el Director pone el precio (tiempo, recurso, posición, fuego amigo).'],
+  ['t6','El tono se mueve','Por campaña, arco, sesión, escena o personaje, dentro de lo pactado en la sesión 0.']
+ ]],
+ ['El ancla', [
+  ['a1','Qué es el ancla','Todas las fichas, sin excepción, van de −2 a +4. Por eso la estadística funciona siempre tal como se diseñó, en cualquier género y en la sesión cien. El ancla no es el +4: es el rango.'],
+  ['a2','Los bonos se acumulan','Pero el total nunca sale de −2 a +4. Si se pasa, el Director narra o tira en el extremo.'],
+  ['a3','La pirámide','Ámbito (no se compra) → Dominio +1 (1 punto) → Disciplina +2 (1 punto) → Firma +4 (2 puntos). Se usa el escalón más alto aplicable; no se suman entre sí.'],
+  ['a4','Nulidad y Torpe','Nulidad −2 en un ámbito donde no tienes nada. Torpe −1 en la otra columna de un ámbito donde sí tienes algo.'],
+  ['a5','Presupuesto','12 puntos de habilidad, o 14 si el personaje tiene Arcano.'],
+  ['a6','Estilo','+2 fijo, fuera de la pirámide. Se tira cuando ya no se puede fallar, para ver cómo.']
+ ]],
+ ['La Rejilla', [
+  ['r1','Lo que significa un nivel','Un nivel de diferencia: el de abajo no tiene derecho a tirada. Si no quieres que alguien tire, lo pones un nivel por debajo, sin pedir permiso.'],
+  ['r2','Las dos lecturas','Según el tono. Narrativa: el de arriba es el tema de la historia, y no dice nada del mundo. Tangible: de verdad puede cien veces más; para los mundos que emulan el real.'],
+  ['r3','El ×100','Solo es de la lectura tangible: persona, sala, edificio, ciudad, país. La narrativa no se ata a ninguna escala real.'],
+  ['r4','Por ámbitos','Un nivel por ámbito (Físico, Mental, Social, Técnico, Arcano). Los unos abundan.'],
+  ['r5','La salida','1·1·1·1·2 como mucho; el 2 sale del bote.'],
+  ['r6','El techo','Lo más alto que un mundo deja llegar a un jugador. No es la salida. La receta lo propone y la mesa lo confirma.'],
+  ['r7','¿Rejilla o Llave?','Si a la historia ha dejado de interesarle el de abajo en todo el ámbito, es Rejilla; si solo contra una cosa, es Llave.'],
+  ['r8','Quién la sube','La abre la historia; no se compra con puntos. Por defecto, si sube uno, los demás reciben lo equivalente.'],
+  ['r9','Sincronización','Quien pilota un mecha o viste un exoesqueleto hereda su ficha y su nivel mientras dure. Un vehículo normal no hereda nada.'],
+  ['r10','Hacia arriba','Un PNJ por encima de los jugadores no se toca sin Llave.']
+ ]],
+ ['La Llave', [
+  ['l1','Qué es','La explicación narrativa que te deja interactuar con un nivel superior. Sin ella es imposible; con ella tiras normal, con tu bono y con el tono de la partida.'],
+  ['l2','Lo que hace','Te pone un nivel por encima en lo que cubre, también de lo que estaba a tu altura.'],
+  ['l3','A qué va ligada','El libro dice: una Disciplina entera contra su objetivo, nunca una Firma. Tú me has dicho que va ligada a un dominio, y que ponerle objetivo solo la abarata. No sé si «dominio» es un Dominio de la pirámide (Vigor, Destreza…) o una Disciplina.', 1],
+  ['l4','Su precio','Subir n niveles cuesta n² Llaves. Contra todo es la compra completa; contra una sola cosa, Limitada y más barata.', 1],
+  ['l5','La Llave ancha','El ámbito entero contra su objetivo durante una escena; se tacha al acabarla.', 1],
+  ['l6','Propia, prestada, de un momento','La propia se compra y es permanente. La prestada o de un momento la da la ficción o el Director: dura una escena y sube lo que la ficción diga.'],
+  ['l7','En blanco','Se puede guardar sin escribir y decidirla la primera vez que se usa; si alguien abusa, la mesa lo frena.'],
+  ['l8','La Parca','Es una Llave al daño: si te alcanza y estás por debajo de su nivel, quedas fuera de combate, sin absorción. Si se puede esquivar lo dice su etiqueta. Nunca mata.'],
+  ['l9','Los permisos','Lo que ninguna habilidad puede hacer (volar, ver a través de las paredes) cuesta 1 Llave.'],
+  ['l10','Los hechizos','Un punto en Arcano es el requisito; el hechizo es el permiso, y se paga con Llaves. Limitado si el manual emulado lo hace difícil, entero si es a voluntad; en medio decide la mesa.']
+ ]],
+ ['La economía', [
+  ['e1','El bote aparte','+1 de Rejilla en un ámbito, o 5 Llaves. No se cambia por puntos en ninguna dirección.'],
+  ['e2','La unidad de cambio','La Rejilla de un ámbito vale 5·n² Llaves (5, 20, 45…); cubrirlo a mano con Llaves, 8·n². La proporción es 5/8.', 1],
+  ['e3','Dos monederos','Puntos (oficio) y Llaves (tamaño), cada uno con su ritmo, pactado en la sesión 0. Por defecto, una Llave por sesión.'],
+  ['e4','Experiencia de salida','Los puntos y Llaves de más que la mesa quiera dar antes de jugar.'],
+  ['e5','El equipo: tres cerrojos','El Acceso (tu nivel en Recursos), el permiso narrativo, y Llaves si rompe la Rejilla, según cuántos niveles te sube por encima de la tuya.'],
+  ['e6','Devolver, prestar, regalar','El equipo devuelve siempre sus puntos y Llaves al dejarlo. Lo prestado o robado dura una escena y no cuesta. Los regalos del Director no se pagan mientras la historia los pida.'],
+  ['e7','El Ajuste','Limitado ÷2, Completo ×1, Potenciado ×2, Desatado ×3. Por debajo de 1 Llave, gratis una escena y se consume.'],
+  ['e8','El precio de las armas','Lo administra el mundo (el Acceso y la ficción), no las Llaves.']
+ ]],
+ ['Combate y vida', [
+  ['c1','Ataque y defensa','Los dos tiran contra la TN y se comparan niveles de resultado; el empate es del defensor.'],
+  ['c2','El daño','Crítico del atacante: +1 al daño. El daño de un arma llega a 2, más la Parca.'],
+  ['c3','Las etiquetas','Daño, Esq (Total, Parcial, Nula, Difícil −2…) y Abs (Total, Máx N, Nula). Mandan sobre el empate.'],
+  ['c4','La iniciativa','Por guardias: Violencia, Treta o Especialidad. Si cambias, vas el último.'],
+  ['c5','La vida fractal','3 bloques, 9 casillas o 27 puntos, con la misma ficha; el zoom lo pone el tono.'],
+  ['c6','Las barras','Física, Mental, Espiritual y las del género. La barra es tensión: vuelve entera cuando el Director declara que estáis a salvo. Las consecuencias se quedan hasta curarse.'],
+  ['c7','La oposición','Decorado (sin ficha ni tirada), ficha rápida y ficha completa.']
+ ]],
+ ['El Acelerado', [
+  ['x1','Cuatro modos','Optimista, Neutro, Caos y Terror, y los cuatro son configuraciones legales del completo.'],
+  ['x2','Sus reglas propias','Torpe −1, armadura ligera +1 y pesada +2 a la absorción, nueve casillas de vida (tres en Terror).']
+ ]]
+];
+
+var KEY = 'nogum-canon-revision';
+var R = {};
+try { R = JSON.parse(document.getElementById('respuestas').textContent) || {}; } catch (e) { R = {}; }
+try { var loc = JSON.parse(localStorage.getItem(KEY) || 'null'); if (loc && (!R._t || (loc._t || 0) >= R._t)) R = loc; } catch (e) {}
+var filtro = 'todas', total = 0;
+CANON.forEach(function (g) { total += g[1].length; });
+
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function guarda() { R._t = Date.now(); try { localStorage.setItem(KEY, JSON.stringify(R)); } catch (e) {} cuenta(); }
+function cuenta() {
+  var si = 0, no = 0;
+  CANON.forEach(function (g) { g[1].forEach(function (it) { var r = R[it[0]]; if (r && r.v === 'si') si++; if (r && r.v === 'no') no++; }); });
+  document.getElementById('cuenta').innerHTML = '<b>' + (si + no) + ' / ' + total + '</b> contestadas · ' + si + ' sí · ' + no + ' no';
+}
+function pinta() {
+  var h = '';
+  CANON.forEach(function (g) {
+    var cuerpo = '';
+    g[1].forEach(function (it) {
+      var r = R[it[0]] || {}, v = r.v || '';
+      var ver = filtro === 'todas' || (filtro === 'pend' && !v) || (filtro === 'no' && v === 'no');
+      if (!ver) return;
+      cuerpo += '<div class="item ' + v + '" data-id="' + it[0] + '"><div class="cab"><span class="num">' + it[0] + '</span><span class="tit">' + esc(it[1]) + '</span>' + (it[3] ? '<span class="duda">Duda</span>' : '') + '</div>' +
+        '<p class="yo">' + esc(it[2]) + '</p>' +
+        '<div class="resp"><button type="button" data-v="si" aria-pressed="' + (v === 'si') + '">Sí</button><button type="button" data-v="no" aria-pressed="' + (v === 'no') + '">No</button></div>' +
+        '<textarea placeholder="Cómo es de verdad…" aria-label="Tu versión de ' + esc(it[1]) + '"' + (v === 'no' ? '' : ' hidden') + '>' + esc(r.t || '') + '</textarea></div>';
+    });
+    if (cuerpo) h += '<h2>' + esc(g[0]) + '</h2>' + cuerpo;
+  });
+  document.getElementById('lista').innerHTML = h || '<p class="intro">No hay nada en este filtro.</p>';
+  cuenta();
+}
+document.getElementById('lista').addEventListener('click', function (e) {
+  var b = e.target.closest('.resp button'); if (!b) return;
+  var item = b.closest('.item'), id = item.getAttribute('data-id'), v = b.getAttribute('data-v');
+  var r = R[id] || {}; r.v = r.v === v ? '' : v; R[id] = r; guarda();
+  item.className = 'item ' + r.v;
+  item.querySelectorAll('.resp button').forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-v') === r.v); });
+  var ta = item.querySelector('textarea'); ta.hidden = r.v !== 'no'; if (r.v === 'no') ta.focus();
+});
+document.getElementById('lista').addEventListener('input', function (e) {
+  if (e.target.tagName !== 'TEXTAREA') return;
+  var id = e.target.closest('.item').getAttribute('data-id'); var r = R[id] || {}; r.t = e.target.value; R[id] = r; guarda();
+});
+document.querySelector('.filtros').addEventListener('click', function (e) {
+  var b = e.target.closest('button'); if (!b) return; filtro = b.getAttribute('data-f');
+  this.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); pinta();
+});
+function resumen() {
+  var t = 'CANON DE NOGUM · respuestas del autor\n';
+  CANON.forEach(function (g) {
+    t += '\n## ' + g[0] + '\n';
+    g[1].forEach(function (it) { var r = R[it[0]] || {}; t += '\n' + it[0] + ' · ' + it[1] + ' · ' + (r.v === 'si' ? 'SÍ' : r.v === 'no' ? 'NO' : 'SIN CONTESTAR') + '\n  Yo entendía: ' + it[2] + '\n' + (r.v === 'no' ? '  El autor: ' + (r.t || '(sin escribir)') + '\n' : ''); });
+  });
+  return t;
+}
+document.getElementById('copiar').addEventListener('click', function () {
+  var t = resumen(), av = document.getElementById('aviso');
+  (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { av.textContent = 'Resumen copiado.'; }, function () { av.textContent = 'No he podido copiarlo; usa «Guardar con mis respuestas».'; });
+});
+// guarda una copia de esta misma pagina con las respuestas dentro
+document.getElementById('guardar').addEventListener('click', function () {
+  var html = '<!doctype html>\n' + document.documentElement.outerHTML;
+  html = html.replace(/<div id="lista">[\s\S]*?<\/div>\n<p class="aviso"/, '<div id="lista"></div>\n<p class="aviso"');
+  html = html.replace(/(<script id="respuestas" type="application\/json">)[\s\S]*?(<\/script>)/, function (m, a, b) { return a + JSON.stringify(R).replace(/</g, '\\u003c') + b; });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([html], {type: 'text/html'}));
+  a.download = 'CANON-respuestas-' + new Date().toISOString().slice(0, 10) + '.html';
+  document.body.appendChild(a); a.click(); a.remove();
+  document.getElementById('aviso').textContent = 'Guardado en tu carpeta de descargas: ' + a.download;
+});
+pinta();
+</script>
+</body>
+</html>

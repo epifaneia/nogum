@@ -2291,3 +2291,18 @@ enteros si son a voluntad, y en medio decide la mesa; en vampiro, caros.
 Receta 13: dos partidas, primeras noches (Rejilla 1, Llaves quirúrgicas) o la
 corte (Físico 2), sin salto entre ellas: se elige en la sesión 0. La vampira
 de los expedientes pasa a dos fichas seguidas. La App: casilla «Tiene Arcano».
+
+---
+
+## T189 · El núcleo, al principio
+
+Decisión del autor: lo que significa un nivel de Rejilla es la idea central y
+abre el tema, en el 2.2 («La Rejilla: quién tiene derecho a tirada»): un
+nivel de diferencia, en mesa, es que el de abajo no tiene derecho a tirada; si
+no quieres que alguien tire, ponlo por debajo, sin pedir permiso. Del tirón,
+las dos lecturas; después la narrativa, desarrollada; después la tangible,
+con el porqué del ×100 (no deja dudas, es visual y sigue las escalas
+geográficas), la escala de impacto, «dos ceros» y la tabla de ejemplos, que
+solo vale para la lectura tangible: ningún humano pasa del 1 por sí mismo, la
+estrella del rock tiene Llaves, y la escalera social es la de las sirenas y
+Orfeo. El 2.4 se queda con la Rejilla por ámbitos; el 2.6 remite al 2.2.
