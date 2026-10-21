@@ -2173,3 +2173,35 @@ deducen: unas cuarenta pasan a una frase o a una remision, y se queda una sola
 copia donde se usa. Arreglos de paso: la Transformacion «contra todo» a 2·x²,
 «nivel N en una Disciplina» en vez de «Rejilla N», y la receta 16 sin nombres
 con copyright. Las que no se deducen o chocan quedan para el autor.
+
+---
+
+## T184 · Sesion 0, y la mesa manda
+
+Capitulo 0 nuevo, entre la introduccion y el capitulo 1 (no renumera nada):
+las lineas de cada uno (no se impone nada que haga sentir genuinamente mal a
+nadie; no es votacion ni lista de temas; basta una; se puede decir en privado
+al Director; lo que aparece tarde se quita sin pedir permiso; lo que pesa se
+pide antes), que vamos a sentir (emociones, que explorar y que aburre, zonas de
+la trama que se respetan, que soluciones pide el genero; se acuerda un rango de
+tono, no cada escena), quien propone (consenso, con el peso de quien hace el
+trabajo duro), «esto no vale» (recordar lo pactado, no atacar), volver a la
+sesion 0, y la lista de numeros que salen de ahi. Version corta en el
+Acelerado (0.4), parrafo en La Idea, fila en el mapa rapido y glosario.
+Respuestas del autor a las seis preguntas de la poda:
+1. Regalos del Director (3.6): lo que la historia pone en vuestras manos como
+   planteamiento no se paga mientras la historia lo pida. La norma trabaja
+   para la mesa: se ignora cuando impide lo que la trama pide.
+2. El equipo siempre devuelve sus Llaves; perderlo no abarata nada. La
+   Sincronizacion paga el precio entero y es Limitada solo si no esta siempre
+   disponible (llegar, caber); lo decide la mesa.
+3. El techo es la Rejilla entera mas alta de un jugador. No frena Llaves: una
+   Disciplina contra todo puede pasar si el mundo lo hace posible (laboratorio
+   forense de un ciberpunk). Responde a «¿es posible en vuestro mundo?» y se
+   contesta en mesa; los de las recetas son propuesta.
+4. Las Llaves de un salto rechazado son libres.
+5. Las Llaves en blanco se quedan: no hay cortafuegos contra el combo barato;
+   lo frena la mesa (caso nuevo en 2.6).
+6. Las Llaves de un momento suben lo que diga la ficcion; las compradas, por
+   la escalera.
+Encima de las siete ideas: «antes de las siete, una: la mesa manda».

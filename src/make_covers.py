@@ -7,6 +7,7 @@ MAP_ES = """<h3 id="inicio-mapa">Mapa rápido del sistema</h3>
 <div class="tw"><table class="t">
 <thead><tr><th>Pieza</th><th>Qué controla</th><th>Dónde</th></tr></thead>
 <tbody>
+<tr><td><strong>La Sesión 0</strong></td><td>El pacto de la mesa: las líneas rojas de cada uno, qué se va a sentir y qué soluciones pide el género.</td><td><a href="#ch0">Capítulo 0</a></td></tr>
 <tr><td><strong>El Motor</strong>: Optimismo y Caos</td><td>Cómo se leen los dos d10 y, con ello, cómo se siente la escena.</td><td><a href="#ch1">Capítulo 1</a> · <a href="#ch1-panel">Tarjetas de tono</a></td></tr>
 <tr><td><strong>El Ancla</strong>: competencia de −2 a +4</td><td>Lo bueno que eres. Nunca cambia con el género.</td><td><a href="#ch2-competencia">2.1</a> · <a href="#ch3">Capítulo 3</a></td></tr>
 <tr><td><strong>La Vela</strong>: Rejilla 1–5</td><td>Lo grandes que son tus hazañas: habitación, oficina, edificio, ciudad, nación.</td><td><a href="#ch2-escala">2.2</a> · <a href="#ch2-llave">La Llave</a></td></tr>
@@ -17,6 +18,7 @@ MAP_EN = """<h3 id="inicio-mapa">Quick map of the system</h3>
 <div class="tw"><table class="t">
 <thead><tr><th>Piece</th><th>What it controls</th><th>Where</th></tr></thead>
 <tbody>
+<tr><td><strong>Session Zero</strong></td><td>The table’s agreement: everyone’s red lines, what is going to be felt and what solutions the genre asks for.</td><td><a href="#ch0">Chapter 0</a></td></tr>
 <tr><td><strong>The Engine</strong>: Optimism and Chaos</td><td>How the two d10 are read and, with that, how the scene feels.</td><td><a href="#ch1">Chapter 1</a> · <a href="#ch1-panel">Tone Cards</a></td></tr>
 <tr><td><strong>The Anchor</strong>: competence from −2 to +4</td><td>How good you are. It never changes with the genre.</td><td><a href="#ch2-competencia">2.1</a> · <a href="#ch3">Chapter 3</a></td></tr>
 <tr><td><strong>The Sail</strong>: Power Grid 1–5</td><td>How big your deeds are: room, office, building, city, nation.</td><td><a href="#ch2-escala">2.2</a> · <a href="#ch2-llave">The Key</a></td></tr>

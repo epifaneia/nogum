@@ -30,7 +30,7 @@ def juego(lang):
     k = cap8.find('<h3 id="ch8-recetas"')
     h84 = '8.4 Simulación de manuales' if lang == 'es' else '8.4 Rulebook Emulation'
     cap8 = cap8[:k] + '</section>\n' + bazar + f'\n<section class="chapter" id="ch8b">\n<h2>{h84}</h2>\n' + cap8[k:]
-    return ''.join([R(f'p3_juego.{lang}.html'), f('frag_intro'), f('frag_ch1a'), m13, f('frag_ch1b'), f('frag_ch2'),
+    return ''.join([R(f'p3_juego.{lang}.html'), f('frag_intro'), f('frag_ch0'), f('frag_ch1a'), m13, f('frag_ch1b'), f('frag_ch2'),
                     f('frag_ch3'), f('frag_ch4'), f('frag_ch5'), f('frag_ch67'), cap8, f('frag_glosario'), mD])
 
 drop = R('frag_descartados.html').split('dr-verificacion')[0].count('class="flag drop"')
