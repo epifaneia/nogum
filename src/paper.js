@@ -199,6 +199,8 @@
               if (body.clientHeight - body.scrollHeight < 120) { running = cleanTitle(n); breakPage(); }
             }
             if (n.nodeType===1 && n.tagName==='H2') { running = cleanTitle(n); cur.firstChild.lastChild.textContent = running; }
+            // .nueva-hoja empieza en hoja nueva: las fichas de ejemplo, una por pagina
+            if (n.nodeType===1 && n.classList.contains('nueva-hoja') && placed > 0) breakPage();
             put(n);
           });
           first = false;

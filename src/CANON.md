@@ -2256,3 +2256,16 @@ caduca, «Probar la conexión» enseña los que tiene la clave. Aviso en los pla
 gratuitos: el proveedor puede usar lo enviado para entrenar. La sesión 0 no
 remite a guías de seguridad externas (autor: NOGUM es un pacto entre amigos,
 no la formación de un evento con desconocidos).
+
+---
+
+## T187 · Los expedientes
+
+Fichas de ejemplo en el capítulo 8, tras las recetas: una por página, con los
+dos monederos a la vista y el porqué de las decisiones no obvias. Son los
+papeles que estudia la figura de La Idea: retrato de frente y de perfil, como
+una ficha policial antigua, con una banda negra en los ojos que pone la página
+(igual en todas, a la altura de los ojos de cada foto). Prototipo: la vampira
+de la receta 13, que sale a Físico 2 y Arcano 2 con diez Llaves de experiencia
+de salida pactadas en la sesión 0 (rompe el 1·1·1·1·2 a conciencia, y se
+explica). El lector gana la clase .nueva-hoja, que empieza página nueva.

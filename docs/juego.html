@@ -441,6 +441,34 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 .printmenu button span{display:block;margin-top:2px;font:400 12.5px/1.4 var(--serif);color:var(--ink-3)}
 .printmenu button:hover,.printmenu button:focus-visible{background:var(--ground)}
 .printmenu p{margin:6px 10px 4px;font:11px/1.45 var(--mono);color:var(--ink-3)}
+
+/* ===== los expedientes: fichas de ejemplo, una por pagina (T187) =====
+   Un papel sobre la mesa del observador. La banda de los ojos la pone la
+   pagina, no la imagen: igual en todas, y nitida al imprimir. */
+.expediente{position:relative;margin:0;padding:5mm 6mm 4mm;background:var(--paper);border:1px solid var(--rule);box-shadow:inset 0 0 0 2.5px var(--paper),inset 0 0 0 3.2px var(--rule-2)}
+.exp-cab{display:grid;grid-template-columns:70mm 1fr;gap:6mm;align-items:start}
+/* frente y perfil, como una ficha policial */
+.exp-fotos{display:grid;grid-template-columns:1fr 1fr;gap:2mm;margin-top:1mm;padding:2mm;background:var(--paper);border:1px solid var(--rule);transform:rotate(-1.1deg);box-shadow:0 1px 2px rgba(40,30,15,.18)}
+.exp-foto{position:relative;margin:0;aspect-ratio:1/1;background:var(--ground);overflow:hidden}
+.exp-foto img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover}
+.exp-hueco{position:absolute;left:0;right:0;bottom:4mm;text-align:center;font:600 6.5pt/1.2 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--ink-3)}
+.exp-banda{position:absolute;left:-3%;right:-3%;top:var(--ojos,36%);height:10%;transform:translateY(-50%);background:#0d0c0b;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.exp-num{margin:0 0 2mm!important;font:600 7.5pt/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+.exp-nombre{margin:0 0 2mm!important;font:800 21pt/1 var(--display);text-transform:uppercase;letter-spacing:.01em}
+.exp-concepto{margin:0 0 3mm!important;font-style:italic}
+.exp-mesa{display:flex;flex-wrap:wrap;gap:1.5mm 5mm;margin:0 0 2.5mm!important;font:8.5pt/1.3 var(--mono);color:var(--ink-2)}
+.exp-rejilla{margin:0!important;padding-top:2.5mm;border-top:1px dashed var(--rule);font:9pt/1.4 var(--mono)}
+.exp-rejilla b{margin-right:2mm}
+.exp-rejilla small{display:block;color:var(--ink-3);font-size:7.5pt}
+.exp-cols{display:grid;grid-template-columns:1.3fr 1fr;gap:5mm;margin-top:4mm}
+.exp-m{margin:0 0 1.5mm!important;font:600 7.5pt/1 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--ink-2)}
+table.t.exp-t{margin:0}
+table.t.exp-t td{padding:1.1mm 1.6mm;font-size:8.6pt;line-height:1.35;vertical-align:top}
+table.t.exp-t td:first-child{font-weight:600;width:22%}
+.exp-neg{color:var(--red)}
+.exp-porque{margin:4mm 0 0;font-size:9.2pt;line-height:1.42}
+.exp-porque dt{margin:2.2mm 0 0;font-weight:700}
+.exp-porque dd{margin:0}
 </style>
 </head>
 <body>
@@ -2066,6 +2094,7 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 </ul>
 <p><strong>Resultado:</strong> es una navaja suiza utilísima, pero nunca brillará con un +4. Si quisiera además quitarse el −1 de encima tendría que comprar las cinco columnas que le faltan: <strong>las diez</strong> son diez puntos de catorce, y entonces solo le quedarían cuatro para profundidad. Esa es la tercera ficha posible, la <em>ancha del todo</em>, y es la que menos falla y la que menos luce. <span class="src">T170</span></p>
 </div>
+<p>Y una ficha entera, con los puntos, las Llaves y el porqué de cada decisión, en <a href="#ch8-fichas">los expedientes</a> del capítulo 8. <span class="src">T187</span></p>
 
 <div class="rule">
 <p class="rule-title">Los dos peajes, y lo que cuestan lo decide la tarjeta</p>
@@ -4626,7 +4655,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p><strong>El lore:</strong> Eres inmortal y sexy, pero sigues siendo el recadero del Príncipe de la ciudad.</p>
 <p><strong>El fix:</strong> Rejilla Jerárquica estricta (Generación). Barra de Sangre como recurso de estrés.</p>
 <p class="recipe-canon">En el canon: nada de escalera de Generaciones. <strong>Todos los vampiros son Rejilla 2 en lo sobrenatural</strong>, y de base también en Físico, que no es exagerado: un humano sin Llave <strong>pierde automáticamente</strong>, y eso es exactamente lo que el género quiere decir. Los saltos siguen siendo de uno en uno, y uno es ×100. Si quieres distinguir a un neonato de un matusalén, no subas la Rejilla: <strong>dale Llaves</strong> —Entereza, Sigilo, Intimidación—, que es más fino y no rompe la escala. Son dos barras distintas y conviene no mezclarlas. La <strong>Sed</strong> va en la barra <strong>Mental</strong>, porque es <em>ansia</em>: funciona como un síndrome de abstinencia, no como un depósito de combustible. Cuanto más llena, peor te concentras, peor mides el riesgo y más barato te sale ceder; al llenarse del todo llega el frenesí. La <strong>Humanidad</strong> es la Bestia y va en la <strong>Espiritual</strong>, porque ahí dentro hay alguien que no eres tú. Los manuales viejos trataban la sangre como una piscina de puntos; aquí se juega como lo que de verdad da juego en mesa: el mono. Tono sugerido: Realista (intriga predecible).</p>
-<p class="recipe-canon"><strong>Para empezar:</strong> una partida de vampiros no empieza como una de humanos, y es normal. Recomendamos empezar en <strong>Físico 2 y Arcano 2</strong>, con experiencia de salida o con un salto pactado en la sesión cero (<a href="#ch2-rejilla">2.4</a>). El valor por defecto del juego no cambia. <span class="src">T181</span></p>
+<p class="recipe-canon"><strong>Para empezar:</strong> una partida de vampiros no empieza como una de humanos, y es normal. Recomendamos empezar en <strong>Físico 2 y Arcano 2</strong>, con experiencia de salida o con un salto pactado en la sesión cero (<a href="#ch2-rejilla">2.4</a>). El valor por defecto del juego no cambia. <span class="src">T181</span> Hecha y explicada, en su expediente: <a href="#exp-vampira">la recadera del Príncipe</a>. <span class="src">T187</span></p>
 <p class="recipe-grid"><strong>Techos de Rejilla</strong> <span class="small">(Fís · Men · Soc · Téc · Arc)</span>: <strong>2 · 2 · 4 · 1 · 3</strong>. El techo no lo pone la Generación, que aquí no existe: todos los vampiros son 2 en lo sobrenatural, el 3 en Arcano, si llega, se gana en campaña y no se hereda, y el 4 Social es el del príncipe. El 5 existe en el mundo y duerme debajo de la ciudad.</p>
 </div>
 
@@ -4741,6 +4770,47 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 <p>La tabla original del asistente usaba la nomenclatura antigua (Optimismo Neutro = Suma, «Muy Bajo» = Peor de 2d10). Aquí se ha traducido a las tarjetas vigentes.</p>
 
 
+<h3 id="ch8-fichas">Los expedientes · fichas de ejemplo</h3>
+<p>Lo que estudiaba la figura de La Idea. Una ficha por universo, hecha de verdad y con las dos monedas a la vista: los <strong>puntos</strong> compran oficio; las <strong>Llaves</strong>, tamaño. Debajo de cada una, el porqué de las decisiones que no son obvias. Si las Llaves te parecen abstractas en el capítulo 2, aquí se ven puestas. <span class="src">T187</span></p>
+
+<div class="expediente nueva-hoja" id="exp-vampira">
+<div class="exp-cab">
+<div class="exp-fotos"><figure class="exp-foto" style="--ojos:37%"><span class="exp-hueco">Retrato pendiente</span><img src="img/exp/vampira-frente.jpg" alt="Retrato de frente" onerror="this.remove"><i class="exp-banda"></i></figure><figure class="exp-foto" style="--ojos:40%"><span class="exp-hueco">Retrato pendiente</span><img src="img/exp/vampira-perfil.jpg" alt="Retrato de perfil" onerror="this.remove"><i class="exp-banda"></i></figure></div>
+<div class="exp-id">
+<p class="exp-num">Expediente 13 · Horror gótico</p>
+<p class="exp-nombre">La recadera del Príncipe</p>
+<p class="exp-concepto">Neonata. Inmortal, elegante y, de momento, la que lleva los recados.</p>
+<p class="exp-mesa"><span>Tarjeta Realista</span><span>Vida: 9 casillas</span><span>Sed (Mental) · Humanidad (Espiritual)</span></p>
+<p class="exp-rejilla"><b>Rejilla</b> Físico 2 · Mental 1 · Social 1 · Técnico 1 · Arcano 2 <small>techos 2 · 2 · 4 · 1 · 3</small></p>
+</div>
+</div>
+<div class="exp-cols">
+<div><p class="exp-m">Puntos · 14 de 14</p>
+<table class="t exp-t"><tbody>
+<tr><td>Físico</td><td>Destreza +1 · Sigilo +2<br>Vigor +1 · Pelea +2</td><td class="num">4</td></tr>
+<tr><td>Mental</td><td>Ingenio +1 · Alerta +2<br><span class="exp-neg">Erudición: torpe −1</span></td><td class="num">2</td></tr>
+<tr><td>Social</td><td>Influencia +1 · Seducción +2 · Engaño +2<br><span class="exp-neg">Jerarquía: torpe −1</span></td><td class="num">3</td></tr>
+<tr><td>Técnico</td><td><span class="exp-neg">Nulo −2</span></td><td class="num">0</td></tr>
+<tr><td>Arcano</td><td>Don +1 · Alteración +2 · <b>Firma «Imponer la voluntad» +4</b> · Adivinación +2<br><span class="exp-neg">Ritual: torpe −1</span></td><td class="num">5</td></tr>
+</tbody></table></div>
+<div><p class="exp-m">Llaves · 15 de 15</p>
+<table class="t exp-t"><tbody>
+<tr><td>Bote aparte</td><td>+1 de Rejilla en Arcano</td><td class="num">5</td></tr>
+<tr><td>Experiencia de salida</td><td>Físico, de 1 a 2</td><td class="num">5</td></tr>
+<tr><td></td><td>«Seducción contra los mortales» +1</td><td class="num">1</td></tr>
+<tr><td></td><td>«Empatía contra los animales de la noche» +1</td><td class="num">1</td></tr>
+<tr><td></td><td>Tres, en blanco</td><td class="num">3</td></tr>
+</tbody></table></div>
+</div>
+<dl class="exp-porque">
+<dt>Rompe el límite de salida, a conciencia.</dt><dd>Se empieza en 1·1·1·1·2 como mucho, pero en esta receta un vampiro con un solo ámbito sobrenatural sería un humano con colmillos. La mesa lo pacta en la sesión 0: diez Llaves de experiencia de salida para cada jugador. Llaves y no puntos, porque un vampiro no es más hábil que un humano: es más grande (<a href="#ch3-salida">3.5</a>).</dd>
+<dt>Tres poderes, una compra.</dt><dd>La velocidad, la fuerza y el aguante sobrehumanos no son tres disciplinas: son Físico 2, el ámbito entero por cien. Y de regalo, que un mortal no la vea si ella no quiere, porque su Sigilo también vive ahí (idea 1).</dd>
+<dt>La Firma es para los suyos.</dt><dd>Contra un humano, «Imponer la voluntad» no se tira: Arcano 2 está un nivel por encima. Los cuatro puntos son para cuando quien tiene delante también es vampiro y está a su altura.</dd>
+<dt>La presencia es una Llave, no Rejilla.</dt><dd>Social 2 es la presencia del vampiro hecho, la que hechiza una sala entera (<a href="#ch2-desenredando">2.6</a>). Ella todavía no la tiene. Tiene «Seducción contra los mortales», que la pone un nivel por encima de ellos en eso y solo en eso, por una Llave (idea 6).</dd>
+<dt>Lo que deja vacío.</dt><dd>Técnico, nulo: lleva un siglo sin entender un teléfono. Jerarquía, torpe: por eso sigue llevando recados. Las tres Llaves en blanco esperan a que la historia diga qué le hace falta.</dd>
+<dt>Lo que no se compra.</dt><dd>La Sed y la Bestia vienen con la receta, en sus barras (<a href="#ch5-dano">5.5</a>): no cuestan nada y no se quitan.</dd>
+</dl>
+</div>
 </section>
 <section class="chapter" id="apx-glosario">
 <h2>Glosario · una idea, un nombre</h2>
@@ -6577,6 +6647,7 @@ Las armas se describen con su ficha técnica (<a href="#ch5-armas">5.3</a>).</li
 </ul>
 <p><strong>Result:</strong> a very useful Swiss army knife, who will never shine with a +4. To shake off the −1 as well they would have to buy the five columns they are missing: <strong>all ten</strong> are ten points out of fourteen, and then only four would be left for depth. That is the third possible sheet, the <em>fully broad</em> one, and it is the one that fails least and shines least. <span class="src">T170</span></p>
 </div>
+<p>And a whole sheet, with its points, its Keys and the reason for every choice, in <a href="#ch8-fichas">the case files</a> of chapter 8. <span class="src">T187</span></p>
 
 <div class="rule">
 <p class="rule-title">The two tolls, and the card decides what they cost</p>
@@ -9136,7 +9207,7 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <p><strong>The lore:</strong> You are immortal and sexy, but you are still the city Prince's errand boy.</p>
 <p><strong>The fix:</strong> Strict Hierarchical Grid (Generation). Blood track as a stress resource.</p>
 <p class="recipe-canon">In canon: no ladder of Generations. <strong>Every vampire is Grid 2 at the supernatural</strong>, and by default at Physical too, which is not excessive: a human without a Key <strong>loses automatically</strong>, and that is exactly what the genre means. The steps are still one at a time, and one step is ×100. If you want to tell a fledgling from a methuselah, do not raise the Grid: <strong>give them Keys</strong> —Fortitude, Stealth, Intimidation—, which is finer and does not break the scale. They are two different bars and are best not mixed. <strong>Thirst</strong> sits on the <strong>Mental</strong> bar, because it is <em>craving</em>: it works like withdrawal, not like a fuel tank. The fuller it gets, the worse you concentrate, the worse you judge risk and the cheaper giving in looks; when it fills completely, frenzy sets in. <strong>Humanity</strong> is the Beast and sits on the <strong>Spiritual</strong> bar, because in there is somebody who is not you. The old rulebooks treated blood as a pool of points; here it is played as the thing that actually gives you a scene: the craving. Suggested tone: Realist (predictable intrigue).</p>
-<p class="recipe-canon"><strong>Getting started:</strong> a vampire game does not start like a human one, and that is normal. We recommend starting at <strong>Physical 2 and Arcane 2</strong>, with starting experience or an agreed jump in session zero (<a href="#ch2-rejilla">2.4</a>). The game’s default does not change. <span class="src">T181</span></p>
+<p class="recipe-canon"><strong>Getting started:</strong> a vampire game does not start like a human one, and that is normal. We recommend starting at <strong>Physical 2 and Arcane 2</strong>, with starting experience or an agreed jump in session zero (<a href="#ch2-rejilla">2.4</a>). The game’s default does not change. <span class="src">T181</span> Built and explained, in its case file: <a href="#exp-vampira">the Prince’s errand runner</a>. <span class="src">T187</span></p>
 <p class="recipe-grid"><strong>Grid ceilings</strong> <span class="small">(Phy · Men · Soc · Tec · Arc)</span>: <strong>2 · 2 · 4 · 1 · 3</strong>. The ceiling is not set by Generation, which does not exist here: every vampire is 2 at the supernatural, the Arcane 3, if it comes, is earned in play and not inherited, and the Social 4 is the prince’s. The 5 exists in the world and sleeps under the city.</p>
 </div>
 
@@ -9251,6 +9322,47 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
 <p>The assistant's original table used the old nomenclature (Neutral Optimism = Sum, “Very Low” = Worst of 2d10). It has been translated here into the current cards.</p>
 
 
+<h3 id="ch8-fichas">The case files · example sheets</h3>
+<p>What the figure in The Idea was studying. One sheet per universe, actually built, with both currencies in plain sight: <strong>points</strong> buy craft; <strong>Keys</strong> buy size. Under each one, the reasons behind the choices that are not obvious. If Keys feel abstract in chapter 2, here you see them in place. <span class="src">T187</span></p>
+
+<div class="expediente nueva-hoja" id="exp-vampira">
+<div class="exp-cab">
+<div class="exp-fotos"><figure class="exp-foto" style="--ojos:37%"><span class="exp-hueco">Portrait to come</span><img src="img/exp/vampira-frente.jpg" alt="Front portrait" onerror="this.remove"><i class="exp-banda"></i></figure><figure class="exp-foto" style="--ojos:40%"><span class="exp-hueco">Portrait to come</span><img src="img/exp/vampira-perfil.jpg" alt="Profile portrait" onerror="this.remove"><i class="exp-banda"></i></figure></div>
+<div class="exp-id">
+<p class="exp-num">Case file 13 · Gothic horror</p>
+<p class="exp-nombre">The Prince’s errand runner</p>
+<p class="exp-concepto">A fledgling. Immortal, elegant and, for now, the one who runs the errands.</p>
+<p class="exp-mesa"><span>Realist card</span><span>Health: 9 boxes</span><span>Thirst (Mental) · Humanity (Spiritual)</span></p>
+<p class="exp-rejilla"><b>Grid</b> Physical 2 · Mental 1 · Social 1 · Technical 1 · Arcane 2 <small>ceilings 2 · 2 · 4 · 1 · 3</small></p>
+</div>
+</div>
+<div class="exp-cols">
+<div><p class="exp-m">Points · 14 of 14</p>
+<table class="t exp-t"><tbody>
+<tr><td>Physical</td><td>Dexterity +1 · Stealth +2<br>Vigour +1 · Brawling +2</td><td class="num">4</td></tr>
+<tr><td>Mental</td><td>Wits +1 · Alertness +2<br><span class="exp-neg">Erudition: clumsy −1</span></td><td class="num">2</td></tr>
+<tr><td>Social</td><td>Influence +1 · Seduction +2 · Deception +2<br><span class="exp-neg">Hierarchy: clumsy −1</span></td><td class="num">3</td></tr>
+<tr><td>Technical</td><td><span class="exp-neg">Null −2</span></td><td class="num">0</td></tr>
+<tr><td>Arcane</td><td>Gift +1 · Alteration +2 · <b>Signature “Impose my will” +4</b> · Divination +2<br><span class="exp-neg">Ritual: clumsy −1</span></td><td class="num">5</td></tr>
+</tbody></table></div>
+<div><p class="exp-m">Keys · 15 of 15</p>
+<table class="t exp-t"><tbody>
+<tr><td>Separate pot</td><td>+1 Grid in Arcane</td><td class="num">5</td></tr>
+<tr><td>Starting experience</td><td>Physical, from 1 to 2</td><td class="num">5</td></tr>
+<tr><td></td><td>“Seduction against mortals” +1</td><td class="num">1</td></tr>
+<tr><td></td><td>“Empathy against the beasts of the night” +1</td><td class="num">1</td></tr>
+<tr><td></td><td>Three, left blank</td><td class="num">3</td></tr>
+</tbody></table></div>
+</div>
+<dl class="exp-porque">
+<dt>It breaks the starting limit, on purpose.</dt><dd>You start at 1·1·1·1·2 at most, but in this recipe a vampire with a single supernatural sphere would be a human with fangs. The table agrees on it at session zero: ten Keys of starting experience for each player. Keys and not points, because a vampire is not more skilled than a human: it is bigger (<a href="#ch3-salida">3.5</a>).</dd>
+<dt>Three powers, one purchase.</dt><dd>Superhuman speed, strength and endurance are not three disciplines: they are Physical 2, the whole sphere times a hundred. And as a bonus, a mortal does not see her unless she wants them to, because her Stealth lives there too (idea 1).</dd>
+<dt>The Signature is for her own kind.</dt><dd>Against a human, “Impose my will” is not rolled: Arcane 2 is one level above. The four points are for when whoever stands in front of her is also a vampire, at her height.</dd>
+<dt>Presence is a Key, not Grid.</dt><dd>Social 2 is the presence of a full-grown vampire, the one that spellbinds a whole room (<a href="#ch2-desenredando">2.6</a>). She does not have it yet. She has “Seduction against mortals”, which puts her one level above them in that and only that, for one Key (idea 6).</dd>
+<dt>What she leaves empty.</dt><dd>Technical, null: she has spent a century not understanding a phone. Hierarchy, clumsy: that is why she still runs errands. The three blank Keys wait for the story to say what she needs.</dd>
+<dt>What is not bought.</dt><dd>The Thirst and the Beast come with the recipe, in their tracks (<a href="#ch5-dano">5.5</a>): they cost nothing and do not go away.</dd>
+</dl>
+</div>
 </section>
 <section class="chapter" id="apx-glosario">
 <h2>Glossary · one idea, one name</h2>
@@ -9685,6 +9797,8 @@ Weapons are described with their spec sheet (<a href="#ch5-armas">5.3</a>).</li>
               if (body.clientHeight - body.scrollHeight < 120) { running = cleanTitle(n); breakPage(); }
             }
             if (n.nodeType===1 && n.tagName==='H2') { running = cleanTitle(n); cur.firstChild.lastChild.textContent = running; }
+            // .nueva-hoja empieza en hoja nueva: las fichas de ejemplo, una por pagina
+            if (n.nodeType===1 && n.classList.contains('nueva-hoja') && placed > 0) breakPage();
             put(n);
           });
           first = false;
