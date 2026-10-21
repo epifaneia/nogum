@@ -255,6 +255,16 @@ ol.thread li::before{content:"";position:absolute;left:-1.6mm;top:.55em;width:2.
   .sheet{margin:0;box-shadow:none;break-after:page;page-break-after:always}
   .sheet:last-child{break-after:auto}
   .sheet.cover{background:#1c1814;color:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .printmenu{display:none!important}
+  /* Para papel (lo de siempre, y lo que sale con Ctrl+P): hojas blancas y la
+     portada clara y sin foto, para no gastar media tinta en una pagina. */
+  html:not([data-print="pantalla"]) .sheet.cover{background:#fff;color:var(--ink)}
+  html:not([data-print="pantalla"]) .sheet.cover h2{color:var(--ink-3)}
+  html:not([data-print="pantalla"]) .lamina-foto{display:none}
+  /* Para pantalla o PDF: el crema de la web, a sangre, y la portada con su imagen */
+  html[data-print="pantalla"]{--paper:#f5efe3;--ink:#1c1814;--ink-2:#4a4237;--ink-3:#655c4e;--rule:#d4c7af;--rule-2:#e8ddc9;--ground:#e7ddcb}
+  html[data-print="pantalla"],html[data-print="pantalla"] body{background:#f5efe3}
+  html[data-print="pantalla"] .sheet{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   table.t thead th,.flag,.tag,aside.meta,.formula-line,.bar{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 
@@ -415,3 +425,10 @@ svg.nog .t7pg.k-exito{fill:var(--c-exito)}svg.nog .t7pg.k-fallo{fill:var(--c-fal
 .fig > .fig-box:empty::after{content:attr(data-nota);font:11px/1.4 var(--mono);color:var(--ink-3);padding:4mm;text-align:center}
 .fig figcaption,.fig > .fig-pie{margin:0;padding:2mm 3mm;font:9pt/1.35 var(--mono);color:var(--ink-2);border-top:.3mm solid var(--rule);background:var(--paper)}
 .fig figcaption b,.fig > .fig-pie b{color:var(--cap)}
+
+/* el menu de imprimir: dos salidas, papel o pantalla */
+.printmenu{position:fixed;z-index:40;background:var(--paper);border:1px solid var(--rule);border-radius:8px;box-shadow:var(--shadow);padding:6px;width:min(310px,calc(100vw - 32px))}
+.printmenu button{display:block;width:100%;text-align:left;border:0;background:none;color:var(--ink);padding:8px 10px;border-radius:6px;cursor:pointer;font:600 14px/1.3 var(--serif)}
+.printmenu button span{display:block;margin-top:2px;font:400 12.5px/1.4 var(--serif);color:var(--ink-3)}
+.printmenu button:hover,.printmenu button:focus-visible{background:var(--ground)}
+.printmenu p{margin:6px 10px 4px;font:11px/1.45 var(--mono);color:var(--ink-3)}

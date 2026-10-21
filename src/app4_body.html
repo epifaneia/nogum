@@ -364,6 +364,8 @@ button.status{border:0;cursor:pointer}
 .cfgpriv p{margin:0}
 .cfgpriv a{color:inherit;font-weight:600}
 .cfg .rbf select{width:auto;min-width:min(330px,100%);max-width:100%}
+/* el modelo es un campo libre dentro de una columna: sin esto, la base flexible de .rbcode input lo estira hacia abajo */
+.cfg .rbf input{flex:none;width:min(330px,100%);box-sizing:border-box}
 .cfgjson{width:100%;min-height:90px;margin-top:8px;font:12px/1.4 var(--mono)}
 /* la bienvenida: la imagen de la App mientras la mesa esta vacia */
 .bienvenida{position:relative;max-width:1500px;margin:0 auto 14px;border-radius:12px;overflow:hidden;background:#1c1814}
@@ -1355,7 +1357,7 @@ function renderFin(fid){
   else h += '<button type="button" class="tool" data-ia="' + fid + '">' + esc(S.ia[fid]
     ? t('Volver a leerlo','Read it again')
     : t('Léete mis respuestas y dime qué mesa es esta','Read my answers and tell me what table this is')) + '</button>';
-  h += '<span class="note">' + esc(t('Lee las respuestas enteras y busca contradicciones. Lo escribo yo, tarda entre cinco segundos y un minuto, y lo paga tu cuenta.','It reads all your answers and looks for contradictions. Claude writes it, it takes between five seconds and a minute, and it is billed to your account.')) + '</span></div>';
+  h += '<span class="note">' + esc(t('Lee las respuestas enteras y busca contradicciones. Lo escribe la IA, tarda entre cinco segundos y un minuto, y va con tu clave.','It reads all your answers and looks for contradictions. The AI writes it, it takes between five seconds and a minute, and it runs on your key.')) + '</span></div>';
   if (S.ia[fid] || est) h += '<div class="iabox" id="iabox-' + fid + '">' + esc(S.ia[fid] || '') + '</div>';
   return h;
 }
@@ -1420,25 +1422,26 @@ function resultadoTexto(fid){
 }
 var iaEstado = {}, iaCtl = null;
 var IAERR = {
-  not_granted:['No has dado permiso para que la app me pregunte. Es el aviso que sale la primera vez.','You have not allowed the app to ask Claude. That is the prompt you get the first time.'],
+  not_granted:['No has dado permiso para que la app me pregunte. Es el aviso que sale la primera vez.','You have not allowed the app to ask the AI. That is the prompt you get the first time.'],
   sampling_disabled:['Esta cuenta no tiene disponible la lectura.','This account does not have the reading available.'],
   not_declared:['Esta versión de la app no pide la capacidad de preguntar.','This version of the app does not declare the asking capability.'],
   capability_disabled:['La lectura no funciona en esta vista.','The reading does not work in this view.'],
   capability_removed:['La lectura no funciona en esta vista.','The reading does not work in this view.'],
   rate_limited:['Demasiadas preguntas de golpe, o se ha agotado tu cuota. Prueba dentro de un rato.','Too many questions at once, or your quota ran out. Try again in a while.'],
   session_expired:['Hay que volver a entrar en la cuenta.','You need to sign in again.'],
-  refused:['No he querido contestar a eso. Cambia alguna respuesta y vuelve a pedirlo.','Claude declined to answer that. Change an answer and ask again.'],
+  refused:['El modelo ha preferido no contestar a eso. Cambia alguna respuesta y vuelve a pedirlo.','The model declined to answer that. Change an answer and ask again.'],
   empty_completion:['No ha salido texto. Vuelve a pedirlo.','No text came out. Ask again.'],
   prompt_too_large:['Hay demasiadas respuestas para leerlas de una vez.','There are too many answers to read at once.'],
   clave_mala:['La clave no es válida o se ha revocado. Revísala en Ajustes.','The key is not valid or has been revoked. Check it in Settings.'],
   clave_permiso:['Esa clave no puede usar este modelo. Prueba otro en Ajustes.','That key cannot use this model. Try another one in Settings.'],
   sin_sdk:['No se ha podido cargar la conexión con Anthropic; revisa tu red.','Could not load the connection to Anthropic; check your network.'],
+  modelo:['Ese modelo no está disponible con tu clave. Elige otro en Ajustes.','That model is not available with your key. Pick another in Settings.'],
   upstream_error:['Fallo de conexión. Vuelve a intentarlo.','Connection error. Try again.']
 };
 function pideLectura(fid){
   // la misma puerta que el resto de la IA: la de claude.ai o la de tu clave
   if (!sample || aiDenied) {
-    S.ia[fid] = t('Esta lectura necesita la IA. Fuera de claude.ai, pega tu clave de Anthropic en Ajustes.','This reading needs AI. Outside claude.ai, paste your Anthropic key in Settings.');
+    S.ia[fid] = t('Esta lectura necesita la IA. Pega una clave en Ajustes: la de Google Gemini es gratis.','This reading needs AI. Paste a key in Settings: a Google Gemini one is free.');
     persist(); render(true); return;
   }
   var refresca = !!S.ia[fid];
@@ -1479,7 +1482,7 @@ function pideLectura(fid){
     iaEstado[fid] = '';
     var c = e && e.code;
     if (c === 'cancelled') S.ia[fid] = (e && e.text) || '';
-    else if (c === 'api') S.ia[fid] = t('La API de Anthropic ha rechazado la petición: ','The Anthropic API rejected the request: ') + (e.message || '');
+    else if (c === 'api') S.ia[fid] = t('La API de ','The ') + provNombre() + t(' ha rechazado la petición: ',' API rejected the request: ') + (e.message || '');
     else S.ia[fid] = (IAERR[c] ? pick(IAERR[c]) : t('No se ha podido leer. Vuelve a intentarlo.','Could not read it. Try again.')) + (e && e.text ? '\n\n' + e.text : '');
     persist(); render(true);
   });
@@ -2387,25 +2390,51 @@ var sample = null, aiDenied = false, turns = [], ctl = null;
 /* ----------------- la IA: la de claude.ai o la de tu clave (BYOK) -----------------
    Dos fuentes con la misma forma, sample(entrada, opciones) -> {text, truncated}
    y sample.json(), asi que las seis funciones que usan IA no saben cual tienen.
-   Dentro de claude.ai se usa la de la plataforma. Fuera, en la web, la de la
-   clave de Anthropic que pegue el lector: va de su navegador a Anthropic y a
-   ningun otro sitio (esta web no tiene servidor), no viaja en el archivo de la
-   mesa ni en el Codigo, y por defecto se olvida al cerrar la pestana (T164). */
+   Dentro de claude.ai se usa la de la plataforma. Fuera, en la web, la clave
+   que pegue el lector, de uno de cuatro proveedores (T186): va de su navegador
+   al proveedor y a ningun otro sitio (esta web no tiene servidor), no viaja en
+   el archivo de la mesa ni en el Codigo, y por defecto se olvida al cerrar la
+   pestana (T164). Se recomienda el que tiene cupo gratis, no uno en concreto. */
 var SDK_URL = 'https://cdn.jsdelivr.net/npm/@anthropic-ai/sdk@0.131.0/+esm';
 var MODELOS = [['claude-haiku-5-5', 'Haiku 5.5', 'rápido y barato', 'fast and cheap'],
                ['claude-sonnet-5-5', 'Sonnet 5.5', 'el equilibrio · recomendado', 'balanced · recommended'],
                ['claude-opus-5-5', 'Opus 5.5', 'el más capaz y el más caro', 'most capable, most expensive']];
-var CLAVE_K = 'nogum-clave', MODELO_K = 'nogum-modelo', samplePlat = null, sdkP = null;
+/* Los modelos se guardan por su alias estable cuando el proveedor lo tiene
+   (gemini-flash-latest, mistral-small-latest), y el campo es libre: si un
+   nombre caduca, «Probar la conexion» enseña los que tiene tu clave. */
+var PROVS = {
+  gemini: {n:'Google Gemini', ph:'AIza…', web:'https://aistudio.google.com/apikey', webN:'aistudio.google.com', gratis:true,
+    def:'gemini-flash-latest', rapido:'gemini-flash-lite-latest',
+    mods:[['gemini-flash-latest','Flash','rápido · entra en el cupo gratis','fast · within the free quota'], ['gemini-flash-lite-latest','Flash-Lite','el más rápido · entra en el cupo gratis','fastest · within the free quota'], ['gemini-pro-latest','Pro','el más capaz · de pago','most capable · paid']]},
+  mistral: {n:'Mistral', ph:'…', web:'https://console.mistral.ai/api-keys', webN:'console.mistral.ai', gratis:true,
+    def:'mistral-small-latest', rapido:'mistral-small-latest',
+    mods:[['mistral-small-latest','Small','rápido · entra en el modo gratuito','fast · within the free mode'], ['mistral-medium-latest','Medium','el equilibrio','balanced'], ['mistral-large-latest','Large','el más capaz','most capable']]},
+  openai: {n:'OpenAI', ph:'sk-…', web:'https://platform.openai.com/api-keys', webN:'platform.openai.com',
+    def:'gpt-5-mini', rapido:'gpt-5-nano',
+    mods:[['gpt-5-nano','GPT-5 nano','el más barato','cheapest'], ['gpt-5-mini','GPT-5 mini','el equilibrio','balanced'], ['gpt-5','GPT-5','el más capaz','most capable']]},
+  anthropic: {n:'Anthropic (Claude)', ph:'sk-ant-…', web:'https://platform.claude.com/', webN:'platform.claude.com',
+    def:'claude-sonnet-5-5', rapido:'claude-haiku-5-5', mods:MODELOS}
+};
+var PROV_ORDEN = ['gemini', 'mistral', 'openai', 'anthropic'];
+var CLAVE_K = 'nogum-clave', MODELO_K = 'nogum-modelo', PROV_K = 'nogum-prov', samplePlat = null, sdkP = null;
 function leeK(st, k){ try { return st.getItem(k); } catch(e){ return null; } }
-function claveActual(){ return leeK(sessionStorage, CLAVE_K) || leeK(localStorage, CLAVE_K) || ''; }
-function claveRecordada(){ return !!leeK(localStorage, CLAVE_K); }
+// Anthropic conserva los nombres de antes, para no perder la clave de nadie
+function kClave(pv){ return pv === 'anthropic' ? CLAVE_K : CLAVE_K + '-' + pv; }
+function kModelo(pv){ return pv === 'anthropic' ? MODELO_K : MODELO_K + '-' + pv; }
+function provActual(){ var v = leeK(localStorage, PROV_K); if (PROVS[v]) return v; return (leeK(sessionStorage, CLAVE_K) || leeK(localStorage, CLAVE_K)) ? 'anthropic' : 'gemini'; }
+function provNombre(){ return PROVS[provActual()].n; }
+function claveActual(){ var k = kClave(provActual()); return leeK(sessionStorage, k) || leeK(localStorage, k) || ''; }
+function claveRecordada(){ return !!leeK(localStorage, kClave(provActual())); }
 function guardaClave(v, recordar){
-  try { sessionStorage.removeItem(CLAVE_K); } catch(e){}
-  try { localStorage.removeItem(CLAVE_K); } catch(e){}
+  var k = kClave(provActual());
+  try { sessionStorage.removeItem(k); } catch(e){}
+  try { localStorage.removeItem(k); } catch(e){}
   if (!v) return;
-  try { (recordar ? localStorage : sessionStorage).setItem(CLAVE_K, v); } catch(e){}
+  try { (recordar ? localStorage : sessionStorage).setItem(k, v); } catch(e){}
 }
-function modeloActual(){ var m = leeK(localStorage, MODELO_K); return MODELOS.some(function(x){ return x[0] === m; }) ? m : 'claude-sonnet-5-5'; }
+// por la forma de la clave se sabe de quien es casi siempre
+function provDeClave(v){ return /^sk-ant-/.test(v) ? 'anthropic' : /^AIza/.test(v) ? 'gemini' : /^sk-/.test(v) ? 'openai' : null; }
+function modeloActual(){ var pv = provActual(); return (leeK(localStorage, kModelo(pv)) || '').trim() || PROVS[pv].def; }
 function sdk(){
   if (!sdkP) sdkP = import(SDK_URL).then(function(m){ return m.default || m.Anthropic; }, function(){ sdkP = null; throw {code:'sin_sdk'}; });
   return sdkP;
@@ -2440,13 +2469,13 @@ function aCodigo(e, A){
   if (A && e instanceof A.BadRequestError) return {code:'api', message:apiMsg(e)};
   return {code:'upstream_error'};
 }
-function byokSample(entrada, opts){
+function antSample(entrada, opts){
   opts = opts || {};
   var A = null;
   return sdk().then(function(Ant){
     A = Ant;
     var cli = new A({apiKey:claveActual(), dangerouslyAllowBrowser:true, maxRetries:1});
-    var base = {model:(opts.modelTier === 'quick' ? 'claude-haiku-5-5' : modeloActual()), max_tokens:(opts.max || 2000), messages:aMensajes(entrada)};
+    var base = {model:(opts.modelTier === 'quick' ? PROVS.anthropic.rapido : modeloActual()), max_tokens:(opts.max || 2000), messages:aMensajes(entrada)};
     var intenta = function(p, segunda){
       var acc = '', st = cli.messages.stream(p);
       if (opts.signal) { if (opts.signal.aborted) st.abort(); else opts.signal.addEventListener('abort', function(){ st.abort(); }); }
@@ -2465,6 +2494,118 @@ function byokSample(entrada, opts){
     return intenta(ajustesIA(base), false);
   }).catch(function(e){ throw aCodigo(e, A); });
 }
+/* Los otros tres, sin librerias: fetch y el flujo de eventos del servidor.
+   Mistral habla el mismo idioma que OpenAI; Gemini tiene el suyo. */
+function msgsPlanos(entrada){
+  var out = [];
+  (Array.isArray(entrada) ? entrada : [{role:'user', content:entrada}]).forEach(function(m){
+    var u2 = out[out.length - 1];
+    if (u2 && u2.role === m.role) u2.content += '\n\n' + String(m.content); else out.push({role:m.role, content:String(m.content)});
+  });
+  return out;
+}
+function leeFlujo(resp, onData){
+  var rd = resp.body.getReader(), dec = new TextDecoder(), buf = '';
+  var linea = function(l){ if (l.indexOf('data:') !== 0) return; var d = l.slice(5).trim(); if (!d || d === '[DONE]') return; try { onData(JSON.parse(d)); } catch(e){} };
+  var paso = function(){
+    return rd.read().then(function(x){
+      if (x.done) { buf.split(/\r?\n/).forEach(linea); return; }
+      buf += dec.decode(x.value, {stream:true});
+      var ls = buf.split(/\r?\n/); buf = ls.pop(); ls.forEach(linea);
+      return paso();
+    });
+  };
+  return paso();
+}
+function fallaHttp(resp){
+  return resp.text().then(function(tx){
+    var m = '';
+    try { var j = JSON.parse(tx); j = Array.isArray(j) ? j[0] : j; m = (j.error && (j.error.message || j.error)) || j.message || j.detail || ''; if (typeof m !== 'string') m = JSON.stringify(m); } catch(e){ m = tx.slice(0, 200); }
+    var st = resp.status;
+    if (st === 401 || (st === 400 && /api key|apikey|api_key/i.test(m))) throw {code:'clave_mala'};
+    if (st === 403) throw {code:'clave_permiso'};
+    if (st === 429) throw {code:'rate_limited'};
+    if (st === 404 || /model/i.test(m) && /not.?found|does not exist|invalid model|no such/i.test(m)) throw {code:'modelo', message:m};
+    throw {code:'api', message:m};
+  });
+}
+function pide(url, cab, cuerpo, opts){
+  return fetch(url, {method:'POST', headers:Object.assign({'Content-Type':'application/json'}, cab), body:JSON.stringify(cuerpo), signal:opts.signal})
+    .then(function(resp){ return resp.ok ? resp : fallaHttp(resp); });
+}
+function aCodigoRed(e){ if (e && e.code) return e; if (e && e.name === 'AbortError') return {code:'cancelled'}; return {code:'upstream_error'}; }
+function oaiSample(entrada, opts){
+  opts = opts || {};
+  var pv = provActual(), oai = pv === 'openai', acc = '', fin = '';
+  var url = oai ? 'https://api.openai.com/v1/chat/completions' : 'https://api.mistral.ai/v1/chat/completions';
+  var cuerpo = {model:(opts.modelTier === 'quick' ? PROVS[pv].rapido : modeloActual()), messages:msgsPlanos(entrada), stream:true};
+  // los modelos de OpenAI que razonan gastan parte del tope pensando: se les da margen y poco esfuerzo
+  if (oai) { cuerpo.max_completion_tokens = (opts.max || 2000) + 4000; cuerpo.reasoning_effort = 'low'; } else cuerpo.max_tokens = opts.max || 2000;
+  var intenta = function(c, segunda){
+    acc = ''; fin = '';
+    return pide(url, {Authorization:'Bearer ' + claveActual()}, c, opts).then(function(resp){
+      return leeFlujo(resp, function(d){
+        var ch = d.choices && d.choices[0]; if (!ch) return;
+        var dt = ch.delta && ch.delta.content;
+        if (typeof dt === 'string' && dt) { acc += dt; if (opts.onText) opts.onText({text:acc, delta:dt}); }
+        if (ch.finish_reason) fin = ch.finish_reason;
+      });
+    }).then(null, function(e){
+      // si el modelo no acepta el ajuste de esfuerzo, se repite una vez sin el
+      if (!segunda && e && e.code === 'api' && c.reasoning_effort) { var c2 = Object.assign({}, c); delete c2.reasoning_effort; return intenta(c2, true); }
+      throw e;
+    });
+  };
+  return intenta(cuerpo, false).then(null, function(e){
+    // OpenAI contesta los 401 de este punto sin las cabeceras que el navegador
+    // necesita para leerlos, y llegan como fallo de red. La lista de modelos si
+    // las trae: se le pregunta a ella para saber si lo que falla es la clave.
+    if (!oai || (e && e.code) || (e && e.name === 'AbortError') || acc) throw e;
+    return fetch('https://api.openai.com/v1/models', {headers:{Authorization:'Bearer ' + claveActual()}})
+      .then(function(r){ if (r.status === 401) throw {code:'clave_mala'}; if (r.status === 429) throw {code:'rate_limited'}; throw e; }, function(){ throw e; });
+  }).then(function(){
+    if (fin === 'content_filter') throw {code:'refused'};
+    if (!acc) throw {code:'empty_completion'};
+    return {text:acc, truncated:fin === 'length'};
+  }).catch(function(e){ var x = aCodigoRed(e); if (acc && x.code !== 'cancelled') x.text = acc; throw x; });
+}
+function gemSample(entrada, opts){
+  opts = opts || {};
+  var acc = '', fin = '', bloqueo = '';
+  var modelo = opts.modelTier === 'quick' ? PROVS.gemini.rapido : modeloActual();
+  var cuerpo = {contents:msgsPlanos(entrada).map(function(m){ return {role:(m.role === 'assistant' ? 'model' : 'user'), parts:[{text:m.content}]}; }),
+                generationConfig:{maxOutputTokens:(opts.max || 2000) + 4000}};
+  var url = 'https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(modelo) + ':streamGenerateContent?alt=sse';
+  return pide(url, {'x-goog-api-key':claveActual()}, cuerpo, opts).then(function(resp){
+    return leeFlujo(resp, function(d){
+      if (d.promptFeedback && d.promptFeedback.blockReason) bloqueo = d.promptFeedback.blockReason;
+      var c = d.candidates && d.candidates[0]; if (!c) return;
+      ((c.content && c.content.parts) || []).forEach(function(pt){
+        if (pt.thought || typeof pt.text !== 'string' || !pt.text) return;
+        acc += pt.text; if (opts.onText) opts.onText({text:acc, delta:pt.text});
+      });
+      if (c.finishReason) fin = c.finishReason;
+    });
+  }).then(function(){
+    if (bloqueo || /SAFETY|PROHIBITED|BLOCKLIST|SPII/.test(fin)) throw {code:'refused'};
+    if (!acc) throw {code:'empty_completion'};
+    return {text:acc, truncated:fin === 'MAX_TOKENS'};
+  }).catch(function(e){ var x = aCodigoRed(e); if (acc && x.code !== 'cancelled') x.text = acc; throw x; });
+}
+function byokSample(entrada, opts){
+  var pv = provActual();
+  return pv === 'anthropic' ? antSample(entrada, opts) : pv === 'gemini' ? gemSample(entrada, opts) : oaiSample(entrada, opts);
+}
+// para cuando un nombre de modelo caduca: los que de verdad tiene tu clave
+function modelosDeLaClave(){
+  var pv = provActual(), k = claveActual();
+  if (pv === 'gemini') return fetch('https://generativelanguage.googleapis.com/v1beta/models?pageSize=200', {headers:{'x-goog-api-key':k}}).then(function(r){ return r.ok ? r.json() : fallaHttp(r); })
+    .then(function(j){ return (j.models || []).filter(function(m){ return (m.supportedGenerationMethods || []).indexOf('generateContent') > -1; }).map(function(m){ return m.name.replace(/^models\//, ''); }); });
+  if (pv === 'anthropic') return Promise.resolve(MODELOS.map(function(m){ return m[0]; }));
+  var url = pv === 'openai' ? 'https://api.openai.com/v1/models' : 'https://api.mistral.ai/v1/models';
+  return fetch(url, {headers:{Authorization:'Bearer ' + k}}).then(function(r){ return r.ok ? r.json() : fallaHttp(r); })
+    .then(function(j){ return (j.data || []).map(function(m){ return m.id; }).filter(function(id){ return pv !== 'openai' || /^(gpt|o\d|chatgpt)/.test(id); }).sort(); });
+}
 byokSample.json = function(entrada, opts){
   return byokSample(entrada, Object.assign({}, opts || {}, {onText:null, max:4000})).then(function(r){
     var s = r.text.trim().replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/, '');
@@ -2476,22 +2617,23 @@ function eligeIA(){ sample = samplePlat || (claveActual() ? byokSample : false);
 function aiStatus(){
   var s = $('aiStatus'); if (!s) return;
   s.title = t('Ajustes de la IA','AI settings');
-  if (sample && !aiDenied) { s.className = 'status on'; s.textContent = sample === byokSample ? t('IA · tu clave','AI · your key') : t('IA disponible','AI on'); }
+  if (sample && !aiDenied) { s.className = 'status on'; s.textContent = sample === byokSample ? 'IA · ' + provNombre().replace(/ \(.*\)$/, '').replace(/^Google /, '') : t('IA disponible','AI on'); }
   else if (sample === false || aiDenied) { s.className = 'status off'; s.textContent = t('Sin IA','No AI'); }
   else { s.className = 'status'; s.textContent = 'IA…'; }
 }
 if (window.claude && window.claude.use) window.claude.use('sample').then(function(x){ samplePlat = x || null; eligeIA(); }, function(){ samplePlat = null; eligeIA(); }); else eligeIA();
-var ERR = {not_granted:['No se ha dado permiso para usar Claude.','Permission to use Claude was not granted.'], rate_limited:['Demasiadas consultas, o se ha agotado tu cuota; prueba en un rato.','Too many requests, or your quota ran out; try again later.'], prompt_too_large:['Texto demasiado largo; recórtalo.','Text too long; shorten it.'], invalid_json:['Formato inesperado; reinténtalo.','Unexpected format; try again.'], upstream_error:['Fallo de conexión; reinténtalo.','Connection error; try again.'],
+var ERR = {not_granted:['No se ha dado permiso para usar la IA.','Permission to use the AI was not granted.'], rate_limited:['Demasiadas consultas, o se ha agotado tu cuota; prueba en un rato.','Too many requests, or your quota ran out; try again later.'], prompt_too_large:['Texto demasiado largo; recórtalo.','Text too long; shorten it.'], invalid_json:['Formato inesperado; reinténtalo.','Unexpected format; try again.'], upstream_error:['Fallo de conexión; reinténtalo.','Connection error; try again.'],
   clave_mala:['La clave no es válida o se ha revocado. Revísala en Ajustes.','The key is not valid or has been revoked. Check it in Settings.'],
   clave_permiso:['Esa clave no tiene permiso para usar este modelo. Prueba otro en Ajustes.','That key is not allowed to use this model. Try another one in Settings.'],
   sin_sdk:['No se ha podido cargar la conexión con Anthropic; revisa tu red.','Could not load the connection to Anthropic; check your network.'],
   refused:['El modelo ha preferido no contestar a eso.','The model declined to answer that.'],
-  empty_completion:['No ha salido texto; vuelve a pedirlo.','No text came out; ask again.']};
+  empty_completion:['No ha salido texto; vuelve a pedirlo.','No text came out; ask again.'],
+  modelo:['Ese modelo no está disponible con tu clave. Elige otro en Ajustes.','That model is not available with your key. Pick another in Settings.']};
 function errText(e){
   var c = e && e.code;
   if (['not_granted','sampling_disabled','not_declared','capability_disabled','capability_removed'].indexOf(c) > -1) { aiDenied = true; aiStatus(); }
   // un rechazo de la API (sin saldo, peticion invalida...) se cuenta con sus palabras
-  if (c === 'api') return t('La API de Anthropic ha rechazado la petición: ','The Anthropic API rejected the request: ') + (e.message || '');
+  if (c === 'api') return t('La API de ','The ') + provNombre() + t(' ha rechazado la petición: ',' API rejected the request: ') + (e.message || '');
   return c === 'cancelled' ? t('Detenido.','Stopped.') : pick(ERR[c] || ERR.upstream_error);
 }
 function ctx(){ return 'CURRENT TABLE: ' + JSON.stringify({world:worldName(), edition:edition(), mode:pick(card().n), health:zoomK(), grid:grid(), style:estilo(), extra:baul().map(function(k){ return DATA.baul[k][1]; })}); }
@@ -3313,27 +3455,33 @@ function importGame(txt, alAcabarMusica){
    Dos cosas que no se parecen: tu clave, que es privada y no sale del
    navegador, y tu mesa, que se guarda en un archivo para pasarla al grupo. */
 var cfgMsg = '', cfgIAmsg = '', cfgIAok = null;
-function modeloNombre(){ var m = MODELOS.filter(function(x){ return x[0] === modeloActual(); })[0]; return m ? m[1] : modeloActual(); }
+function modeloNombre(){ var m = PROVS[provActual()].mods.filter(function(x){ return x[0] === modeloActual(); })[0]; return m ? m[1] : modeloActual(); }
 function renderCfg(){
   var k = claveActual();
   var h = '<div class="panel cfg"><div class="formhead"><h2>' + esc(u('cfg')) + '</h2></div>';
   // 1 · la IA
-  h += '<section class="cfgsec"><p class="rbp-h">' + esc(t('La IA · tu clave de Anthropic','AI · your Anthropic key')) + '</p>';
+  var pv = provActual(), P = PROVS[pv];
+  h += '<section class="cfgsec"><p class="rbp-h">' + esc(t('La IA · tu clave','AI · your key')) + '</p>';
   if (samplePlat) h += '<p class="cfgok">' + esc(t('Estás dentro de claude.ai: la IA ya funciona y aquí no hace falta clave.','You are inside claude.ai: AI already works and no key is needed here.')) + '</p>';
-  h += '<p class="rbp-t">' + esc(t('Fuera de claude.ai, las preguntas sobre reglas, la memoria de la campaña, el análisis de sesiones y la lectura de los formularios necesitan una clave de la API de Anthropic. La pagas tú, pregunta a pregunta. Las preguntas seguidas reaprovechan las reglas ya enviadas y cuestan mucho menos.',
-    'Outside claude.ai, rules questions, campaign memory, session analysis and the form readings need an Anthropic API key. You pay for it, question by question. Consecutive questions reuse the rules already sent and cost much less.')) + '</p>';
+  h += '<p class="rbp-t">' + esc(t('Las preguntas sobre reglas, la memoria de la campaña, el análisis de sesiones y la lectura de los formularios necesitan una clave de IA. Vale la de cualquiera de estos cuatro. Si no tienes ninguna, empieza por Google Gemini: con una cuenta de Google te da una clave en un minuto, con un cupo diario gratis que sobra para jugar. Mistral también tiene un modo gratuito.',
+    'Rules questions, campaign memory, session analysis and the form readings need an AI key. One from any of these four will do. If you have none, start with Google Gemini: with a Google account it gives you a key in a minute, with a free daily quota that is more than enough to play. Mistral also has a free mode.')) + '</p>';
+  h += '<div class="rbcode"><label class="rbf"><span>' + esc(t('Proveedor','Provider')) + '</span><select id="cfgProv">' + PROV_ORDEN.map(function(id){
+      var x = PROVS[id], nota = id === 'gemini' ? t(' · cupo gratis, recomendado',' · free quota, recommended') : id === 'mistral' ? t(' · modo gratuito',' · free mode') : t(' · de pago',' · paid');
+      return '<option value="' + id + '"' + (id === pv ? ' selected' : '') + '>' + esc(x.n + nota) + '</option>'; }).join('') + '</select></label></div>';
   h += '<p class="cfgest">' + esc(k ? t('Hay una clave guardada, terminada en …','A key is saved, ending in …') + k.slice(-4) + ' · ' + (claveRecordada() ? t('recordada en este dispositivo','remembered on this device') : t('se olvida al cerrar la pestaña','forgotten when the tab closes')) : t('No hay ninguna clave.','No key yet.')) + '</p>';
-  h += '<div class="rbcode"><input type="password" id="cfgKey" autocomplete="off" spellcheck="false" placeholder="sk-ant-…" aria-label="' + esc(t('Clave de la API de Anthropic','Anthropic API key')) + '">' +
+  h += '<div class="rbcode"><input type="password" id="cfgKey" autocomplete="off" spellcheck="false" placeholder="' + esc(P.ph) + '" aria-label="' + esc(t('Clave de ','Key for ') + P.n) + '">' +
     '<button type="button" class="tool" id="cfgSave">' + esc(t('Guardar la clave','Save the key')) + '</button>' +
     (k ? '<button type="button" class="tool" id="cfgDel">' + esc(t('Borrar la clave','Delete the key')) + '</button>' : '') + '</div>';
   h += '<label class="cfgchk"><input type="checkbox" id="cfgRec"' + (claveRecordada() ? ' checked' : '') + '> ' + esc(t('Recordarla en este dispositivo','Remember it on this device')) + '</label>';
-  h += '<div class="rbcode"><label class="rbf"><span>' + esc(t('Modelo','Model')) + '</span><select id="cfgModel">' + MODELOS.map(function(m){
-      return '<option value="' + m[0] + '"' + (m[0] === modeloActual() ? ' selected' : '') + '>' + esc(m[1] + ' · ' + (S.lang === 'en' ? m[3] : m[2])) + '</option>'; }).join('') + '</select></label>' +
+  h += '<div class="rbcode"><label class="rbf"><span>' + esc(t('Modelo','Model')) + '</span><input type="text" id="cfgModel" list="cfgModels" spellcheck="false" autocomplete="off" value="' + esc(modeloActual()) + '"><datalist id="cfgModels">' + P.mods.map(function(m){
+      return '<option value="' + m[0] + '">' + esc(m[1] + ' · ' + (S.lang === 'en' ? m[3] : m[2])) + '</option>'; }).join('') + '</datalist></label>' +
     (k ? '<button type="button" class="tool" id="cfgTest">' + esc(t('Probar la conexión','Test the connection')) + '</button>' : '') + '</div>';
   if (cfgIAmsg) h += '<p class="cfgmsg' + (cfgIAok === false ? ' bad' : '') + '">' + esc(cfgIAmsg) + '</p>';
-  h += '<div class="cfgpriv"><p>' + esc(t('Tu clave va de tu navegador a Anthropic y a ningún otro sitio: esta web no tiene servidor. No viaja en el archivo de la mesa ni en el Código. Te recomendamos crear una clave solo para esto, con un límite de gasto, en la consola de Anthropic: ',
-    'Your key goes from your browser to Anthropic and nowhere else: this site has no server. It does not travel in the table file or the Code. We recommend creating a key just for this, with a spending limit, in the Anthropic console: ')) +
-    '<a href="https://platform.claude.com/" target="_blank" rel="noopener">platform.claude.com</a></p></div></section>';
+  h += '<div class="cfgpriv"><p>' + esc(t('Tu clave va de tu navegador a ' + P.n + ' y a ningún otro sitio: esta web no tiene servidor. No viaja en el archivo de la mesa ni en el Código. Crea una clave solo para esto' + (P.gratis ? '' : ', con un límite de gasto') + ', aquí: ',
+    'Your key goes from your browser to ' + P.n + ' and nowhere else: this site has no server. It does not travel in the table file or the Code. Create a key just for this' + (P.gratis ? '' : ', with a spending limit') + ', here: ')) +
+    '<a href="' + P.web + '" target="_blank" rel="noopener">' + esc(P.webN) + '</a></p>' +
+    (P.gratis ? '<p>' + esc(t('Ojo: en los planes gratuitos el proveedor puede usar lo que le envías para mejorar sus modelos. Si tu Historia o tu lore tienen algo que no quieras compartir, usa un plan de pago.',
+      'Note: on free plans the provider may use what you send to improve its models. If your Story or lore holds anything you would rather not share, use a paid plan.')) + '</p>' : '') + '</div></section>';
   // 2 · la mesa
   h += '<section class="cfgsec"><p class="rbp-h">' + esc(t('Tu mesa','Your table')) + '</p>';
   h += '<p class="rbp-t">' + esc(t('El archivo lleva la mesa entera, para guardarla o pasársela a tu grupo: la configuración, las respuestas de los formularios, las fichas, la historia y el lore. Con música, también las pistas de cada tarjeta, y pesa bastante más. Tu clave, nunca. Para pasar solo la configuración en un mensaje está el Código, en la barra de la mesa.',
@@ -3348,20 +3496,30 @@ function renderCfg(){
 }
 function bindCfg(){
   var aviso = function(m, ok){ cfgIAmsg = m; cfgIAok = ok; render(true); };
+  $('cfgProv').addEventListener('change', function(){ try { localStorage.setItem(PROV_K, this.value); } catch(e){} eligeIA(); cfgIAmsg = ''; render(true); });
   $('cfgSave').addEventListener('click', function(){
     var v = ($('cfgKey').value || '').trim();
     if (!v) { aviso(t('Pega primero la clave.','Paste the key first.'), false); return; }
+    // si la clave es claramente de otro proveedor, se cambia solo y se avisa
+    var de = provDeClave(v), cambio = de && de !== provActual();
+    if (cambio) try { localStorage.setItem(PROV_K, de); } catch(e){}
     guardaClave(v, $('cfgRec').checked); eligeIA();
-    aviso(t('Clave guardada. Compruébala con «Probar la conexión».','Key saved. Check it with “Test the connection”.'), null);
+    aviso((cambio ? t('Es una clave de ','That is a key for ') + PROVS[de].n + t(': cambio el proveedor. ','; switching provider. ') : '') + t('Clave guardada. Compruébala con «Probar la conexión».','Key saved. Check it with “Test the connection”.'), null);
   });
   var d = $('cfgDel'); if (d) d.addEventListener('click', function(){ guardaClave('', false); eligeIA(); aviso(t('Clave borrada de este navegador.','Key deleted from this browser.'), null); });
   $('cfgRec').addEventListener('change', function(){ var k = claveActual(); if (k) guardaClave(k, this.checked); render(true); });
-  $('cfgModel').addEventListener('change', function(){ try { localStorage.setItem(MODELO_K, this.value); } catch(e){} cfgIAmsg = ''; render(true); });
+  $('cfgModel').addEventListener('change', function(){ try { localStorage.setItem(kModelo(provActual()), this.value.trim()); } catch(e){} cfgIAmsg = ''; render(true); });
   var p = $('cfgTest'); if (p) p.addEventListener('click', function(){
     aviso(t('Probando…','Testing…'), null);
     byokSample(t('Contesta solo con la palabra: funciona','Reply with just the word: works'), {max:400}).then(function(r){
       aviso(t('Funciona. ','It works. ') + modeloNombre() + t(' ha contestado: «',' replied: “') + r.text.trim().slice(0, 60) + t('».','”.'), true);
-    }, function(e){ aviso(errText(e), false); });
+    }, function(e){
+      if (!e || e.code !== 'modelo') { aviso(errText(e), false); return; }
+      // el nombre del modelo ha caducado o no esta en tu cuenta: se enseñan los que hay
+      modelosDeLaClave().then(function(ls){
+        aviso(errText(e) + (ls.length ? ' ' + t('Los que tiene tu clave: ','Your key has: ') + ls.slice(0, 15).join(', ') + (ls.length > 15 ? '…' : '') : ''), false);
+      }, function(){ aviso(errText(e), false); });
+    });
   });
   var hecho = function(m){ cfgMsg = m; render(true); };
   $('cfgExp').addEventListener('click', function(){ hecho(t('Guardando…','Saving…')); guardaMesa(false).then(hecho); });

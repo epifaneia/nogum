@@ -18,7 +18,7 @@ La cuenta y la página las creas tú (**itch.io → Upload new project**). Todo 
 
 | Campo | Archivo |
 |---|---|
-| **Uploads** | `NOGUM-sin-conexion.zip` · ponle de nombre visible *NOGUM — offline pack (ES / EN)* |
+| **Uploads** | Tres archivos, en este orden:<br>1. `NOGUM-PDF-ES.zip` · nombre visible *NOGUM — libros en PDF (español)*<br>2. `NOGUM-PDF-EN.zip` · nombre visible *NOGUM — books as PDF (English)*<br>3. `NOGUM-sin-conexion.zip` · nombre visible *NOGUM — offline pack with the App (ES / EN)*<br>Cada zip de PDF lleva los tres libros en dos versiones: «pantalla» (crema, con la portada ilustrada) y «papel» (blanco, para imprimir). Cuando cambian los libros se rehacen con `hacer_pdf.js` (los PDF) y `empaqueta.py` (los tres zips). |
 | **Cover image** | `portada-itch.jpg` (1260 × 1000, la proporción que pide itch) |
 | **Screenshots** | `captura-1-portada.png` → `captura-5-app-ficha.png`, en ese orden |
 | **Trailer** | `../video/nogum-app-innsmouth.mp4` con tu voz (subido a YouTube: itch solo enlaza tráileres de YouTube o Vimeo). El guion de la voz es `nogum-app-innsmouth.srt`. |
@@ -60,6 +60,8 @@ Fuentes: para títulos, la que más se parezca a una condensada (itch ofrece var
 ## Antes de pulsar Public
 
 - [ ] El zip descarga y se abre: empieza en `NOGUM_productos/NOGUM_idea.html`.
+- [ ] Los dos zips de PDF descargan y los PDF abren, con el índice enlazado.
+- [ ] Los zips son de la última versión de los libros (fecha de hoy).
 - [ ] Los enlaces de la descripción abren cada pieza en su idioma.
 - [ ] La declaración de IA está marcada.
 - [ ] Has visto la página en modo **Draft**, en el ordenador y en el móvil.

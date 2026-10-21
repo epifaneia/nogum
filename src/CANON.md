@@ -2242,3 +2242,17 @@ al peor de dos solo si la sesión 0 lo permitió; «la mesa manda» en el cap. 2
 queda en una línea; el Acelerado explica el techo y el puente Dominio/Disciplina.
 Bloque REGLAS VIGENTES encima del canon para el asistente de la App, que cortaba
 en la bitácora y respondía con reglas retiradas.
+
+---
+
+## T186 · La IA, de cualquiera de los cuatro
+
+Decisión del autor: la App no se casa con un proveedor. Ajustes ofrece Google
+Gemini (recomendado: cupo diario gratis con una cuenta de Google), Mistral
+(modo gratuito), OpenAI y Anthropic, cada uno con su clave y su modelo. La
+clave sigue sin salir del navegador más que hacia el proveedor elegido. Los
+modelos van por alias estables donde existen y el campo es libre; si un nombre
+caduca, «Probar la conexión» enseña los que tiene la clave. Aviso en los planes
+gratuitos: el proveedor puede usar lo enviado para entrenar. La sesión 0 no
+remite a guías de seguridad externas (autor: NOGUM es un pacto entre amigos,
+no la formación de un evento con desconocidos).

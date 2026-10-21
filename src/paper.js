@@ -2,8 +2,8 @@
   'use strict';
   var CFG = JSON.parse(document.getElementById('cfg').textContent);
   var UI = {
-    es:{contents:'Índice',search:'Buscar en el libro',ph:'Llave, Estilo, Vorpalina…',print:'Imprimir',theme:'Tema',menu:'Índice',typeset:'Maquetando páginas…',pages:'páginas',none:'Sin resultados para',meta:'Columna meta',page:'pág.'},
-    en:{contents:'Contents',search:'Search the book',ph:'Key, Style, Vorpal…',print:'Print',theme:'Theme',menu:'Contents',typeset:'Typesetting pages…',pages:'pages',none:'No results for',meta:'Meta column',page:'p.'}
+    es:{contents:'Índice',search:'Buscar en el libro',ph:'Llave, Estilo, Vorpalina…',print:'Imprimir',pPaper:'Para papel',pPaperD:'Hojas blancas y portada clara: ahorra tinta.',pScreen:'Para pantalla o PDF',pScreenD:'El crema de la web y la portada con su imagen.',pHint:'En el diálogo, elige tu impresora o «Guardar como PDF».',theme:'Tema',menu:'Índice',typeset:'Maquetando páginas…',pages:'páginas',none:'Sin resultados para',meta:'Columna meta',page:'pág.'},
+    en:{contents:'Contents',search:'Search the book',ph:'Key, Style, Vorpal…',print:'Print',pPaper:'For paper',pPaperD:'White pages and a light cover: saves ink.',pScreen:'For screen or PDF',pScreenD:'The site’s cream and the cover with its image.',pHint:'In the dialog, pick your printer or “Save as PDF”.',theme:'Theme',menu:'Contents',typeset:'Typesetting pages…',pages:'pages',none:'No results for',meta:'Meta column',page:'p.'}
   };
   function $(id){ return document.getElementById(id); }
   function store(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
@@ -306,7 +306,28 @@
     if (a) { e.preventDefault(); var el = document.getElementById(a.getAttribute('href').slice(1)); if (el) el.scrollIntoView({block:'start'}); closeMenu(); }
   });
   $('menuBtn').addEventListener('click', function(){ var o = document.body.classList.toggle('nav-open'); this.setAttribute('aria-expanded', o ? 'true' : 'false'); });
-  $('printBtn').addEventListener('click', function(){ window.print(); });
+  /* Imprimir: papel (blanco, ahorra tinta) o pantalla (el crema, para un PDF).
+     Ctrl+P sin pasar por aqui sale como papel. */
+  var pm = document.createElement('div'); pm.className = 'printmenu'; pm.id = 'printMenu'; pm.hidden = true; pm.setAttribute('role', 'menu');
+  document.body.appendChild(pm);
+  function pintaPM(){ var u = UI[lang]; pm.innerHTML = '<button type="button" role="menuitem" data-print="papel">' + u.pPaper + '<span>' + u.pPaperD + '</span></button><button type="button" role="menuitem" data-print="pantalla">' + u.pScreen + '<span>' + u.pScreenD + '</span></button><p>' + u.pHint + '</p>'; }
+  function cierraPM(){ pm.hidden = true; $('printBtn').setAttribute('aria-expanded', 'false'); }
+  $('printBtn').setAttribute('aria-haspopup', 'menu');
+  $('printBtn').addEventListener('click', function(e){
+    e.stopPropagation();
+    if (!pm.hidden) { cierraPM(); return; }
+    pintaPM(); pm.hidden = false; this.setAttribute('aria-expanded', 'true');
+    var r = this.getBoundingClientRect(), w = pm.offsetWidth;
+    pm.style.top = (r.bottom + 6) + 'px'; pm.style.left = Math.max(16, Math.min(r.right - w, innerWidth - w - 16)) + 'px';
+    pm.querySelector('button').focus();
+  });
+  pm.addEventListener('click', function(e){
+    var b = e.target.closest('[data-print]'); if (!b) return;
+    root.setAttribute('data-print', b.getAttribute('data-print')); cierraPM();
+    setTimeout(function(){ window.print(); }, 30);
+  });
+  document.addEventListener('click', function(e){ if (!pm.hidden && !pm.contains(e.target)) cierraPM(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !pm.hidden) { cierraPM(); $('printBtn').focus(); } });
   var root = document.documentElement, th = read('nogum-theme'); if (th) root.setAttribute('data-theme', th);
   $('themeBtn').addEventListener('click', function(){
     var c = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -322,7 +343,7 @@
     });
   });
   window.addEventListener('beforeprint', function(){ book.dataset.z = book.style.zoom; book.style.zoom = ''; });
-  window.addEventListener('afterprint', function(){ book.style.zoom = book.dataset.z || ''; });
+  window.addEventListener('afterprint', function(){ book.style.zoom = book.dataset.z || ''; root.removeAttribute('data-print'); });
 
   /* ---------- start ---------- */
   labels();

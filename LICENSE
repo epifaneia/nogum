@@ -96,10 +96,12 @@ en su navegador, no se sube a ningún sitio y no se distribuye con
 este proyecto. Si la guarda dentro del archivo de su mesa, viaja con
 ese archivo y solo adonde él lo lleve.
 
-La conexión con la IA usa el SDK oficial de Anthropic para
-TypeScript (licencia MIT), que el navegador carga desde jsDelivr
-solo cuando el lector pega su propia clave. Esa clave no sale de
-su navegador más que hacia Anthropic, y no viaja en ningún archivo.
+La conexión con la IA funciona con la clave del propio lector, de
+uno de cuatro proveedores: Google Gemini, Mistral, OpenAI o
+Anthropic. Para Anthropic, el navegador carga su SDK oficial para
+TypeScript (licencia MIT) desde jsDelivr; los otros tres se llaman
+directamente. La clave no sale de su navegador más que hacia el
+proveedor que haya elegido, y no viaja en ningún archivo.
 
 Typefaces served by Google Fonts (Big Shoulders Display, Source
 Serif 4, JetBrains Mono, Ibarra Real Nova), each under its own
@@ -113,7 +115,9 @@ browser, never uploaded anywhere, and is not distributed with this
 project. If they save it inside their table file, it travels with
 that file and only wherever they take it.
 
-The AI connection uses Anthropic's official TypeScript SDK (MIT
-licence), which the browser loads from jsDelivr only when the reader
-pastes their own key. That key never leaves their browser except
-towards Anthropic, and never travels in any file.
+The AI connection runs on the reader's own key, from one of four
+providers: Google Gemini, Mistral, OpenAI or Anthropic. For
+Anthropic, the browser loads its official TypeScript SDK (MIT
+licence) from jsDelivr; the other three are called directly. The key
+never leaves their browser except towards the provider they chose,
+and never travels in any file.

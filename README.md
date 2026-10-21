@@ -62,7 +62,7 @@ Un fichero HTML autónomo, sin dependencias ni servidor.
 - **Estado comprimido**: la configuración entera viaja en una cadena corta.
 - **IndexedDB** para los ficheros de audio que el usuario aporta, con validación de que el fichero decodifica antes de guardarlo.
 - **Modelo de lenguaje** para consultas de reglas, con el contexto curado: el documento de canon se corta por un marcador para que el asistente nunca lea el diario de trabajo.
-- **La IA con la clave del lector (BYOK)**: dentro de claude.ai usa la de la plataforma; fuera, la clave de Anthropic que pegue el lector, con el SDK oficial cargado desde una CDN y sin servidor propio. La clave se queda en su navegador, no viaja en ningún archivo y por defecto se olvida al cerrar la pestaña.
+- **La IA con la clave del lector (BYOK)**: dentro de claude.ai usa la de la plataforma; fuera, la clave que pegue el lector, de uno de cuatro proveedores (Google Gemini, que tiene cupo gratis y es el recomendado; Mistral; OpenAI; Anthropic), sin servidor propio. Para Anthropic se carga su SDK oficial desde una CDN; los otros tres se llaman directamente. La clave se queda en su navegador, no viaja en ningún archivo y por defecto se olvida al cerrar la pestaña.
 - **La mesa en un archivo**, con o sin la música: configuración, respuestas, fichas, historia y lore, con un sello de versión que avisa si se abre con otras preguntas.
 
 Sobre esto último: el configurador es determinista **a propósito**. Un árbol de veinte preguntas resuelve mejor ese problema que un modelo, y el modelo se usa donde sí aporta.
