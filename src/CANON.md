@@ -2162,3 +2162,14 @@ el Acceso de las Botas Magneticas y del Monoculo en ingles.
 Matiz del autor a T181: la Rejilla no tiene que subir a todos por igual. Lo que
 importa es que no se sienta injusto: si sube uno, los demas reciben lo
 equivalente (su propio salto, su valor en Llaves o lo que la historia les de).
+
+---
+
+## T183 · La primera poda
+
+Un lector repaso todas las reglas parche (T170-T182) y las clasifico: se deduce
+de una idea, se queda, no se deduce o contradice. Se aplicaron las que se
+deducen: unas cuarenta pasan a una frase o a una remision, y se queda una sola
+copia donde se usa. Arreglos de paso: la Transformacion «contra todo» a 2·x²,
+«nivel N en una Disciplina» en vez de «Rejilla N», y la receta 16 sin nombres
+con copyright. Las que no se deducen o chocan quedan para el autor.
