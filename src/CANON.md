@@ -2154,3 +2154,11 @@ autor lo ve evidente: el tono no mira desde arriba.
    2.6, el enemigo con ficha por debajo de ti.
 Erratas: «El filo imposible» (se habia quedado «La el filo» y «bladeine»), y
 el Acceso de las Botas Magneticas y del Monoculo en ingles.
+
+---
+
+## T182 · Para todos, o su equivalente
+
+Matiz del autor a T181: la Rejilla no tiene que subir a todos por igual. Lo que
+importa es que no se sienta injusto: si sube uno, los demas reciben lo
+equivalente (su propio salto, su valor en Llaves o lo que la historia les de).
