@@ -1,11 +1,31 @@
 # CANON NOGUM — Reglas definitivas para el documento maestro
 
 Jerarquía de autoridad usada para resolver contradicciones:
+0. El bloque REGLAS VIGENTES de aquí abajo: manda sobre todo lo demás de este fichero.
 1. Última palabra explícita del AUTOR en la conversación (turnos T1–T145, 10 feb – 24 may).
 2. Texto del borrador del autor `nogumdraft-docx.md` (cuerpo, no el índice viejo que lleva pegado arriba) y `nogum-pdf.md` (texto del autor sobre combate, anterior; vale solo donde nada posterior lo sustituye).
 3. Texto del asistente aceptado por el autor ("me encanta", "queda", "dale"…).
 4. Propuestas del asistente no validadas → se incluyen SOLO marcadas como «Propuesta sin validar» o en Pendientes.
 Las decisiones de edición (ED-n) son arreglos de congruencia que el editor ha tenido que tomar; se muestran al lector en la pestaña «Decisiones editoriales».
+
+## REGLAS VIGENTES (resumen al día; si algo de más abajo lo contradice, manda esto)
+Lo que sigue a este bloque es el registro de cómo se llegó aquí y contiene reglas superadas. Para responder, usa primero este bloque. (Actualizado en T185.)
+- **La mesa manda (Capítulo 0 · Sesión 0).** Antes de la campaña se pactan las líneas rojas de cada uno (no se impone nada que haga sentir genuinamente mal a nadie; basta una persona; se puede decir en privado al Director; lo que aparece tarde se quita sin pedir permiso), qué se va a sentir, qué soluciones pide el género, hasta dónde puede llegar el tono, y de ahí los números. No hay cortafuegos contra el combo barato: la mesa puede decir «esto no vale». Las reglas trabajan para la mesa y se ignoran cuando impiden lo que la trama pide.
+- **Tirada.** Dos d10 (rojo y azul) y siete tarjetas de tono (ver §2bis). TN 6 (11 en la suma). Los bonos se acumulan, pero el total va siempre de −2 a +4 (el Ancla).
+- **Ficha.** 12 puntos (14 si hay Arcano). Ámbito → Dominio (+1) → Disciplina (+2) → Firma (+3/+4). Ámbito vacío: Nulidad, −2. Si tienes algo en el ámbito, la otra columna se tira a −1 (Torpe). Estilo +2.
+- **Bote aparte.** +1 de Rejilla en un ámbito cuyo techo llegue a 2, o 5 Llaves. Se empieza en 1·1·1·1·2 como mucho; para empezar más arriba, experiencia de salida o un salto pactado en la sesión 0.
+- **Rejilla.** Es escala, no habilidad (×100 de alcance por nivel), y casi nunca es humana: los unos abundan. Un nivel por encima: ganas sin tirar y tiras Estilo para el cómo. Por debajo: imposible sin Llave.
+- **Techo del mundo.** La Rejilla entera más alta que puede tener un jugador en cada ámbito en ese mundo. La receta lo propone y la mesa lo confirma («¿es posible en vuestro mundo?»). No frena las Llaves: una Disciplina puede pasar por encima si el mundo lo hace posible. Los PNJ pueden estar por encima.
+- **Saltos de Rejilla.** Los abre la trama y los decide el Director; por defecto nadie se queda atrás (su salto, su valor en Llaves o algo equivalente). Valor: 5·n² Llaves por ámbito (cada peldaño, 5, 15, 25, 35). Quien rechaza un salto cobra su valor en Llaves y las gasta donde quiera.
+- **Llaves.** Estrecha: una Disciplina entera (nunca una Firma) contra su objetivo, para siempre. Ancha: un ámbito entero contra su objetivo, una escena (se tacha). Una Llave te pone un nivel por encima en lo que cubre. Subir n niveles contra lo mismo: n² Llaves. Una Disciplina cuesta x² contra un objetivo o solo para el daño (Limitado) y 2·x² contra todo; nunca más que la Rejilla del ámbito, 5·x². Se puede dejar en blanco y escribirla la primera vez que se usa.
+- **Llaves de un momento o prestadas.** Las da la ficción o el Director (el club de hackers, veinte mercenarios a la vez, el agua bendita): duran una escena y suben lo que la ficción diga; no se mejoran con Llaves. Lo prestado o robado de paso dura una escena.
+- **Regalos del Director.** Lo que la historia pone en vuestras manos como planteamiento (el robot de la agencia, la nave del grupo) no se paga mientras la historia lo pida.
+- **Equipo.** Tres cerrojos: el Acceso (Recursos), el permiso narrativo y, si rompe la Rejilla, Llaves (x = niveles por encima de la Rejilla del portador; x² por Disciplina contra un objetivo o solo daño, 2·x² contra todo, tope 5·x²). Por debajo de 1 Llave: gratis una escena y se consume. El equipo siempre devuelve sus puntos y Llaves al dejarlo; en un traspaso, quien lo libera las recupera y quien lo recibe las paga. El precio de las armas lo administra el mundo (Acceso y ficción).
+- **Sincronización** (mechas, exoesqueletos, armaduras motorizadas, fusiones): heredas ficha y escala. Es Rejilla, 5·x², a precio entero; Limitada (la mitad) solo si no está siempre disponible, y lo decide la mesa. Un vehículo normal no hereda nada: cobra x².
+- **La Parca.** Si te alcanza y estás por debajo de su nivel, quedas fuera de combate, sin absorción. Si se esquiva lo dice su etiqueta Esq (Nula: se evita no estando ahí; la granada, Difícil −2). Por encima de tu nivel es una Llave y se paga como un arma. Nunca mata.
+- **Combate.** El atacante tira; el defensor tira su reacción si la etiqueta lo permite; se comparan niveles de resultado, y los empates los gana el defensor. Crítico del atacante: +1 al daño. El daño de un arma llega a 2, más la Parca.
+- **Vida.** Barras Física, Mental, Espiritual y las del género. La barra es tensión: cuando termina la amenaza y el Director declara que estáis a salvo, todas vuelven enteras. Las consecuencias (al cruzar un umbral) se quedan hasta curarse: leves, cura sencilla; graves, cura grave. Fuera de combate no es muerte; la muerte de un protagonista siempre se pacta.
+- **Acelerado.** Cuatro modos: Optimista (mejor de dos), Neutro (dado rojo), Caos (mismo dado, bandas anchas y éxito con coste) y Terror (como Neutro, pero 3 casillas de vida en vez de 9). Torpe −1. Armadura ligera +1 y pesada +2 a la absorción. Lo que rompe la Rejilla o da un permiso cuesta además Llaves.
 
 ---
 ## 0. Identidad
@@ -2205,3 +2225,20 @@ Respuestas del autor a las seis preguntas de la poda:
 6. Las Llaves de un momento suben lo que diga la ficcion; las compradas, por
    la escalera.
 Encima de las siete ideas: «antes de las siete, una: la mesa manda».
+
+---
+
+## T185 · Revisión final
+
+Tres lecturas (coherencia de reglas, lector nuevo, paridad ES/EN y App). Arreglos:
+el traspaso devuelve las Llaves a quien libera; la Sincronización a precio entero
+en el 5.3 y el Bazar (exoesqueletos y armaduras motorizadas 20 Llaves, Limitado
+10; la Servoarmadura Antigua tenía la Rejilla sin precio); la Llave propia puede
+quedar en blanco; la idea 7 y la Llave prestada suben lo que diga la ficción; se
+quita «si solo sirve para una Firma, Limitado» (dividía dos veces); frase rota y
+nombres con derechos de la introducción pasados a arquetipos; pilar «cero
+combos» → los bonos se acumulan y el Ancla corta en +4 (autor); en el 7.4, bajar
+al peor de dos solo si la sesión 0 lo permitió; «la mesa manda» en el cap. 2
+queda en una línea; el Acelerado explica el techo y el puente Dominio/Disciplina.
+Bloque REGLAS VIGENTES encima del canon para el asistente de la App, que cortaba
+en la bitácora y respondía con reglas retiradas.
