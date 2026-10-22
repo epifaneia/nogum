@@ -14,24 +14,22 @@ LOCAL = {'tesis': 'NOGUM_idea.html', 'juego': 'NOGUM_juego.html', 'acelerado': '
 CSS = R('paper.css'); JS = R('paper.js')
 
 def juego(lang):
+    """El Juego completo, desde los fragmentos de la reestructura (src/v2/).
+
+    De lo general a lo concreto: las seis ideas, un capitulo por idea, las
+    fichas, el peligro, la consola, la caja de herramientas y los apendices.
+    El castellano es la fuente; el ingles, su espejo con los mismos ids."""
     sfx = '' if lang == 'es' else '.en'
-    f = lambda n: R(n + sfx + '.html')
-    math = f('frag_math')
-    m13, mD = math.split('<section class="chapter" id="apx-mates">', 1)
-    mD = '<section class="chapter" id="apx-mates">' + mD
-    if lang == 'es':
-        bazar = R('frag_bazar.html')
-    else:
-        a = R('frag_bazar_a.en.html'); b = R('frag_bazar_b.en.html')
-        a = a[:a.rstrip().rfind('</section>')]
-        b = b.split('\n', 1)[1]
-        bazar = a + b
-    cap8 = f('frag_cap8')
-    k = cap8.find('<h3 id="ch8-recetas"')
-    h84 = '8.4 Simulación de manuales' if lang == 'es' else '8.4 Rulebook Emulation'
-    cap8 = cap8[:k] + '</section>\n' + bazar + f'\n<section class="chapter" id="ch8b">\n<h2>{h84}</h2>\n' + cap8[k:]
-    return ''.join([R(f'p3_juego.{lang}.html'), f('frag_intro'), f('frag_ch0'), f('frag_ch1a'), m13, f('frag_ch1b'), f('frag_ch2'),
-                    f('frag_ch3'), f('frag_ch4'), f('frag_ch5'), f('frag_ch67'), cap8, f('frag_glosario'), mD])
+    V = lambda n: R(os.path.join('v2', n + sfx + '.html'))
+    def corta(s, marca):
+        i = s.find(marca)
+        return (s, '') if i < 0 else (s[:i], s[i:])
+    ch6, ch8 = corta(V('fI_cap6_cap8'), '<section class="chapter" id="ch8"')
+    faq, glos = corta(V('fH_faq_glosario'), '<section class="chapter" id="apx-glosario"')
+    bazar = V('fK1_bazar_a') + V('fK2_bazar_b') + V('fK3_bazar_c')
+    return ''.join([V('p_juego_v2'), V('fA_ideas_intro_0_1'), V('fC_cap2'), V('fD_cap3'), V('fE_cap4'),
+                    V('fF_cap5'), ch6, V('fG_cap7'), ch8, faq, V('fJ1_cap9a'), bazar, V('fJ2_cap9b'),
+                    glos, V('fB_apendices'), V('fL_referencia')])
 
 drop = R('frag_descartados.html').split('dr-verificacion')[0].count('class="flag drop"')
 PRODUCTS = {
@@ -230,10 +228,30 @@ def limpia_editorial(body):
     body = re.sub(r'\(\s*' + ED + r'\s*\)', '', body)
     body = re.sub(r'\s*,\s*' + ED + r'(?=\s*\))', '', body)
     body = re.sub(r'\((?:con\s+|with\s+|under\s+)?' + ED + r'[:,]\s*', '(', body)
+    # 2c. las marcas de origen se quedan solo con su codigo (T…, ED-…, C·…):
+    #     las que llevan texto («Aprobado por el autor», «Borrador»…) son
+    #     notas de edicion y van al Cuaderno, no al manual
+    COD = r'T\d+(?:[–-]T?\d+)?|ED-[A-Z]?\d+|C·[a-z0-9]+'
+    def src(m):
+        if re.fullmatch(r'(?:\s*(?:' + COD + r')(?:\s*·\s*[a-z0-9]+)?\s*[,·]?\s*)+', m.group(1)): return m.group(0)
+        codes = re.findall(COD, m.group(1))
+        return ('<span class="src">' + ' '.join(codes) + '</span>') if codes else ''
+    body = re.sub(r'<span class="src">([^<]*)</span>', src, body)
     # 3. parentesis y comas que quedan colgando
     body = re.sub(r'\(\s*\)', '', body)
     body = re.sub(r'\s+([.,;:])', r'\1', body)
     return body
+
+# El Cuaderno es el diario de la edicion y cita apartados del Juego viejo.
+# Con la reestructura (v2) esos apartados viven en otro sitio: sus enlaces
+# se llevan a la casa nueva de cada concepto.
+OLDIDS = {'ch2-llave': 'ch4-llave', 'ch2-rejilla': 'ch3-ambitos', 'ch3-economia': 'ch5-salida',
+          'ch3-firmas': 'ch2-firmas', 'ch3-lista': 'ch2-lista', 'ch3-progreso': 'ch5-progreso',
+          'ch4-dificultad': 'ch2-bonos', 'ch4-equipo': 'ch5-equipo', 'ch4-malla': 'ch3-estilo',
+          'ch5-dano': 'ch6-dano', 'ch5-golpes': 'ch6-golpes', 'ch5-iniciativa': 'ch6-iniciativa',
+          'ch5-vida': 'ch6-vida', 'ch7-defecto': 'ch8-defecto', 'ch7-diagnostico': 'ch8-diagnostico',
+          'ch7-disonancia': 'ch8-disonancia', 'ch8-baul': 'ch9-baul', 'ch8-recetas': 'ch9-recetas',
+          'ch8-skills': 'ch9-skills', 'ch8-tablas': 'ch9-tablas', 'ch8b': 'ch9b'}
 
 def fix_cross(body, me, mode):
     def rep(m):
@@ -273,7 +291,10 @@ def build(me, mode):
     cfg = json.dumps({'product': me, 'title': c['title'], 'langs': c['langs'], 'chapterBreak': c['chapterBreak'], 'contents': c['contents']}, ensure_ascii=False)
     tpls = ''
     for l in c['langs']:
-        b = fix_cross(c['src'][l], me, mode)
+        b = c['src'][l]
+        if me == 'cuaderno':
+            b = re.sub(r'href="#([^"]+)"', lambda m: 'href="#%s"' % OLDIDS.get(m.group(1), m.group(1)), b)
+        b = fix_cross(b, me, mode)
         if me != 'cuaderno': b = limpia_editorial(b)
         b = con_pack(b, me, mode, l)
         b = con_foto(b, me, mode, l)

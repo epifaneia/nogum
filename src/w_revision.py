@@ -27,8 +27,17 @@ MUERTOS = [
     (r'Cifras corregidas', 'seccion eliminada (T137)'),
     # Citar lo que decia el manual original es legitimo y va marcado (ED-B1).
     # Lo que no vale es que una regla NUESTRA reparta 3 o mas.
-    (r'(?:Daño|Dmg|Damage)[ \t]*:?[ \t]*[3-9]\b(?![^.]{0,25}\[Inevitable\])', 'el dano maximo es +2; encima, la Parca (T131)'),
+    # Y la aclaracion de 6.8 pregunta si un arma puede llegar a Daño 3 (con
+    # critico o con la pifia del defensor) o a 4 (con las dos): eso es la
+    # regla, no un arma que reparta 3.
+    (r'(?<!hacer )(?<!deal )(?<!do )(?<!vez, )(?<!once, )(?:Daño|Dmg|Damage)[ \t]*:?[ \t]*[3-9]\b(?![^.]{0,25}\[Inevitable\])', 'el dano maximo es +2; encima, la Parca (T131)'),
     (r'son cinco piezas|is five pieces', 'el pack es de cuatro (T135)'),
+    # La macrorrevision del canon (oct 2026): piezas que el autor retiro.
+    (r'Llave ancha|Llave pequeña|[Ww]ide Key', 'no hay Llave ancha: la Llave es tan grande como diga la escena (C·l5)'),
+    (r'\bla Vela\b|\bthe Sail\b', 'la Vela ya no existe (reestructura v2)'),
+    (r'2·x²|2·n²', 'contra todo, una Disciplina cuesta n² (C·l4)'),
+    (r'Desenredando|Untangling', 'el Desenredando se reparte en aclaraciones y preguntas frecuentes (v2)'),
+    (r'gratis una escena|free for one scene', 'por debajo de 1 Llave no hay nada: minimo 1 (C·e7)'),
     (r'tres modos de tono|three tone modes', 'son cuatro (T146)'),
     (r'Tesis filosófica|Philosophical thesis', 'el producto es La Idea (T144)'),
     (r'bancos de música|music banks', 'la musica es solo arrastrar (T151)'),
@@ -36,7 +45,8 @@ MUERTOS = [
     # no se tocan: la armadura («cota de malla»), las citas entre comillas
     # latinas (lo que dijo el autor o el original) y el glosario, que habla DE
     # la palabra. En singular: «mallas» (las de superheroe) tampoco es esto.
-    (r'(?<!cota de )(?<!palabra )(?<!«)(?<!escapado una )\bmalla\b(?![^«»\n]{0,80}»)|\bmesh\b',
+    # En ingles, igual: «mesh» entre comillas es el glosario hablando de ella.
+    (r'(?<!cota de )(?<!palabra )(?<!«)(?<!escapado una )\bmalla\b(?![^«»\n]{0,80}»)|(?<![«“"])\bmesh\b(?![»”"])',
      'es la Rejilla / the Grid (T158)'),
 ]
 

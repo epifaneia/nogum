@@ -469,6 +469,67 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 .exp-porque{margin:4mm 0 0;font-size:9.2pt;line-height:1.42}
 .exp-porque dt{margin:2.2mm 0 0;font-weight:700}
 .exp-porque dd{margin:0}
+
+/* ===== v2: color por capitulo con la estructura nueva ================
+   Mismas cuatro familias que paper.css, repartidas sobre el indice nuevo:
+   el marco y el motor en azules, las cuatro ideas de la ficha en verdes,
+   la mesa en ambares y rojos, los apendices en grises y violetas. */
+.sheet[data-cap="ideas"]{--cap:#4b6ea8}
+.sheet[data-cap="ch0"]{--cap:#6b7382}
+.sheet[data-cap="ch1"],.sheet[data-cap="ch1-panel"]{--cap:#2a56a0}
+.sheet[data-cap="ch2"]{--cap:#1f6f8b}
+.sheet[data-cap="ch3"]{--cap:#2e7d6b}
+.sheet[data-cap="ch4"]{--cap:#3d8a4f}
+.sheet[data-cap="ch5"]{--cap:#5a7d2e}
+.sheet[data-cap="ch6"]{--cap:#a8502a}
+.sheet[data-cap="ch7"]{--cap:#9a6b16}
+.sheet[data-cap="ch8"]{--cap:#7a3f6d}
+.sheet[data-cap="apx-faq"]{--cap:#6b6257}
+.sheet[data-cap="ch9"],.sheet[data-cap="ch9b"]{--cap:#5c5470}
+.sheet[data-cap="apx-maquinas"]{--cap:#555f6e}
+
+/* El arsenal del Bazar pasa de cinco columnas a ocho: Objeto, Daño, Esq,
+   Abs y los tres precios (Acceso, Puntos, Llaves), y Notas se queda el resto. */
+table.t.arsenal thead th:nth-child(1){width:26mm}
+table.t.arsenal thead th:nth-child(2){width:15mm}
+table.t.arsenal thead th:nth-child(3){width:17mm}
+table.t.arsenal thead th:nth-child(4){width:16mm}
+table.t.arsenal thead th:nth-child(5),table.t.arsenal thead th:nth-child(6),table.t.arsenal thead th:nth-child(7){width:11mm;font-size:6.5pt;letter-spacing:0}
+table.t.arsenal td:nth-child(5),table.t.arsenal td:nth-child(6),table.t.arsenal td:nth-child(7){text-align:center}
+
+/* ===== Hoja de referencia (apx-referencia): todo el juego en una cara =====
+   El maquetador reparte los hijos de la seccion por hojas; .ref-hoja va
+   entera, a dos columnas y con letra pequena, para caber en una sola. */
+.ref-hoja{column-count:2;column-gap:5mm;column-rule:.25mm solid var(--rule);font-size:7pt;line-height:1.22;hyphens:auto}
+.ref-hoja .ref-b{margin:0 0 1.6mm}
+.ref-hoja h3{display:flex;justify-content:space-between;align-items:baseline;gap:2mm;font:700 10pt/1.15 var(--book);margin:0 0 1mm;padding-bottom:.5mm;border-bottom:.4mm solid var(--ink);break-after:avoid}
+.ref-hoja h3::before{display:none}
+.ref-ir{font:600 6.4pt/1 var(--mono);letter-spacing:.02em;white-space:nowrap}
+.ref-ir a{color:var(--red);text-decoration:none}
+.ref-hoja p{margin:0 0 .8mm}
+.ref-hoja ul{padding-left:3mm;margin:0 0 .8mm}
+.ref-hoja li{margin:0 0 .3mm}
+.ref-hoja .tw{margin:.6mm 0 1.1mm;border-radius:.8mm;break-inside:avoid}
+.ref-hoja table.t{font-size:6.5pt;line-height:1.15}
+.ref-hoja table.t th,.ref-hoja table.t td{padding:.2mm 1mm}
+.ref-hoja table.t thead th{font-size:5.8pt;letter-spacing:.02em}
+.ref-hoja table.t td:first-child,.ref-hoja table.t th:first-child{min-width:0}
+.ref-hoja table.t.ref-esc td,.ref-hoja table.t.ref-esc th{text-align:center}
+.ref-n{font-size:6.5pt;color:var(--ink-3)}
+.ref-hoja table.t td:last-child{overflow-wrap:normal}
+.ref-hoja table.t:has(th.nw) td:last-child{white-space:nowrap}
+.ref-hoja table.t thead a{color:inherit}
+
+/* La cabecera y el pie se rellenan despues de maquetar (titulo de capitulo,
+   numero de pagina). Vacios no ocupaban alto, la caja del texto se medía mas
+   alta de lo que iba a ser y, al llenarse, lo ultimo de la hoja se cortaba.
+   Un espacio duro en los huecos vacios les da su alto desde el principio. */
+.rh span:empty::before,.pf .pn:empty::before{content:"\00a0"}
+
+/* En pantallas estrechas (movil) Chrome agranda por su cuenta la letra de los
+   bloques anchos, despues de maquetar: la hoja se mide con una letra y se pinta
+   con otra, y el texto se sale por abajo. El libro es A4: sin autoajuste. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 </style>
 </head>
 <body>
@@ -516,29 +577,29 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <ul>
 <li><strong>Dos dados de diez caras de distinto color: uno rojo y otro azul.</strong> Cada jugador, o uno para toda la mesa.</li>
 <li>Una hoja de personaje por jugador (al final de este manual).</li>
-<li>Un Director de Juego (DJ) que haya leído estas páginas. Los jugadores no necesitan leerlas.</li>
+<li>Un Director de juego que haya leído estas páginas. Los jugadores no necesitan leerlas.</li>
 <li>Amigos con ganas de contar una historia juntos.</li>
 </ul>
 <h4>0.3 La caja negra</h4>
 <p>Los jugadores no necesitan conocer las reglas. El trato es sencillo:</p>
 <blockquote><p>Tú declara tu acción y tira. Yo te cuento qué pasa.</p></blockquote>
-<p>El DJ traduce los números a historia. Nadie en la mesa tiene que oír la palabra «modificador» si no quiere.</p>
-<aside class="meta"><p>¿Te parece que al DJ le toca mucho trabajo? Le toca. Es una feature, no un bug. <span class="src">T72</span></p></aside>
+<p>El Director traduce los números a historia. Nadie en la mesa tiene que oír la palabra «modificador» si no quiere.</p>
+<aside class="meta"><p>¿Te parece que al Director le toca mucho trabajo? Le toca. Es una feature, no un bug. <span class="src">T72</span></p></aside>
 
 <h4 id="ac-sesion0">0.4 Antes de jugar: la sesión 0</h4>
 <p>Cinco minutos antes de la primera partida, o una tarde entera: la mesa habla antes de jugar. Es lo único de este manual que no se salta.</p>
 <ul>
-<li><strong>Las líneas rojas de cada uno.</strong> No se impone nada que pueda hacer sentir genuinamente mal a alguien: sexo o violencia explícitos, una fobia, una atmósfera opresiva, o algo tan inocuo como el tedio. Basta con que una persona lo diga, y se puede decir en privado al DJ. Lo que aparezca a mitad de partida se quita sin pedir permiso.</li>
+<li><strong>Las líneas rojas de cada uno.</strong> No se impone nada que pueda hacer sentir genuinamente mal a alguien: sexo o violencia explícitos, una fobia, una atmósfera opresiva, o algo tan inocuo como el tedio. Basta con que una persona lo diga, y se puede decir en privado al Director. Lo que aparezca a mitad de partida se quita sin pedir permiso.</li>
 <li><strong>Qué vamos a sentir.</strong> Qué emociones se exploran, qué aburre, qué zonas de la trama se respetan y qué soluciones pide el género.</li>
-<li><strong>Quién propone.</strong> Consenso, contando siempre con quien hace el trabajo duro: el DJ.</li>
-<li><strong>«Esto no vale».</strong> Aquí no hay cortafuegos contra el combo barato: hay una mesa que se acuerda de lo que pactó.</li>
-<li><strong>Y de ahí, los números:</strong> el modo (<a href="#ac-selector">1</a>), el mundo y su techo, y con qué se empieza (<a href="#ac-reglas">2</a>).</li>
+<li><strong>Quién propone.</strong> Consenso, contando siempre con quien hace el trabajo duro: el Director.</li>
+<li><strong>«Esto no vale».</strong> Aquí no hay cortafuegos contra el combo barato, el que abusa de las reglas: hay una mesa que se acuerda de lo que pactó.</li>
+<li><strong>Y de ahí, los números:</strong> el modo (<a href="#ac-selector">1</a>), el mundo y hasta dónde puede crecer un personaje en él, y con qué se empieza (<a href="#ac-reglas">2</a>).</li>
 </ul>
 <p>Las reglas trabajan para vosotros. Ignoradlas cuando os impidan hacer algo que la trama pide. <span class="src">T184</span></p>
 
 <!-- ============================ 1 ============================ -->
 <h3 id="ac-selector"><span class="hn">1</span> · Selector de misión</h3>
-<p>Antes de empezar, el DJ responde dos bloques de preguntas sobre el universo que va a jugar. No preguntes «¿a qué juego jugamos?». Pregunta «¿cómo se siente este mundo?». <span class="src">T76</span></p>
+<p>Antes de empezar, el Director responde dos bloques de preguntas sobre el universo que va a jugar. No preguntes «¿a qué juego jugamos?». Pregunta «¿cómo se siente este mundo?». <span class="src">T76</span></p>
 
 <h4>1.1 ¿Cuánto optimismo hay en tu mundo?</h4>
 <div class="tw"><table class="t">
@@ -559,7 +620,6 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td>¿Hay sorpresas absurdas?</td><td>Nunca</td><td>Alguna</td><td>Constantemente</td></tr>
 </tbody></table></div>
 <p>Quédate con la respuesta que más se repita. Si no se repite ninguna, decide la primera pregunta. <span class="src">T176</span></p>
-<p>Las preguntas son propias de este manual: el autor fijó el formato (optimismo y caos por separado; poco / lo normal / mucho) y las dos preguntas-madre, no la redacción de las demás. <span class="src">Aprobado por el autor</span></p>
 
 <h4>1.3 Tu modo de juego</h4>
 <p>Cruza tus dos respuestas en la tabla:</p>
@@ -575,12 +635,12 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <li><strong>Optimista</strong> cambia <em>el dado</em>: tiras dos y te quedas el mayor.</li>
 <li><strong>Neutro</strong> no cambia nada. Es la referencia.</li>
 <li><strong>Caos</strong> cambia <em>de qué está hecho el resultado</em>: mismo dado, bandas más anchas y éxitos que cobran peaje.</li>
-<li><strong>Terror</strong> cambia <em>lo que aguantas</em>: mismo dado que Neutro, pero tres casillas de vida en vez de nueve.</li>
+<li><strong>Terror</strong> cambia <em>lo que aguantas</em>: mismo dado que Neutro, pero tres casillas de vida en vez de nueve. De ahí le viene lo opresivo.</li>
 </ul>
 <p>Mira bien el tercero, porque es lo más raro y lo más importante de este manual: <strong>Caos y Neutro sacan adelante exactamente el mismo número de tiradas</strong>, un 50&nbsp;% con la ficha a cero y un 70&nbsp;% con la ficha a +2. Son idénticos hasta +3; a +4 se separan un poco, porque en Caos un 2 en el rojo sigue siendo pifia: 80&nbsp;% contra 90&nbsp;%. El caos no te hace fallar más. Cambia de qué está hecho lo que te pasa: donde Neutro reparte éxitos y fallos limpios, Caos reparte pifias, críticos y victorias con factura.</p>
-<p>Y el cuarto es la otra forma de hacer daño. <strong>En Terror el mundo no es más cruel: tú eres más frágil.</strong> Tiras igual que en Neutro y aciertas igual de a menudo. Lo que cambia es que un cuchillo te mata. El manual completo llama a eso la <em>vida fractal</em> y la deja en tus manos; aquí viene puesta, para que la veas funcionar sin tener que decidir nada.</p>
+<p>Y el cuarto es la otra forma de hacer daño. <strong>En Terror lo opresivo no está en los dados: está en lo frágil que eres.</strong> Tiras igual que en Neutro y aciertas igual de a menudo. Lo que cambia es que dos golpes serios te dejan fuera de combate. El manual completo llama a eso la <em>vida fractal</em> y la deja en tus manos; aquí viene puesta, para que la veas funcionar sin tener que decidir nada. <span class="src">C·22oct</span></p>
 
-<aside class="meta"><p>¿Echas de menos algún tono? ¿Un mundo que sea un reloj suizo y a la vez cruel? ¿Una ruleta rusa donde un 9 ya es un milagro? ¿Oscuro <em>y</em> caótico a la vez? Estos cuatro cubren a grandes rasgos todo y son suficientes para empezar. Y no son un invento aparte: los cuatro existen en el manual completo —Optimista es la Épica, Neutro es la Primera marcha, Caos es la Comedia negra y Terror es la Primera marcha con la vida corta—. Cuando se te queden pequeños, ya conoces cuatro de las siete tarjetas. <span class="src">T135</span></p></aside>
+<aside class="meta"><p>¿Echas de menos algún tono? ¿Un mundo que sea un reloj suizo y a la vez cruel? ¿Una ruleta rusa donde un 9 ya es un milagro? ¿Oscuro <em>y</em> caótico a la vez? Estos cuatro cubren a grandes rasgos casi todo y bastan para empezar. Y no son un invento aparte: tres son tarjetas del manual completo —Optimista es la Épica, Neutro es la Primera marcha y Caos es la Comedia negra—, y Terror es la Primera marcha con la vida corta, un asomo a una regla que allí giras tú. Allí también hay dados opresivos de verdad, tan extremos que no caben en una simplificación: Terror es un terror para todos los públicos. Cuando se te queden pequeños, ya conoces tres de las siete tarjetas. <span class="src">T135</span> <span class="src">C·x1</span></p></aside>
 
 <!-- ============================ 2 ============================ -->
 <h3 id="ac-reglas"><span class="hn">2</span> · Reglas universales</h3>
@@ -592,7 +652,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tbody>
 <tr><td><strong>Optimista</strong></td><td>El <strong>mayor</strong> de los dos</td><td>Doble 1</td><td>Un 10 en cualquiera</td><td>Total 6 o más: éxito</td></tr>
 <tr><td><strong>Neutro</strong></td><td><strong>Solo el rojo</strong> (el azul no cuenta)</td><td>1 en el rojo</td><td>10 en el rojo</td><td>Total 6 o más: éxito</td></tr>
-<tr><td><strong>Caos</strong></td><td><strong>Solo el rojo</strong> (el azul no cuenta)</td><td>1 <strong>o 2</strong> en el rojo</td><td>9 <strong>o 10</strong> en el rojo</td><td>Total 5 o menos: fallo · 6 o 7: <strong>éxito parcial</strong> · 8 o más: éxito</td></tr>
+<tr><td><strong>Caos</strong></td><td><strong>Solo el rojo</strong> (el azul no cuenta)</td><td>1 <strong>o 2</strong> en el rojo</td><td>9 <strong>o 10</strong> en el rojo</td><td>Total 5 o menos: fallo · 6 o 7: <strong>éxito con coste</strong> · 8 o más: éxito</td></tr>
 <tr><td><strong>Terror</strong></td><td><strong>Solo el rojo</strong> (el azul no cuenta)</td><td>1 en el rojo</td><td>10 en el rojo</td><td>Total 6 o más: éxito · <strong>y solo 3 casillas de vida</strong> (2.7)</td></tr>
 </tbody></table></div>
 <div class="rule"><p class="rule-title">Cómo se tira</p>
@@ -600,17 +660,17 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <li>Lee el dado que toque según el modo.</li>
 <li>Suma tu bono (2.2). Eso es el <strong>total</strong>.</li>
 <li>Compáralo con la <strong>TN 6</strong>. Siempre la misma.</li>
-<li>La <strong>pifia</strong> y el <strong>crítico</strong> se miran en los dados, antes de sumar nada. Una pifia es siempre un desastre y un crítico es siempre algo extraordinario, tengas el bono que tengas.</li>
+<li>La <strong>pifia</strong> y el <strong>crítico</strong> se miran en los dados, antes de sumar nada. Una pifia es un desastre y un crítico, algo extraordinario, tengas el bono que tengas.</li>
 </ol>
 </div>
-<p><strong>Éxito parcial (solo en Caos).</strong> Lo consigues, pero pagas un precio. El DJ elige uno:</p>
+<p><strong>Éxito con coste (solo en Caos).</strong> Lo consigues, pero pagas un precio. El Director elige uno:</p>
 <ul>
 <li><strong>Tiempo</strong>: lo logras, pero tarde; los guardias ya están en el pasillo.</li>
 <li><strong>Recurso</strong>: lo logras, pero algo se rompe; el bate se astilla.</li>
 <li><strong>Posición</strong>: lo logras, pero quedas expuesto; te caes de espaldas al otro lado del muro.</li>
 <li><strong>Fuego amigo</strong>: lo logras, pero salpica a otro; la explosión se lleva la única radio.</li>
 </ul>
-<p>Nunca «lo consigues, pero pierdes una casilla de vida». Eso es pereza.</p>
+<p>Mejor no «lo consigues, pero pierdes una casilla de vida». Eso es pereza.</p>
 
 <aside class="meta"><p>Mismo personaje (+2), misma tarea. En <strong>Optimista</strong> lo consigue el 91&nbsp;% de las veces. En <strong>Neutro</strong>, el 70&nbsp;%. En <strong>Caos</strong>, también el 70&nbsp;% —leíste bien, el mismo número— pero dos de cada siete de esas veces pagando un precio, y con el doble de pifias y el doble de críticos. En <strong>Terror</strong>, otra vez el 70&nbsp;%: lo que cambia es que ahora dos golpes le dejan fuera. No has tocado la ficha en ningún momento: has cambiado la atmósfera tres veces de tres maneras distintas.</p></aside>
 
@@ -625,12 +685,12 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td class="num">+2</td><td><strong>Es mi trabajo.</strong> Tienes una habilidad concreta que lo cubre.</td></tr>
 <tr><td class="num">+4</td><td><strong>Gran Maestro.</strong> Nadie lo hace mejor.</td></tr>
 </tbody></table></div>
-<p><strong>Dificultad.</strong> Si la tarea es fácil, +2. Si es difícil, −2. Si es heroica, −4. Lo normal es 0. La dificultad se suma al bono; la TN no se mueve nunca.</p>
-<p><strong>Límites.</strong> Suma habilidad, dificultad y cualquier otro modificador. Si el total baja de −2, el DJ elige: o se tira a −2 o se narra el fallo sin tirar. Si pasa de +4, el DJ elige: o se tira a +4 o se narra el éxito sin tirar. El bono final siempre está entre −2 y +4.</p>
+<p><strong>Dificultad.</strong> Si la tarea es fácil, +2. Si es difícil, −2. Si es heroica, −4. Lo normal es 0. La dificultad se suma al bono; la TN no se mueve.</p>
+<p><strong>Límites.</strong> Suma habilidad, dificultad y cualquier otro modificador: se acumula lo que se pueda, a criterio de la mesa. Si el total pasa de +4, tiras con +4, y lo que sobra puedes aprovecharlo para intentar algo más difícil y con más premio. Si baja de −2, el Director decide si hay derecho a tirada; si lo hay, se tira con −2. El bono con el que tiras queda entre −2 y +4. <span class="src">C·a2</span> <span class="src">C·22oct</span></p>
 <p><strong>No tires por tirar.</strong> Tira solo si todos los resultados posibles son interesantes. Si fallar no aporta nada, sucede y ya está. Lo imprescindible para la historia —la pista sin la que no hay aventura— no se tira: se encuentra. Lo que se tira es cuánto sacas y a qué precio. <span class="src">T176</span></p>
 
 <h4>2.3 Las habilidades</h4>
-<p>Todo personaje tiene <strong>cinco ámbitos</strong>: <strong>Físico</strong>, <strong>Mental</strong>, <strong>Social</strong>, <strong>Técnico</strong> y <strong>Arcano</strong> (la magia, la Fuerza, los poderes psíquicos; si tu mundo no los tiene, ignóralo). Los ámbitos no son habilidades: son los cajones donde las guardas.</p>
+<p>Todo personaje tiene <strong>cinco ámbitos</strong>: <strong>Físico</strong>, <strong>Mental</strong>, <strong>Social</strong>, <strong>Técnico</strong> y <strong>Arcano</strong> (la magia, los poderes psíquicos, lo sobrenatural; si tu mundo no los tiene, ignóralo). Los ámbitos no son habilidades: son los cajones donde las guardas.</p>
 <p>Cada ámbito se parte en dos <strong>habilidades amplias</strong>, y cada una en cuatro <strong>habilidades concretas</strong>. La lista es cerrada:</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Ámbito</th><th>Habilidad amplia (columna)</th><th>Habilidades concretas</th></tr></thead>
@@ -646,7 +706,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td rowspan="2"><strong>Arcano</strong></td><td>Don</td><td>Proyección · Alteración · Adivinación · Protección</td></tr>
 <tr><td>Ritual</td><td>Alquimia · Invocación · Encantamiento · Vínculos</td></tr>
 </tbody></table></div>
-<p>Tienes <strong>12 puntos</strong>, o <strong>14</strong> si tu personaje tiene Arcano (son diez casillas más que cubrir). Cada escalón cuesta un punto —salvo la Firma, que cuesta dos— y para subir un escalón hay que haber pagado el anterior:</p>
+<p>Tienes <strong>12 puntos</strong>. Si algún jugador de la mesa pone algo en Arcano, <strong>todos</strong> tenéis <strong>14</strong>, también quien no lo toca: el Arcano añade diez habilidades a la ficha de todos, y nadie tiene más puntos por tener magia. Si en vuestro mundo hay magia pero no está al alcance de los jugadores, son 12. <span class="src">C·a5</span> <span class="src">C·22oct</span> Cada escalón cuesta un punto —salvo la Firma, que cuesta dos— y para subir un escalón hay que haber pagado el anterior:</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Escalón</th><th>Qué es</th><th>Ejemplos</th><th>Cuesta</th><th>Puntos acumulados</th><th>Bono</th></tr></thead>
 <tbody>
@@ -655,7 +715,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td>Firma (Gran Maestro)</td><td>Tu especialidad dentro del oficio</td><td>Armas → Armas de fuego · Ciencias → Química · Acrobacia → Parkour</td><td class="num">2</td><td class="num">4</td><td class="num">+4</td></tr>
 </tbody></table></div>
 <ul>
-<li>Cuando tires, usa <strong>solo el escalón más alto que encaje</strong>. Los bonos no se suman.</li>
+<li>Cuando tires, usa <strong>solo el escalón más alto que encaje</strong>. Los escalones no se suman entre sí.</li>
 <li>Una <strong>columna</strong> es cada una de las dos habilidades amplias de un ámbito, con sus concretas debajo: en Físico, Destreza es una columna y Vigor la otra.</li>
 <li>Si no has gastado nada en un ámbito, todo lo de dentro se tira a −2 (Nulo). En cuanto compres algo en él, la columna que has tocado da sus bonos con normalidad, y todo lo que caiga en <strong>la otra columna</strong> se tira a −1 (Torpe).</li>
 <li>Para ser Gran Maestro en algo, tienes que poder explicar <strong>exactamente</strong> qué haces. «Armas de fuego», sí. «Ser bueno», no.</li>
@@ -668,47 +728,47 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <div class="tw"><table class="t">
 <thead><tr><th>Nivel</th><th>Escala</th><th>Ejemplos</th></tr></thead>
 <tbody>
-<tr><td class="num">1</td><td>Una persona</td><td>Cualquier humano, por experto que sea: El consultor de Baker Street, un boxeador, un hacker.</td></tr>
-<tr><td class="num">2</td><td>Una sala, cientos de personas</td><td>Un humano excepcional, solo si tu universo lo permite: el bárbaro de la estepa, el soldado perfecto. Un soldado raso no tiene nada que hacer contra ellos.</td></tr>
+<tr><td class="num">1</td><td>Una persona</td><td>Cualquier humano, por experto que sea: el boxeador, el profesor de química, el hacker.</td></tr>
+<tr><td class="num">2</td><td>Una sala, cientos de personas</td><td>Un humano excepcional o algo que ya no lo es, solo si tu universo lo permite: el bárbaro de la estepa, el soldado del suero, la presencia del vampiro. Un soldado raso no tiene nada que hacer contra ellos.</td></tr>
 <tr><td class="num">3</td><td>Un edificio, un barrio</td><td>Derribar un castillo, apagar la red eléctrica de un rascacielos.</td></tr>
 <tr><td class="num">4</td><td>Una gran ciudad</td><td>Un escudo místico sobre la ciudad, un monstruo que arrasa distritos.</td></tr>
 <tr><td class="num">5</td><td>Un país</td><td>Cambiar la geografía. Solo para finales de campaña.</td></tr>
-<tr><td class="num">6</td><td>Cósmico</td><td>No se tira: es decorado. El DJ lo narra.</td></tr>
+<tr><td class="num">6</td><td>Un planeta, lo cósmico</td><td>Casi siempre injugable: la mayoría de universos no lo tienen, y lo que hay ahí se toca con Llaves.</td></tr>
 </tbody></table></div>
-<p>Cada nivel multiplica por cien tu <strong>alcance</strong>: ×1 una persona, ×100 una sala, ×10.000 un edificio, ×1.000.000 una ciudad, ×100.000.000 un país. Cuando alguien te saca un nivel no es que sea mejor que tú: es que juega con dos ceros más, y por eso no hay tirada.</p>
-<p>Si no sabes qué nivel poner, <strong>los humanos son nivel 1 en todo</strong>. Lo que se mide son las herramientas y la escala, no la inteligencia ni los músculos: un químico genial sigue siendo nivel 1. <span class="src">T183</span></p>
+<p>Si en tu mundo los números significan algo, como en los que emulan el real, cada nivel multiplica por cien tu <strong>alcance</strong>: ×1 una persona, ×100 una sala, ×10.000 un edificio, ×1.000.000 una ciudad, ×100.000.000 un país. Cuando alguien te saca un nivel no es que sea mejor que tú: es que juega con dos ceros más, y por eso no tienes derecho a tirada. En un mundo de cómic o de leyenda manda la historia: el de arriba es el tema de la historia, y la escala la pones tú, o ninguna. <span class="src">C·r2</span> <span class="src">C·r3</span></p>
+<p>Si no sabes qué nivel poner, <strong>los humanos son nivel 1 en todo</strong>. Lo que se mide es la escala, no la inteligencia ni los músculos: un químico genial sigue siendo nivel 1. Y si un salto de nivel te suena a cómic, es porque lo es. <span class="src">T183</span> <span class="src">C·r4</span></p>
 <div class="rule"><p class="rule-title">Cinco ideas que lo resuelven casi todo</p>
 <ol>
-<li><strong>La Rejilla es escala, no habilidad, y casi nunca es humana:</strong> ×100 en todo un ámbito, algo irresistible. La presencia del vampiro es un 2; las sirenas, un 3. Una estrella del rock es un 1 con Llaves. Por eso los unos abundan.</li>
-<li><strong>Si algo da un permiso o rompe la Rejilla, tiene Llaves.</strong> Venga de donde venga.</li>
-<li><strong>La Parca es una Llave:</strong> alcanza a quien está por encima. Por eso cuesta Llaves.</li>
+<li><strong>La Rejilla es escala, no habilidad:</strong> ser grande en todo un ámbito. La presencia del vampiro es un 2 en Social: entra en la sala y la sala entera queda prendada. Lo que es enorme en una sola cosa es una Llave: las sirenas, con su canto; la estrella del rock, un 1 con Llaves. La humana realista es 1 en todo, y por eso los unos abundan. <span class="src">C·r4</span> <span class="src">C·22oct</span></li>
+<li><strong>Si algo da un permiso, anula una defensa o alcanza un nivel de Rejilla por encima, es una Llave.</strong> Venga de donde venga.</li>
+<li><strong>La Parca es una Llave al daño:</strong> alcanza a quien está por encima de ti. Por eso cuesta Llaves, aunque el daño, por sí solo, no se pague.</li>
 <li><strong>Lo prestado o robado dura una escena,</strong> lo use quien lo use. Pasárselo no reinicia nada.</li>
-<li><strong>Lo que hace una Llave lo dice la Llave:</strong> te pone un nivel por encima, pero solo en lo que cubre. Un bazuca es una Llave al daño: te revienta si te da, pero hay que acertar.</li>
+<li><strong>Lo que hace una Llave lo dice la Llave:</strong> te pone uno o varios niveles por encima, y anula lo que dice que anula, nada más. Un bazuca es una Llave al daño: te revienta si te da, pero hay que acertar. <span class="src">C·l2</span></li>
 </ol>
-<p>Los casos difíciles, resueltos uno a uno, están en el manual completo (2.6). <span class="src">T179</span></p></div>
+<p>Los casos difíciles, resueltos uno a uno, están en el capítulo de la Llave del manual completo. <span class="src">T179</span></p></div>
 <div class="rule"><p class="rule-title">El salto de poder</p>
-<p>Vale para todos: jugadores y adversarios. Compara el nivel de Rejilla de quien actúa con el de aquello contra lo que actúa, en el ámbito de la acción. Un PNJ o un monstruo tiene un solo nivel para todo, salvo que el DJ diga otra cosa.</p>
+<p>Vale para todos: jugadores y adversarios. Compara el nivel de Rejilla de quien actúa con el de aquello contra lo que actúa, en el ámbito de la acción. Un PNJ o un monstruo tiene un solo nivel para todo, salvo que el Director diga otra cosa.</p>
 <ul>
 <li><strong>Si estáis al mismo nivel</strong>, se tira normal: ataque, defensa, todo.</li>
-<li><strong>Si estás por encima</strong> (aunque sea un nivel), no tiras para conseguirlo: lo consigues. Si importa cómo, se tira Estilo (+2, 2.8). Eso vale también para un monstruo que ataca a personajes por debajo de él: el golpe entra sin tirada, con el daño de su arma.</li>
-<li><strong>Si estás por debajo</strong>, no puedes afectar a lo que está por encima —ni un rasguño— sin una <strong>Llave</strong>. Eso incluye defenderte: contra un ataque que viene de arriba no hay tirada de defensa, salvo que tengas una Llave que valga. Con Llave se tira todo normal, con tu bono completo.</li>
+<li><strong>Si estás por encima</strong> (aunque sea un nivel), no tiras para conseguirlo: lo consigues. Si importa cómo, se tira Estilo (+2, 2.8). Eso vale también para un monstruo que ataca a personajes por debajo de él: no hay tirada, ni para dar ni para salvarse, y se narra la derrota. <span class="src">C·22oct</span></li>
+<li><strong>Si estás por debajo</strong>, no puedes afectar a lo que está por encima —ni un rasguño— sin una <strong>Llave</strong>. Eso incluye defenderte: contra un ataque que viene de arriba no hay tirada de defensa, salvo que tengas una Llave que valga. Con Llave se tira todo normal, con tu bono completo: no se protege dos veces. <span class="src">C·r10</span></li>
 </ul>
 </div>
-<p><strong>La Llave.</strong> Una Llave es una razón narrativa que te permite afectar a algo de nivel superior: un bazooka, la piedra de su propio mundo, una contraseña de administrador robada, un vídeo del soborno, veinte mercenarios disparando a la vez. Cada Llave te sube <strong>un nivel de Rejilla</strong> contra su objetivo. Con Llave se tira normal, con tu bono completo y sin penalizaciones. Conseguirla suele ser una aventura en sí misma.</p>
+<p><strong>La Llave.</strong> Una Llave es una razón narrativa que te permite afectar a algo de nivel superior: un bazuca, la piedra de su propio mundo, una contraseña de administrador robada, un vídeo del soborno, veinte mercenarios disparando a la vez. Te pone <strong>un nivel de Rejilla por encima</strong> del tuyo (o varios, pagando más), y en esa tirada actúas como ese nivel: si eres 1 y la Llave te pone en 2, quien está a nivel 1 no tiene derecho a tirada; contra un 2, tiras con normalidad, con tu bono completo. La que te da la ficción cubre lo que la ficción diga y dura una escena; la tuya, la que compras, cubre <strong>toda una habilidad concreta, contra cualquier objetivo</strong> (abajo). Conseguirla suele ser una aventura en sí misma. <span class="src">C·l1</span> <span class="src">C·l2</span></p>
 <div class="rule"><p class="rule-title">Las Llaves se compran</p>
 <ul>
-<li>En la creación, el <strong>bote aparte</strong> te da <strong>5 Llaves</strong>, o <strong>+1 nivel de Rejilla</strong> en un ámbito. Por defecto, todo personaje empieza en nivel 1 en todo; si eliges el +1, puede ir en cualquier ámbito que permita el techo de tu universo. <strong>El techo</strong> es lo más alto que tu mundo deja tener a un jugador en un ámbito entero: en uno realista o de terror, 1 en todo, y el bote son 5 Llaves; si hay superhumanos, el 2 va donde los haya. Lo confirma la mesa en la sesión 0. <span class="src">T185</span> No se cambia por puntos de habilidad: todo el mundo llega con un oficio.</li>
-<li>Se puede empezar con más puntos si la mesa lo elige a conciencia, sabiendo que va contra la idea de este manual.</li>
-<li>Cada Llave es <strong>una habilidad concreta contra su objetivo, para siempre</strong> («Armas contra los vampiros» vale contra vampiros, no contra un licántropo) o <strong>un ámbito entero contra su objetivo durante una escena</strong>, si es muy específica: esa se tacha al acabar la escena. Nunca una Firma. Se escribe con su objetivo; puedes guardarla en blanco y asignarla la primera vez que la uses, como hacen los pregenerados. <span class="src">T176</span></li>
-<li>La Rejilla y las Llaves se cambian: un nivel de Rejilla en un ámbito vale <strong>5 Llaves</strong>, sus ocho habilidades concretas por el precio de cinco. Si la historia sube la Rejilla de la mesa y tú prefieres no subir, te llevas esas 5 Llaves, y <strong>las gastas donde quieras</strong>. <span class="src">T176</span></li>
-<li>Una Llave te pone <strong>un nivel de Rejilla por encima</strong>. Para subir más contra la misma cosa, la cuenta va al cuadrado: subir <em>n</em> niveles cuesta <em>n</em>² Llaves en total (1, 4, 9). Con cinco en el bote, nadie empieza más de dos niveles por encima.</li>
-<li>Durante la campaña, el Director da <strong>una Llave por jugador y sesión</strong> <span class="src">T176</span>. Ese grifo es el mando de potencia de la partida: con Llaves se compra también lo que rompe la Rejilla o da un permiso (idea 2; equipo en 2.9). <span class="src">T181</span> <span class="src">T183</span></li>
-<li>Y lo que el Director te regala por una buena idea —«se te ocurre usar el agua bendita»— es una <strong>Llave prestada</strong>: dura una escena; se apunta a lápiz y se borra al acabarla.</li>
+<li>En la creación, el <strong>bote aparte</strong> te da <strong>5 Llaves</strong>, o <strong>+1 nivel de Rejilla</strong> en un ámbito. Con el +1, la ficha arranca en <strong>1·1·1·1·2</strong>, el punto de partida recomendado: un 2 en un ámbito y 1 en los otros cuatro. Ese 2 solo puede ir donde el universo lo permita: en uno realista o de terror, los jugadores se quedan en 1 en todo, y el bote son 5 Llaves; si hay superhumanos, el 2 va donde los haya. Hay tres techos, y conviene no mezclarlos: el <strong>nivel máximo inicial</strong>, con el que empieza una ficha (por defecto, ese 2); el <strong>nivel máximo de los jugadores</strong>, lo más alto que un jugador puede llegar a tener en todo un ámbito por mucho que dure la campaña; y el <strong>nivel máximo del mundo</strong>, lo más alto que existe en él (en el horror cósmico hay criaturas enormes, y tú no puedes ser una). Los tres son de Rejilla: a las Llaves es mejor no ponerles techo. Lo confirma la mesa en la sesión 0. <span class="src">T185</span> <span class="src">C·r5</span> <span class="src">C·r6</span> El bote no se cambia por puntos de habilidad: todo el mundo llega con un oficio.</li>
+<li>Todo esto es un punto de partida, no un límite: la mesa puede empezar más alto o más bajo, según lo que quiera emular. Viene pensado para un mundo como el ciberpunk; uno de zombis o de horror cósmico suele pedir menos. <span class="src">C·e4</span></li>
+<li>Cada Llave propia es <strong>toda una habilidad concreta, contra cualquier objetivo, para siempre</strong>: con «Armas», todo lo que haces con armas sube un nivel, también tu Firma, que va dentro. Si solo vale contra una cosa («Armas contra los vampiros»), es una Llave <strong>Limitada</strong>, más barata a partir de dos niveles; a un nivel cuesta lo mismo, así que conviene no limitarla. Puedes guardarla en blanco y escribirla la primera vez que la uses, como hacen los pregenerados; si alguien abusa, la mesa lo frena. <span class="src">T176</span> <span class="src">C·l1</span> <span class="src">C·l4</span> <span class="src">C·l7</span></li>
+<li>La Rejilla y las Llaves se cambian: un nivel de Rejilla en un ámbito vale <strong>5 Llaves</strong>, sus ocho habilidades concretas por el precio de cinco. Si la historia sube la Rejilla de la mesa y tú prefieres no subir, te llevas lo que vale en Llaves (5 por un nivel de más, 20 por dos) y <strong>las gastas donde quieras</strong>. <span class="src">T176</span> <span class="src">C·e2</span></li>
+<li>Una Llave te pone <strong>un nivel de Rejilla por encima</strong>. Para subir más en la misma habilidad, la cuenta va al cuadrado: subir <em>n</em> niveles cuesta <em>n</em>² Llaves en total (1, 4, 9). Con cinco en el bote, puedes subir dos niveles en una habilidad (4 Llaves), y te sobra una.</li>
+<li>Durante la campaña, el Director da <strong>una Llave por jugador y sesión</strong> <span class="src">T176</span>. Ese grifo es el mando de potencia de la partida: con Llaves se compran también los permisos (lo que ninguna habilidad puede hacer, como volar o ver a través de las paredes: 1 Llave, a ojo de buen cubero) y los niveles por encima (idea 2). El equipo, aquí, solo pide dinero (2.9). <span class="src">T181</span> <span class="src">T183</span> <span class="src">C·l9</span></li>
+<li>Y lo que el Director te regala por una buena idea —«se te ocurre usar el agua bendita»— es una <strong>Llave prestada</strong>: sube lo que la ficción diga, dura una escena y no se paga; se apunta a lápiz y se borra al acabarla. <span class="src">C·l6</span></li>
 </ul></div>
 <aside class="meta"><p>¿Por qué el millonario vigilante puede plantarle cara al alien de mallas y calzoncillos con el mismo bono que un portero de discoteca? Por la Llave. En el manual completo hay un capítulo entero para bajar la Rejilla a tierra, con ejemplos de cultura pop en los cinco ámbitos. NOGUM te espera.</p></aside>
 
 <h4>2.5 Iniciativa</h4>
-<p>Cuando empieza el combate, cada participante tira con el modo activo y suma su <strong>mejor bono en Destreza</strong> (la habilidad amplia o cualquier habilidad concreta suya). Se actúa de mayor a menor total. Si hay empate, decide el DJ.</p>
+<p>Cuando empieza el combate, cada participante tira con el modo activo y suma su <strong>mejor bono en Destreza</strong> (la habilidad amplia o cualquier habilidad concreta suya). Se actúa de mayor a menor total. Si hay empate, decide el Director.</p>
 <aside class="meta"><p>Si tu personaje va a usar su turno para deducir una pista, hackear una terminal o intimidar al jefe rival… ¿tiene sentido que el orden lo decida su velocidad física? ¿Quieres una iniciativa donde primero eliges tu intención (violencia, treta o especialidad) y después cómo la ejecutas? NOGUM te espera. <span class="src">T135</span></p></aside>
 
 <h4>2.6 El combate</h4>
@@ -724,18 +784,18 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 </div>
 <div class="rule"><p class="rule-title">Paso 2 · La mitigación (tira el defensor)</p>
 <p>Si el arma lo permite (mira sus etiquetas), el defensor hace <strong>una sola reacción</strong>: esquivar (Destreza → Acrobacia) o absorber (Vigor → Entereza), según la vía que el arma deje abierta.</p>
-<p><strong>La defensa gana los empates.</strong> Los dos tiráis contra la misma TN y comparáis el <strong>nivel de resultado</strong>: pifia &lt; fallo &lt; éxito con coste &lt; éxito &lt; crítico.</p>
+<p><strong>La defensa gana los empates.</strong> Los dos tiráis contra la misma TN y comparáis el <strong>nivel de resultado</strong>: pifia &lt; fallo &lt; éxito con coste (solo en Caos) &lt; éxito &lt; crítico.</p>
 <ul>
 <li><strong>El defensor iguala o supera</strong> el nivel de resultado del atacante: no hay daño.</li>
 <li><strong>El atacante queda por encima</strong> y el defensor sacó éxito o éxito con coste: daño del arma −1.</li>
 <li><strong>El defensor falla</strong>: recibe todo el daño.</li>
-<li><strong>El defensor pifia</strong>: el ataque sube un nivel de resultado en esa escala, y luego se compara. Si con eso llega a crítico, +1 al daño, como cualquier crítico. <span class="src">T176</span></li>
+<li><strong>El defensor pifia</strong>: recibe todo el daño, <strong>+1</strong>; si además el ataque fue crítico, +2 en total. <span class="src">T176</span> <span class="src">C·22oct</span></li>
 </ul>
 </div>
-<p><strong>Daño final</strong> = daño del arma (+1 si el ataque quedó en crítico) − reducción del defensor, dentro de los límites de las etiquetas.</p>
-<p><strong>Peligros sin atacante</strong> (caídas, fuego, el entorno): cuentan como un ataque con éxito de su nivel; si son extremos, como un crítico; los enormes llevan La Parca con su nivel. Nunca matan: como mucho, fuera de combate. <span class="src">T176</span></p>
-<p><strong>Las etiquetas mandan sobre el empate.</strong> Con <span class="tag">Esq: Parcial</span> comes al menos 1 aunque iguales, y con <span class="tag">Esq: Nula</span> no hay reacción que tirar.</p>
-<p><strong>En Caos</strong>, un éxito parcial en combate es un éxito con coste: conecta o defiende como un éxito, pero en la comparación vale un nivel de resultado menos, y el DJ añade un coste del menú (el ataque conecta, pero pierdes el arma; esquivas, pero caes al suelo).</p>
+<p><strong>Daño final</strong> = daño del arma (+1 por crítico del atacante, +1 por pifia del defensor) − reducción del defensor, dentro de los límites de las etiquetas.</p>
+<p><strong>Peligros sin atacante</strong> (caídas, fuego, el entorno): cuentan como un ataque con éxito de su nivel; si son extremos, como un crítico; los enormes llevan La Parca con su nivel. <span class="src">T176</span></p>
+<p><strong>Las etiquetas mandan sobre el empate.</strong> Con <span class="tag">Esq: Parcial</span> comes al menos 1 aunque iguales, y con <span class="tag">Esq: Nula</span> no hay esquiva que tirar: si el arma deja absorber, te queda la absorción.</p>
+<p><strong>En Caos</strong>, un éxito con coste en combate conecta o defiende como un éxito, pero en la comparación vale un nivel de resultado menos, y el Director añade un coste del menú (el ataque conecta, pero pierdes el arma; esquivas, pero caes al suelo).</p>
 
 <p><strong>Las armas.</strong> Toda arma, poder o peligro se describe con tres etiquetas:</p>
 <div class="tw"><table class="t">
@@ -743,14 +803,14 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tbody>
 <tr><td><span class="tag">Daño 1</span></td><td>Leve</td><td>Puños, cuchillos, pistolas ligeras, caídas cortas. «Urgencias».</td></tr>
 <tr><td><span class="tag">Daño 2</span></td><td>Serio</td><td>Espadas de guerra, magnum, garras. «UCI».</td></tr>
-<tr><td><span class="tag parca">La Parca</span></td><td>No es un valor de daño</td><td>Artillería, explosivos de guerra, un coche a toda velocidad. Es una Llave al daño. Lleva nivel de Rejilla, que se compara con el Físico del objetivo. Si te alcanza y estás por debajo, quedas fuera de combate: no hay absorción que valga. Si se puede esquivar, lo dice su etiqueta <span class="tag">Esq</span>: el francotirador que no ves (<span class="tag">Esq: Nula</span>) no se esquiva —se evita, no estando ahí—; una granada, por su área, se esquiva a duras penas: −2. A su altura hace Daño 2 y te defiendes normal, con sus etiquetas. Por encima de ella, nada sin Llave. Nunca mata. <span class="src">T176</span> <span class="src">T181</span></td></tr>
-<tr><td><span class="tag">Esq: Total</span></td><td>Esquiva libre</td><td>Cuerpo a cuerpo, proyectiles lentos. Esquivando puedes quedarte en 0.</td></tr>
+<tr><td><span class="tag parca">La Parca</span></td><td>No es un valor de daño</td><td>Artillería, explosivos de guerra, un coche a toda velocidad. Es una Llave al daño. Lleva nivel de Rejilla, que se compara con el Físico del objetivo. Si te alcanza y estás por debajo, se te da fuera de combate, sin derecho a tirada: no hay absorción que valga. Si se puede esquivar, lo dice su etiqueta <span class="tag">Esq</span>: el francotirador que no ves (<span class="tag">Esq: Nula</span>) no se esquiva —se evita, no estando ahí—; una granada, por su área, se esquiva a duras penas: −2. A su altura hace Daño 2 y te defiendes normal, con sus etiquetas. Por encima de ella, nada sin Llave. <span class="src">T176</span> <span class="src">T181</span> <span class="src">C·l8</span></td></tr>
+<tr><td><span class="tag">Esq: Total</span></td><td>Esquiva libre</td><td>Cuerpo a cuerpo, flechas, proyectiles lentos. Esquivando puedes quedarte en 0.</td></tr>
 <tr><td><span class="tag">Esq: Parcial</span></td><td>Esquiva limitada</td><td>Área, ráfagas, fuego. Aunque esquives, recibes al menos 1.</td></tr>
-<tr><td><span class="tag">Esq: Nula</span></td><td>Sin esquiva</td><td>Instantáneos, mentales, disparo por sorpresa.</td></tr>
+<tr><td><span class="tag">Esq: Nula</span></td><td>Sin esquiva</td><td>Instantáneos, mentales, disparo por sorpresa. Y las armas de fuego, a nivel 1: una bala no se esquiva. <span class="src">C·e8</span></td></tr>
 <tr><td><span class="tag">Esq: Difícil</span> / <span class="tag">Esq: Fácil</span></td><td>Modificador</td><td>−2 / +2 a la tirada de esquiva.</td></tr>
 <tr><td><span class="tag">Abs: Total</span></td><td>Absorción libre</td><td>La protección funciona: absorbiendo puedes quedarte en 0.</td></tr>
 <tr><td><span class="tag">Abs: Máx 1</span></td><td>Absorción limitada</td><td>Martillos, perforantes: se reduce como mucho 1.</td></tr>
-<tr><td><span class="tag">Abs: Nula</span></td><td>Sin absorción</td><td>Láser, veneno de contacto, magia psíquica.</td></tr>
+<tr><td><span class="tag">Abs: Nula</span></td><td>Sin absorción</td><td>Veneno de contacto, magia psíquica, la bala que atraviesa cualquier blindaje.</td></tr>
 </tbody></table></div>
 <p>Ejemplos para empezar:</p>
 <div class="tw"><table class="t">
@@ -759,20 +819,22 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td>Puños, cuchillo</td><td><span class="tag">Daño 1</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Total</span></td></tr>
 <tr><td>Espada, hacha de guerra</td><td><span class="tag">Daño 2</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Total</span></td></tr>
 <tr><td>Maza, martillo de guerra</td><td><span class="tag">Daño 2</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Máx 1</span></td></tr>
-<tr><td>Arco, pistola</td><td><span class="tag">Daño 1</span> <span class="tag">Esq: Difícil</span> <span class="tag">Abs: Total</span></td></tr>
-<tr><td>Magnum, escopeta</td><td><span class="tag">Daño 2</span> <span class="tag">Esq: Difícil</span> <span class="tag">Abs: Total</span></td></tr>
-<tr><td>Granada, bola de fuego</td><td><span class="tag parca">La Parca · Rejilla 2</span> <span class="tag">Esq: Difícil (−2)</span> <span class="tag">Abs: Nula</span> <span class="src">T181</span></td></tr>
-<tr><td>Rifle láser</td><td><span class="tag">Daño 2</span> <span class="tag">Esq: Difícil</span> <span class="tag">Abs: Nula</span></td></tr>
+<tr><td>Arco</td><td><span class="tag">Daño 1</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Total</span></td></tr>
+<tr><td>Pistola, revólver</td><td><span class="tag">Daño 1</span> <span class="tag">Esq: Nula</span> <span class="tag">Abs: Total</span></td></tr>
+<tr><td>Magnum, escopeta</td><td><span class="tag">Daño 2</span> <span class="tag">Esq: Nula</span> <span class="tag">Abs: Total</span></td></tr>
+<tr><td>Pistola bláster (ópera espacial: se esquiva por convenio del género)</td><td><span class="tag">Daño 2</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Máx 1</span> <span class="src">C·22oct</span></td></tr>
+<tr><td>Granada, explosivo de guerra</td><td><span class="tag parca">La Parca · Rejilla 2</span> <span class="tag">Esq: Difícil (−2)</span> <span class="tag">Abs: Nula</span> <span class="src">T181</span></td></tr>
+<tr><td>Rifle láser</td><td><span class="tag">Daño 2</span> <span class="tag">Esq: Nula</span> <span class="tag">Abs: Total</span></td></tr>
 <tr><td>Francotirador (por sorpresa)</td><td><span class="tag parca">La Parca · Rejilla 2</span> <span class="tag">Esq: Nula</span> <span class="tag">Abs: Nula</span></td></tr>
 </tbody></table></div>
-<p>Una Parca por encima de tu nivel es una Llave (idea 3) y se paga como cualquier otra: <em>x</em>² Llaves, con <em>x</em> los niveles que te saca. Una granada Parca 2 en manos de un nivel 1 cuesta 1 Llave (2.4). <span class="src">T176</span> <span class="src">T183</span></p>
+<p>Una Parca por encima de tu nivel es una Llave (idea 3). Si es un poder tuyo, cuesta Llaves como cualquier otra: <em>n</em>², con <em>n</em> los niveles que te saca. Si es equipo, aquí se paga solo con dinero, como todo el equipo (2.9), y una granada, que es de un solo uso, ni siquiera ocupa sitio. <span class="src">T176</span> <span class="src">T183</span> <span class="src">C·22oct</span></p>
 <aside class="meta"><p>¿Quieres que un arma solo pueda dañar a algo de nivel superior si es la adecuada? ¿Un catálogo de cientos de armas, poderes y vehículos de diez ambientaciones? El Bazar del Multiverso está en el manual completo.</p></aside>
 
 <h4>2.7 La vida</h4>
 <p>Todo personaje tiene <strong>9 casillas de vida</strong>, en tres bloques de tres. Cada punto de daño tacha una casilla.</p>
 <div class="rule"><p class="rule-title">Salvo en Terror</p>
 <p>En el modo <strong>Terror</strong> no son nueve: son <strong>3 casillas</strong>, un solo bloque. Al llenarlo estás fuera de combate. Con el daño de este manual eso significa que <strong>dos impactos serios te sacan de la escena</strong>, y que basta uno si el atacante saca crítico y no lo paras.</p>
-<p>No es un interruptor que tengas que acordarte de encender. Viene con el modo, y es la única pieza de este manual que te deja asomarte a lo que el completo llama <strong>vida fractal</strong>: ahí la letalidad es un mando y lo giras tú, con tres, nueve o veintisiete casillas.</p></div>
+<p>No es un interruptor que tengas que acordarte de encender. Viene con el modo, y es la única pieza de este manual que te deja asomarte a lo que el completo llama <strong>vida fractal</strong>: ahí la letalidad es un mando y lo giras tú, con tres bloques, nueve casillas o veintisiete puntos.</p></div>
 <div class="tw"><table class="t">
 <thead><tr><th>Bloque</th><th>Casillas</th><th>Al llenarlo</th></tr></thead>
 <tbody>
@@ -781,10 +843,10 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td>Tercero</td><td class="num">7–9</td><td><strong>Fuera de combate.</strong></td></tr>
 </tbody></table></div>
 <ul>
-<li><strong>Fuera de combate no es muerte.</strong> Estás incapacitado y sales de la escena; vuelves al acabarla, y con tu vida pasa lo mismo que con la de todos (abajo). <span class="src">T176</span> Si despiertas lo decide la historia o tu jugador, nunca los dados. En NOGUM nadie muere por una mala tirada.</li>
-<li><strong>Ni siquiera La Parca mata.</strong> A quien alcanza por debajo de su nivel lo deja fuera de combate. La muerte, la locura o la transformación solo llegan si se acuerdan en la historia.</li>
+<li><strong>Fuera de combate no es muerte.</strong> Estás incapacitado y sales de la escena; vuelves al acabarla, y con tu vida pasa lo mismo que con la de todos (abajo). <span class="src">T176</span> Si despiertas lo decide la historia o tu jugador, no los dados. En NOGUM ningún protagonista muere por una mala tirada: la muerte se pacta. <span class="src">C·m3</span></li>
+<li><strong>La Parca, lo mismo.</strong> A quien alcanza por debajo de su nivel, se le da fuera de combate, sin derecho a tirada. Lo que venga después (una cicatriz, la locura, una transformación) se acuerda en la historia. <span class="src">C·l8</span></li>
 <li>Cuando termina la amenaza y estáis <strong>a salvo</strong>, las casillas se borran. Estar a salvo no es una sensación: es estar fuera de peligro de forma objetiva, y lo declara el Director, porque solo él sabe si todavía quedan ojos acechando en la oscuridad. <span class="src">T181</span> Y si el siguiente combate llega sin respiro, es la misma escena y siguen tachadas. <span class="src">T177</span> Pero <strong>las heridas se quedan</strong>: el penalizador del bloque que llenaste sigue hasta que te cures (horas o días para el primero, días o semanas para el segundo).</li>
-<li>Los penalizadores respetan los límites de 2.2: nunca bajas de −2.</li>
+<li>Los penalizadores se suman al bono como cualquier otro modificador: si te dejan por debajo de −2, el Director decide si todavía tienes derecho a tirada (2.2). <span class="src">C·22oct</span></li>
 </ul>
 <aside class="meta"><p>¿Te gustaría jugar a un mundo sucio donde una bala perdida te haga temer por tu vida? ¿O a un anime donde el jefe final aguanta cien golpes? ¿Y a una historia donde una mirada al abismo duele tanto como un tiro? En el manual completo, la misma ficha sirve para tres golpes y fuera, para veintisiete puntos de desgaste y para heridas en la mente y en el alma. NOGUM te espera. <span class="src">T135</span></p></aside>
 
@@ -793,18 +855,18 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <p>Todo personaje tiene <strong>Estilo +2</strong>. Cuando te enfrentas a enemigos <strong>por debajo de tu nivel</strong> en la Rejilla, o a simples masillas (el decorado de la escena), <strong>no se tira para ver si ganas: se da por hecho</strong>. Tiras con el modo activo y sumas tu Estilo para ver <strong>cómo</strong> ganas:</p>
 <ul>
 <li><strong>Pifia</strong>: ganas, pero haces el ridículo. Si tu personaje se toma muy en serio, puede dolerle.</li>
-<li><strong>Fallo</strong> (y, en Caos, el éxito parcial): ganas, pero de forma sucia o sin lucirte.</li>
+<li><strong>Fallo</strong> (y, en Caos, el éxito con coste): ganas, pero de forma sucia o sin lucirte.</li>
 <li><strong>Éxito</strong>: ganas con estilo, limpio y espectacular.</li>
 <li><strong>Crítico</strong>: legendario. Coreografía de cine, caen varios a la vez y nacen rumores.</li>
 </ul>
-<p>A los masillas no se les cuentan casillas de vida. El decorado lo declara el DJ y no te hace daño: cada tirada de Estilo tumba a uno, y con crítico a varios. Si un enemigo puede hacerte daño, no es decorado: tiene ficha rápida (3) y tira normal. <span class="src">T176</span></p>
+<p>Los masillas son decorado: los declara el Director, no tienen ficha ni tirada y actúan como si estuvieran un nivel de Rejilla por debajo de vosotros, así que no te hacen daño ni se les cuentan casillas de vida. Cada tirada de Estilo tumba a uno, y con crítico a varios. Si un enemigo puede hacerte daño, no es decorado: tiene ficha rápida (3) y tira normal. <span class="src">T176</span> <span class="src">C·c7</span> <span class="src">C·22oct</span></p>
 </div>
 <p>El Estilo encaja con el anime, el wuxia, la space opera y el cine de acción. <strong>No se recomienda en universos muy serios</strong>: en una guerra realista, hasta el último soldado tira.</p>
 <aside class="meta"><p>¿Por qué el héroe barre a veinte matones y luego suda contra uno solo? En el manual completo verás cómo la Rejilla, la Llave y el Estilo se reparten el trabajo, y cómo hacer fichas de enemigos en diez segundos. NOGUM te espera.</p></aside>
 
 <!-- ============================ 3 ============================ -->
 <h4>2.9 El equipo: lo que puedes permitirte</h4>
-<p>Aquí el equipo normal <strong>solo cuesta dinero</strong>, y el dinero es tu bono en <em>Recursos</em> (Social → Jerarquía → Recursos). Nada de puntos, nada de Llaves: si tu cajón llega, lo tienes. Solo lo que rompe la Rejilla —lo que te deja afectar a algo de nivel superior— o da un permiso que ninguna habilidad da (volar, ver a través de las paredes) cuesta además Llaves (2.4). <span class="src">T181</span></p>
+<p>Aquí el equipo <strong>solo cuesta dinero</strong>, y el dinero es tu bono en <em>Recursos</em> (Social → Jerarquía → Recursos). Si tu cajón llega, lo tienes, sin gastar puntos ni Llaves: también la pistola o la granada, que en el manual completo piden Llaves. Lo que sí pide es sitio: tres objetos. <span class="src">T181</span> <span class="src">C·22oct</span></p>
 <div class="tw"><table class="t">
 <thead><tr><th>Recursos</th><th>Quién eres</th><th>Lo que llevas encima</th><th>Acceso</th></tr></thead>
 <tbody>
@@ -817,12 +879,13 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 </tbody></table></div>
 <p><strong>Acceso</strong> es el nivel de Recursos que pide un objeto: la columna dice hasta cuál llegas, y «con esfuerzo», el escalón de más (abajo). <span class="src">T176</span> <span class="src">T183</span></p>
 <ul>
-<li><strong>Un escalón por encima, una vez por arco.</strong> Puedes conseguir algo que no te toca, pero nunca sale gratis: un favor que te van a cobrar, una deuda, un rastro, alguien que ahora sabe tu nombre.</li>
-<li><strong>Lo robado o prestado funciona una escena entera.</strong> Después decides si te lo quedas, y entonces sí tiene que caber en tu cajón.</li>
+<li><strong>Tres objetos que importan.</strong> Lo que llevas con nombre y números en la ficha (el arma, la armadura, el vehículo) son tres objetos. Para coger uno nuevo, sueltas uno de los tres. Lo demás (ropa, linterna, cuerda) se da por hecho y no da bonos, y lo de un solo uso (una granada, un botiquín) no cuenta. <span class="src">C·22oct</span></li>
+<li><strong>Un escalón por encima, una vez por arco.</strong> Puedes conseguir algo que no te toca, pero no sale gratis: un favor que te van a cobrar, una deuda, un rastro, alguien que ahora sabe tu nombre.</li>
+<li><strong>Lo robado o prestado funciona una escena entera.</strong> Después decides si te lo quedas, y entonces sí tiene que caber en tu cajón y entre tus tres objetos.</li>
 <li><strong>El arma no te hace mejor, hace otra cosa.</strong> Lo que cambia son sus etiquetas: cuánto daño hace, si se puede esquivar y si la armadura sirve (2.6).</li>
 <li><strong>La armadura sí suma:</strong> la ligera da <strong>+1</strong> y la pesada <strong>+2</strong> a tu tirada de absorción, si el arma deja absorber. <span class="src">T176</span> <span class="src">T178</span></li>
 </ul>
-<aside class="meta"><p>En el manual completo el equipo tiene una economía entera detrás: lo que te hace <em>mejor</em> se paga con puntos de habilidad y lo que te deja hacer lo <em>imposible</em> se paga con Llaves, y hay un taller para ponerle precio a cualquier cosa que os inventéis. Aquí basta con el dinero. NOGUM te espera.</p></aside>
+<aside class="meta"><p>En el manual completo el equipo tiene una economía entera detrás: lo que te hace <em>mejor</em> se paga con puntos de habilidad; lo que anula una defensa o te deja hacer lo <em>imposible</em>, con Llaves; el daño, gratis. Y hay un taller para ponerle precio a cualquier cosa que os inventéis. Aquí bastan el dinero y tres objetos. NOGUM te espera.</p></aside>
 
 <h3 id="ac-interfaz"><span class="hn">3</span> · Interfaz del Director</h3>
 <p>Los jugadores no oyen reglas: oyen historia. Esta tabla traduce lo que dice la regla a lo que tú narras.</p>
@@ -832,7 +895,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td>Empezamos en modo Optimista</td><td>«La música sube. Sentís que hoy no podéis fallar.»</td></tr>
 <tr><td>Empezamos en modo Neutro</td><td>«El mundo no está de vuestra parte ni en vuestra contra. Lo que hagáis, eso tendréis.»</td></tr>
 <tr><td>Empezamos en modo Terror</td><td>«Sentís un peso en el estómago. Aquí nadie va a venir a salvaros.»</td></tr>
-<tr><td>Éxito parcial</td><td>«Lo consigues… pero» + un coste del menú: tiempo, recurso, posición o fuego amigo.</td></tr>
+<tr><td>Éxito con coste (Caos)</td><td>«Lo consigues… pero» + un coste del menú: tiempo, recurso, posición o fuego amigo.</td></tr>
 <tr><td>Pifia</td><td>«Algo sale espectacularmente mal.» Y que sea interesante, no solo humillante.</td></tr>
 <tr><td>Crítico del atacante</td><td>«Le das justo donde duele.» (+1 al daño.)</td></tr>
 <tr><td>Arma con <span class="tag">Esq: Nula</span></td><td>«No intentes esquivar. Si disparan, te darán. Solo puedes cubrirte.»</td></tr>
@@ -840,13 +903,12 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td>Primer bloque de vida lleno (−2)</td><td>«Te han marcado. Cada movimiento te lo recuerda.»</td></tr>
 <tr><td>Segundo bloque lleno (−4)</td><td>«Olvida los rasguños. El último golpe ha roto algo dentro. Luchas por mantenerte en pie.»</td></tr>
 <tr><td>Fuera de combate</td><td>«Todo se vuelve negro.» Y luego, a la historia: ¿quién te encuentra?</td></tr>
-<tr><td>Desafío por encima de la Rejilla, sin Llave</td><td>«Sí, es un tanque. Sí, eres humano. No tiras. Corres.»</td></tr>
+<tr><td>Algo por encima de tu nivel, sin Llave</td><td>«Sí, es un tanque. Sí, eres humano. No tiras. Corres.»</td></tr>
 <tr><td>Hay una Llave posible</td><td>«Esa cosa es invulnerable… a menos que encontréis lo que la hiere.»</td></tr>
 <tr><td>Enemigos por debajo (Estilo)</td><td>«No es si los tumbas. Es cómo.»</td></tr>
 <tr><td>Tirada innecesaria</td><td>No digas nada de dados: «Lo haces.»</td></tr>
 </tbody></table></div>
-<p>Las frases de modo, bloque 2 y arma sin esquiva vienen de la interfaz verbal del manual completo. Las demás son propias de este manual. <span class="src">Aprobado por el autor</span></p>
-<p><strong>Improvisar un enemigo en diez segundos.</strong> Pregúntate si importa. Si no importa, es decorado: Estilo, y no te hace daño. Si puede hacerte daño, ya importa un poco: dale un nivel de Rejilla, una habilidad a +2 (todo lo demás a +0) y las casillas de vida que quieras que dure la pelea (3 por defecto). Si es el villano, hazle una ficha completa como la de un jugador. <span class="src">T176</span></p>
+<p><strong>Improvisar un enemigo en diez segundos.</strong> Pregúntate si importa. Si no importa, es decorado: sin ficha ni tirada, va con Estilo y no te hace daño. Si puede hacerte daño, ya importa un poco: dale un nivel de Rejilla, una habilidad a +2 (todo lo demás a +0) y las casillas de vida que quieras que dure la pelea (3 por defecto). Si es el villano, hazle una ficha completa como la de un jugador. <span class="src">T176</span> <span class="src">C·22oct</span></p>
 <p>Los PNJ tiran con el mismo modo que la mesa, y hacen una sola reacción (defensa) por cada ataque que reciben.</p>
 
 <!-- ============================ 4 ============================ -->
@@ -856,10 +918,10 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <p>En NOGUM aprendes por qué funciona cada regla de este manual, y con eso:</p>
 <ul>
 <li>Siete tarjetas de tono y el panel para moverlas escena a escena.</li>
-<li>La vida fractal: tres golpes, nueve casillas o veintisiete puntos, con la misma ficha.</li>
+<li>La vida fractal: tres bloques, nueve casillas o veintisiete puntos, con la misma ficha.</li>
 <li>La iniciativa por intenciones: violencia, treta o especialidad.</li>
 <li>Las barras de daño mental y espiritual, el combate social y el menú de consecuencias.</li>
-<li>La lista completa de habilidades y el catálogo de Firmas.</li>
+<li>La lista completa de habilidades, el catálogo de Firmas, y las ventajas y lacras: los rasgos que no son habilidades, como la visión nocturna o una fobia.</li>
 <li>El baúl de reglas, el Bazar del Multiverso y veinte recetas para emular los universos más famosos del rol.</li>
 </ul>
 <p>Allí las cosas cambian de nombre, no de sitio: la habilidad amplia se llama <strong>Dominio</strong>, y la concreta, <strong>Disciplina</strong>. <span class="src">T185</span></p>
@@ -879,18 +941,18 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td>Social · nivel de Rejilla</td><td>Habilidades con su bono.</td></tr>
 <tr><td>Técnico · nivel de Rejilla</td><td>Habilidades con su bono.</td></tr>
 <tr><td>Arcano · nivel de Rejilla</td><td>Habilidades con su bono (o «no existe en este mundo»).</td></tr>
-<tr><td>Puntos gastados</td><td>__ / 12 (14 si tienes Arcano)</td></tr>
-<tr><td>Bote aparte</td><td>+1 nivel de Rejilla en cualquier ámbito que permita el techo de tu mundo <strong>o</strong> 5 Llaves. Por defecto, todo a nivel 1. No se cambia por puntos.</td></tr>
+<tr><td>Puntos gastados</td><td>__ / 12 (14 si algún jugador de la mesa lleva Arcano)</td></tr>
+<tr><td>Bote aparte</td><td>+1 nivel de Rejilla en un ámbito donde tu universo lo permita (la salida recomendada, 1·1·1·1·2) <strong>o</strong> 5 Llaves. No se cambia por puntos.</td></tr>
 <tr><td>Estilo</td><td>+2</td></tr>
 <tr><td>Iniciativa</td><td>Mejor bono en Destreza.</td></tr>
 <tr><td>Vida</td><td>□□□ (−2) · □□□ (−4) · □□□ (fuera de combate). En Terror, solo □□□ (fuera de combate).</td></tr>
-<tr><td>Equipo <small>(lo que te permita Recursos)</small></td><td>Nombre + <span class="tag">Daño</span> <span class="tag">Esq</span> <span class="tag">Abs</span></td></tr>
-<tr><td>Llaves</td><td>Cada una, con su objetivo escrito: una habilidad concreta contra él para siempre, o un ámbito entero una escena (se tacha al acabarla). Las que aún no tengan objetivo, en blanco. <span class="src">T176</span></td></tr>
+<tr><td>Equipo <small>(tres objetos, lo que te permita Recursos)</small></td><td>Nombre + <span class="tag">Daño</span> <span class="tag">Esq</span> <span class="tag">Abs</span></td></tr>
+<tr><td>Llaves</td><td>Cada una, con la habilidad concreta que sube, contra cualquier objetivo, y cuántos niveles. Si solo vale contra una cosa, apúntala también (Limitada). Las que aún no tengas decididas, en blanco; las prestadas, a lápiz, que se borran al acabar la escena. <span class="src">T176</span> <span class="src">C·l1</span></td></tr>
 <tr><td>Heridas y notas</td><td>Lo que la historia te ha dejado.</td></tr>
 </tbody></table></div>
 
 <h4>Personajes pregenerados</h4>
-<p>Tres ejemplos para empezar ya, de tres mundos distintos. Kira gasta 12 porque en su mundo no hay magia; los otros dos gastan 14. Cada uno usa además su bote aparte. <span class="src">Aprobado por el autor</span></p>
+<p>Tres ejemplos para empezar ya, de tres mundos distintos. Kira y Tomás gastan 12: en el mundo de Kira no hay magia, y en el de Tomás la hay, pero él no la toca. Ysolde gasta 14, y si juega en la misma mesa que ellos, ellos también tendrían 14. Cada uno usa además su bote aparte.  <span class="src">C·22oct</span></p>
 
 <div class="rule"><p class="rule-title">Kira «Grapa» Ortega · mercenaria urbana (ciberpunk / actualidad)</p>
 <div class="tw"><table class="t">
@@ -902,25 +964,25 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td>Técnico</td><td class="num">1</td><td>Vacío: −2</td><td class="num">0</td></tr>
 <tr><td>Arcano</td><td>—</td><td>No existe en su mundo</td><td class="num">0</td></tr>
 </tbody></table></div>
-<p><strong>Estilo</strong> +2 · <strong>Iniciativa</strong> +2 (Acrobacia) · <strong>Esquiva</strong> +2 (Acrobacia) · <strong>Absorción</strong> +2 (Entereza) · <strong>Recursos</strong> +1 (Jerarquía).</p>
-<p><strong>Equipo:</strong> pistola pesada <span class="tag">Daño 2</span> <span class="tag">Esq: Difícil</span> <span class="tag">Abs: Total</span> · cuchillo <span class="tag">Daño 1</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Total</span>.</p>
-<p><strong>Bote aparte:</strong> 5 Llaves — «Armas contra drones», «Intimidación contra corredores» y tres por elegir en la sesión cero.</p>
-<p><strong>En mesa:</strong> dispara a +4 y esquiva bien, pero con cualquier aparato es una Nula (−2): si hay que abrir una puerta electrónica, que lo haga otro.</p>
+<p><strong>Estilo</strong> +2 · <strong>Iniciativa</strong> +2 (Acrobacia) · <strong>Esquiva</strong> +2 (Acrobacia) · <strong>Absorción</strong> +2 (Entereza; +3 con la chaqueta) · <strong>Recursos</strong> +1 (Jerarquía).</p>
+<p><strong>Equipo:</strong> pistola pesada <span class="tag">Daño 2</span> <span class="tag">Esq: Nula</span> <span class="tag">Abs: Total</span> · cuchillo <span class="tag">Daño 1</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Total</span> · chaqueta blindada (ligera, +1 a la absorción). Sus tres objetos.</p>
+<p><strong>Bote aparte:</strong> 5 Llaves — «Armas», «Intimidación» y tres en blanco, por decidir en la sesión 0.</p>
+<p><strong>En mesa:</strong> dispara a +4 y esquiva bien, pero con cualquier aparato es una nulidad (−2): si hay que abrir una puerta electrónica, que lo haga otro. Con su Llave de Armas dispara como alguien de nivel 2: contra sus balas, un matón corriente no tiene derecho a tirada, y contra un cromado de nivel 2 tira con su +4.</p>
 </div>
 
 <div class="rule"><p class="rule-title">Dr. Tomás Areces · investigador de lo oculto (horror contemporáneo)</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Ámbito</th><th>Rejilla</th><th>Habilidades</th><th>Puntos</th></tr></thead>
 <tbody>
-<tr><td>Mental</td><td class="num">1</td><td>Erudición +1 → Ocultismo +2 → Cultos y grimorios +4 · Erudición → Humanidades +2 · Erudición → Ciencias +2 · Ingenio +1 → Investigación +2 · Ingenio → Alerta +2</td><td class="num">9</td></tr>
-<tr><td>Social</td><td class="num">1</td><td>Influencia +1 → Empatía +2 · Influencia → Engaño +2 · Influencia → Persuasión +2</td><td class="num">4</td></tr>
+<tr><td>Mental</td><td class="num">1</td><td>Erudición +1 → Ocultismo +2 → Cultos y grimorios +4 · Erudición → Humanidades +2 · Ingenio +1 → Investigación +2 · Ingenio → Alerta +2</td><td class="num">8</td></tr>
+<tr><td>Social</td><td class="num">1</td><td>Influencia +1 → Empatía +2 · Influencia → Engaño +2</td><td class="num">3</td></tr>
 <tr><td>Físico</td><td class="num">1</td><td>Destreza +1</td><td class="num">1</td></tr>
 <tr><td>Técnico</td><td class="num">1</td><td>Vacío: −2</td><td class="num">0</td></tr>
 <tr><td>Arcano</td><td class="num">1</td><td>Vacío: −2</td><td class="num">0</td></tr>
 </tbody></table></div>
 <p><strong>Estilo</strong> +2 · <strong>Iniciativa</strong> +1 (Destreza) · <strong>Esquiva</strong> +1 (Destreza) · <strong>Absorción</strong> −1 (Torpe: tiene algo en Físico, pero no Vigor) · <strong>Recursos</strong> −1 (Torpe: tiene Influencia, pero no Jerarquía).</p>
-<p><strong>Equipo:</strong> revólver viejo <span class="tag">Daño 1</span> <span class="tag">Esq: Difícil</span> <span class="tag">Abs: Total</span> · linterna · cuaderno de notas.</p>
-<p><strong>Bote aparte:</strong> 5 Llaves, que son su personaje entero — «Ocultismo contra los Profundos», «Investigación contra la secta», y tres por descubrir.</p>
+<p><strong>Equipo:</strong> revólver viejo <span class="tag">Daño 1</span> <span class="tag">Esq: Nula</span> <span class="tag">Abs: Total</span>. La linterna y el cuaderno de notas se dan por hechos.</p>
+<p><strong>Bote aparte:</strong> 5 Llaves, que son su personaje entero — «Ocultismo», «Investigación», y tres por descubrir.</p>
 <p><strong>En mesa:</strong> sabe más que nadie de lo que no debería existir, pero no puede tocarlo (Arcano vacío) y cualquier monstruo está por encima de su nivel. Su juego es encontrar Llaves. Con modo Terror, perfecto.</p>
 </div>
 
@@ -934,9 +996,9 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td>Social</td><td class="num">1</td><td>Influencia +1 → Persuasión +2</td><td class="num">2</td></tr>
 <tr><td>Técnico</td><td class="num">1</td><td>Vacío: −2</td><td class="num">0</td></tr>
 </tbody></table></div>
-<p><strong>Estilo</strong> +2 · <strong>Iniciativa</strong> +2 (Sigilo) · <strong>Esquiva</strong> +1 (Destreza) · <strong>Absorción</strong> −1 (Torpe) · <strong>Recursos</strong> −1 (Torpe) · <strong>Escudo mágico</strong>: puede absorber con Protección (+2) si el DJ lo permite.</p>
-<p><strong>Equipo:</strong> bola de fuego <span class="tag parca">La Parca · Rejilla 2</span> <span class="tag">Esq: Difícil (−2)</span> <span class="tag">Abs: Nula</span> · bastón <span class="tag">Daño 1</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Total</span>.</p>
-<p><strong>En mesa:</strong> con Arcano 2, su fuego limpia una taberna llena de bandidos de nivel 1 sin tirar para acertar: tira Estilo. Contra un dragón necesita una Llave. Su nivel 2 en Arcano <strong>es su bote aparte</strong>: ha gastado ahí lo que los otros dos se gastan en Llaves. Por defecto, los personajes empiezan en nivel 1 en todo.</p>
+<p><strong>Estilo</strong> +2 · <strong>Iniciativa</strong> +2 (Sigilo) · <strong>Esquiva</strong> +1 (Destreza) · <strong>Absorción</strong> −1 (Torpe) · <strong>Recursos</strong> −1 (Torpe) · <strong>Escudo mágico</strong>: puede absorber con Protección (+2) si el Director lo permite.</p>
+<p><strong>Su fuego</strong> (es su Arcano 2, no equipo): <span class="tag">Daño 2</span> <span class="tag">Esq: Parcial</span> <span class="tag">Abs: Máx 1</span>, al nivel de una sala entera · <strong>Equipo:</strong> bastón <span class="tag">Daño 1</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Total</span>.</p>
+<p><strong>En mesa:</strong> con Arcano 2, su fuego limpia una taberna llena de bandidos de nivel 1 sin tirar para acertar: tira Estilo. Contra un dragón necesita una Llave. Su nivel 2 en Arcano <strong>es su bote aparte</strong>: ha gastado ahí lo que los otros dos se gastan en Llaves. Su ficha es la salida recomendada, 1·1·1·1·2, con el 2 donde su mundo lo permite.</p>
 </div>
 
 
@@ -984,8 +1046,8 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <li><strong>Everyone’s red lines.</strong> Nothing is imposed that could make someone genuinely feel bad: explicit sex or violence, a phobia, an oppressive atmosphere, or something as harmless-looking as tedium. One person saying it is enough, and it can be said privately to the GM. Whatever shows up mid-game is removed without asking permission.</li>
 <li><strong>What we are going to feel.</strong> Which emotions are explored, what bores you, which areas of the plot are respected and what solutions the genre asks for.</li>
 <li><strong>Who proposes.</strong> Consensus, always counting on whoever does the hard work: the GM.</li>
-<li><strong>“That doesn’t count.”</strong> There are no firewalls against the cheap combo here: there is a table that remembers what it agreed.</li>
-<li><strong>And from that, the numbers:</strong> the mode (<a href="#ac-selector">1</a>), the world and its ceiling, and what you start with (<a href="#ac-reglas">2</a>).</li>
+<li><strong>“That doesn’t count.”</strong> There are no firewalls against the cheap combo, the one that abuses the rules: there is a table that remembers what it agreed.</li>
+<li><strong>And from that, the numbers:</strong> the mode (<a href="#ac-selector">1</a>), the world and how far a character can grow in it, and what you start with (<a href="#ac-reglas">2</a>).</li>
 </ul>
 <p>The rules work for you. Ignore them when they stop you from doing something the plot asks for. <span class="src">T184</span></p>
 
@@ -1012,7 +1074,6 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td>Are there absurd surprises?</td><td>Never</td><td>Some</td><td>Constantly</td></tr>
 </tbody></table></div>
 <p>Go with the answer that comes up most often. If none repeats, the first question decides. <span class="src">T176</span></p>
-<p>The questions are this rulebook's own: the author set the format (optimism and chaos separately; little / normal / a lot) and the two parent questions, not the wording of the others. <span class="src">Approved by the author</span></p>
 
 <h4>1.3 Your game mode</h4>
 <p>Cross your two answers on the table:</p>
@@ -1028,12 +1089,12 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <li><strong>Optimistic</strong> changes <em>the die</em>: you roll two and keep the higher.</li>
 <li><strong>Neutral</strong> changes nothing. It is the reference.</li>
 <li><strong>Chaos</strong> changes <em>what the result is made of</em>: same die, wider bands and successes that charge a toll.</li>
-<li><strong>Terror</strong> changes <em>what you can take</em>: the same die as Neutral, but three health boxes instead of nine.</li>
+<li><strong>Terror</strong> changes <em>what you can take</em>: the same die as Neutral, but three health boxes instead of nine. That is where its oppressiveness comes from.</li>
 </ul>
 <p>Look hard at the third one, because it is the strangest and the most important thing in this book: <strong>Chaos and Neutral bring exactly the same number of rolls home</strong>, 50&nbsp;% with the sheet at zero and 70&nbsp;% with the sheet at +2. They are identical up to +3; at +4 they drift slightly apart, because in Chaos a 2 on the red is still a fumble: 80&nbsp;% against 90&nbsp;%. Chaos does not make you fail more. It changes what happens to you is made of: where Neutral deals clean successes and clean failures, Chaos deals fumbles, criticals and wins that come with an invoice.</p>
-<p>And the fourth is the other way to hurt. <strong>In Terror the world is not crueller: you are more fragile.</strong> You roll as in Neutral and you hit just as often. What changes is that a knife kills you. The Complete Game calls that <em>fractal health</em> and leaves it in your hands; here it comes preset, so you can watch it work without having to decide anything.</p>
+<p>And the fourth is the other way to hurt. <strong>In Terror the oppression is not in the dice: it is in how fragile you are.</strong> You roll as in Neutral and you hit just as often. What changes is that two serious hits put you out of the fight. The Complete Game calls that <em>fractal health</em> and leaves it in your hands; here it comes preset, so you can watch it work without having to decide anything. <span class="src">C·22oct</span></p>
 
-<aside class="meta"><p>Missing a tone? A world that is Swiss clockwork and cruel at the same time? A game of Russian roulette where a 9 is already a miracle? Dark <em>and</em> chaotic at once? These four cover roughly everything and are enough to start with. And they are not a separate invention: all four exist in the Complete Game —Optimistic is Epic, Neutral is First Gear, Chaos is Black comedy and Terror is First Gear with the short health track—. By the time they feel small, you already know four of the seven cards. <span class="src">T135</span></p></aside>
+<aside class="meta"><p>Missing a tone? A world that is Swiss clockwork and cruel at the same time? A game of Russian roulette where a 9 is already a miracle? Dark <em>and</em> chaotic at once? These four cover roughly everything and are enough to start with. And they are not a separate invention: three are cards from the Complete Game —Optimistic is Epic, Neutral is First Gear and Chaos is Black Comedy—, and Terror is First Gear with the short health track, a peek at a rule you turn yourself over there. The Complete Game also has truly oppressive dice, so extreme that they have no place in a simplification: Terror is horror for all audiences. By the time these feel small, you already know three of the seven cards. <span class="src">T135</span> <span class="src">C·x1</span></p></aside>
 
 <!-- ============================ 2 ============================ -->
 <h3 id="ac-reglas"><span class="hn">2</span> · Universal rules</h3>
@@ -1045,25 +1106,25 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tbody>
 <tr><td><strong>Optimistic</strong></td><td>The <strong>higher</strong> of the two</td><td>Double 1</td><td>A 10 on either</td><td>Total 6 or more: success</td></tr>
 <tr><td><strong>Neutral</strong></td><td><strong>Only the red one</strong> (the blue one doesn't count)</td><td>1 on the red</td><td>10 on the red</td><td>Total 6 or more: success</td></tr>
-<tr><td><strong>Chaos</strong></td><td><strong>Red die only</strong> (the blue one does not count)</td><td>A 1 <strong>or 2</strong> on the red</td><td>A 9 <strong>or 10</strong> on the red</td><td>Total 5 or less: failure · 6 or 7: <strong>partial success</strong> · 8 or more: success</td></tr>
-<tr><td><strong>Terror</strong></td><td><strong>Red die only</strong> (the blue one does not count)</td><td>A 1 on the red</td><td>A 10 on the red</td><td>Total 6 or more: success · <strong>and only 3 health boxes</strong> (2.7)</td></tr>
+<tr><td><strong>Chaos</strong></td><td><strong>Only the red one</strong> (the blue one doesn't count)</td><td>1 <strong>or 2</strong> on the red</td><td>9 <strong>or 10</strong> on the red</td><td>Total 5 or less: failure · 6 or 7: <strong>success at a cost</strong> · 8 or more: success</td></tr>
+<tr><td><strong>Terror</strong></td><td><strong>Only the red one</strong> (the blue one doesn't count)</td><td>1 on the red</td><td>10 on the red</td><td>Total 6 or more: success · <strong>and only 3 health boxes</strong> (2.7)</td></tr>
 </tbody></table></div>
 <div class="rule"><p class="rule-title">How to roll</p>
 <ol>
 <li>Read the die the mode tells you to.</li>
 <li>Add your bonus (2.2). That is the <strong>total</strong>.</li>
 <li>Compare it with <strong>TN 6</strong>. Always the same one.</li>
-<li><strong>Fumbles</strong> and <strong>criticals</strong> are read on the dice, before adding anything. A fumble is always a disaster and a critical is always something extraordinary, whatever your bonus.</li>
+<li><strong>Fumbles</strong> and <strong>criticals</strong> are read on the dice, before adding anything. A fumble is a disaster and a critical, something extraordinary, whatever your bonus.</li>
 </ol>
 </div>
-<p><strong>Partial success (Chaos only).</strong> You pull it off, but you pay a price. The GM picks one:</p>
+<p><strong>Success at a cost (Chaos only).</strong> You pull it off, but you pay a price. The GM picks one:</p>
 <ul>
 <li><strong>Time</strong>: you manage it, but late; the guards are already in the corridor.</li>
 <li><strong>Resource</strong>: you manage it, but something breaks; the bat splinters.</li>
 <li><strong>Position</strong>: you manage it, but you are left exposed; you fall flat on your back on the other side of the wall.</li>
 <li><strong>Friendly fire</strong>: you manage it, but someone else gets caught in it; the explosion takes out the only radio.</li>
 </ul>
-<p>Never “you pull it off, but you lose a health box”. That is laziness.</p>
+<p>Better not “you pull it off, but you lose a health box”. That is laziness.</p>
 
 <aside class="meta"><p>Same character (+2), same task. In <strong>Optimistic</strong> they pull it off 91&nbsp;% of the time. In <strong>Neutral</strong>, 70&nbsp;%. In <strong>Chaos</strong>, also 70&nbsp;% —you read that right, the same number— but two out of every seven of those times paying a price, and with twice the fumbles and twice the criticals. In <strong>Terror</strong>, 70&nbsp;% again: what changes is that two hits now put them out. You have not touched the sheet once: you have changed the atmosphere three times in three different ways.</p></aside>
 
@@ -1078,12 +1139,12 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td class="num">+2</td><td><strong>It's my job.</strong> You have a specific skill that covers it.</td></tr>
 <tr><td class="num">+4</td><td><strong>Grand Master.</strong> Nobody does it better.</td></tr>
 </tbody></table></div>
-<p><strong>Difficulty.</strong> If the task is easy, +2. If it is hard, −2. If it is heroic, −4. Normal is 0. Difficulty is added to the bonus; the TN never moves.</p>
-<p><strong>Limits.</strong> Add up skill, difficulty and any other modifier. If the total drops below −2, the GM chooses: either roll at −2 or narrate the failure without rolling. If it goes above +4, the GM chooses: either roll at +4 or narrate the success without rolling. The final bonus is always between −2 and +4.</p>
+<p><strong>Difficulty.</strong> If the task is easy, +2. If it is hard, −2. If it is heroic, −4. Normal is 0. Difficulty is added to the bonus; the TN does not move.</p>
+<p><strong>Limits.</strong> Add up skill, difficulty and any other modifier: stack whatever can be stacked, at the table's discretion. If the total goes above +4, you roll with +4, and you can use the surplus to attempt something harder with a bigger reward. If it drops below −2, the GM decides whether there is a right to roll; if there is, you roll at −2. The bonus you roll with stays between −2 and +4. <span class="src">C·a2</span> <span class="src">C·22oct</span></p>
 <p><strong>Don't roll for the sake of it.</strong> Roll only if every possible result is interesting. If failing adds nothing, it just happens. What the story cannot do without —the clue without which there is no adventure— is not rolled for: it is found. What you roll for is how much you get and at what price. <span class="src">T176</span></p>
 
 <h4>2.3 Skills</h4>
-<p>Every character has <strong>five spheres</strong>: <strong>Physical</strong>, <strong>Mental</strong>, <strong>Social</strong>, <strong>Technical</strong> and <strong>Arcane</strong> (magic, the Force, psychic powers; if your world doesn't have them, ignore it). Spheres are not skills: they are the drawers you keep them in.</p>
+<p>Every character has <strong>five spheres</strong>: <strong>Physical</strong>, <strong>Mental</strong>, <strong>Social</strong>, <strong>Technical</strong> and <strong>Arcane</strong> (magic, psychic powers, the supernatural; if your world doesn't have them, ignore it). Spheres are not skills: they are the drawers you keep them in.</p>
 <p>Each sphere splits into two <strong>broad skills</strong>, and each of those into four <strong>specific skills</strong>. The list is closed:</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Sphere</th><th>Broad skill (column)</th><th>Specific skills</th></tr></thead>
@@ -1099,16 +1160,16 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td rowspan="2"><strong>Arcane</strong></td><td>Gift</td><td>Projection · Alteration · Divination · Protection</td></tr>
 <tr><td>Ritual</td><td>Alchemy · Summoning · Enchantment · Bonds</td></tr>
 </tbody></table></div>
-<p>You have <strong>12 points</strong>, or <strong>14</strong> if your character has Arcane (that is ten more slots to cover). Each step costs one point —except the Signature, which costs two— and to raise a step you must have paid for the previous one:</p>
+<p>You have <strong>12 points</strong>. If any player at the table puts something into Arcane, <strong>everyone</strong> gets <strong>14</strong>, including whoever doesn't touch it: Arcane adds ten skills to everyone's sheet, and nobody gets more points for having magic. If your world has magic but it is out of the players' reach, it stays at 12. <span class="src">C·a5</span> <span class="src">C·22oct</span> Each step costs one point —except the Signature, which costs two— and to raise a step you must have paid for the previous one:</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Step</th><th>What it is</th><th>Examples</th><th>Cost</th><th>Cumulative points</th><th>Bonus</th></tr></thead>
 <tbody>
 <tr><td>Broad skill</td><td>Half of a sphere</td><td>Dexterity, Vigour, Erudition, Wits, Influence</td><td class="num">1</td><td class="num">1</td><td class="num">+1</td></tr>
 <tr><td>Specific skill</td><td>A trade within the broad skill</td><td>Vigour → Weapons · Erudition → Sciences · Influence → Deception</td><td class="num">1</td><td class="num">2</td><td class="num">+2</td></tr>
-<tr><td>Signature (Grand Master)</td><td>Your specialty within the trade</td><td>Weapons → Firearms · Sciences → Chemistry · Acrobatics → Parkour</td><td class="num">2</td><td class="num">4</td><td class="num">+4</td></tr>
+<tr><td>Signature (Grand Master)</td><td>Your speciality within the trade</td><td>Weapons → Firearms · Sciences → Chemistry · Acrobatics → Parkour</td><td class="num">2</td><td class="num">4</td><td class="num">+4</td></tr>
 </tbody></table></div>
 <ul>
-<li>When you roll, use <strong>only the highest step that fits</strong>. Bonuses don't stack.</li>
+<li>When you roll, use <strong>only the highest step that fits</strong>. Steps don't add up.</li>
 <li>A <strong>column</strong> is each of the two broad skills of a sphere, with its specific skills underneath: in Physical, Dexterity is one column and Vigour the other.</li>
 <li>If you have spent nothing in a sphere, everything in it is rolled at −2 (Null). As soon as you buy anything in it, the column you have touched gives its bonuses as normal, and anything that falls in <strong>the other column</strong> is rolled at −1 (Clumsy).</li>
 <li>To be a Grand Master at something, you must be able to explain <strong>exactly</strong> what you do. “Firearms”, yes. “Being good”, no.</li>
@@ -1121,48 +1182,48 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <div class="tw"><table class="t">
 <thead><tr><th>Level</th><th>Scale</th><th>Examples</th></tr></thead>
 <tbody>
-<tr><td class="num">1</td><td>One person</td><td>Any human, however expert: The consultant from Baker Street, a boxer, a hacker.</td></tr>
-<tr><td class="num">2</td><td>A room, hundreds of people</td><td>An exceptional human, only if your universe allows it: the barbarian of the steppe, the perfect soldier. A rank-and-file soldier stands no chance against them.</td></tr>
+<tr><td class="num">1</td><td>One person</td><td>Any human, however expert: the boxer, the chemistry teacher, the hacker.</td></tr>
+<tr><td class="num">2</td><td>A room, hundreds of people</td><td>An exceptional human or something that no longer is one, only if your universe allows it: the barbarian of the steppe, the serum soldier, the vampire's presence. A rank-and-file soldier stands no chance against them.</td></tr>
 <tr><td class="num">3</td><td>A building, a neighbourhood</td><td>Bringing down a castle, cutting the power grid of a skyscraper.</td></tr>
 <tr><td class="num">4</td><td>A big city</td><td>A mystic shield over the city, a monster razing districts.</td></tr>
 <tr><td class="num">5</td><td>A country</td><td>Changing the geography. Only for campaign finales.</td></tr>
-<tr><td class="num">6</td><td>Cosmic</td><td>No rolling: it's scenery. The GM narrates it.</td></tr>
+<tr><td class="num">6</td><td>A planet, the cosmic</td><td>Almost always unplayable: most universes don't have it, and what is there is touched with Keys.</td></tr>
 </tbody></table></div>
-<p>Each level multiplies your <strong>reach</strong> by a hundred: ×1 one person, ×100 a room, ×10,000 a building, ×1,000,000 a city, ×100,000,000 a country. When someone has a level on you they are not better than you: they are playing with two more zeros, and that is why there is no roll.</p>
-<p>If you don't know which level to give, <strong>humans are level 1 in everything</strong>. What is measured is tools and scale, not intelligence or muscle: a brilliant chemist is still level 1. <span class="src">T183</span></p>
+<p>If numbers mean something in your world, as in the ones that emulate the real one, each level multiplies your <strong>reach</strong> by a hundred: ×1 one person, ×100 a room, ×10,000 a building, ×1,000,000 a city, ×100,000,000 a country. When someone has a level on you they are not better than you: they are playing with two more zeros, and that is why you have no right to roll. In a world of comics or legend the story rules: whoever is above is what the story is about, and you set the scale, or none at all. <span class="src">C·r2</span> <span class="src">C·r3</span></p>
+<p>If you don't know which level to give, <strong>humans are level 1 in everything</strong>. What is measured is scale, not intelligence or muscle: a brilliant chemist is still level 1. And if a jump of level sounds like a comic, that is because it is one. <span class="src">T183</span> <span class="src">C·r4</span></p>
 <div class="rule"><p class="rule-title">Five ideas that settle almost everything</p>
 <ol>
-<li><strong>The Grid is scale, not skill, and it is almost never human:</strong> ×100 across a whole sphere, something irresistible. The vampire’s presence is a 2; the sirens, a 3. A rock star is a 1 with Keys. That is why ones are plentiful.</li>
-<li><strong>If something grants a permission or breaks the Grid, it has Keys.</strong> Wherever it comes from.</li>
-<li><strong>The Reaper is a Key:</strong> it reaches whoever stands above. That is why it costs Keys.</li>
+<li><strong>The Grid is scale, not skill:</strong> being big across a whole sphere. The vampire’s presence is a Social 2: she walks into the room and the whole room is spellbound. What is huge at a single thing is a Key: the sirens, with their song; the rock star, a 1 with Keys. The realistic human is 1 in everything, and that is why ones are everywhere. <span class="src">C·r4</span> <span class="src">C·22oct</span></li>
+<li><strong>If something grants a permit, cancels a defence or reaches a Grid level above, it is a Key.</strong> Wherever it comes from.</li>
+<li><strong>The Reaper is a Key to damage:</strong> it reaches whoever stands above you. That is why it costs Keys, even though damage on its own is free.</li>
 <li><strong>What is lent or stolen lasts one scene,</strong> whoever uses it. Passing it around resets nothing.</li>
-<li><strong>What a Key does is what the Key says:</strong> it puts you one level above, but only in what it covers. A bazooka is a Key to damage: it blows you apart if it hits, but it has to hit.</li>
+<li><strong>What a Key does is what the Key says:</strong> it puts you one or more levels above, and cancels what it says it cancels, nothing more. A bazooka is a Key to damage: it blows you apart if it hits, but it has to hit. <span class="src">C·l2</span></li>
 </ol>
-<p>The hard cases, solved one by one, are in the complete rulebook (2.6). <span class="src">T179</span></p></div>
+<p>The hard cases, solved one by one, are in the Key chapter of the Complete Game. <span class="src">T179</span></p></div>
 <div class="rule"><p class="rule-title">The power gap</p>
 <p>It works for everyone: players and adversaries alike. Compare the Grid level of whoever acts with the level of whatever they act against, in the sphere of the action. An NPC or a monster has a single level for everything, unless the GM says otherwise.</p>
 <ul>
 <li><strong>If you are at the same level</strong>, roll as normal: attack, defence, everything.</li>
-<li><strong>If you are above</strong> (even by one level), you don't roll to succeed: you succeed. If it matters how, roll Style (+2, 2.8). That also goes for a monster attacking characters below it: the blow lands without a roll, with its weapon's damage.</li>
-<li><strong>If you are below</strong>, you cannot affect what is above you —not even a scratch— without a <strong>Key</strong>. That includes defending yourself: against an attack that comes from above there is no defence roll, unless you have a Key that applies. With a Key you roll everything as normal, with your full bonus.</li>
+<li><strong>If you are above</strong> (even by one level), you don't roll to succeed: you succeed. If it matters how, roll Style (+2, 2.8). That also goes for a monster attacking characters below it: there is no roll, neither to hit nor to save yourself, and the defeat is narrated. <span class="src">C·22oct</span></li>
+<li><strong>If you are below</strong>, you cannot affect what is above you —not even a scratch— without a <strong>Key</strong>. That includes defending yourself: against an attack that comes from above there is no defence roll, unless you have a Key that applies. With a Key you roll everything as normal, with your full bonus: nobody is protected twice. <span class="src">C·r10</span></li>
 </ul>
 </div>
-<p><strong>The Key.</strong> A Key is a narrative reason that lets you affect something of a higher level: a bazooka, the stone from his own world, a stolen admin password, a video of the bribe, twenty mercenaries firing at once. Each Key raises you <strong>one Grid level</strong> against its target. With a Key you roll as normal, with your full bonus and no penalties. Getting one is often an adventure in itself.</p>
+<p><strong>The Key.</strong> A Key is a narrative reason that lets you affect something of a higher level: a bazooka, the stone from his own world, a stolen admin password, a video of the bribe, twenty mercenaries firing at once. It puts you <strong>one Grid level above</strong> your own (or several, paying more), and in that roll you act at that level: if you are a 1 and the Key puts you at 2, whoever is at level 1 has no right to roll; against a 2, you roll as normal, with your full bonus. The one the fiction gives you covers whatever the fiction says and lasts one scene; your own, the one you buy, covers <strong>a whole specific skill, against any target</strong> (below). Getting one is often an adventure in itself. <span class="src">C·l1</span> <span class="src">C·l2</span></p>
 <div class="rule"><p class="rule-title">Keys are bought</p>
 <ul>
-<li>At creation, the <strong>separate pot</strong> gives you <strong>5 Keys</strong>, or <strong>+1 Grid level</strong> in one sphere. By default, every character starts at level 1 in everything; if you pick the +1, it can go in any sphere your universe's ceiling allows. <strong>The ceiling</strong> is the highest your world lets a player have across a whole sphere: in a realistic or horror world, 1 in everything, and the pot is 5 Keys; if there are superhumans, the 2 goes where they are. The table confirms it at session zero. <span class="src">T185</span> It does not trade for skill points: everyone turns up with a trade.</li>
-<li>You can start with more points if the table chooses it consciously, knowing it goes against the idea of this rulebook.</li>
-<li>Each Key is <strong>one specific skill against its target, for ever</strong> (“Weapons against vampires” works against vampires, not against a werewolf) or <strong>a whole sphere against its target for one scene</strong>, if it is very specific: that one is crossed off when the scene ends. Never a Signature. It is written down with its target; you can keep it blank and assign it the first time you use it, as the pregenerated characters do. <span class="src">T176</span></li>
-<li>Grid and Keys trade: one Grid level in a sphere is worth <strong>5 Keys</strong>, its eight specific skills for the price of five. If the story raises the table’s Grid and you would rather not rise, you take those 5 Keys, and <strong>spend them wherever you like</strong>. <span class="src">T176</span></li>
-<li>One Key puts you <strong>one Grid level above</strong>. To climb further against the same thing, the count is squared: rising <em>n</em> levels costs <em>n</em>² Keys in total (1, 4, 9). With five in the pot, nobody starts more than two levels above.</li>
-<li>During the campaign the Director hands out <strong>one Key per player per session</strong> <span class="src">T176</span>. That tap is the game’s power dial: Keys also buy whatever breaks the Grid or grants a permission (idea 2; equipment in 2.9). <span class="src">T181</span> <span class="src">T183</span></li>
-<li>And what the Director gives you for a good idea —“it occurs to you to use the holy water”— is a <strong>lent Key</strong>: it lasts one scene; it goes on the sheet in pencil and is rubbed out when the scene ends.</li>
+<li>At creation, the <strong>separate pot</strong> gives you <strong>5 Keys</strong>, or <strong>+1 Grid level</strong> in one sphere. With the +1, the sheet starts at <strong>1·1·1·1·2</strong>, the recommended starting point: a 2 in one sphere and 1 in the other four. That 2 can only go where the universe allows it: in a realistic or horror world, players stay at 1 in everything, and the pot is 5 Keys; if there are superhumans, the 2 goes where they are. There are three ceilings, and it pays not to mix them up: the <strong>starting maximum</strong>, what a sheet starts with (by default, that 2); the <strong>player maximum</strong>, the highest a player can ever have across a whole sphere, however long the campaign lasts; and the <strong>world maximum</strong>, the highest thing that exists in it (in cosmic horror there are vast creatures, and you cannot be one). All three are about the Grid: Keys are better left without a ceiling. The table confirms it at session zero. <span class="src">T185</span> <span class="src">C·r5</span> <span class="src">C·r6</span> The pot does not trade for skill points: everyone turns up with a trade.</li>
+<li>All of this is a starting point, not a limit: the table can start higher or lower, depending on what it wants to emulate. It is designed with a world like cyberpunk in mind; one with zombies or cosmic horror usually calls for less. <span class="src">C·e4</span></li>
+<li>Each Key of your own is <strong>a whole specific skill, against any target, for ever</strong>: with “Weapons”, everything you do with weapons goes up a level, your Signature included, since it sits inside. If it only works against one thing (“Weapons against vampires”), it is a <strong>Limited</strong> Key, cheaper from two levels up; at one level it costs the same, so it is better not to limit it. You can keep it blank and write it in the first time you use it, as the pregenerated characters do; if someone abuses that, the table reins them in. <span class="src">T176</span> <span class="src">C·l1</span> <span class="src">C·l4</span> <span class="src">C·l7</span></li>
+<li>Grid and Keys trade: one Grid level in a sphere is worth <strong>5 Keys</strong>, its eight specific skills for the price of five. If the story raises the table’s Grid and you would rather not rise, you take what it is worth in Keys (5 for one extra level, 20 for two) and <strong>spend them wherever you like</strong>. <span class="src">T176</span> <span class="src">C·e2</span></li>
+<li>One Key puts you <strong>one Grid level above</strong>. To climb further in the same skill, the count is squared: rising <em>n</em> levels costs <em>n</em>² Keys in total (1, 4, 9). With five in the pot, you can climb two levels in one skill (4 Keys), with one left over.</li>
+<li>During the campaign the GM hands out <strong>one Key per player per session</strong> <span class="src">T176</span>. That tap is the game’s power dial: Keys also buy permits (what no skill can do, such as flying or seeing through walls: 1 Key, by rule of thumb) and levels above (idea 2). Equipment, here, only asks for money (2.9). <span class="src">T181</span> <span class="src">T183</span> <span class="src">C·l9</span></li>
+<li>And what the GM gives you for a good idea —“it occurs to you to use the holy water”— is a <strong>borrowed Key</strong>: it raises whatever the fiction says, lasts one scene and costs nothing; it goes on the sheet in pencil and is rubbed out when the scene ends. <span class="src">C·l6</span></li>
 </ul></div>
 <aside class="meta"><p>Why can the vigilante millionaire stand up to the alien in tights and trunks with the same bonus as a nightclub bouncer? Because of the Key. The Complete Game has a whole chapter bringing the Grid down to earth, with pop-culture examples in all five spheres. NOGUM is waiting for you.</p></aside>
 
 <h4>2.5 Initiative</h4>
 <p>When combat starts, each participant rolls with the active mode and adds their <strong>best Dexterity bonus</strong> (the broad skill or any of their specific skills under it). Act from highest to lowest total. On a tie, the GM decides.</p>
-<aside class="meta"><p>If your character is going to spend their turn deducing a clue, hacking a terminal or intimidating the rival boss… does it make sense for their physical speed to decide the order? Want an initiative where you first choose your intent (violence, trick or specialty) and then how you carry it out? NOGUM is waiting for you. <span class="src">T135</span></p></aside>
+<aside class="meta"><p>If your character is going to spend their turn deducing a clue, hacking a terminal or intimidating the rival boss… does it make sense for their physical speed to decide the order? Want an initiative where you first choose your intent (violence, trick or speciality) and then how you carry it out? NOGUM is waiting for you. <span class="src">T135</span></p></aside>
 
 <h4>2.6 Combat</h4>
 <p>Combat is an aggressive negotiation. Each attack is resolved in two steps.</p>
@@ -1177,55 +1238,57 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 </div>
 <div class="rule"><p class="rule-title">Step 2 · Mitigation (the defender rolls)</p>
 <p>If the weapon allows it (check its tags), the defender makes <strong>a single reaction</strong>: dodge (Dexterity → Acrobatics) or soak (Vigour → Fortitude), depending on which route the weapon leaves open.</p>
-<p><strong>The defender wins ties.</strong> You both roll against the same TN and compare the <strong>result level</strong>: fumble &lt; failure &lt; success at a cost &lt; success &lt; critical.</p>
+<p><strong>The defender wins ties.</strong> You both roll against the same TN and compare the <strong>result level</strong>: fumble &lt; failure &lt; success at a cost (Chaos only) &lt; success &lt; critical.</p>
 <ul>
 <li><strong>The defender matches or beats</strong> the attacker’s result level: no damage.</li>
 <li><strong>The attacker ends up above</strong> and the defender got a success or a success at a cost: weapon damage −1.</li>
 <li><strong>The defender fails</strong>: takes all the damage.</li>
-<li><strong>The defender fumbles</strong>: the attack goes up one result level on that scale, and then you compare. If that takes it to a critical, +1 damage, like any critical. <span class="src">T176</span></li>
+<li><strong>The defender fumbles</strong>: takes all the damage, <strong>+1</strong>; if the attack was also a critical, +2 in total. <span class="src">T176</span> <span class="src">C·22oct</span></li>
 </ul>
 </div>
-<p><strong>Final damage</strong> = weapon damage (+1 if the attack ended up a critical) − the defender's reduction, within the limits set by the tags.</p>
-<p><strong>Hazards with no attacker</strong> (falls, fire, the environment): they count as a successful attack of their level; if they are extreme, as a critical; the huge ones carry the Reaper with their level. They never kill: at worst, out of the fight. <span class="src">T176</span></p>
-<p><strong>Tags override the tie.</strong> With <span class="tag">Dodge: Partial</span> you eat at least 1 even when you match it, and with <span class="tag">Dodge: None</span> there is no reaction to roll.</p>
-<p><strong>In Chaos</strong>, a partial success in combat is a success at a cost: it connects or defends like a success, but in the comparison it counts as one result level lower, and the GM adds a cost from the menu (the attack connects, but you lose your weapon; you dodge, but you hit the floor).</p>
+<p><strong>Final damage</strong> = weapon damage (+1 for the attacker's critical, +1 for the defender's fumble) − the defender's reduction, within the limits set by the tags.</p>
+<p><strong>Hazards with no attacker</strong> (falls, fire, the environment): they count as a successful attack of their level; if they are extreme, as a critical; the huge ones carry the Reaper with their level. <span class="src">T176</span></p>
+<p><strong>Tags override the tie.</strong> With <span class="tag">Dodge: Partial</span> you eat at least 1 even when you match it, and with <span class="tag">Dodge: None</span> there is no dodge to roll: if the weapon allows soaking, you still have that.</p>
+<p><strong>In Chaos</strong>, a success at a cost in combat connects or defends like a success, but in the comparison it counts as one result level lower, and the GM adds a cost from the menu (the attack connects, but you lose your weapon; you dodge, but you hit the floor).</p>
 
 <p><strong>Weapons.</strong> Every weapon, power or hazard is described with three tags:</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Tag</th><th>Values</th><th>What it means</th></tr></thead>
 <tbody>
-<tr><td><span class="tag">Dmg 1</span></td><td>Light</td><td>Fists, knives, light pistols, short falls. “A&amp;E”.</td></tr>
-<tr><td><span class="tag">Dmg 2</span></td><td>Serious</td><td>War swords, magnums, claws. “ICU”.</td></tr>
-<tr><td><span class="tag parca">The Reaper</span></td><td>Not a damage value</td><td>Artillery, military explosives, a car at full speed. It is a Key to damage. It carries a Grid level, compared against the target’s Physical. If it reaches you and you are below it, you are out of the fight: no soak helps. Whether it can be dodged is what its <span class="tag">Dodge</span> tag says: the sniper you cannot see (<span class="tag">Dodge: None</span>) cannot be dodged —it is avoided, by not being there—; a grenade, because of its area, can barely be dodged: −2. At its level it does Dmg 2 and you defend as normal, with its tags. Above it, nothing without a Key. It never kills. <span class="src">T176</span> <span class="src">T181</span></td></tr>
-<tr><td><span class="tag">Dodge: Full</span></td><td>Free dodge</td><td>Melee, slow projectiles. Dodging can bring you down to 0.</td></tr>
+<tr><td><span class="tag">Damage 1</span></td><td>Light</td><td>Fists, knives, light pistols, short falls. “A&amp;E”.</td></tr>
+<tr><td><span class="tag">Damage 2</span></td><td>Serious</td><td>War swords, magnums, claws. “ICU”.</td></tr>
+<tr><td><span class="tag parca">The Reaper</span></td><td>Not a damage value</td><td>Artillery, military explosives, a car at full speed. It is a Key to damage. It carries a Grid level, compared against the target’s Physical. If it reaches you and you are below it, you are put out of the fight, with no right to roll: no soak helps. Whether it can be dodged is what its <span class="tag">Dodge</span> tag says: the sniper you cannot see (<span class="tag">Dodge: None</span>) cannot be dodged —it is avoided, by not being there—; a grenade, because of its area, can barely be dodged: −2. At its level it does Damage 2 and you defend as normal, with its tags. Above it, nothing without a Key. <span class="src">T176</span> <span class="src">T181</span> <span class="src">C·l8</span></td></tr>
+<tr><td><span class="tag">Dodge: Full</span></td><td>Free dodge</td><td>Melee, arrows, slow projectiles. Dodging can bring you down to 0.</td></tr>
 <tr><td><span class="tag">Dodge: Partial</span></td><td>Limited dodge</td><td>Area, bursts, fire. Even if you dodge, you take at least 1.</td></tr>
-<tr><td><span class="tag">Dodge: None</span></td><td>No dodge</td><td>Instantaneous, mental, surprise shots.</td></tr>
+<tr><td><span class="tag">Dodge: None</span></td><td>No dodge</td><td>Instantaneous, mental, surprise shots. And firearms, at level 1: a bullet cannot be dodged. <span class="src">C·e8</span></td></tr>
 <tr><td><span class="tag">Dodge: Hard</span> / <span class="tag">Dodge: Easy</span></td><td>Modifier</td><td>−2 / +2 to the dodge roll.</td></tr>
 <tr><td><span class="tag">Soak: Full</span></td><td>Free soak</td><td>Protection works: soaking can bring you down to 0.</td></tr>
 <tr><td><span class="tag">Soak: Max 1</span></td><td>Limited soak</td><td>Hammers, piercing weapons: reduced by 1 at most.</td></tr>
-<tr><td><span class="tag">Soak: None</span></td><td>No soak</td><td>Lasers, contact poison, psychic magic.</td></tr>
+<tr><td><span class="tag">Soak: None</span></td><td>No soak</td><td>Contact poison, psychic magic, the round that goes through any armour.</td></tr>
 </tbody></table></div>
 <p>Examples to get you started:</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Weapon</th><th>Stat line</th></tr></thead>
 <tbody>
-<tr><td>Fists, knife</td><td><span class="tag">Dmg 1</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Full</span></td></tr>
-<tr><td>Sword, war axe</td><td><span class="tag">Dmg 2</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Full</span></td></tr>
-<tr><td>Mace, war hammer</td><td><span class="tag">Dmg 2</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Max 1</span></td></tr>
-<tr><td>Bow, pistol</td><td><span class="tag">Dmg 1</span> <span class="tag">Dodge: Hard</span> <span class="tag">Soak: Full</span></td></tr>
-<tr><td>Magnum, shotgun</td><td><span class="tag">Dmg 2</span> <span class="tag">Dodge: Hard</span> <span class="tag">Soak: Full</span></td></tr>
-<tr><td>Grenade, fireball</td><td><span class="tag parca">The Reaper · Grid 2</span> <span class="tag">Dodge: Hard (−2)</span> <span class="tag">Soak: None</span> <span class="src">T181</span></td></tr>
-<tr><td>Laser rifle</td><td><span class="tag">Dmg 2</span> <span class="tag">Dodge: Hard</span> <span class="tag">Soak: None</span></td></tr>
+<tr><td>Fists, knife</td><td><span class="tag">Damage 1</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Full</span></td></tr>
+<tr><td>Sword, war axe</td><td><span class="tag">Damage 2</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Full</span></td></tr>
+<tr><td>Mace, war hammer</td><td><span class="tag">Damage 2</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Max 1</span></td></tr>
+<tr><td>Bow</td><td><span class="tag">Damage 1</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Full</span></td></tr>
+<tr><td>Pistol, revolver</td><td><span class="tag">Damage 1</span> <span class="tag">Dodge: None</span> <span class="tag">Soak: Full</span></td></tr>
+<tr><td>Magnum, shotgun</td><td><span class="tag">Damage 2</span> <span class="tag">Dodge: None</span> <span class="tag">Soak: Full</span></td></tr>
+<tr><td>Blaster pistol (space opera: it can be dodged by genre convention)</td><td><span class="tag">Damage 2</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Max 1</span> <span class="src">C·22oct</span></td></tr>
+<tr><td>Grenade, military explosive</td><td><span class="tag parca">The Reaper · Grid 2</span> <span class="tag">Dodge: Hard (−2)</span> <span class="tag">Soak: None</span> <span class="src">T181</span></td></tr>
+<tr><td>Laser rifle</td><td><span class="tag">Damage 2</span> <span class="tag">Dodge: None</span> <span class="tag">Soak: Full</span></td></tr>
 <tr><td>Sniper (by surprise)</td><td><span class="tag parca">The Reaper · Grid 2</span> <span class="tag">Dodge: None</span> <span class="tag">Soak: None</span></td></tr>
 </tbody></table></div>
-<p>A Reaper above your level is a Key (idea 3) and is paid for like any other: <em>x</em>² Keys, with <em>x</em> the levels it has on you. A Reaper 2 grenade in the hands of a level 1 character costs 1 Key (2.4). <span class="src">T176</span> <span class="src">T183</span></p>
+<p>A Reaper above your level is a Key (idea 3). If it is a power of your own, it costs Keys like any other: <em>n</em>², with <em>n</em> the levels it has on you. If it is equipment, here it is paid for with money alone, like all equipment (2.9), and a grenade, being single use, does not even take up a slot. <span class="src">T176</span> <span class="src">T183</span> <span class="src">C·22oct</span></p>
 <aside class="meta"><p>Want a weapon that can only harm something of a higher level if it's the right one? A catalogue of hundreds of weapons, powers and vehicles from ten settings? The Multiverse Bazaar is in the Complete Game.</p></aside>
 
 <h4>2.7 Health</h4>
 <p>Every character has <strong>9 health boxes</strong>, in three blocks of three. Each point of damage crosses off one box.</p>
 <div class="rule"><p class="rule-title">Except in Terror</p>
 <p>In <strong>Terror</strong> mode there are not nine: there are <strong>3 boxes</strong>, a single block. Fill it and you are out of the fight. With the damage in this book that means <strong>two serious hits take you off the scene</strong>, and that one is enough if the attacker rolls a critical and you don’t stop it.</p>
-<p>It is not a switch you have to remember to turn on. It comes with the mode, and it is the one piece of this book that lets you look in on what the Complete Game calls <strong>fractal health</strong>: there, lethality is a dial and you turn it, with three, nine or twenty-seven boxes.</p></div>
+<p>It is not a switch you have to remember to turn on. It comes with the mode, and it is the one piece of this book that lets you look in on what the Complete Game calls <strong>fractal health</strong>: there, lethality is a dial and you turn it, with three blocks, nine boxes or twenty-seven points.</p></div>
 <div class="tw"><table class="t">
 <thead><tr><th>Block</th><th>Boxes</th><th>When filled</th></tr></thead>
 <tbody>
@@ -1234,10 +1297,10 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td>Third</td><td class="num">7–9</td><td><strong>Out of the fight.</strong></td></tr>
 </tbody></table></div>
 <ul>
-<li><strong>Out of the fight is not death.</strong> You are incapacitated and leave the scene; you come back when it ends, and your health goes the same way as everyone else’s (below). <span class="src">T176</span> Whether you wake up is decided by the story or by your player, never by the dice. In NOGUM nobody dies because of a bad roll.</li>
-<li><strong>Not even the Reaper kills.</strong> Whoever it hits below its level is left out of the fight. Death, madness or transformation only happen if they are agreed in the story.</li>
-<li>When the threat ends and you are <strong>safe</strong>, the boxes are cleared. Being safe is not a feeling: it is being out of danger, objectively, and the Director declares it, because only the Director knows whether there are still eyes lurking in the dark. <span class="src">T181</span> And if the next fight comes with no breather, it is the same scene and they stay crossed out. <span class="src">T177</span> But <strong>the wounds remain</strong>: the penalty of the block you filled stays until you heal (hours or days for the first, days or weeks for the second).</li>
-<li>Penalties respect the limits in 2.2: you never go below −2.</li>
+<li><strong>Out of the fight is not death.</strong> You are incapacitated and leave the scene; you come back when it ends, and your health goes the same way as everyone else’s (below). <span class="src">T176</span> Whether you wake up is decided by the story or by your player, not by the dice. In NOGUM no protagonist dies because of a bad roll: death is agreed. <span class="src">C·m3</span></li>
+<li><strong>The Reaper, likewise.</strong> Whoever it reaches below its level is put out of the fight, with no right to roll. Whatever comes after (a scar, madness, a transformation) is agreed in the story. <span class="src">C·l8</span></li>
+<li>When the threat ends and you are <strong>safe</strong>, the boxes are cleared. Being safe is not a feeling: it is being out of danger, objectively, and the GM declares it, because only the GM knows whether there are still eyes lurking in the dark. <span class="src">T181</span> And if the next fight comes with no breather, it is the same scene and they stay crossed out. <span class="src">T177</span> But <strong>the wounds remain</strong>: the penalty of the block you filled stays until you heal (hours or days for the first, days or weeks for the second).</li>
+<li>Penalties are added to the bonus like any other modifier: if they leave you below −2, the GM decides whether you still have a right to roll (2.2). <span class="src">C·22oct</span></li>
 </ul>
 <aside class="meta"><p>Would you like to play in a grimy world where a stray bullet makes you fear for your life? Or in an anime where the final boss takes a hundred hits? Or in a story where a glance into the abyss hurts as much as a gunshot? In the Complete Game, the same sheet works for three hits and you're out, for twenty-seven points of attrition, and for wounds to the mind and the soul. NOGUM is waiting for you. <span class="src">T135</span></p></aside>
 
@@ -1246,18 +1309,18 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <p>Every character has <strong>Style +2</strong>. When you face enemies <strong>below your level</strong> on the Grid, or mere mooks (the scenery of the scene), <strong>you don't roll to see if you win: it's a given</strong>. You roll with the active mode and add your Style to see <strong>how</strong> you win:</p>
 <ul>
 <li><strong>Fumble</strong>: you win, but you make a fool of yourself. If your character takes themselves very seriously, it may sting.</li>
-<li><strong>Failure</strong> (and, in Chaos, partial success): you win, but messily or without shining.</li>
+<li><strong>Failure</strong> (and, in Chaos, success at a cost): you win, but messily or without shining.</li>
 <li><strong>Success</strong>: you win in style, clean and spectacular.</li>
 <li><strong>Critical</strong>: legendary. Film-grade choreography, several go down at once and rumours are born.</li>
 </ul>
-<p>Mooks don't get health boxes tracked. The GM declares what is scenery, and scenery does not hurt you: each Style roll drops one, and a critical drops several. If an enemy can hurt you, it is not scenery: it has a quick sheet (3) and rolls as normal. <span class="src">T176</span></p>
+<p>Mooks are scenery: the GM declares them, they have no sheet and no roll, and they act as if they were one Grid level below you, so they cannot hurt you and nobody tracks their health boxes. Each Style roll drops one, and a critical drops several. If an enemy can hurt you, it is not scenery: it has a quick sheet (3) and rolls as normal. <span class="src">T176</span> <span class="src">C·c7</span> <span class="src">C·22oct</span></p>
 </div>
 <p>Style suits anime, wuxia, space opera and action films. <strong>It is not recommended for very serious universes</strong>: in a realistic war, even the lowliest soldier rolls.</p>
 <aside class="meta"><p>Why does the hero sweep aside twenty thugs and then sweat against a single one? In the Complete Game you'll see how the Grid, the Key and Style share the work, and how to make enemy sheets in ten seconds. NOGUM is waiting for you.</p></aside>
 
 <!-- ============================ 3 ============================ -->
 <h4>2.9 Equipment: what you can afford</h4>
-<p>Here normal equipment <strong>costs money and nothing else</strong>, and money is your bonus in <em>Resources</em> (Social → Hierarchy → Resources). No points, no Keys: if your drawer reaches, you have it. Only what breaks the Grid —what lets you affect something of a higher level— or grants a permission no skill grants (flying, seeing through walls) also costs Keys (2.4). <span class="src">T181</span></p>
+<p>Here equipment <strong>costs money and nothing else</strong>, and money is your bonus in <em>Resources</em> (Social → Hierarchy → Resources). If your drawer reaches, you have it, without spending points or Keys: that includes the pistol or the grenade, which ask for Keys in the Complete Game. What it does ask for is room: three items. <span class="src">T181</span> <span class="src">C·22oct</span></p>
 <div class="tw"><table class="t">
 <thead><tr><th>Resources</th><th>Who you are</th><th>What you carry</th><th>Access</th></tr></thead>
 <tbody>
@@ -1270,12 +1333,13 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 </tbody></table></div>
 <p><strong>Access</strong> is the level of Resources an item asks for: the column says how far you reach, and “with effort”, the extra step (below). <span class="src">T176</span> <span class="src">T183</span></p>
 <ul>
-<li><strong>One step above, once per arc.</strong> You can get hold of something out of your league, but it is never free: a favour that will be called in, a debt, a trail, somebody who now knows your name.</li>
-<li><strong>Stolen or borrowed gear works for a whole scene.</strong> Afterwards you decide whether to keep it, and then it does have to fit in your drawer.</li>
+<li><strong>Three items that matter.</strong> What you carry with a name and numbers on the sheet (the weapon, the armour, the vehicle) comes to three items. To take a new one, you drop one of the three. Everything else (clothes, a torch, rope) is taken for granted and gives no bonus, and single-use things (a grenade, a first-aid kit) don't count. <span class="src">C·22oct</span></li>
+<li><strong>One step above, once per arc.</strong> You can get hold of something out of your league, but it is not free: a favour that will be called in, a debt, a trail, somebody who now knows your name.</li>
+<li><strong>Stolen or borrowed gear works for a whole scene.</strong> Afterwards you decide whether to keep it, and then it does have to fit in your drawer and among your three items.</li>
 <li><strong>The weapon does not make you better, it does something else.</strong> What changes are its tags: how much damage it does, whether it can be dodged and whether armour helps (2.6).</li>
 <li><strong>Armour does add:</strong> light armour gives <strong>+1</strong> and heavy armour <strong>+2</strong> to your soak roll, if the weapon allows soaking. <span class="src">T176</span> <span class="src">T178</span></li>
 </ul>
-<aside class="meta"><p>In the complete rulebook equipment has a whole economy behind it: what makes you <em>better</em> is paid for with skill points and what lets you do the <em>impossible</em> is paid for with Keys, and there is a workshop for pricing anything you invent. Here money is enough. NOGUM is waiting.</p></aside>
+<aside class="meta"><p>In the Complete Game equipment has a whole economy behind it: what makes you <em>better</em> is paid for with skill points; what cancels a defence or lets you do the <em>impossible</em>, with Keys; damage, for free. And there is a workshop for pricing anything you invent. Here money and three items are enough. NOGUM is waiting.</p></aside>
 
 <h3 id="ac-interfaz"><span class="hn">3</span> · Game Master interface</h3>
 <p>The players don't hear rules: they hear story. This table translates what the rule says into what you narrate.</p>
@@ -1285,7 +1349,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td>We start in Optimistic mode</td><td>“The music swells. You feel that today you cannot fail.”</td></tr>
 <tr><td>We start in Neutral mode</td><td>“The world is neither on your side nor against you. What you do is what you'll get.”</td></tr>
 <tr><td>We start in Terror mode</td><td>“You feel a weight in your stomach. Nobody is coming to save you here.”</td></tr>
-<tr><td>Partial success</td><td>“You pull it off… but” + a cost from the menu: time, resource, position or friendly fire.</td></tr>
+<tr><td>Success at a cost (Chaos)</td><td>“You pull it off… but” + a cost from the menu: time, resource, position or friendly fire.</td></tr>
 <tr><td>Fumble</td><td>“Something goes spectacularly wrong.” And make it interesting, not just humiliating.</td></tr>
 <tr><td>Attacker's critical</td><td>“You hit them right where it hurts.” (+1 damage.)</td></tr>
 <tr><td>Weapon with <span class="tag">Dodge: None</span></td><td>“Don't try to dodge. If they shoot, they'll hit you. All you can do is take cover.”</td></tr>
@@ -1293,13 +1357,12 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td>First health block filled (−2)</td><td>“They've marked you. Every movement reminds you.”</td></tr>
 <tr><td>Second block filled (−4)</td><td>“Forget the scratches. That last blow broke something inside. You're fighting to stay on your feet.”</td></tr>
 <tr><td>Out of the fight</td><td>“Everything goes black.” And then, back to the story: who finds you?</td></tr>
-<tr><td>Challenge above you on the Grid, no Key</td><td>“Yes, it's a tank. Yes, you're human. You don't roll. You run.”</td></tr>
+<tr><td>Something above your level, no Key</td><td>“Yes, it's a tank. Yes, you're human. You don't roll. You run.”</td></tr>
 <tr><td>A Key is possible</td><td>“That thing is invulnerable… unless you find what hurts it.”</td></tr>
 <tr><td>Enemies below you (Style)</td><td>“It's not whether you take them down. It's how.”</td></tr>
 <tr><td>Unnecessary roll</td><td>Say nothing about dice: “You do it.”</td></tr>
 </tbody></table></div>
-<p>The mode, block 2 and no-dodge weapon lines come from the verbal interface in the Complete Game. The rest are this rulebook's own. <span class="src">Approved by the author</span></p>
-<p><strong>Improvising an enemy in ten seconds.</strong> Ask yourself whether it matters. If it doesn't, it's scenery: Style, and it does not hurt you. If it can hurt you, it already matters a little: give it a Grid level, one skill at +2 (everything else at +0) and as many health boxes as you want the fight to last (3 by default). If it's the villain, give it a full sheet like a player's. <span class="src">T176</span></p>
+<p><strong>Improvising an enemy in ten seconds.</strong> Ask yourself whether it matters. If it doesn't, it's scenery: no sheet and no roll, it goes with Style and it does not hurt you. If it can hurt you, it already matters a little: give it a Grid level, one skill at +2 (everything else at +0) and as many health boxes as you want the fight to last (3 by default). If it's the villain, give it a full sheet like a player's. <span class="src">T176</span> <span class="src">C·22oct</span></p>
 <p>NPCs roll with the same mode as the table, and make a single reaction (defence) for each attack they receive.</p>
 
 <!-- ============================ 4 ============================ -->
@@ -1309,10 +1372,10 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <p>In NOGUM you learn why each rule in this rulebook works, and with that:</p>
 <ul>
 <li>Seven tone cards and the panel to shift them scene by scene.</li>
-<li>Fractal Health: three hits, nine boxes or twenty-seven points, with the same sheet.</li>
-<li>Intent-based initiative: violence, trick or specialty.</li>
-<li>The mental and spiritual damage tracks, social combat and the consequence menu.</li>
-<li>The full list of skills and the catalogue of Signatures.</li>
+<li>Fractal health: three blocks, nine boxes or twenty-seven points, with the same sheet.</li>
+<li>Intent-based initiative: violence, trick or speciality.</li>
+<li>The mental and spiritual damage bars, social combat and the consequence menu.</li>
+<li>The full list of skills, the catalogue of Signatures, and advantages and flaws: the traits that are not skills, such as night vision or a phobia.</li>
 <li>The Rules Chest, the Multiverse Bazaar and twenty recipes to emulate the most famous universes in roleplaying.</li>
 </ul>
 <p>Over there things change their name, not their place: the broad skill is called a <strong>Domain</strong>, and the specific one, a <strong>Discipline</strong>. <span class="src">T185</span></p>
@@ -1332,18 +1395,18 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td>Social · Grid level</td><td>Skills with their bonus.</td></tr>
 <tr><td>Technical · Grid level</td><td>Skills with their bonus.</td></tr>
 <tr><td>Arcane · Grid level</td><td>Skills with their bonus (or “doesn't exist in this world”).</td></tr>
-<tr><td>Points spent</td><td>__ / 12 (14 if you have Arcane)</td></tr>
-<tr><td>Separate pot</td><td>+1 Grid level in any sphere your world’s ceiling allows <strong>or</strong> 5 Keys. By default, everything at level 1. It does not trade for points.</td></tr>
+<tr><td>Points spent</td><td>__ / 12 (14 if any player at the table has Arcane)</td></tr>
+<tr><td>Separate pot</td><td>+1 Grid level in a sphere where your universe allows it (the recommended start, 1·1·1·1·2) <strong>or</strong> 5 Keys. It does not trade for points.</td></tr>
 <tr><td>Style</td><td>+2</td></tr>
 <tr><td>Initiative</td><td>Best Dexterity bonus.</td></tr>
 <tr><td>Health</td><td>□□□ (−2) · □□□ (−4) · □□□ (out of the fight). In Terror, only □□□ (out of the fight).</td></tr>
-<tr><td>Equipment <small>(whatever Resources allows)</small></td><td>Name + <span class="tag">Dmg</span> <span class="tag">Dodge</span> <span class="tag">Soak</span></td></tr>
-<tr><td>Keys</td><td>Each one with its target written down: one specific skill against it for ever, or a whole sphere for one scene (crossed off when it ends). Those with no target yet, left blank. <span class="src">T176</span></td></tr>
+<tr><td>Equipment <small>(three items, whatever Resources allows)</small></td><td>Name + <span class="tag">Damage</span> <span class="tag">Dodge</span> <span class="tag">Soak</span></td></tr>
+<tr><td>Keys</td><td>Each one with the specific skill it raises, against any target, and by how many levels. If it only works against one thing, write that down too (Limited). Those you haven't decided yet, left blank; borrowed ones in pencil, rubbed out when the scene ends. <span class="src">T176</span> <span class="src">C·l1</span></td></tr>
 <tr><td>Wounds and notes</td><td>What the story has left you with.</td></tr>
 </tbody></table></div>
 
 <h4>Pregenerated characters</h4>
-<p>Three examples to start right away, from three different worlds. Kira spends 12 because there is no magic in her world; the other two spend 14. Each also uses their separate pot. <span class="src">Approved by the author</span></p>
+<p>Three examples to start right away, from three different worlds. Kira and Tomás spend 12: there is no magic in Kira's world, and in Tomás's there is, but he doesn't touch it. Ysolde spends 14, and if she played at the same table as them, they would have 14 too. Each also uses their separate pot.  <span class="src">C·22oct</span></p>
 
 <div class="rule"><p class="rule-title">Kira “Staple” Ortega · urban mercenary (cyberpunk / present day)</p>
 <div class="tw"><table class="t">
@@ -1355,25 +1418,25 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td>Technical</td><td class="num">1</td><td>Empty: −2</td><td class="num">0</td></tr>
 <tr><td>Arcane</td><td>—</td><td>Doesn't exist in her world</td><td class="num">0</td></tr>
 </tbody></table></div>
-<p><strong>Style</strong> +2 · <strong>Initiative</strong> +2 (Acrobatics) · <strong>Dodge</strong> +2 (Acrobatics) · <strong>Soak</strong> +2 (Fortitude) · <strong>Resources</strong> +1 (Hierarchy).</p>
-<p><strong>Equipment:</strong> heavy pistol <span class="tag">Dmg 2</span> <span class="tag">Dodge: Hard</span> <span class="tag">Soak: Full</span> · knife <span class="tag">Dmg 1</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Full</span>.</p>
-<p><strong>Separate pot:</strong> 5 Keys — “Weapons against drones”, “Intimidation against runners” and three to be chosen in session zero.</p>
-<p><strong>At the table:</strong> she shoots at +4 and dodges well, but with any gadget she's Null (−2): if an electronic door needs opening, let someone else do it.</p>
+<p><strong>Style</strong> +2 · <strong>Initiative</strong> +2 (Acrobatics) · <strong>Dodge</strong> +2 (Acrobatics) · <strong>Soak</strong> +2 (Fortitude; +3 with the jacket) · <strong>Resources</strong> +1 (Hierarchy).</p>
+<p><strong>Equipment:</strong> heavy pistol <span class="tag">Damage 2</span> <span class="tag">Dodge: None</span> <span class="tag">Soak: Full</span> · knife <span class="tag">Damage 1</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Full</span> · armoured jacket (light, +1 to soak). Her three items.</p>
+<p><strong>Separate pot:</strong> 5 Keys — “Weapons”, “Intimidation” and three left blank, to be decided at session zero.</p>
+<p><strong>At the table:</strong> she shoots at +4 and dodges well, but with any gadget she's a Null (−2): if an electronic door needs opening, let someone else do it. With her Weapons Key she shoots like someone of level 2: an ordinary thug has no right to roll against her bullets, and against a level 2 chromed-up merc she rolls with her +4.</p>
 </div>
 
 <div class="rule"><p class="rule-title">Dr Tomás Areces · occult investigator (contemporary horror)</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Sphere</th><th>Grid</th><th>Skills</th><th>Points</th></tr></thead>
 <tbody>
-<tr><td>Mental</td><td class="num">1</td><td>Erudition +1 → Occultism +2 → Cults and grimoires +4 · Erudition → Humanities +2 · Erudition → Sciences +2 · Wits +1 → Investigation +2 · Wits → Alertness +2</td><td class="num">9</td></tr>
-<tr><td>Social</td><td class="num">1</td><td>Influence +1 → Empathy +2 · Influence → Deception +2 · Influence → Persuasion +2</td><td class="num">4</td></tr>
+<tr><td>Mental</td><td class="num">1</td><td>Erudition +1 → Occultism +2 → Cults and grimoires +4 · Erudition → Humanities +2 · Wits +1 → Investigation +2 · Wits → Alertness +2</td><td class="num">8</td></tr>
+<tr><td>Social</td><td class="num">1</td><td>Influence +1 → Empathy +2 · Influence → Deception +2</td><td class="num">3</td></tr>
 <tr><td>Physical</td><td class="num">1</td><td>Dexterity +1</td><td class="num">1</td></tr>
 <tr><td>Technical</td><td class="num">1</td><td>Empty: −2</td><td class="num">0</td></tr>
 <tr><td>Arcane</td><td class="num">1</td><td>Empty: −2</td><td class="num">0</td></tr>
 </tbody></table></div>
 <p><strong>Style</strong> +2 · <strong>Initiative</strong> +1 (Dexterity) · <strong>Dodge</strong> +1 (Dexterity) · <strong>Soak</strong> −1 (Clumsy: he has something in Physical, but not Vigour) · <strong>Resources</strong> −1 (Clumsy: he has Influence, but not Hierarchy).</p>
-<p><strong>Equipment:</strong> old revolver <span class="tag">Dmg 1</span> <span class="tag">Dodge: Hard</span> <span class="tag">Soak: Full</span> · torch · notebook.</p>
-<p><strong>Separate pot:</strong> 5 Keys, which are his whole character — “Occultism against the Deep Ones”, “Investigation against the cult”, and three still to be discovered.</p>
+<p><strong>Equipment:</strong> old revolver <span class="tag">Damage 1</span> <span class="tag">Dodge: None</span> <span class="tag">Soak: Full</span>. The torch and the notebook are taken for granted.</p>
+<p><strong>Separate pot:</strong> 5 Keys, which are his whole character — “Occultism”, “Investigation”, and three still to be discovered.</p>
 <p><strong>At the table:</strong> he knows more than anyone about what shouldn't exist, but he can't touch it (Arcane empty) and every monster is above his level. His game is finding Keys. In Terror mode, perfect.</p>
 </div>
 
@@ -1388,8 +1451,8 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <tr><td>Technical</td><td class="num">1</td><td>Empty: −2</td><td class="num">0</td></tr>
 </tbody></table></div>
 <p><strong>Style</strong> +2 · <strong>Initiative</strong> +2 (Stealth) · <strong>Dodge</strong> +1 (Dexterity) · <strong>Soak</strong> −1 (Clumsy) · <strong>Resources</strong> −1 (Clumsy) · <strong>Magic shield</strong>: she can soak with Protection (+2) if the GM allows it.</p>
-<p><strong>Equipment:</strong> fireball <span class="tag parca">The Reaper · Grid 2</span> <span class="tag">Dodge: Hard (−2)</span> <span class="tag">Soak: None</span> · staff <span class="tag">Dmg 1</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Full</span>.</p>
-<p><strong>At the table:</strong> with Arcane 2, her fire clears a tavern full of level 1 bandits without rolling to hit: she rolls Style. Against a dragon she needs a Key. Her level 2 in Arcane <strong>is her separate pot</strong>: she has spent there what the other two spend on Keys. By default, characters start at level 1 in everything.</p>
+<p><strong>Her fire</strong> (it is her Arcane 2, not equipment): <span class="tag">Damage 2</span> <span class="tag">Dodge: Partial</span> <span class="tag">Soak: Max 1</span>, at the scale of a whole room · <strong>Equipment:</strong> staff <span class="tag">Damage 1</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Full</span>.</p>
+<p><strong>At the table:</strong> with Arcane 2, her fire clears a tavern full of level 1 bandits without rolling to hit: she rolls Style. Against a dragon she needs a Key. Her level 2 in Arcane <strong>is her separate pot</strong>: she has spent there what the other two spend on Keys. Her sheet is the recommended start, 1·1·1·1·2, with the 2 where her world allows it.</p>
 </div>
 
 
@@ -1540,7 +1603,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
   }
 
   function typeset(done){
-    book.style.zoom = '';
+    unfit();
     book.innerHTML = '';
     document.documentElement.lang = lang;
     status.textContent = UI[lang].typeset;
@@ -1556,7 +1619,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
       var h2 = sec.querySelector(':scope > h2');
       if (h2) {
         if (!h2.id) { h2.id = sec.id || ('s-' + entries.length); sec.setAttribute('data-cap', sec.id || h2.id); sec.removeAttribute('id'); }
-        entries.push({id:h2.id, title:cleanTitle(h2), level:2});
+        entries.push({id:h2.id, title:cleanTitle(h2), level:(/^\s*\d+\.\d/.test(cleanTitle(h2)) ? 3 : 2)});
       }
       sec.querySelectorAll('h3[id]').forEach(function(h3){ entries.push({id:h3.id, title:cleanTitle(h3), level:3}); });
     });
@@ -1605,12 +1668,24 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
         }
       }
       if (i < queue.length) { status.textContent = UI[lang].typeset + ' ' + book.children.length; setTimeout(step, 0); return; }
-      finish(entries); if (done) done();
+      fixOrphans(); finish(entries); if (done) done();
     }
     step();
   }
 
   /* ---------- after layout ---------- */
+  function fixOrphans(){
+    var ss = book.querySelectorAll('.sheet');
+    for (var k = 0; k < ss.length - 1; k++) {
+      var b = ss[k].querySelector('.sb'), nb = ss[k+1].querySelector('.sb');
+      if (!b || !nb) continue;
+      var l = b.lastElementChild;
+      while (l && l.tagName === 'DIV' && l.classList.contains('tw') && !l.querySelector('tbody tr')) { b.removeChild(l); l = b.lastElementChild; }
+      if (!l || !isHead(l) || b.children.length < 2) continue;
+      nb.insertBefore(l, nb.firstElementChild);
+      if (nb.scrollHeight > nb.clientHeight + 1) b.appendChild(l);
+    }
+  }
   var sheetInfo = [];
   function finish(entries){
     var sheets = Array.prototype.slice.call(book.querySelectorAll('.sheet'));
@@ -1632,12 +1707,14 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
     labels();
     trackActive(entries, pageOf);
   }
+  function unfit(){ book.style.transform = ''; book.style.marginLeft = ''; book.style.marginRight = ''; book.style.marginBottom = ''; }
   function fit(){
-    book.style.zoom = '';
+    unfit();
     var avail = document.querySelector('main').clientWidth - 32;
     var w = book.getBoundingClientRect().width || 794;
     var z = Math.min(1, avail / w);
-    book.style.zoom = z < 1 ? String(z) : '';
+    if (z < 1) { var h = book.offsetHeight; book.style.transform = 'scale(' + z + ')';
+      book.style.marginLeft = '16px'; book.style.marginRight = (-(1 - z) * w) + 'px'; book.style.marginBottom = (-(1 - z) * h) + 'px'; }
   }
   var fitT; window.addEventListener('resize', function(){ clearTimeout(fitT); fitT = setTimeout(fit, 120); });
 
@@ -1742,8 +1819,8 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
       typeset(function(){ var el = at && document.getElementById(at); if (el) el.scrollIntoView({block:'start'}); });
     });
   });
-  window.addEventListener('beforeprint', function(){ book.dataset.z = book.style.zoom; book.style.zoom = ''; });
-  window.addEventListener('afterprint', function(){ book.style.zoom = book.dataset.z || ''; root.removeAttribute('data-print'); });
+  window.addEventListener('beforeprint', function(){ unfit(); });
+  window.addEventListener('afterprint', function(){ fit(); root.removeAttribute('data-print'); });
 
   /* ---------- start ---------- */
   labels();
@@ -1756,7 +1833,8 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
       if (el) el.scrollIntoView({block:'start'});
     });
   }
-  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(start); setTimeout(start, 2500); } else start();
+  var SAMPLE = (function(){ var t = ''; document.querySelectorAll('template').forEach(function(x){ t += x.content.textContent; }); return Array.from(new Set(t.replace(/\s/g, ''))).join(''); })();
+  if (document.fonts && document.fonts.load) { Promise.all(['400 1em "Source Serif 4"','italic 400 1em "Source Serif 4"','600 1em "Source Serif 4"','700 1em "Ibarra Real Nova"','italic 400 1em "Ibarra Real Nova"','800 1em "Big Shoulders Display"','600 1em "Big Shoulders Display"','400 1em "JetBrains Mono"','600 1em "JetBrains Mono"'].map(function(f){ return document.fonts.load(f, SAMPLE).catch(function(){}); })).then(function(){ return document.fonts.ready; }).then(start, start); setTimeout(start, 6000); } else start();
 })();
 </script>
 </body>

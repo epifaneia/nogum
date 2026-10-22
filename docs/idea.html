@@ -469,6 +469,67 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 .exp-porque{margin:4mm 0 0;font-size:9.2pt;line-height:1.42}
 .exp-porque dt{margin:2.2mm 0 0;font-weight:700}
 .exp-porque dd{margin:0}
+
+/* ===== v2: color por capitulo con la estructura nueva ================
+   Mismas cuatro familias que paper.css, repartidas sobre el indice nuevo:
+   el marco y el motor en azules, las cuatro ideas de la ficha en verdes,
+   la mesa en ambares y rojos, los apendices en grises y violetas. */
+.sheet[data-cap="ideas"]{--cap:#4b6ea8}
+.sheet[data-cap="ch0"]{--cap:#6b7382}
+.sheet[data-cap="ch1"],.sheet[data-cap="ch1-panel"]{--cap:#2a56a0}
+.sheet[data-cap="ch2"]{--cap:#1f6f8b}
+.sheet[data-cap="ch3"]{--cap:#2e7d6b}
+.sheet[data-cap="ch4"]{--cap:#3d8a4f}
+.sheet[data-cap="ch5"]{--cap:#5a7d2e}
+.sheet[data-cap="ch6"]{--cap:#a8502a}
+.sheet[data-cap="ch7"]{--cap:#9a6b16}
+.sheet[data-cap="ch8"]{--cap:#7a3f6d}
+.sheet[data-cap="apx-faq"]{--cap:#6b6257}
+.sheet[data-cap="ch9"],.sheet[data-cap="ch9b"]{--cap:#5c5470}
+.sheet[data-cap="apx-maquinas"]{--cap:#555f6e}
+
+/* El arsenal del Bazar pasa de cinco columnas a ocho: Objeto, Daño, Esq,
+   Abs y los tres precios (Acceso, Puntos, Llaves), y Notas se queda el resto. */
+table.t.arsenal thead th:nth-child(1){width:26mm}
+table.t.arsenal thead th:nth-child(2){width:15mm}
+table.t.arsenal thead th:nth-child(3){width:17mm}
+table.t.arsenal thead th:nth-child(4){width:16mm}
+table.t.arsenal thead th:nth-child(5),table.t.arsenal thead th:nth-child(6),table.t.arsenal thead th:nth-child(7){width:11mm;font-size:6.5pt;letter-spacing:0}
+table.t.arsenal td:nth-child(5),table.t.arsenal td:nth-child(6),table.t.arsenal td:nth-child(7){text-align:center}
+
+/* ===== Hoja de referencia (apx-referencia): todo el juego en una cara =====
+   El maquetador reparte los hijos de la seccion por hojas; .ref-hoja va
+   entera, a dos columnas y con letra pequena, para caber en una sola. */
+.ref-hoja{column-count:2;column-gap:5mm;column-rule:.25mm solid var(--rule);font-size:7pt;line-height:1.22;hyphens:auto}
+.ref-hoja .ref-b{margin:0 0 1.6mm}
+.ref-hoja h3{display:flex;justify-content:space-between;align-items:baseline;gap:2mm;font:700 10pt/1.15 var(--book);margin:0 0 1mm;padding-bottom:.5mm;border-bottom:.4mm solid var(--ink);break-after:avoid}
+.ref-hoja h3::before{display:none}
+.ref-ir{font:600 6.4pt/1 var(--mono);letter-spacing:.02em;white-space:nowrap}
+.ref-ir a{color:var(--red);text-decoration:none}
+.ref-hoja p{margin:0 0 .8mm}
+.ref-hoja ul{padding-left:3mm;margin:0 0 .8mm}
+.ref-hoja li{margin:0 0 .3mm}
+.ref-hoja .tw{margin:.6mm 0 1.1mm;border-radius:.8mm;break-inside:avoid}
+.ref-hoja table.t{font-size:6.5pt;line-height:1.15}
+.ref-hoja table.t th,.ref-hoja table.t td{padding:.2mm 1mm}
+.ref-hoja table.t thead th{font-size:5.8pt;letter-spacing:.02em}
+.ref-hoja table.t td:first-child,.ref-hoja table.t th:first-child{min-width:0}
+.ref-hoja table.t.ref-esc td,.ref-hoja table.t.ref-esc th{text-align:center}
+.ref-n{font-size:6.5pt;color:var(--ink-3)}
+.ref-hoja table.t td:last-child{overflow-wrap:normal}
+.ref-hoja table.t:has(th.nw) td:last-child{white-space:nowrap}
+.ref-hoja table.t thead a{color:inherit}
+
+/* La cabecera y el pie se rellenan despues de maquetar (titulo de capitulo,
+   numero de pagina). Vacios no ocupaban alto, la caja del texto se medía mas
+   alta de lo que iba a ser y, al llenarse, lo ultimo de la hoja se cortaba.
+   Un espacio duro en los huecos vacios les da su alto desde el principio. */
+.rh span:empty::before,.pf .pn:empty::before{content:"\00a0"}
+
+/* En pantallas estrechas (movil) Chrome agranda por su cuenta la letra de los
+   bloques anchos, despues de maquetar: la hoja se mide con una letra y se pinta
+   con otra, y el texto se sale por abajo. El libro es A4: sin autoajuste. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 </style>
 </head>
 <body>
@@ -573,7 +634,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 
 <p>El tercer control es el que menos gente espera, y es el que más miedo imprime. En NOGUM la cantidad de daño que aguanta una persona <strong>no es una propiedad de la anatomía: es un control de tono</strong>.</p>
 
-<p>Con una barra de vida corta, un cuchillo te mata y cada pelea da pánico. Con una barra larga, un combate es una secuencia de acción que dura una sesión entera. Es la misma persona en los dos casos. Lo que ha cambiado es cuánto quiere durar la historia.</p>
+<p>Con una barra de vida corta, un cuchillo te saca de la escena y cada pelea da pánico. Con una barra larga, un combate es una secuencia de acción que dura una sesión entera. Es la misma persona en los dos casos. Lo que ha cambiado es cuánto quiere durar la historia.</p>
 
 <h3>Y los controles que no se tocan en mitad de la partida</h3>
 
@@ -589,10 +650,10 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 
 <p>Quedarte con <strong>el mejor de los dos</strong> sube la media de 5,5 a 7,15 y, además, estrecha la dispersión: no solo sale mejor, sale mejor <em>de forma más fiable</em>. Quedarte con <strong>el peor</strong> la baja a 3,85, con el efecto espejo. <strong>Sumarlos</strong> dibuja una campana que aplasta los extremos hasta el 3&nbsp;%: un mundo de reloj, donde las sorpresas casi no existen. Leer <strong>solo el rojo</strong> es una recta donde cada cara vale exactamente un 10&nbsp;%: el caos neutro, la costumbre del hobby.</p>
 
-<p>Cruzando esas lecturas con la anchura de las bandas de pifia y de crítico salen <strong>siete tarjetas de tono</strong>, ordenadas en una rejilla de tres por tres: optimismo contra caos. Hay dos huecos, y no son un olvido: con un dado plano no existe forma de inclinar el tono sin tocar la dificultad, y preferimos no tocarla.</p>
+<p>Cruzando esas lecturas con la anchura de las bandas de pifia y de crítico salen <strong>siete tarjetas de tono</strong>, ordenadas en un cuadrante de tres por tres: optimismo contra caos. Hay dos huecos, y no son un olvido: con un dado plano no existe forma de inclinar el tono sin tocar la dificultad, y preferimos no tocarla.</p>
 
 <p>Las probabilidades de las siete, para cada nivel de competencia, no son estimaciones ni sensaciones. Son el recuento exacto de las cien combinaciones posibles, están calculadas y verificadas, y están impresas en el manual para que cualquiera pueda discutirlas.</p>
-<p>Y ahí es donde están, porque aquí no caben. Si prefieres comprobarlo a creértelo, el manual completo tiene un capítulo entero dedicado a ello: <a href="juego.html">la Sala de Máquinas</a>, con las siete curvas dibujadas, el reparto de cada tarjeta bono a bono y lo que de verdad le cuesta a la mesa cada tono. <strong>Aviso: es el capítulo más denso del libro</strong>, y entrar es bajo tu responsabilidad. Pero la promesa de este capítulo se cumple ahí, hasta la última cifra.</p>
+<p>Y ahí es donde están, porque aquí no caben. Si prefieres comprobarlo a creértelo, el manual completo tiene un apéndice entero dedicado a ello: <a href="juego.html">la Sala de Máquinas</a>, con las siete curvas dibujadas, el reparto de cada tarjeta bono a bono y lo que de verdad le cuesta a la mesa cada tono. <strong>Aviso: es la parte más densa del libro</strong>, y entrar es bajo tu responsabilidad. Pero la promesa de este capítulo se cumple ahí, hasta la última cifra.</p>
 
 </section>
 
@@ -601,7 +662,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 
 <p>«Modular» es de esas palabras que aparecen en la contraportada de todo y casi nunca significan nada. Aquí quiere decir algo muy concreto: <strong>el núcleo, sin añadirle nada, ya es un juego completo</strong>.</p>
 
-<p>Tono, competencia, daño, vida y la moneda de lo imposible. Con eso se juega una campaña entera sin abrir ni una página más. Todo lo demás —y hay bastante— vive en un <strong>baúl de dieciséis reglas opcionales</strong> que se encienden de una en una, cada una con su interruptor, su coste de atención declarado por escrito y su aviso de cuándo estorba.</p>
+<p>Tono, competencia, daño, vida y la moneda de lo imposible. Con eso se juega una campaña entera sin abrir ni una página más. Todo lo demás —y hay bastante— vive en un <strong>baúl de diecisiete reglas opcionales</strong> que se encienden de una en una, cada una con su interruptor, su coste de atención declarado por escrito y su aviso de cuándo estorba.</p>
 
 <p>Ninguna es obligatoria. Y hay una regla de uso que importa más que cualquiera de ellas: <strong>si al sacar un módulo tienes que explicarlo durante diez minutos, no lo saques.</strong> La narración debe fluir. Menos es más, y cuando no lo es, el manual lo dice.</p>
 
@@ -631,9 +692,9 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 
 <p>Todas las promesas anteriores tienen una condición: si los números pudieran crecer sin límite, dejarían de significar nada. Una curva calculada para un rango de seis escalones se convierte en basura en cuanto alguien llega al escalón cuarenta.</p>
 
-<p>Por eso la competencia en NOGUM está <strong>anclada</strong>: va de un extremo a otro en seis escalones y ahí se acaba, siempre, para todo el mundo y para siempre. No hay inflación, no hay que rehacer tablas a mitad de campaña, y —lo importante— <strong>las gráficas de este manual siguen siendo verdad en la sesión cien</strong>. El tono sigue mandando cuando los personajes son veteranos, que es justo cuando los demás sistemas dejan de poder prometer nada.</p>
+<p>Por eso la competencia en NOGUM está <strong>anclada</strong>: va de un extremo a otro en seis escalones y ahí se acaba, en todas las fichas, para todo el mundo y para siempre. No hay inflación, no hay que rehacer tablas a mitad de campaña, y —lo importante— <strong>las gráficas de este manual siguen siendo verdad en la sesión cien</strong>. El tono sigue mandando cuando los personajes son veteranos, que es justo cuando los demás sistemas dejan de poder prometer nada.</p>
 
-<p>Pero un ancla crea un problema: si nadie pasa de seis escalones, ¿cómo se expresa la diferencia entre un aldeano y un dragón? No con bonificadores, porque no caben. Con la <strong>Rejilla</strong>: una segunda dimensión, de niveles de escala, que dice a qué distancia está la cámara. Dentro de un nivel de la Rejilla, todo el mundo compite con los mismos seis escalones y las gráficas valen. Entre niveles distintos, la pregunta ya no es quién tira mejor: es si la escena admite siquiera que se tire. Eso resuelve de un plumazo los enfrentamientos imposibles sin inventar un solo número nuevo.</p>
+<p>Pero un ancla crea un problema: si nadie pasa de seis escalones, ¿cómo se expresa la diferencia entre un aldeano y un dragón? No con bonificadores, porque no caben. Con la <strong>Rejilla</strong>: una segunda dimensión, de niveles de escala, que dice el tamaño de los desafíos a los que te enfrentas. Dentro de un nivel de la Rejilla, todo el mundo compite con los mismos seis escalones y las gráficas valen. Entre niveles distintos, la pregunta ya no es quién tira mejor: es si la escena admite siquiera que se tire. Eso resuelve de un plumazo los enfrentamientos imposibles sin inventar un solo número nuevo.</p>
 
 <h3>El ritmo al que crece la gente</h3>
 
@@ -674,7 +735,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 
 <p>Y Terror hace el otro truco: <strong>la oscuridad no viene de la tirada, viene de la vida</strong>. Aciertas igual de a menudo que en Neutro; lo que cambia es que dos impactos serios te sacan de la escena. Esas tres casillas van ancladas al modo y no son un interruptor que haya que acordarse de encender, así que la mesa se asoma al control de la letalidad sin tener que operarlo.</p>
 
-<p>Lo mejor es que <strong>no es un juego aparte</strong>. Los cuatro modos son configuraciones legales del manual completo. Cuando se os quede pequeño no empezáis de cero: ya conocéis cuatro de las siete tarjetas.</p>
+<p>Lo mejor es que <strong>no es un juego aparte</strong>. Los cuatro modos son configuraciones legales del manual completo. Cuando se os quede pequeño no empezáis de cero: ya conocéis tres de las siete tarjetas y uno de los controles, la letalidad.</p>
 </section>
 
 <section class="chapter" id="es-cuatro">
@@ -689,7 +750,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <p>El manual de verdad. El motor, la creación de personajes, el peligro, el equipo, el baúl de reglas opcionales, veinte recetas de mundo listas para jugar y los apéndices con todas las cifras exactas, por si quieres discutirlas. Responde a <em>cómo</em>, y lo responde hasta el final: cada regla trae escrito de dónde viene y qué tono imprime.</p>
 
 <h3>El Acelerado</h3>
-<p>El mismo juego en quince páginas y cuatro modos. Responde a <em>ya</em>: se puede empezar esta misma tarde sin haber leído nada más. Y como sus cuatro modos son configuraciones reales del completo, jugarlo no es una demo: es haber aprendido cuatro séptimas partes del cuadrante sin darse cuenta.</p>
+<p>El mismo juego en quince páginas y cuatro modos. Responde a <em>ya</em>: se puede empezar esta misma tarde sin haber leído nada más. Y como sus cuatro modos son configuraciones reales del completo, jugarlo no es una demo: es haber aprendido tres de las siete tarjetas, y a mover la letalidad, sin darse cuenta.</p>
 
 <h3>La App</h3>
 <p>La pieza que ningún otro sistema universal tiene. Responde a <em>contigo</em>: te entrevista con situaciones en vez de con preguntas técnicas, monta la mesa, acota el catálogo a tu mundo, hace las fichas y los secundarios, lleva la cuenta de lo que cuesta cada cosa y le pone música a cada tono. Convierte el problema clásico del rol universal —«universal significa que lo tienes que decidir todo»— en veinte preguntas que se contestan solas.</p>
@@ -758,7 +819,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 
 <h3>The happy accident</h3>
 
-<p>This began as a modularity that would let each GM design their campaigns with the right tools, whatever the tone of their universe. One decision per campaign, at the start, and then play.</p>
+<p>This began as a modularity that would let each Game Master (GM) design their campaigns with the right tools, whatever the tone of their universe. One decision per campaign, at the start, and then play.</p>
 
 <p>But by designing the rule changes to be that simple and that fluid, something unplanned turned up. If turning the tone costs so little, <strong>there is no reason at all to turn it only once</strong>.</p>
 
@@ -790,7 +851,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 
 <p>The third control is the one fewest people expect, and the one that prints the most fear. In NOGUM, how much damage a person can take <strong>is not a property of anatomy: it is a tone control</strong>.</p>
 
-<p>With a short health track, a knife kills you and every fight is frightening. With a long one, a fight is an action sequence that lasts a whole session. It is the same person in both cases. What changed is how long the story wants to last.</p>
+<p>With a short health track, a knife takes you off the scene and every fight is frightening. With a long one, a fight is an action sequence that lasts a whole session. It is the same person in both cases. What changed is how long the story wants to last.</p>
 
 <h3>And the controls you do not touch mid-game</h3>
 
@@ -806,10 +867,10 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 
 <p>Keeping <strong>the higher of the two</strong> lifts the average from 5.5 to 7.15 and, on top of that, narrows the spread: it does not just come out better, it comes out better <em>more reliably</em>. Keeping <strong>the lower</strong> drops it to 3.85, with the mirror effect. <strong>Adding them</strong> draws a bell that crushes the extremes down to 3%: a clockwork world, where surprises barely exist. Reading <strong>the red die alone</strong> is a straight line where every face is worth exactly 10%: neutral chaos, the hobby's habit.</p>
 
-<p>Crossing those readings with the width of the fumble and critical bands gives <strong>seven tone cards</strong>, laid out on a three-by-three grid: optimism against chaos. There are two gaps, and they are not an oversight: with a flat die there is no way to tilt the tone without touching the difficulty, and we would rather not touch it.</p>
+<p>Crossing those readings with the width of the fumble and critical bands gives <strong>seven tone cards</strong>, laid out on a three-by-three quadrant: optimism against chaos. There are two gaps, and they are not an oversight: with a flat die there is no way to tilt the tone without touching the difficulty, and we would rather not touch it.</p>
 
 <p>The probabilities for all seven, at every level of competence, are not estimates or impressions. They are the exact count of all one hundred possible combinations, calculated and verified, and printed in the manual so that anybody can argue with them.</p>
-<p>And that is where they are, because they do not fit here. If you would rather check it than take our word for it, the Complete Game has a whole chapter for exactly that: <a href="juego.html">the Engine Room</a>, with the seven curves drawn, each card’s outcome split bonus by bonus, and what every tone really costs the table. <strong>Fair warning: it is the densest chapter in the book</strong>, and going in is at your own risk. But this chapter’s promise is kept there, down to the last figure.</p>
+<p>And that is where they are, because they do not fit here. If you would rather check it than take our word for it, the Complete Game has a whole appendix for exactly that: <a href="juego.html">the Engine Room</a>, with the seven curves drawn, each card’s outcome split bonus by bonus, and what every tone really costs the table. <strong>Fair warning: it is the densest part of the book</strong>, and going in is at your own risk. But this chapter’s promise is kept there, down to the last figure.</p>
 
 </section>
 
@@ -818,7 +879,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 
 <p>"Modular" is one of those words that appears on the back cover of everything and almost never means anything. Here it means something very specific: <strong>the core, with nothing added to it, is already a complete game</strong>.</p>
 
-<p>Tone, competence, damage, health and the currency of the impossible. You can run an entire campaign on that without opening another page. Everything else —and there is plenty— lives in a <strong>chest of sixteen optional rules</strong> that come on one at a time, each with its switch, its attention cost declared in writing, and its warning about when it gets in the way.</p>
+<p>Tone, competence, damage, health and the currency of the impossible. You can run an entire campaign on that without opening another page. Everything else —and there is plenty— lives in a <strong>chest of seventeen optional rules</strong> that come on one at a time, each with its switch, its attention cost declared in writing, and its warning about when it gets in the way.</p>
 
 <p>None is compulsory. And there is one house rule that matters more than any of them: <strong>if pulling out a module means explaining it for ten minutes, do not pull it out.</strong> The story has to flow. Less is more, and when it is not, the manual says so.</p>
 
@@ -848,9 +909,9 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 
 <p>All the promises above come with a condition: if the numbers could grow without limit, they would stop meaning anything. A curve calculated for a range of six rungs turns into rubbish the moment somebody reaches rung forty.</p>
 
-<p>That is why competence in NOGUM is <strong>anchored</strong>: it runs from one end to the other in six rungs and stops there, always, for everyone, forever. No inflation, no redoing tables halfway through a campaign, and —the important part— <strong>the charts in this manual are still true in session one hundred</strong>. Tone still rules when the characters are veterans, which is exactly when other systems stop being able to promise anything.</p>
+<p>That is why competence in NOGUM is <strong>anchored</strong>: it runs from one end to the other in six rungs and stops there, on every sheet, for everyone, forever. No inflation, no redoing tables halfway through a campaign, and —the important part— <strong>the charts in this manual are still true in session one hundred</strong>. Tone still rules when the characters are veterans, which is exactly when other systems stop being able to promise anything.</p>
 
-<p>But an anchor creates a problem: if nobody goes past six rungs, how do you express the difference between a villager and a dragon? Not with bonuses, because they do not fit. With the <strong>Grid</strong>: a second dimension, of scale levels, saying how far away the camera is. Within one level of the Grid, everyone competes on the same six rungs and the charts hold. Between different levels, the question is no longer who rolls better: it is whether the scene allows a roll at all. That settles impossible confrontations without inventing a single new number.</p>
+<p>But an anchor creates a problem: if nobody goes past six rungs, how do you express the difference between a villager and a dragon? Not with bonuses, because they do not fit. With the <strong>Grid</strong>: a second dimension, of scale levels, saying how big the challenges you face are. Within one level of the Grid, everyone competes on the same six rungs and the charts hold. Between different levels, the question is no longer who rolls better: it is whether the scene allows a roll at all. That settles impossible confrontations without inventing a single new number.</p>
 
 <h3>The rate at which people grow</h3>
 
@@ -891,7 +952,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 
 <p>And Terror pulls the other trick: <strong>the darkness does not come from the roll, it comes from the health track</strong>. You hit just as often as in Neutral; what changes is that two serious hits take you off the scene. Those three boxes are anchored to the mode rather than being a switch you have to remember, so the table gets a look at the lethality control without having to operate it.</p>
 
-<p>Best of all, <strong>it is not a separate game</strong>. All four modes are legal configurations of the Complete Game. When it starts to feel small you do not begin from scratch: you already know four of the seven cards.</p>
+<p>Best of all, <strong>it is not a separate game</strong>. All four modes are legal configurations of the Complete Game. When it starts to feel small you do not begin from scratch: you already know three of the seven cards and one of the controls, lethality.</p>
 </section>
 
 <section class="chapter" id="en-four" lang="en">
@@ -906,7 +967,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 <p>The actual manual. The engine, character creation, danger, equipment, the chest of optional rules, twenty ready-to-play world recipes and the appendices with every exact figure, in case you want to argue with them. It answers <em>how</em>, and answers it all the way down: every rule says where it came from and what tone it prints.</p>
 
 <h3>Accelerated</h3>
-<p>The same game in fifteen pages and four modes. It answers <em>now</em>: you can start this very afternoon without having read anything else. And since its four modes are real configurations of the complete game, playing it is not a demo: it is having learned four sevenths of the grid without noticing.</p>
+<p>The same game in fifteen pages and four modes. It answers <em>now</em>: you can start this very afternoon without having read anything else. And since its four modes are real configurations of the complete game, playing it is not a demo: it is having learned three of the seven cards, and how to move lethality, without noticing.</p>
 
 <h3>The App</h3>
 <p>The piece no other universal system has. It answers <em>with you</em>: it interviews you with situations instead of technical questions, sets the table up, narrows the catalogue to your world, builds the sheets and the supporting cast, keeps track of what everything costs and puts music to every tone. It turns the classic problem of universal roleplaying —"universal means you have to decide everything"— into twenty questions that answer themselves.</p>
@@ -1068,7 +1129,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
   }
 
   function typeset(done){
-    book.style.zoom = '';
+    unfit();
     book.innerHTML = '';
     document.documentElement.lang = lang;
     status.textContent = UI[lang].typeset;
@@ -1084,7 +1145,7 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
       var h2 = sec.querySelector(':scope > h2');
       if (h2) {
         if (!h2.id) { h2.id = sec.id || ('s-' + entries.length); sec.setAttribute('data-cap', sec.id || h2.id); sec.removeAttribute('id'); }
-        entries.push({id:h2.id, title:cleanTitle(h2), level:2});
+        entries.push({id:h2.id, title:cleanTitle(h2), level:(/^\s*\d+\.\d/.test(cleanTitle(h2)) ? 3 : 2)});
       }
       sec.querySelectorAll('h3[id]').forEach(function(h3){ entries.push({id:h3.id, title:cleanTitle(h3), level:3}); });
     });
@@ -1133,12 +1194,24 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
         }
       }
       if (i < queue.length) { status.textContent = UI[lang].typeset + ' ' + book.children.length; setTimeout(step, 0); return; }
-      finish(entries); if (done) done();
+      fixOrphans(); finish(entries); if (done) done();
     }
     step();
   }
 
   /* ---------- after layout ---------- */
+  function fixOrphans(){
+    var ss = book.querySelectorAll('.sheet');
+    for (var k = 0; k < ss.length - 1; k++) {
+      var b = ss[k].querySelector('.sb'), nb = ss[k+1].querySelector('.sb');
+      if (!b || !nb) continue;
+      var l = b.lastElementChild;
+      while (l && l.tagName === 'DIV' && l.classList.contains('tw') && !l.querySelector('tbody tr')) { b.removeChild(l); l = b.lastElementChild; }
+      if (!l || !isHead(l) || b.children.length < 2) continue;
+      nb.insertBefore(l, nb.firstElementChild);
+      if (nb.scrollHeight > nb.clientHeight + 1) b.appendChild(l);
+    }
+  }
   var sheetInfo = [];
   function finish(entries){
     var sheets = Array.prototype.slice.call(book.querySelectorAll('.sheet'));
@@ -1160,12 +1233,14 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
     labels();
     trackActive(entries, pageOf);
   }
+  function unfit(){ book.style.transform = ''; book.style.marginLeft = ''; book.style.marginRight = ''; book.style.marginBottom = ''; }
   function fit(){
-    book.style.zoom = '';
+    unfit();
     var avail = document.querySelector('main').clientWidth - 32;
     var w = book.getBoundingClientRect().width || 794;
     var z = Math.min(1, avail / w);
-    book.style.zoom = z < 1 ? String(z) : '';
+    if (z < 1) { var h = book.offsetHeight; book.style.transform = 'scale(' + z + ')';
+      book.style.marginLeft = '16px'; book.style.marginRight = (-(1 - z) * w) + 'px'; book.style.marginBottom = (-(1 - z) * h) + 'px'; }
   }
   var fitT; window.addEventListener('resize', function(){ clearTimeout(fitT); fitT = setTimeout(fit, 120); });
 
@@ -1270,8 +1345,8 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
       typeset(function(){ var el = at && document.getElementById(at); if (el) el.scrollIntoView({block:'start'}); });
     });
   });
-  window.addEventListener('beforeprint', function(){ book.dataset.z = book.style.zoom; book.style.zoom = ''; });
-  window.addEventListener('afterprint', function(){ book.style.zoom = book.dataset.z || ''; root.removeAttribute('data-print'); });
+  window.addEventListener('beforeprint', function(){ unfit(); });
+  window.addEventListener('afterprint', function(){ fit(); root.removeAttribute('data-print'); });
 
   /* ---------- start ---------- */
   labels();
@@ -1284,7 +1359,8 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
       if (el) el.scrollIntoView({block:'start'});
     });
   }
-  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(start); setTimeout(start, 2500); } else start();
+  var SAMPLE = (function(){ var t = ''; document.querySelectorAll('template').forEach(function(x){ t += x.content.textContent; }); return Array.from(new Set(t.replace(/\s/g, ''))).join(''); })();
+  if (document.fonts && document.fonts.load) { Promise.all(['400 1em "Source Serif 4"','italic 400 1em "Source Serif 4"','600 1em "Source Serif 4"','700 1em "Ibarra Real Nova"','italic 400 1em "Ibarra Real Nova"','800 1em "Big Shoulders Display"','600 1em "Big Shoulders Display"','400 1em "JetBrains Mono"','600 1em "JetBrains Mono"'].map(function(f){ return document.fonts.load(f, SAMPLE).catch(function(){}); })).then(function(){ return document.fonts.ready; }).then(start, start); setTimeout(start, 6000); } else start();
 })();
 </script>
 </body>

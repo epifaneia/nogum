@@ -1,0 +1,333 @@
+<section class="chapter" id="ch6">
+<h2>Chapter 6 · Danger</h2>
+<p class="lede">Danger is played with the same roll as everything else. The attacker rolls to hit, the defender rolls to get out of it, and whoever gets further up wins; a tie goes to the defender. Weapons say which defence they cancel, just like a Key. And what is at stake is health (of the body, of the head and of the spirit), which comes back when you are safe, and the wounds it leaves, which stay. <span class="src">C·c1</span> <span class="src">C·c3</span> <span class="src">C·c6</span></p>
+<p>Combat carries special weight in every roleplaying rulebook, and its differences from normal rolls deserve a chapter of their own. Combat is simple on purpose, and it comes with no optional modes to make it more tactical: that change would not alter the tone or the universe, it would only move the game along the <em>narrative–tactical</em> axis, and this rulebook is anchored on the narrative side. It is recommended that every non-player character (NPCs, the ones the GM runs) who is going to interact has a sheet (<a href="#ch7">chapter 7</a>), or at least the few brushstrokes needed for the handful of rolls that will be required. <span class="src">Texto del autor sobre combate</span></p>
+
+<h3 id="ch6-iniciativa">6.1 Initiative: who attacks first?</h3>
+<p>What is the most cinematic way to hand out turns? NOGUM starts from an intuitive idea: <strong>speed comes from mastery</strong>. The gunslinger draws fast because they have done it ten thousand times; the hacker types fast because they are a master. By default, <strong>every skill can be used to roll initiative</strong>.</p>
+<p>And since roleplaying is fluid improvisation, the game is not held up by choosing the action in advance. <strong>The intention is chosen.</strong></p>
+<div class="rule">
+<p class="rule-title">The three guards</p>
+<ol>
+<li>The GM asks: “The situation explodes. What guard are you going in with?”</li>
+<li>Each player declares one of these three (not exactly what they will do, but <em>how</em> they will tackle the problem) and rolls their best skill that fits it:
+<dl>
+<dt>Violence</dt><dd>You go in head-on. You roll your highest-rated attack skill. When your turn comes, you can use a different skill, as long as it is still direct and destructive.</dd>
+<dt>Trick</dt><dd>You have a bright idea: you deceive, hide, use the terrain to your advantage, build a gadget or pull one out of your magic pocket. You roll Stealth, Deception, Sleight of Hand… Flexibility is encouraged. On your turn you can switch to another skill, as long as it is still sideways and sly.</dd>
+<dt>Speciality</dt><dd>You are going to use one specific skill: driving, hacking, healing. “I don’t know exactly what I’ll do, but I’ll do it with the computer.” There is no wiggle room here: whatever you do must fit that skill like a glove.</dd>
+</dl></li>
+<li>Actions go from highest to lowest result. On your turn you specify what you do within your guard. <strong>Tie:</strong> whoever has the higher bonus goes first; if it is still tied, protagonists before NPCs. <strong>Critical:</strong> you act first. <strong>Fumble:</strong> last. <span class="src">T176</span></li>
+</ol>
+</div>
+<p><strong>The guard marker.</strong> Every sheet carries a marker with the three guards. It is not a rule as such, just a reminder: if the table forgets to choose before acting, the guard on the marker from last time applies. <span class="src">Decisión del autor, 17 sep</span></p>
+<p><strong>What if I no longer want to do what I declared?</strong> You can switch, but you have lost all your momentum: you prepared for one thing and now you are starting from scratch. Changing guard sends you <strong>to the back of the queue</strong> for the current round, with no further penalty. <span class="src">T85, T129</span> <span class="flag ed">ED-8</span></p>
+<p><strong>Slow skills.</strong> By default, the hacker types as fast as the gunslinger shoots. If that jars in your universe, that skill carries the <strong>[Slow]</strong> tag on the sheet, which can be taken as a flaw that gives points for something else (<a href="#ch5-dones">5.8</a>). <span class="src">C·22oct</span> A skill marked that way <strong>cannot be used to roll initiative</strong>: either you go in with another guard, or you go last. And if it is so slow that it does not fit within the time of a conflict, it cannot even be used in one. <span class="src">T87</span> <span class="src">Decisión del autor</span></p>
+<aside class="meta"><p>Example. Warrior: Violence with Sword +4 → gets 13 and goes first. Hacker: Speciality with Systems +2 → gets 9. Thief: Trick with Stealth +2 → gets 7. By the time it’s the hacker’s turn, the warrior has already smashed the lights he was planning to switch off, so, without leaving his speciality, he hacks the enemy comms instead.</p></aside>
+<p><strong>NPCs roll too.</strong> They declare a guard like everyone else: it is an opposed roll with the skill of the chosen guard, and quick sheets settle it with their sphere at +2 (<a href="#ch7-rapida">7.4</a>). Scenery does not roll: it acts when the scene calls for it (<a href="#ch7-decorado">7.5</a>). <span class="src">Decisión del autor</span></p>
+
+<h3 id="ch6-golpes">6.2 The attack sequence: impact versus mitigation</h3>
+<p><strong>First of all, the power gap</strong> (<a href="#ch3-nivel">3.1</a>). If attacker and defender are not at the same Grid level in the sphere of the attack, the one below has no right to roll, and the blow of the one above is not rolled: the defeat is narrated (if the one above is a protagonist and wants to see how they win, they roll their <a href="#ch3-estilo">Style</a>). A Key changes that: with it, this sequence is played, with the full bonus, in whatever the Key covers (<a href="#ch4-anula">4.2</a>). What each weapon cancels is stated in its tags (<a href="#ch6-armas">6.3</a>). <span class="src">T170</span> <span class="src">T176</span> <span class="src">T183</span> <span class="src">C·l2</span> <span class="src">C·r10</span> <span class="src">C·22oct</span></p>
+<p>To avoid slow arithmetic (subtracting dodges from attacks), NOGUM uses two steps. Totals are not pitted against each other: each side rolls against the TN, and you compare which step of the card each roll landed on (fumble, failure, success at a cost, success or critical). That step is its <strong>result level</strong>. <span class="src">C·c1</span></p>
+<div class="steps">
+<div class="step">
+<p class="step-title">Step 1 · Impact (attacker)</p>
+<p>The attacker declares their intention and rolls against the <strong>TN of the active tone card</strong>. None of the defender’s skills give bonuses here, but their circumstances do, as difficulty modifiers (<a href="#ch2-bonos">2.5</a>): cover, fog, being very small…</p>
+<ul>
+<li><strong>Fumble:</strong> the attack doesn’t connect. It may turn against the attacker; if that makes no narrative sense, it may hit an ally or cause some other adverse effect. End of sequence.</li>
+<li><strong>Failure:</strong> the attack goes wide, hits a wall or the target moves. End of sequence.</li>
+<li><strong>Success:</strong> the attack <strong>connects</strong>. The damage is “in the air”, travelling towards the target.</li>
+<li><strong>Critical:</strong> it connects in a <strong>vital</strong> spot: <strong>+1 damage</strong>. It is the only arithmetic in combat. <span class="src">T129</span></li>
+</ul>
+</div>
+<div class="step">
+<p class="step-title">Step 2 · Mitigation (defender)</p>
+<p>The defender <strong>only rolls if the attack has connected</strong>: nobody throws themselves at the bullet that was not going to hit them. If the attacker fumbles or fails, there is no defence roll. <span class="src">C·22oct</span> And they can try to avoid the damage <em>only</em> if the weapon’s spec sheet allows it (<a href="#ch6-armas">6.3</a>). They choose <strong>one</strong> permitted route, dodge or soak, and roll their defence skill against the TN of the active card.</p>
+<p>The roll does not subtract points on its own. What counts is its <strong>result level</strong>, which is compared with the attacker’s as the box below explains. <span class="src">T170</span></p>
+</div>
+</div>
+<div class="rule"><p class="rule-title">Defence wins ties <span class="flag ed">ED-25</span></p>
+<p>Both of you rolled against the same TN, so all you have to look at is <strong>who got further up</strong>. Totals and margins are not compared: <strong>result levels</strong> are.</p>
+<div class="tw"><table class="t">
+<thead><tr><th>The defender rolls…</th><th>Damage taken</th></tr></thead>
+<tbody>
+<tr><td>A result level <strong>equal to or better</strong> than the attacker’s (both successes, both criticals, or the defender above)</td><td><strong>None.</strong> A perfect parry.</td></tr>
+<tr><td><strong>Success or success at a cost</strong>, but below the attacker</td><td>Weapon damage <strong>−1</strong></td></tr>
+<tr><td><strong>Failure</strong></td><td>Full damage</td></tr>
+<tr><td><strong>Fumble</strong></td><td>Full damage, <strong>and it goes up one level: +1</strong>. You throw yourself right into the blow. If the attacker also rolled a critical, they add up: +2. <span class="src">T176</span> <span class="src">C·22oct</span></td></tr>
+</tbody></table></div>
+<p><strong>Tags override the tie.</strong> Every weapon states on its spec sheet which defences it allows (<a href="#ch6-armas">6.3</a>). A weapon with <span class="tag">Dodge: Partial</span> leaves you eating at least 1 point even if you match it, because it is an area, a burst or fire: it cannot be fully dodged. And with <span class="tag">Dodge: None</span> there is not even a dodge to roll: all that is left is soaking, if the weapon allows it. <span class="src">C·c3</span></p>
+<p><strong>Defence at a cost</strong> (on the cards that carry it): it reduces like a success, −1, and the GM also charges a price from the <a href="#ch6-costes">cost menu</a>. You walk away alive, but you drop the weapon, lose the position or end up where you did not want to be.</p></div>
+<div class="rule" id="ch6-pifia"><p class="rule-title">The fumble menu</p>
+<p>A fumble is an <strong>ugly failure</strong>: it does not work, and something else happens too. How much it hurts is up to the table and the tone; so that you are not improvising from scratch on one roll in five on the hard cards, here are six doors:</p>
+<ol>
+<li><strong>A route closes.</strong> The lock jams, the contact stops trusting you, the bridge gives way.</li>
+<li><strong>Something gets used up and does not come back.</strong> The last charge, the last vial, the favour they owed you.</li>
+<li><strong>You leave a trace.</strong> Someone will know you were there, and not in the good way.</li>
+<li><strong>The threat takes a step closer.</strong> The clock ticks on, the patrol turns the corner, the ritual reaches its next verse.</li>
+<li><strong>What you are carrying breaks.</strong> The weapon, the tool, the radio. Not necessarily for good.</li>
+<li><strong>Someone notices you.</strong> And now you have a problem with a name.</li>
+</ol>
+<p>In the predictable column the fumble <strong>closes a door</strong>: the path you tried is gone. In the chaotic one it <strong>opens a branch</strong>: something new turns up that nobody had put there. Same menu, different size.</p></div>
+<div class="rule" id="ch6-monstruo"><p class="rule-title">Optional rule · The monster does not tremble</p>
+<p>The card says how <em>the table</em> feels with the dice in hand, but the adversary is not holding them. If a horror fumbles and misses like a frightened protagonist, the fear goes flat: on Nightmare, a monster at +2 misses half its attacks (51&nbsp;%) and fumbles almost one in five (19&nbsp;%).</p>
+<p>A GM who knows the craft can have an adversary <strong>with a name</strong> —the nemesis, the thing in the cellar— make <strong>all its rolls on First Gear</strong>: red die only, TN 6. At the same +2 it hits 70&nbsp;% of the time and fumbles 10&nbsp;%.</p>
+<ul>
+<li><strong>Towards the centre.</strong> Not to the opposite extreme: a monster on Epic hits 91&nbsp;% and hardly ever fumbles, and that feels unfair.</li>
+<li><strong>Named ones only.</strong> Quick sheets roll on the table’s card: a cultist dropping his dagger is horror too.</li>
+<li><strong>Out loud.</strong> “This one rolls on First Gear.” NOGUM exists to declare what used to be done in secret.</li>
+</ul>
+<p><strong>Use it with great care.</strong> Oppression already brings frustration, and an enemy who does not even miss multiplies it; and if every blow takes a third of your health (Lethal health, <a href="#ch6-vida">6.4</a>), it takes people out of the fight a good deal faster. <span class="src">Decisión del autor · T169</span></p></div>
+<p><strong>Summary:</strong> first we see whether you get hit. Then, whether your armour or your reflexes save your life. <span class="src">T176</span></p>
+<p>Usual defence skills: Dexterity → Acrobatics to dodge; Vigour → Fortitude (with whatever protection you are wearing) to soak. <strong>You soak with the skill</strong>, armour or no armour: the body is the first protection. What decides whether it helps are the weapon’s tags —<span class="tag">Soak: Max N</span>, protection only removes N, and <span class="tag">Soak: None</span>, it removes nothing (<a href="#ch6-armas">6.3</a>)— and whatever bonuses the protection you are wearing adds. <span class="src">Decisión del autor</span></p>
+<p><strong>Mental, social and spiritual defence</strong>, by default (the table can change it to suit the fiction): against the <strong>social</strong>, dodge with Empathy and soak with Hierarchy; against the <strong>mental</strong>, dodge with Alertness and soak with Fortitude; against the <strong>spiritual</strong>, Protection if you have Arcane, and Fortitude if you don’t. <span class="src">T176</span></p>
+<p><strong>Hazards with no attacker.</strong> A fall, fire, the environment: nobody rolls the attack. They count as a successful attack of their level, or as a critical if they are extreme, and you defend if the spec sheet allows it. The huge ones carry a Reaper of their level, and anyone below it is taken out of the fight (<a href="#ch4-parca">4.5</a>). <span class="src">T176</span> <span class="src">C·l8</span></p>
+
+<h3 id="ch6-armas">6.3 Arsenal: the spec sheet</h3>
+<p>A weapon says which defence it cancels, and it cancels that and nothing more: it is the Key rule applied to combat, with the grenade as the example (<a href="#ch4-anula">4.2</a>). Instead of lists of dice (1d4, 1d8, 2d6), each weapon is defined by its <strong>physical properties</strong>, in three tags: <strong>dodge</strong> (<span class="tag">Dodge</span>), <strong>soak</strong> (<span class="tag">Soak</span>) and <strong>damage</strong> (<span class="tag">Damage</span>); sometimes a fourth, for the Grid, and its cost. Whatever the tag does not cancel is defended as normal (<a href="#ch6-golpes">6.2</a>). Combining them yields a huge number of distinct, flavourful weapons without adding complexity. <span class="src">T45</span> <span class="src">C·c3</span> <span class="src">C·22oct</span></p>
+<div class="tw"><table class="t">
+<thead><tr><th>Tag</th><th>Value</th><th>What it means</th><th>Examples</th></tr></thead>
+<tbody>
+<tr><td rowspan="3"><span class="tag">Damage X</span><br><small>How much damage does it do if it lands clean?</small></td><td>1 · Light</td><td>A&amp;E level: broken nose, bullet in the shoulder.</td><td>Punches, small knives, low-calibre bullets, short falls</td></tr>
+<tr><td>2 · Serious</td><td>ICU level: transfusion, internal injuries.</td><td>War swords, large-calibre revolvers, monster claws, 10 m falls</td></tr>
+<tr><td><strong>The Reaper</strong></td><td>Whatever lies beyond 2: a Key to damage (<a href="#ch4-parca">4.5</a>).</td><td>Artillery, war explosives, a car at full speed, a real fall</td></tr>
+<tr><td rowspan="5"><span class="tag">Dodge</span><br><small>Is it possible to get out of the way?</small></td><td>Full</td><td>You can dodge; your reduction can bring the damage down to 0.</td><td>Slow projectiles, melee attacks (arrows, fists)</td></tr>
+<tr><td>Partial</td><td>You can dodge, but even if you mitigate you take at least 1 point. <span class="flag ed">ED-9</span></td><td>Area attacks or bursts (shotguns, explosions, fire)</td></tr>
+<tr><td>Hard</td><td>You can dodge, at −2 to the roll. <span class="flag ed">ED-10</span></td><td>Fast energy blasts, martial techniques</td></tr>
+<tr><td>Easy</td><td>You can dodge, at +2 to the roll. <span class="flag ed">ED-10</span></td><td>Slow, heavy weapons, hand cannons</td></tr>
+<tr><td>None</td><td>Cancels the dodge: you cannot get out of the way. Your only hope is soaking.</td><td>Instant or mental attacks (laser, hypnotic gaze, surprise sniper); firearms, against anyone at level 1 (<a href="#ch5-equipo">5.6</a>) <span class="src">C·e8</span></td></tr>
+<tr><td rowspan="3"><span class="tag">Soak</span><br><small>Is armour any use?</small></td><td>Full</td><td>Protection is effective: a good roll can cancel the damage.</td><td>Daggers against plate</td></tr>
+<tr><td>Max N</td><td>The impact is so brutal that protection only helps a little: you reduce up to N points; the rest gets through as concussion.</td><td>War hammers</td></tr>
+<tr><td>None</td><td>Cancels the soak: armour is paper. Because of the size of the damage, or because it goes straight through.</td><td>Laser, armour-piercing rounds, monofilament katana, contact poison, psychic magic</td></tr>
+<tr><td rowspan="3"><span class="tag">Grid</span><br><small>What level does it reach?</small></td><td>Standard (omitted)</td><td>Does not affect levels above the bearer’s.</td><td>Almost every weapon</td></tr>
+<tr><td>Level N / Key N</td><td>The weapon is a level N Key: against anyone below, it cancels what it says; against anyone at level N, it gives the roll that would not exist without it (<a href="#ch4-anula">4.2</a>).</td><td>Room-clearing explosives, silver bullets against lycanthropes</td></tr>
+<tr><td>Ignores everything</td><td>Cuts gods: a Key whose <em>n</em> can be the world maximum, whether it is playable or not (<a href="#ch3-techos">3.7</a>). <span class="src">C·22oct</span></td><td>The vorpal sword <span class="src">T67</span></td></tr>
+<tr><td><span class="tag">Access</span> · Points · Keys<br><small>Is it within your reach? What does it cost you?</small></td><td>Access 0 · 1 · 2 · 3</td><td>The level of <em>Resources</em> you need to have it (0 everyday, 1 serious weapon, 2 military hardware, 3 what should not exist), and what it costs to carry it in the two purses. The three locks on equipment are in <a href="#ch5-equipo">5.6</a>; the tally, in <a href="#ch5-cuenta">5.4</a>.</td><td>Baseball bat (0), shotgun (2), anti-materiel rifle (3) <span class="src">C·e5</span> <span class="src">C·e8</span></td></tr>
+</tbody></table></div>
+<p class="note">Combat armour that raises your level across a whole sphere carries no Grid tag: it synchronises you (<a href="#ch3-sincro">3.8</a>).</p>
+<p><strong>A weapon’s maximum damage is 2.</strong> That is the ceiling, and it is deliberate: 1 and 2 are <em>the damage it makes sense to roll for</em>. A weapon of war is told apart from a knife by its other tags —no dodging, no soaking, long reach—, not by a bigger number, and the only thing that raises the number is the attacker’s critical (<a href="#ch6-golpes">6.2</a>). What lies above that is not a better weapon: it is <strong>an event</strong>, like a siege gun, a car at seventy or a bomb. It is <strong>the Reaper</strong>, a Key to damage with its own Grid level (<a href="#ch4-parca">4.5</a>); here you only see how it is written on the spec sheet. <span class="src">C·c2</span> <span class="src">C·l8</span></p>
+<div class="example">
+<p class="example-title">Horror example</p>
+<p>The GM tells you: “The sniper fires. It’s <span class="tag parca">The Reaper · Grid 2</span> <span class="tag">Dodge: None</span> <span class="tag">Soak: None</span>.”</p>
+<p><em>Translation:</em> the Reaper and the null soak take away your armour; the null dodge, your reflexes. If you are below level 2, there is nothing left to roll: you are out of the fight. You don’t roll defence. You don’t roll armour. Pray. <span class="src">T176</span></p>
+</div>
+<div class="rule" id="ch6-sin-etiqueta">
+<p class="rule-title">Anything without tags is not an attack</p>
+<p>Combat tags only make sense on something that does damage. A torch, a rope or a map do not carry them because they attack nobody; if someone uses the crowbar as a weapon, read it as <span class="tag">Dodge: Full</span> <span class="tag">Soak: Full</span>, which is the default value of anything that does not say otherwise.</p>
+<p>And because <strong>defence wins ties</strong> (<a href="#ch6-golpes">6.2</a>), these tags are the game’s main balance surface: a <span class="tag">Dodge: Full</span> weapon is stopped almost every time, and a <span class="tag">Dodge: None</span> one is not stopped. That is the difference between a long duel and a short gunfight, and it is why whatever a tag takes away from the other side’s defence has to be paid for (<a href="#ch5-cuenta">5.4</a>). <span class="src">C·e8</span></p>
+</div>
+<p>Full catalogue of weapons, protection, powers and vehicles, with their prices, in <a href="#apx-bazar">9.3 The Multiverse Bazaar</a>; the ones that are not there are built in <a href="#bz-fabrica">its workshop</a>.</p>
+<p><span class="flag drop">Dropped</span> The named damage types (Dirty, Lethal, Absolute) and the tags [SWIFT], [LETHAL], [AREA] and [INEVITABLE] were replaced by this explicit spec sheet <span class="src">T68</span>. “Hierarchy of Inevitability” remains as the name of the concept.</p>
+
+<h3 id="ch6-vida">6.4 Fractal health (the Russian doll)</h3>
+<p>Health in NOGUM works the same way in every game: there are <strong>four states</strong> of health (Healthy, Wounded, Critical and Out of the fight). But lethality is one of the most powerful ways to set the tone, and the solution is modular once again: the four states do not change, but <strong>how many hits it takes to reach each one</strong> does. It is a matter of how closely you look at health, and that level of detail we call <strong>zoom</strong>. <span class="src">Borrador, T35</span></p>
+<p>That four-state scale is a <strong>bar</strong>, and a character does not have just one: <strong>Physical</strong> is health, and <strong>Mental</strong> and <strong>Spiritual</strong> work the same way (<a href="#ch6-dano">6.5</a>).</p>
+<div class="fractal" aria-label="Fractal structure: 3 blocks, each with 3 boxes, each with 3 points">
+<div class="fr-block"><p>Block 1 · Healthy</p><div class="fr-cells"><span></span><span></span><span></span></div></div>
+<div class="fr-block"><p>Block 2 · Wounded</p><div class="fr-cells"><span></span><span></span><span></span></div></div>
+<div class="fr-block"><p>Block 3 · Critical</p><div class="fr-cells"><span></span><span></span><span></span></div></div>
+<p class="fr-caption">3 large blocks · 9 medium boxes (3 per block) · 27 points (3 per box). When the third block fills up: out of the fight.</p>
+</div>
+<div class="tw"><table class="t">
+<thead><tr><th>Zoom</th><th>Name</th><th>How it is used</th><th>Toughness</th><th>Tone</th></tr></thead>
+<tbody>
+<tr><td class="num">1</td><td><strong>Lethal</strong></td><td>The small boxes are ignored. Each point of damage ticks off a whole block: an attack ticks off 1, 2 or 3 blocks.</td><td>3 blocks and you are out</td><td>Lethal, gritty, immediate consequences</td></tr>
+<tr><td class="num">2</td><td><strong>Tactical</strong></td><td>All 9 boxes are used. An attack ticks off 1, 2 or 3.</td><td>There is room for error: long, tactical combat</td><td>Adventure, pulp, epic: control over the situation</td></tr>
+<tr><td class="num">3</td><td><strong>War</strong></td><td>All 27 points are used. Numerical, granular damage.</td><td>Long haul, war of attrition over resources</td><td>Attrition, anime, final bosses, armies, slow loss of humanity over several sessions</td></tr>
+</tbody></table></div>
+<ul>
+<li><strong>All three layouts are on the sheet.</strong> Table tip: mark half a cross in advance on the active boxes of the chosen zoom and complete the X when you take damage. If you tick off the large block, you can ignore everything inside it. The sheets for the 20 recipes (<a href="#ch9-recetas">9.4</a>) already come with their health chosen. <span class="src">T35</span></li>
+<li><strong>The zoom can be changed mid-game</strong> (<a href="#ch3-sincro">3.8</a>). <span class="src">T36</span> If damage is already marked, the proportion is kept —how many blocks are full and how much of the next one— and it is rounded in the character’s favour. <span class="src">T176</span></li>
+<li><strong>Bars come back whole when the threat ends, not when a fight ends.</strong> <strong>All of them</strong>: Physical, Mental, Spiritual and whatever the genre adds. What counts is being <strong>safe</strong>, objectively out of danger, and the GM declares it, because only the GM knows whether there are still eyes lurking in the dark. If the second fight arrives hot on the heels of the first, it is the same scene and the damage is still there. <span class="src">T177</span> <span class="src">T181</span></li>
+<li><strong>The bar is tension; the consequence is the crack.</strong> The bar is effort, pain, stress: a rubber band that stretches and, if it does not snap, goes back to its shape. When a blow fills a whole block, it crosses a <strong>threshold</strong> and leaves a <strong>consequence</strong>, which is no longer on the bar but on your sheet, and it stays (<a href="#ch6-consecuencias">6.6</a>) until something really heals it: treatment, time, a spell, a potion. If today you resisted temptation and the Spiritual bar did not crack, you are no more likely to fall tomorrow; if it cracked, you are. <span class="src">T177</span> <span class="src">T181</span></li>
+</ul>
+<div class="rule" id="ch6-fuera">
+<p class="rule-title">The fourth state is not called “dead”</p>
+<p>That is no accident. The rules take you out of the fight; a protagonist’s death is not decided by a roll, it is agreed (<a href="#ch0-muerte">0.7</a>). <span class="src">C·m3</span></p>
+<p><strong>Out of the fight</strong> means incapacitated: you lose consciousness, or you stay conscious clutching your guts and screaming for help. The non-negotiable part is that <strong>you cannot take part in the fight in any way</strong>: not physically, not with powers, not even by giving useful advice. Whether you wake up the next day is decided by the campaign’s tone or the player’s wishes, <strong>not by the dice</strong>. <span class="src">Texto del autor sobre combate</span></p>
+<p><strong>Out of the fight, you leave the scene.</strong> You come back when it ends, and your bar follows the usual rule. <span class="src">T176</span> <span class="src">T181</span> <span class="src">T183</span></p>
+</div>
+
+<h3 id="ch6-dano">6.5 Damage systems: physical, mental and spiritual</h3>
+<p>NOGUM uses the same fractal bar for the character’s three dimensions: Physical, Mental and Spiritual, plus whatever the genre adds. Stress and morale work exactly like physical damage. <span class="src">C·c6</span></p>
+<div class="tw"><table class="t">
+<thead><tr><th>Bar</th><th>Sources</th><th>What heals its consequences <span class="src">T181</span></th><th>When full</th></tr></thead>
+<tbody>
+<tr><td><strong>Physical</strong> (health)</td><td>Weapons, falls, poison</td><td>Medicine, rest, time</td><td>Out of the fight (unconscious or incapacitated)</td></tr>
+<tr><td><strong>Mental</strong> (stress, sanity)</td><td>Terror, social pressure, psychological torture, public humiliation. A devastating insult can be <span class="tag">Damage 2</span> <span class="tag">Soak: None</span></td><td>Rest, support, therapy</td><td>Panic, catatonia, breakdown: out of the scene. Not death; you simply cannot take part any more</td></tr>
+<tr><td><strong>Spiritual</strong> (corruption, essence)</td><td>Dark magic, breaking moral codes, attacks from spectres</td><td>Rituals, redemption, arcs</td><td>The character loses narrative control and passes into the GM’s hands as a monster, villain or avatar (only if agreed, <a href="#ch0-muerte">0.7</a>)</td></tr>
+</tbody></table></div>
+<p>Social or reputational attacks go to the Mental bar, by default. And a campaign can rename a bar or create its own: Honour for samurai, Reputation for superheroes, Empathy in cyberpunk, Blood for vampires. <span class="flag ed">ED-11</span></p>
+
+<div class="rule">
+<p class="rule-title">The genre gives the name; the cause gives the bar</p>
+<p>Renaming a bar is fine; what cannot be chosen to taste is <strong>which bar it hangs from</strong>, because healing, penalties and what happens when it empties all depend on that. <span class="flag ed">ED-39</span> <strong>Body</strong> if what wears you down is physical. <strong>Mind</strong> if it is cognitive: your head breaking, and nobody else lives in there. <strong>Spirit</strong> if it is supernatural: something gets in, something stays, something claims you, and it usually has a will of its own.</p>
+<p>The example that teaches the whole thing is <strong>Humanity</strong>, which under the same name falls under different bars: in the gothic there is a <strong>Beast</strong> inside you that gains ground every time you give in, and that is Spirit; in cyberpunk nobody is inside —cyberpsychosis is your own head ceasing to recognise other people—, and that is Mind. Which is why its cracks heal differently. <span class="src">T181</span> <span class="src">T183</span></p>
+<p><strong>And if there is no Arcane in your world, there is no Spiritual bar:</strong> it is not empty, it does not exist. Whatever would be Spirit elsewhere falls under Mind, and the table agrees whether that bar can retire a character. The names by genre, with what gets lost, are in <a href="#ch9-tablas">the problem tables</a>.</p>
+</div>
+
+<h4 id="ch6-palabras">Words are weapons</h4>
+<p>There is no “combat system”; there is a <strong>conflict system</strong>. The Mental and Spiritual bars have boxes just like the Physical one, so words also have calibre and lethality. <span class="src">T137–T138</span></p>
+<ul>
+<li><strong>Interrogation:</strong> five hours of aggressive questioning. The cop rolls Intimidation and, on a hit, deals <span class="tag">Mental Damage 1</span>. When the suspect fills a block, they crack and confess.</li>
+<li><strong>Horror:</strong> watching an abyssal creature devour a friend is a passive attack <span class="tag">Mental Damage 2</span> <span class="tag">Dodge: None</span>, straight to the sanity.</li>
+<li><strong>Trial or royal court:</strong> a lawyer corners a witness by rolling Persuasion or Deception: <span class="tag">Mental Damage 2</span>. If she empties their bar, the witness loses all credibility and is dropped from the case.</li>
+</ul>
+<p>And they are stopped like any blow, with the default defences of <a href="#ch6-golpes">6.2</a>. There is a list of social weapons in <a href="#bz-social">the Bazaar</a>. <span class="src">T176</span> <span class="src">T183</span></p>
+
+<h4 id="ch6-mental">What mental and spiritual damage actually does</h4>
+<p>The bar is the same and the thresholds are the same; what changes is what filling them means. This is the reading block by block:</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Block</th><th>Mental (stress, sanity)</th><th>Spiritual (essence, corruption)</th></tr></thead>
+<tbody>
+<tr><td><strong>1 · Healthy</strong><br><small>no penalty</small></td><td>It shows, but you are holding: you smoke more, talk less, replay the scene at night. Colour, not mechanics.</td><td>Something has gone cold. You sleep badly, prayers ring hollow, the house animal avoids you.</td></tr>
+<tr><td><strong>2 · Wounded −2</strong><br><small>first block full</small></td><td>You avoid whatever broke you. You cannot lie smoothly, lead, or fake calm: any action that needs composure takes −2.</td><td>The corruption is visible to anyone who knows how to look. Holy symbols bother you, powers come out crooked, people step aside without knowing why.</td></tr>
+<tr><td><strong>3 · Critical −4</strong><br><small>second block full</small></td><td>Paranoia or collapse. You refuse help, or you cannot tell friend from threat. Complex actions fall apart on their own.</td><td>You are no longer entirely your own: the GM dictates one of your actions per scene, or your powers charge double.</td></tr>
+</tbody></table></div>
+<p>Bar penalties <strong>add up</strong>: if you are Wounded in Physical and in Mental and the action calls for body and nerve, you roll at −4. The total stays within the Anchor: below −2, the GM decides whether there is a roll, and if there is, it is at −2 (<a href="#ch2-limites">2.5</a>). And on top of that there are three different ways to be taken out, and clever enemies go for whichever one you have fullest. <span class="src">C·22oct</span></p>
+
+<div class="rule">
+<p class="rule-title">A flaw is the scar of a filled block</p>
+<p>Advantages and flaws are bought, and they happen (<a href="#ch5-dones">5.8</a>); when they happen, they happen here. <span class="src">C·22oct</span> <strong>When a block of your Mental or Spiritual bar fills up and you later heal, the −2 goes away but something named stays behind.</strong> <span class="flag ed">ED-35</span></p>
+<p>That something is the flaw: the insomnia, the debt, the tic, the fear of water, the name you cannot say out loud. It carries no number; it carries consequences. And the day you play it against yourself when it did not suit you, it is one of the seven things this table rewards (<a href="#ch5-premios">5.8</a>). The advantage works the same way from the other side, when the fiction owes you one: the scar that makes you recognisable, the dying man’s favour, the strange calm of someone who has already been there.</p>
+</div>
+
+<h3 id="ch6-consecuencias">6.6 Catalogue of consequences</h3>
+<p>When accumulated damage fills a <strong>large block</strong> (through a lethal hit or through piled-up points), the character crosses a threshold and receives a narrative and mechanical consequence.</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Threshold</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><strong>1 · Moderate wound</strong><br><small>1st block full</small></td><td><strong>−2</strong> to related actions</td></tr>
+<tr><td><strong>2 · Severe wound</strong><br><small>2nd block full</small></td><td><strong>−4</strong> and loss of complex abilities</td></tr>
+<tr><td><strong>3 · Incapacitation</strong><br><small>3rd block full</small></td><td>End of the scene for the character: out of the fight.</td></tr>
+</tbody></table></div>
+<p>Each box that fills within the same block can add a new narrative nuance, so that taking more hits does not feel meaningless. <span class="src">Texto del autor sobre combate</span></p>
+
+<h4 id="ch6-ejemplos">Five examples per threshold</h4>
+<p>So that it is not always “swollen eye”: roll one, or pick whichever fits how you were hit.</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Bar</th><th>Threshold 1 · Moderate wound (−2)</th><th>Threshold 2 · Severe wound (−4)</th></tr></thead>
+<tbody>
+<tr><td><strong>Physical</strong></td><td>Swollen eye (perception fails) · Broken hand (nothing two-handed) · Cracked ribs (no running, no shouting) · Twisted ankle (half movement) · Deaf in one ear (you lose the direction of sound)</td><td>Arterial bleeding (3-turn countdown) · Useless leg (movement 0) · Hanging arm (one hand for everything) · Punctured lung (one sentence per turn) · Concussion (you confuse the order of events)</td></tr>
+<tr><td><strong>Mental</strong></td><td>Tremor (no Stealth, no fine control) · Doubt (you cannot lead) · Flashback (you lose the first turn of every fight) · Stammer (you cannot lie smoothly) · Fixation (you only see the threat that broke you)</td><td>Paranoia (you refuse help from allies) · Hallucinations (the GM decides whether what you see is there) · Mutism (you do not speak, you write) · Fury (you attack whatever is nearest if wounded) · Dissociation (you narrate in the third person; your own body stops mattering)</td></tr>
+<tr><td><strong>Spiritual</strong></td><td>Grey aura (animals avoid you) · Bad luck (the GM rerolls one roll against you per scene) · No reflection (mirrors and cameras hate you) · Insomnia (short rests no longer heal you) · Marked name (things on the other side know what to call you)</td><td>Partial possession (the GM dictates one of your actions per scene) · Magical void (your powers cost double) · Hunger (you need something you should not need) · Stranger’s shadow (your shadow does not do what you do) · Open pact (something has the right to ask you a favour)</td></tr>
+</tbody></table></div>
+<p>In an epic tone you pick the showy ones, and everything will probably be fixed with a beer at the inn or a potion; in a gritty game you pick the ones that get in the way and take weeks. The same table works for both kinds of game because what changes is not the list: it is how long it lasts. <span class="src">Texto del autor sobre combate</span></p>
+
+<h4 id="ch6-curacion">Healing</h4>
+<ul>
+<li><strong>Gritty or realistic game:</strong> threshold 1 consequences, hours to days; threshold 2, days to weeks; threshold 3, weeks to months. An implant, a potion or a magical bath can skip those timeframes.</li>
+<li><strong>Battle with no narrative weight</strong> for the character: light consequences, with a simple cure, but none of them disappears on its own. What a simple cure means is up to the universe: in the animated world, a change of panel; in a hyper-realist one, a whole session in A&amp;E. <span class="src">T181</span> <span class="src">T183</span></li>
+<li><strong>Battle tied to the character’s personal story:</strong> physical or mental wounds leave permanent or hard-to-heal after-effects, which can only be healed through another significant arc, not through a long or expensive process.</li>
+</ul>
+
+<h4 id="ch6-costes">The four-cost menu (success at a cost)</h4>
+<p>On the cards with success at a cost (<a href="#ch1-tirada">1.3</a>: Unleashed Pulp and Black Comedy), the GM should avoid falling back on “you manage it, but you lose a hit point”. Choose a cost: <span class="src">T137–T138</span></p>
+<ol>
+<li><strong>Time:</strong> you manage it, but it takes too long. You open the safe, but the guards are already in the corridor. Roll initiative.</li>
+<li><strong>Resource:</strong> you manage it, but you break something. You kill the zombie, but the bat splinters and you are left without a weapon.</li>
+<li><strong>Position:</strong> you manage it, but you are left exposed. You jump the wall, slip and land on your back; the enemy has you in their sights.</li>
+<li><strong>Friendly fire:</strong> you manage it, but you harm an ally or the group. The explosion kills the monster, but it also takes out the only radio.</li>
+</ol>
+
+<h3 id="ch6-ejemplo">6.7 A scene, from start to finish</h3>
+<p>This is how everything above sounds at the table. Inés, a court vampire (her sheet is built step by step in <a href="#ch7-ines">7.2</a>), has Grid 2 in Physical, Brawling +2 and Style +2. Tomás, a human hunter, has Grid 1 in everything, Brawling +2 and a Brawling Key: one level above across the whole Discipline, against anyone (<a href="#ch4-llave">4.1</a>). Tonight they go into the house of the Margrave, a vampire with Grid 2 in Physical and Acrobatics +2. At the door, a human doorman, Grid 1.</p>
+<div class="example">
+<p class="example-title">The Margrave’s house</p>
+<p><strong>The card.</strong> The court is played on <strong>Realist</strong> (<a href="#tono-np">1.4</a>): both d10s are rolled and added, TN 11; fumble if the sum is 2–3, critical if it is 19–20, and no success at a cost. The guards (<a href="#ch6-iniciativa">6.1</a>) put Inés first, Tomás second and the Margrave last.</p>
+<p><strong>The gap.</strong> Inés against the doorman: both in Physical, and she is one level above. The doorman has no right to roll, neither to stop her nor to touch her, and Inés does not roll to hit, because she hits (<a href="#ch3-nivel">3.1</a>). She only wants to know how, so she rolls Style (<a href="#ch3-estilo">3.5</a>): 6 and 5, eleven, plus two, 13. It beats the TN: success, you look magnificent. Inés folds him against the door frame without spilling her glass.</p>
+<p><strong>The Key.</strong> Tomás lunges at the Margrave with a stake (<span class="tag">Damage 1</span> <span class="tag">Dodge: Hard (−2)</span> <span class="tag">Soak: Full</span>, from the <a href="#bz-gotico">Bazaar</a>). Without a Key he would have no roll; with his, in Brawling they are level, and the whole sequence is played, with his full bonus (<a href="#ch4-anula">4.2</a>). The impact: 8 and 4, twelve, plus two, 14. Success: the stake connects (<a href="#ch6-golpes">6.2</a>). The Margrave dodges with Acrobatics +2, but the stake makes his dodge hard, −2, and he rolls at +0: 4 and 3, seven. Failure. Full damage: one box.</p>
+<p><strong>What the Key does not cover.</strong> It is the Margrave’s turn, and he goes for Tomás. Tomás’s Key is for Brawling, not for Acrobatics or Fortitude: it lets him strike, not defend himself. So there is no roll, neither to hit nor for damage: the defeat is narrated. The Margrave lifts him by the neck and throws him against the fireplace, and Tomás is out of the fight (<a href="#ch6-vida">6.4</a>).</p>
+<p><strong>On a par.</strong> That leaves Inés. She and the Margrave are both at Grid 2 in Physical: from here on the dice are rolled as normal, blow by blow, as between two humans.</p>
+</div>
+
+<h3 id="ch6-aclaraciones">6.8 Clarifications</h3>
+<p>The areas that have been hardest to pin down. Each case applies a rule from the chapter; it adds none. What happens when attacker and defender are not at the same level lives in <a href="#ch3-nivel">3.1</a> and <a href="#ch4-anula">4.2</a>, and the scene in <a href="#ch6-ejemplo">6.7</a> shows it at the table.</p>
+<p><strong>Can a weapon deal Damage 3?</strong> With a critical or with the defender’s fumble, yes: Damage 2 plus the +1. And with both at once, Damage 4, because they add up. As a tag, no: whatever lies above 2 is the Reaper (<a href="#ch4-parca">4.5</a>).</p>
+<p><strong>If I match the attacker with a dodge, do I always get away with it?</strong> Only if the weapon allows it: with <span class="tag">Dodge: Partial</span> you eat at least 1 point (<a href="#ch6-golpes">6.2</a>).</p>
+<p><strong>We have won a fight. Do the bars come back?</strong> Only if the GM declares that you are safe. Consequences do not come back with the bar: they are healed (<a href="#ch6-vida">6.4</a>).</p>
+<p><strong>The hero rolls on one card and the monster on another. How are they compared?</strong> By result levels, each read on its own card (<a href="#ch8-velocidades">8.3</a>).</p>
+</section>
+
+<section class="chapter" id="ch8">
+<h2>Chapter 8 · The Mixing Desk</h2>
+<p class="lede">The rules are the knobs on a desk, and the GM moves them so that the table feels what it agreed in <a href="#ch0">session zero</a>. This chapter brings no new rules: it brings craft. How to diagnose the tone, where to start from, how fast to move it and what to do when what the dice say is not what the table feels. <span class="src">C·t6</span></p>
+<p>In NOGUM, the GM is not an impartial physics simulator: they are the sound engineer at a mixing desk. Their job is not to apply the rules blindly, but to choose <em>which rules</em> apply in order to achieve the emotion they are after. If the previous chapters were the science, this one is the art. And art is about feelings, not maths: breathe.</p>
+<div class="rule">
+<p class="rule-title">The black box</p>
+<p>This system is demanding for the GM, <strong>and only for the GM</strong>. The player does not even need to read the rulebook. <span class="src">T65</span></p>
+<p class="formula-line">The player declares (narrative) → the GM checks the card, the Grid and the spec sheet (hidden mechanics) → the GM narrates the consequence</p>
+<p>“You declare the action and roll. I’ll tell you what happens.” The GM is encouraged to interpret everything and speak in narrative terms. The curious player can peek behind the curtain as far as they like.</p>
+</div>
+<aside class="meta"><p>It asks a lot of the GM? That is a virtue, not a flaw. Other games are a point-and-shoot camera: anyone can take a decent photo, but they all look alike. NOGUM is an SLR on manual. You can mess it up, sure, but it is the only way to take exactly the photo you have in your head. <span class="src">T72</span></p></aside>
+
+<h3 id="ch8-diagnostico">8.1 How to identify the tone (the diagnosis)</h3>
+<p>Before starting a campaign, or even a scene, ask yourself two questions to calibrate the axes. Do not ask “what are we playing?”, but “how does the world feel?”.</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Question</th><th>Answer</th><th>Axis</th><th>Symptom</th></tr></thead>
+<tbody>
+<tr><td rowspan="3"><strong>1. Does the universe have favourites?</strong><br><small>Optimism</small></td><td>“Yes, us.”</td><td>High: keep the best of 2d10</td><td>The heroes jump out of the window and land on an awning, not on the tarmac. Luck is a superpower.</td></tr>
+<tr><td>“No, nobody.”</td><td>Neutral: a single die, or the sum if physics is clockwork <span class="flag ed">ED-13</span></td><td>Actions have logical consequences. If you get shot, you bleed. Justice is blind.</td></tr>
+<tr><td>“Yes, the monsters.”</td><td>Low: keep the worst of 2d10</td><td>Hope is a trap. If something can go wrong, it will go worse.</td></tr>
+<tr><td rowspan="3"><strong>2. Is physics reliable?</strong><br><small>Chaos</small></td><td>“It’s clockwork.”</td><td>Low: narrow bands; with neutral optimism, the sum</td><td>An expert (+4) rarely fails at their own thing. Tactical planning works.</td></tr>
+<tr><td>“It’s a film.”</td><td>Medium</td><td>There are surprises, but the plot moves forward.</td></tr>
+<tr><td>“It’s madness.”</td><td>High: wide bands, and on two cards, success at a cost</td><td>Constant extreme results: hilarious fumbles and impossible successes. Logic is subordinated to spectacle (or to the joke).</td></tr>
+</tbody></table></div>
+<p>With both answers, find your square on the <a href="#ch1-panel-cuadrante">quadrant in 1.4</a> and take the card that goes with it.</p>
+<p><strong>Nasty or weird?</strong> If you are torn between pessimism and chaos, use the heist test (<a href="#ch1-ejes">1.1</a>): does the plan fail because the enemy is competent and cruel, or because something absurd happens?</p>
+
+<h3 id="ch8-defecto">8.2 Default tone (the safety net)</h3>
+<p>What if you are not sure? What if your players just want to “play an RPG” without philosophising about narrative? NOGUM recommends a standard setup that works for the vast majority of adventures.</p>
+<div class="rule">
+<p class="rule-title">“Classic Adventure” mode (First Gear)</p>
+<ul>
+<li><strong>Neutral optimism.</strong> We only pay attention to one die. There is no noticeable curve. It is as simple as it gets.</li>
+<li><strong>Medium chaos.</strong> No curves and no extra rules: the search for tone goes unnoticed. Ideal for “I don’t want to stop and think about tone”.</li>
+<li><strong>Health on the Tactical zoom</strong> (9 boxes, <a href="#ch6-vida">6.4</a>). We want them to take damage, but not to drop from a single blow.</li>
+</ul>
+<p><strong>Tip:</strong> if you get stuck, put the desk in this mode. It is the autopilot. There is no rush: start exploring whenever you feel like it.</p>
+</div>
+
+<h3 id="ch8-velocidades">8.3 The three speeds of tone</h3>
+<p>Tone moves by campaign, arc, session, scene or character, within what was agreed in session zero (<a href="#ch1-mueve">1.5</a>). Here is the how. NOGUM’s modularity can be intimidating: do not try to mix live from day one. NOGUM grows with you.</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Speed</th><th>How</th><th>Example</th><th>For whom</th></tr></thead>
+<tbody>
+<tr><td><strong>1 · Campaign tone</strong> (static)</td><td>You decide the tone in <a href="#ch0">session zero</a>, before making the sheets, and it is not touched.</td><td>“We’re going to play a space horror campaign: Anguish card and health on the Lethal zoom.” The whole campaign, from the bar to the final boss, uses those rules.</td><td>Recommended for starting out. Consistent and easy, although it can become monotonous.</td></tr>
+<tr><td><strong>2 · Per arc or per session</strong> (episodic)</td><td>You change the tone when the setting, the chapter or the session changes.</td><td>After five sessions of horror in the trenches, a gala party in the capital: “Today is an episode of intrigue and downtime: Realist card and mental damage.”</td><td>Once the group is comfortable. It freshens up the experience; the players feel the change in the dice.</td></tr>
+<tr><td><strong>3 · Per scene</strong> (absolute modularity)</td><td>You change the tone scene by scene to follow the music and the tension.</td><td>On entering the boss’s chamber: “You feel an unnatural cold. The music changes.” And the GM points at the Anguish card.</td><td>Master level, improvised jazz. The mechanical shift creates a real fear that no description can match.</td></tr>
+</tbody></table></div>
+<p>And one step further: <strong>different tones for each character</strong> at the same table (the chosen hero rolls with the Epic card while their cursed companion rolls with Nightmare). <span class="src">T7</span> Each actor rolls with their own card. In a clash, <strong>result levels are compared, not totals</strong>, each read on its own card. <span class="src">T176</span></p>
+<p>With the darkest tones, such as Tragedy, it is best not to stay too long at a stretch (<a href="#ch1-tragedia">1.4</a>). <span class="src">C·22oct</span></p>
+
+<h4 id="ch8-senal">The cue: switching without breaking immersion</h4>
+<ul>
+<li><strong>Music is the trigger.</strong> Tense violins announce horror; rock or fast electronica announce action. The change of song is the cue to pick up the dice a different way.</li>
+<li><strong>The narrative call.</strong> Once the group understands the game, drop the technical names. Instead of “we’re switching to Black Comedy”: “Reality starts to flicker and you feel logic melting away…” (and the GM sets the blue die aside and smiles). <span class="src">T60</span></li>
+</ul>
+<div class="tw"><table class="t">
+<thead><tr><th>If the rule is…</th><th>You narrate…</th></tr></thead>
+<tbody>
+<tr><td>Switch to low optimism</td><td>“You feel a weight in your stomach. Suddenly you realise nobody is coming to save you here.”</td></tr>
+<tr><td>Switch to high chaos</td><td>“Reality flickers. The logic of cause and effect has gone on holiday. Now anything is possible.”</td></tr>
+<tr><td>Switch to Epic</td><td>“The music swells. You feel the absolute certainty that you cannot fail.”</td></tr>
+<tr><td>Weapon with <span class="tag">Dodge: None</span> <span class="tag">Soak: None</span></td><td>“Don’t try to dodge. If they shoot, they’ll hit you. All you can do is take cover or go down.”</td></tr>
+<tr><td>Grid gap</td><td>“It’s like punching a mountain. It doesn’t even flinch.”</td></tr>
+<tr><td>Damage threshold 2</td><td>“Forget the scratches. That blow broke something inside. You’re fighting to stay conscious.”</td></tr>
+</tbody></table></div>
+<div class="rule">
+<p class="rule-title">The right not to switch</p>
+<p>If you do not like modularity, this rulebook is still your home. <strong>Do not switch mid-game if you do not need to.</strong> It is perfectly valid to play a whole campaign in Epic, or always adding the dice together. NOGUM helps you find <em>your</em> tone: you set it up once at the start and, if you do not touch the knobs, it runs like clockwork. Use it to emulate the genre you love, not the one the rulebook imposes on you. <span class="src">T60</span></p>
+</div>
+<aside class="meta"><p>Who is this for? For anyone who finds that their usual system does not give them the tone of their favourite saga, or that some other system has weird dice. Here, every choice is acceptable. <span class="src">T60</span></p></aside>
+
+<h3 id="ch8-disonancia">8.4 Ludonarrative dissonance (the invisible enemy)</h3>
+<p>The greatest danger in roleplaying is when what the system <em>says</em> contradicts what the table <em>feels</em>. NOGUM gives you tools to fix it.</p>
+<dl class="symptoms">
+<dt>Symptom A · Comfortable laughter in horror</dt>
+<dd><strong>Problem:</strong> you narrate a horrific scene and the players crack jokes and roll the dice cheerfully. Mind the difference: <em>nervous</em> laughter is not the problem, it is horror working —whoever is having a bad time laughs—. The symptom is <strong>comfortable</strong> laughter, from someone who knows nothing is going to happen to them. <strong>Diagnosis:</strong> the system is too kind and they feel safe. <strong>Solution:</strong> if <a href="#ch0-sentir">session zero</a> allowed going that low, lower the optimism and announce the switch to the worst of 2d10. When a professional (+2) sees their success rate drop from 91 % to 49 % (<a href="#apx-mates">Appendix B</a>), the laughter will stop. Mechanical fear breeds narrative fear. <span class="flag ed">ED-14</span></dd>
+<dt>Symptom B · Boredom in combat</dt>
+<dd><strong>Problem:</strong> they have been slugging it out with the boss for an hour, have only knocked off half its health, and are looking at their phones. <strong>Diagnosis:</strong> you used the War zoom (27 points) when you did not need to, or chaos is too low and the same thing keeps happening. <strong>Solution:</strong> raise the chaos and the lethality. Switch to a smaller zoom so that the next blow, whoever lands it, ends the fight.</dd>
+<dt>Symptom C · The table is tired (the human factor)</dt>
+<dd><strong>Problem:</strong> you have a dense, serious political investigation ready (low chaos), but it is Friday night, it has been a hard week and all they want is beer and explosions. <strong>Diagnosis:</strong> the tone of the universe clashes with the mood at the table. <strong>Golden rule: <a href="#ch0">the table rules</a>.</strong> Do not force drama if they are asking for comedy. Turn the dials, within what was agreed: make the investigation a car chase (raise the chaos) and the debate a bar brawl. NOGUM lets you save the session by adapting the game’s physics to your friends’ energy.</dd>
+</dl>
+</section>

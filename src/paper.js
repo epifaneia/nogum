@@ -142,7 +142,7 @@
   }
 
   function typeset(done){
-    book.style.zoom = '';
+    unfit();
     book.innerHTML = '';
     document.documentElement.lang = lang;
     status.textContent = UI[lang].typeset;
@@ -158,7 +158,7 @@
       var h2 = sec.querySelector(':scope > h2');
       if (h2) {
         if (!h2.id) { h2.id = sec.id || ('s-' + entries.length); sec.setAttribute('data-cap', sec.id || h2.id); sec.removeAttribute('id'); }
-        entries.push({id:h2.id, title:cleanTitle(h2), level:2});
+        entries.push({id:h2.id, title:cleanTitle(h2), level:(/^\s*\d+\.\d/.test(cleanTitle(h2)) ? 3 : 2)});
       }
       sec.querySelectorAll('h3[id]').forEach(function(h3){ entries.push({id:h3.id, title:cleanTitle(h3), level:3}); });
     });
@@ -207,12 +207,24 @@
         }
       }
       if (i < queue.length) { status.textContent = UI[lang].typeset + ' ' + book.children.length; setTimeout(step, 0); return; }
-      finish(entries); if (done) done();
+      fixOrphans(); finish(entries); if (done) done();
     }
     step();
   }
 
   /* ---------- after layout ---------- */
+  function fixOrphans(){
+    var ss = book.querySelectorAll('.sheet');
+    for (var k = 0; k < ss.length - 1; k++) {
+      var b = ss[k].querySelector('.sb'), nb = ss[k+1].querySelector('.sb');
+      if (!b || !nb) continue;
+      var l = b.lastElementChild;
+      while (l && l.tagName === 'DIV' && l.classList.contains('tw') && !l.querySelector('tbody tr')) { b.removeChild(l); l = b.lastElementChild; }
+      if (!l || !isHead(l) || b.children.length < 2) continue;
+      nb.insertBefore(l, nb.firstElementChild);
+      if (nb.scrollHeight > nb.clientHeight + 1) b.appendChild(l);
+    }
+  }
   var sheetInfo = [];
   function finish(entries){
     var sheets = Array.prototype.slice.call(book.querySelectorAll('.sheet'));
@@ -234,12 +246,14 @@
     labels();
     trackActive(entries, pageOf);
   }
+  function unfit(){ book.style.transform = ''; book.style.marginLeft = ''; book.style.marginRight = ''; book.style.marginBottom = ''; }
   function fit(){
-    book.style.zoom = '';
+    unfit();
     var avail = document.querySelector('main').clientWidth - 32;
     var w = book.getBoundingClientRect().width || 794;
     var z = Math.min(1, avail / w);
-    book.style.zoom = z < 1 ? String(z) : '';
+    if (z < 1) { var h = book.offsetHeight; book.style.transform = 'scale(' + z + ')';
+      book.style.marginLeft = '16px'; book.style.marginRight = (-(1 - z) * w) + 'px'; book.style.marginBottom = (-(1 - z) * h) + 'px'; }
   }
   var fitT; window.addEventListener('resize', function(){ clearTimeout(fitT); fitT = setTimeout(fit, 120); });
 
@@ -344,8 +358,8 @@
       typeset(function(){ var el = at && document.getElementById(at); if (el) el.scrollIntoView({block:'start'}); });
     });
   });
-  window.addEventListener('beforeprint', function(){ book.dataset.z = book.style.zoom; book.style.zoom = ''; });
-  window.addEventListener('afterprint', function(){ book.style.zoom = book.dataset.z || ''; root.removeAttribute('data-print'); });
+  window.addEventListener('beforeprint', function(){ unfit(); });
+  window.addEventListener('afterprint', function(){ fit(); root.removeAttribute('data-print'); });
 
   /* ---------- start ---------- */
   labels();
@@ -358,5 +372,6 @@
       if (el) el.scrollIntoView({block:'start'});
     });
   }
-  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(start); setTimeout(start, 2500); } else start();
+  var SAMPLE = (function(){ var t = ''; document.querySelectorAll('template').forEach(function(x){ t += x.content.textContent; }); return Array.from(new Set(t.replace(/\s/g, ''))).join(''); })();
+  if (document.fonts && document.fonts.load) { Promise.all(['400 1em "Source Serif 4"','italic 400 1em "Source Serif 4"','600 1em "Source Serif 4"','700 1em "Ibarra Real Nova"','italic 400 1em "Ibarra Real Nova"','800 1em "Big Shoulders Display"','600 1em "Big Shoulders Display"','400 1em "JetBrains Mono"','600 1em "JetBrains Mono"'].map(function(f){ return document.fonts.load(f, SAMPLE).catch(function(){}); })).then(function(){ return document.fonts.ready; }).then(start, start); setTimeout(start, 6000); } else start();
 })();

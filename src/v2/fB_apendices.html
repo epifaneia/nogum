@@ -1,0 +1,1025 @@
+<section class="chapter" id="apx-maquinas">
+<h2>Apéndice A · La Sala de Máquinas</h2>
+<p class="lede">Aquí está el motor con la tapa quitada: por qué cada tarjeta lee los dos dados como los lee, cuánto sale adelante con cada bono y cuánto cuesta ser alguien. Para jugar basta con <a href="#ch1-tirada">1.3</a>; esto es el porqué.</p>
+<aside class="meta"><p>Aviso: este apéndice es contenido técnico. Si las probabilidades te dan urticaria, puedes saltártelo entero y volver a las tarjetas (<a href="#ch1-panel">1.4</a>). Las tarjetas funcionan igual aunque no sepas por qué. Aquí se viene a mirar el motor con la tapa quitada.</p></aside>
+<p>Todas las cifras de este apéndice salen de una enumeración exacta de las combinaciones posibles: 10 con un dado y 100 con dos. No son redondeos ni simulaciones. Siguen las reglas del manual: la pifia y el crítico se leen <strong>en el número que usas</strong> (el rojo, la suma, el mejor o el peor de dos), <strong>sin bonos</strong>, y tienen prioridad sobre el total <span class="flag ed">ED-1</span><span class="src">C·t4</span>. El resto se resuelve con <em>lectura + bono total</em> contra la TN de la tarjeta activa.</p>
+<h3 id="maq-equilibrio">A.1 El punto de equilibrio: un dado, caos neutro</h3>
+<p>¿Qué es lo «normal»? En la vida real, una distribución plana es una locura: un cirujano experto que cometiera un error garrafal una de cada diez veces sería caos puro. Aun así, el hobby lleva décadas tirando un único dado lineal (el d20 de la mazmorra y la estepa, el d100 de los pulpos antediluvianos), y la mesa lo siente como «lo normal». NOGUM toma esa costumbre como punto de partida. <strong>Un dado lineal es el Caos Neutro</strong> <span class="src">T14</span>. Con 1d10, cada cara vale un 10 %, y un Gran Maestro (+4) contra TN 6 acierta un 90 %: solo falla con el 1 natural. Es emocionante, pero poco profesional.</p>
+<h3 id="maq-orden">A.2 Herramientas de orden: sumar dados</h3>
+<p>Al sumar dados, los resultados se amontonan en el centro (el teorema central del límite, la campana de Gauss). Con 2d10 sumados, cada extremo (2 o 20) sale solo un 1 % de las veces, y el valor central, 11, sale un 10 %. La suerte pierde peso y la competencia lo gana: eso es <strong>orden</strong> (Caos Bajo).</p>
+<ul><li><strong>Un simulador de la vieja escuela</strong> tira 3d6 (3–18, media 10,5). Un 10 o un 11 sale un 25 % de las veces, y un 3 o un 18 apenas un 0,93 %. Es el ejemplo clásico de un mundo fiable.</li><li><strong>El sistema de los dados de más y menos</strong> tira 4dF (−4 a +4). El 0 sale un 23,46 % de las veces y los extremos ±4 solo un 2,47 %: la ficha manda sobre el dado.</li></ul>
+<h3 id="maq-caos">A.3 Sucumbiendo al caos</h3>
+<p>Para subir el Caos hay dos palancas que no tocan la media:</p>
+<dl><dt>A.3.1 Ampliar los rangos naturales</dt><dd>Más caras del dado se convierten en pifia o crítico. Con 1d10, pasar de «1 y 10» a «1–2 y 9–10» dobla los extremos: del 20 % al 40 % de las tiradas. Solo tiene sentido porque la pifia y el crítico son naturales: el bono no los toca. Es lo que hace la Comedia negra sobre el dado rojo. <span class="src">T5</span></dd><dt>A.3.2 El éxito parcial</dt><dd>Una franja de resultados pasa a ser «sí, pero…». Es el corazón de <em>los sistemas de movimientos</em>, que tiran 2d6: con 6 o menos se falla (41,67 %), con 7–9 se tiene un éxito con coste (41,67 %) y con 10 o más, un éxito total (16,67 %). Así se elimina el punto muerto: siempre ocurre algo. En la mazmorra y la estepa el equivalente clásico es el crítico con 20 natural. Es el éxito con coste del Pulp desenfrenado y de la Comedia negra. <span class="src">T3</span></dd></dl>
+<h3 id="maq-optimismo">A.4 Las palancas del optimismo y del terror</h3>
+<p><strong>Optimismo: quedarse el MEJOR de 2.</strong> Es la ventaja de la mazmorra y la estepa, 5.ª edición, y los dados de bonificación de los pulpos antediluvianos, 7.ª (que se quedan la mejor decena). Con 1d20, la ventaja sube la media de 10,5 a 13,825 y reduce la pifia del 5 % al 0,25 %. En NOGUM, con 2d10, la media sube de 5,5 a 7,15, la probabilidad de que algún dado sea 10 pasa del 10 % al 19 % y el doble 1 se queda en un 1 %.</p>
+<p><strong>Terror: quedarse el PEOR de 2.</strong> Es el espejo exacto. La media baja a 3,85, cualquier 1 arruina la tirada (19 %) y el milagro exige un doble 10 (1 %). La competencia sigue contando, pero el pánico puede traicionarla.</p>
+<h3 id="maq-dados">A.5 La solución NOGUM: dos dados de distinto color</h3>
+<p>Todo el sistema cabe en <strong>dos d10 de distinto color, uno rojo y otro azul</strong> (la regla, en <a href="#ch1-tirada">1.3</a>). Se tiran siempre los dos, y la tarjeta activa dice cómo se leen. Hay cuatro lecturas, y dos herramientas que se les ponen encima:</p>
+<ol><li><strong>Solo el rojo</strong> (1d10): Caos Neutro.</li><li><strong>La suma</strong> (2–20): orden.</li><li><strong>El mejor</strong> de los dos: optimismo.</li><li><strong>El peor</strong> de los dos: terror.</li><li><strong>Rangos ampliados</strong> sobre el rojo: caos alto (A.3.1).</li><li><strong>Bandas de éxito parcial</strong> sobre el total: caos alto (A.3.2).</li></ol>
+<p>Así se reparte cada lectura. Las cifras exactas, valor a valor, están en el <a href="#apx-mates">Apéndice B</a>.</p>
+<figure class="fig auto"><div class="fig-box"><svg class="nog" viewBox="0 0 540 340" width="100%" role="img" aria-label="Como se reparte cada lectura de los dos dados" xmlns="http://www.w3.org/2000/svg">
+<text class="gh" x="34" y="11">Lecturas sobre 1–10</text>
+<line class="gr" x1="34" y1="102.5" x2="528" y2="102.5"/>
+<text class="gt" x="29" y="105.7" text-anchor="end">5%</text>
+<line class="gr" x1="34" y1="73.0" x2="528" y2="73.0"/>
+<text class="gt" x="29" y="76.2" text-anchor="end">10%</text>
+<line class="gr" x1="34" y1="43.5" x2="528" y2="43.5"/>
+<text class="gt" x="29" y="46.7" text-anchor="end">15%</text>
+<line class="gr" x1="34" y1="14.0" x2="528" y2="14.0"/>
+<text class="gt" x="29" y="17.2" text-anchor="end">20%</text>
+<line class="ge" x1="34" y1="132.0" x2="528" y2="132.0"/>
+<rect class="b-g3" x="35.5" y="73.0" width="14.3" height="59.0" rx="1"><title>1: 10%</title></rect>
+<rect class="b-ok" x="51.0" y="126.1" width="14.3" height="5.9" rx="1"><title>1: 1%</title></rect>
+<rect class="b-rd" x="66.4" y="19.9" width="14.3" height="112.1" rx="1"><title>1: 19%</title></rect>
+<text class="gt" x="58.7" y="144.0" text-anchor="middle">1</text>
+<rect class="b-g3" x="84.9" y="73.0" width="14.3" height="59.0" rx="1"><title>2: 10%</title></rect>
+<rect class="b-ok" x="100.4" y="114.3" width="14.3" height="17.7" rx="1"><title>2: 3%</title></rect>
+<rect class="b-rd" x="115.8" y="31.7" width="14.3" height="100.3" rx="1"><title>2: 17%</title></rect>
+<text class="gt" x="108.1" y="144.0" text-anchor="middle">2</text>
+<rect class="b-g3" x="134.3" y="73.0" width="14.3" height="59.0" rx="1"><title>3: 10%</title></rect>
+<rect class="b-ok" x="149.8" y="102.5" width="14.3" height="29.5" rx="1"><title>3: 5%</title></rect>
+<rect class="b-rd" x="165.2" y="43.5" width="14.3" height="88.5" rx="1"><title>3: 15%</title></rect>
+<text class="gt" x="157.5" y="144.0" text-anchor="middle">3</text>
+<rect class="b-g3" x="183.7" y="73.0" width="14.3" height="59.0" rx="1"><title>4: 10%</title></rect>
+<rect class="b-ok" x="199.2" y="90.7" width="14.3" height="41.3" rx="1"><title>4: 7%</title></rect>
+<rect class="b-rd" x="214.6" y="55.3" width="14.3" height="76.7" rx="1"><title>4: 13%</title></rect>
+<text class="gt" x="206.9" y="144.0" text-anchor="middle">4</text>
+<rect class="b-g3" x="233.1" y="73.0" width="14.3" height="59.0" rx="1"><title>5: 10%</title></rect>
+<rect class="b-ok" x="248.6" y="78.9" width="14.3" height="53.1" rx="1"><title>5: 9%</title></rect>
+<rect class="b-rd" x="264.0" y="67.1" width="14.3" height="64.9" rx="1"><title>5: 11%</title></rect>
+<text class="gt" x="256.3" y="144.0" text-anchor="middle">5</text>
+<rect class="b-g3" x="282.5" y="73.0" width="14.3" height="59.0" rx="1"><title>6: 10%</title></rect>
+<rect class="b-ok" x="298.0" y="67.1" width="14.3" height="64.9" rx="1"><title>6: 11%</title></rect>
+<rect class="b-rd" x="313.4" y="78.9" width="14.3" height="53.1" rx="1"><title>6: 9%</title></rect>
+<text class="gt" x="305.7" y="144.0" text-anchor="middle">6</text>
+<rect class="b-g3" x="331.9" y="73.0" width="14.3" height="59.0" rx="1"><title>7: 10%</title></rect>
+<rect class="b-ok" x="347.4" y="55.3" width="14.3" height="76.7" rx="1"><title>7: 13%</title></rect>
+<rect class="b-rd" x="362.8" y="90.7" width="14.3" height="41.3" rx="1"><title>7: 7%</title></rect>
+<text class="gt" x="355.1" y="144.0" text-anchor="middle">7</text>
+<rect class="b-g3" x="381.3" y="73.0" width="14.3" height="59.0" rx="1"><title>8: 10%</title></rect>
+<rect class="b-ok" x="396.8" y="43.5" width="14.3" height="88.5" rx="1"><title>8: 15%</title></rect>
+<rect class="b-rd" x="412.2" y="102.5" width="14.3" height="29.5" rx="1"><title>8: 5%</title></rect>
+<text class="gt" x="404.5" y="144.0" text-anchor="middle">8</text>
+<rect class="b-g3" x="430.7" y="73.0" width="14.3" height="59.0" rx="1"><title>9: 10%</title></rect>
+<rect class="b-ok" x="446.2" y="31.7" width="14.3" height="100.3" rx="1"><title>9: 17%</title></rect>
+<rect class="b-rd" x="461.6" y="114.3" width="14.3" height="17.7" rx="1"><title>9: 3%</title></rect>
+<text class="gt" x="453.9" y="144.0" text-anchor="middle">9</text>
+<rect class="b-g3" x="480.1" y="73.0" width="14.3" height="59.0" rx="1"><title>10: 10%</title></rect>
+<rect class="b-ok" x="495.6" y="19.9" width="14.3" height="112.1" rx="1"><title>10: 19%</title></rect>
+<rect class="b-rd" x="511.0" y="126.1" width="14.3" height="5.9" rx="1"><title>10: 1%</title></rect>
+<text class="gt" x="503.3" y="144.0" text-anchor="middle">10</text>
+<text class="gh" x="34" y="187">La suma, sobre 2–20 —la misma escala</text>
+<line class="gr" x1="34" y1="278.5" x2="528" y2="278.5"/>
+<text class="gt" x="29" y="281.7" text-anchor="end">5%</text>
+<line class="gr" x1="34" y1="249.0" x2="528" y2="249.0"/>
+<text class="gt" x="29" y="252.2" text-anchor="end">10%</text>
+<line class="gr" x1="34" y1="219.5" x2="528" y2="219.5"/>
+<text class="gt" x="29" y="222.7" text-anchor="end">15%</text>
+<line class="gr" x1="34" y1="190.0" x2="528" y2="190.0"/>
+<text class="gt" x="29" y="193.2" text-anchor="end">20%</text>
+<line class="ge" x1="34" y1="308.0" x2="528" y2="308.0"/>
+<rect class="b-bl" x="35.5" y="302.1" width="21.8" height="5.9" rx="1"><title>2: 1%</title></rect>
+<text class="gt" x="47.0" y="320.0" text-anchor="middle">2</text>
+<rect class="b-bl" x="61.5" y="296.2" width="21.8" height="11.8" rx="1"><title>3: 2%</title></rect>
+<text class="gt" x="73.0" y="320.0" text-anchor="middle">3</text>
+<rect class="b-bl" x="87.5" y="290.3" width="21.8" height="17.7" rx="1"><title>4: 3%</title></rect>
+<text class="gt" x="99.0" y="320.0" text-anchor="middle">4</text>
+<rect class="b-bl" x="113.5" y="284.4" width="21.8" height="23.6" rx="1"><title>5: 4%</title></rect>
+<text class="gt" x="125.0" y="320.0" text-anchor="middle">5</text>
+<rect class="b-bl" x="139.5" y="278.5" width="21.8" height="29.5" rx="1"><title>6: 5%</title></rect>
+<text class="gt" x="151.0" y="320.0" text-anchor="middle">6</text>
+<rect class="b-bl" x="165.5" y="272.6" width="21.8" height="35.4" rx="1"><title>7: 6%</title></rect>
+<text class="gt" x="177.0" y="320.0" text-anchor="middle">7</text>
+<rect class="b-bl" x="191.5" y="266.7" width="21.8" height="41.3" rx="1"><title>8: 7%</title></rect>
+<text class="gt" x="203.0" y="320.0" text-anchor="middle">8</text>
+<rect class="b-bl" x="217.5" y="260.8" width="21.8" height="47.2" rx="1"><title>9: 8%</title></rect>
+<text class="gt" x="229.0" y="320.0" text-anchor="middle">9</text>
+<rect class="b-bl" x="243.5" y="254.9" width="21.8" height="53.1" rx="1"><title>10: 9%</title></rect>
+<text class="gt" x="255.0" y="320.0" text-anchor="middle">10</text>
+<rect class="b-bl" x="269.5" y="249.0" width="21.8" height="59.0" rx="1"><title>11: 10%</title></rect>
+<text class="gt" x="281.0" y="320.0" text-anchor="middle">11</text>
+<rect class="b-bl" x="295.5" y="254.9" width="21.8" height="53.1" rx="1"><title>12: 9%</title></rect>
+<text class="gt" x="307.0" y="320.0" text-anchor="middle">12</text>
+<rect class="b-bl" x="321.5" y="260.8" width="21.8" height="47.2" rx="1"><title>13: 8%</title></rect>
+<text class="gt" x="333.0" y="320.0" text-anchor="middle">13</text>
+<rect class="b-bl" x="347.5" y="266.7" width="21.8" height="41.3" rx="1"><title>14: 7%</title></rect>
+<text class="gt" x="359.0" y="320.0" text-anchor="middle">14</text>
+<rect class="b-bl" x="373.5" y="272.6" width="21.8" height="35.4" rx="1"><title>15: 6%</title></rect>
+<text class="gt" x="385.0" y="320.0" text-anchor="middle">15</text>
+<rect class="b-bl" x="399.5" y="278.5" width="21.8" height="29.5" rx="1"><title>16: 5%</title></rect>
+<text class="gt" x="411.0" y="320.0" text-anchor="middle">16</text>
+<rect class="b-bl" x="425.5" y="284.4" width="21.8" height="23.6" rx="1"><title>17: 4%</title></rect>
+<text class="gt" x="437.0" y="320.0" text-anchor="middle">17</text>
+<rect class="b-bl" x="451.5" y="290.3" width="21.8" height="17.7" rx="1"><title>18: 3%</title></rect>
+<text class="gt" x="463.0" y="320.0" text-anchor="middle">18</text>
+<rect class="b-bl" x="477.5" y="296.2" width="21.8" height="11.8" rx="1"><title>19: 2%</title></rect>
+<text class="gt" x="489.0" y="320.0" text-anchor="middle">19</text>
+<rect class="b-bl" x="503.5" y="302.1" width="21.8" height="5.9" rx="1"><title>20: 1%</title></rect>
+<text class="gt" x="515.0" y="320.0" text-anchor="middle">20</text>
+</svg></div><figcaption><b>La misma mano, cuatro lecturas.</b> El dado rojo solo es una recta: todas las caras valen lo mismo, y por eso es el caos neutro. El mejor de los dos sube hacia la derecha y el peor hacia la izquierda; son imágenes especulares, y ahí está el eje del optimismo dibujado. La suma es otra cosa: una campana que concentra casi todo en el centro y deja los extremos al 1&nbsp;%. Mira la diferencia de altura entre los dos paneles —es la misma escala—: ninguna barra de la suma pasa del 10&nbsp;%, mientras que el mejor de dos llega al 19&nbsp;%. Eso es lo que significa <em>orden</em> aquí: no que salgan números altos, sino que casi nunca salga una sorpresa.</figcaption></figure>
+<p class="leyenda"><span><i class="b-g3"></i>Solo el rojo (1d10)</span><span><i class="b-ok"></i>El mejor de los dos</span><span><i class="b-rd"></i>El peor de los dos</span><span><i class="b-bl"></i>La suma (2d10)</span></p>
+<p>Medias: 1d10 (rojo) <strong>5,5</strong>, Mejor de 2d10 <strong>7,15</strong>, Peor de 2d10 <strong>3,85</strong>, Suma 2d10 <strong>11</strong>.</p>
+<h3 id="maq-anclaje">A.6 El anclaje: de −2 a +4</h3>
+<p>Todas las fichas van de −2 (Nulidad) a +4 (Gran Maestro): ese rango es el Ancla (<a href="#ch2-ancla">2.1</a>). Los bonos se acumulan (habilidad, dificultad, equipo y efectos), pero se tira con un número de dentro del rango: si el total se pasa del +4, el exceso se aprovecha para intentar algo más difícil y se tira con +4; por debajo de −2, el Director decide si hay tirada y, si la hay, se tira con −2 (<a href="#ch2-bonos">2.5</a>) <span class="src">C·a1</span><span class="src">C·a2</span>. Por eso las tablas de este libro se pueden calcular enteras: son siete filas por tarjeta, de la Nulidad (−2) al Gran Maestro (+4), con la moneda al aire (+0) en medio, que ninguna ficha trae de serie pero es el total de muchas tiradas. Las gráficas de <a href="#maq-siete">A.8</a> las dibujan, y el <a href="#apx-mates">Apéndice B</a> las escribe.</p>
+<h3 id="maq-palancas">A.7 Las cinco palancas</h3>
+<p>Un sistema de tonos se construye moviendo cinco cosas, y casi todas las discusiones sobre dados se enredan porque mezclan tres efectos distintos. Aquí van separados: el <strong>centro</strong> (cuántas veces sale adelante), la <strong>dispersión</strong> (cuánto manda el dado frente a la ficha) y el <strong>espectáculo</strong> (cada cuánto pasa algo memorable). Una palanca puede mover uno, dos o los tres.</p>
+<div class="tw"><table class="t"><thead><tr><th>Palanca</th><th>Centro</th><th>Dispersión</th><th>Espectáculo</th><th>Dónde se usa</th></tr></thead><tbody>
+<tr><td><strong>1. La lectura: el mejor o el peor de dos</strong></td><td>Sube la media a 7,15 o la baja a 3,85</td><td>La estrecha (2,35)</td><td>Dobla los dieces (19&nbsp;%) o los unos (19&nbsp;%)</td><td>Esquinas de la columna previsible</td></tr>
+<tr><td><strong>2. La suma de los dos</strong></td><td>No lo mueve</td><td>La estrecha al máximo (2,03)</td><td>Lo apaga: extremos al 3&nbsp;%</td><td>Centro de la columna previsible</td></tr>
+<tr><td><strong>3. Las bandas: estrecha, normal o ancha</strong></td><td>No lo mueve</td><td>No la cambia</td><td>Lo multiplica o lo apaga: 20/20 en el rojo, 4/36 en el mejor, 36/4 en el peor</td><td>Toda la fila opresiva y la columna caótica</td></tr>
+<tr><td><strong>4. El éxito con coste (la herramienta de los sistemas de movimientos)</strong></td><td>No lo mueve: solo cobra a los que ya ganaban</td><td>No la cambia</td><td>Convierte cuatro resultados en cinco</td><td>Columna caótica de las filas optimista y neutral</td></tr>
+<tr><td><strong>5. Mover la TN</strong></td><td>Es la única palanca de optimismo puro</td><td>No la cambia</td><td>No lo cambia</td><td>Fuera del cuadrante: solo la Tragedia, como excepción declarada</td></tr>
+</tbody></table></div>
+<p><strong>La palanca 1 es diagonal</strong>, y ese es el hallazgo que ordena todo lo demás: quedarse el mejor de dos es optimista <em>y</em> ordenado a la vez, porque amontona los resultados arriba. Por eso las lecturas de dos dados viven en las esquinas de la columna ordenada y no en el centro.</p>
+<p><strong>Y el crítico y la pifia no pesan igual.</strong> Una sorpresa buena <em>amplifica</em>: el crítico va donde ya ibas y nadie tiene que inventar nada. Una sorpresa mala <em>ramifica</em>: la pifia cierra la puerta que estabas usando y obliga a abrir otra que no estaba. Por eso la misma palanca añade previsibilidad hacia arriba y caos hacia abajo, y por eso el peor de dos ya trae el caos puesto sin necesidad de ninguna herramienta más. <span class="flag ed">ED-24</span></p>
+<p><strong>Las bandas se aplican al número que usas</strong>, no a los dados sueltos, y por eso se inclinan solas hacia el tono de la casilla: con el mejor de dos, ensancharlas casi solo trae milagros (4&nbsp;% de pifias contra 36&nbsp;% de críticos) y con el peor casi solo desastres (36&nbsp;% contra 4&nbsp;%). La misma herramienta, otro efecto según el tono, sin una sola regla extra.</p>
+<p><strong>El éxito con coste ocupa la TN y el punto de encima.</strong> Ahí, y no un punto más abajo: si la banda bajara al punto anterior estaría ascendiendo un fallo a éxito, es decir, regalando partidas, y eso no es lo que hace la herramienta de la que viene. Colocada así <strong>no cambia cuántas veces sales adelante</strong>, solo cuántas de esas veces pagas. <span class="flag ed">ED-23</span></p>
+<p><strong>La TN se queda quieta a propósito.</strong> Un número para las tiradas de un dado (6) y otro para las sumas (11), y se acabó. Lo difícil o lo fácil de cada tirada va en el bono, como modificador: +2 fácil, 0, −2 difícil, −4 heroico (<a href="#ch2-bonos">2.5</a>) <span class="src">C·t3</span>. Mover la TN sería la palanca de optimismo más limpia que existe, pero obliga a la mesa a recordar un número distinto en cada escena, y esa es exactamente la fricción que este juego promete quitarte. Solo la Tragedia la toca, como excepción declarada, y lo dice en voz alta (<a href="#apxd-recetas">Apéndice B</a>) <span class="src">C·22oct</span>.</p>
+<p><strong>Una palanca por columna, y la fila elige la dirección. Esa es toda la arquitectura del cuadrante.</strong></p>
+<div class="rule"><p class="rule-title">Qué hace una pifia</p><p>No es una palanca de reglas: <strong>cuánto duele lo decide quien narra</strong>, según el tono y la mesa. Lo que sí está fijado es de qué está hecha. Una pifia es <strong>fallo + complicación</strong>. Un éxito con coste es <strong>éxito + complicación</strong>. La complicación puede ser la misma y pesar lo mismo en los dos casos; lo que cambia es si además conseguiste lo que querías.</p></div>
+<h3 id="maq-siete">A.8 Las siete tarjetas, una a una</h3>
+<p>Una ficha por tarjeta. La línea gruesa es lo que <strong>sale adelante</strong> —éxito con coste, éxito limpio y crítico juntos— y la otra gruesa es lo que no. Las tres finas cuentan de qué está hecho el resto. Debajo de cada gráfica, lo que de verdad le cuesta a la mesa: cada cuántas tiradas la historia se sale de lo previsible. Los cinco números exactos, bono a bono, están en el <a href="#apx-mates">Apéndice B</a>.</p>
+<figure class="fig auto"><div class="fig-box"><svg class="nog" viewBox="0 0 540 250" width="100%" role="img" aria-label="Lo que sale adelante en las siete tarjetas, bono a bono" xmlns="http://www.w3.org/2000/svg">
+<line class="gr" x1="40" y1="216.0" x2="394.0" y2="216.0"/>
+<text class="gt" x="34" y="219.5" text-anchor="end">0%</text>
+<line class="gr" x1="40" y1="164.5" x2="394.0" y2="164.5"/>
+<text class="gt" x="34" y="168.0" text-anchor="end">25%</text>
+<line class="gr" x1="40" y1="113.0" x2="394.0" y2="113.0"/>
+<text class="gt" x="34" y="116.5" text-anchor="end">50%</text>
+<line class="gr" x1="40" y1="61.5" x2="394.0" y2="61.5"/>
+<text class="gt" x="34" y="65.0" text-anchor="end">75%</text>
+<line class="gr" x1="40" y1="10.0" x2="394.0" y2="10.0"/>
+<text class="gt" x="34" y="13.5" text-anchor="end">100%</text>
+<text class="gt" x="40.0" y="234" text-anchor="middle">−2</text>
+<text class="gt" x="98.3" y="234" text-anchor="middle">−1</text>
+<text class="gt" x="156.7" y="234" text-anchor="middle">+0</text>
+<text class="gt" x="215.0" y="234" text-anchor="middle">+1</text>
+<text class="gt" x="273.3" y="234" text-anchor="middle">+2</text>
+<text class="gt" x="331.7" y="234" text-anchor="middle">+3</text>
+<text class="gt" x="390.0" y="234" text-anchor="middle">+4</text>
+<text class="gt" x="215.0" y="247" text-anchor="middle">bono de la ficha</text>
+<polyline class="gl ok " points="40.0,110.9 98.3,84.2 156.7,61.5 215.0,43.0 273.3,28.5 331.7,18.2 390.0,12.1"/>
+<circle class="f-ok" cx="390.0" cy="12.1" r="2.4"/>
+<polyline class="gl ok dot" points="40.0,110.9 98.3,84.2 156.7,61.5 215.0,43.0 273.3,28.5 331.7,18.2 390.0,18.2"/>
+<circle class="f-ok" cx="390.0" cy="18.2" r="2.4"/>
+<polyline class="gl bl " points="40.0,141.8 98.3,123.3 156.7,102.7 215.0,84.2 273.3,67.7 331.7,53.3 390.0,40.9"/>
+<circle class="f-bl" cx="390.0" cy="40.9" r="2.4"/>
+<polyline class="gl bl dash" points="40.0,154.2 98.3,133.6 156.7,113.0 215.0,92.4 273.3,71.8 331.7,51.2 390.0,30.6"/>
+<circle class="f-bl" cx="390.0" cy="30.6" r="2.4"/>
+<polyline class="gl bl dot" points="40.0,154.2 98.3,133.6 156.7,113.0 215.0,92.4 273.3,71.8 331.7,51.2 390.0,51.2"/>
+<circle class="f-bl" cx="390.0" cy="51.2" r="2.4"/>
+<polyline class="gl rd " points="40.0,197.5 98.3,183.0 156.7,164.5 215.0,141.8 273.3,115.1 331.7,84.2 390.0,49.1"/>
+<circle class="f-rd" cx="390.0" cy="49.1" r="2.4"/>
+<polyline class="gl rd dot" points="40.0,197.5 98.3,183.0 156.7,164.5 215.0,141.8 273.3,115.1 331.7,84.2 390.0,49.1"/>
+<circle class="f-rd" cx="390.0" cy="49.1" r="2.4"/>
+<line class="gr" x1="393.0" y1="12.1" x2="396.0" y2="12.1"/>
+<text class="gn f-ok" x="399.0" y="15.6">Épica <tspan class="gt">99%</tspan></text>
+<line class="gr" x1="393.0" y1="18.2" x2="396.0" y2="24.1"/>
+<text class="gn f-ok" x="399.0" y="27.6">Pulp desenfrenado <tspan class="gt">96%</tspan></text>
+<line class="gr" x1="393.0" y1="30.6" x2="396.0" y2="36.1"/>
+<text class="gn f-bl" x="399.0" y="39.6">Primera marcha <tspan class="gt">90%</tspan></text>
+<line class="gr" x1="393.0" y1="40.9" x2="396.0" y2="48.1"/>
+<text class="gn f-bl" x="399.0" y="51.6">Realista <tspan class="gt">85%</tspan></text>
+<line class="gr" x1="393.0" y1="49.1" x2="396.0" y2="60.1"/>
+<text class="gn f-rd" x="399.0" y="63.6">Angustia <tspan class="gt">81%</tspan></text>
+<line class="gr" x1="393.0" y1="49.1" x2="396.0" y2="72.1"/>
+<text class="gn f-rd" x="399.0" y="75.6">Pesadilla <tspan class="gt">81%</tspan></text>
+<line class="gr" x1="393.0" y1="51.2" x2="396.0" y2="84.1"/>
+<text class="gn f-bl" x="399.0" y="87.6">Comedia negra <tspan class="gt">80%</tspan></text>
+</svg></div><figcaption><b>Las siete, juntas.</b> El color es la fila del Cuadrante —optimista, neutral, opresiva— y el trazo es la columna: continuo lo previsible, a rayas lo neutral, punteado lo caótico. Tres curvas parecen faltar y no faltan: están debajo de otra. Épica y Pulp, Primera marcha y Comedia negra coinciden bono a bono hasta +3; Angustia y Pesadilla, en los siete. Ahí está dibujado el eje del caos: <strong>no cambia cuánto sale adelante, cambia de qué está hecho</strong>. Y el eje del optimismo se estrecha con la ficha: con la ficha a −2 hay 42 puntos entre Épica y Angustia; con la ficha a +4 quedan 18. Un especialista en Angustia acierta tanto como un especialista en Comedia negra. Por eso en lo oscuro especializarse no es una opción: es la salida.</figcaption></figure>
+<p class="t7leg"><span><i class="gruesa k-exito"></i>sale adelante</span><span><i class="gruesa k-fallo"></i>no sale</span><span class="sep">·</span><span><i class="fina k-critico"></i>crítico</span><span><i class="fina k-parcial"></i>con coste</span><span><i class="fina k-pifia"></i>pifia</span><span class="note">sale adelante = con coste, limpio o crítico</span></p>
+<div class="t7s">
+<div class="t7" data-fila="opt">
+<div class="t7cab"><h4>Épica</h4><span class="t7ax">Optimista · Previsible</span></div>
+<p class="t7frase">«Soy el mejor en lo que hago.»</p>
+<div class="t7cuerpo">
+<div class="t7izq"><svg class="nog t7g" viewBox="0 0 380 215" width="100%" role="img" aria-label="Épica: cuanto sale adelante segun el bono" xmlns="http://www.w3.org/2000/svg">
+<line class="gr" x1="32" y1="187.0" x2="364" y2="187.0"/>
+<line class="gr fino" x1="32" y1="169.9" x2="364" y2="169.9"/>
+<line class="gr fino" x1="32" y1="152.8" x2="364" y2="152.8"/>
+<line class="gr fino" x1="32" y1="135.7" x2="364" y2="135.7"/>
+<line class="gr fino" x1="32" y1="118.6" x2="364" y2="118.6"/>
+<line class="gr" x1="32" y1="101.5" x2="364" y2="101.5"/>
+<line class="gr fino" x1="32" y1="84.4" x2="364" y2="84.4"/>
+<line class="gr fino" x1="32" y1="67.3" x2="364" y2="67.3"/>
+<line class="gr fino" x1="32" y1="50.2" x2="364" y2="50.2"/>
+<line class="gr fino" x1="32" y1="33.1" x2="364" y2="33.1"/>
+<line class="gr" x1="32" y1="16.0" x2="364" y2="16.0"/>
+<text class="gt" x="26" y="190.5" text-anchor="end">0</text>
+<text class="gt" x="26" y="105.0" text-anchor="end">50</text>
+<text class="gt" x="26" y="19.5" text-anchor="end">100</text>
+<line class="ge" x1="32" y1="187.0" x2="364" y2="187.0"/>
+<text class="gt" x="32.0" y="206" text-anchor="middle">−2</text>
+<text class="gt" x="87.3" y="206" text-anchor="middle">−1</text>
+<text class="gt" x="142.7" y="206" text-anchor="middle">+0</text>
+<text class="gt" x="198.0" y="206" text-anchor="middle">+1</text>
+<text class="gt" x="253.3" y="206" text-anchor="middle">+2</text>
+<text class="gt" x="308.7" y="206" text-anchor="middle">+3</text>
+<text class="gt" x="364.0" y="206" text-anchor="middle">+4</text>
+<polyline class="t7fina k-critico" points="32.0,154.5 87.3,154.5 142.7,154.5 198.0,154.5 253.3,154.5 308.7,154.5 364.0,154.5"/>
+<circle class="t7pf k-critico" cx="32.0" cy="154.5" r="2.2"><title>crítico −2: 19%</title></circle>
+<circle class="t7pf k-critico" cx="87.3" cy="154.5" r="2.2"><title>crítico −1: 19%</title></circle>
+<circle class="t7pf k-critico" cx="142.7" cy="154.5" r="2.2"><title>crítico +0: 19%</title></circle>
+<circle class="t7pf k-critico" cx="198.0" cy="154.5" r="2.2"><title>crítico +1: 19%</title></circle>
+<circle class="t7pf k-critico" cx="253.3" cy="154.5" r="2.2"><title>crítico +2: 19%</title></circle>
+<circle class="t7pf k-critico" cx="308.7" cy="154.5" r="2.2"><title>crítico +3: 19%</title></circle>
+<circle class="t7pf k-critico" cx="364.0" cy="154.5" r="2.2"><title>crítico +4: 19%</title></circle>
+<polyline class="t7fina k-parcial" points="32.0,187.0 87.3,187.0 142.7,187.0 198.0,187.0 253.3,187.0 308.7,187.0 364.0,187.0"/>
+<circle class="t7pf k-parcial" cx="32.0" cy="187.0" r="2.2"><title>coste −2: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="87.3" cy="187.0" r="2.2"><title>coste −1: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="142.7" cy="187.0" r="2.2"><title>coste +0: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="198.0" cy="187.0" r="2.2"><title>coste +1: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="253.3" cy="187.0" r="2.2"><title>coste +2: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="308.7" cy="187.0" r="2.2"><title>coste +3: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="364.0" cy="187.0" r="2.2"><title>coste +4: 0%</title></circle>
+<polyline class="t7fina k-pifia" points="32.0,185.3 87.3,185.3 142.7,185.3 198.0,185.3 253.3,185.3 308.7,185.3 364.0,185.3"/>
+<circle class="t7pf k-pifia" cx="32.0" cy="185.3" r="2.2"><title>pifia −2: 1%</title></circle>
+<circle class="t7pf k-pifia" cx="87.3" cy="185.3" r="2.2"><title>pifia −1: 1%</title></circle>
+<circle class="t7pf k-pifia" cx="142.7" cy="185.3" r="2.2"><title>pifia +0: 1%</title></circle>
+<circle class="t7pf k-pifia" cx="198.0" cy="185.3" r="2.2"><title>pifia +1: 1%</title></circle>
+<circle class="t7pf k-pifia" cx="253.3" cy="185.3" r="2.2"><title>pifia +2: 1%</title></circle>
+<circle class="t7pf k-pifia" cx="308.7" cy="185.3" r="2.2"><title>pifia +3: 1%</title></circle>
+<circle class="t7pf k-pifia" cx="364.0" cy="185.3" r="2.2"><title>pifia +4: 1%</title></circle>
+<polyline class="t7gruesa k-fallo" points="32.0,103.2 87.3,125.4 142.7,144.2 198.0,159.6 253.3,171.6 308.7,180.2 364.0,185.3"/>
+<circle class="t7pg k-fallo" cx="32.0" cy="103.2" r="3.4"/>
+<circle class="t7pg k-fallo" cx="87.3" cy="125.4" r="3.4"/>
+<circle class="t7pg k-fallo" cx="142.7" cy="144.2" r="3.4"/>
+<circle class="t7pg k-fallo" cx="198.0" cy="159.6" r="3.4"/>
+<circle class="t7pg k-fallo" cx="253.3" cy="171.6" r="3.4"/>
+<circle class="t7pg k-fallo" cx="308.7" cy="180.2" r="3.4"/>
+<circle class="t7pg k-fallo" cx="364.0" cy="185.3" r="3.4"/>
+<polyline class="t7gruesa k-exito" points="32.0,99.8 87.3,77.6 142.7,58.8 198.0,43.4 253.3,31.4 308.7,22.8 364.0,17.7"/>
+<circle class="t7pg k-exito" cx="32.0" cy="99.8" r="3.4"/>
+<circle class="t7pg k-exito" cx="87.3" cy="77.6" r="3.4"/>
+<circle class="t7pg k-exito" cx="142.7" cy="58.8" r="3.4"/>
+<circle class="t7pg k-exito" cx="198.0" cy="43.4" r="3.4"/>
+<circle class="t7pg k-exito" cx="253.3" cy="31.4" r="3.4"/>
+<circle class="t7pg k-exito" cx="308.7" cy="22.8" r="3.4"/>
+<circle class="t7pg k-exito" cx="364.0" cy="17.7" r="3.4"/>
+<text class="t7num" x="32.0" y="91.8" text-anchor="middle">51</text>
+<text class="t7num" x="87.3" y="69.6" text-anchor="middle">64</text>
+<text class="t7num" x="142.7" y="50.8" text-anchor="middle">75</text>
+<text class="t7num" x="198.0" y="35.4" text-anchor="middle">84</text>
+<text class="t7num" x="253.3" y="23.4" text-anchor="middle">91</text>
+<text class="t7num" x="308.7" y="14.8" text-anchor="middle">96</text>
+<text class="t7num" x="364.0" y="9.7" text-anchor="middle">99</text>
+</svg><p class="t7pie">bono &rarr; &nbsp;·&nbsp; la historia se tuerce en el 1&nbsp;% de las tiradas</p></div>
+<div class="t7der"><p class="t7how">mejor de 2d10 + bono · TN 6 · bandas 1 / 10.</p><p><strong>Por qué encaja:</strong> El mejor de dos hace dos cosas a la vez: sube la media de 5,5 a 7,15 y estrecha la dispersión (desviación típica 2,35 frente a 2,87 del dado plano). Es la única palanca que empuja en diagonal, y por eso ocupa la esquina optimista de la columna ordenada. Su 19&nbsp;% de críticos no la vuelve caótica: un crítico confirma el rumbo, no lo parte.</p></div>
+</div>
+</div>
+<div class="t7" data-fila="opt">
+<div class="t7cab"><h4>Pulp desenfrenado</h4><span class="t7ax">Optimista · Caótico</span></div>
+<p class="t7frase">«Sale, pero prepárate para pagarlo.»</p>
+<div class="t7cuerpo">
+<div class="t7izq"><svg class="nog t7g" viewBox="0 0 380 215" width="100%" role="img" aria-label="Pulp desenfrenado: cuanto sale adelante segun el bono" xmlns="http://www.w3.org/2000/svg">
+<line class="gr" x1="32" y1="187.0" x2="364" y2="187.0"/>
+<line class="gr fino" x1="32" y1="169.9" x2="364" y2="169.9"/>
+<line class="gr fino" x1="32" y1="152.8" x2="364" y2="152.8"/>
+<line class="gr fino" x1="32" y1="135.7" x2="364" y2="135.7"/>
+<line class="gr fino" x1="32" y1="118.6" x2="364" y2="118.6"/>
+<line class="gr" x1="32" y1="101.5" x2="364" y2="101.5"/>
+<line class="gr fino" x1="32" y1="84.4" x2="364" y2="84.4"/>
+<line class="gr fino" x1="32" y1="67.3" x2="364" y2="67.3"/>
+<line class="gr fino" x1="32" y1="50.2" x2="364" y2="50.2"/>
+<line class="gr fino" x1="32" y1="33.1" x2="364" y2="33.1"/>
+<line class="gr" x1="32" y1="16.0" x2="364" y2="16.0"/>
+<text class="gt" x="26" y="190.5" text-anchor="end">0</text>
+<text class="gt" x="26" y="105.0" text-anchor="end">50</text>
+<text class="gt" x="26" y="19.5" text-anchor="end">100</text>
+<line class="ge" x1="32" y1="187.0" x2="364" y2="187.0"/>
+<text class="gt" x="32.0" y="206" text-anchor="middle">−2</text>
+<text class="gt" x="87.3" y="206" text-anchor="middle">−1</text>
+<text class="gt" x="142.7" y="206" text-anchor="middle">+0</text>
+<text class="gt" x="198.0" y="206" text-anchor="middle">+1</text>
+<text class="gt" x="253.3" y="206" text-anchor="middle">+2</text>
+<text class="gt" x="308.7" y="206" text-anchor="middle">+3</text>
+<text class="gt" x="364.0" y="206" text-anchor="middle">+4</text>
+<polyline class="t7fina k-critico" points="32.0,154.5 87.3,154.5 142.7,154.5 198.0,154.5 253.3,154.5 308.7,154.5 364.0,154.5"/>
+<circle class="t7pf k-critico" cx="32.0" cy="154.5" r="2.2"><title>crítico −2: 19%</title></circle>
+<circle class="t7pf k-critico" cx="87.3" cy="154.5" r="2.2"><title>crítico −1: 19%</title></circle>
+<circle class="t7pf k-critico" cx="142.7" cy="154.5" r="2.2"><title>crítico +0: 19%</title></circle>
+<circle class="t7pf k-critico" cx="198.0" cy="154.5" r="2.2"><title>crítico +1: 19%</title></circle>
+<circle class="t7pf k-critico" cx="253.3" cy="154.5" r="2.2"><title>crítico +2: 19%</title></circle>
+<circle class="t7pf k-critico" cx="308.7" cy="154.5" r="2.2"><title>crítico +3: 19%</title></circle>
+<circle class="t7pf k-critico" cx="364.0" cy="154.5" r="2.2"><title>crítico +4: 19%</title></circle>
+<polyline class="t7fina k-parcial" points="32.0,132.3 87.3,139.1 142.7,146.0 198.0,152.8 253.3,159.6 308.7,166.5 364.0,178.4"/>
+<circle class="t7pf k-parcial" cx="32.0" cy="132.3" r="2.2"><title>coste −2: 32%</title></circle>
+<circle class="t7pf k-parcial" cx="87.3" cy="139.1" r="2.2"><title>coste −1: 28%</title></circle>
+<circle class="t7pf k-parcial" cx="142.7" cy="146.0" r="2.2"><title>coste +0: 24%</title></circle>
+<circle class="t7pf k-parcial" cx="198.0" cy="152.8" r="2.2"><title>coste +1: 20%</title></circle>
+<circle class="t7pf k-parcial" cx="253.3" cy="159.6" r="2.2"><title>coste +2: 16%</title></circle>
+<circle class="t7pf k-parcial" cx="308.7" cy="166.5" r="2.2"><title>coste +3: 12%</title></circle>
+<circle class="t7pf k-parcial" cx="364.0" cy="178.4" r="2.2"><title>coste +4: 5%</title></circle>
+<polyline class="t7fina k-pifia" points="32.0,180.2 87.3,180.2 142.7,180.2 198.0,180.2 253.3,180.2 308.7,180.2 364.0,180.2"/>
+<circle class="t7pf k-pifia" cx="32.0" cy="180.2" r="2.2"><title>pifia −2: 4%</title></circle>
+<circle class="t7pf k-pifia" cx="87.3" cy="180.2" r="2.2"><title>pifia −1: 4%</title></circle>
+<circle class="t7pf k-pifia" cx="142.7" cy="180.2" r="2.2"><title>pifia +0: 4%</title></circle>
+<circle class="t7pf k-pifia" cx="198.0" cy="180.2" r="2.2"><title>pifia +1: 4%</title></circle>
+<circle class="t7pf k-pifia" cx="253.3" cy="180.2" r="2.2"><title>pifia +2: 4%</title></circle>
+<circle class="t7pf k-pifia" cx="308.7" cy="180.2" r="2.2"><title>pifia +3: 4%</title></circle>
+<circle class="t7pf k-pifia" cx="364.0" cy="180.2" r="2.2"><title>pifia +4: 4%</title></circle>
+<polyline class="t7gruesa k-fallo" points="32.0,103.2 87.3,125.4 142.7,144.2 198.0,159.6 253.3,171.6 308.7,180.2 364.0,180.2"/>
+<circle class="t7pg k-fallo" cx="32.0" cy="103.2" r="3.4"/>
+<circle class="t7pg k-fallo" cx="87.3" cy="125.4" r="3.4"/>
+<circle class="t7pg k-fallo" cx="142.7" cy="144.2" r="3.4"/>
+<circle class="t7pg k-fallo" cx="198.0" cy="159.6" r="3.4"/>
+<circle class="t7pg k-fallo" cx="253.3" cy="171.6" r="3.4"/>
+<circle class="t7pg k-fallo" cx="308.7" cy="180.2" r="3.4"/>
+<circle class="t7pg k-fallo" cx="364.0" cy="180.2" r="3.4"/>
+<polyline class="t7gruesa k-exito" points="32.0,99.8 87.3,77.6 142.7,58.8 198.0,43.4 253.3,31.4 308.7,22.8 364.0,22.8"/>
+<circle class="t7pg k-exito" cx="32.0" cy="99.8" r="3.4"/>
+<circle class="t7pg k-exito" cx="87.3" cy="77.6" r="3.4"/>
+<circle class="t7pg k-exito" cx="142.7" cy="58.8" r="3.4"/>
+<circle class="t7pg k-exito" cx="198.0" cy="43.4" r="3.4"/>
+<circle class="t7pg k-exito" cx="253.3" cy="31.4" r="3.4"/>
+<circle class="t7pg k-exito" cx="308.7" cy="22.8" r="3.4"/>
+<circle class="t7pg k-exito" cx="364.0" cy="22.8" r="3.4"/>
+<text class="t7num" x="32.0" y="91.8" text-anchor="middle">51</text>
+<text class="t7num" x="87.3" y="69.6" text-anchor="middle">64</text>
+<text class="t7num" x="142.7" y="50.8" text-anchor="middle">75</text>
+<text class="t7num" x="198.0" y="35.4" text-anchor="middle">84</text>
+<text class="t7num" x="253.3" y="23.4" text-anchor="middle">91</text>
+<text class="t7num" x="308.7" y="14.8" text-anchor="middle">96</text>
+<text class="t7num" x="364.0" y="14.8" text-anchor="middle">96</text>
+</svg><p class="t7pie">bono &rarr; &nbsp;·&nbsp; la historia se tuerce en el 28&nbsp;% de las tiradas</p></div>
+<div class="t7der"><p class="t7how">mejor de 2d10 + bono · TN 6 · bandas 1–2 / 10 · coste si el total es 6 o 7.</p><p><strong>Por qué encaja:</strong> La misma lectura y la misma probabilidad de salir adelante que la Épica, bono a bono hasta +3; con +4 la pifia ancha lo deja en 96&nbsp;% frente a 99&nbsp;%. Por lo demás, lo único que cambia es el precio: el éxito con coste cobra peaje a los que aciertan justo, y eso son 32 de cada 100 tiradas para un personaje flojo y solo 5 para un gran maestro. Cuanto mejor eres, menos negocias.</p></div>
+</div>
+</div>
+<div class="t7" data-fila="neu">
+<div class="t7cab"><h4>Realista</h4><span class="t7ax">Neutral · Previsible</span></div>
+<p class="t7frase">«La vida es justa y predecible.»</p>
+<div class="t7cuerpo">
+<div class="t7izq"><svg class="nog t7g" viewBox="0 0 380 215" width="100%" role="img" aria-label="Realista: cuanto sale adelante segun el bono" xmlns="http://www.w3.org/2000/svg">
+<line class="gr" x1="32" y1="187.0" x2="364" y2="187.0"/>
+<line class="gr fino" x1="32" y1="169.9" x2="364" y2="169.9"/>
+<line class="gr fino" x1="32" y1="152.8" x2="364" y2="152.8"/>
+<line class="gr fino" x1="32" y1="135.7" x2="364" y2="135.7"/>
+<line class="gr fino" x1="32" y1="118.6" x2="364" y2="118.6"/>
+<line class="gr" x1="32" y1="101.5" x2="364" y2="101.5"/>
+<line class="gr fino" x1="32" y1="84.4" x2="364" y2="84.4"/>
+<line class="gr fino" x1="32" y1="67.3" x2="364" y2="67.3"/>
+<line class="gr fino" x1="32" y1="50.2" x2="364" y2="50.2"/>
+<line class="gr fino" x1="32" y1="33.1" x2="364" y2="33.1"/>
+<line class="gr" x1="32" y1="16.0" x2="364" y2="16.0"/>
+<text class="gt" x="26" y="190.5" text-anchor="end">0</text>
+<text class="gt" x="26" y="105.0" text-anchor="end">50</text>
+<text class="gt" x="26" y="19.5" text-anchor="end">100</text>
+<line class="ge" x1="32" y1="187.0" x2="364" y2="187.0"/>
+<text class="gt" x="32.0" y="206" text-anchor="middle">−2</text>
+<text class="gt" x="87.3" y="206" text-anchor="middle">−1</text>
+<text class="gt" x="142.7" y="206" text-anchor="middle">+0</text>
+<text class="gt" x="198.0" y="206" text-anchor="middle">+1</text>
+<text class="gt" x="253.3" y="206" text-anchor="middle">+2</text>
+<text class="gt" x="308.7" y="206" text-anchor="middle">+3</text>
+<text class="gt" x="364.0" y="206" text-anchor="middle">+4</text>
+<polyline class="t7fina k-critico" points="32.0,181.9 87.3,181.9 142.7,181.9 198.0,181.9 253.3,181.9 308.7,181.9 364.0,181.9"/>
+<circle class="t7pf k-critico" cx="32.0" cy="181.9" r="2.2"><title>crítico −2: 3%</title></circle>
+<circle class="t7pf k-critico" cx="87.3" cy="181.9" r="2.2"><title>crítico −1: 3%</title></circle>
+<circle class="t7pf k-critico" cx="142.7" cy="181.9" r="2.2"><title>crítico +0: 3%</title></circle>
+<circle class="t7pf k-critico" cx="198.0" cy="181.9" r="2.2"><title>crítico +1: 3%</title></circle>
+<circle class="t7pf k-critico" cx="253.3" cy="181.9" r="2.2"><title>crítico +2: 3%</title></circle>
+<circle class="t7pf k-critico" cx="308.7" cy="181.9" r="2.2"><title>crítico +3: 3%</title></circle>
+<circle class="t7pf k-critico" cx="364.0" cy="181.9" r="2.2"><title>crítico +4: 3%</title></circle>
+<polyline class="t7fina k-parcial" points="32.0,187.0 87.3,187.0 142.7,187.0 198.0,187.0 253.3,187.0 308.7,187.0 364.0,187.0"/>
+<circle class="t7pf k-parcial" cx="32.0" cy="187.0" r="2.2"><title>coste −2: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="87.3" cy="187.0" r="2.2"><title>coste −1: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="142.7" cy="187.0" r="2.2"><title>coste +0: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="198.0" cy="187.0" r="2.2"><title>coste +1: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="253.3" cy="187.0" r="2.2"><title>coste +2: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="308.7" cy="187.0" r="2.2"><title>coste +3: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="364.0" cy="187.0" r="2.2"><title>coste +4: 0%</title></circle>
+<polyline class="t7fina k-pifia" points="32.0,181.9 87.3,181.9 142.7,181.9 198.0,181.9 253.3,181.9 308.7,181.9 364.0,181.9"/>
+<circle class="t7pf k-pifia" cx="32.0" cy="181.9" r="2.2"><title>pifia −2: 3%</title></circle>
+<circle class="t7pf k-pifia" cx="87.3" cy="181.9" r="2.2"><title>pifia −1: 3%</title></circle>
+<circle class="t7pf k-pifia" cx="142.7" cy="181.9" r="2.2"><title>pifia +0: 3%</title></circle>
+<circle class="t7pf k-pifia" cx="198.0" cy="181.9" r="2.2"><title>pifia +1: 3%</title></circle>
+<circle class="t7pf k-pifia" cx="253.3" cy="181.9" r="2.2"><title>pifia +2: 3%</title></circle>
+<circle class="t7pf k-pifia" cx="308.7" cy="181.9" r="2.2"><title>pifia +3: 3%</title></circle>
+<circle class="t7pf k-pifia" cx="364.0" cy="181.9" r="2.2"><title>pifia +4: 3%</title></circle>
+<line class="t7cruce" x1="115.0" y1="187.0" x2="115.0" y2="16.0"/>
+<text class="gt" x="119.0" y="24.0">cambia de bando</text>
+<polyline class="t7gruesa k-fallo" points="32.0,77.6 87.3,92.9 142.7,110.1 198.0,125.4 253.3,139.1 308.7,151.1 364.0,161.3"/>
+<circle class="t7pg k-fallo" cx="32.0" cy="77.6" r="3.4"/>
+<circle class="t7pg k-fallo" cx="87.3" cy="92.9" r="3.4"/>
+<circle class="t7pg k-fallo" cx="142.7" cy="110.1" r="3.4"/>
+<circle class="t7pg k-fallo" cx="198.0" cy="125.4" r="3.4"/>
+<circle class="t7pg k-fallo" cx="253.3" cy="139.1" r="3.4"/>
+<circle class="t7pg k-fallo" cx="308.7" cy="151.1" r="3.4"/>
+<circle class="t7pg k-fallo" cx="364.0" cy="161.3" r="3.4"/>
+<polyline class="t7gruesa k-exito" points="32.0,125.4 87.3,110.1 142.7,92.9 198.0,77.6 253.3,63.9 308.7,51.9 364.0,41.7"/>
+<circle class="t7pg k-exito" cx="32.0" cy="125.4" r="3.4"/>
+<circle class="t7pg k-exito" cx="87.3" cy="110.1" r="3.4"/>
+<circle class="t7pg k-exito" cx="142.7" cy="92.9" r="3.4"/>
+<circle class="t7pg k-exito" cx="198.0" cy="77.6" r="3.4"/>
+<circle class="t7pg k-exito" cx="253.3" cy="63.9" r="3.4"/>
+<circle class="t7pg k-exito" cx="308.7" cy="51.9" r="3.4"/>
+<circle class="t7pg k-exito" cx="364.0" cy="41.7" r="3.4"/>
+<text class="t7num" x="32.0" y="140.4" text-anchor="middle">36</text>
+<text class="t7num" x="87.3" y="125.1" text-anchor="middle">45</text>
+<text class="t7num" x="142.7" y="84.9" text-anchor="middle">55</text>
+<text class="t7num" x="198.0" y="69.6" text-anchor="middle">64</text>
+<text class="t7num" x="253.3" y="55.9" text-anchor="middle">72</text>
+<text class="t7num" x="308.7" y="43.9" text-anchor="middle">79</text>
+<text class="t7num" x="364.0" y="33.7" text-anchor="middle">85</text>
+</svg><p class="t7pie">bono &rarr; &nbsp;·&nbsp; la historia se tuerce en el 3&nbsp;% de las tiradas</p></div>
+<div class="t7der"><p class="t7how">suma de 2d10 + bono · TN 11 · bandas 2–3 / 19–20.</p><p><strong>Por qué encaja:</strong> La campana. Los extremos caen al 3&nbsp;%, el bono manda de principio a fin y el salto entre escalones se va suavizando (9, 10, 9, 8, 7 y 6 puntos): un mundo donde mejorar rinde cada vez menos, que es lo que pasa en un mundo de reloj.</p></div>
+</div>
+</div>
+<div class="t7" data-fila="neu">
+<div class="t7cab"><h4>Primera marcha</h4><span class="t7ax">Neutral · Neutral</span></div>
+<p class="t7frase">«Todavía no sabemos qué tono queremos: empezamos aquí.»</p>
+<div class="t7cuerpo">
+<div class="t7izq"><svg class="nog t7g" viewBox="0 0 380 215" width="100%" role="img" aria-label="Primera marcha: cuanto sale adelante segun el bono" xmlns="http://www.w3.org/2000/svg">
+<line class="gr" x1="32" y1="187.0" x2="364" y2="187.0"/>
+<line class="gr fino" x1="32" y1="169.9" x2="364" y2="169.9"/>
+<line class="gr fino" x1="32" y1="152.8" x2="364" y2="152.8"/>
+<line class="gr fino" x1="32" y1="135.7" x2="364" y2="135.7"/>
+<line class="gr fino" x1="32" y1="118.6" x2="364" y2="118.6"/>
+<line class="gr" x1="32" y1="101.5" x2="364" y2="101.5"/>
+<line class="gr fino" x1="32" y1="84.4" x2="364" y2="84.4"/>
+<line class="gr fino" x1="32" y1="67.3" x2="364" y2="67.3"/>
+<line class="gr fino" x1="32" y1="50.2" x2="364" y2="50.2"/>
+<line class="gr fino" x1="32" y1="33.1" x2="364" y2="33.1"/>
+<line class="gr" x1="32" y1="16.0" x2="364" y2="16.0"/>
+<text class="gt" x="26" y="190.5" text-anchor="end">0</text>
+<text class="gt" x="26" y="105.0" text-anchor="end">50</text>
+<text class="gt" x="26" y="19.5" text-anchor="end">100</text>
+<line class="ge" x1="32" y1="187.0" x2="364" y2="187.0"/>
+<text class="gt" x="32.0" y="206" text-anchor="middle">−2</text>
+<text class="gt" x="87.3" y="206" text-anchor="middle">−1</text>
+<text class="gt" x="142.7" y="206" text-anchor="middle">+0</text>
+<text class="gt" x="198.0" y="206" text-anchor="middle">+1</text>
+<text class="gt" x="253.3" y="206" text-anchor="middle">+2</text>
+<text class="gt" x="308.7" y="206" text-anchor="middle">+3</text>
+<text class="gt" x="364.0" y="206" text-anchor="middle">+4</text>
+<polyline class="t7fina k-critico" points="32.0,169.9 87.3,169.9 142.7,169.9 198.0,169.9 253.3,169.9 308.7,169.9 364.0,169.9"/>
+<circle class="t7pf k-critico" cx="32.0" cy="169.9" r="2.2"><title>crítico −2: 10%</title></circle>
+<circle class="t7pf k-critico" cx="87.3" cy="169.9" r="2.2"><title>crítico −1: 10%</title></circle>
+<circle class="t7pf k-critico" cx="142.7" cy="169.9" r="2.2"><title>crítico +0: 10%</title></circle>
+<circle class="t7pf k-critico" cx="198.0" cy="169.9" r="2.2"><title>crítico +1: 10%</title></circle>
+<circle class="t7pf k-critico" cx="253.3" cy="169.9" r="2.2"><title>crítico +2: 10%</title></circle>
+<circle class="t7pf k-critico" cx="308.7" cy="169.9" r="2.2"><title>crítico +3: 10%</title></circle>
+<circle class="t7pf k-critico" cx="364.0" cy="169.9" r="2.2"><title>crítico +4: 10%</title></circle>
+<polyline class="t7fina k-parcial" points="32.0,187.0 87.3,187.0 142.7,187.0 198.0,187.0 253.3,187.0 308.7,187.0 364.0,187.0"/>
+<circle class="t7pf k-parcial" cx="32.0" cy="187.0" r="2.2"><title>coste −2: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="87.3" cy="187.0" r="2.2"><title>coste −1: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="142.7" cy="187.0" r="2.2"><title>coste +0: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="198.0" cy="187.0" r="2.2"><title>coste +1: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="253.3" cy="187.0" r="2.2"><title>coste +2: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="308.7" cy="187.0" r="2.2"><title>coste +3: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="364.0" cy="187.0" r="2.2"><title>coste +4: 0%</title></circle>
+<polyline class="t7fina k-pifia" points="32.0,169.9 87.3,169.9 142.7,169.9 198.0,169.9 253.3,169.9 308.7,169.9 364.0,169.9"/>
+<circle class="t7pf k-pifia" cx="32.0" cy="169.9" r="2.2"><title>pifia −2: 10%</title></circle>
+<circle class="t7pf k-pifia" cx="87.3" cy="169.9" r="2.2"><title>pifia −1: 10%</title></circle>
+<circle class="t7pf k-pifia" cx="142.7" cy="169.9" r="2.2"><title>pifia +0: 10%</title></circle>
+<circle class="t7pf k-pifia" cx="198.0" cy="169.9" r="2.2"><title>pifia +1: 10%</title></circle>
+<circle class="t7pf k-pifia" cx="253.3" cy="169.9" r="2.2"><title>pifia +2: 10%</title></circle>
+<circle class="t7pf k-pifia" cx="308.7" cy="169.9" r="2.2"><title>pifia +3: 10%</title></circle>
+<circle class="t7pf k-pifia" cx="364.0" cy="169.9" r="2.2"><title>pifia +4: 10%</title></circle>
+<line class="t7cruce" x1="142.7" y1="187.0" x2="142.7" y2="16.0"/>
+<text class="gt" x="146.7" y="24.0">cambia de bando</text>
+<polyline class="t7gruesa k-fallo" points="32.0,67.3 87.3,84.4 142.7,101.5 198.0,118.6 253.3,135.7 308.7,152.8 364.0,169.9"/>
+<circle class="t7pg k-fallo" cx="32.0" cy="67.3" r="3.4"/>
+<circle class="t7pg k-fallo" cx="87.3" cy="84.4" r="3.4"/>
+<circle class="t7pg k-fallo" cx="142.7" cy="101.5" r="3.4"/>
+<circle class="t7pg k-fallo" cx="198.0" cy="118.6" r="3.4"/>
+<circle class="t7pg k-fallo" cx="253.3" cy="135.7" r="3.4"/>
+<circle class="t7pg k-fallo" cx="308.7" cy="152.8" r="3.4"/>
+<circle class="t7pg k-fallo" cx="364.0" cy="169.9" r="3.4"/>
+<polyline class="t7gruesa k-exito" points="32.0,135.7 87.3,118.6 142.7,101.5 198.0,84.4 253.3,67.3 308.7,50.2 364.0,33.1"/>
+<circle class="t7pg k-exito" cx="32.0" cy="135.7" r="3.4"/>
+<circle class="t7pg k-exito" cx="87.3" cy="118.6" r="3.4"/>
+<circle class="t7pg k-exito" cx="142.7" cy="101.5" r="3.4"/>
+<circle class="t7pg k-exito" cx="198.0" cy="84.4" r="3.4"/>
+<circle class="t7pg k-exito" cx="253.3" cy="67.3" r="3.4"/>
+<circle class="t7pg k-exito" cx="308.7" cy="50.2" r="3.4"/>
+<circle class="t7pg k-exito" cx="364.0" cy="33.1" r="3.4"/>
+<text class="t7num" x="32.0" y="150.7" text-anchor="middle">30</text>
+<text class="t7num" x="87.3" y="133.6" text-anchor="middle">40</text>
+<text class="t7num" x="142.7" y="93.5" text-anchor="middle">50</text>
+<text class="t7num" x="198.0" y="76.4" text-anchor="middle">60</text>
+<text class="t7num" x="253.3" y="59.3" text-anchor="middle">70</text>
+<text class="t7num" x="308.7" y="42.2" text-anchor="middle">80</text>
+<text class="t7num" x="364.0" y="25.1" text-anchor="middle">90</text>
+</svg><p class="t7pie">bono &rarr; &nbsp;·&nbsp; la historia se tuerce en el 10&nbsp;% de las tiradas</p></div>
+<div class="t7der"><p class="t7how">dado rojo + bono · TN 6 · bandas 1 / 10.</p><p><strong>Por qué encaja:</strong> Un solo dado lineal: cada cara vale un 10&nbsp;% y el bono mueve la aguja de diez en diez. Ojo con el nombre de la columna: un dado plano no es el punto medio estadístico —de hecho es lo más aleatorio que hay aquí— sino el <strong>punto medio de la costumbre</strong>. Es lo que hace casi todo el hobby, y por eso es la referencia contra la que se mide el resto. <span class="flag ed">ED-20</span></p></div>
+</div>
+</div>
+<div class="t7" data-fila="neu">
+<div class="t7cab"><h4>Comedia negra</h4><span class="t7ax">Neutral · Caótico</span></div>
+<p class="t7frase">«Empieza siendo una tontería.»</p>
+<div class="t7cuerpo">
+<div class="t7izq"><svg class="nog t7g" viewBox="0 0 380 215" width="100%" role="img" aria-label="Comedia negra: cuanto sale adelante segun el bono" xmlns="http://www.w3.org/2000/svg">
+<line class="gr" x1="32" y1="187.0" x2="364" y2="187.0"/>
+<line class="gr fino" x1="32" y1="169.9" x2="364" y2="169.9"/>
+<line class="gr fino" x1="32" y1="152.8" x2="364" y2="152.8"/>
+<line class="gr fino" x1="32" y1="135.7" x2="364" y2="135.7"/>
+<line class="gr fino" x1="32" y1="118.6" x2="364" y2="118.6"/>
+<line class="gr" x1="32" y1="101.5" x2="364" y2="101.5"/>
+<line class="gr fino" x1="32" y1="84.4" x2="364" y2="84.4"/>
+<line class="gr fino" x1="32" y1="67.3" x2="364" y2="67.3"/>
+<line class="gr fino" x1="32" y1="50.2" x2="364" y2="50.2"/>
+<line class="gr fino" x1="32" y1="33.1" x2="364" y2="33.1"/>
+<line class="gr" x1="32" y1="16.0" x2="364" y2="16.0"/>
+<text class="gt" x="26" y="190.5" text-anchor="end">0</text>
+<text class="gt" x="26" y="105.0" text-anchor="end">50</text>
+<text class="gt" x="26" y="19.5" text-anchor="end">100</text>
+<line class="ge" x1="32" y1="187.0" x2="364" y2="187.0"/>
+<text class="gt" x="32.0" y="206" text-anchor="middle">−2</text>
+<text class="gt" x="87.3" y="206" text-anchor="middle">−1</text>
+<text class="gt" x="142.7" y="206" text-anchor="middle">+0</text>
+<text class="gt" x="198.0" y="206" text-anchor="middle">+1</text>
+<text class="gt" x="253.3" y="206" text-anchor="middle">+2</text>
+<text class="gt" x="308.7" y="206" text-anchor="middle">+3</text>
+<text class="gt" x="364.0" y="206" text-anchor="middle">+4</text>
+<polyline class="t7fina k-critico" points="32.0,152.8 87.3,152.8 142.7,152.8 198.0,152.8 253.3,152.8 308.7,152.8 364.0,152.8"/>
+<circle class="t7pf k-critico" cx="32.0" cy="152.8" r="2.2"><title>crítico −2: 20%</title></circle>
+<circle class="t7pf k-critico" cx="87.3" cy="152.8" r="2.2"><title>crítico −1: 20%</title></circle>
+<circle class="t7pf k-critico" cx="142.7" cy="152.8" r="2.2"><title>crítico +0: 20%</title></circle>
+<circle class="t7pf k-critico" cx="198.0" cy="152.8" r="2.2"><title>crítico +1: 20%</title></circle>
+<circle class="t7pf k-critico" cx="253.3" cy="152.8" r="2.2"><title>crítico +2: 20%</title></circle>
+<circle class="t7pf k-critico" cx="308.7" cy="152.8" r="2.2"><title>crítico +3: 20%</title></circle>
+<circle class="t7pf k-critico" cx="364.0" cy="152.8" r="2.2"><title>crítico +4: 20%</title></circle>
+<polyline class="t7fina k-parcial" points="32.0,169.9 87.3,152.8 142.7,152.8 198.0,152.8 253.3,152.8 308.7,152.8 364.0,169.9"/>
+<circle class="t7pf k-parcial" cx="32.0" cy="169.9" r="2.2"><title>coste −2: 10%</title></circle>
+<circle class="t7pf k-parcial" cx="87.3" cy="152.8" r="2.2"><title>coste −1: 20%</title></circle>
+<circle class="t7pf k-parcial" cx="142.7" cy="152.8" r="2.2"><title>coste +0: 20%</title></circle>
+<circle class="t7pf k-parcial" cx="198.0" cy="152.8" r="2.2"><title>coste +1: 20%</title></circle>
+<circle class="t7pf k-parcial" cx="253.3" cy="152.8" r="2.2"><title>coste +2: 20%</title></circle>
+<circle class="t7pf k-parcial" cx="308.7" cy="152.8" r="2.2"><title>coste +3: 20%</title></circle>
+<circle class="t7pf k-parcial" cx="364.0" cy="169.9" r="2.2"><title>coste +4: 10%</title></circle>
+<polyline class="t7fina k-pifia" points="32.0,152.8 87.3,152.8 142.7,152.8 198.0,152.8 253.3,152.8 308.7,152.8 364.0,152.8"/>
+<circle class="t7pf k-pifia" cx="32.0" cy="152.8" r="2.2"><title>pifia −2: 20%</title></circle>
+<circle class="t7pf k-pifia" cx="87.3" cy="152.8" r="2.2"><title>pifia −1: 20%</title></circle>
+<circle class="t7pf k-pifia" cx="142.7" cy="152.8" r="2.2"><title>pifia +0: 20%</title></circle>
+<circle class="t7pf k-pifia" cx="198.0" cy="152.8" r="2.2"><title>pifia +1: 20%</title></circle>
+<circle class="t7pf k-pifia" cx="253.3" cy="152.8" r="2.2"><title>pifia +2: 20%</title></circle>
+<circle class="t7pf k-pifia" cx="308.7" cy="152.8" r="2.2"><title>pifia +3: 20%</title></circle>
+<circle class="t7pf k-pifia" cx="364.0" cy="152.8" r="2.2"><title>pifia +4: 20%</title></circle>
+<line class="t7cruce" x1="142.7" y1="187.0" x2="142.7" y2="16.0"/>
+<text class="gt" x="146.7" y="24.0">cambia de bando</text>
+<polyline class="t7gruesa k-fallo" points="32.0,67.3 87.3,84.4 142.7,101.5 198.0,118.6 253.3,135.7 308.7,152.8 364.0,152.8"/>
+<circle class="t7pg k-fallo" cx="32.0" cy="67.3" r="3.4"/>
+<circle class="t7pg k-fallo" cx="87.3" cy="84.4" r="3.4"/>
+<circle class="t7pg k-fallo" cx="142.7" cy="101.5" r="3.4"/>
+<circle class="t7pg k-fallo" cx="198.0" cy="118.6" r="3.4"/>
+<circle class="t7pg k-fallo" cx="253.3" cy="135.7" r="3.4"/>
+<circle class="t7pg k-fallo" cx="308.7" cy="152.8" r="3.4"/>
+<circle class="t7pg k-fallo" cx="364.0" cy="152.8" r="3.4"/>
+<polyline class="t7gruesa k-exito" points="32.0,135.7 87.3,118.6 142.7,101.5 198.0,84.4 253.3,67.3 308.7,50.2 364.0,50.2"/>
+<circle class="t7pg k-exito" cx="32.0" cy="135.7" r="3.4"/>
+<circle class="t7pg k-exito" cx="87.3" cy="118.6" r="3.4"/>
+<circle class="t7pg k-exito" cx="142.7" cy="101.5" r="3.4"/>
+<circle class="t7pg k-exito" cx="198.0" cy="84.4" r="3.4"/>
+<circle class="t7pg k-exito" cx="253.3" cy="67.3" r="3.4"/>
+<circle class="t7pg k-exito" cx="308.7" cy="50.2" r="3.4"/>
+<circle class="t7pg k-exito" cx="364.0" cy="50.2" r="3.4"/>
+<text class="t7num" x="32.0" y="150.7" text-anchor="middle">30</text>
+<text class="t7num" x="87.3" y="133.6" text-anchor="middle">40</text>
+<text class="t7num" x="142.7" y="93.5" text-anchor="middle">50</text>
+<text class="t7num" x="198.0" y="76.4" text-anchor="middle">60</text>
+<text class="t7num" x="253.3" y="59.3" text-anchor="middle">70</text>
+<text class="t7num" x="308.7" y="42.2" text-anchor="middle">80</text>
+<text class="t7num" x="364.0" y="42.2" text-anchor="middle">80</text>
+</svg><p class="t7pie">bono &rarr; &nbsp;·&nbsp; la historia se tuerce en el 40&nbsp;% de las tiradas</p></div>
+<div class="t7der"><p class="t7how">dado rojo + bono · TN 6 · bandas 1–2 / 9–10 · coste si el total es 6 o 7.</p><p><strong>Por qué encaja:</strong> La costumbre con las dos herramientas encima. Sale adelante igual que la Primera marcha hasta +3 (con +4, 80&nbsp;% frente a 90&nbsp;%), pero la pifia y el crítico se doblan hasta el 20&nbsp;% y una de cada cinco tiradas viene con factura. Es la única tarjeta donde los cinco resultados rondan la misma probabilidad. <span class="flag ed">ED-21</span></p></div>
+</div>
+</div>
+<div class="t7" data-fila="opr">
+<div class="t7cab"><h4>Angustia</h4><span class="t7ax">Opresivo · Previsible</span></div>
+<p class="t7frase">«No quiero tirar.»</p>
+<div class="t7cuerpo">
+<div class="t7izq"><svg class="nog t7g" viewBox="0 0 380 215" width="100%" role="img" aria-label="Angustia: cuanto sale adelante segun el bono" xmlns="http://www.w3.org/2000/svg">
+<line class="gr" x1="32" y1="187.0" x2="364" y2="187.0"/>
+<line class="gr fino" x1="32" y1="169.9" x2="364" y2="169.9"/>
+<line class="gr fino" x1="32" y1="152.8" x2="364" y2="152.8"/>
+<line class="gr fino" x1="32" y1="135.7" x2="364" y2="135.7"/>
+<line class="gr fino" x1="32" y1="118.6" x2="364" y2="118.6"/>
+<line class="gr" x1="32" y1="101.5" x2="364" y2="101.5"/>
+<line class="gr fino" x1="32" y1="84.4" x2="364" y2="84.4"/>
+<line class="gr fino" x1="32" y1="67.3" x2="364" y2="67.3"/>
+<line class="gr fino" x1="32" y1="50.2" x2="364" y2="50.2"/>
+<line class="gr fino" x1="32" y1="33.1" x2="364" y2="33.1"/>
+<line class="gr" x1="32" y1="16.0" x2="364" y2="16.0"/>
+<text class="gt" x="26" y="190.5" text-anchor="end">0</text>
+<text class="gt" x="26" y="105.0" text-anchor="end">50</text>
+<text class="gt" x="26" y="19.5" text-anchor="end">100</text>
+<line class="ge" x1="32" y1="187.0" x2="364" y2="187.0"/>
+<text class="gt" x="32.0" y="206" text-anchor="middle">−2</text>
+<text class="gt" x="87.3" y="206" text-anchor="middle">−1</text>
+<text class="gt" x="142.7" y="206" text-anchor="middle">+0</text>
+<text class="gt" x="198.0" y="206" text-anchor="middle">+1</text>
+<text class="gt" x="253.3" y="206" text-anchor="middle">+2</text>
+<text class="gt" x="308.7" y="206" text-anchor="middle">+3</text>
+<text class="gt" x="364.0" y="206" text-anchor="middle">+4</text>
+<polyline class="t7fina k-critico" points="32.0,185.3 87.3,185.3 142.7,185.3 198.0,185.3 253.3,185.3 308.7,185.3 364.0,185.3"/>
+<circle class="t7pf k-critico" cx="32.0" cy="185.3" r="2.2"><title>crítico −2: 1%</title></circle>
+<circle class="t7pf k-critico" cx="87.3" cy="185.3" r="2.2"><title>crítico −1: 1%</title></circle>
+<circle class="t7pf k-critico" cx="142.7" cy="185.3" r="2.2"><title>crítico +0: 1%</title></circle>
+<circle class="t7pf k-critico" cx="198.0" cy="185.3" r="2.2"><title>crítico +1: 1%</title></circle>
+<circle class="t7pf k-critico" cx="253.3" cy="185.3" r="2.2"><title>crítico +2: 1%</title></circle>
+<circle class="t7pf k-critico" cx="308.7" cy="185.3" r="2.2"><title>crítico +3: 1%</title></circle>
+<circle class="t7pf k-critico" cx="364.0" cy="185.3" r="2.2"><title>crítico +4: 1%</title></circle>
+<polyline class="t7fina k-parcial" points="32.0,187.0 87.3,187.0 142.7,187.0 198.0,187.0 253.3,187.0 308.7,187.0 364.0,187.0"/>
+<circle class="t7pf k-parcial" cx="32.0" cy="187.0" r="2.2"><title>coste −2: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="87.3" cy="187.0" r="2.2"><title>coste −1: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="142.7" cy="187.0" r="2.2"><title>coste +0: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="198.0" cy="187.0" r="2.2"><title>coste +1: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="253.3" cy="187.0" r="2.2"><title>coste +2: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="308.7" cy="187.0" r="2.2"><title>coste +3: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="364.0" cy="187.0" r="2.2"><title>coste +4: 0%</title></circle>
+<polyline class="t7fina k-pifia" points="32.0,185.3 87.3,185.3 142.7,185.3 198.0,185.3 253.3,185.3 308.7,185.3 364.0,185.3"/>
+<circle class="t7pf k-pifia" cx="32.0" cy="185.3" r="2.2"><title>pifia −2: 1%</title></circle>
+<circle class="t7pf k-pifia" cx="87.3" cy="185.3" r="2.2"><title>pifia −1: 1%</title></circle>
+<circle class="t7pf k-pifia" cx="142.7" cy="185.3" r="2.2"><title>pifia +0: 1%</title></circle>
+<circle class="t7pf k-pifia" cx="198.0" cy="185.3" r="2.2"><title>pifia +1: 1%</title></circle>
+<circle class="t7pf k-pifia" cx="253.3" cy="185.3" r="2.2"><title>pifia +2: 1%</title></circle>
+<circle class="t7pf k-pifia" cx="308.7" cy="185.3" r="2.2"><title>pifia +3: 1%</title></circle>
+<circle class="t7pf k-pifia" cx="364.0" cy="185.3" r="2.2"><title>pifia +4: 1%</title></circle>
+<line class="t7cruce" x1="257.0" y1="187.0" x2="257.0" y2="16.0"/>
+<text class="gt" x="261.0" y="24.0">cambia de bando</text>
+<polyline class="t7gruesa k-fallo" points="32.0,31.4 87.3,43.4 142.7,58.8 198.0,77.6 253.3,99.8 308.7,125.4 364.0,154.5"/>
+<circle class="t7pg k-fallo" cx="32.0" cy="31.4" r="3.4"/>
+<circle class="t7pg k-fallo" cx="87.3" cy="43.4" r="3.4"/>
+<circle class="t7pg k-fallo" cx="142.7" cy="58.8" r="3.4"/>
+<circle class="t7pg k-fallo" cx="198.0" cy="77.6" r="3.4"/>
+<circle class="t7pg k-fallo" cx="253.3" cy="99.8" r="3.4"/>
+<circle class="t7pg k-fallo" cx="308.7" cy="125.4" r="3.4"/>
+<circle class="t7pg k-fallo" cx="364.0" cy="154.5" r="3.4"/>
+<polyline class="t7gruesa k-exito" points="32.0,171.6 87.3,159.6 142.7,144.2 198.0,125.4 253.3,103.2 308.7,77.6 364.0,48.5"/>
+<circle class="t7pg k-exito" cx="32.0" cy="171.6" r="3.4"/>
+<circle class="t7pg k-exito" cx="87.3" cy="159.6" r="3.4"/>
+<circle class="t7pg k-exito" cx="142.7" cy="144.2" r="3.4"/>
+<circle class="t7pg k-exito" cx="198.0" cy="125.4" r="3.4"/>
+<circle class="t7pg k-exito" cx="253.3" cy="103.2" r="3.4"/>
+<circle class="t7pg k-exito" cx="308.7" cy="77.6" r="3.4"/>
+<circle class="t7pg k-exito" cx="364.0" cy="48.5" r="3.4"/>
+<text class="t7num" x="32.0" y="186.6" text-anchor="middle">9</text>
+<text class="t7num" x="87.3" y="174.6" text-anchor="middle">16</text>
+<text class="t7num" x="142.7" y="159.2" text-anchor="middle">25</text>
+<text class="t7num" x="198.0" y="140.4" text-anchor="middle">36</text>
+<text class="t7num" x="253.3" y="118.2" text-anchor="middle">49</text>
+<text class="t7num" x="308.7" y="69.6" text-anchor="middle">64</text>
+<text class="t7num" x="364.0" y="40.5" text-anchor="middle">81</text>
+</svg><p class="t7pie">bono &rarr; &nbsp;·&nbsp; la historia se tuerce en el 1&nbsp;% de las tiradas</p></div>
+<div class="t7der"><p class="t7how">peor de 2d10 + bono · TN 6 · bandas doble 1 / doble 10.</p><p><strong>Por qué encaja:</strong> El espejo exacto de la Épica: media 3,85 y las bandas pegadas al suelo, un 1&nbsp;% arriba y otro abajo. Y el dato que sorprende: es la tarjeta donde más pesa la ficha, del 9&nbsp;% al 81&nbsp;%, porque el peor de dos amontona los resultados justo en la zona donde el bono decide.</p></div>
+</div>
+</div>
+<div class="t7" data-fila="opr">
+<div class="t7cab"><h4>Pesadilla</h4><span class="t7ax">Opresivo · Caótico</span></div>
+<p class="t7frase">«No deberíamos haber venido.»</p>
+<div class="t7cuerpo">
+<div class="t7izq"><svg class="nog t7g" viewBox="0 0 380 215" width="100%" role="img" aria-label="Pesadilla: cuanto sale adelante segun el bono" xmlns="http://www.w3.org/2000/svg">
+<line class="gr" x1="32" y1="187.0" x2="364" y2="187.0"/>
+<line class="gr fino" x1="32" y1="169.9" x2="364" y2="169.9"/>
+<line class="gr fino" x1="32" y1="152.8" x2="364" y2="152.8"/>
+<line class="gr fino" x1="32" y1="135.7" x2="364" y2="135.7"/>
+<line class="gr fino" x1="32" y1="118.6" x2="364" y2="118.6"/>
+<line class="gr" x1="32" y1="101.5" x2="364" y2="101.5"/>
+<line class="gr fino" x1="32" y1="84.4" x2="364" y2="84.4"/>
+<line class="gr fino" x1="32" y1="67.3" x2="364" y2="67.3"/>
+<line class="gr fino" x1="32" y1="50.2" x2="364" y2="50.2"/>
+<line class="gr fino" x1="32" y1="33.1" x2="364" y2="33.1"/>
+<line class="gr" x1="32" y1="16.0" x2="364" y2="16.0"/>
+<text class="gt" x="26" y="190.5" text-anchor="end">0</text>
+<text class="gt" x="26" y="105.0" text-anchor="end">50</text>
+<text class="gt" x="26" y="19.5" text-anchor="end">100</text>
+<line class="ge" x1="32" y1="187.0" x2="364" y2="187.0"/>
+<text class="gt" x="32.0" y="206" text-anchor="middle">−2</text>
+<text class="gt" x="87.3" y="206" text-anchor="middle">−1</text>
+<text class="gt" x="142.7" y="206" text-anchor="middle">+0</text>
+<text class="gt" x="198.0" y="206" text-anchor="middle">+1</text>
+<text class="gt" x="253.3" y="206" text-anchor="middle">+2</text>
+<text class="gt" x="308.7" y="206" text-anchor="middle">+3</text>
+<text class="gt" x="364.0" y="206" text-anchor="middle">+4</text>
+<polyline class="t7fina k-critico" points="32.0,185.3 87.3,185.3 142.7,185.3 198.0,185.3 253.3,185.3 308.7,185.3 364.0,185.3"/>
+<circle class="t7pf k-critico" cx="32.0" cy="185.3" r="2.2"><title>crítico −2: 1%</title></circle>
+<circle class="t7pf k-critico" cx="87.3" cy="185.3" r="2.2"><title>crítico −1: 1%</title></circle>
+<circle class="t7pf k-critico" cx="142.7" cy="185.3" r="2.2"><title>crítico +0: 1%</title></circle>
+<circle class="t7pf k-critico" cx="198.0" cy="185.3" r="2.2"><title>crítico +1: 1%</title></circle>
+<circle class="t7pf k-critico" cx="253.3" cy="185.3" r="2.2"><title>crítico +2: 1%</title></circle>
+<circle class="t7pf k-critico" cx="308.7" cy="185.3" r="2.2"><title>crítico +3: 1%</title></circle>
+<circle class="t7pf k-critico" cx="364.0" cy="185.3" r="2.2"><title>crítico +4: 1%</title></circle>
+<polyline class="t7fina k-parcial" points="32.0,187.0 87.3,187.0 142.7,187.0 198.0,187.0 253.3,187.0 308.7,187.0 364.0,187.0"/>
+<circle class="t7pf k-parcial" cx="32.0" cy="187.0" r="2.2"><title>coste −2: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="87.3" cy="187.0" r="2.2"><title>coste −1: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="142.7" cy="187.0" r="2.2"><title>coste +0: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="198.0" cy="187.0" r="2.2"><title>coste +1: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="253.3" cy="187.0" r="2.2"><title>coste +2: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="308.7" cy="187.0" r="2.2"><title>coste +3: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="364.0" cy="187.0" r="2.2"><title>coste +4: 0%</title></circle>
+<polyline class="t7fina k-pifia" points="32.0,154.5 87.3,154.5 142.7,154.5 198.0,154.5 253.3,154.5 308.7,154.5 364.0,154.5"/>
+<circle class="t7pf k-pifia" cx="32.0" cy="154.5" r="2.2"><title>pifia −2: 19%</title></circle>
+<circle class="t7pf k-pifia" cx="87.3" cy="154.5" r="2.2"><title>pifia −1: 19%</title></circle>
+<circle class="t7pf k-pifia" cx="142.7" cy="154.5" r="2.2"><title>pifia +0: 19%</title></circle>
+<circle class="t7pf k-pifia" cx="198.0" cy="154.5" r="2.2"><title>pifia +1: 19%</title></circle>
+<circle class="t7pf k-pifia" cx="253.3" cy="154.5" r="2.2"><title>pifia +2: 19%</title></circle>
+<circle class="t7pf k-pifia" cx="308.7" cy="154.5" r="2.2"><title>pifia +3: 19%</title></circle>
+<circle class="t7pf k-pifia" cx="364.0" cy="154.5" r="2.2"><title>pifia +4: 19%</title></circle>
+<line class="t7cruce" x1="257.0" y1="187.0" x2="257.0" y2="16.0"/>
+<text class="gt" x="261.0" y="24.0">cambia de bando</text>
+<polyline class="t7gruesa k-fallo" points="32.0,31.4 87.3,43.4 142.7,58.8 198.0,77.6 253.3,99.8 308.7,125.4 364.0,154.5"/>
+<circle class="t7pg k-fallo" cx="32.0" cy="31.4" r="3.4"/>
+<circle class="t7pg k-fallo" cx="87.3" cy="43.4" r="3.4"/>
+<circle class="t7pg k-fallo" cx="142.7" cy="58.8" r="3.4"/>
+<circle class="t7pg k-fallo" cx="198.0" cy="77.6" r="3.4"/>
+<circle class="t7pg k-fallo" cx="253.3" cy="99.8" r="3.4"/>
+<circle class="t7pg k-fallo" cx="308.7" cy="125.4" r="3.4"/>
+<circle class="t7pg k-fallo" cx="364.0" cy="154.5" r="3.4"/>
+<polyline class="t7gruesa k-exito" points="32.0,171.6 87.3,159.6 142.7,144.2 198.0,125.4 253.3,103.2 308.7,77.6 364.0,48.5"/>
+<circle class="t7pg k-exito" cx="32.0" cy="171.6" r="3.4"/>
+<circle class="t7pg k-exito" cx="87.3" cy="159.6" r="3.4"/>
+<circle class="t7pg k-exito" cx="142.7" cy="144.2" r="3.4"/>
+<circle class="t7pg k-exito" cx="198.0" cy="125.4" r="3.4"/>
+<circle class="t7pg k-exito" cx="253.3" cy="103.2" r="3.4"/>
+<circle class="t7pg k-exito" cx="308.7" cy="77.6" r="3.4"/>
+<circle class="t7pg k-exito" cx="364.0" cy="48.5" r="3.4"/>
+<text class="t7num" x="32.0" y="186.6" text-anchor="middle">9</text>
+<text class="t7num" x="87.3" y="174.6" text-anchor="middle">16</text>
+<text class="t7num" x="142.7" y="159.2" text-anchor="middle">25</text>
+<text class="t7num" x="198.0" y="140.4" text-anchor="middle">36</text>
+<text class="t7num" x="253.3" y="118.2" text-anchor="middle">49</text>
+<text class="t7num" x="308.7" y="69.6" text-anchor="middle">64</text>
+<text class="t7num" x="364.0" y="40.5" text-anchor="middle">81</text>
+</svg><p class="t7pie">bono &rarr; &nbsp;·&nbsp; la historia se tuerce en el 19&nbsp;% de las tiradas</p></div>
+<div class="t7der"><p class="t7how">peor de 2d10 + bono · TN 6 · bandas 1 / 10.</p><p><strong>Por qué encaja:</strong> La misma lectura que la Angustia con la banda un paso más ancha, y ahí está la demostración del eje: <strong>sale adelante exactamente igual de a menudo</strong> en los siete bonos, porque con el peor de dos un 1 no llega a la TN ni con +4. Lo único que cambia es que en dieciocho de cada cien tiradas el fallo pasa de callarse a hablar. Y con +4 el fallo limpio desaparece: el gran maestro ya no falla, pifia.</p></div>
+</div>
+</div>
+</div>
+<h3 id="maq-cuadrante">A.9 El cuadrante: siete tarjetas y dos huecos</h3>
+<p>Nueve sitios, siete tarjetas. Los dos huecos están donde el universo tiene postura pero el dado no tiene curva, y ahí no hay nada que hacer sin mover la TN. Se dejan a la vista.</p>
+<div class="tw"><table class="t"><thead><tr><th>El universo…</th><th>Previsible (ordena)</th><th>Neutral (la costumbre)</th><th>Caótico (cobra)</th></tr></thead><tbody><tr><td><strong>Optimista</strong></td><td><strong>Épica</strong><br><span class="note">75&nbsp;% sale adelante · pifia 1&nbsp;% · crítico 19&nbsp;%</span></td><td><em>Hueco: aquí no hay tarjeta</em></td><td><strong>Pulp desenfrenado</strong><br><span class="note">75&nbsp;% sale adelante · pifia 4&nbsp;% · crítico 19&nbsp;%</span></td></tr><tr><td><strong>Neutral</strong></td><td><strong>Realista</strong><br><span class="note">55&nbsp;% sale adelante · pifia 3&nbsp;% · crítico 3&nbsp;%</span></td><td><strong>Primera marcha</strong><br><span class="note">50&nbsp;% sale adelante · pifia 10&nbsp;% · crítico 10&nbsp;%</span></td><td><strong>Comedia negra</strong><br><span class="note">50&nbsp;% sale adelante · pifia 20&nbsp;% · crítico 20&nbsp;%</span></td></tr><tr><td><strong>Opresivo</strong></td><td><strong>Angustia</strong><br><span class="note">25&nbsp;% sale adelante · pifia 1&nbsp;% · crítico 1&nbsp;%</span></td><td><em>Hueco: aquí no hay tarjeta</em></td><td><strong>Pesadilla</strong><br><span class="note">25&nbsp;% sale adelante · pifia 19&nbsp;% · crítico 1&nbsp;%</span></td></tr></tbody></table></div>
+<div class="rule"><p class="rule-title">La fila decide; la columna cobra</p><p>En cada fila, la tarjeta caótica <strong>sale adelante igual de a menudo</strong> que su compañera hasta +3. Pulp da el mismo 51 · 64 · 75 · 84 · 91 · 96 que la Épica, y con +4 se queda en 96 donde la Épica llega a 99; la Comedia negra, el mismo 30 · 40 · 50 · 60 · 70 · 80 que la Primera marcha, y con +4 se queda en 80 donde la Primera marcha llega a 90; y la Pesadilla, el mismo 9 · 16 · 25 · 36 · 49 · 64 que la Angustia, y con +4 el mismo 81. Lo único que cambia es el precio, y arriba del todo la banda de pifia ancha cobra unos puntos. <span class="src">T170</span></p><p>Y cada fila cobra en su moneda: arriba lo cobra el <strong>coste</strong>, abajo lo cobra la <strong>pifia</strong>, y en el medio las dos cosas a la vez. Por eso la columna caótica no necesita la misma herramienta en las tres filas: necesita la que sea barata en cada una.</p></div>
+<p>La cuenta que más le importa al Director es otra: <strong>cada cuántas tiradas la historia se sale de lo previsible</strong>. Sumando pifias y costes, el dado deja de confirmar lo que ya se veía venir y obliga a torcer el rumbo. Sale 1&nbsp;% en la Épica y en la Angustia, 3&nbsp;% en la Realista, 10&nbsp;% en la Primera marcha, 19&nbsp;% en la Pesadilla, 28&nbsp;% en el Pulp y 40&nbsp;% en la Comedia negra. Esa escalera separa las tres columnas sin que se toquen. Conviene mirarla antes de una campaña larga por una razón concreta: una mesa aguanta mucha sorpresa en una sesión suelta y bastante menos a lo largo de veinte, porque lo imprevisto cansa al que tiene que hacerlo encajar con lo de ayer.</p>
+<p>Dos efectos de borde que son decisiones, no casualidades. Con +4, <strong>el coste casi desaparece</strong> en las tarjetas que lo llevan (del 32&nbsp;% al 5&nbsp;% en el Pulp): el maestro ya no negocia. Y en la Pesadilla, con ese mismo +4, <strong>desaparece el fallo limpio</strong>: lo que no sale es siempre un desastre. La competencia no te quita el caos; te cambia la moneda con la que lo pagas.</p>
+<aside class="meta"><p>No lo leas como nueve cajas cerradas. Las dos preguntas del cuestionario colocan tu partida en un punto del mapa, y lo normal es caer cerca de un borde: entonces te quedas con la lectura de tu casilla y tomas prestada solo una parte de la vecina —la banda un paso más ancha, por ejemplo, sin el coste—. Y si caes en un hueco, ya sabes lo que hay: ese sitio está vacío y es tuyo.</p></aside>
+<div class="rule"><p class="rule-title">La ilusión del +4</p>
+<p>Al pasar de un dado (1–10) a la suma (2–20), parece que el +4 «pesa menos», porque la escala es el doble de larga. No es así. Con 1d10 contra TN 6, el Gran Maestro necesita un 2 o más: <strong>90 %</strong>. Con la suma contra TN 11 necesita un 7 o más: <strong>85 %</strong> <span class="src">T29</span><span class="src">T30</span>. La campana concentra los resultados en el centro, así que cuatro puntos de bono mueven mucha más masa de probabilidad de lo que su tamaño sugiere. Solo se pierden cinco puntos, y ese es el grano de realidad del modo Realista. El sistema cambia la volatilidad, no tu eficacia profesional.</p>
+<p>Con la moneda al aire (+0) pasa algo parecido: 50 % con un dado y 55 % con la suma <span class="flag ed">ED-M</span>.</p></div>
+<aside class="meta"><p><strong>El principio del 99 %</strong>. En la Épica, el Gran Maestro acierta una tarea estándar el 99 % de las veces <span class="src">T21</span><span class="src">T22</span>. Eso no es un bug: un Gran Maestro no debe tener problemas con lo mundano. Aquí no hay «inflación narrativa»: la TN se queda donde está, y una tarea estándar sigue siendo estándar. Si fallar no sería interesante, <strong>no se tira</strong> (<a href="#ch0-tirar">0.6</a>); que el fallo sea numéricamente raro no es motivo para no tirar. Y si el jugador quiere lucirse, que se suba él mismo la dificultad con la «mano a la espalda», por ejemplo rebotando la bala en la pared (<a href="#ch2-bonos">2.5</a>). Cambia seguridad por gloria.</p></aside>
+<h3 id="maq-economia">A.10 La economía de la ficha: puntos, Llaves y ceros</h3>
+<p>Las tarjetas dicen cómo se tira. Este apartado dice <em>cuánto cuesta ser alguien</em> (las reglas del precio, en el <a href="#ch5">capítulo 5</a>), que es la otra mitad del juego y suele estar peor pensada en los manuales que leemos.</p>
+
+<h4>Por qué 12 y por qué 14</h4>
+<p>La pirámide tiene cinco Ámbitos, cada uno con dos Dominios y ocho Disciplinas: <strong>diez casillas por Ámbito</strong>. Si nadie en la mesa juega Arcano hay cuatro Ámbitos en juego, o sea cuarenta casillas; si algún jugador lo juega, cincuenta.</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Mesa</th><th class="num">Casillas</th><th class="num">Puntos</th><th class="num">Cobertura</th></tr></thead>
+<tbody>
+<tr><td>Nadie juega Arcano</td><td class="num">40</td><td class="num">12</td><td class="num">30 %</td></tr>
+<tr><td>Alguien juega Arcano</td><td class="num">50</td><td class="num">14</td><td class="num">28 %</td></tr>
+</tbody></table></div>
+<p>Dos puntos más por diez casillas más mantienen la escasez casi idéntica. Ese es todo el misterio del 14: no es una recompensa por jugar con magia, es que la ficha ha crecido y había que pagar el alquiler. Por eso los catorce son para todos los de la mesa en cuanto uno juega Arcano, y por eso un mundo con magia que los jugadores no pueden tocar no da puntos de más (<a href="#ch5-salida">5.2</a>) <span class="src">C·22oct</span>.</p>
+
+<h4>La anchura es barata y la libertad es cara</h4>
+<p>El bote aparte ofrece dos monedas por el mismo precio, y no son equivalentes:</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Compra</th><th class="num">Cubre</th><th class="num">Cuesta</th><th class="num">Por Disciplina</th></tr></thead>
+<tbody>
+<tr><td>+1 nivel de Rejilla en un Ámbito</td><td class="num">8</td><td class="num">5</td><td class="num">5/8</td></tr>
+<tr><td>Una Llave</td><td class="num">1</td><td class="num">1</td><td class="num">1</td></tr>
+</tbody></table></div>
+<p><strong>La libertad cuesta un 60 % más</strong>: la Rejilla da las ocho Disciplinas por cinco octavos de lo que costarían con Llaves (<a href="#ch5-cambio">5.3</a>). Y tiene su razón: la Rejilla la abre la historia, dentro de los techos del mundo (<a href="#ch3-techos">3.7</a>), mientras que la Llave la eliges tú y apunta a lo que a ti te importa. Hay además una propiedad bonita que sale sola de esos números: subir dos niveles en <em>una sola Disciplina</em> cuesta 4 Llaves, y subir un nivel entero en <em>todo un Ámbito</em> cuesta 5 <span class="src">C·l4</span>. Hiperespecializarse cuesta casi lo mismo que ser grande en general, así que el sistema empuja a repartir sin prohibir al monstruo de un solo truco. <span class="src">T176</span></p>
+
+<h4>Dos Grandes Maestros, y el tercero lo paga la tarjeta</h4>
+<p>Un +4 cuesta cuatro puntos: Dominio 1, Disciplina 1, Firma 2. Pero si cuelga de un Dominio que ya has pagado, solo tres. Cubrir los cuatro Ámbitos para no ser Nulidad en ninguno cuesta cuatro, y encima de esa base cada Gran Maestro añade tres: <strong>dos Grandes Maestros y la espalda cubierta</strong> son 4 + 3 + 3 = 10 puntos, y sobran dos. El tercero pediría 13, así que con doce puntos la cuenta sale sola: dos maestrías y la espalda cubierta, o tres maestrías y un agujero de −2 en algún sitio (3 + 3 + 3 + 3 = 12). Con Arcano y catorce puntos es otra historia: cinco Dominios y tres maestrías son 5 + 9 = 14, justo el presupuesto, y el tercero cabe sin agujero. <span class="src">T170</span></p>
+<p>Y aquí es donde el motor y la economía se tocan, que es lo que este apartado existe para enseñar. Lo que cuesta ese agujero <em>no lo decide la ficha</em>: lo decide la tarjeta, porque un −2 no vale lo mismo en todas.</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Tarjeta</th><th class="num">Sale adelante con −2</th><th>Lo que significa el agujero</th></tr></thead>
+<tbody>
+<tr><td>Épica · Pulp desenfrenado</td><td class="num">51 %</td><td>Casi no duele: sigues sacando adelante la mitad</td></tr>
+<tr><td>Realista</td><td class="num">36 %</td><td>Se nota, pero se vive</td></tr>
+<tr><td>Primera marcha · Comedia negra</td><td class="num">30 %</td><td>Un tercio: hay que evitar esas escenas</td></tr>
+<tr><td>Angustia · Pesadilla</td><td class="num">9 %</td><td>Una sentencia: no vuelvas a intentarlo</td></tr>
+</tbody></table></div>
+<p>El mismo personaje de tres maestrías es una ganga en una campaña épica y un suicidio en una de Angustia. Ninguna regla de creación dice eso; lo dicen los dados.</p>
+
+<h4>La escalera de las Llaves</h4>
+<p>Subir <em>n</em> niveles en una Disciplina entera, contra cualquier objetivo, cuesta <strong><em>n</em>²</strong> Llaves (<a href="#ch4-escalera">4.3</a>) <span class="src">C·l4</span>:</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Subir</th><th class="num">Llaves (<em>n</em>²)</th><th class="num">Alcance en la lectura tangible</th></tr></thead>
+<tbody>
+<tr><td>+1</td><td class="num">1</td><td class="num">×100</td></tr>
+<tr><td>+2</td><td class="num">4</td><td class="num">×10<sup>4</sup></td></tr>
+<tr><td>+3</td><td class="num">9</td><td class="num">×10<sup>6</sup></td></tr>
+<tr><td>+4</td><td class="num">16</td><td class="num">×10<sup>8</sup></td></tr>
+<tr><td>+5</td><td class="num">25</td><td class="num">×10<sup>10</sup></td></tr>
+</tbody></table></div>
+<p>Si la mesa quiere crecer más deprisa, hay una regla opcional, la escalera llana (3<em>n</em>−2), y vive en el Baúl de reglas (<a href="#ch9-llana">9.1</a>). <span class="src">C·22oct</span></p>
+<p>Puesto junto al ×100 de la lectura tangible (<a href="#ch3-lecturas">3.2</a>), lo que compras es esto: <strong>el alcance crece como 100<sup>n</sup> y el precio como <em>n</em>²</strong>. Es decir, el precio crece con el <em>cuadrado del logaritmo</em> de lo que consigues. En la lectura narrativa la escala es la que tu mundo quiera, o ninguna, y la cuenta del precio no cambia <span class="src">C·r3</span>. Es un trato ridículamente bueno para el jugador, y es a propósito: la escena en la que un mortal mata a un dios tiene que ser posible. Lo que la frena no es el precio, es el monedero.</p>
+
+<h4>El acordeón: la escalera larga de los puntos</h4>
+<p>Las Llaves tienen su escalera cuadrada; los puntos tienen el acordeón, y conviene ver los dos números juntos porque crecen de formas distintas.</p>
+<div class="tw"><table class="t">
+<thead><tr><th>Peldaño</th><th class="num">Puntos</th><th class="num">Casillas que cubre a +4</th><th class="num">Precio por casilla</th></tr></thead>
+<tbody>
+<tr><td>Una Firma de Gran Maestro</td><td class="num">4</td><td class="num">1</td><td class="num">4</td></tr>
+<tr><td>Una Disciplina plegada</td><td class="num">8</td><td class="num">1 Disciplina entera</td><td class="num">—</td></tr>
+<tr><td>Un Dominio plegado</td><td class="num">22</td><td class="num">5: el Dominio y sus 4 Disciplinas</td><td class="num">4,4</td></tr>
+<tr><td>Un Ámbito plegado</td><td class="num">44</td><td class="num">10: 2 Dominios y 8 Disciplinas</td><td class="num">4,4</td></tr>
+</tbody></table></div>
+<p>La cuenta de los ocho: Dominio 1, Disciplina 1 y tres Firmas a 2 cada una. La del Dominio: la primera Disciplina plegada cuesta 8 y las dos siguientes 7 cada una, porque el Dominio ya está pagado. La del Ámbito: dos Dominios a 22.</p>
+<p>Y fíjate en la última columna, que es la que cuenta la historia: <strong>el precio por casilla no baja</strong>: 4 con una Firma, 4,4 con un Dominio y 4,4 con un Ámbito. Plegar no es un descuento por volumen, es simplemente la única forma de seguir gastando cuando ya estás en +4, el extremo de arriba del Ancla (que va de −2 a +4 en todas las fichas). Por eso el acordeón no rompe nada: no añade números a la tirada, solo quita huecos del mapa. Al final del camino, un personaje con el Físico plegado y otro recién hecho con una sola Firma <em>tiran exactamente lo mismo</em> cuando los dos hacen lo suyo. La diferencia es que al primero ya no hay forma de pillarle fuera de su terreno.</p>
+
+<h4>El monedero de Llaves es el único grifo sin fondo</h4>
+<p>Los puntos de habilidad saturan: ninguna ficha pasa de +4, hay cincuenta casillas y a partir de cierto momento solo compras anchura. Las Llaves no saturan, porque siempre hay otra Disciplina, otra escena y otro objeto del Bazar. A una Llave por sesión y por cabeza (<a href="#ch5-monederos">5.1</a>) <span class="src">C·22oct</span>, en veinte sesiones cada jugador ha movido veinte Llaves: lo que valen cuatro niveles de Rejilla repartidos en cuatro Ámbitos (<a href="#ch5-cambio">5.3</a>), o cuatro niveles por encima en una sola Disciplina (dieciséis Llaves) con cuatro de propina.</p>
+<p>De ahí la frase que debería estar en la primera página de cualquier campaña larga: <strong>si quieres que la campaña escale, abre el grifo de las Llaves, no el de los puntos.</strong></p>
+</section>
+
+<section class="chapter" id="apx-mates">
+<h2>Apéndice B · Tablas completas</h2>
+<p>Aquí están los números que las gráficas del Apéndice A (<a href="#maq-siete">A.8</a>) dibujan pero no escriben. Allí se ve la forma de cada tarjeta de un vistazo; aquí están las cinco cifras de cada bono, que es lo que hace falta cuando quieres <em>comprobar</em> una en vez de reconocerla. Probabilidades exactas en&nbsp;%, de −2 a +4. <em>Sale adelante</em> = coste + éxito + crítico, y cada fila suma 100&nbsp;%. La pifia y el crítico son naturales (se leen en el número que usas, sin bonos) y tienen prioridad; el resto se resuelve con lectura + bono contra la TN de la tarjeta.</p>
+<h3 id="apxd-op">Épica · Optimista · Previsible</h3>
+<p>mejor de 2d10 + bono · TN 6 · bandas 1 / 10.</p>
+<div class="tw"><table class="t t7n"><thead><tr><th>Bono</th><th class="num">Pifia</th><th class="num">Fallo</th><th class="num">Coste</th><th class="num">Éxito</th><th class="num">Crít.</th><th class="num">Sale adelante</th></tr></thead><tbody>
+<tr><td>−2</td><td class="num">1&nbsp;%</td><td class="num">48&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">32&nbsp;%</td><td class="num">19&nbsp;%</td><td class="num"><strong>51&nbsp;%</strong></td></tr>
+<tr><td>−1</td><td class="num">1&nbsp;%</td><td class="num">35&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">45&nbsp;%</td><td class="num">19&nbsp;%</td><td class="num"><strong>64&nbsp;%</strong></td></tr>
+<tr><td>+0</td><td class="num">1&nbsp;%</td><td class="num">24&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">56&nbsp;%</td><td class="num">19&nbsp;%</td><td class="num"><strong>75&nbsp;%</strong></td></tr>
+<tr><td>+1</td><td class="num">1&nbsp;%</td><td class="num">15&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">65&nbsp;%</td><td class="num">19&nbsp;%</td><td class="num"><strong>84&nbsp;%</strong></td></tr>
+<tr><td>+2</td><td class="num">1&nbsp;%</td><td class="num">8&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">72&nbsp;%</td><td class="num">19&nbsp;%</td><td class="num"><strong>91&nbsp;%</strong></td></tr>
+<tr><td>+3</td><td class="num">1&nbsp;%</td><td class="num">3&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">77&nbsp;%</td><td class="num">19&nbsp;%</td><td class="num"><strong>96&nbsp;%</strong></td></tr>
+<tr><td>+4</td><td class="num">1&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">80&nbsp;%</td><td class="num">19&nbsp;%</td><td class="num"><strong>99&nbsp;%</strong></td></tr></tbody></table></div>
+<h3 id="apxd-oc">Pulp desenfrenado · Optimista · Caótico</h3>
+<p>mejor de 2d10 + bono · TN 6 · bandas 1–2 / 10 · coste si el total es 6 o 7.</p>
+<div class="tw"><table class="t t7n"><thead><tr><th>Bono</th><th class="num">Pifia</th><th class="num">Fallo</th><th class="num">Coste</th><th class="num">Éxito</th><th class="num">Crít.</th><th class="num">Sale adelante</th></tr></thead><tbody>
+<tr><td>−2</td><td class="num">4&nbsp;%</td><td class="num">45&nbsp;%</td><td class="num">32&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">19&nbsp;%</td><td class="num"><strong>51&nbsp;%</strong></td></tr>
+<tr><td>−1</td><td class="num">4&nbsp;%</td><td class="num">32&nbsp;%</td><td class="num">28&nbsp;%</td><td class="num">17&nbsp;%</td><td class="num">19&nbsp;%</td><td class="num"><strong>64&nbsp;%</strong></td></tr>
+<tr><td>+0</td><td class="num">4&nbsp;%</td><td class="num">21&nbsp;%</td><td class="num">24&nbsp;%</td><td class="num">32&nbsp;%</td><td class="num">19&nbsp;%</td><td class="num"><strong>75&nbsp;%</strong></td></tr>
+<tr><td>+1</td><td class="num">4&nbsp;%</td><td class="num">12&nbsp;%</td><td class="num">20&nbsp;%</td><td class="num">45&nbsp;%</td><td class="num">19&nbsp;%</td><td class="num"><strong>84&nbsp;%</strong></td></tr>
+<tr><td>+2</td><td class="num">4&nbsp;%</td><td class="num">5&nbsp;%</td><td class="num">16&nbsp;%</td><td class="num">56&nbsp;%</td><td class="num">19&nbsp;%</td><td class="num"><strong>91&nbsp;%</strong></td></tr>
+<tr><td>+3</td><td class="num">4&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">12&nbsp;%</td><td class="num">65&nbsp;%</td><td class="num">19&nbsp;%</td><td class="num"><strong>96&nbsp;%</strong></td></tr>
+<tr><td>+4</td><td class="num">4&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">5&nbsp;%</td><td class="num">72&nbsp;%</td><td class="num">19&nbsp;%</td><td class="num"><strong>96&nbsp;%</strong></td></tr></tbody></table></div>
+<h3 id="apxd-np">Realista · Neutral · Previsible</h3>
+<p>suma de 2d10 + bono · TN 11 · bandas 2–3 / 19–20.</p>
+<div class="tw"><table class="t t7n"><thead><tr><th>Bono</th><th class="num">Pifia</th><th class="num">Fallo</th><th class="num">Coste</th><th class="num">Éxito</th><th class="num">Crít.</th><th class="num">Sale adelante</th></tr></thead><tbody>
+<tr><td>−2</td><td class="num">3&nbsp;%</td><td class="num">61&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">33&nbsp;%</td><td class="num">3&nbsp;%</td><td class="num"><strong>36&nbsp;%</strong></td></tr>
+<tr><td>−1</td><td class="num">3&nbsp;%</td><td class="num">52&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">42&nbsp;%</td><td class="num">3&nbsp;%</td><td class="num"><strong>45&nbsp;%</strong></td></tr>
+<tr><td>+0</td><td class="num">3&nbsp;%</td><td class="num">42&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">52&nbsp;%</td><td class="num">3&nbsp;%</td><td class="num"><strong>55&nbsp;%</strong></td></tr>
+<tr><td>+1</td><td class="num">3&nbsp;%</td><td class="num">33&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">61&nbsp;%</td><td class="num">3&nbsp;%</td><td class="num"><strong>64&nbsp;%</strong></td></tr>
+<tr><td>+2</td><td class="num">3&nbsp;%</td><td class="num">25&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">69&nbsp;%</td><td class="num">3&nbsp;%</td><td class="num"><strong>72&nbsp;%</strong></td></tr>
+<tr><td>+3</td><td class="num">3&nbsp;%</td><td class="num">18&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">76&nbsp;%</td><td class="num">3&nbsp;%</td><td class="num"><strong>79&nbsp;%</strong></td></tr>
+<tr><td>+4</td><td class="num">3&nbsp;%</td><td class="num">12&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">82&nbsp;%</td><td class="num">3&nbsp;%</td><td class="num"><strong>85&nbsp;%</strong></td></tr></tbody></table></div>
+<h3 id="apxd-nn">Primera marcha · Neutral · Neutral</h3>
+<p>dado rojo + bono · TN 6 · bandas 1 / 10.</p>
+<div class="tw"><table class="t t7n"><thead><tr><th>Bono</th><th class="num">Pifia</th><th class="num">Fallo</th><th class="num">Coste</th><th class="num">Éxito</th><th class="num">Crít.</th><th class="num">Sale adelante</th></tr></thead><tbody>
+<tr><td>−2</td><td class="num">10&nbsp;%</td><td class="num">60&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">20&nbsp;%</td><td class="num">10&nbsp;%</td><td class="num"><strong>30&nbsp;%</strong></td></tr>
+<tr><td>−1</td><td class="num">10&nbsp;%</td><td class="num">50&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">30&nbsp;%</td><td class="num">10&nbsp;%</td><td class="num"><strong>40&nbsp;%</strong></td></tr>
+<tr><td>+0</td><td class="num">10&nbsp;%</td><td class="num">40&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">40&nbsp;%</td><td class="num">10&nbsp;%</td><td class="num"><strong>50&nbsp;%</strong></td></tr>
+<tr><td>+1</td><td class="num">10&nbsp;%</td><td class="num">30&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">50&nbsp;%</td><td class="num">10&nbsp;%</td><td class="num"><strong>60&nbsp;%</strong></td></tr>
+<tr><td>+2</td><td class="num">10&nbsp;%</td><td class="num">20&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">60&nbsp;%</td><td class="num">10&nbsp;%</td><td class="num"><strong>70&nbsp;%</strong></td></tr>
+<tr><td>+3</td><td class="num">10&nbsp;%</td><td class="num">10&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">70&nbsp;%</td><td class="num">10&nbsp;%</td><td class="num"><strong>80&nbsp;%</strong></td></tr>
+<tr><td>+4</td><td class="num">10&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">80&nbsp;%</td><td class="num">10&nbsp;%</td><td class="num"><strong>90&nbsp;%</strong></td></tr></tbody></table></div>
+<h3 id="apxd-nc">Comedia negra · Neutral · Caótico</h3>
+<p>dado rojo + bono · TN 6 · bandas 1–2 / 9–10 · coste si el total es 6 o 7.</p>
+<div class="tw"><table class="t t7n"><thead><tr><th>Bono</th><th class="num">Pifia</th><th class="num">Fallo</th><th class="num">Coste</th><th class="num">Éxito</th><th class="num">Crít.</th><th class="num">Sale adelante</th></tr></thead><tbody>
+<tr><td>−2</td><td class="num">20&nbsp;%</td><td class="num">50&nbsp;%</td><td class="num">10&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">20&nbsp;%</td><td class="num"><strong>30&nbsp;%</strong></td></tr>
+<tr><td>−1</td><td class="num">20&nbsp;%</td><td class="num">40&nbsp;%</td><td class="num">20&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">20&nbsp;%</td><td class="num"><strong>40&nbsp;%</strong></td></tr>
+<tr><td>+0</td><td class="num">20&nbsp;%</td><td class="num">30&nbsp;%</td><td class="num">20&nbsp;%</td><td class="num">10&nbsp;%</td><td class="num">20&nbsp;%</td><td class="num"><strong>50&nbsp;%</strong></td></tr>
+<tr><td>+1</td><td class="num">20&nbsp;%</td><td class="num">20&nbsp;%</td><td class="num">20&nbsp;%</td><td class="num">20&nbsp;%</td><td class="num">20&nbsp;%</td><td class="num"><strong>60&nbsp;%</strong></td></tr>
+<tr><td>+2</td><td class="num">20&nbsp;%</td><td class="num">10&nbsp;%</td><td class="num">20&nbsp;%</td><td class="num">30&nbsp;%</td><td class="num">20&nbsp;%</td><td class="num"><strong>70&nbsp;%</strong></td></tr>
+<tr><td>+3</td><td class="num">20&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">20&nbsp;%</td><td class="num">40&nbsp;%</td><td class="num">20&nbsp;%</td><td class="num"><strong>80&nbsp;%</strong></td></tr>
+<tr><td>+4</td><td class="num">20&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">10&nbsp;%</td><td class="num">50&nbsp;%</td><td class="num">20&nbsp;%</td><td class="num"><strong>80&nbsp;%</strong></td></tr></tbody></table></div>
+<h3 id="apxd-pp">Angustia · Opresivo · Previsible</h3>
+<p>peor de 2d10 + bono · TN 6 · bandas doble 1 / doble 10.</p>
+<div class="tw"><table class="t t7n"><thead><tr><th>Bono</th><th class="num">Pifia</th><th class="num">Fallo</th><th class="num">Coste</th><th class="num">Éxito</th><th class="num">Crít.</th><th class="num">Sale adelante</th></tr></thead><tbody>
+<tr><td>−2</td><td class="num">1&nbsp;%</td><td class="num">90&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">8&nbsp;%</td><td class="num">1&nbsp;%</td><td class="num"><strong>9&nbsp;%</strong></td></tr>
+<tr><td>−1</td><td class="num">1&nbsp;%</td><td class="num">83&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">15&nbsp;%</td><td class="num">1&nbsp;%</td><td class="num"><strong>16&nbsp;%</strong></td></tr>
+<tr><td>+0</td><td class="num">1&nbsp;%</td><td class="num">74&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">24&nbsp;%</td><td class="num">1&nbsp;%</td><td class="num"><strong>25&nbsp;%</strong></td></tr>
+<tr><td>+1</td><td class="num">1&nbsp;%</td><td class="num">63&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">35&nbsp;%</td><td class="num">1&nbsp;%</td><td class="num"><strong>36&nbsp;%</strong></td></tr>
+<tr><td>+2</td><td class="num">1&nbsp;%</td><td class="num">50&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">48&nbsp;%</td><td class="num">1&nbsp;%</td><td class="num"><strong>49&nbsp;%</strong></td></tr>
+<tr><td>+3</td><td class="num">1&nbsp;%</td><td class="num">35&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">63&nbsp;%</td><td class="num">1&nbsp;%</td><td class="num"><strong>64&nbsp;%</strong></td></tr>
+<tr><td>+4</td><td class="num">1&nbsp;%</td><td class="num">18&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">80&nbsp;%</td><td class="num">1&nbsp;%</td><td class="num"><strong>81&nbsp;%</strong></td></tr></tbody></table></div>
+<h3 id="apxd-pc">Pesadilla · Opresivo · Caótico</h3>
+<p>peor de 2d10 + bono · TN 6 · bandas 1 / 10.</p>
+<div class="tw"><table class="t t7n"><thead><tr><th>Bono</th><th class="num">Pifia</th><th class="num">Fallo</th><th class="num">Coste</th><th class="num">Éxito</th><th class="num">Crít.</th><th class="num">Sale adelante</th></tr></thead><tbody>
+<tr><td>−2</td><td class="num">19&nbsp;%</td><td class="num">72&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">8&nbsp;%</td><td class="num">1&nbsp;%</td><td class="num"><strong>9&nbsp;%</strong></td></tr>
+<tr><td>−1</td><td class="num">19&nbsp;%</td><td class="num">65&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">15&nbsp;%</td><td class="num">1&nbsp;%</td><td class="num"><strong>16&nbsp;%</strong></td></tr>
+<tr><td>+0</td><td class="num">19&nbsp;%</td><td class="num">56&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">24&nbsp;%</td><td class="num">1&nbsp;%</td><td class="num"><strong>25&nbsp;%</strong></td></tr>
+<tr><td>+1</td><td class="num">19&nbsp;%</td><td class="num">45&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">35&nbsp;%</td><td class="num">1&nbsp;%</td><td class="num"><strong>36&nbsp;%</strong></td></tr>
+<tr><td>+2</td><td class="num">19&nbsp;%</td><td class="num">32&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">48&nbsp;%</td><td class="num">1&nbsp;%</td><td class="num"><strong>49&nbsp;%</strong></td></tr>
+<tr><td>+3</td><td class="num">19&nbsp;%</td><td class="num">17&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">63&nbsp;%</td><td class="num">1&nbsp;%</td><td class="num"><strong>64&nbsp;%</strong></td></tr>
+<tr><td>+4</td><td class="num">19&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">80&nbsp;%</td><td class="num">1&nbsp;%</td><td class="num"><strong>81&nbsp;%</strong></td></tr></tbody></table></div>
+<h3 id="apxd-recetas">La excepción declarada: cuando la TN sí se mueve</h3>
+<p>La TN no se mueve: lo difícil va en el bono (<a href="#ch1-tirada">1.3</a>). La <strong>Tragedia</strong> es la excepción, declarada y la única del manual: la suma de siempre con la vara puesta en 14, dicha en voz alta. El mismo mundo de reloj, pero con la esperanza fuera del alcance <span class="src">C·22oct</span>. Cuánto dura es cosa de la mesa, con un consejo: recomendamos encarecidamente no quedarse mucho tiempo en los tonos más oscuros. Una escena o un final, como en el módulo del Destino del Baúl (<a href="#ch9-wyrd">9.1</a>), mejor que una campaña entera; pero la mesa es adulta y decide.</p>
+<div class="t7" data-fila="rec"><div class="t7cab"><h4>Tragedia</h4><span class="t7ax">Receta · la vara se mueve</span></div><div class="t7cuerpo"><div class="t7izq"><svg class="nog t7g" viewBox="0 0 380 215" width="100%" role="img" aria-label="Tragedia: cuanto sale adelante segun el bono" xmlns="http://www.w3.org/2000/svg">
+<line class="gr" x1="32" y1="187.0" x2="364" y2="187.0"/>
+<line class="gr fino" x1="32" y1="169.9" x2="364" y2="169.9"/>
+<line class="gr fino" x1="32" y1="152.8" x2="364" y2="152.8"/>
+<line class="gr fino" x1="32" y1="135.7" x2="364" y2="135.7"/>
+<line class="gr fino" x1="32" y1="118.6" x2="364" y2="118.6"/>
+<line class="gr" x1="32" y1="101.5" x2="364" y2="101.5"/>
+<line class="gr fino" x1="32" y1="84.4" x2="364" y2="84.4"/>
+<line class="gr fino" x1="32" y1="67.3" x2="364" y2="67.3"/>
+<line class="gr fino" x1="32" y1="50.2" x2="364" y2="50.2"/>
+<line class="gr fino" x1="32" y1="33.1" x2="364" y2="33.1"/>
+<line class="gr" x1="32" y1="16.0" x2="364" y2="16.0"/>
+<text class="gt" x="26" y="190.5" text-anchor="end">0</text>
+<text class="gt" x="26" y="105.0" text-anchor="end">50</text>
+<text class="gt" x="26" y="19.5" text-anchor="end">100</text>
+<line class="ge" x1="32" y1="187.0" x2="364" y2="187.0"/>
+<text class="gt" x="32.0" y="206" text-anchor="middle">−2</text>
+<text class="gt" x="87.3" y="206" text-anchor="middle">−1</text>
+<text class="gt" x="142.7" y="206" text-anchor="middle">+0</text>
+<text class="gt" x="198.0" y="206" text-anchor="middle">+1</text>
+<text class="gt" x="253.3" y="206" text-anchor="middle">+2</text>
+<text class="gt" x="308.7" y="206" text-anchor="middle">+3</text>
+<text class="gt" x="364.0" y="206" text-anchor="middle">+4</text>
+<polyline class="t7fina k-critico" points="32.0,181.9 87.3,181.9 142.7,181.9 198.0,181.9 253.3,181.9 308.7,181.9 364.0,181.9"/>
+<circle class="t7pf k-critico" cx="32.0" cy="181.9" r="2.2"><title>crítico −2: 3%</title></circle>
+<circle class="t7pf k-critico" cx="87.3" cy="181.9" r="2.2"><title>crítico −1: 3%</title></circle>
+<circle class="t7pf k-critico" cx="142.7" cy="181.9" r="2.2"><title>crítico +0: 3%</title></circle>
+<circle class="t7pf k-critico" cx="198.0" cy="181.9" r="2.2"><title>crítico +1: 3%</title></circle>
+<circle class="t7pf k-critico" cx="253.3" cy="181.9" r="2.2"><title>crítico +2: 3%</title></circle>
+<circle class="t7pf k-critico" cx="308.7" cy="181.9" r="2.2"><title>crítico +3: 3%</title></circle>
+<circle class="t7pf k-critico" cx="364.0" cy="181.9" r="2.2"><title>crítico +4: 3%</title></circle>
+<polyline class="t7fina k-parcial" points="32.0,187.0 87.3,187.0 142.7,187.0 198.0,187.0 253.3,187.0 308.7,187.0 364.0,187.0"/>
+<circle class="t7pf k-parcial" cx="32.0" cy="187.0" r="2.2"><title>coste −2: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="87.3" cy="187.0" r="2.2"><title>coste −1: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="142.7" cy="187.0" r="2.2"><title>coste +0: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="198.0" cy="187.0" r="2.2"><title>coste +1: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="253.3" cy="187.0" r="2.2"><title>coste +2: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="308.7" cy="187.0" r="2.2"><title>coste +3: 0%</title></circle>
+<circle class="t7pf k-parcial" cx="364.0" cy="187.0" r="2.2"><title>coste +4: 0%</title></circle>
+<polyline class="t7fina k-pifia" points="32.0,181.9 87.3,181.9 142.7,181.9 198.0,181.9 253.3,181.9 308.7,181.9 364.0,181.9"/>
+<circle class="t7pf k-pifia" cx="32.0" cy="181.9" r="2.2"><title>pifia −2: 3%</title></circle>
+<circle class="t7pf k-pifia" cx="87.3" cy="181.9" r="2.2"><title>pifia −1: 3%</title></circle>
+<circle class="t7pf k-pifia" cx="142.7" cy="181.9" r="2.2"><title>pifia +0: 3%</title></circle>
+<circle class="t7pf k-pifia" cx="198.0" cy="181.9" r="2.2"><title>pifia +1: 3%</title></circle>
+<circle class="t7pf k-pifia" cx="253.3" cy="181.9" r="2.2"><title>pifia +2: 3%</title></circle>
+<circle class="t7pf k-pifia" cx="308.7" cy="181.9" r="2.2"><title>pifia +3: 3%</title></circle>
+<circle class="t7pf k-pifia" cx="364.0" cy="181.9" r="2.2"><title>pifia +4: 3%</title></circle>
+<line class="t7cruce" x1="281.0" y1="187.0" x2="281.0" y2="16.0"/>
+<text class="gt" x="285.0" y="24.0">cambia de bando</text>
+<polyline class="t7gruesa k-fallo" points="32.0,41.7 87.3,51.9 142.7,63.9 198.0,77.6 253.3,92.9 308.7,110.1 364.0,125.4"/>
+<circle class="t7pg k-fallo" cx="32.0" cy="41.7" r="3.4"/>
+<circle class="t7pg k-fallo" cx="87.3" cy="51.9" r="3.4"/>
+<circle class="t7pg k-fallo" cx="142.7" cy="63.9" r="3.4"/>
+<circle class="t7pg k-fallo" cx="198.0" cy="77.6" r="3.4"/>
+<circle class="t7pg k-fallo" cx="253.3" cy="92.9" r="3.4"/>
+<circle class="t7pg k-fallo" cx="308.7" cy="110.1" r="3.4"/>
+<circle class="t7pg k-fallo" cx="364.0" cy="125.4" r="3.4"/>
+<polyline class="t7gruesa k-exito" points="32.0,161.3 87.3,151.1 142.7,139.1 198.0,125.4 253.3,110.1 308.7,92.9 364.0,77.6"/>
+<circle class="t7pg k-exito" cx="32.0" cy="161.3" r="3.4"/>
+<circle class="t7pg k-exito" cx="87.3" cy="151.1" r="3.4"/>
+<circle class="t7pg k-exito" cx="142.7" cy="139.1" r="3.4"/>
+<circle class="t7pg k-exito" cx="198.0" cy="125.4" r="3.4"/>
+<circle class="t7pg k-exito" cx="253.3" cy="110.1" r="3.4"/>
+<circle class="t7pg k-exito" cx="308.7" cy="92.9" r="3.4"/>
+<circle class="t7pg k-exito" cx="364.0" cy="77.6" r="3.4"/>
+<text class="t7num" x="32.0" y="176.3" text-anchor="middle">15</text>
+<text class="t7num" x="87.3" y="166.1" text-anchor="middle">21</text>
+<text class="t7num" x="142.7" y="154.1" text-anchor="middle">28</text>
+<text class="t7num" x="198.0" y="140.4" text-anchor="middle">36</text>
+<text class="t7num" x="253.3" y="125.1" text-anchor="middle">45</text>
+<text class="t7num" x="308.7" y="84.9" text-anchor="middle">55</text>
+<text class="t7num" x="364.0" y="69.6" text-anchor="middle">64</text>
+</svg><p class="t7pie">bono &rarr; &nbsp;·&nbsp; la historia se tuerce en el 3&nbsp;% de las tiradas</p></div><div class="t7der"><p class="t7how">suma de 2d10 + bono · TN 14 · bandas 2–3 / 19–20.</p><p>La misma lectura que la Realista con la vara tres puntos más alta, y el efecto no es proporcional: a bono 0 sale adelante el 28&nbsp;% en vez del 55&nbsp;%. La campana castiga el doble cada paso que alejas la meta de su centro. Por eso, en la única receta que mueve la TN, se dice en voz alta: moverla sin avisar no es subir la dificultad, es cambiar de género.</p></div></div></div>
+<div class="tw"><table class="t t7n"><thead><tr><th>Bono</th><th class="num">Pifia</th><th class="num">Fallo</th><th class="num">Coste</th><th class="num">Éxito</th><th class="num">Crít.</th><th class="num">Sale adelante</th></tr></thead><tbody>
+<tr><td>−2</td><td class="num">3&nbsp;%</td><td class="num">82&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">12&nbsp;%</td><td class="num">3&nbsp;%</td><td class="num"><strong>15&nbsp;%</strong></td></tr>
+<tr><td>−1</td><td class="num">3&nbsp;%</td><td class="num">76&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">18&nbsp;%</td><td class="num">3&nbsp;%</td><td class="num"><strong>21&nbsp;%</strong></td></tr>
+<tr><td>+0</td><td class="num">3&nbsp;%</td><td class="num">69&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">25&nbsp;%</td><td class="num">3&nbsp;%</td><td class="num"><strong>28&nbsp;%</strong></td></tr>
+<tr><td>+1</td><td class="num">3&nbsp;%</td><td class="num">61&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">33&nbsp;%</td><td class="num">3&nbsp;%</td><td class="num"><strong>36&nbsp;%</strong></td></tr>
+<tr><td>+2</td><td class="num">3&nbsp;%</td><td class="num">52&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">42&nbsp;%</td><td class="num">3&nbsp;%</td><td class="num"><strong>45&nbsp;%</strong></td></tr>
+<tr><td>+3</td><td class="num">3&nbsp;%</td><td class="num">42&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">52&nbsp;%</td><td class="num">3&nbsp;%</td><td class="num"><strong>55&nbsp;%</strong></td></tr>
+<tr><td>+4</td><td class="num">3&nbsp;%</td><td class="num">33&nbsp;%</td><td class="num">0&nbsp;%</td><td class="num">61&nbsp;%</td><td class="num">3&nbsp;%</td><td class="num"><strong>64&nbsp;%</strong></td></tr></tbody></table></div>
+<h3 id="apxd-medias">Medias y distribuciones de las lecturas</h3>
+<div class="tw"><table class="t"><thead><tr><th>Lectura</th><th>Rango</th><th>Media</th></tr></thead><tbody>
+<tr><td>1d10 (rojo)</td><td>1–10</td><td class="num">5,5</td></tr>
+<tr><td>Mejor de 2d10</td><td>1–10</td><td class="num">7,15</td></tr>
+<tr><td>Peor de 2d10</td><td>1–10</td><td class="num">3,85</td></tr>
+<tr><td>Suma 2d10</td><td>2–20</td><td class="num">11</td></tr>
+</tbody></table></div>
+<div class="tw"><table class="t"><thead><tr><th>Valor</th><th>1d10 (%)</th><th>Mejor (%)</th><th>Peor (%)</th><th>Mejor ≤ valor (%)</th><th>Peor ≤ valor (%)</th></tr></thead><tbody>
+<tr><td>1</td><td class="num">10</td><td class="num">1</td><td class="num">19</td><td class="num">1</td><td class="num">19</td></tr>
+<tr><td>2</td><td class="num">10</td><td class="num">3</td><td class="num">17</td><td class="num">4</td><td class="num">36</td></tr>
+<tr><td>3</td><td class="num">10</td><td class="num">5</td><td class="num">15</td><td class="num">9</td><td class="num">51</td></tr>
+<tr><td>4</td><td class="num">10</td><td class="num">7</td><td class="num">13</td><td class="num">16</td><td class="num">64</td></tr>
+<tr><td>5</td><td class="num">10</td><td class="num">9</td><td class="num">11</td><td class="num">25</td><td class="num">75</td></tr>
+<tr><td>6</td><td class="num">10</td><td class="num">11</td><td class="num">9</td><td class="num">36</td><td class="num">84</td></tr>
+<tr><td>7</td><td class="num">10</td><td class="num">13</td><td class="num">7</td><td class="num">49</td><td class="num">91</td></tr>
+<tr><td>8</td><td class="num">10</td><td class="num">15</td><td class="num">5</td><td class="num">64</td><td class="num">96</td></tr>
+<tr><td>9</td><td class="num">10</td><td class="num">17</td><td class="num">3</td><td class="num">81</td><td class="num">99</td></tr>
+<tr><td>10</td><td class="num">10</td><td class="num">19</td><td class="num">1</td><td class="num">100</td><td class="num">100</td></tr>
+</tbody></table></div>
+<div class="tw"><table class="t"><thead><tr><th>Suma</th><th>P (%)</th><th>P(suma ≥ valor) (%)</th></tr></thead><tbody>
+<tr><td>2</td><td class="num">1</td><td class="num">100</td></tr>
+<tr><td>3</td><td class="num">2</td><td class="num">99</td></tr>
+<tr><td>4</td><td class="num">3</td><td class="num">97</td></tr>
+<tr><td>5</td><td class="num">4</td><td class="num">94</td></tr>
+<tr><td>6</td><td class="num">5</td><td class="num">90</td></tr>
+<tr><td>7</td><td class="num">6</td><td class="num">85</td></tr>
+<tr><td>8</td><td class="num">7</td><td class="num">79</td></tr>
+<tr><td>9</td><td class="num">8</td><td class="num">72</td></tr>
+<tr><td>10</td><td class="num">9</td><td class="num">64</td></tr>
+<tr><td>11</td><td class="num">10</td><td class="num">55</td></tr>
+<tr><td>12</td><td class="num">9</td><td class="num">45</td></tr>
+<tr><td>13</td><td class="num">8</td><td class="num">36</td></tr>
+<tr><td>14</td><td class="num">7</td><td class="num">28</td></tr>
+<tr><td>15</td><td class="num">6</td><td class="num">21</td></tr>
+<tr><td>16</td><td class="num">5</td><td class="num">15</td></tr>
+<tr><td>17</td><td class="num">4</td><td class="num">10</td></tr>
+<tr><td>18</td><td class="num">3</td><td class="num">6</td></tr>
+<tr><td>19</td><td class="num">2</td><td class="num">3</td></tr>
+<tr><td>20</td><td class="num">1</td><td class="num">1</td></tr>
+</tbody></table></div>
+</section>

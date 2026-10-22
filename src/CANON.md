@@ -1,31 +1,307 @@
 # CANON NOGUM — Reglas definitivas para el documento maestro
 
+## PALABRA DEL AUTOR (21 oct 2026): manda sobre todo lo demás
+Daniel Martín respondió uno a uno a los 53 conceptos del núcleo (`CANON-respuestas-2026-10-21.html`, en la raíz). Esto manda sobre todo lo que viene después en este fichero y sobre el texto del libro. Donde dijo **Sí**, el enunciado queda confirmado tal cual. Donde dijo **No**, manda su texto, copiado literal; el enunciado del asistente se deja solo para que se vea a qué responde, y no vale como regla.
+
+### El marco
+- **m1 · La mesa manda.** Sí. Las reglas son herramientas para que el tono y el progreso se controlen, y se ignoran cuando impiden lo que la trama pide. NOGUM es para adultos: no hay cortafuegos contra el combo barato; la mesa puede decir «esto no vale».
+- **m2 · Sesión 0.** Sí. Antes de la campaña: las líneas rojas de cada uno (no se impone nada que haga sentir genuinamente mal a alguien; basta una persona; se puede decir en privado al Director), qué se va a sentir, qué soluciones pide el género y hasta dónde puede llegar el tono. De ahí salen los números.
+- **m3 · La muerte se pacta.** Sí. Ningún protagonista muere por una tirada. Fuera de combate no es muerte; la muerte se pacta con argumentos de arco.
+- **m4 · Tira solo si vale la pena.** Sí. Solo se tira si todos los resultados posibles son interesantes.
+
+### El motor
+- **t1 · Dos dados de diez.** Sí. Dos d10 de colores distintos (rojo y azul). La tarjeta de tono dice cómo se leen: el rojo solo, la suma, el mejor de dos o el peor de dos.
+- **t2 · El cuadrante.** Sí. Siete tarjetas: la fila es de qué lado está el universo (optimista, neutral, opresivo); la columna, a qué precio (previsible, la costumbre, caótico). Dos huecos, a propósito.
+- **t3 · TN y dificultad.** Sí. TN 6 (11 con la suma). La dificultad es un modificador sobre la tirada (+2 fácil, 0, −2 difícil, −4 heroico); la TN no se mueve.
+- **t4 · Pifias y críticos.** Sí. Se leen en el número que usas, sin bonos, con bandas estrecha, normal o ancha según la tarjeta.
+- **t5 · Éxito con coste.** Sí. Un total igual a la TN o un punto por encima: lo consigues y el Director pone el precio (tiempo, recurso, posición, fuego amigo).
+- **t6 · El tono se mueve.** Sí. Por campaña, arco, sesión, escena o personaje, dentro de lo pactado en la sesión 0.
+
+### El ancla
+- **a1 · Qué es el ancla.** Sí. Todas las fichas, sin excepción, van de −2 a +4. Por eso la estadística funciona siempre tal como se diseñó, en cualquier género y en la sesión cien. El ancla no es el +4: es el rango.
+- **a2 · Los bonos se acumulan.** No.
+  - El asistente entendía (superado): Pero el total nunca sale de −2 a +4. Si se pasa, el Director narra o tira en el extremo.
+  - **El autor:**
+  > Si se pasa, puedes aprovechar para ponerte penalizadores, hacer algo mas dificil (y con mas reward), y tirar con tu +4. Pero no se narra, ni se esquipea la tirada. Sólo no se tira si fallar NO ES INTERESANTE. no si es numericamente trivial el fallo. el ancla está para que nunca lo sea.
+- **a3 · La pirámide.** Sí. Ámbito (no se compra) → Dominio +1 (1 punto) → Disciplina +2 (1 punto) → Firma +4 (2 puntos). Se usa el escalón más alto aplicable; no se suman entre sí.
+- **a4 · Nulidad y Torpe.** Sí. Nulidad −2 en un ámbito donde no tienes nada. Torpe −1 en la otra columna de un ámbito donde sí tienes algo.
+- **a5 · Presupuesto.** No.
+  - El asistente entendía (superado): 12 puntos de habilidad, o 14 si el personaje tiene Arcano.
+  - **El autor:**
+  > Sí pero no. Sólo aclarar. El presupuesto total es eso + 5 llaves (o una malla) Pero creo que sólo hablabas de los puntos, no?
+- **a6 · Estilo.** Sí. +2 fijo, fuera de la pirámide. Se tira cuando ya no se puede fallar, para ver cómo.
+
+### La Rejilla
+- **r1 · Lo que significa un nivel.** No.
+  - El asistente entendía (superado): Un nivel de diferencia: el de abajo no tiene derecho a tirada. Si no quieres que alguien tire, lo pones un nivel por debajo, sin pedir permiso.
+  - **El autor:**
+  > No me gusta cómo está expresado. Si ya no es interesante el combate con enemigos de cierto nivel, es posible que sea el momento de resumir esa decisión poniendo una malla de distancia, más probablemente subiendo a los jugadores que bajando al enemigo. Así, pasas de tener una serie de ventajas específicas en ficha, a que el enemigo débil pierda el permiso de siquiera intentarlo. A menos que la narrativa le otorgue una llave.
+- **r2 · Las dos lecturas.** Sí. Según el tono. Narrativa: el de arriba es el tema de la historia, y no dice nada del mundo. Tangible: de verdad puede cien veces más; para los mundos que emulan el real.
+- **r3 · El ×100.** No.
+  - El asistente entendía (superado): Solo es de la lectura tangible: persona, sala, edificio, ciudad, país. La narrativa no se ata a ninguna escala real.
+  - **El autor:**
+  > Casi. Matices. Puedes tener tu escala en la narrativa. Seguramente el *100 no encaje. Goku sube con saltos mucho más grandes, Gimli muestra superioridad total sin que haya una superioridad numérica clara. Prioriza la narrativa, y adecua la escala a tu mundo si quieres una, o ignórala si no te suma.
+- **r4 · Por ámbitos.** No.
+  - El asistente entendía (superado): Un nivel por ámbito (Físico, Mental, Social, Técnico, Arcano). Los unos abundan.
+  - **El autor:**
+  > No entiendo el phrasing.
+  > La malla humana realista es 1 en todo. El mundo real puede afectar países enteros (armas biológicas, discursos políticos) pero siempre en ámbitos muy estrechos. Nunca un ámbito completo. Si suena a cómic, es porque un salto de malla es cómic.
+- **r5 · La salida.** No.
+  - El asistente entendía (superado): 1·1·1·1·2 como mucho; el 2 sale del bote.
+  - **El autor:**
+  > Nada de como mucho. Son los puntos de partida recomendados. Puedes empezar más alto o más bajo, según lo que quieras emular. Lo que sí, si eliges ese set up, sólo puedes poner 2 en aquello que el universo permita. Si no quieres, en vez de ese 2, tienes 5 llaves.
+- **r6 · El techo.** No.
+  - El asistente entendía (superado): Lo más alto que un mundo deja llegar a un jugador. No es la salida. La receta lo propone y la mesa lo confirma.
+  - **El autor:**
+  > Sí, pero quiero ser más específico. Techo en MALLA. Las llaves es mejor no intentar ponerles techo, porque siempre pueden sorprender con un plan que afecte a MUCHA gente. Y sobre todo en universos con internet, aviones, armas de destrucción masiva... puede haber muchas llaves latentes y pretender encontrar los techos es misión imposible. Hay varios techos, y copnviene separarlo,s o usar palabras distintas.
+  > Nivel máximo inicial. Nivel máximo del mundo. Nivel máximo de los jugadores. (ejemplo, Cthulhu. Hay criaturas cósmicas en el universo. Tú no puedes ser una) Tampoco es un concepto tan relevante si la palabra lía jajajaja
+- **r7 · ¿Rejilla o Llave?.** No.
+  - El asistente entendía (superado): Si a la historia ha dejado de interesarle el de abajo en todo el ámbito, es Rejilla; si solo contra una cosa, es Llave.
+  - **El autor:**
+  > Esa es una lectura. Dos caras. Si tu personaje es superior en todo el ámbito, con un multiplicador de *100, es hora de cambiar de malla. No tienen derecho a tocarte sin llave.
+  > O narrativamente, puede que simplemente no interesan esos combates, aunque no haya una superioridad física tan patente.
+- **r8 · Quién la sube.** Sí. La abre la historia; no se compra con puntos. Por defecto, si sube uno, los demás reciben lo equivalente.
+- **r9 · Sincronización.** Sí. Quien pilota un mecha o viste un exoesqueleto hereda su ficha y su nivel mientras dure. Un vehículo normal no hereda nada.
+- **r10 · Hacia arriba.** No.
+  - El asistente entendía (superado): Un PNJ por encima de los jugadores no se toca sin Llave.
+  - **El autor:**
+  > Sí. Sólo un matiz, porque es contra intuitivo. Con permiso, tiras con tu bono completo. No se protege dos veces.
+
+### La Llave
+- **l1 · Qué es.** No.
+  - El asistente entendía (superado): La explicación narrativa que te deja interactuar con un nivel superior. Sin ella es imposible; con ella tiras normal, con tu bono y con el tono de la partida.
+  - **El autor:**
+  > Sí, con un matiz. Convierte tu tirada de toda la disciplina. (Atletismo, Acrobacia, Sigilo, Juego de manos) Contra cualquier objetivo.
+- **l2 · Lo que hace.** No.
+  - El asistente entendía (superado): Te pone un nivel por encima en lo que cubre, también de lo que estaba a tu altura.
+  - **El autor:**
+  > Te pone un nivel (o varios, pagando varias llaves) por encima del actual. En esa tirada, actúa como una malla, a menos que esté limitado. Lo usas con alguien de malla 1, y la llave te pone en malla 2, y el malla 1 no tiene derecho a tirada. Contra lo que sea. Pero ojo ojal. Que dice la llave? Una granada hace daño de malla 2. no hay tirada de soportar, Esquivar es difícil, pero la llave no lo impide de forma tan tajante. Sí hay tirada. Contra enemigos de la siguiente malla, da derecho a tirada, que antes no tenías (un bicho con mucha armadura natural, la granada sí puede hacerle daño. Tu puño americano ni cosquillas.
+- **l3 · A qué va ligada.** No.
+  - El asistente entendía (superado): El libro dice: una Disciplina entera contra su objetivo, nunca una Firma. Tú me has dicho que va ligada a un dominio, y que ponerle objetivo solo la abarata. No sé si «dominio» es un Dominio de la pirámide (Vigor, Destreza…) o una Disciplina.
+  - **El autor:**
+  > toda la disciplina. (Atletismo, Acrobacia, Sigilo, Juego de manos) . Me lío con las palabras. Mea culpa.
+- **l4 · Su precio.** Sí. Subir n niveles cuesta n² Llaves. Contra todo es la compra completa; contra una sola cosa, Limitada y más barata.
+- **l5 · La Llave ancha.** No.
+  - El asistente entendía (superado): El ámbito entero contra su objetivo durante una escena; se tacha al acabarla.
+  - **El autor:**
+  > La llave es tan grande como diga la escena. Puede ser limitada, o en este caso, muy potenciada. (de /2 a*3) Eso altera los costes. Si dura una escena y es narrativo, no tiene costes, así que no merece definición específica.
+- **l6 · Propia, prestada, de un momento.** Sí. La propia se compra y es permanente. La prestada o de un momento la da la ficción o el Director: dura una escena y sube lo que la ficción diga.
+- **l7 · En blanco.** Sí. Se puede guardar sin escribir y decidirla la primera vez que se usa; si alguien abusa, la mesa lo frena.
+- **l8 · La Parca.** No.
+  - El asistente entendía (superado): Es una Llave al daño: si te alcanza y estás por debajo de su nivel, quedas fuera de combate, sin absorción. Si se puede esquivar lo dice su etiqueta. Nunca mata.
+  - **El autor:**
+  > Sí. Sólo mi yo tikismikis. No me gustan los nunca. A menos que se haya pactado blablabla. No es una regla de la parca. Es de la muerte. Y de hecho la parca es lo que más difícil pone a la mesa para perdonarlo. jajaja te ha destrozado el planeta la estrella de la muerte. Se puede saber cómo hago para decir que no te mató? jajajajaja Yo ni mencionaría la muerte ahí. La muerte tiene su lugar en el manual. Se te da, fuera de combate sin derecho a tirada.
+- **l9 · Los permisos.** No.
+  - El asistente entendía (superado): Lo que ninguna habilidad puede hacer (volar, ver a través de las paredes) cuesta 1 Llave.
+  - **El autor:**
+  > Sí, con matices. El sistema es vago a posta. Puede costar menos (nunca menos de 1, pero si un poder hace varias cosas de forma limitada, el total sí se puede dividir) o más. (entre /2 y *3) Un poco a ojo de buen cubero. Es parte de reglas vagas aposta. Se bajará a tierra con varios ejemplos de poderes en el capi del final.
+- **l10 · Los hechizos.** Sí. Un punto en Arcano es el requisito; el hechizo es el permiso, y se paga con Llaves. Limitado si el manual emulado lo hace difícil, entero si es a voluntad; en medio decide la mesa.
+
+### La economía
+- **e1 · El bote aparte.** Sí. +1 de Rejilla en un ámbito, o 5 Llaves. No se cambia por puntos en ninguna dirección.
+- **e2 · La unidad de cambio.** Sí. La Rejilla de un ámbito vale 5·n² Llaves (5, 20, 45…); cubrirlo a mano con Llaves, 8·n². La proporción es 5/8.
+- **e3 · Dos monederos.** Sí. Puntos (oficio) y Llaves (tamaño), cada uno con su ritmo, pactado en la sesión 0. Por defecto, una Llave por sesión.
+- **e4 · Experiencia de salida.** No.
+  - El asistente entendía (superado): Los puntos y Llaves de más que la mesa quiera dar antes de jugar.
+  - **El autor:**
+  > O menos. Por defecto es un lugar cómo para empezar. No el mínimo. De hecho está diseñado para cyberpunk, donde el mundo suele ser más poderoso que Zombies o Cthulhu.
+- **e5 · El equipo: tres cerrojos.** No.
+  - El asistente entendía (superado): El Acceso (tu nivel en Recursos), el permiso narrativo, y Llaves si rompe la Rejilla, según cuántos niveles te sube por encima de la tuya.
+  - **El autor:**
+  > Acceso, permiso narrativo y coste en los dos monederos. Tambien puede costar habilidad si lo que te da es un bono. Se paga su precio en ambas monedas, con el modificador que le venga bien.
+- **e6 · Devolver, prestar, regalar.** Sí. El equipo devuelve siempre sus puntos y Llaves al dejarlo. Lo prestado o robado dura una escena y no cuesta. Los regalos del Director no se pagan mientras la historia los pida.
+- **e7 · El Ajuste.** No.
+  - El asistente entendía (superado): Limitado ÷2, Completo ×1, Potenciado ×2, Desatado ×3. Por debajo de 1 Llave, gratis una escena y se consume.
+  - **El autor:**
+  > Por debajo de una llave no hay nada. Coste mínimo 1. Si dura una escena, no se paga, aunque el precio sea mayor. Y no se paga POR ESO. Tu puedes hacer un poder tan limitado como quieras. Pero si lo quieres para siempre, pagas al menos 1. No te voy a obligar a devolverlo solo por ser débil.
+- **e8 · El precio de las armas.** No.
+  - El asistente entendía (superado): Lo administra el mundo (el Acceso y la ficción), no las Llaves.
+  - **El autor:**
+  > El daño es lo único que no se paga. Si le dificulta la esquiva al otro, o la absorción, o si tiene cualquier otra cosa chula (mira automatica, +2 al dar, por ejemplo) se paga por puntos de habilidad. Si hace alguna cosa que encaje como llave, se paga. Una simple pistola es inesquivable. pagas llave. (no dificulta, anula a malla 1 la esquiva)
+
+### Combate y vida
+- **c1 · Ataque y defensa.** Sí. Los dos tiran contra la TN y se comparan niveles de resultado; el empate es del defensor.
+- **c2 · El daño.** Sí. Crítico del atacante: +1 al daño. El daño de un arma llega a 2, más la Parca.
+- **c3 · Las etiquetas.** Sí. Daño, Esq (Total, Parcial, Nula, Difícil −2…) y Abs (Total, Máx N, Nula). Mandan sobre el empate.
+- **c4 · La iniciativa.** Sí. Por guardias: Violencia, Treta o Especialidad. Si cambias, vas el último.
+- **c5 · La vida fractal.** Sí. 3 bloques, 9 casillas o 27 puntos, con la misma ficha; el zoom lo pone el tono.
+- **c6 · Las barras.** Sí. Física, Mental, Espiritual y las del género. La barra es tensión: vuelve entera cuando el Director declara que estáis a salvo. Las consecuencias se quedan hasta curarse.
+- **c7 · La oposición.** Sí. Decorado (sin ficha ni tirada), ficha rápida y ficha completa.
+
+### El Acelerado
+- **x1 · Cuatro modos.** No.
+  - El asistente entendía (superado): Optimista, Neutro, Caos y Terror, y los cuatro son configuraciones legales del completo.
+  - **El autor:**
+  > Sí y no. Es legal, sí. Pero en el completo son dos neutros. uno con 9 y otro con 3 de vida. Las 4 combinaciones son 3 combinaciones legales y asomarse a una regla nueva.
+- **x2 · Sus reglas propias.** Sí. Torpe −1, armadura ligera +1 y pesada +2 a la absorción, nueve casillas de vida (tres en Terror).
+
+### Aclaraciones del 22 oct (preguntas del barrido, `REVISION-canon-2026-10-21.md`)
+- **La Llave Limitada de un nivel.** Se pregunta: si Limitada es ÷2 con mínimo 1, a un nivel cuesta lo mismo que la completa. **El autor:**
+  > Sí, no tiene sentido separar cuando el precio es el mismo. Te lo compro.
+- **El daño de nivel superior** (granada, Parca 2). **El autor:**
+  > Ser parca sí se paga. Aunque sea daño, es un permiso además. Afectar a la siguiente,
+  
+  Y aclara cómo acababa: 
+  > acababa. Solo puse una coma sin querer. Es afectar al siguiente punto en la REJILLA ( a ver si pillo hábito ajaja) Ergo es una llave por derecho. Eso es lo que hacen las llaves.
+- **Consumibles de un uso.** **El autor:**
+  > Correcto. Equipo de un solo uso, no se paga. No es parte de tu ficha. Sería equipo permanente un carcaj de flechas que no vamos a contar, un saco de pociones que misteriosamente siempre está lleno. Limitado si once in a while hay que pasar por tiendas, y te puedes quedar sin ellas en un momento inconveniente, that sort og thing.
+- **El nombre.** En sus respuestas, el autor escribe «malla» por costumbre: es la **Rejilla** (en inglés, *Grid*), el nombre vigente desde T158.
+- **Por debajo de −2.** **El autor:**
+  > Por debajo de -2, se decide si hay derecho a tirada. A discrecion del narrador.
+- **La Tragedia (TN 14).** Se pregunta si queda como excepción declarada a «la TN no se mueve», se quita o se rehace como dificultad. **El autor:**
+  > excepcion declarada me parece bien.
+- **«No hay combos» (dos efectos de la misma fuente no se acumulan).** **El autor:**
+  > creo que lo correcto es acumular lo que se pueda, a criterio de mesa, con el ancla en +4. la palabra combo barato se refiere a abusar de reglas, como las llaves que se rellenan cuando la partida ya empez'o, etc. la filosofia es no tememos a los jugadores tramposos, pq la meta no es matar mejor, y lo que no es narrativ se pacta en la 0. Se trata a la mesa cxomo adultos siempre.
+- **La Llave de cada sesión.** Se pregunta si es por jugador o para toda la mesa. **El autor:**
+  > por sesion y por cabeza, si
+- **Los 14 puntos.** Se pregunta si son del personaje que pone algo en Arcano o de cualquiera en un mundo con magia. **El autor:**
+  > para cualquiera en una partida en la que algun jugador se pone arcano. no va a tener mas puntos por tener magia. es de justicia en la mesa. si en tu mundo hay magia pero no es accesible a los jugadores, no te da puntos.
+- **Lo cósmico (nivel 6).** Se pregunta si es decorado fuera de la Rejilla o el nivel máximo del mundo, tocable con Llaves. **El autor:**
+  > lo cosmico es 6.(nivel planetas en la convencion simulacionista) la mayoria de universos no lo tiene, y es cas siempre injugable. Huiria de absolutos, ya que es un manual universal. puee que haya una partida cosmica en el que lleven seres como galactus cada uno. nada lo impide. Y las mismas reglas. Se toca con llaves, o partidas de universos sin techo, puede que una eventual subvida de malla (piensa en goku) En general no me gusta ser tajante en nada, para dejar claro que es un manual universal. Siempre usa generalmente, en la mayoria de mesas, etc. Cuando declares lo que no est'a al alcance, y cosas del palo.
+- **El ×100 en la lectura tangible.** Se pregunta si es fijo o la mesa puede adaptarlo. **El autor:**
+  > La escala tangible, igual. Intentamos ser poco taxtivos. Si los n'umeros significan algo en tu mundo, el *100 es la mejor elecci'on, para que el salto sea indiscutible. No recomendamos cambiarlo, por la sencilla razon de que un salto menor hace difusa la diferencia entre malla, y un pj que tiene -2 VS +4. y se ilustra. El mejor boxeador del mundo, no tiene nada que hacer contra una turba de 100 adolescentes sedentarios. Contra 10.... quiz'as. El quiz'as estorba.
+- **«Los unos abundan» y «un súper tiene como mucho dos ámbitos por encima de 1, y excepcionalmente tres».** Se pregunta si se cambia por la versión de r4. **El autor:**
+  > si entiendo la frase. Sewgurament el extracto en el archivo canon no lo pille bien. Asi esta bvien. Encaja con la idea de no irse de madre.
+- **La defensa contra una Llave o un arma de nivel superior** (ch5:29, «el de abajo… ni se defiende»). **El autor:**
+  > anula lo que diga que anula. y en armas se dice explicitamente los tres ambitos. Esquiva, bloqueo, y daño.  estando los dos ultimos muy relacionados, pero no siendo lo mismo. Algunas no se dejan absorber por daño masivo (granada) y otros pq atraviesan armadura, pero pueden hacer daños menores (balas perforantes, balas laser, katanas monofilo)
+- **Las fichas rápidas** (+0 fuera de su ámbito; «Rejilla 1–5»). **El autor:**
+  > se queda 0 como simplificacion de esas fichas. y no hace falta ser repetitivo con las excepciones. Los mundos con rejilla 6 son muy escasos, y ya se dice en su lugar que si quieres nadie te para. Un jugador jugando seres de galaxia, lo sabe y no se extraña con que las reglas no parezcan escritas para él en algnos párrafos generales.
+- **El Social de la receta corregida de ciberpunk** (cap8:896, Social 4 por deudas y favores). **El autor:**
+  > Se queda en llaves. no existe el ser que impide tirar a cualquier humano para seducirlo, convencerlo, intimidarlo...
+- **Los blásters de ópera espacial, esquivables.** **El autor:**
+  > convenio del género.
+- **El equipo del Acelerado, solo con dinero.** **El autor:**
+  > Vale como simplificacion. Pero aqui si se pone limite de equipo. 3 Items para una partida rapida? si no, se hacen ricos y se llenan 10 paginas jajajaja Lo podemos pensar un poco.
+
+  Hablado después, y aceptado por el autor («Vale: tres objetos, para uno nuevo sueltas uno, y lo de un solo uso no cuenta»): tres objetos que importan, con nombre y números en la ficha; lo demás (ropa, linterna, cuerda) se da por hecho y no da bonos; lo de un solo uso no cuenta; para coger uno nuevo, sueltas uno de los tres.
+- **Terror en el Acelerado** (sin lectura opresiva de dados). **El autor:**
+  > Si tiene. La lectura opresiva la dan los 3 puntos de vida. Es la diferencia con el neutro, que tiene 9. Lo opresivo es muy extremo.  Y lo presentamos así. no tiene cabida en una siplificacion, pero si damos herramientas para un terror mas para todos los publicos. El maual grande te deja ajustar varios diales, e ir con todo bajo tu responsabilidad. el acelerado tiene 4 tonos, no voy a poner uno que es 99% injugable
+- **«Matemáticamente infalible (99 %)» en la Épica** (ch4:41). **El autor:**
+  > Cambia por casi, sí.
+- **Presencia Majestuosa** (bz:445: el de nivel inferior tira Mental para poder atacarte). **El autor:**
+  > No es contradicción. Se puede usar para ilustrar lo abiertas que son las llaves. Pasar esa tirada puede ser la llave.
+- **Encargo: la tabla de poderes del capítulo 2.** **El autor:**
+  > Hay que rehacer la tabla de poderes en el capitulo 2, para ilustrar bien el ser que seria malla en los distintos 5 ambitos. Hay ejemplos que digo expresamente que son llaves. Lo ideal sewria la tabla con todo, la escribimos juntos, y debajo otra vez, con ejemplos de llave que alcanzan ese nivel, sin ser punto en rejilla
+
+  Criterios que dio el autor al escribirlas juntos: cada casilla lleva su porqué, porque el lector no tiene por qué captar la referencia; un ser de Rejilla hace *cualquier cosa* del ámbito a esa escala (Orfeo: su canto despierta cualquier emoción), y lo que es enorme en una sola cosa es Llave (las sirenas, el amo del hierro, la mujer del rayo); con un poco de imaginación todo puede ser un personaje («con poner sintiente» basta); «ya es un salto en sí TENER arcano, pero eso no lo hace un N2 si afecta a una persona». Las tablas quedan así (aprobadas el 22 oct: «ha quedado perfecta la diferenciación»):
+
+  **Tabla 1 · Seres de ese nivel en todo el ámbito (Rejilla)**
+
+  | | N1 · Humano | N2 · Sala | N3 · Edificio | N4 · Ciudad | N5 · País |
+  |---|---|---|---|---|---|
+  | Físico | El poli del yipi ka yei, el boxeador. Contra tres matones a la vez, suda sangre. | El soldado del suero, el cromado, el licántropo. Un soldado raso no tiene sentido contra ellos. | El trepamuros: las balas no le alcanzan, su sentido arácnido las ve venir. El robot del futuro: las balas le rebotan. | El monstruo nuclear, el verde y furioso. Sus ondas de choque barren calles. | El alien de mallas y calzoncillos. Cambia la geografía. |
+  | Mental | El profesor de química enfermo. Un +4 en Química, no un nivel: brillante en lo suyo y humano en todo lo demás. | El consultor de Baker Street, el científico elástico que lidera a su familia de aventureros. Parecen humanos, pero sus deducciones quedan claramente fuera del alcance de su especie. | El genio alienígena de cabeza enorme. Ningún plan del edificio se le escapa: ya lo ha pensado antes. | La IA de una ciudad. Sabe en tiempo real todo lo que pasa en ella (cada cámara, cada registro, cada conversación), y sobre eso investiga, resuelve y deduce. | La IA de un país. Lo mismo, a escala de una nación: sabe lo que va a hacer antes que su gobierno. |
+  | Social | El negociador, el buen relaciones públicas. Convencen a quien tienen delante. | La presencia del vampiro. Entra en la sala y la sala entera queda prendada. | La reina de la colmena. Satura de feromonas un puerto entero, y cada tripulación siente lo que a ella le conviene: devoción, pánico, calma o furia. No se evita, porque hay que respirar. | Orfeo. Su canto despierta cualquier emoción, y una ciudad entera da la vuelta a su revolución. | El señor de los sueños. Lo que sueña o teme un país es cosa suya. |
+  | Técnico | El manitas universal, el hacker. +4 en Artificio, pero sus maravillas caben en una habitación. | El inventor imposible (el millonario que se construye una armadura en una cueva). Va un salto por delante de su mundo: solo, hace lo que un equipo entero. | Los técnicos de un futuro lejano. Manejan a placer las leyes de la física. | La nanofactoría sintiente. Monta al instante cualquier aparato desde la materia prima más básica, y decide ella qué montar. | El científico de un futuro imposible (el cínico de la pistola de portales). Domina esta física y otra nueva. |
+  | Arcano | El brujo cazador, el aprendiz de la Orden. Una señal, una maldición, un velo: magia sobre una persona cada vez. Tener Arcano ya es un salto, pero no te hace N2. | El maestro de la Orden. Lo mismo que el aprendiz, sobre una sala entera: levanta, protege, ve o derriba a todos los que hay en ella. | El archimago de la torre. Toda la torre es su hechizo, y puede llevar eso a cualquier barrio: tormenta, sanación, adivinación o destierro, a la escala de un edificio. | El hechicero supremo que guarda la ciudad. Nada sobrenatural entra sin que él lo sepa, y puede curar, desterrar o sellar a esa escala. | El señor oscuro. Su sombra cubre reinos: corrompe, vigila, levanta a los muertos y enferma las cosechas de medio mapa a la vez. |
+
+  Debajo: «Con un poco de imaginación, todo puede ser un personaje: una IA, una nanofactoría con mente propia. Si es alguien y es grande en todo el ámbito, es Rejilla.»
+
+  Revisión del autor a la tabla 2 (22 oct): cada Llave tiene que ser del ámbito en lo que *hace*, no solo en lo que es. «Técnico es crear, reparar, esas cosas»: el satélite láser hace daño (Físico) y dejar sin dinero «es robar con llave, no técnico con llave»; la nanofactoría de la tabla 2 es la de la tabla 1 sin mente («la blueprint se la das tú»). En Arcano, la bola de fuego es daño: mejor un pergamino de invisibilidad. La mujer del rayo se queda: «Una tormenta mola mucho».
+
+  Últimos retoques (22 oct), aceptados por el autor («Te lo compro»): la tabla 2 no hace la cuenta del precio (algunas son Limitadas), remite a 2.3; en Social N5 se quitan «los dioses de la locura», que se confundían con los primigenios del nivel 6. Sobre añadir que en una partida realista el detective sería un +4 en N1, **el autor:**
+  > Sherlock no es humano. En una partida realista, Sherlock NO EXISTE. el matiz queda claro con PRECEN HUMANOS, pero sus deducciones no lo son. tu lo lees como en una partida realista, e se compra diferente. Para mí, en una partida realista, no te dejo mirar como cojea y deducir inmediatamente los años que ha servido en una guerra en oriente medio XD yo no cambiaba nada. El parece hace todo ese trabajo
+
+  **Tabla 2 · Llaves que llegan a ese nivel sin ser Rejilla** (si se compran, cuestan lo que una Llave de ese nivel, 2.3; si son de un solo uso o duran una escena, no se pagan)
+
+  | | N2 · Sala | N3 · Edificio | N4 · Ciudad | N5 · País |
+  |---|---|---|---|---|
+  | Físico | La granada. Daña a toda una sala, y quien la lanza sigue siendo humano. | El tanque. Derriba el vestíbulo; fuera de él, quien lo conduce es nivel 1. | La bomba nuclear táctica. Arrasa un centro urbano, y solo arrasa. | El arma biológica. Llega a todo un país, pero solo enferma; no levanta un coche. |
+  | Mental | El laboratorio forense que trabaja para ti. Investigación por cien, y nada más. | El algoritmo de bolsa. Predice un mercado; no sabe quién mató al portero. | La red de vigilancia de una ciudad. Lo ve todo, pero solo ve. | El servicio de inteligencia. Sabe los secretos de un país; no resuelve una ecuación. |
+  | Social | El discurso ante la junta. Una sala, un día. | La estrella del rock. Saca a miles de fans a la calle, pero no impresiona a quien no sabe quién es. | La cadena de televisión. Una ciudad oye su versión, y solo esa. | El discurso político que arrastra a un país. Con ese mensaje, no con cualquiera. |
+  | Técnico | El enjambre de drones. El trabajo de un equipo entero, pero solo aquel para el que se programó. | El hacker con su ordenador. Apaga las defensas de un edificio, pero no repara el ascensor. | La nanofactoría. Levanta los escudos de una ciudad en una noche, pero solo lo que dice el plano que tú le das. | El gusano que tumba la red de un país. Sabotea todo lo que está conectado, pero no arregla ni una tostadora. |
+  | Arcano | El pergamino de invisibilidad. Toda la comitiva desaparece a ojos de la sala; es de un solo uso, así que no se paga. | El amo del hierro. Levanta un estadio, si es de metal; contra una puerta de madera es un humano. | La mujer del rayo. Una tormenta sobre toda la ciudad, y nada más que tormenta. | El pacto del rey con el demonio. El reino no pierde ninguna guerra mientras dure; no le da al rey ni pan ni amor. |
+
+
+### Respuestas a PREGUNTAS-v2 (22 oct, `respuestas.docx`)
+El autor contestó en un documento las 25 preguntas de `PREGUNTAS-v2.md` (raíz). Cada respuesta va literal, tras el título de la pregunta.
+- **1. La Parca, Limitada al daño.** **El autor:**
+  > Confirmo.
+- **2. Anular la absorción, ¿Llave?** **El autor:**
+  > Confirmo.
+- **3. Cuántos puntos cuesta dificultar la defensa del otro.** **El autor:**
+  > Confirmo.
+- **4. Combinaciones.** **El autor:**
+  > Una llave por trait. Llave para no esquivar, pero no absorber ya va en daño masivo. (destroza el escudo también) no cobramos dos veces por el mismo concepto.
+- **5. La Llave «contra los vampiros» ya escrita, de un nivel.** **El autor:**
+  > La no separación a nivel 1 se debe al coste. La idea detrás es, si te voy a cobrar lo mismo, no lo limtes, pq el mínimo es 1. Un consejo de optimización, más que una regla dura. Se señala así.
+- **6. La escalera llana (3n−2)** **El autor:**
+  > Al baúl. Crecimiento más rápido. Mallas menos inaccesibles.
+- **7. La Transformación.** **El autor:**
+  > Sasto. Y la transformacion es limitada o no segun las condiciones de la transformación. No vale como truco para pagar menos si es a voluntad y siempre que quieras.
+- **8. «Ignora todo»** **El autor:**
+  > Sí, se puede poner n como el techo del universo (el ser más poderoso, puedas jugarlo o no), el precio depende contra quien lo puedes usar.
+- **9. El rockero** **El autor:**
+  > Depende. Hay fans por todas partes? Sólo en los suburbios? Recuerda que es un manual universal. En principio es general. Pq cyberpunk es un universo conectado. Puedes contactar por redes a distancia, y una llamada puede transportarlos. Pero queda sujeto a la mesa.
+- **10. El golpe de un ser de Rejilla superior** **El autor:**
+  > No hay tiradas. Se Narra la derrota. Como en vampiro la mascarada cuando te metes con un anciano.
+- **11. Con Llave contra el de arriba** **El autor:**
+  > La llave cubre lo que cubre. Un arma sin escudo, y una contextual (emboscada, sorpresa) es una sola oportunidad. Como le toque a él… mal vais jajajaja nada que inventar. La llave o llaves específican el tipo de oportunidad que compras.
+- **12. Por debajo de −2** **El autor:**
+  > Sasto. Está bien.
+- **13. La Tragedia** **El autor:**
+  > Son consejos. Se recomienda encarecidamente no usar por tiempos prolongados los tonos más oscuros. Pero la mesa es adulta y se trata como tal.
+- **14. Social 3–4 por fama** **El autor:**
+  > Preguntate. Tienes derecho a tirada para resistir las 8 habilidades? Yo creo que sí. En tal caso son llaves. Pero analízalo. Si quieres podemos charlarla. En ppio, parece claro que son llaves.
+- **15. Inés «casi humana»** **El autor:**
+  > Así está bien. S´olo para ilustrar, y es más sencillo si son 56 llaves en físico que se convierten en la malla. Criterio didáctico y de simpleza.
+- **16. [Lento]** **El autor:**
+  > Nisiquiera puede usarse en conflicto, es todavía mas restrictivo, y puede usarse como una desventaja que puedas usar como puntos de habilidad en otra cosa. Desventajas y ventajas tienen la misma característica que todo lo demás. Llaves o puntos con multiplicador. No entramos mucho en detalle. Es un motor para que construyan los DMs. No una lista infinita de rcetas.
+- **17. La muerte pactada al revés** **El autor:**
+  > Sí. Es una pieza clave en algunos universos de terror, sobre todo en one shots.
+- **18. «Las Llaves que se rellenan cuando la partida ya empezó»** **El autor:**
+  > Es eso, sí.
+- **19. Las seis ideas** **El autor:**
+  > Está flama.
+- **20. El decorado** **El autor:**
+  > Lo primero. Si no hay tirada, actúan como n-1 (n es la de los jugadores) asi que nisiquiera necesitan rejilla.
+- **21. «Don»** **El autor:**
+  > Sí. Ventaja?
+- **22. «DJ» y «Director»** **El autor:**
+  > Director
+- **23. Nombres que rozan franquicias** **El autor:**
+  > Perfecto.
+- **24. La tabla de bonos de 2.1** **El autor:**
+  > El +3 no existe solo con ficha, y si los bonos llegan a +3 al aplicarse, no se dice cómo. Puede ser un profesional con ayuda, o un torpe con muchísima ayuda. No entramos en tanto detalle.
+- **25. Detalles menores** **El autor:**
+  > Perfecto.
+- **Ventajas y desventajas: ¿se compran, o «no se compran, ocurren»?** (a raíz de su respuesta 16). **El autor:**
+  > Las dos cosas
+  
+  Y lo aclara: 
+  > Lo de las dos cosas iba por el cuadro del final. Se compran y ocurren. Se decide en mesa si empezais con desventjaas, etc. en ppio libertad total con tus 12 puntos y 5 llaves. Pero va a sesion 0
+- **Lo que decidieron los agentes y el autor aprueba** (dioses fuera del decorado, el Social por fama bajado a 1 en las recetas 4 y 15, y la escalera llana). **El autor:**
+  > Me valen las tres (dioses como no decorado, social por fama, bajado a 1, y la rejilla plana, es n*3 en vez de n cuadrado. Una regla de progresion mas rapida en el baaul.
+
+- **Dudas de la revisión por conceptos (22 oct).** «Ningún protagonista muere por una tirada» (0.7), ¿se suaviza?; las masillas, ¿tiran iniciativa o son decorado?; «sin saltarse la progresión» en la Llave de un momento; «si un objeto da un permiso y no pone Llaves, es una errata» en el Bazar. **El autor:**
+  > 1. Nah, está bien así. Encaja con las reglas son tuyas y te las follas cuando quieras. La excepcion no les quita el status de regla.
+  > 2. Lo palanamos a decorado.
+  > 3. Se explica un poco.
+  > 4. Me parece honesto. Siempre se va a colar algo
+
+- **El éxito con coste no es universal (22 oct, leyendo la hoja de referencia).** **El autor:**
+  > El exito con coste no esta siempre. Igual a la TN o uno ma. [...] A la tabla le sobra el porcentaje con +0 (a nadie le importa) y le falta si hay exito con cose o no, y que numeros lo dan.
+
+  En las tarjetas, solo lo llevan el Pulp desenfrenado y la Comedia negra (total 6 o 7). t5 vale para esas.
+
+- **Respuestas a PREGUNTAS-final (22 oct).** **El autor:**
+  > 1. Aumenta el daño en un nivel con una pifi de defensa. Pero como bien dices, si no entra, no se tira. No va a lanzarse hacia la bala que no le iba a dar XD
+  > 2. Las penalizaciones de las barras, si lo entiendo bien, son los penalizadores que te da el daño tras pasar un cierto umbral. Claro que se cuenta!!
+  > 3. Si hay ficha, la cambia. Como regla sucia de prisa, se puede cambiar de rejilla, pero es un mecha! Demasiado cool para no darle e rotagonismo que merece.  Las chapuzas no hay que recomendarlas en voz alta. jajajaja Cambia la ficha!
+  > 4. Nah. Me fio de ti CASI SIEMPRE va a ser llave. Es muy raro un aura de carisma irresistible pida lo que pida. Existe, pero es muy raro
+
+- **Crítico del atacante y pifia del defensor a la vez (22 oct).** **El autor:**
+  > Se suman: crítico y pifia del defensor dan +2 al daño.
+
+---
+
 Jerarquía de autoridad usada para resolver contradicciones:
-0. El bloque REGLAS VIGENTES de aquí abajo: manda sobre todo lo demás de este fichero.
+0. La PALABRA DEL AUTOR de arriba (21 oct 2026). Manda sobre todo lo demás: sobre este fichero entero y sobre el libro. El antiguo bloque «REGLAS VIGENTES» (resumen del asistente, T185) se retira; queda en el historial de git (commit 69a4fe9).
 1. Última palabra explícita del AUTOR en la conversación (turnos T1–T145, 10 feb – 24 may).
 2. Texto del borrador del autor `nogumdraft-docx.md` (cuerpo, no el índice viejo que lleva pegado arriba) y `nogum-pdf.md` (texto del autor sobre combate, anterior; vale solo donde nada posterior lo sustituye).
 3. Texto del asistente aceptado por el autor ("me encanta", "queda", "dale"…).
 4. Propuestas del asistente no validadas → se incluyen SOLO marcadas como «Propuesta sin validar» o en Pendientes.
 Las decisiones de edición (ED-n) son arreglos de congruencia que el editor ha tenido que tomar; se muestran al lector en la pestaña «Decisiones editoriales».
-
-## REGLAS VIGENTES (resumen al día; si algo de más abajo lo contradice, manda esto)
-Lo que sigue a este bloque es el registro de cómo se llegó aquí y contiene reglas superadas. Para responder, usa primero este bloque. (Actualizado en T185.)
-- **La mesa manda (Capítulo 0 · Sesión 0).** Antes de la campaña se pactan las líneas rojas de cada uno (no se impone nada que haga sentir genuinamente mal a nadie; basta una persona; se puede decir en privado al Director; lo que aparece tarde se quita sin pedir permiso), qué se va a sentir, qué soluciones pide el género, hasta dónde puede llegar el tono, y de ahí los números. No hay cortafuegos contra el combo barato: la mesa puede decir «esto no vale». Las reglas trabajan para la mesa y se ignoran cuando impiden lo que la trama pide.
-- **Tirada.** Dos d10 (rojo y azul) y siete tarjetas de tono (ver §2bis). TN 6 (11 en la suma). Los bonos se acumulan, pero el total va siempre de −2 a +4 (el Ancla).
-- **Ficha.** 12 puntos (14 si hay Arcano). Ámbito → Dominio (+1) → Disciplina (+2) → Firma (+3/+4). Ámbito vacío: Nulidad, −2. Si tienes algo en el ámbito, la otra columna se tira a −1 (Torpe). Estilo +2.
-- **Bote aparte.** +1 de Rejilla en un ámbito cuyo techo llegue a 2, o 5 Llaves. Se empieza en 1·1·1·1·2 como mucho; para empezar más arriba, experiencia de salida o un salto pactado en la sesión 0.
-- **Rejilla.** Es escala, no habilidad (×100 de alcance por nivel), y casi nunca es humana: los unos abundan. Un nivel por encima: ganas sin tirar y tiras Estilo para el cómo. Por debajo: imposible sin Llave.
-- **Techo del mundo.** La Rejilla entera más alta que puede tener un jugador en cada ámbito en ese mundo. La receta lo propone y la mesa lo confirma («¿es posible en vuestro mundo?»). No frena las Llaves: una Disciplina puede pasar por encima si el mundo lo hace posible. Los PNJ pueden estar por encima.
-- **Saltos de Rejilla.** Los abre la trama y los decide el Director; por defecto nadie se queda atrás (su salto, su valor en Llaves o algo equivalente). Valor: 5·n² Llaves por ámbito (cada peldaño, 5, 15, 25, 35). Quien rechaza un salto cobra su valor en Llaves y las gasta donde quiera.
-- **Llaves.** Estrecha: una Disciplina entera (nunca una Firma) contra su objetivo, para siempre. Ancha: un ámbito entero contra su objetivo, una escena (se tacha). Una Llave te pone un nivel por encima en lo que cubre. Subir n niveles contra lo mismo: n² Llaves. Una Disciplina cuesta x² contra un objetivo o solo para el daño (Limitado) y 2·x² contra todo; nunca más que la Rejilla del ámbito, 5·x². Se puede dejar en blanco y escribirla la primera vez que se usa.
-- **Llaves de un momento o prestadas.** Las da la ficción o el Director (el club de hackers, veinte mercenarios a la vez, el agua bendita): duran una escena y suben lo que la ficción diga; no se mejoran con Llaves. Lo prestado o robado de paso dura una escena.
-- **Regalos del Director.** Lo que la historia pone en vuestras manos como planteamiento (el robot de la agencia, la nave del grupo) no se paga mientras la historia lo pida.
-- **Equipo.** Tres cerrojos: el Acceso (Recursos), el permiso narrativo y, si rompe la Rejilla, Llaves (x = niveles por encima de la Rejilla del portador; x² por Disciplina contra un objetivo o solo daño, 2·x² contra todo, tope 5·x²). Por debajo de 1 Llave: gratis una escena y se consume. El equipo siempre devuelve sus puntos y Llaves al dejarlo; en un traspaso, quien lo libera las recupera y quien lo recibe las paga. El precio de las armas lo administra el mundo (Acceso y ficción).
-- **Sincronización** (mechas, exoesqueletos, armaduras motorizadas, fusiones): heredas ficha y escala. Es Rejilla, 5·x², a precio entero; Limitada (la mitad) solo si no está siempre disponible, y lo decide la mesa. Un vehículo normal no hereda nada: cobra x².
-- **La Parca.** Si te alcanza y estás por debajo de su nivel, quedas fuera de combate, sin absorción. Si se esquiva lo dice su etiqueta Esq (Nula: se evita no estando ahí; la granada, Difícil −2). Por encima de tu nivel es una Llave y se paga como un arma. Nunca mata.
-- **Combate.** El atacante tira; el defensor tira su reacción si la etiqueta lo permite; se comparan niveles de resultado, y los empates los gana el defensor. Crítico del atacante: +1 al daño. El daño de un arma llega a 2, más la Parca.
-- **Vida.** Barras Física, Mental, Espiritual y las del género. La barra es tensión: cuando termina la amenaza y el Director declara que estáis a salvo, todas vuelven enteras. Las consecuencias (al cruzar un umbral) se quedan hasta curarse: leves, cura sencilla; graves, cura grave. Fuera de combate no es muerte; la muerte de un protagonista siempre se pacta.
-- **Acelerado.** Cuatro modos: Optimista (mejor de dos), Neutro (dado rojo), Caos (mismo dado, bandas anchas y éxito con coste) y Terror (como Neutro, pero 3 casillas de vida en vez de 9). Torpe −1. Armadura ligera +1 y pesada +2 a la absorción. Lo que rompe la Rejilla o da un permiso cuesta además Llaves.
 
 ---
 ## 0. Identidad

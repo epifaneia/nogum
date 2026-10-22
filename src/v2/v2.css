@@ -1,0 +1,60 @@
+/* ===== v2: color por capitulo con la estructura nueva ================
+   Mismas cuatro familias que paper.css, repartidas sobre el indice nuevo:
+   el marco y el motor en azules, las cuatro ideas de la ficha en verdes,
+   la mesa en ambares y rojos, los apendices en grises y violetas. */
+.sheet[data-cap="ideas"]{--cap:#4b6ea8}
+.sheet[data-cap="ch0"]{--cap:#6b7382}
+.sheet[data-cap="ch1"],.sheet[data-cap="ch1-panel"]{--cap:#2a56a0}
+.sheet[data-cap="ch2"]{--cap:#1f6f8b}
+.sheet[data-cap="ch3"]{--cap:#2e7d6b}
+.sheet[data-cap="ch4"]{--cap:#3d8a4f}
+.sheet[data-cap="ch5"]{--cap:#5a7d2e}
+.sheet[data-cap="ch6"]{--cap:#a8502a}
+.sheet[data-cap="ch7"]{--cap:#9a6b16}
+.sheet[data-cap="ch8"]{--cap:#7a3f6d}
+.sheet[data-cap="apx-faq"]{--cap:#6b6257}
+.sheet[data-cap="ch9"],.sheet[data-cap="ch9b"]{--cap:#5c5470}
+.sheet[data-cap="apx-maquinas"]{--cap:#555f6e}
+
+/* El arsenal del Bazar pasa de cinco columnas a ocho: Objeto, Daño, Esq,
+   Abs y los tres precios (Acceso, Puntos, Llaves), y Notas se queda el resto. */
+table.t.arsenal thead th:nth-child(1){width:26mm}
+table.t.arsenal thead th:nth-child(2){width:15mm}
+table.t.arsenal thead th:nth-child(3){width:17mm}
+table.t.arsenal thead th:nth-child(4){width:16mm}
+table.t.arsenal thead th:nth-child(5),table.t.arsenal thead th:nth-child(6),table.t.arsenal thead th:nth-child(7){width:11mm;font-size:6.5pt;letter-spacing:0}
+table.t.arsenal td:nth-child(5),table.t.arsenal td:nth-child(6),table.t.arsenal td:nth-child(7){text-align:center}
+
+/* ===== Hoja de referencia (apx-referencia): todo el juego en una cara =====
+   El maquetador reparte los hijos de la seccion por hojas; .ref-hoja va
+   entera, a dos columnas y con letra pequena, para caber en una sola. */
+.ref-hoja{column-count:2;column-gap:5mm;column-rule:.25mm solid var(--rule);font-size:7pt;line-height:1.22;hyphens:auto}
+.ref-hoja .ref-b{margin:0 0 1.6mm}
+.ref-hoja h3{display:flex;justify-content:space-between;align-items:baseline;gap:2mm;font:700 10pt/1.15 var(--book);margin:0 0 1mm;padding-bottom:.5mm;border-bottom:.4mm solid var(--ink);break-after:avoid}
+.ref-hoja h3::before{display:none}
+.ref-ir{font:600 6.4pt/1 var(--mono);letter-spacing:.02em;white-space:nowrap}
+.ref-ir a{color:var(--red);text-decoration:none}
+.ref-hoja p{margin:0 0 .8mm}
+.ref-hoja ul{padding-left:3mm;margin:0 0 .8mm}
+.ref-hoja li{margin:0 0 .3mm}
+.ref-hoja .tw{margin:.6mm 0 1.1mm;border-radius:.8mm;break-inside:avoid}
+.ref-hoja table.t{font-size:6.5pt;line-height:1.15}
+.ref-hoja table.t th,.ref-hoja table.t td{padding:.2mm 1mm}
+.ref-hoja table.t thead th{font-size:5.8pt;letter-spacing:.02em}
+.ref-hoja table.t td:first-child,.ref-hoja table.t th:first-child{min-width:0}
+.ref-hoja table.t.ref-esc td,.ref-hoja table.t.ref-esc th{text-align:center}
+.ref-n{font-size:6.5pt;color:var(--ink-3)}
+.ref-hoja table.t td:last-child{overflow-wrap:normal}
+.ref-hoja table.t:has(th.nw) td:last-child{white-space:nowrap}
+.ref-hoja table.t thead a{color:inherit}
+
+/* La cabecera y el pie se rellenan despues de maquetar (titulo de capitulo,
+   numero de pagina). Vacios no ocupaban alto, la caja del texto se medía mas
+   alta de lo que iba a ser y, al llenarse, lo ultimo de la hoja se cortaba.
+   Un espacio duro en los huecos vacios les da su alto desde el principio. */
+.rh span:empty::before,.pf .pn:empty::before{content:"\00a0"}
+
+/* En pantallas estrechas (movil) Chrome agranda por su cuenta la letra de los
+   bloques anchos, despues de maquetar: la hoja se mide con una letra y se pinta
+   con otra, y el texto se sale por abajo. El libro es A4: sin autoajuste. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}

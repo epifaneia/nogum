@@ -1,4 +1,4 @@
-import json, os, re
+import json, os, re, html as H
 D = os.path.dirname(os.path.abspath(__file__))
 R = lambda n: open(os.path.join(D, n), encoding='utf-8').read()
 css = R('paper.css'); tokens = css[:css.index('*{box-sizing')]
@@ -13,7 +13,9 @@ dat = json.load(open(os.path.join(D, 'app_data.json'), encoding='utf-8'))
 _rs = [int(x) for x in re.findall(r"\{r:(\d+), n:\[", src)]
 _n = len(dat['recipes'])
 assert len(dat.get('techos', [])) == _n, 'hay %d recetas y %d juegos de techos' % (_n, len(dat.get('techos', [])))
-assert len(dat['baul']) == 16, 'el Baul tiene %d reglas y el Codigo usa 16 bits' % len(dat['baul'])
+# el Baul tiene 17 reglas y el Codigo 17 bits (los Codigos viejos, de 16, se leen igual)
+assert len(dat['baul']) == 17, 'el Baul tiene %d reglas y el Codigo usa 17 bits' % len(dat['baul'])
+assert 'var BAUL_BITS = 17;' in src, 'el Codigo de la app no usa 17 bits'
 assert sorted(_rs) == list(range(_n)), (
     'los %d mundos del atajo no apuntan a las %d recetas una vez cada uno: %s' % (len(_rs), _n, sorted(_rs)))
 
@@ -32,7 +34,23 @@ def prods(modo):
     return js([{'es': e, 'en': n, 'url': url(k, loc, web)} for k, e, n, loc, web in PIEZAS])
 
 DATA = js(dict(dat, firmas=json.load(open(os.path.join(D, 'firmas.json'), encoding='utf-8'))))
-CANON = js(R('CANON.md'))
+# --- lo que lee el asistente de reglas -------------------------------------
+# Solo la PALABRA DEL AUTOR (CANON.md hasta «Jerarquia de autoridad»: lo de
+# debajo es historia, con capas viejas y erroneas) y la hoja de referencia del
+# Juego completo v2, que son las reglas vigentes en una pagina.
+def _canon():
+    c = R('CANON.md')
+    i = c.index('Jerarquía de autoridad')
+    c = c[:i].rstrip().rstrip('-').rstrip()
+    ref = R(os.path.join('v2', 'fL_referencia.html'))
+    ref = re.sub(r'<span class="src">.*?</span>', '', ref)
+    ref = re.sub(r'</(?:p|li|tr|h3|h2)>', '\n', ref)
+    ref = re.sub(r'</t[dh]>', ' | ', ref)
+    ref = re.sub(r'<[^>]+>', '', ref)
+    ref = re.sub(r'\n\s*\n+', '\n', H.unescape(ref)).strip()
+    assert '<!-- BITACORA' not in c
+    return c + '\n\n## HOJA DE REFERENCIA del Juego completo v2 (las reglas vigentes en una pagina)\n' + ref + '\n'
+CANON = js(_canon())
 MARCAS = ('%' + '%BASECSS%' + '%', '%' + '%PRODS%' + '%', '%' + '%IMG_APP%' + '%')
 # La imagen de bienvenida de la App: en la web esta al lado; la version local la
 # pide a la carpeta de productos, donde assemble3 copia las imagenes; el
