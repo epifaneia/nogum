@@ -464,7 +464,7 @@ var ZOOM = {
 var BLOCKS = [['Sano','Healthy'],['Herido −2','Wounded −2'],['Crítico −4','Critical −4']];
 var BARS = [['fis','Física','Physical'],['men','Mental','Mental'],['esp','Espiritual','Spiritual']];
 var STANCES = [['violencia','Violencia','Violence'],['treta','Treta','Trick'],['especialidad','Especialidad','Specialty']];
-var GRIDN = [null,['Una persona · ×1','One person · ×1'],['Una sala llena · ×100','A full room · ×100'],['Un edificio · ×10.000','A building · ×10,000'],['Una ciudad · ×1.000.000','A city · ×1,000,000'],['Un país · ×100.000.000','A country · ×100,000,000']];
+var GRIDN = [null,['Una persona · ×1','One person · ×1'],['Una sala llena · ×100','A full room · ×100'],['Un edificio · ×10.000','A building · ×10,000'],['Una ciudad · ×1.000.000','A city · ×1,000,000'],['Un país · ×100.000.000','A country · ×100,000,000'],['Un planeta · ×10.000.000.000','A planet · ×10,000,000,000']];
 var BAUL_TIP = [
   ['Reloj de 4/6/8 segmentos: éxito +1, crítico +2; los fallos llenan el reloj rival.','4/6/8-segment clock: success +1, critical +2; failures fill the opposing clock.'],
   ['Narra una escena pasada que resuelve el presente. No se paga: se tira la habilidad del plan contra la TN. Éxito: ocurrió; fallo: salió torcido; pifia: te delata.','Narrate a past scene that solves the present. It is not paid for: roll the plan’s skill against the TN. Success: it happened; failure: it went wrong; fumble: it gives you away.'],
@@ -476,16 +476,21 @@ var BAUL_TIP = [
   ['6 clones: al quedar fuera de combate llega el siguiente, con la vida llena.','6 clones: when one is taken out, the next arrives at full health.'],
   ['El Director tira detrás de la pantalla y solo narra el resultado.','The GM rolls behind the screen and only narrates the outcome.'],
   ['Tablas de heridas, enfermedades, fallos de equipo y mutaciones: ejemplos por género en «Tablas de problemas» (cap. 9).','Tables for wounds, diseases, equipment failures and mutations: examples by genre in “Problem tables” (ch. 9).'],
-  ['Te transformas en combate y subes (normalmente en el Físico); se acaba al acabar la escena. Se paga la capacidad, como lo que sube: un ámbito entero, 5·n² Llaves; Disciplinas sueltas, la Llave de cada una. Con limitaciones importantes, Limitada (la mitad, al alza, mínimo 1); a voluntad, entera.','You transform in a fight and go up (usually in the Physical); it ends when the scene ends. You pay for the ability, as what it raises: a whole sphere, 5·n² Keys; single Disciplines, the Key for each. With important limitations, Limited (half, rounded up, minimum 1); at will, in full.'],
+  ['Te transformas en combate y subes (normalmente en el Físico); se acaba al acabar la escena. Se paga la capacidad, como lo que sube: un Ámbito entero, como la Rejilla (5·n² Llaves; 5·(3n−2) con la escalera llana); Disciplinas sueltas, la Llave de cada una. Con limitaciones importantes, Limitada (la mitad, al alza, mínimo 1); a voluntad, entera.','You transform in a fight and go up (usually in the Physical); it ends when the scene ends. You pay for the ability, as what it raises: a whole Sphere, like the Grid (5·n² Keys; 5·(3n−2) with the flat ladder); single Disciplines, the Key for each. With important limitations, Limited (half, rounded up, minimum 1); at will, in full.'],
   ['Regla del núcleo (3.8): quien pilota un mecha, viste un exoesqueleto o se fusiona juega con su ficha y su nivel mientras dure. Un vehículo normal no hereda nada.','Core rule (3.8): whoever pilots a mecha, wears an exoskeleton or merges plays with its sheet and its level while it lasts. A normal vehicle passes on nothing.'],
   ['Un entorno hostil hace daño en cada escena, sin tirada y sin esquiva ni absorción: Daño 1, luego Daño 2, luego la Parca (Rejilla 2). La protección lo evita.','A hostile environment deals damage every scene, with no roll and no dodge or soak: Dmg 1, then Dmg 2, then the Reaper (Grid 2). Protection prevents it.'],
   ['Una barra más (Honor, Reputación, Sed…) con bloques y umbrales como las demás.','An extra bar (Honour, Reputation, Thirst…) with blocks and thresholds like the others.'],
   ['2–3 vínculos con PNJ: protegerlos funciona como Llave, y pueden escudar daño.','2–3 bonds with NPCs: protecting them works as a Key, and they can shield damage.'],
   ['Éxito con coste (en el Pulp desenfrenado y la Comedia negra): el Director elige tiempo, recurso, posición o fuego amigo.','Success at a cost (in Unleashed Pulp and Black Comedy): the GM picks time, resource, position or friendly fire.'],
-  ['Subir n niveles con Llaves cuesta 3n−2 en vez de n²: 1, 4, 7, 10, 13. Crecimiento más rápido.','Going up n levels with Keys costs 3n−2 instead of n²: 1, 4, 7, 10, 13. Faster growth.']
+  ['Subir n niveles con Llaves cuesta 3n−2 en vez de n²: 1, 4, 7, 10, 13. Con ella baja también la Rejilla: 5·(3n−2), es decir 5, 20, 35, 50, 65, en vez de 5·n². Crecimiento más rápido.','Going up n levels with Keys costs 3n−2 instead of n²: 1, 4, 7, 10, 13. The Grid comes down with it: 5·(3n−2), that is 5, 20, 35, 50, 65, instead of 5·n². Faster growth.']
 ];
 
 /* known universes: evocative names without trademarks */
+/* p[3] es el nivel maximo del mundo (3.7) cuando la receta lo nombra (los
+   dragones de la 11, los dioses de la 12, el 5 que duerme bajo la ciudad de la
+   13, el monstruo de la 14, el Ordenador de la 19); si no, 1, y manda el nivel
+   maximo de los jugadores de la receta, por debajo del cual nunca queda.
+   Antes era la «escala de la partida» (supers 4, anime 3), que ya no existe. */
 var KNOWN = [
   {r:0, n:['Mazmorras, dragones y tesoros','Crypts, dragons and loot'], h:['La fantasía de rol de toda la vida','Classic roleplaying fantasy'], p:['alto','medio','carne',1,true,['fantasia'],[]]},
   {r:4, n:['Mosqueteros, piratas y duelos en la lámpara','Musketeers, pirates and chandelier duels'], h:['Capa, espada y mucho descaro','Cloak, sword and plenty of swagger'], p:['alto','bajo','carne',1,true,['fantasia','social'],[]]},
@@ -495,17 +500,17 @@ var KNOWN = [
   {r:3, n:['Samuráis, honor y cortes imperiales','Samurai, honour and imperial courts'], h:['Equivocarse de protocolo es peor que morir','A breach of etiquette is worse than death'], p:['neutro','bajo','cascara',1,false,['fantasia','wuxia','social'],[13]]},
   {r:6, n:['Una galaxia lejana, caballeros místicos y espadas láser','A faraway galaxy, mystic knights and laser swords'], h:['Ópera espacial clásica','Classic space opera'], p:['alto','medio','carne',1,true,['opera'],[]]},
   {r:7, n:['Neón, cromo y megacorporaciones','Neon, chrome and megacorps'], h:['Ciberpunk de los 80','80s cyberpunk'], p:['neutro','alto','cascara',1,true,['neon'],[],'coste']},
-  {r:10, n:['Ciberpunk con elfos, orcos y dragones','Cyberpunk with elves, orcs and dragons'], h:['Magia y megacorporaciones','Magic and megacorps'], p:['neutro','medio','carne',1,true,['neon','fantasia'],[]]},
+  {r:10, n:['Ciberpunk con elfos, orcos y dragones','Cyberpunk with elves, orcs and dragons'], h:['Magia y megacorporaciones','Magic and megacorps'], p:['neutro','medio','carne',5,true,['neon','fantasia'],[]]},
   {r:8, n:['Cuerpos de alquiler y mentes en la nube','Rented bodies and minds in the cloud'], h:['Ciencia ficción transhumanista','Transhumanist science fiction'], p:['neutro','alto','carne',1,false,['neon','opera'],[6],'coste']},
   {r:9, n:['Desierto, gasolina y refugios nucleares','Wasteland, fuel and fallout shelters'], h:['Tras el fin del mundo','After the end of the world'], p:['neutro','alto','cascara',1,false,['postapo'],[9,12]]},
-  {r:11, n:['Dioses primigenios, libros prohibidos y locura','Old gods, forbidden books and madness'], h:['Horror cósmico de investigación','Cosmic investigative horror'], p:['bajo','bajo','cascara',1,false,['terror'],[4]]},
-  {r:12, n:['Vampiros, clanes y política nocturna','Vampires, clans and night-time politics'], h:['Horror gótico personal','Personal gothic horror'], p:['neutro','bajo','nucleo',1,false,['gotico','social'],[13]]},
-  {r:13, n:['Niños en bici, los 80 y un monstruo en el bosque','Kids on bikes, the 80s and a monster in the woods'], h:['La amistad contra lo imposible','Friendship against the impossible'], p:['alto','medio','cascara',1,false,['terror'],[14]]},
+  {r:11, n:['Dioses primigenios, libros prohibidos y locura','Old gods, forbidden books and madness'], h:['Horror cósmico de investigación','Cosmic investigative horror'], p:['bajo','bajo','cascara',6,false,['terror'],[4]]},
+  {r:12, n:['Vampiros, clanes y política nocturna','Vampires, clans and night-time politics'], h:['Horror gótico personal','Personal gothic horror'], p:['neutro','bajo','nucleo',5,false,['gotico','social'],[13]]},
+  {r:13, n:['Niños en bici, los 80 y un monstruo en el bosque','Kids on bikes, the 80s and a monster in the woods'], h:['La amistad contra lo imposible','Friendship against the impossible'], p:['alto','medio','cascara',3,false,['terror'],[14]]},
   {r:14, n:['Ladrones y fantasmas en una ciudad victoriana','Thieves and ghosts in a Victorian city'], h:['Golpes planeados con flashbacks','Heists planned with flashbacks'], p:['neutro','alto','carne',1,false,['steampunk','gotico'],[0,1],'coste']},
-  {r:15, n:['Superhéroes de cómic','Comic-book superheroes'], h:['Salvar la ciudad y llegar a la cita','Save the city and make your date'], p:['alto','bajo','carne',4,true,['supers'],[13]]},
-  {r:16, n:['Torneos de artes marciales y ataques a gritos','Martial arts tournaments and shouted attacks'], h:['Anime de combate','Battle anime'], p:['neutro','alto','nucleo',3,true,['wuxia'],[10,3]]},
+  {r:15, n:['Superhéroes de cómic','Comic-book superheroes'], h:['Salvar la ciudad y llegar a la cita','Save the city and make your date'], p:['alto','bajo','carne',1,true,['supers'],[13]]},
+  {r:16, n:['Torneos de artes marciales y ataques a gritos','Martial arts tournaments and shouted attacks'], h:['Anime de combate','Battle anime'], p:['neutro','alto','nucleo',1,true,['wuxia'],[10,3]]},
   {r:17, n:['Robots gigantes pilotados por adolescentes','Giant robots piloted by teenagers'], h:['Mechas y angustia','Mechas and angst'], p:['bajo','medio','cascara',1,false,['opera','supers'],[11]]},
-  {r:18, n:['Una distopía de risa con un ordenador loco','A hilarious dystopia run by a mad computer'], h:['Todos son traidores, tú también','Everyone is a traitor, you too'], p:['neutro','alto','cascara',1,false,['neon','toon'],[7,8],'locura']},
+  {r:18, n:['Una distopía de risa con un ordenador loco','A hilarious dystopia run by a mad computer'], h:['Todos son traidores, tú también','Everyone is a traitor, you too'], p:['neutro','alto','cascara',5,false,['neon','toon'],[7,8],'locura']},
   {r:19, n:['Un mundo plano a lomos de una tortuga gigante','A flat world on the back of a giant turtle'], h:['Sátira fantástica y burocrática','Fantasy satire and bureaucracy'], p:['neutro','alto','carne',1,true,['fantasia','social'],[]]}
 ];
 var FAMILIES = [
@@ -517,7 +522,7 @@ var FAMILIES = [
 ];
 
 /* ======================= STATE ======================= */
-S.m = S.m || {known:null, family:null, world:null, era:null, tech:null, sup:[], xtra:[], edition:null, opt:null, caos:null, flavor:null, hueco:null, card:null, unis:null, zoom:null, estilo:null, grid:null, pts:0, kx:0, b0:[], b1:[], b2:[], b3:[]};
+S.m = S.m || {known:null, family:null, world:null, era:null, tech:null, sup:[], xtra:[], edition:null, opt:null, caos:null, flavor:null, hueco:null, card:null, unis:null, zoom:null, estilo:null, grid:null, pmax:null, pts:0, kx:0, b0:[], b1:[], b2:[], b3:[]};
 S.chars = S.chars || [];
 /* El equipo de una ficha se guarda por su sitio en el Bazar (seccion, bloque,
    fila). El catalogo de la v2 metio «Arma de fuego» en el sitio 6 del primer
@@ -565,7 +570,15 @@ function estilo(){ return isAcc() || M.estilo !== false; }
 function xpNum(v){ var n = Math.trunc(+v || 0); return Math.max(-99, Math.min(n, 999)); }
 function ptsExtra(){ return xpNum(M.pts); }
 function keysExtra(){ return xpNum(M.kx); }
-function grid(){ return M.grid || 1; }
+/* El nivel maximo del mundo (3.7): lo mas alto que existe en ese universo, lo
+   juegue alguien o no; el tamano de las amenazas. Sustituye a la «escala de la
+   partida» (C·22oct), que preguntaba por el tamano de las hazañas: viaja en el
+   mismo G del Codigo, asi que un Codigo viejo se lee igual, como nivel maximo
+   del mundo. No sube a los personajes, y nunca queda por debajo del nivel
+   maximo de los jugadores: lo que un jugador puede alcanzar, existe. */
+function mundoMax(){ var m = Math.max(1, Math.min(6, +M.grid || 1)); (jugMax() || []).forEach(function(v){ if (v > m) m = v; }); return m; }
+function mundoMin(){ var m = 1; (jugMax() || []).forEach(function(v){ if (v > m) m = v; }); return m; }
+function jugMaxTxt(){ var j = jugMax(); return j ? j.map(function(v){ return v || '—'; }).join(' · ') : ''; }
 function universes(){ var u = universesBase(); return u.indexOf('piezas') < 0 ? u.concat(['piezas']) : u; }
 function universesBase(){
   if (M.known && M.world !== null) return KNOWN[M.world].p[5];
@@ -598,7 +611,7 @@ var BAUL_GROUPS = [
   {k:[6,7,13,14], g:['Cuerpo, identidad y lazos','Body, identity and bonds']},
   {k:[4,5,12,9], g:['Un mundo que muerde','A world that bites']}
 ];
-var SECTIONS = [['Universo','Universe'],['Edición','Edition'],['Tono','Tone'],['Peligro','Danger'],['Escala','Scale'],['Resumen','Summary']];
+var SECTIONS = [['Universo','Universe'],['Edición','Edition'],['Tono','Tone'],['Peligro','Danger'],['Niveles máximos','Maximums'],['Resumen','Summary']];
 
 /* ======================= MOTOR DE ESCALAS =======================
    Dos formas de preguntar y un solo contador detras. O(v, cinco opciones
@@ -845,24 +858,33 @@ var S_UNI = [
      ['Organiza una expedición y vuelve alguien menos.','They organise an expedition and come back one person short.']),
    A(['Vuestro mundo ya se rompió una vez. Lo que queda son restos, y todo lo bueno es algo que alguien fabricó antes de que todo se fuera al diablo.',
       'Your world has already broken once. What is left are remains, and everything good is something somebody made before it all went to hell.'])]},
- {id:'escala', k:['Las hazañas','The deeds'], qs:[
-   O(['Lo más gordo que han hecho los protagonistas hasta ahora…',
-      'The biggest thing the protagonists have done so far…'],
-     ['…fue salir vivos de una pelea que no buscaban.','…was getting out alive of a fight they did not pick.'],
-     ['…fue limpiar un barrio de un problema que tenía nombre.','…was clearing a neighbourhood of a problem that had a name.'],
-     ['…fue tirar un edificio, o lo que había dentro.','…was bringing down a building, or what was inside it.'],
-     ['…dejó una ciudad distinta a como la encontraron.','…left a city different from how they found it.'],
-     ['…cambió el mapa. Literalmente: hubo que redibujarlo.','…changed the map. Literally: it had to be redrawn.']),
-   O(['Si uno de ellos se enfada de verdad y pierde el control, ¿qué se rompe?',
-      'If one of them really loses their temper and their control, what breaks?'],
-     ['Una mesa, una nariz, una amistad.','A table, a nose, a friendship.'],
-     ['Una casa, y la paciencia de la guardia.','A house, and the watch’s patience.'],
-     ['Un edificio, y sale en las noticias.','A building, and it makes the news.'],
-     ['Una calle entera, y hay que evacuar.','A whole street, and it has to be evacuated.'],
-     ['Un barrio. Puede que una ciudad.','A district. Possibly a city.']),
-   A(['Las hazañas de vuestros personajes no son de escala humana: lo que hacen se mide en edificios, en ciudades o en países, y el mundo entero nota cuando aparecen.',
-      'Your characters’ deeds are not on a human scale: what they do is measured in buildings, cities or countries, and the whole world notices when they show up.'])]}
+ {id:'mundo', k:['Las amenazas','The threats'], qs:[
+   O(['Lo más peligroso que existe en vuestro mundo, lo juegue alguien o no, si se pone en marcha puede acabar con…',
+      'The most dangerous thing in your world, whether anyone plays it or not, if it gets going it can wipe out…'],
+     ['…una persona. Lo peor que hay cabe en un callejón.','…one person. The worst there is fits in an alley.'],
+     ['…una sala llena: una banda, una manada, un pelotón.','…a full room: a gang, a pack, a platoon.'],
+     ['…un edificio, o lo que haya dentro.','…a building, or whatever is inside it.'],
+     ['…una ciudad.','…a city.'],
+     ['…un país. O más: hay cosas que se comen mundos.','…a country. Or more: there are things that eat worlds.']),
+   O(['Si lo peor que duerme en vuestro mundo se despierta, ¿quién se entera?',
+      'If the worst thing sleeping in your world wakes up, who finds out?'],
+     ['Los que estaban cerca, y no por mucho tiempo.','Whoever was nearby, and not for long.'],
+     ['El barrio, que no vuelve a hablar de ello.','The neighbourhood, which never speaks of it again.'],
+     ['La ciudad entera, y sale en las noticias.','The whole city, and it makes the news.'],
+     ['El país, que declara el estado de emergencia.','The country, which declares a state of emergency.'],
+     ['Todo el mundo, y nada vuelve a ser igual.','Everybody, and nothing is ever the same again.']),
+   A(['En vuestro mundo hay cosas que ningún personaje va a poder igualar nunca: dioses, dragones, lo que duerme debajo de la ciudad. Se tocan con Llaves, si se tocan.',
+      'In your world there are things no character will ever be able to match: gods, dragons, whatever sleeps under the city. They are touched with Keys, if at all.'])]}
 ];
+/* el nivel maximo de los jugadores (3.7): las recetas lo dan Ambito por
+   Ambito; en un mundo propio se pregunta una vez y vale para los cinco */
+var Q_PMAX = O(['Por mucho que dure la campaña, ¿hasta dónde puede llegar uno de vuestros personajes en lo suyo?',
+                'However long the campaign runs, how far can one of your characters get at what they do best?'],
+               ['Hasta donde llega una persona. Lo excepcional se hace con Llaves.','As far as one person goes. The exceptional is done with Keys.'],
+               ['Hasta valer por una sala llena: una leyenda de taberna.','Up to being worth a full room: a tavern legend.'],
+               ['Hasta tumbar un edificio.','Up to bringing down a building.'],
+               ['Hasta cambiar una ciudad.','Up to changing a city.'],
+               ['Hasta mover un país: no hay techo práctico.','Up to moving a country: there is no practical ceiling.']);
 var Q_TOON = A(['Y una última, que decide mucho: en vuestro mundo, si alguien se cae de un acantilado, lo que decide si se hace daño no es la altura. Es si tiene gracia.',
                 'And one last one, which decides a lot: in your world, if somebody falls off a cliff, what decides whether they get hurt is not the height. It is whether it is funny.']);
 var TECID = ['espadas','vapor','hoy','neon','espacio'];
@@ -881,7 +903,7 @@ function resUni(sec){
       : ['El Bazar abre «','The Bazaar opens “'][L()] + bz + ['».','”.'][L()];
     return {t:TECT[r], d:[dd, dd]};
   }
-  if (sec.id === 'magia') return b === 2 ? {t:['Hay magia y se aprende','There is magic, and it is learned'], d:['Entra el Arcano: la barra Espiritual y el quinto ámbito. Si algún jugador lo toca, todos reparten catorce puntos de habilidad en vez de doce.','The Arcane comes in: the Spiritual bar and the fifth sphere. If any player takes it, everyone spends fourteen skill points instead of twelve.']}
+  if (sec.id === 'magia') return b === 2 ? {t:['Hay magia y se aprende','There is magic, and it is learned'], d:['Entra el Arcano: la barra Espiritual y el quinto Ámbito. Si algún jugador lo toca, todos reparten catorce puntos de habilidad en vez de doce.','The Arcane comes in: the Spiritual bar and the fifth Sphere. If any player takes it, everyone spends fourteen skill points instead of twelve.']}
     : {t:['Sin magia de oficio','No magic as a trade'], d:['Lo que haya de raro no se estudia ni se compra.','Whatever is strange is neither studied nor bought.']};
   if (sec.id === 'mons') return s >= 11 ? {t:['Monstruos, y de los malos','Monsters, and the bad kind'], d:['Entran el horror gótico y el cósmico.','Gothic and cosmic horror come in.']}
     : s >= 8 ? {t:['Hay monstruos','There are monsters'], d:['Entra el horror gótico: clanes, sangre y política nocturna.','Gothic horror comes in: clans, blood and night-time politics.']}
@@ -893,11 +915,13 @@ function resUni(sec){
     : {t:['Se habla, pero no se sangra','There is talk, but no bleeding'], d:['La intriga se narra; el daño viene de otro sitio.','Intrigue is narrated; damage comes from elsewhere.']};
   if (sec.id === 'roto') return b === 2 ? {t:['El mundo ya se rompió','The world already broke'], d:['Entra el Post-Apocalipsis: chatarra, agua y gasolina.','Post-Apocalypse comes in: scrap, water and fuel.']}
     : {t:['El mundo sigue en pie','The world is still standing'], d:['Hay tiendas, hay hospitales y hay quien pasa la factura.','There are shops, there are hospitals and there is somebody sending the bill.']};
-  var g = rungGrid(s) + 1;
-  /* la escala es de la partida (tamano de las amenazas), no el nivel de los personajes */
-  return {t:[GRIDN[g][0], GRIDN[g][1]], d:['Escala de la partida: ' + g + '. Dice el tamaño de las hazañas y de las amenazas, no el de los personajes: el punto de partida recomendado es 1·1·1·1·2, con el 2 donde el universo lo deje (5.2).',
-    'Game scale: ' + g + '. It sets the size of deeds and threats, not of the characters: the recommended start is 1·1·1·1·2, with the 2 wherever the universe allows it (5.2).']};
+  var g = mundoNivel(s);
+  /* el nivel maximo del mundo es el tamano de las amenazas, no el de los personajes */
+  return {t:[GRIDN[g][0], GRIDN[g][1]], d:['Nivel máximo del mundo: ' + g + '. Es lo más alto que existe aquí, lo juegue alguien o no: el tamaño de las amenazas. No sube a los personajes, que salen en 1·1·1·1·2 (5.2) y crecen hasta el nivel máximo de los jugadores, que viene ahora (3.7).',
+    'World maximum: ' + g + '. It is the highest thing that exists here, whether anyone plays it or not: the size of the threats. It does not raise the characters, who start at 1·1·1·1·2 (5.2) and grow up to the player maximum, which comes next (3.7).']};
 }
+/* tres respuestas, de 3 a 15; con todo al maximo, lo cosmico (3.7) */
+function mundoNivel(s){ return s >= 15 ? 6 : rungGrid(s) + 1; }
 function aplicaUni(){
   if (M.known && M.world !== null) return;
   var u = [], sup = [], xtra = [];
@@ -921,7 +945,8 @@ function aplicaUni(){
   M.sup = sup.length ? sup : ['none'];
   M.xtra = xtra.length ? xtra : ['none'];
   M.known = false; M.world = null; M.family = null;
-  M.grid = rungGrid(sc('uni','escala')) + 1;
+  M.grid = mundoNivel(sc('uni','mundo'));
+  M.pmax = sc1('uni','pmax') || null;
 }
 
 /* --------------------------------- 3. EL BAÚL --------------------------------- */
@@ -1042,7 +1067,7 @@ var U = {
   theme:['Tema','Theme'], cfg:['Ajustes','Settings'], back:['Atrás','Back'], next:['Siguiente','Next'], toSum:['Ir al resumen','Go to summary'], help:['Ayuda','Help'],
   start:['Empezar','Start'], edit:['Editar todo','Edit everything'], change:['Cambiar','Change'], lockGo:['Fijar y ver la ficha plantilla','Lock and view the template sheet'],
   print:['Imprimir','Print'], create:['Crear ficha','Create sheet'], del:['Borrar ficha','Delete sheet'], pc:['Personaje','Character'], page:['Página','Page'],
-  disclaimer:['Este formulario aplica un tono y una escala a la partida completa. Puedes repetirlo siempre que quieras cambiar de tono: para una sesión nueva, una escena nueva o incluso a mitad de escena. Las fichas se actualizan solas, porque todas viven entre −2 y +4.','This form applies one tone and one scale to the whole game. You can run it again whenever you want to change tone: for a new session, a new scene or even mid-scene. Sheets update on their own, because they all live between −2 and +4.']
+  disclaimer:['Este formulario aplica un tono y una letalidad a la partida completa. Puedes repetirlo siempre que quieras cambiar de tono: para una sesión nueva, una escena nueva o incluso a mitad de escena. Las fichas se actualizan solas, porque todas viven entre −2 y +4.','This form applies one tone and one lethality to the whole game. You can run it again whenever you want to change tone: for a new session, a new scene or even mid-scene. Sheets update on their own, because they all live between −2 and +4.']
 };
 function u(k){ return pick(U[k]); }
 
@@ -1117,8 +1142,8 @@ var FORMS = [
   d:['Caos, optimismo y cuánto aguanta un cuerpo. Sale de situaciones, no de preguntas técnicas: a cada una le dices cuánto te suena.',
      'Chaos, optimism and how much a body can take. It comes out of situations, not technical questions: you say how much each one sounds like your table.']},
  {id:'uni', num:'2', cap:['La mesa','The table'], n:['El universo','The universe'],
-  d:['Qué hay en vuestro mundo y de qué tamaño son las hazañas. Si tenéis un universo conocido en la cabeza, se acaba en dos toques.',
-     'What is in your world and how big the deeds are. If you have a well-known universe in mind, it is over in two taps.']},
+  d:['Qué hay en vuestro mundo, de qué tamaño son las amenazas y hasta dónde llegan los personajes. Si tenéis un universo conocido en la cabeza, se acaba en dos toques.',
+     'What is in your world, how big the threats are and how far the characters can get. If you have a well-known universe in mind, it is over in two taps.']},
  {id:'baul', num:'3', cap:['La mesa','The table'], n:['El Baúl','The Chest'],
   d:['Las diecisiete reglas opcionales. Empieza delimitando: si no te gusta la chicha, desaparecen de un plumazo las que piden llevar números.',
      'The seventeen optional rules. It starts by setting boundaries: if you do not like crunch, the ones that make you track numbers vanish at a stroke.']},
@@ -1137,7 +1162,7 @@ function formEstado(id){
   if (id === 'tono') return (M.opt && M.caos)
     ? [pick(card().n) + (isAcc() ? '' : ' · ' + pick(ZOOM[zoomK()].n)) + (estilo() ? ' · ' + t('Estilo','Style') : ''), true]
     : [t('Sin contestar','Not answered yet'), true];
-  if (id === 'uni') return hayUni ? [worldName() + ' · ' + t('Rejilla ','Grid ') + grid(), true]
+  if (id === 'uni') return hayUni ? [worldName() + ' · ' + t('nivel máximo del mundo ','world maximum ') + mundoMax(), true]
                                   : [t('Sin contestar','Not answered yet'), true];
   if (id === 'baul') return isAcc() ? [t('El Acelerado no usa el Baúl','Accelerated has no Chest'), false]
     : !hayUni ? [t('Hace falta el universo','Needs the universe first'), false]
@@ -1203,7 +1228,8 @@ function resumenFilas(){
   f.push(['tono', t('Tono','Tone'), {alto:t('El universo está de nuestra parte','The universe is on our side'), neutro:t('El universo es justo','The universe is fair'), bajo:t('El universo nos pone a prueba','The universe puts us to the test')}[opt()] + ' · ' + {bajo:t('mundo de reloj','clockwork world'), medio:t('mundo de película','film-like world'), alto:t('universo caótico','chaotic universe')}[caos()], pick(card().n)]);
   f.push(['tono', t('Peligro','Danger'), (isAcc() ? ZOOM[zoomK()].units + t(' casillas de vida',' health boxes') : pick(ZOOM[zoomK()].n) + ' (' + ZOOM[zoomK()].units + ')') + ' · ' + (estilo() || isAcc() ? t('con floritura','with flourish') : t('sin floritura','no flourish')),
     isAcc() ? t('Vida fija del Acelerado · Estilo +2 para todos','Accelerated fixed health · Style +2 for everyone') : t('Vida fractal · Estilo ','Fractal Health · Style ') + (estilo() ? t('sí','on') : t('no','off'))]);
-  f.push(['uni', t('Escala','Scale'), pick(GRIDN[grid()]), t('Rejilla nivel ','Grid level ') + grid()]);
+  f.push(['uni', t('Nivel máximo del mundo','World maximum'), pick(GRIDN[mundoMax()]), t('Rejilla nivel ','Grid level ') + mundoMax() + t(' · el tamaño de las amenazas',' · the size of the threats')]);
+  f.push(['uni', t('Nivel máximo de los jugadores','Player maximum'), jugMaxTxt() || t('Sin techo','No ceiling'), t('Fís · Men · Soc · Téc · Arc (3.7)','Phy · Men · Soc · Tec · Arc (3.7)')]);
   if (!isAcc()) f.push(['baul', t('Reglas extra','Extra rules'), baul().length ? baul().map(function(k){ return pick(DATA.baul[k]); }).join(', ') : t('Ninguna','None'), t('Baúl de reglas (9.1)','Rules Chest (9.1)')]);
   return f;
 }
@@ -1233,6 +1259,7 @@ function pasosUni(){
     if (sec.sup && !uniSobrOn()) return;
     for (var i = 0; i < 3; i++) p.push({t:'q', s:sec, i:i});
     p.push({t:'res', s:sec});
+    if (sec.id === 'mundo') p.push({t:'one', g:'pmax', q:Q_PMAX});
   });
   p.push({t:'one', g:'toon', q:Q_TOON});
   p.push({t:'fin'});
@@ -1310,8 +1337,9 @@ function renderPasos(fid){
     if (i === 0 && fid === 'tono') h += '<p class="eqnote">' + esc(t('Ninguna pregunta busca qué pasaría de verdad. Buscan qué esperáis que pase: cómo se siente vuestra mesa, no cómo funciona el mundo.','No question here asks what would really happen. They ask what you expect to happen: how your table feels, not how the world works.')) + '</p>';
     if (i === 0) h += '<p class="eqnote">' + esc(t('Elige, y cuando lo tengas pulsa «Siguiente». Nada se guarda hasta el final y puedes volver atrás.','Pick one, and press “Next” when you are happy. Nothing is final and you can always go back.')) + '</p>';
   } else if (p.t === 'gate' || p.t === 'one') {
-    h += '<p class="kick">' + esc(p.g === 'toon' ? t('La última','The last one') : t('Delimitando','Setting the boundaries')) + '</p>';
+    h += '<p class="kick">' + esc(p.g === 'toon' ? t('La última','The last one') : p.g === 'pmax' ? t('Los jugadores','The players') : t('Delimitando','Setting the boundaries')) + '</p>';
     h += escala(p.q, sc1(fid, p.g));
+    if (p.g === 'pmax') h += '<p class="eqnote">' + esc(t('Es el nivel máximo de los jugadores (3.7): vale para los cinco Ámbitos, es una propuesta que la mesa confirma y se puede pasar con aviso. El nivel máximo del mundo nunca queda por debajo.','It is the player maximum (3.7): it applies to all five Spheres, it is a proposal the table confirms, and it can be exceeded with a warning. The world maximum never sits below it.')) + '</p>';
   } else if (p.t === 'res') {
     var r = p.gi !== undefined ? resBaul(p.gi) : fid === 'uni' ? resUni(p.s) : {t:resTono(p.s.id)[0], d:resTono(p.s.id)[1]};
     h += '<p class="kick">' + esc(pick(p.s.k)) + '</p><p class="big">' + esc(pick(r.t)) + '</p>' +
@@ -1362,7 +1390,7 @@ function renderPick(k){
       h += '<button type="button" class="choice" data-pk="world|' + ix + '" aria-pressed="' + (M.world === ix) + '"><span>' + esc(pick(kk.n)) +
         '<small>' + esc(pick(kk.h) + ' · ' + DATA.recipes[kk.r][L()].replace(/^\d+\.\s*/, '')) + '</small></span><span class="mark"></span></button>';
     });
-    h += '</div><p class="eqnote">' + esc(t('Elegir un mundo aplica su receta entera: tono, vida, escala, Estilo, reglas del Baúl y las secciones del Bazar que encajan. Todo se puede retocar después.','Picking a world applies its whole recipe: tone, health, scale, Style, Chest rules and the matching Bazaar sections. Everything can be tweaked afterwards.')) + '</p>';
+    h += '</div><p class="eqnote">' + esc(t('Elegir un mundo aplica su receta entera: tono, vida, niveles máximos, Estilo, reglas del Baúl y las secciones del Bazar que encajan. Todo se puede retocar después.','Picking a world applies its whole recipe: tone, health, maximums, Style, Chest rules and the matching Bazaar sections. Everything can be tweaked afterwards.')) + '</p>';
   }
   return h;
 }
@@ -1377,8 +1405,9 @@ function renderFin(fid){
     h += '<tr><td>' + esc(isAcc() ? t('El modo','The mode') : t('La tarjeta','The card')) + '</td><td>' + esc(pick(card().n)) + '<span class="tech">' + esc(pick(card().roll)) + ' · TN ' + (card().tn || 6) + (isAcc() ? esc(' · ' + ZOOM[zoomK()].units + t(' casillas de vida',' health boxes')) : '') + '</span></td></tr>';
   } else if (fid === 'uni') {
     h += '<tr><td>' + esc(t('Mundo','World')) + '</td><td>' + esc(worldName()) + '<span class="tech">' + esc(universes().map(uniName).join(', ')) + '</span></td></tr>';
-    h += '<tr><td>' + esc(t('Escala','Scale')) + '</td><td>' + esc(pick(GRIDN[grid()])) + '<span class="tech">' + esc(t('Rejilla nivel ','Grid level ') + grid()) + '</span></td></tr>';
-    h += '<tr><td>' + esc(t('Arcano','Arcane')) + '</td><td>' + esc(arcOpen() ? t('Sí: barra Espiritual y quinto ámbito','Yes: Spiritual bar and fifth sphere') : t('No: cuatro ámbitos','No: four spheres')) + '<span class="tech">' + budget() + esc(t(' puntos de habilidad',' skill points')) + '</span></td></tr>';
+    h += '<tr><td>' + esc(t('Nivel máximo del mundo','World maximum')) + '</td><td>' + esc(pick(GRIDN[mundoMax()])) + '<span class="tech">' + esc(t('Rejilla nivel ','Grid level ') + mundoMax() + t(' · el tamaño de las amenazas',' · the size of the threats')) + '</span></td></tr>';
+    h += '<tr><td>' + esc(t('Nivel máximo de los jugadores','Player maximum')) + '</td><td>' + esc(jugMaxTxt() || t('Sin techo','No ceiling')) + '<span class="tech">' + esc(t('Fís · Men · Soc · Téc · Arc (3.7)','Phy · Men · Soc · Tec · Arc (3.7)')) + '</span></td></tr>';
+    h += '<tr><td>' + esc(t('Arcano','Arcane')) + '</td><td>' + esc(arcOpen() ? t('Sí: barra Espiritual y quinto Ámbito','Yes: Spiritual bar and fifth Sphere') : t('No: cuatro Ámbitos','No: four Spheres')) + '<span class="tech">' + budget() + esc(t(' puntos de habilidad',' skill points')) + '</span></td></tr>';
   } else {
     var on = baul();
     h += '<tr><td>' + esc(t('Reglas activas','Rules on')) + '</td><td>' + esc(on.length ? on.map(function(k){ return pick(DATA.baul[k]); }).join(', ') : t('Ninguna','None')) + '<span class="tech">' + on.length + esc(t(' de ',' of ') + DATA.baul.length) + '</span></td></tr>';
@@ -1447,13 +1476,14 @@ function respuestasTexto(fid){
   }
   if (fid === 'uni') {
     var n = sc1('uni','sobr'); if (n) out.push('- [delimitar] «' + G_SOBR.v[0] + '» → ' + n + '/5');
+    var pm = sc1('uni','pmax'); if (pm) out.push('- [nivel máximo de los jugadores] «' + Q_PMAX.v[0] + '» → ' + pm + '/5 («' + Q_PMAX.o[pm - 1][0] + '»)');
     var tn = sc1('uni','toon'); if (tn) out.push('- [comedia] «' + Q_TOON.v[0] + '» → ' + tn + '/5');
   }
   return out.length ? out.join('\n') : '- Todavía no ha contestado ninguna pregunta de este formulario.';
 }
 function resultadoTexto(fid){
   if (fid === 'tono') return 'Tarjeta: ' + card().n[0] + '. Optimismo: ' + opt() + '. Caos: ' + caos() + '. Vida fractal: ' + ZOOM[zoomK()].n[0] + '. Estilo: ' + (estilo() ? 'sí' : 'no') + '.';
-  if (fid === 'uni') return 'Mundo: ' + worldName() + '. Secciones del Bazar: ' + universes().map(uniName).join(', ') + '. Escala de la partida (no sube los ámbitos: se sale en 1): ' + grid() + '. Arcano: ' + (arcOpen() ? 'sí' : 'no') + '.';
+  if (fid === 'uni') return 'Mundo: ' + worldName() + '. Secciones del Bazar: ' + universes().map(uniName).join(', ') + '. Nivel máximo del mundo (el tamaño de las amenazas; no sube los Ámbitos, se sale en 1): ' + mundoMax() + '. Nivel máximo de los jugadores (Fís · Men · Soc · Téc · Arc): ' + (jugMaxTxt() || 'sin techo') + '. Arcano: ' + (arcOpen() ? 'sí' : 'no') + '.';
   return 'Reglas activas del Baúl: ' + (baul().length ? baul().map(function(k){ return DATA.baul[k][0]; }).join(', ') : 'ninguna') + '.';
 }
 var iaEstado = {}, iaCtl = null;
@@ -1534,7 +1564,7 @@ function nuevoPnj(){ return {step:0, tipo:null, rel:null, amb:null, hab:null, du
 function habName(k){ var p = String(k).split('.'), a = AMB[+p[0]], d = a && a.doms[+p[1]]; return d ? pick(d.n) + ' › ' + pick(d.dis[+p[2]]) : '—'; }
 function ambOf(id){ return AMB.filter(function(a){ return a.id === id; })[0] || null; }
 function pnjs(){ S.pnjs = S.pnjs || []; return S.pnjs; }
-/* El nivel del grupo NO es la escala de la partida (grid()): es la Rejilla mas
+/* El nivel del grupo NO es el nivel maximo del mundo (mundoMax()): es la Rejilla mas
    alta que tenga cualquier personaje en el ambito que importa (en cualquiera,
    si aun no hay ambito), o 1 si no hay fichas. */
 function pjNivel(amb){
@@ -1542,7 +1572,9 @@ function pjNivel(amb){
   (S.chars || []).forEach(function(c){ AMB.forEach(function(a, ai){ if (!amb || a.id === amb) n = Math.max(n, ambLvl(c, ai)); }); });
   return n;
 }
-function pnjNivel(rel, amb){ var g = pjNivel(amb); return Math.max(1, Math.min(5, g + (rel === 'bajo' ? -1 : rel === 'alto' ? 1 : 0))); }
+/* y nada pasa del nivel maximo del mundo (3.7): lo que no existe ahi no se
+   reparte (si los personajes ya lo han pasado, manda su nivel) */
+function pnjNivel(rel, amb){ var g = pjNivel(amb); return Math.max(1, Math.min(5, Math.max(mundoMax(), g), g + (rel === 'bajo' ? -1 : rel === 'alto' ? 1 : 0))); }
 /* Acelerado (3, improvisar un enemigo): un nivel de Rejilla, UNA habilidad a +2
    (todo lo demas a +0) y las casillas que quieras que dure la pelea, 3 por
    defecto. En el completo, un Ambito entero a +2 y la vida fractal. */
@@ -1669,14 +1701,16 @@ function renderPnj(){
       h += '<p class="eqnote"><b>' + esc(t('Rejilla ','Grid ') + n + ' · ' + rejillaTxt(n, P.amb)) + '</b> — ' +
         esc(v[1] + '. ' + v[2]) + '<br>' + esc(t('Alcance: ','Reach: ') + pick(GRIDN[n])) + '</p>';
       h += '<p class="note">' + esc((S.chars || []).length
-        ? t('Se compara con vuestros personajes: la Rejilla más alta que tenga alguno, ' + gp + '. No con la escala de la partida, que dice el tamaño de las amenazas.',
-            'It is compared with your characters: the highest Grid any of them has, ' + gp + '. Not with the game scale, which sets the size of the threats.')
-        : t('Aún no hay fichas: se compara con Rejilla 1, donde salen los personajes. No con la escala de la partida, que dice el tamaño de las amenazas.',
-            'No sheets yet: it is compared with Grid 1, where characters start. Not with the game scale, which sets the size of the threats.')) + '</p>';
+        ? t('Se compara con vuestros personajes: la Rejilla más alta que tenga alguno, ' + gp + '. No con el nivel máximo del mundo, que dice el tamaño de las amenazas (' + mundoMax() + ').',
+            'It is compared with your characters: the highest Grid any of them has, ' + gp + '. Not with the world maximum, which sets the size of the threats (' + mundoMax() + ').')
+        : t('Aún no hay fichas: se compara con Rejilla 1, donde salen los personajes. No con el nivel máximo del mundo, que dice el tamaño de las amenazas (' + mundoMax() + ').',
+            'No sheets yet: it is compared with Grid 1, where characters start. Not with the world maximum, which sets the size of the threats (' + mundoMax() + ').')) + '</p>';
       if ((P.rel === 'bajo' && n >= gp) || (P.rel === 'alto' && n <= gp))
         h += '<p class="note">' + esc(P.rel === 'bajo'
           ? t('Vuestros personajes están en Rejilla 1: por debajo ya no hay números. Si querías algo menor, eso es decorado.',
               'Your characters are at Grid 1: below that there are no numbers left. If you wanted something smaller, that is scenery.')
+          : gp < 5 ? t('Por encima de vuestros personajes no existe nada en este universo: el nivel máximo del mundo es ' + mundoMax() + ' (3.7). Si la historia lo pide, subidlo en la barra de la mesa.',
+              'Nothing in this universe exists above your characters: the world maximum is ' + mundoMax() + ' (3.7). If the story calls for it, raise it on the table bar.')
           : t('Vuestros personajes están en Rejilla 5: la ficha rápida no pasa de ahí. Lo que esté por encima no es decorado: está más arriba que vosotros, y sin Llave no se tira (7.5).',
               'Your characters are at Grid 5: a quick sheet goes no higher. Anything above that is not scenery: it is further up than you, and without a Key there is no roll (7.5).')) + '</p>';
     }
@@ -2066,35 +2100,35 @@ function reminders(){
   var c = card(), h = '<div class="remind">';
   function li(es, en){ return '<li>' + esc(t(es, en)) + '</li>'; }
   h += '<div class="rbox card"><h3>' + esc(t('Cómo se tira','How to roll')) + '</h3><dl><dt>' + esc(t('Modo','Mode')) + '</dt><dd><b>' + esc(pick(c.n)) + '</b></dd><dt>' + esc(t('Dados','Dice')) + '</dt><dd>' + esc(pick(c.roll)) + '</dd><dt>TN</dt><dd>' + (c.tn || 6) + ' ' + esc(t('(iguala o supera)','(meet or beat)')) + '</dd><dt>' + esc(t('Pifia','Fumble')) + '</dt><dd>' + esc(pick(c.fum)) + '</dd><dt>' + esc(t('Crítico','Critical')) + '</dt><dd>' + esc(pick(c.cri)) + '</dd>' + (c.bands ? '<dt>' + esc(c.coste ? t('Éxito con coste','Success at a cost') : t('Resultado','Result')) + '</dt><dd>' + esc(pick(c.bands)) + '</dd>' : '') + '</dl><p class="note">' + esc(t('Pifia y crítico se leen en el número que usas, antes de sumar y sin bonos. Tira solo si fallar es interesante (0.6).','Fumble and critical are read on the number you use, before adding and without bonuses. Roll only if failing is interesting (0.6).')) + '</p></div>';
-  h += '<div class="rbox"><h3>' + esc(t('Tu bono','Your bonus')) + '</h3><table><tr><td>−2</td><td>' + esc(t('Ámbito vacío (Nulo)','Empty sphere (Null)')) + '</td></tr><tr><td>−1</td><td>' + esc(t('La otra columna de un ámbito con algo (Torpe)','The other column of a sphere with something (Clumsy)')) + '</td></tr><tr><td>+1</td><td>' + esc(t('Dominio: habilidad amplia','Domain: broad skill')) + '</td></tr><tr><td>+2</td><td>' + esc(t('Disciplina: habilidad concreta','Discipline: specific skill')) + '</td></tr><tr><td>+4</td><td>' + esc(t('Firma','Signature')) + '</td></tr></table><p class="note">' + esc(t('Usa solo el escalón más alto. Bono total = habilidad + dificultad + equipo + efectos: se acumula lo que se pueda, a criterio de mesa. Dificultad: +2 fácil · 0 · −2 difícil · −4 heroica; la TN no se mueve. Por encima de +4, tiras con +4, y el margen sirve para algo más difícil y con más premio. Por debajo de −2, el Director decide si hay derecho a tirada; si lo hay, con −2 (2.5).','Use only the highest step. Total bonus = skill + difficulty + gear + effects: stack what you can, at the table’s discretion. Difficulty: +2 easy · 0 · −2 hard · −4 heroic; the TN does not move. Above +4, you roll with +4, and the margin is there for something harder with a bigger payoff. Below −2, the GM decides whether there is a right to roll; if there is, at −2 (2.5).')) + '</p></div>';
+  h += '<div class="rbox"><h3>' + esc(t('Tu bono','Your bonus')) + '</h3><table><tr><td>−2</td><td>' + esc(t('Ámbito vacío (Nulo)','Empty Sphere (Null)')) + '</td></tr><tr><td>−1</td><td>' + esc(t('La otra columna de un Ámbito con algo (Torpe)','The other column of a Sphere with something (Clumsy)')) + '</td></tr><tr><td>+1</td><td>' + esc(t('Dominio: habilidad amplia','Domain: broad skill')) + '</td></tr><tr><td>+2</td><td>' + esc(t('Disciplina: habilidad concreta','Discipline: specific skill')) + '</td></tr><tr><td>+4</td><td>' + esc(t('Firma','Signature')) + '</td></tr></table><p class="note">' + esc(t('Usa solo el escalón más alto. Bono total = habilidad + dificultad + equipo + efectos: se acumula lo que se pueda, a criterio de mesa. Dificultad: +2 fácil · 0 · −2 difícil · −4 heroica; la TN no se mueve. Por encima de +4, tiras con +4, y el margen sirve para algo más difícil y con más premio. Por debajo de −2, el Director decide si hay derecho a tirada; si lo hay, con −2 (2.5).','Use only the highest step. Total bonus = skill + difficulty + gear + effects: stack what you can, at the table’s discretion. Difficulty: +2 easy · 0 · −2 hard · −4 heroic; the TN does not move. Above +4, you roll with +4, and the margin is there for something harder with a bigger payoff. Below −2, the GM decides whether there is a right to roll; if there is, at −2 (2.5).')) + '</p></div>';
   /* la Rejilla y la Llave, como las cuenta el manual v2 (caps. 3, 4 y 5) */
   var esc1 = estilo() ? t(' (si importa cómo, tira Estilo)',' (if how matters, roll Style)') : '';
   h += '<div class="rbox"><h3>' + esc(t('Rejilla y Llave','Grid and Key')) + '</h3><ul>' +
-    li('Escala de la partida: ' + grid() + ' (' + pick(GRIDN[grid()]) + '). Dice el tamaño de las hazañas y de las amenazas; no sube tus ámbitos.',
-       'Game scale: ' + grid() + ' (' + pick(GRIDN[grid()]) + '). It sets the size of deeds and threats; it does not raise your spheres.') +
+    li('Nivel máximo del mundo: ' + mundoMax() + ' (' + pick(GRIDN[mundoMax()]) + '). Es el tamaño de las amenazas: lo más alto que existe aquí, lo juegue alguien o no. No sube tus Ámbitos (3.7).',
+       'World maximum: ' + mundoMax() + ' (' + pick(GRIDN[mundoMax()]) + '). It is the size of the threats: the highest thing that exists here, whether anyone plays it or not. It does not raise your Spheres (3.7).') +
     li('Salida: 12 puntos (14 para todos si algún jugador lleva Arcano) y un bote aparte, 5 Llaves o +1 de Rejilla. Lo recomendado es 1·1·1·1·2, con el 2 donde el universo lo deje; la experiencia de salida puede dar más, o menos (5.2).',
        'Start: 12 points (14 for everyone if any player takes Arcane) and a separate pot, 5 Keys or +1 Grid. The recommended start is 1·1·1·1·2, with the 2 wherever the universe allows it; starting experience can give more, or less (5.2).') +
     li('Mismo nivel: se tira. Por encima: tienes éxito sin tirar' + esc1 + '. Por debajo: no hay derecho a tirada, ni para dar ni para salvarse; se narra la derrota. Vale igual para un monstruo frente a un personaje (3.1).',
        'Same level: roll. Above: you succeed without rolling' + esc1 + '. Below: there is no right to roll, neither to hit nor to save yourself; the defeat is narrated. The same goes for a monster against a character (3.1).') +
     li('Cada nivel multiplica por cien tu alcance en la lectura tangible: un nivel de diferencia son dos ceros. En la narrativa, el de arriba es el tema de la historia (3.2).',
        'Each level multiplies your reach by a hundred in the tangible reading: one level of difference is two zeros. In the narrative reading, whoever is above is what the story is about (3.2).') +
-    li('Grande en todo el ámbito: Rejilla, 5·n² Llaves por ámbito; la abre la historia, y lo que da la historia no se paga (3.6). En una sola cosa —sus fans, su ordenador, los vampiros—: Llave.',
-       'Big across the whole sphere: Grid, 5·n² Keys per sphere; the story opens it, and what the story gives is not paid for (3.6). In just one thing —their fans, their computer, vampires—: a Key.') +
+    li('Grande en todo el Ámbito: Rejilla, ' + (llana() ? '5·(3n−2) Llaves por Ámbito, con la escalera llana del Baúl' : '5·n² Llaves por Ámbito') + '; la abre la historia, y lo que da la historia no se paga (3.6). En una sola cosa —sus fans, su ordenador, los vampiros—: Llave.',
+       'Big across the whole Sphere: Grid, ' + (llana() ? '5·(3n−2) Keys per Sphere, with the Chest’s flat ladder' : '5·n² Keys per Sphere') + '; the story opens it, and what the story gives is not paid for (3.6). In just one thing —their fans, their computer, vampires—: a Key.') +
     li('La Llave: toda una Disciplina, contra cualquier objetivo, te pone n niveles por encima del tuyo y tiras con tu bono completo. Cuesta ' + (llana() ? '3n−2 (1, 4, 7, 10), con la escalera llana del Baúl' : 'n² (1, 4, 9, 16)') + '. Anula lo que dice que anula, y una Llave por rasgo (4.1–4.3).',
        'The Key: a whole Discipline, against any target, puts you n levels above your own and you roll with your full bonus. It costs ' + (llana() ? '3n−2 (1, 4, 7, 10), with the Chest’s flat ladder' : 'n² (1, 4, 9, 16)') + '. It cancels what it says it cancels, and one Key per trait (4.1–4.3).') +
     li('Limitada —contra una sola cosa, o solo el daño—: la mitad, al alza, y lo permanente cuesta al menos 1; a un nivel cuesta lo mismo que la entera, así que no se recomienda limitarla. La prestada y la de un momento las da la ficción, duran una escena y no se pagan (4.4).',
        'Limited —against a single thing, or damage only—: half, rounded up, and anything permanent costs at least 1; at one level it costs the same as the full one, so limiting it is not recommended. Borrowed and momentary Keys come from the fiction, last one scene and are not paid for (4.4).') +
     (isAcc() ? '' : li('El acordeón: 3 Firmas pliegan la Disciplina entera en +4, 3 Disciplinas el Dominio, y los 2 Dominios el Ámbito (2.4).','The accordion: 3 Signatures fold the whole Discipline into +4, 3 Disciplines the Domain, and both Domains the Sphere (2.4).')) +
-    (isAcc() ? '' : li('El nivel máximo de los jugadores es lo más alto que uno puede llegar a tener en todo un ámbito: la receta lo propone y la mesa lo confirma. Es de la Rejilla; a las Llaves es mejor no ponerles techo (3.7).',
-       'The player maximum is the highest anyone can reach across a whole sphere: the recipe proposes it and the table confirms it. It belongs to the Grid; Keys are better left without a ceiling (3.7).')) +
+    (isAcc() ? '' : li('El nivel máximo de los jugadores' + (jugMaxTxt() ? ', aquí ' + jugMaxTxt() + ' (Fís · Men · Soc · Téc · Arc),' : '') + ' es lo más alto que uno puede llegar a tener en todo un Ámbito: la receta o el formulario del universo lo proponen y la mesa lo confirma. Es de la Rejilla; a las Llaves es mejor no ponerles techo (3.7).',
+       'The player maximum' + (jugMaxTxt() ? ', here ' + jugMaxTxt() + ' (Phy · Men · Soc · Tec · Arc),' : '') + ' is the highest anyone can reach across a whole Sphere: the recipe or the universe form proposes it and the table confirms it. It belongs to the Grid; Keys are better left without a ceiling (3.7).')) +
     '</ul></div>';
   h += '<div class="rbox"><h3>' + esc(t('Equipo y Llaves','Equipment and Keys')) + '</h3><ul>' + (isAcc()
     ? li('Solo cuesta dinero: tu nivel en Recursos frente al Acceso del objeto, sin puntos ni Llaves. Lleváis tres objetos que importan; para coger uno nuevo, sueltas uno. Lo de un solo uso no cuenta (2.9).',
          'It only costs money: your Resources level against the item’s Access, no points and no Keys. You carry three items that matter; to take a new one, you drop one. Single-use things do not count (2.9).') +
       li('Lo robado o prestado funciona una escena entera; después, si te lo quedas, tiene que caber en tu Recursos y entre tus tres objetos.',
          'Looted or borrowed gear works for a whole scene; after that, if you keep it, it has to fit your Resources and your three items.')
-    : li('Tres cerrojos: el Acceso (tu nivel en Recursos frente al del objeto), el permiso narrativo y el coste en los dos monederos: puntos por lo que te hace mejor, Llaves por lo que anula una defensa o te da un permiso. El daño no se paga (5.6).',
-         'Three locks: Access (your Resources level against the item’s), narrative permission and the cost in both purses: points for what makes you better, Keys for what cancels a defence or grants a permit. Damage is not paid for (5.6).') +
+    : li('Tres cerrojos: el Acceso (tu nivel en Recursos frente al del objeto), que la historia lo permita y el coste en los dos monederos: puntos por lo que te hace mejor, Llaves por lo que anula una defensa o te da un permiso. El daño no se paga (5.6).',
+         'Three locks: Access (your Resources level against the item’s), the story allows it, and the cost in both purses: points for what makes you better, Keys for what cancels a defence or grants a permit. Damage is not paid for (5.6).') +
       li('Lo de un solo uso (granadas, pociones) no se paga; lo que hay que reponer de vez en cuando, Limitado; lo que es para siempre, al menos 1 (5.4).',
          'Single-use things (grenades, potions) are not paid for; what has to be restocked now and then, Limited; what is for ever, at least 1 (5.4).') +
       li('Lo robado o prestado funciona una escena entera y no cuesta; después, se paga o se deja. El equipo devuelve sus puntos y sus Llaves al dejarlo, y los regalos del Director no se pagan mientras la historia los pida (5.7).',
@@ -2259,17 +2293,17 @@ function keysBlock(c){
                ['dis', t('Limitada · contra una sola cosa, o solo el daño (la mitad)','Limited · against a single thing, or damage only (half)')],
                ['mom', t('Prestada o de un momento · una escena, no se paga','Borrowed or momentary · one scene, not paid for')]];
   var h = '<div class="sec">' + esc(t('Bote aparte y Llaves','Separate pot and Keys')) + '<span class="note">' +
-    esc(t('El bote aparte: 5 Llaves o +1 de Rejilla en un ámbito (de 1 a 2 cuesta 5), más o menos lo que dé la experiencia de salida. La Rejilla por encima de 1 cuesta 5·n² por ámbito: +1, 5; +2, 20; +3, 45. No se cambia por puntos. ¿Dudas? ¿Le gana a cualquier cosa de ese ámbito, o solo a una? Si es solo a una, son Llaves (3.1).',
-          'The separate pot: 5 Keys or +1 Grid in one sphere (1 to 2 costs 5), plus or minus whatever starting experience gives. Grid above 1 costs 5·n² per sphere: +1, 5; +2, 20; +3, 45. It does not trade for points. Unsure? Does it beat anything in that sphere, or just one thing? If just one thing, those are Keys (3.1).')) + '</span></div>';
+    esc(t('El bote aparte: 5 Llaves o +1 de Rejilla en un Ámbito (de 1 a 2 cuesta 5), más o menos lo que dé la experiencia de salida. La Rejilla por encima de 1 cuesta ' + (llana() ? '5·(3n−2) por Ámbito, con la escalera llana del Baúl: +1, 5; +2, 20; +3, 35' : '5·n² por Ámbito: +1, 5; +2, 20; +3, 45') + '. No se cambia por puntos. ¿Dudas? ¿Le gana a cualquier cosa de ese Ámbito, o solo a una? Si es solo a una, son Llaves (3.1).',
+          'The separate pot: 5 Keys or +1 Grid in one Sphere (1 to 2 costs 5), plus or minus whatever starting experience gives. Grid above 1 costs ' + (llana() ? '5·(3n−2) per Sphere, with the Chest’s flat ladder: +1, 5; +2, 20; +3, 35' : '5·n² per Sphere: +1, 5; +2, 20; +3, 45') + '. It does not trade for points. Unsure? Does it beat anything in that Sphere, or just one thing? If just one thing, those are Keys (3.1).')) + '</span></div>';
   // La confusion mas comun en la mesa: Rejilla alta para lo que en la ficcion
   // suena enorme (la fama, el talento, el cacharro), cuando apunta a algo
   // concreto y son Llaves. Los unos abundan (T176): todo ambito por encima
-  // de 1 se pregunta (T165), sea cual sea la escala de la mesa.
+  // de 1 se pregunta (T165), sea cual sea el nivel maximo del mundo.
   var altos = c ? AMB.filter(function(a, ai){ return ambLvl(c, ai) > 1; }) : [];
   if (altos.length) h += '<p class="lockmsg">' + esc(t('Tienes la Rejilla por encima de 1 en ', 'Your Grid is above 1 in ') +
     altos.map(function(a){ return pick(a.n); }).join(', ') + '. ' +
-    t('Antes de dejarlo así: ¿le gana a cualquier cosa de ese ámbito, o solo a una? Si es solo a una —sus fans, su ordenador, los vampiros—, es una Llave, no Rejilla (3.1).',
-      'Before you leave it like that: does it beat anything in that sphere, or just one thing? If just one thing —their fans, their computer, vampires—, it is a Key, not Grid (3.1).')) + '</p>';
+    t('Antes de dejarlo así: ¿le gana a cualquier cosa de ese Ámbito, o solo a una? Si es solo a una —sus fans, su ordenador, los vampiros—, es una Llave, no Rejilla (3.1).',
+      'Before you leave it like that: does it beat anything in that Sphere, or just one thing? If just one thing —their fans, their computer, vampires—, it is a Key, not Grid (3.1).')) + '</p>';
   if (!c) {
     h += '<div class="keys"><div class="potrow"><button type="button" class="potb" disabled>' + esc(t('+1 Rejilla = 5 Llaves','+1 Grid = 5 Keys')) + '</button><span class="kcount">__ / ' + Math.max(0, 5 + keysExtra()) + ' ' + esc(t('Llaves','Keys')) + '</span></div>';
     for (var i = 0; i < 5; i++) h += '<div class="krow blank"><span class="line"></span><span class="kf">' + esc(t('Disciplina · nivel (□ Limitada · □ de un momento)','Discipline · level (□ Limited · □ momentary)')) + '</span><span class="kc">□</span></div>';
@@ -2322,10 +2356,15 @@ function arcOpen(){
   var sp = M.sup || [];
   return ['magia','monstruos','poderes','ki'].some(function(k){ return sp.indexOf(k) > -1; });
 }
-function techos(){
-  if (M.known && M.world !== null) { var tc = techoReceta(KNOWN[M.world].r); if (tc) return tc; }
-  return [5,5,5,5, arcOpen() ? 5 : 0];
+/* el nivel maximo de los jugadores: el de la receta, Ambito por Ambito; en un
+   mundo propio, el del formulario del universo (o la barra), igual para los
+   cinco; sin contestar, null (sin techo) */
+function jugMax(){
+  if (M.known && M.world !== null) return techoReceta(KNOWN[M.world].r);
+  var p = Math.max(0, Math.min(5, +M.pmax || 0));
+  return (M.known === false && p) ? [p, p, p, p, arcOpen() ? p : 0] : null;
 }
+function techos(){ return jugMax() || [5,5,5,5, arcOpen() ? 5 : 0]; }
 function techo(ai){ var v = techos()[ai]; return v === undefined ? 5 : v; }
 /* 12 puntos, o 14 PARA TODOS si algun jugador lleva Arcano (5.2, C·22oct):
    nadie tiene mas puntos por tener magia, y si en el mundo hay magia pero no
@@ -2359,15 +2398,19 @@ function gearKeys(c, g, it){
   return x <= 0 ? 0 : Math.max(1, Math.ceil(p * escalera(x) / (x1 * x1)));
 }
 function keysGear(c){ return gearNum(c, function(it, g){ return gearKeys(c, g, it); }); }
-/* Los unos abundan (3.4): la escala de la mesa no sube los ambitos ni da mas
-   bote. El bote aparte son 5 Llaves o +1 de Rejilla (5.2), y aqui se lleva como
+/* Los unos abundan (3.4): el nivel maximo del mundo no sube los ambitos ni da
+   mas bote. El bote aparte son 5 Llaves o +1 de Rejilla (5.2), y aqui se lleva como
    5 Llaves: el +1 de Rejilla las gasta. La Rejilla por encima de 1 se paga de
-   ahi, 5·n² por ambito. La experiencia de salida suma o resta. */
+   ahi, 5·n² por ambito (5·(3n−2) con la escalera llana). La experiencia de
+   salida suma o resta. */
 function keysHave(c){ return Math.max(0, 5 + keysExtra() + (+c.kw || 0)); }
 /* El techo es una propuesta de la receta que confirma la mesa (T184): se puede
    pasar, con aviso. Solo el ambito que no existe en el mundo (techo 0) se queda en 1. */
 function ambLvl(c, ai){ var a = AMB[ai], v = +(c.grid && c.grid[a.id]) || 1; return (techo(ai) === 0 || (a.id === 'arc' && !tieneArc(c))) ? 1 : Math.max(1, v); }
-function gridCost(n){ return n > 0 ? 5 * n * n : 0; }
+/* la Rejilla cuesta 5 veces la escalera de la Llave: 5·n², o 5·(3n−2) con la
+   escalera llana del Baul (9.1, C·22oct), para que siga siendo la compra mas
+   barata del Ambito entero (5/8 de cubrirlo con Llaves) */
+function gridCost(n){ return n > 0 ? 5 * escalera(n) : 0; }
 /* los niveles que da la historia no se pagan; se pagan los que sube uno por su cuenta (T185) */
 function gridPaid(c, ai){ var n = ambLvl(c, ai) - 1, f = Math.min(+((c.gj || {})[AMB[ai].id]) || 0, n); return gridCost(n) - gridCost(f); }
 function keysGrid(c){ var n = 0; AMB.forEach(function(a, ai){ n += gridPaid(c, ai); }); return n; }
@@ -2753,7 +2796,7 @@ function errText(e){
   if (c === 'api') return t('La API de ','The ') + provNombre() + t(' ha rechazado la petición: ',' API rejected the request: ') + (e.message || '');
   return c === 'cancelled' ? t('Detenido.','Stopped.') : pick(ERR[c] || ERR.upstream_error);
 }
-function ctx(){ return 'CURRENT TABLE: ' + JSON.stringify({world:worldName(), edition:edition(), mode:pick(card().n), health:zoomK(), grid:grid(), style:estilo(), extra:baul().map(function(k){ return DATA.baul[k][1]; })}); }
+function ctx(){ return 'CURRENT TABLE: ' + JSON.stringify({world:worldName(), edition:edition(), mode:pick(card().n), health:zoomK(), worldMax:mundoMax(), playerMax:jugMaxTxt() || 'none', style:estilo(), extra:baul().map(function(k){ return DATA.baul[k][1]; })}); }
 function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); }
 function localSearch(q){ var w = norm(q).match(/[a-z0-9]{4,}/g) || []; return CANON.split(/\n(?=##|- )/).map(function(c){ var n = norm(c), sc = 0; w.forEach(function(x){ if (n.indexOf(x) > -1) sc++; }); return {c:c, sc:sc}; }).filter(function(x){ return x.sc; }).sort(function(a,b){ return b.sc - a.sc; }).slice(0,3).map(function(x){ return x.c.replace(/\*\*/g,''); }); }
 function renderAsk(){ var camp = S.askMode === 'camp'; return '<div class="panel"><div class="formhead"><h2>' + esc(u('ask')) + '</h2><div class="modesw" role="group"><button type="button" data-amode="rules" aria-pressed="' + !camp + '">' + esc(t('Reglas','Rules')) + '</button><button type="button" data-amode="camp" aria-pressed="' + camp + '">' + esc(t('Campaña','Campaign')) + '</button></div>' + (camp && S.story.pw && unlocked ? '<button type="button" class="tool" id="askLock">🔒 ' + esc(t('Bloquear secreto','Lock secret')) + '</button>' : '') + '</div><p class="note">' + esc(camp ? t('Preguntas sobre la campaña, respondidas con lo escrito en la pestaña Historia. Si la respuesta está en el Secreto de Máster, se pide la contraseña.','Campaign questions, answered from what is written in the Story tab. If the answer is in the GM secret, the password is required.') : t('Dudas de reglas, respondidas según el canon de NOGUM y la mesa actual.','Rules questions, answered from the NOGUM canon and the current table.')) + '</p><div class="chat" id="chat"></div><textarea id="askQ"></textarea><div class="row" style="margin-top:8px"><button class="tool primary" id="askBtn" type="button">' + esc(t('Preguntar','Ask')) + '</button><button class="tool" id="stopBtn" type="button" hidden>' + esc(t('Parar','Stop')) + '</button><button class="tool" id="clearBtn" type="button">' + esc(t('Nueva conversación','New conversation')) + '</button><span class="note" id="askNote"></span></div></div>'; }
@@ -3318,7 +3361,8 @@ function applyTalk(s){
   ['edition','opt','caos','zoom'].forEach(function(k){ en(k); });
   if (s.hueco === 'prev' || s.hueco === 'caos') M.hueco = s.hueco;
   if (typeof s.estilo === 'boolean') M.estilo = s.estilo;
-  if ([1,2,3,4,5].indexOf(s.grid) > -1) M.grid = s.grid;
+  if ([1,2,3,4,5,6].indexOf(s.grid) > -1) M.grid = s.grid;
+  if (M.known === false && [1,2,3,4,5].indexOf(s.pmax) > -1) M.pmax = s.pmax;
   if (Array.isArray(s.baul)) { M.b0 = []; M.b1 = []; M.b2 = []; M.b3 = []; s.baul.forEach(function(x){ BAUL_GROUPS.forEach(function(g, gi){ if (g.k.indexOf(x) > -1 && M['b' + gi].indexOf(x) < 0) M['b' + gi].push(x); }); }); }
 }
 function talkPrompt(){
@@ -3336,11 +3380,12 @@ function talkPrompt(){
     '- hueco (only when opt is alto or bajo and caos is medio: that cell has no card): prev (the world behaves) | caos (the world makes noise).\n' +
     '- zoom: cascara (one lucky bullet decides a fight) | carne (it takes several hits) | nucleo (war of attrition).\n' +
     '- estilo: true (heroes dispatch lesser foes with a flourish) | false (every enemy counts).\n' +
-    '- grid: scale of the protagonists\' deeds: 1 one person, 2 a full room, 3 a building, 4 a city, 5 a country.\n' +
+    '- grid: world maximum (3.7), the size of the threats: the highest level that exists in this universe, whether anyone plays it or not. 1 one person, 2 a full room, 3 a building, 4 a city, 5 a country, 6 cosmic (planets; gods that eat worlds).\n' +
+    '- pmax (own world only): player maximum (3.7): the highest Grid a player character can ever reach in a Sphere, however long the campaign. 1 to 5, never above grid. Leave it out if unsure.\n' +
     '- baul (array of numbers): OPTIONAL RULES below that clearly fit what they said. Leave it out if unsure.\n' +
     'WORLDS:\n' + KNOWN.map(function(k, i){ return i + ': ' + k.n[1] + ' (' + k.h[1] + ')'; }).join('\n') + '\n' +
     'OPTIONAL RULES:\n' + DATA.baul.map(function(b, i){ return i + ': ' + b[1] + ' — ' + BAUL_TIP[i][1]; }).join('\n') + '\n' +
-    'CURRENT ANSWERS: ' + JSON.stringify({known:M.known, world:M.world, era:M.era, tech:M.tech, sup:M.sup, xtra:M.xtra, edition:M.edition, opt:M.opt, caos:M.caos, hueco:M.hueco, zoom:M.zoom, estilo:M.estilo, grid:M.grid, baul:baul()}) + '\n' +
+    'CURRENT ANSWERS: ' + JSON.stringify({known:M.known, world:M.world, era:M.era, tech:M.tech, sup:M.sup, xtra:M.xtra, edition:M.edition, opt:M.opt, caos:M.caos, hueco:M.hueco, zoom:M.zoom, estilo:M.estilo, grid:M.grid, pmax:M.pmax, baul:baul()}) + '\n' +
     'STILL MISSING: ' + JSON.stringify(missing()) + '\n' +
     'CONVERSATION:\n' + S.talk.log.map(function(x){ return (x.r === 'me' ? 'GM: ' : 'YOU: ') + x.t; }).join('\n') + '\n\n' +
     'Rules: set only fields the GM\'s words reasonably support, including sensible inferences from genre and mood (a grim horror story suggests opt bajo; a comedy suggests caos alto). Do not change current answers unless the GM changes their mind. When a known world is chosen, its recipe fills the rest: only set other fields if the GM said something different. Never use trademarks or brand names, and never mention field names or codes. Be warm and humble; no derogatory words about any genre.\n' +
@@ -3430,8 +3475,11 @@ function restoreM(json){
 /* --- el Codigo --- */
 function codeMake(){
   var bm = baulMask();
-  var p = ['N1', 'T' + CARD3[cardBase()], 'Z' + (ZOOMK.indexOf(M.zoom || 'carne') + 1 || 2), 'G' + grid(), 'S' + (M.estilo !== false ? 1 : 0), 'B' + hx(bm, bm > 0xFFFF ? 5 : 4)];
+  var p = ['N1', 'T' + CARD3[cardBase()], 'Z' + (ZOOMK.indexOf(M.zoom || 'carne') + 1 || 2), 'G' + mundoMax(), 'S' + (M.estilo !== false ? 1 : 0), 'B' + hx(bm, bm > 0xFFFF ? 5 : 4)];
   if (M.known && M.world !== null) p.push('W' + ('0' + M.world).slice(-2)); else p.push('U' + hx(uniMask(), 3));
+  /* nivel maximo de los jugadores de un mundo propio: solo si se ha dicho, asi
+     los Codigos de siempre no cambian; una app vieja no lo conoce y lo ignora */
+  if (!(M.known && M.world !== null) && +M.pmax) p.push('J' + Math.max(1, Math.min(5, +M.pmax)));
   p.push('E' + (isAcc() ? 'A' : 'C'));
   /* puntos de mas (o de menos): solo si la mesa los da, asi los Codigos de
      siempre no cambian. Lo negativo va con N (P-N2 son dos puntos menos): una
@@ -3449,7 +3497,9 @@ function codeParse(str){
     var k = tk[i].charAt(0), v = tk[i].slice(1);
     if (k === 'T') { if (!C3[v]) return null; o.card = C3[v]; }
     else if (k === 'Z') o.zoom = ZOOMK[(+v) - 1] || 'carne';
-    else if (k === 'G') o.grid = Math.max(1, Math.min(5, (+v) || 1));
+    /* G: el nivel maximo del mundo (antes «escala de la partida», el mismo numero) */
+    else if (k === 'G') o.grid = Math.max(1, Math.min(6, (+v) || 1));
+    else if (k === 'J') o.pmax = Math.max(1, Math.min(5, (+v) || 1));
     else if (k === 'S') o.estilo = v !== '0';
     else if (k === 'B') o.baul = (parseInt(v, 16) || 0) & ((1 << BAUL_BITS) - 1);
     else if (k === 'W') o.world = +v;
@@ -3472,6 +3522,7 @@ function applyCode(str){
   setCard(c.card);
   M.zoom = c.zoom || 'carne';
   M.grid = c.grid || 1;
+  M.pmax = (M.known === false && c.pmax) ? c.pmax : null;
   M.estilo = c.estilo !== false;
   M.pts = xpNum(c.pts || 0);
   M.kx = xpNum(c.kx || 0);
@@ -3690,11 +3741,15 @@ function rulesBar(){
       return [k, pick(ZOOM[k].n) + ' (' + ZOOM[k].units + ')'];
     })});
   }
-  /* en la barra basta el nivel y el tamano: el multiplicador ocupa media
-     linea y ya esta explicado en el formulario y en los recordatorios */
-  h += rbSel('grid', grid(), {lab:t('Rejilla','Grid'), list:[1,2,3,4,5].map(function(i){
-    return [i, i + ' · ' + pick(GRIDN[i]).split(' · ')[0]];
-  })});
+  /* 3.7: el nivel maximo del mundo (el tamano de las amenazas; nunca por
+     debajo del de los jugadores) y, en un mundo propio, el de los jugadores.
+     En la barra basta el nivel y el tamano: el multiplicador ya esta en el
+     formulario y en los recordatorios */
+  var ml = [];
+  for (var gi = mundoMin(); gi <= 6; gi++) ml.push([gi, gi + ' · ' + pick(GRIDN[gi]).split(' · ')[0]]);
+  h += rbSel('grid', mundoMax(), {lab:t('Nivel máximo del mundo','World maximum'), list:ml});
+  if (M.known === false) h += rbSel('pmax', +M.pmax || 0, {lab:t('Nivel máximo de los jugadores','Player maximum'), list:[[0, t('Sin techo','No ceiling')]].concat([1,2,3,4,5].map(function(i){ return [i, i + ' · ' + pick(GRIDN[i]).split(' · ')[0]]; }))});
+  else if (jugMaxTxt()) h += '<span class="rbf"><span>' + esc(t('Nivel máximo de los jugadores','Player maximum')) + '</span><span title="' + esc(t('Fís · Men · Soc · Téc · Arc, de la receta (3.7)','Phy · Men · Soc · Tec · Arc, from the recipe (3.7)')) + '">' + esc(jugMaxTxt()) + '</span></span>';
   /* 5.2, C·e4: experiencia de salida, puntos y Llaves de mas o de menos; por defecto, 0 */
   var pb = (mesaArc() ? 14 : 12);
   h += '<div class="rbf"><span>' + esc(t('Experiencia de salida','Starting experience')) + '</span><span class="rbxp">±<input type="number" min="-' + pb + '" max="999" data-rb="pts" value="' + ptsExtra() + '" title="' + esc(t('Puntos de habilidad de más, o de menos (por defecto ','Skill points more, or fewer (default ') + pb + ')') + '"> ' + esc(t('puntos','points')) +
@@ -3725,7 +3780,7 @@ function rbBaul(){
 }
 function rbCode(){
   return '<div class="rbpanel"><p class="rbp-h">' + esc(t('El Código de la mesa','The table Code')) + '</p>' +
-    '<p class="rbp-t">' + esc(t('Tu mesa en una línea: universo, edición, tarjeta, vida fractal, rejilla, Estilo, reglas extra y los puntos de más, si los hay. Pásalo y la otra mesa queda igual que la tuya. Al pegar un Código se cambia la mesa entera; las fichas se quedan donde están y pasan a jugar con las reglas nuevas.','Your table in one line: universe, edition, card, Fractal Health, grid, Style, extra rules and any extra points. Pass it on and the other table ends up like yours. Pasting a Code replaces the whole table; the sheets stay where they are and start playing by the new rules.')) + '</p>' +
+    '<p class="rbp-t">' + esc(t('Tu mesa en una línea: universo, edición, tarjeta, vida fractal, nivel máximo del mundo (y el de los jugadores, en un mundo propio), Estilo, reglas extra y los puntos de más, si los hay. Pásalo y la otra mesa queda igual que la tuya. Al pegar un Código se cambia la mesa entera; las fichas se quedan donde están y pasan a jugar con las reglas nuevas.','Your table in one line: universe, edition, card, Fractal Health, world maximum (and the player maximum, in a world of your own), Style, extra rules and any extra points. Pass it on and the other table ends up like yours. Pasting a Code replaces the whole table; the sheets stay where they are and start playing by the new rules.')) + '</p>' +
     '<div class="rbcode"><input type="text" id="rbCode" readonly value="' + esc(codeMake()) + '"><button type="button" class="tool" data-rbb="copy">' + esc(t('Copiar','Copy')) + '</button><button type="button" class="tool" data-rbb="copylink">' + esc(t('Copiar enlace','Copy link')) + '</button></div>' +
     '<div class="rbcode"><input type="text" id="rbCodeIn" placeholder="' + esc(t('Pega aquí el Código de otra mesa…','Paste another table’s Code here…')) + '"><button type="button" class="tool" data-rbb="apply">' + esc(t('Cambiar la mesa','Change the table')) + '</button></div></div>';
 }
@@ -3787,6 +3842,7 @@ document.addEventListener('change', function(e){
   else if (f2 === 'acc') setAccMode(v);
   else if (f2 === 'zoom') M.zoom = v;
   else if (f2 === 'grid') M.grid = +v;
+  else if (f2 === 'pmax') { M.pmax = (+v) || null; if (M.pmax && M.pmax > (+M.grid || 1)) M.grid = M.pmax; }
   else if (f2 === 'pts') M.pts = xpNum(v);
   else if (f2 === 'kx') M.kx = xpNum(v);
   persist(); render(true);

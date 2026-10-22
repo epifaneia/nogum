@@ -69,6 +69,16 @@ for (const libro of LIBROS) for (const lang of ['es', 'en']) {
       titulo: li.querySelector('a span').textContent.trim(),
       pagina: +(li.querySelector('.n').textContent || 0) }))`);
   const paginas = await js(`document.querySelectorAll('#book .sheet').length`);
+  // lo que sale en el PDF, comprobado en la misma maquetacion: texto que se
+  // sale por abajo y titulos solos al pie de la pagina
+  const fallos = await js(`(() => { const over = [], orph = [];
+    document.querySelectorAll('#book .sheet').forEach(s => { const b = s.querySelector('.sb'); if (!b) return;
+      const top = b.getBoundingClientRect().top; let mx = 0;
+      b.querySelectorAll('p,li,tr,h3,h4,dt,dd,figure').forEach(e => { mx = Math.max(mx, e.getBoundingClientRect().bottom - top); });
+      if (mx - b.clientHeight > 0.5) over.push(s.getAttribute('data-page'));
+      const l = b.lastElementChild; if (l && /^H[234]$/.test(l.tagName)) orph.push(s.getAttribute('data-page') + ': ' + l.textContent.trim().slice(0, 40)); });
+    return { over, orph }; })()`);
+  if (fallos.over.length || fallos.orph.length) console.log(`  AVISO ${libro.f} ${lang}: cortes ${JSON.stringify(fallos.over)} · huérfanos ${JSON.stringify(fallos.orph)}`);
   for (const modo of MODOS) {
     await js(`document.documentElement.setAttribute('data-print', '${modo.m}'); true`);
     await sleep(300);

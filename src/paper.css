@@ -521,3 +521,15 @@ table.t.arsenal td:nth-child(5),table.t.arsenal td:nth-child(6),table.t.arsenal 
    bloques anchos, despues de maquetar: la hoja se mide con una letra y se pinta
    con otra, y el texto se sale por abajo. El libro es A4: sin autoajuste. */
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+
+/* La tabla del Baul (9.1): con el coste de atencion y cuando estorba ya son
+   cuatro columnas de texto; reparto fijo para que quepa en la caja. */
+table.t.baul{table-layout:fixed;width:100%}
+table.t.baul th:nth-child(1){width:24%}
+table.t.baul th:nth-child(2){width:16%}
+table.t.baul th:nth-child(3){width:26%}
+table.t.baul td,table.t.baul th{overflow-wrap:anywhere;hyphens:auto}
+table.t.llana{table-layout:fixed;width:100%}
+table.t.llana td,table.t.llana th{overflow-wrap:anywhere;hyphens:auto}
+table.t.llana td:first-child,table.t.llana th:first-child,table.t.baul td:first-child,table.t.baul th:first-child{min-width:0}
+table.t.llana th,table.t.baul th{white-space:normal}

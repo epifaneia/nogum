@@ -46,7 +46,7 @@ MUERTOS = [
     # latinas (lo que dijo el autor o el original) y el glosario, que habla DE
     # la palabra. En singular: «mallas» (las de superheroe) tampoco es esto.
     # En ingles, igual: «mesh» entre comillas es el glosario hablando de ella.
-    (r'(?<!cota de )(?<!palabra )(?<!«)(?<!escapado una )\bmalla\b(?![^«»\n]{0,80}»)|(?<![«“"])\bmesh\b(?![»”"])',
+    (r'(?<!cota de )(?<!Cota de )(?<!palabra )(?<!«)(?<!escapado una )\bmalla\b(?![^«»\n]{0,80}»)|(?<![«“"])\bmesh\b(?![»”"])',
      'es la Rejilla / the Grid (T158)'),
 ]
 

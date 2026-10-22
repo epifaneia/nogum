@@ -293,6 +293,8 @@ El autor contestó en un documento las 25 preguntas de `PREGUNTAS-v2.md` (raíz)
 - **Crítico del atacante y pifia del defensor a la vez (22 oct).** **El autor:**
   > Se suman: crítico y pifia del defensor dan +2 al daño.
 
+- **Preguntas abiertas contestadas desde las seis ideas (22 oct).** El autor pidió al asistente contestarlas él, «como test de si la lógica es fuerte», y las confirmó todas: **«todo bien»**. Están en `src/v2/DECISIONES-ultimas.md`: el hechizo de Ysolde paga 1 Llave aunque tenga Arcano 2; la escalera llana abarata también la Rejilla (5·(3n−2)); fuera la «escala de la partida» de la App; las Firmas, en su Disciplina; hackear es Técnico; sin fila +0 en Recursos; sin porcentaje con bono 0 en las tarjetas; «permiso narrativo» solo para la Llave (el cerrojo pasa a «que la historia lo permita»); el Acelerado como está; el Baúl con coste de atención y cuándo estorba; «Ámbito» con mayúscula; nombres en castellano con mayúscula solo inicial.
+
 ---
 
 Jerarquía de autoridad usada para resolver contradicciones:

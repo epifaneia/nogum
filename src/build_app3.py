@@ -16,6 +16,11 @@ assert len(dat.get('techos', [])) == _n, 'hay %d recetas y %d juegos de techos' 
 # el Baul tiene 17 reglas y el Codigo 17 bits (los Codigos viejos, de 16, se leen igual)
 assert len(dat['baul']) == 17, 'el Baul tiene %d reglas y el Codigo usa 17 bits' % len(dat['baul'])
 assert 'var BAUL_BITS = 17;' in src, 'el Codigo de la app no usa 17 bits'
+# la escala de la partida ya no existe: la sustituyen el nivel maximo del mundo
+# y el de los jugadores (3.7); la escalera llana abarata tambien la Rejilla (9.1)
+for _v in ('Escala de la partida', 'Game scale', 'el permiso narrativo y el coste'):
+    assert _v not in src, 'la app vuelve a decir «%s»' % _v
+assert 'function gridCost(n){ return n > 0 ? 5 * escalera(n) : 0; }' in src, 'la Rejilla no sigue a la escalera llana'
 assert sorted(_rs) == list(range(_n)), (
     'los %d mundos del atajo no apuntan a las %d recetas una vez cada uno: %s' % (len(_rs), _n, sorted(_rs)))
 

@@ -530,6 +530,18 @@ table.t.arsenal td:nth-child(5),table.t.arsenal td:nth-child(6),table.t.arsenal 
    bloques anchos, despues de maquetar: la hoja se mide con una letra y se pinta
    con otra, y el texto se sale por abajo. El libro es A4: sin autoajuste. */
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+
+/* La tabla del Baul (9.1): con el coste de atencion y cuando estorba ya son
+   cuatro columnas de texto; reparto fijo para que quepa en la caja. */
+table.t.baul{table-layout:fixed;width:100%}
+table.t.baul th:nth-child(1){width:24%}
+table.t.baul th:nth-child(2){width:16%}
+table.t.baul th:nth-child(3){width:26%}
+table.t.baul td,table.t.baul th{overflow-wrap:anywhere;hyphens:auto}
+table.t.llana{table-layout:fixed;width:100%}
+table.t.llana td,table.t.llana th{overflow-wrap:anywhere;hyphens:auto}
+table.t.llana td:first-child,table.t.llana th:first-child,table.t.baul td:first-child,table.t.baul th:first-child{min-width:0}
+table.t.llana th,table.t.baul th{white-space:normal}
 </style>
 </head>
 <body>
@@ -679,8 +691,8 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <div class="tw"><table class="t">
 <thead><tr><th>Bono</th><th>Quién eres en esto</th></tr></thead>
 <tbody>
-<tr><td class="num">−2</td><td><strong>Nulo.</strong> No has puesto ni un punto en todo ese ámbito.</td></tr>
-<tr><td class="num">−1</td><td><strong>Torpe.</strong> Tienes el ámbito, pero esa columna está vacía: vas con el pie cambiado.</td></tr>
+<tr><td class="num">−2</td><td><strong>Nulo.</strong> No has puesto ni un punto en todo ese Ámbito.</td></tr>
+<tr><td class="num">−1</td><td><strong>Torpe.</strong> Tienes el Ámbito, pero esa columna está vacía: vas con el pie cambiado.</td></tr>
 <tr><td class="num">+1</td><td><strong>Me defiendo.</strong> Tienes una habilidad amplia que lo cubre.</td></tr>
 <tr><td class="num">+2</td><td><strong>Es mi trabajo.</strong> Tienes una habilidad concreta que lo cubre.</td></tr>
 <tr><td class="num">+4</td><td><strong>Gran Maestro.</strong> Nadie lo hace mejor.</td></tr>
@@ -690,8 +702,8 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <p><strong>No tires por tirar.</strong> Tira solo si todos los resultados posibles son interesantes. Si fallar no aporta nada, sucede y ya está. Lo imprescindible para la historia —la pista sin la que no hay aventura— no se tira: se encuentra. Lo que se tira es cuánto sacas y a qué precio.</p>
 
 <h4>2.3 Las habilidades</h4>
-<p>Todo personaje tiene <strong>cinco ámbitos</strong>: <strong>Físico</strong>, <strong>Mental</strong>, <strong>Social</strong>, <strong>Técnico</strong> y <strong>Arcano</strong> (la magia, los poderes psíquicos, lo sobrenatural; si tu mundo no los tiene, ignóralo). Los ámbitos no son habilidades: son los cajones donde las guardas.</p>
-<p>Cada ámbito se parte en dos <strong>habilidades amplias</strong>, y cada una en cuatro <strong>habilidades concretas</strong>. La lista es cerrada:</p>
+<p>Todo personaje tiene <strong>cinco Ámbitos</strong>: <strong>Físico</strong>, <strong>Mental</strong>, <strong>Social</strong>, <strong>Técnico</strong> y <strong>Arcano</strong> (la magia, los poderes psíquicos, lo sobrenatural; si tu mundo no los tiene, ignóralo). Los Ámbitos no son habilidades: son los cajones donde las guardas.</p>
+<p>Cada Ámbito se parte en dos <strong>habilidades amplias</strong>, y cada una en cuatro <strong>habilidades concretas</strong>. La lista es cerrada:</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Ámbito</th><th>Habilidad amplia (columna)</th><th>Habilidades concretas</th></tr></thead>
 <tbody>
@@ -710,21 +722,21 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <div class="tw"><table class="t">
 <thead><tr><th>Escalón</th><th>Qué es</th><th>Ejemplos</th><th>Cuesta</th><th>Puntos acumulados</th><th>Bono</th></tr></thead>
 <tbody>
-<tr><td>Habilidad amplia</td><td>Media parte de un ámbito</td><td>Destreza, Vigor, Erudición, Ingenio, Influencia</td><td class="num">1</td><td class="num">1</td><td class="num">+1</td></tr>
+<tr><td>Habilidad amplia</td><td>Media parte de un Ámbito</td><td>Destreza, Vigor, Erudición, Ingenio, Influencia</td><td class="num">1</td><td class="num">1</td><td class="num">+1</td></tr>
 <tr><td>Habilidad concreta</td><td>Un oficio dentro de la amplia</td><td>Vigor → Armas · Erudición → Ciencias · Influencia → Engaño</td><td class="num">1</td><td class="num">2</td><td class="num">+2</td></tr>
 <tr><td>Firma (Gran Maestro)</td><td>Tu especialidad dentro del oficio</td><td>Armas → Armas de fuego · Ciencias → Química · Acrobacia → Parkour</td><td class="num">2</td><td class="num">4</td><td class="num">+4</td></tr>
 </tbody></table></div>
 <ul>
 <li>Cuando tires, usa <strong>solo el escalón más alto que encaje</strong>. Los escalones no se suman entre sí.</li>
-<li>Una <strong>columna</strong> es cada una de las dos habilidades amplias de un ámbito, con sus concretas debajo: en Físico, Destreza es una columna y Vigor la otra.</li>
-<li>Si no has gastado nada en un ámbito, todo lo de dentro se tira a −2 (Nulo). En cuanto compres algo en él, la columna que has tocado da sus bonos con normalidad, y todo lo que caiga en <strong>la otra columna</strong> se tira a −1 (Torpe).</li>
+<li>Una <strong>columna</strong> es cada una de las dos habilidades amplias de un Ámbito, con sus concretas debajo: en Físico, Destreza es una columna y Vigor la otra.</li>
+<li>Si no has gastado nada en un Ámbito, todo lo de dentro se tira a −2 (Nulo). En cuanto compres algo en él, la columna que has tocado da sus bonos con normalidad, y todo lo que caiga en <strong>la otra columna</strong> se tira a −1 (Torpe).</li>
 <li>Para ser Gran Maestro en algo, tienes que poder explicar <strong>exactamente</strong> qué haces. «Armas de fuego», sí. «Ser bueno», no.</li>
-<li>Además, todo personaje tiene <strong>Estilo +2</strong>, un regalo que va fuera de los ámbitos (2.8).</li>
+<li>Además, todo personaje tiene <strong>Estilo +2</strong>, un regalo que va fuera de los Ámbitos (2.8).</li>
 </ul>
 <aside class="meta"><p>¿No sabes qué habilidad poner? ¿Dudas entre «Pilotar» y «Conducción evasiva»? NOGUM tiene una lista cerrada de 10 habilidades amplias y 40 concretas, y un catálogo de Firmas ordenado para que solo mires tu rama. NOGUM te ayuda.</p></aside>
 
 <h4>2.4 La Rejilla: de qué tamaño son tus hazañas</h4>
-<p>El bono dice <strong>lo bien</strong> que haces algo. La Rejilla dice <strong>a qué escala</strong> lo haces. Cada personaje tiene un nivel por ámbito. Pregúntate: si esto se descontrola, ¿qué sale en las noticias?</p>
+<p>El bono dice <strong>lo bien</strong> que haces algo. La Rejilla dice <strong>a qué escala</strong> lo haces. Cada personaje tiene un nivel por Ámbito. Pregúntate: si esto se descontrola, ¿qué sale en las noticias?</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Nivel</th><th>Escala</th><th>Ejemplos</th></tr></thead>
 <tbody>
@@ -739,7 +751,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <p>Si no sabes qué nivel poner, <strong>los humanos son nivel 1 en todo</strong>. Lo que se mide es la escala, no la inteligencia ni los músculos: un químico genial sigue siendo nivel 1. Y si un salto de nivel te suena a cómic, es porque lo es.</p>
 <div class="rule"><p class="rule-title">Cinco ideas que lo resuelven casi todo</p>
 <ol>
-<li><strong>La Rejilla es escala, no habilidad:</strong> ser grande en todo un ámbito. La presencia del vampiro es un 2 en Social: entra en la sala y la sala entera queda prendada. Lo que es enorme en una sola cosa es una Llave: las sirenas, con su canto; la estrella del rock, un 1 con Llaves. La humana realista es 1 en todo, y por eso los unos abundan.</li>
+<li><strong>La Rejilla es escala, no habilidad:</strong> ser grande en todo un Ámbito. La presencia del vampiro es un 2 en Social: entra en la sala y la sala entera queda prendada. Lo que es enorme en una sola cosa es una Llave: las sirenas, con su canto; la estrella del rock, un 1 con Llaves. La humana realista es 1 en todo, y por eso los unos abundan.</li>
 <li><strong>Si algo da un permiso, anula una defensa o alcanza un nivel de Rejilla por encima, es una Llave.</strong> Venga de donde venga.</li>
 <li><strong>La Parca es una Llave al daño:</strong> alcanza a quien está por encima de ti. Por eso cuesta Llaves, aunque el daño, por sí solo, no se pague.</li>
 <li><strong>Lo prestado o robado dura una escena,</strong> lo use quien lo use. Pasárselo no reinicia nada.</li>
@@ -747,7 +759,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 </ol>
 <p>Los casos difíciles, resueltos uno a uno, están en el capítulo de la Llave del manual completo.</p></div>
 <div class="rule"><p class="rule-title">El salto de poder</p>
-<p>Vale para todos: jugadores y adversarios. Compara el nivel de Rejilla de quien actúa con el de aquello contra lo que actúa, en el ámbito de la acción. Un PNJ o un monstruo tiene un solo nivel para todo, salvo que el Director diga otra cosa.</p>
+<p>Vale para todos: jugadores y adversarios. Compara el nivel de Rejilla de quien actúa con el de aquello contra lo que actúa, en el Ámbito de la acción. Un PNJ o un monstruo tiene un solo nivel para todo, salvo que el Director diga otra cosa.</p>
 <ul>
 <li><strong>Si estáis al mismo nivel</strong>, se tira normal: ataque, defensa, todo.</li>
 <li><strong>Si estás por encima</strong> (aunque sea un nivel), no tiras para conseguirlo: lo consigues. Si importa cómo, se tira Estilo (+2, 2.8). Eso vale también para un monstruo que ataca a personajes por debajo de él: no hay tirada, ni para dar ni para salvarse, y se narra la derrota.</li>
@@ -757,15 +769,15 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <p><strong>La Llave.</strong> Una Llave es una razón narrativa que te permite afectar a algo de nivel superior: un bazuca, la piedra de su propio mundo, una contraseña de administrador robada, un vídeo del soborno, veinte mercenarios disparando a la vez. Te pone <strong>un nivel de Rejilla por encima</strong> del tuyo (o varios, pagando más), y en esa tirada actúas como ese nivel: si eres 1 y la Llave te pone en 2, quien está a nivel 1 no tiene derecho a tirada; contra un 2, tiras con normalidad, con tu bono completo. La que te da la ficción cubre lo que la ficción diga y dura una escena; la tuya, la que compras, cubre <strong>toda una habilidad concreta, contra cualquier objetivo</strong> (abajo). Conseguirla suele ser una aventura en sí misma.</p>
 <div class="rule"><p class="rule-title">Las Llaves se compran</p>
 <ul>
-<li>En la creación, el <strong>bote aparte</strong> te da <strong>5 Llaves</strong>, o <strong>+1 nivel de Rejilla</strong> en un ámbito. Con el +1, la ficha arranca en <strong>1·1·1·1·2</strong>, el punto de partida recomendado: un 2 en un ámbito y 1 en los otros cuatro. Ese 2 solo puede ir donde el universo lo permita: en uno realista o de terror, los jugadores se quedan en 1 en todo, y el bote son 5 Llaves; si hay superhumanos, el 2 va donde los haya. Hay tres techos, y conviene no mezclarlos: el <strong>nivel máximo inicial</strong>, con el que empieza una ficha (por defecto, ese 2); el <strong>nivel máximo de los jugadores</strong>, lo más alto que un jugador puede llegar a tener en todo un ámbito por mucho que dure la campaña; y el <strong>nivel máximo del mundo</strong>, lo más alto que existe en él (en el horror cósmico hay criaturas enormes, y tú no puedes ser una). Los tres son de Rejilla: a las Llaves es mejor no ponerles techo. Lo confirma la mesa en la sesión 0. El bote no se cambia por puntos de habilidad: todo el mundo llega con un oficio.</li>
-<li>Todo esto es un punto de partida, no un límite: la mesa puede empezar más alto o más bajo, según lo que quiera emular. Viene pensado para un mundo como el ciberpunk; uno de zombis o de horror cósmico suele pedir menos.</li>
+<li>En la creación, el <strong>bote aparte</strong> te da <strong>5 Llaves</strong>, o <strong>+1 nivel de Rejilla</strong> en un Ámbito. Con el +1, la ficha arranca en <strong>1·1·1·1·2</strong>, el punto de partida recomendado: un 2 en un Ámbito y 1 en los otros cuatro. Ese 2 solo puede ir donde el universo lo permita: en uno realista o de terror, los jugadores se quedan en 1 en todo, y el bote son 5 Llaves; si hay superhumanos, el 2 va donde los haya. Hay tres techos, y conviene no mezclarlos: el <strong>nivel máximo inicial</strong>, con el que empieza una ficha (por defecto, ese 2); el <strong>nivel máximo de los jugadores</strong>, lo más alto que un jugador puede llegar a tener en todo un Ámbito por mucho que dure la campaña; y el <strong>nivel máximo del mundo</strong>, lo más alto que existe en él (en el horror cósmico hay criaturas enormes, y tú no puedes ser una). Los tres son de Rejilla: a las Llaves es mejor no ponerles techo. Lo confirma la mesa en la sesión 0. El bote no se cambia por puntos de habilidad: todo el mundo llega con un oficio.</li>
+<li>Todo esto es un punto de partida, no un límite: la mesa puede empezar más alto o más bajo, según lo que quiera emular. Lo que reparta de más o de menos antes de jugar, en puntos o en Llaves, es la <strong>experiencia de salida</strong>. Viene pensado para un mundo como el ciberpunk; uno de zombis o de horror cósmico suele pedir menos.</li>
 <li>Cada Llave propia es <strong>toda una habilidad concreta, contra cualquier objetivo, para siempre</strong>: con «Armas», todo lo que haces con armas sube un nivel, también tu Firma, que va dentro. Si solo vale contra una cosa («Armas contra los vampiros»), es una Llave <strong>Limitada</strong>, más barata a partir de dos niveles; a un nivel cuesta lo mismo, así que conviene no limitarla. Puedes guardarla en blanco y escribirla la primera vez que la uses, como hacen los pregenerados; si alguien abusa, la mesa lo frena.</li>
-<li>La Rejilla y las Llaves se cambian: un nivel de Rejilla en un ámbito vale <strong>5 Llaves</strong>, sus ocho habilidades concretas por el precio de cinco. Si la historia sube la Rejilla de la mesa y tú prefieres no subir, te llevas lo que vale en Llaves (5 por un nivel de más, 20 por dos) y <strong>las gastas donde quieras</strong>.</li>
+<li>La Rejilla y las Llaves se cambian: un nivel de Rejilla en un Ámbito vale <strong>5 Llaves</strong>, sus ocho habilidades concretas por el precio de cinco. Si la historia sube la Rejilla de la mesa y tú prefieres no subir, te llevas lo que vale en Llaves (5 por un nivel de más, 20 por dos) y <strong>las gastas donde quieras</strong>.</li>
 <li>Una Llave te pone <strong>un nivel de Rejilla por encima</strong>. Para subir más en la misma habilidad, la cuenta va al cuadrado: subir <em>n</em> niveles cuesta <em>n</em>² Llaves en total (1, 4, 9). Con cinco en el bote, puedes subir dos niveles en una habilidad (4 Llaves), y te sobra una.</li>
-<li>Durante la campaña, el Director da <strong>una Llave por jugador y sesión</strong>. Ese grifo es el mando de potencia de la partida: con Llaves se compran también los permisos (lo que ninguna habilidad puede hacer, como volar o ver a través de las paredes: 1 Llave, a ojo de buen cubero) y los niveles por encima (idea 2). El equipo, aquí, solo pide dinero (2.9).</li>
+<li>Durante la campaña, el Director da <strong>una Llave por jugador y sesión</strong>. Ese grifo es el mando de potencia de la partida: con Llaves se compran también los permisos (lo que ninguna habilidad puede hacer, como volar o ver a través de las paredes: 1 Llave, a ojo de buen cubero) y los niveles por encima (idea 2). Un hechizo es uno de esos permisos: tu habilidad dice lo bien que lo lanzas y la Rejilla, a qué tamaño, pero lo que puedes hacer se paga con Llaves. El equipo, aquí, solo pide dinero (2.9).</li>
 <li>Y lo que el Director te regala por una buena idea —«se te ocurre usar el agua bendita»— es una <strong>Llave prestada</strong>: sube lo que la ficción diga, dura una escena y no se paga; se apunta a lápiz y se borra al acabarla.</li>
 </ul></div>
-<aside class="meta"><p>¿Por qué el millonario vigilante puede plantarle cara al alien de mallas y calzoncillos con el mismo bono que un portero de discoteca? Por la Llave. En el manual completo hay un capítulo entero para bajar la Rejilla a tierra, con ejemplos de cultura pop en los cinco ámbitos. NOGUM te espera.</p></aside>
+<aside class="meta"><p>¿Por qué el millonario vigilante puede plantarle cara al alien de mallas y calzoncillos con el mismo bono que un portero de discoteca? Por la Llave. En el manual completo hay un capítulo entero para bajar la Rejilla a tierra, con ejemplos de cultura pop en los cinco Ámbitos. NOGUM te espera.</p></aside>
 
 <h4>2.5 Iniciativa</h4>
 <p>Cuando empieza el combate, cada participante tira con el modo activo y suma su <strong>mejor bono en Destreza</strong> (la habilidad amplia o cualquier habilidad concreta suya). Se actúa de mayor a menor total. Si hay empate, decide el Director.</p>
@@ -942,7 +954,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <tr><td>Técnico · nivel de Rejilla</td><td>Habilidades con su bono.</td></tr>
 <tr><td>Arcano · nivel de Rejilla</td><td>Habilidades con su bono (o «no existe en este mundo»).</td></tr>
 <tr><td>Puntos gastados</td><td>__ / 12 (14 si algún jugador de la mesa lleva Arcano)</td></tr>
-<tr><td>Bote aparte</td><td>+1 nivel de Rejilla en un ámbito donde tu universo lo permita (la salida recomendada, 1·1·1·1·2) <strong>o</strong> 5 Llaves. No se cambia por puntos.</td></tr>
+<tr><td>Bote aparte</td><td>+1 nivel de Rejilla en un Ámbito donde tu universo lo permita (la salida recomendada, 1·1·1·1·2) <strong>o</strong> 5 Llaves. No se cambia por puntos.</td></tr>
 <tr><td>Estilo</td><td>+2</td></tr>
 <tr><td>Iniciativa</td><td>Mejor bono en Destreza.</td></tr>
 <tr><td>Vida</td><td>□□□ (−2) · □□□ (−4) · □□□ (fuera de combate). En Terror, solo □□□ (fuera de combate).</td></tr>
@@ -952,7 +964,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 </tbody></table></div>
 
 <h4>Personajes pregenerados</h4>
-<p>Tres ejemplos para empezar ya, de tres mundos distintos. Kira y Tomás gastan 12: en el mundo de Kira no hay magia, y en el de Tomás la hay, pero él no la toca. Ysolde gasta 14, y si juega en la misma mesa que ellos, ellos también tendrían 14. Cada uno usa además su bote aparte.</p>
+<p>Tres ejemplos para empezar ya, de tres mundos distintos. Kira y Tomás gastan 12: en el mundo de Kira no hay magia, y en el de Tomás la hay, pero él no la toca. Ysolde gasta 14, y si juega en la misma mesa que ellos, ellos también tendrían 14. Cada uno usa además su bote aparte, y Ysolde, 1 Llave de experiencia de salida para su fuego (abajo).</p>
 
 <div class="rule"><p class="rule-title">Kira «Grapa» Ortega · mercenaria urbana (ciberpunk / actualidad)</p>
 <div class="tw"><table class="t">
@@ -997,7 +1009,8 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <tr><td>Técnico</td><td class="num">1</td><td>Vacío: −2</td><td class="num">0</td></tr>
 </tbody></table></div>
 <p><strong>Estilo</strong> +2 · <strong>Iniciativa</strong> +2 (Sigilo) · <strong>Esquiva</strong> +1 (Destreza) · <strong>Absorción</strong> −1 (Torpe) · <strong>Recursos</strong> −1 (Torpe) · <strong>Escudo mágico</strong>: puede absorber con Protección (+2) si el Director lo permite.</p>
-<p><strong>Su fuego</strong> (es su Arcano 2, no equipo): <span class="tag">Daño 2</span> <span class="tag">Esq: Parcial</span> <span class="tag">Abs: Máx 1</span>, al nivel de una sala entera · <strong>Equipo:</strong> bastón <span class="tag">Daño 1</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Total</span>.</p>
+<p><strong>Su fuego</strong> (un hechizo, no equipo): <span class="tag">Daño 2</span> <span class="tag">Esq: Parcial</span> <span class="tag">Abs: Máx 1</span>, al nivel de una sala entera · <strong>Equipo:</strong> bastón <span class="tag">Daño 1</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Total</span>.</p>
+<p><strong>Bote aparte:</strong> +1 nivel de Rejilla en Arcano, su 2. <strong>Experiencia de salida:</strong> 1 Llave, la de su fuego. Un hechizo es un permiso y se paga con Llaves: la Rejilla dice el tamaño, no qué puedes hacer. Con su Arcano 2 el fuego llega a la sala entera sin pagar más nivel, así que le basta 1 Llave; y como el bote se le fue en el 2, esa Llave la pone la experiencia de salida.</p>
 <p><strong>En mesa:</strong> con Arcano 2, su fuego limpia una taberna llena de bandidos de nivel 1 sin tirar para acertar: tira Estilo. Contra un dragón necesita una Llave. Su nivel 2 en Arcano <strong>es su bote aparte</strong>: ha gastado ahí lo que los otros dos se gastan en Llaves. Su ficha es la salida recomendada, 1·1·1·1·2, con el 2 donde su mundo lo permite.</p>
 </div>
 
@@ -1133,8 +1146,8 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <div class="tw"><table class="t">
 <thead><tr><th>Bonus</th><th>Who you are at this</th></tr></thead>
 <tbody>
-<tr><td class="num">−2</td><td><strong>Null.</strong> You haven't put a single point into that whole sphere.</td></tr>
-<tr><td class="num">−1</td><td><strong>Clumsy.</strong> You have the sphere, but that column is empty: you are on the wrong foot.</td></tr>
+<tr><td class="num">−2</td><td><strong>Null.</strong> You haven't put a single point into that whole Sphere.</td></tr>
+<tr><td class="num">−1</td><td><strong>Clumsy.</strong> You have the Sphere, but that column is empty: you are on the wrong foot.</td></tr>
 <tr><td class="num">+1</td><td><strong>I get by.</strong> You have a broad skill that covers it.</td></tr>
 <tr><td class="num">+2</td><td><strong>It's my job.</strong> You have a specific skill that covers it.</td></tr>
 <tr><td class="num">+4</td><td><strong>Grand Master.</strong> Nobody does it better.</td></tr>
@@ -1144,8 +1157,8 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <p><strong>Don't roll for the sake of it.</strong> Roll only if every possible result is interesting. If failing adds nothing, it just happens. What the story cannot do without —the clue without which there is no adventure— is not rolled for: it is found. What you roll for is how much you get and at what price.</p>
 
 <h4>2.3 Skills</h4>
-<p>Every character has <strong>five spheres</strong>: <strong>Physical</strong>, <strong>Mental</strong>, <strong>Social</strong>, <strong>Technical</strong> and <strong>Arcane</strong> (magic, psychic powers, the supernatural; if your world doesn't have them, ignore it). Spheres are not skills: they are the drawers you keep them in.</p>
-<p>Each sphere splits into two <strong>broad skills</strong>, and each of those into four <strong>specific skills</strong>. The list is closed:</p>
+<p>Every character has <strong>five Spheres</strong>: <strong>Physical</strong>, <strong>Mental</strong>, <strong>Social</strong>, <strong>Technical</strong> and <strong>Arcane</strong> (magic, psychic powers, the supernatural; if your world doesn't have them, ignore it). Spheres are not skills: they are the drawers you keep them in.</p>
+<p>Each Sphere splits into two <strong>broad skills</strong>, and each of those into four <strong>specific skills</strong>. The list is closed:</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Sphere</th><th>Broad skill (column)</th><th>Specific skills</th></tr></thead>
 <tbody>
@@ -1164,21 +1177,21 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <div class="tw"><table class="t">
 <thead><tr><th>Step</th><th>What it is</th><th>Examples</th><th>Cost</th><th>Cumulative points</th><th>Bonus</th></tr></thead>
 <tbody>
-<tr><td>Broad skill</td><td>Half of a sphere</td><td>Dexterity, Vigour, Erudition, Wits, Influence</td><td class="num">1</td><td class="num">1</td><td class="num">+1</td></tr>
+<tr><td>Broad skill</td><td>Half of a Sphere</td><td>Dexterity, Vigour, Erudition, Wits, Influence</td><td class="num">1</td><td class="num">1</td><td class="num">+1</td></tr>
 <tr><td>Specific skill</td><td>A trade within the broad skill</td><td>Vigour → Weapons · Erudition → Sciences · Influence → Deception</td><td class="num">1</td><td class="num">2</td><td class="num">+2</td></tr>
 <tr><td>Signature (Grand Master)</td><td>Your speciality within the trade</td><td>Weapons → Firearms · Sciences → Chemistry · Acrobatics → Parkour</td><td class="num">2</td><td class="num">4</td><td class="num">+4</td></tr>
 </tbody></table></div>
 <ul>
 <li>When you roll, use <strong>only the highest step that fits</strong>. Steps don't add up.</li>
-<li>A <strong>column</strong> is each of the two broad skills of a sphere, with its specific skills underneath: in Physical, Dexterity is one column and Vigour the other.</li>
-<li>If you have spent nothing in a sphere, everything in it is rolled at −2 (Null). As soon as you buy anything in it, the column you have touched gives its bonuses as normal, and anything that falls in <strong>the other column</strong> is rolled at −1 (Clumsy).</li>
+<li>A <strong>column</strong> is each of the two broad skills of a Sphere, with its specific skills underneath: in Physical, Dexterity is one column and Vigour the other.</li>
+<li>If you have spent nothing in a Sphere, everything in it is rolled at −2 (Null). As soon as you buy anything in it, the column you have touched gives its bonuses as normal, and anything that falls in <strong>the other column</strong> is rolled at −1 (Clumsy).</li>
 <li>To be a Grand Master at something, you must be able to explain <strong>exactly</strong> what you do. “Firearms”, yes. “Being good”, no.</li>
-<li>In addition, every character has <strong>Style +2</strong>, a gift that sits outside the spheres (2.8).</li>
+<li>In addition, every character has <strong>Style +2</strong>, a gift that sits outside the Spheres (2.8).</li>
 </ul>
 <aside class="meta"><p>Not sure which skill to pick? Torn between “Piloting” and “Evasive driving”? NOGUM has a closed list of 10 broad skills and 40 specific ones, plus a catalogue of Signatures sorted so you only look at your branch. NOGUM has your back.</p></aside>
 
 <h4>2.4 The Grid: how big your feats are</h4>
-<p>The bonus says <strong>how well</strong> you do something. The Grid says <strong>at what scale</strong> you do it. Each character has one level per sphere. Ask yourself: if this gets out of hand, what makes the news?</p>
+<p>The bonus says <strong>how well</strong> you do something. The Grid says <strong>at what scale</strong> you do it. Each character has one level per Sphere. Ask yourself: if this gets out of hand, what makes the news?</p>
 <div class="tw"><table class="t">
 <thead><tr><th>Level</th><th>Scale</th><th>Examples</th></tr></thead>
 <tbody>
@@ -1193,7 +1206,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <p>If you don't know which level to give, <strong>humans are level 1 in everything</strong>. What is measured is scale, not intelligence or muscle: a brilliant chemist is still level 1. And if a jump of level sounds like a comic, that is because it is one.</p>
 <div class="rule"><p class="rule-title">Five ideas that settle almost everything</p>
 <ol>
-<li><strong>The Grid is scale, not skill:</strong> being big across a whole sphere. The vampire’s presence is a Social 2: she walks into the room and the whole room is spellbound. What is huge at a single thing is a Key: the sirens, with their song; the rock star, a 1 with Keys. The realistic human is 1 in everything, and that is why ones are everywhere.</li>
+<li><strong>The Grid is scale, not skill:</strong> being big across a whole Sphere. The vampire’s presence is a Social 2: she walks into the room and the whole room is spellbound. What is huge at a single thing is a Key: the sirens, with their song; the rock star, a 1 with Keys. The realistic human is 1 in everything, and that is why ones are everywhere.</li>
 <li><strong>If something grants a permit, cancels a defence or reaches a Grid level above, it is a Key.</strong> Wherever it comes from.</li>
 <li><strong>The Reaper is a Key to damage:</strong> it reaches whoever stands above you. That is why it costs Keys, even though damage on its own is free.</li>
 <li><strong>What is lent or stolen lasts one scene,</strong> whoever uses it. Passing it around resets nothing.</li>
@@ -1201,7 +1214,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 </ol>
 <p>The hard cases, solved one by one, are in the Key chapter of the Complete Game.</p></div>
 <div class="rule"><p class="rule-title">The power gap</p>
-<p>It works for everyone: players and adversaries alike. Compare the Grid level of whoever acts with the level of whatever they act against, in the sphere of the action. An NPC or a monster has a single level for everything, unless the GM says otherwise.</p>
+<p>It works for everyone: players and adversaries alike. Compare the Grid level of whoever acts with the level of whatever they act against, in the Sphere of the action. An NPC or a monster has a single level for everything, unless the GM says otherwise.</p>
 <ul>
 <li><strong>If you are at the same level</strong>, roll as normal: attack, defence, everything.</li>
 <li><strong>If you are above</strong> (even by one level), you don't roll to succeed: you succeed. If it matters how, roll Style (+2, 2.8). That also goes for a monster attacking characters below it: there is no roll, neither to hit nor to save yourself, and the defeat is narrated.</li>
@@ -1211,15 +1224,15 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <p><strong>The Key.</strong> A Key is a narrative reason that lets you affect something of a higher level: a bazooka, the stone from his own world, a stolen admin password, a video of the bribe, twenty mercenaries firing at once. It puts you <strong>one Grid level above</strong> your own (or several, paying more), and in that roll you act at that level: if you are a 1 and the Key puts you at 2, whoever is at level 1 has no right to roll; against a 2, you roll as normal, with your full bonus. The one the fiction gives you covers whatever the fiction says and lasts one scene; your own, the one you buy, covers <strong>a whole specific skill, against any target</strong> (below). Getting one is often an adventure in itself.</p>
 <div class="rule"><p class="rule-title">Keys are bought</p>
 <ul>
-<li>At creation, the <strong>separate pot</strong> gives you <strong>5 Keys</strong>, or <strong>+1 Grid level</strong> in one sphere. With the +1, the sheet starts at <strong>1·1·1·1·2</strong>, the recommended starting point: a 2 in one sphere and 1 in the other four. That 2 can only go where the universe allows it: in a realistic or horror world, players stay at 1 in everything, and the pot is 5 Keys; if there are superhumans, the 2 goes where they are. There are three ceilings, and it pays not to mix them up: the <strong>starting maximum</strong>, what a sheet starts with (by default, that 2); the <strong>player maximum</strong>, the highest a player can ever have across a whole sphere, however long the campaign lasts; and the <strong>world maximum</strong>, the highest thing that exists in it (in cosmic horror there are vast creatures, and you cannot be one). All three are about the Grid: Keys are better left without a ceiling. The table confirms it at session zero. The pot does not trade for skill points: everyone turns up with a trade.</li>
-<li>All of this is a starting point, not a limit: the table can start higher or lower, depending on what it wants to emulate. It is designed with a world like cyberpunk in mind; one with zombies or cosmic horror usually calls for less.</li>
+<li>At creation, the <strong>separate pot</strong> gives you <strong>5 Keys</strong>, or <strong>+1 Grid level</strong> in one Sphere. With the +1, the sheet starts at <strong>1·1·1·1·2</strong>, the recommended starting point: a 2 in one Sphere and 1 in the other four. That 2 can only go where the universe allows it: in a realistic or horror world, players stay at 1 in everything, and the pot is 5 Keys; if there are superhumans, the 2 goes where they are. There are three ceilings, and it pays not to mix them up: the <strong>starting maximum</strong>, what a sheet starts with (by default, that 2); the <strong>player maximum</strong>, the highest a player can ever have across a whole Sphere, however long the campaign lasts; and the <strong>world maximum</strong>, the highest thing that exists in it (in cosmic horror there are vast creatures, and you cannot be one). All three are about the Grid: Keys are better left without a ceiling. The table confirms it at session zero. The pot does not trade for skill points: everyone turns up with a trade.</li>
+<li>All of this is a starting point, not a limit: the table can start higher or lower, depending on what it wants to emulate. Whatever it hands out above or below that before play, in points or in Keys, is the <strong>starting experience</strong>. It is designed with a world like cyberpunk in mind; one with zombies or cosmic horror usually calls for less.</li>
 <li>Each Key of your own is <strong>a whole specific skill, against any target, for ever</strong>: with “Weapons”, everything you do with weapons goes up a level, your Signature included, since it sits inside. If it only works against one thing (“Weapons against vampires”), it is a <strong>Limited</strong> Key, cheaper from two levels up; at one level it costs the same, so it is better not to limit it. You can keep it blank and write it in the first time you use it, as the pregenerated characters do; if someone abuses that, the table reins them in.</li>
-<li>Grid and Keys trade: one Grid level in a sphere is worth <strong>5 Keys</strong>, its eight specific skills for the price of five. If the story raises the table’s Grid and you would rather not rise, you take what it is worth in Keys (5 for one extra level, 20 for two) and <strong>spend them wherever you like</strong>.</li>
+<li>Grid and Keys trade: one Grid level in a Sphere is worth <strong>5 Keys</strong>, its eight specific skills for the price of five. If the story raises the table’s Grid and you would rather not rise, you take what it is worth in Keys (5 for one extra level, 20 for two) and <strong>spend them wherever you like</strong>.</li>
 <li>One Key puts you <strong>one Grid level above</strong>. To climb further in the same skill, the count is squared: rising <em>n</em> levels costs <em>n</em>² Keys in total (1, 4, 9). With five in the pot, you can climb two levels in one skill (4 Keys), with one left over.</li>
-<li>During the campaign the GM hands out <strong>one Key per player per session</strong>. That tap is the game’s power dial: Keys also buy permits (what no skill can do, such as flying or seeing through walls: 1 Key, by rule of thumb) and levels above (idea 2). Equipment, here, only asks for money (2.9).</li>
+<li>During the campaign the GM hands out <strong>one Key per player per session</strong>. That tap is the game’s power dial: Keys also buy permits (what no skill can do, such as flying or seeing through walls: 1 Key, by rule of thumb) and levels above (idea 2). A spell is one of those permits: your skill says how well you cast it and the Grid how big, but what you can do is paid for in Keys. Equipment, here, only asks for money (2.9).</li>
 <li>And what the GM gives you for a good idea —“it occurs to you to use the holy water”— is a <strong>borrowed Key</strong>: it raises whatever the fiction says, lasts one scene and costs nothing; it goes on the sheet in pencil and is rubbed out when the scene ends.</li>
 </ul></div>
-<aside class="meta"><p>Why can the vigilante millionaire stand up to the alien in tights and trunks with the same bonus as a nightclub bouncer? Because of the Key. The Complete Game has a whole chapter bringing the Grid down to earth, with pop-culture examples in all five spheres. NOGUM is waiting for you.</p></aside>
+<aside class="meta"><p>Why can the vigilante millionaire stand up to the alien in tights and trunks with the same bonus as a nightclub bouncer? Because of the Key. The Complete Game has a whole chapter bringing the Grid down to earth, with pop-culture examples in all five Spheres. NOGUM is waiting for you.</p></aside>
 
 <h4>2.5 Initiative</h4>
 <p>When combat starts, each participant rolls with the active mode and adds their <strong>best Dexterity bonus</strong> (the broad skill or any of their specific skills under it). Act from highest to lowest total. On a tie, the GM decides.</p>
@@ -1383,7 +1396,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <aside class="meta"><p>If you've arrived here from the Complete Game: welcome back. This is driving school; over there was the engineering manual.</p></aside>
 
 <!-- ============================ Apéndice ============================ -->
-<h3 id="ac-apendice">Appendix · Character sheet and pregenerated characters</h3>
+<h3 id="ac-apendice" class="nueva-hoja">Appendix · Character sheet and pregenerated characters</h3>
 <h4>Character sheet</h4>
 <div class="tw"><table class="t">
 <thead><tr><th>Field</th><th>What to write</th></tr></thead>
@@ -1396,7 +1409,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <tr><td>Technical · Grid level</td><td>Skills with their bonus.</td></tr>
 <tr><td>Arcane · Grid level</td><td>Skills with their bonus (or “doesn't exist in this world”).</td></tr>
 <tr><td>Points spent</td><td>__ / 12 (14 if any player at the table has Arcane)</td></tr>
-<tr><td>Separate pot</td><td>+1 Grid level in a sphere where your universe allows it (the recommended start, 1·1·1·1·2) <strong>or</strong> 5 Keys. It does not trade for points.</td></tr>
+<tr><td>Separate pot</td><td>+1 Grid level in a Sphere where your universe allows it (the recommended start, 1·1·1·1·2) <strong>or</strong> 5 Keys. It does not trade for points.</td></tr>
 <tr><td>Style</td><td>+2</td></tr>
 <tr><td>Initiative</td><td>Best Dexterity bonus.</td></tr>
 <tr><td>Health</td><td>□□□ (−2) · □□□ (−4) · □□□ (out of the fight). In Terror, only □□□ (out of the fight).</td></tr>
@@ -1406,7 +1419,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 </tbody></table></div>
 
 <h4>Pregenerated characters</h4>
-<p>Three examples to start right away, from three different worlds. Kira and Tomás spend 12: there is no magic in Kira's world, and in Tomás's there is, but he doesn't touch it. Ysolde spends 14, and if she played at the same table as them, they would have 14 too. Each also uses their separate pot.</p>
+<p>Three examples to start right away, from three different worlds. Kira and Tomás spend 12: there is no magic in Kira's world, and in Tomás's there is, but he doesn't touch it. Ysolde spends 14, and if she played at the same table as them, they would have 14 too. Each also uses their separate pot, and Ysolde, 1 Key of starting experience for her fire (below).</p>
 
 <div class="rule"><p class="rule-title">Kira “Staple” Ortega · urban mercenary (cyberpunk / present day)</p>
 <div class="tw"><table class="t">
@@ -1451,7 +1464,8 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <tr><td>Technical</td><td class="num">1</td><td>Empty: −2</td><td class="num">0</td></tr>
 </tbody></table></div>
 <p><strong>Style</strong> +2 · <strong>Initiative</strong> +2 (Stealth) · <strong>Dodge</strong> +1 (Dexterity) · <strong>Soak</strong> −1 (Clumsy) · <strong>Resources</strong> −1 (Clumsy) · <strong>Magic shield</strong>: she can soak with Protection (+2) if the GM allows it.</p>
-<p><strong>Her fire</strong> (it is her Arcane 2, not equipment): <span class="tag">Damage 2</span> <span class="tag">Dodge: Partial</span> <span class="tag">Soak: Max 1</span>, at the scale of a whole room · <strong>Equipment:</strong> staff <span class="tag">Damage 1</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Full</span>.</p>
+<p><strong>Her fire</strong> (a spell, not equipment): <span class="tag">Damage 2</span> <span class="tag">Dodge: Partial</span> <span class="tag">Soak: Max 1</span>, at the scale of a whole room · <strong>Equipment:</strong> staff <span class="tag">Damage 1</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Full</span>.</p>
+<p><strong>Separate pot:</strong> +1 Grid level in Arcane, her 2. <strong>Starting experience:</strong> 1 Key, the one for her fire. A spell is a permit and is paid for in Keys: the Grid says the size, not what you can do. With her Arcane 2 the fire reaches the whole room without paying for more levels, so 1 Key is enough; and since her pot went on the 2, that Key comes from the starting experience.</p>
 <p><strong>At the table:</strong> with Arcane 2, her fire clears a tavern full of level 1 bandits without rolling to hit: she rolls Style. Against a dragon she needs a Key. Her level 2 in Arcane <strong>is her separate pot</strong>: she has spent there what the other two spend on Keys. Her sheet is the recommended start, 1·1·1·1·2, with the 2 where her world allows it.</p>
 </div>
 
