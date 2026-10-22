@@ -7,7 +7,7 @@
   "items": [
    {
     "n": [
-     "Maratón / Resistencia",
+     "Maratón / resistencia",
      "Marathon / Endurance"
     ],
     "d": [
@@ -17,7 +17,7 @@
    },
    {
     "n": [
-     "Salto Imposible",
+     "Salto imposible",
      "Impossible Leap"
     ],
     "d": [
@@ -27,7 +27,7 @@
    },
    {
     "n": [
-     "Escalada Libre",
+     "Escalada libre",
      "Free Climbing"
     ],
     "d": [
@@ -37,22 +37,12 @@
    },
    {
     "n": [
-     "Natación Extrema",
+     "Natación extrema",
      "Extreme Swimming"
     ],
     "d": [
      "Desplazamiento y maniobra en aguas bravas, corrientes o bajo presión.",
      "Moving and manoeuvring through rough water, currents or under pressure."
-    ]
-   },
-   {
-    "n": [
-     "Esquiva Refleja",
-     "Reflex Dodge"
-    ],
-    "d": [
-     "Movimientos de evasión lateral y cobertura rápida ante proyectiles o impactos.",
-     "Sidesteps and snap cover against projectiles or impacts."
     ]
    }
   ]
@@ -65,7 +55,7 @@
   "items": [
    {
     "n": [
-     "Caída Controlada",
+     "Caída controlada",
      "Controlled Fall"
     ],
     "d": [
@@ -79,13 +69,13 @@
      "Contortionism"
     ],
     "d": [
-     "Paso del cuerpo por espacios extremadamente reducidos o zafado de ataduras.",
-     "Squeezing through extremely tight spaces or slipping out of bonds."
+     "Paso del cuerpo por espacios extremadamente reducidos, o zafarse de ataduras.",
+     "Squeezing through extremely tight spaces, or slipping out of bonds."
     ]
    },
    {
     "n": [
-     "Equilibrio Extremo",
+     "Equilibrio extremo",
      "Extreme Balance"
     ],
     "d": [
@@ -95,7 +85,7 @@
    },
    {
     "n": [
-     "Piruetas y Fintas",
+     "Piruetas y fintas",
      "Flips and Feints"
     ],
     "d": [
@@ -105,12 +95,22 @@
    },
    {
     "n": [
-     "Parkour Urbano",
+     "Parkour urbano",
      "Urban Parkour"
     ],
     "d": [
      "Fluidez para superar obstáculos arquitectónicos a máxima velocidad.",
      "Flowing over architectural obstacles at top speed."
+    ]
+   },
+   {
+    "n": [
+     "Esquiva refleja",
+     "Reflex Dodge"
+    ],
+    "d": [
+     "Movimientos de evasión lateral y cobertura rápida ante proyectiles o impactos.",
+     "Sidesteps and snap cover against projectiles or impacts."
     ]
    }
   ]
@@ -123,7 +123,7 @@
   "items": [
    {
     "n": [
-     "Camuflaje en Sombras",
+     "Camuflaje en sombras",
      "Shadow Cloak"
     ],
     "d": [
@@ -133,7 +133,7 @@
    },
    {
     "n": [
-     "Movimiento Silencioso",
+     "Movimiento silencioso",
      "Silent Movement"
     ],
     "d": [
@@ -143,17 +143,17 @@
    },
    {
     "n": [
-     "Mimetismo / Cobertura",
+     "Mimetismo / cobertura",
      "Mimicry / Cover"
     ],
     "d": [
      "Mantenerse inmóvil adaptando el contorno del cuerpo al entorno visual.",
-     "Staying motionless, blending the body's outline into the scenery."
+     "Staying motionless, blending the body’s outline into the scenery."
     ]
    },
    {
     "n": [
-     "Rastro Cero",
+     "Rastro cero",
      "Zero Trace"
     ],
     "d": [
@@ -163,7 +163,7 @@
    },
    {
     "n": [
-     "Infiltración en Sombras",
+     "Infiltración en sombras",
      "Shadowing"
     ],
     "d": [
@@ -175,23 +175,23 @@
  },
  {
   "dis": [
-   "Juego de Manos",
+   "Juego de manos",
    "Sleight of Hand"
   ],
   "items": [
    {
     "n": [
-     "Hurto Sutil (Pickpocket)",
+     "Hurto sutil (pickpocket)",
      "Light Fingers (Pickpocket)"
     ],
     "d": [
      "Robo o colocación de objetos en bolsillos o equipo ajeno sin que se entere.",
-     "Lifting or planting objects in someone's pockets or kit without them noticing."
+     "Lifting or planting objects in someone’s pockets or kit without them noticing."
     ]
    },
    {
     "n": [
-     "Juego de Naipes / Trampas",
+     "Juego de naipes / trampas",
      "Card Tricks / Cheating"
     ],
     "d": [
@@ -201,7 +201,7 @@
    },
    {
     "n": [
-     "Desarme Rápido",
+     "Desarme rápido",
      "Quick Disarm"
     ],
     "d": [
@@ -211,22 +211,12 @@
    },
    {
     "n": [
-     "Ocultamiento en Cuerpo",
+     "Ocultamiento en cuerpo",
      "Body Concealment"
     ],
     "d": [
      "Camuflaje de pequeñas herramientas, llaves o armas entre la ropa o la piel.",
      "Hiding small tools, keys or weapons in clothing or against the skin."
-    ]
-   },
-   {
-    "n": [
-     "Ganzuado / Cerrajería Física",
-     "Lockpicking"
-    ],
-    "d": [
-     "Apertura y manipulación de cerraduras mecánicas tradicionales.",
-     "Opening and manipulating traditional mechanical locks."
     ]
    }
   ]
@@ -239,7 +229,7 @@
   "items": [
    {
     "n": [
-     "Embestida / Rompepuertas",
+     "Embestida / rompepuertas",
      "Battering Ram / Door Breaker"
     ],
     "d": [
@@ -249,7 +239,7 @@
    },
    {
     "n": [
-     "Levantamiento Pesado",
+     "Levantamiento pesado",
      "Heavy Lifting"
     ],
     "d": [
@@ -259,7 +249,7 @@
    },
    {
     "n": [
-     "Presión / Agarre Mortal",
+     "Presión / agarre mortal",
      "Death Grip"
     ],
     "d": [
@@ -269,7 +259,7 @@
    },
    {
     "n": [
-     "Lanzamiento de Pesados",
+     "Lanzamiento de pesados",
      "Heavy Throw"
     ],
     "d": [
@@ -279,7 +269,7 @@
    },
    {
     "n": [
-     "Proeza Estructural",
+     "Proeza estructural",
      "Structural Feat"
     ],
     "d": [
@@ -297,7 +287,7 @@
   "items": [
    {
     "n": [
-     "Tolerancia al Dolor",
+     "Tolerancia al dolor",
      "Pain Tolerance"
     ],
     "d": [
@@ -307,7 +297,7 @@
    },
    {
     "n": [
-     "Resistencia a Toxinas",
+     "Resistencia a toxinas",
      "Toxin Resistance"
     ],
     "d": [
@@ -317,7 +307,7 @@
    },
    {
     "n": [
-     "Inmunidad Térmica / Ambiental",
+     "Inmunidad térmica / ambiental",
      "Thermal / Environmental Immunity"
     ],
     "d": [
@@ -327,7 +317,7 @@
    },
    {
     "n": [
-     "Aguante Cardio-Pulmonar",
+     "Aguante cardio-pulmonar",
      "Cardio-Pulmonary Stamina"
     ],
     "d": [
@@ -337,12 +327,22 @@
    },
    {
     "n": [
-     "Estabilización Rápida",
+     "Estabilización rápida",
      "Rapid Stabilisation"
     ],
     "d": [
      "Reducción de tiempos de sangrado y recuperación fisiológica tras trauma.",
      "Cutting bleeding time and speeding physiological recovery after trauma."
+    ]
+   },
+   {
+    "n": [
+     "Bloqueo y absorción",
+     "Block and Absorb"
+    ],
+    "d": [
+     "Posicionamiento del cuerpo para reducir el daño de impactos desarmados.",
+     "Positioning the body to reduce damage from unarmed strikes."
     ]
    }
   ]
@@ -355,17 +355,17 @@
   "items": [
    {
     "n": [
-     "Proyecciones y Llaves",
+     "Proyecciones y llaves",
      "Throws and Locks"
     ],
     "d": [
      "Uso de la fuerza del rival para derribos, proyecciones o llaves articulares.",
-     "Using an opponent's strength for takedowns, throws or joint locks."
+     "Using an opponent’s strength for takedowns, throws or joint locks."
     ]
    },
    {
     "n": [
-     "Boxeo / Golpes Contundentes",
+     "Boxeo / golpes contundentes",
      "Boxing / Heavy Blows"
     ],
     "d": [
@@ -375,7 +375,7 @@
    },
    {
     "n": [
-     "Pelea Callejera / Sucia",
+     "Pelea callejera / sucia",
      "Street / Dirty Fighting"
     ],
     "d": [
@@ -385,22 +385,12 @@
    },
    {
     "n": [
-     "Sumisión Táctica",
+     "Sumisión táctica",
      "Tactical Submission"
     ],
     "d": [
      "Agarres enfocados a dormir o neutralizar sin causar daño permanente.",
      "Holds meant to put someone to sleep or subdue them without lasting harm."
-    ]
-   },
-   {
-    "n": [
-     "Bloqueo y Absorción",
-     "Block and Absorb"
-    ],
-    "d": [
-     "Posicionamiento del cuerpo para reducir el daño de impactos desarmados.",
-     "Positioning the body to reduce damage from unarmed strikes."
     ]
    }
   ]
@@ -413,7 +403,7 @@
   "items": [
    {
     "n": [
-     "Hojas Cortas / Dagas",
+     "Hojas cortas / dagas",
      "Short Blades / Daggers"
     ],
     "d": [
@@ -423,7 +413,7 @@
    },
    {
     "n": [
-     "Armas Contundentes / Pesadas",
+     "Armas contundentes / pesadas",
      "Blunt / Heavy Weapons"
     ],
     "d": [
@@ -433,7 +423,7 @@
    },
    {
     "n": [
-     "Armas de Asta",
+     "Armas de asta",
      "Polearms"
     ],
     "d": [
@@ -443,7 +433,7 @@
    },
    {
     "n": [
-     "Armas de Fuego Ligeras",
+     "Armas de fuego ligeras",
      "Light Firearms"
     ],
     "d": [
@@ -453,7 +443,7 @@
    },
    {
     "n": [
-     "Armas de Precisión / Distancia",
+     "Armas de precisión / distancia",
      "Precision / Ranged Weapons"
     ],
     "d": [
@@ -471,7 +461,7 @@
   "items": [
    {
     "n": [
-     "Física Teórica y Aplicada",
+     "Física teórica y aplicada",
      "Theoretical and Applied Physics"
     ],
     "d": [
@@ -481,7 +471,7 @@
    },
    {
     "n": [
-     "Química y Farmacología",
+     "Química y farmacología",
      "Chemistry and Pharmacology"
     ],
     "d": [
@@ -491,17 +481,17 @@
    },
    {
     "n": [
-     "Biología y Anatomía",
+     "Biología y anatomía",
      "Biology and Anatomy"
     ],
     "d": [
      "Conocimiento de la estructura fisiológica para hallar puntos débiles o curar.",
-     "Knowing the body's structure to find weak points or to heal."
+     "Knowing the body’s structure to find weak points or to heal."
     ]
    },
    {
     "n": [
-     "Matemáticas y Criptografía",
+     "Matemáticas y criptografía",
      "Mathematics and Cryptography"
     ],
     "d": [
@@ -511,7 +501,7 @@
    },
    {
     "n": [
-     "Geología y Ciencias de la Tierra",
+     "Geología y ciencias de la Tierra",
      "Geology and Earth Sciences"
     ],
     "d": [
@@ -529,7 +519,7 @@
   "items": [
    {
     "n": [
-     "Historia y Precedentes",
+     "Historia y precedentes",
      "History and Precedent"
     ],
     "d": [
@@ -539,7 +529,7 @@
    },
    {
     "n": [
-     "Filosofía y Lógica",
+     "Filosofía y lógica",
      "Philosophy and Logic"
     ],
     "d": [
@@ -549,7 +539,7 @@
    },
    {
     "n": [
-     "Políglota y Lingüística",
+     "Políglota y lingüística",
      "Polyglot and Linguistics"
     ],
     "d": [
@@ -559,7 +549,7 @@
    },
    {
     "n": [
-     "Sociología y Antropología",
+     "Sociología y antropología",
      "Sociology and Anthropology"
     ],
     "d": [
@@ -569,7 +559,7 @@
    },
    {
     "n": [
-     "Arqueología y Peritaje",
+     "Arqueología y peritaje",
      "Archaeology and Appraisal"
     ],
     "d": [
@@ -587,7 +577,7 @@
   "items": [
    {
     "n": [
-     "Demonología y Criptozoología",
+     "Demonología y criptozoología",
      "Demonology and Cryptozoology"
     ],
     "d": [
@@ -597,7 +587,7 @@
    },
    {
     "n": [
-     "Grimorios y Textos Prohibidos",
+     "Grimorios y textos prohibidos",
      "Grimoires and Forbidden Texts"
     ],
     "d": [
@@ -607,7 +597,7 @@
    },
    {
     "n": [
-     "Simbología Esotérica",
+     "Simbología esotérica",
      "Esoteric Symbology"
     ],
     "d": [
@@ -617,7 +607,7 @@
    },
    {
     "n": [
-     "Profecías y Presagios",
+     "Profecías y presagios",
      "Prophecies and Omens"
     ],
     "d": [
@@ -627,7 +617,7 @@
    },
    {
     "n": [
-     "Lore del Multiverso",
+     "Lore del multiverso",
      "Multiverse Lore"
     ],
     "d": [
@@ -645,7 +635,7 @@
   "items": [
    {
     "n": [
-     "Cultura Pop y Tendencias",
+     "Cultura pop y tendencias",
      "Pop Culture and Trends"
     ],
     "d": [
@@ -655,7 +645,7 @@
    },
    {
     "n": [
-     "Geopolítica y Macroeconomía",
+     "Geopolítica y macroeconomía",
      "Geopolitics and Macroeconomics"
     ],
     "d": [
@@ -665,7 +655,7 @@
    },
    {
     "n": [
-     "Prensa y Redes Sociales",
+     "Prensa y redes sociales",
      "Press and Social Media"
     ],
     "d": [
@@ -675,7 +665,7 @@
    },
    {
     "n": [
-     "Submundo y Crimen Organizado",
+     "Submundo y crimen organizado",
      "Underworld and Organised Crime"
     ],
     "d": [
@@ -685,7 +675,7 @@
    },
    {
     "n": [
-     "Burocracia y Leyes Locales",
+     "Burocracia y leyes locales",
      "Bureaucracy and Local Law"
     ],
     "d": [
@@ -703,7 +693,7 @@
   "items": [
    {
     "n": [
-     "Deducción en Escena",
+     "Deducción en escena",
      "Scene Deduction"
     ],
     "d": [
@@ -713,7 +703,7 @@
    },
    {
     "n": [
-     "Interrogatorio Técnico",
+     "Interrogatorio técnico",
      "Technical Interrogation"
     ],
     "d": [
@@ -723,7 +713,7 @@
    },
    {
     "n": [
-     "Análisis Forense",
+     "Análisis forense",
      "Forensic Analysis"
     ],
     "d": [
@@ -733,7 +723,7 @@
    },
    {
     "n": [
-     "Conexión de Pistas",
+     "Conexión de pistas",
      "Connecting the Dots"
     ],
     "d": [
@@ -743,7 +733,7 @@
    },
    {
     "n": [
-     "Búsqueda Documental",
+     "Búsqueda documental",
      "Records Search"
     ],
     "d": [
@@ -761,7 +751,7 @@
   "items": [
    {
     "n": [
-     "Percepción de Emboscadas",
+     "Percepción de emboscadas",
      "Ambush Sense"
     ],
     "d": [
@@ -771,17 +761,7 @@
    },
    {
     "n": [
-     "Lectura Corporal",
-     "Body Reading"
-    ],
-    "d": [
-     "Identificación de microexpresiones, nerviosismo o mentiras en tiempo real.",
-     "Spotting micro-expressions, nerves or lies in real time."
-    ]
-   },
-   {
-    "n": [
-     "Detección de Trampas",
+     "Detección de trampas",
      "Trap Detection"
     ],
     "d": [
@@ -791,7 +771,7 @@
    },
    {
     "n": [
-     "Aislamiento Auditivo",
+     "Aislamiento auditivo",
      "Auditory Focus"
     ],
     "d": [
@@ -801,7 +781,7 @@
    },
    {
     "n": [
-     "Conciencia Perimétrica",
+     "Conciencia perimétrica",
      "Perimeter Awareness"
     ],
     "d": [
@@ -819,7 +799,7 @@
   "items": [
    {
     "n": [
-     "Emboscadas y Enfiladas",
+     "Emboscadas y enfiladas",
      "Ambushes and Enfilades"
     ],
     "d": [
@@ -829,7 +809,7 @@
    },
    {
     "n": [
-     "Lectura del Terreno",
+     "Lectura del terreno",
      "Reading the Ground"
     ],
     "d": [
@@ -839,7 +819,7 @@
    },
    {
     "n": [
-     "Coordinación de Escuadra",
+     "Coordinación de escuadra",
      "Squad Coordination"
     ],
     "d": [
@@ -849,7 +829,7 @@
    },
    {
     "n": [
-     "Anticipación de Errores",
+     "Anticipación de errores",
      "Anticipating Mistakes"
     ],
     "d": [
@@ -859,7 +839,7 @@
    },
    {
     "n": [
-     "Retirada Táctica",
+     "Retirada táctica",
      "Tactical Retreat"
     ],
     "d": [
@@ -887,7 +867,7 @@
    },
    {
     "n": [
-     "Recolección de Recursos",
+     "Recolección de recursos",
      "Foraging"
     ],
     "d": [
@@ -897,7 +877,7 @@
    },
    {
     "n": [
-     "Navegación / Orientación",
+     "Navegación / orientación",
      "Navigation / Orienteering"
     ],
     "d": [
@@ -907,17 +887,7 @@
    },
    {
     "n": [
-     "Primeros Auxilios de Campo",
-     "Field First Aid"
-    ],
-    "d": [
-     "Torniquetes, cauterización y estabilización de emergencia sin quirófano.",
-     "Tourniquets, cauterisation and emergency stabilisation without an operating theatre."
-    ]
-   },
-   {
-    "n": [
-     "Trampas de Caza",
+     "Trampas de caza",
      "Hunting Traps"
     ],
     "d": [
@@ -935,7 +905,7 @@
   "items": [
    {
     "n": [
-     "Oratoria Dialéctica",
+     "Oratoria dialéctica",
      "Dialectical Oratory"
     ],
     "d": [
@@ -945,7 +915,7 @@
    },
    {
     "n": [
-     "Negociación Táctica",
+     "Negociación táctica",
      "Tactical Negotiation"
     ],
     "d": [
@@ -955,17 +925,17 @@
    },
    {
     "n": [
-     "Apelación Moral",
+     "Apelación moral",
      "Moral Appeal"
     ],
     "d": [
      "Manipulación del sentido de culpa, deber o ética del interlocutor.",
-     "Playing on the other party's sense of guilt, duty or ethics."
+     "Playing on the other party’s sense of guilt, duty or ethics."
     ]
    },
    {
     "n": [
-     "Diplomacia de Crisis",
+     "Diplomacia de crisis",
      "Crisis Diplomacy"
     ],
     "d": [
@@ -975,7 +945,7 @@
    },
    {
     "n": [
-     "Alineación de Intereses",
+     "Alineación de intereses",
      "Aligned Interests"
     ],
     "d": [
@@ -993,7 +963,7 @@
   "items": [
    {
     "n": [
-     "Suplantación de Identidad",
+     "Suplantación de identidad",
      "Impersonation"
     ],
     "d": [
@@ -1003,7 +973,7 @@
    },
    {
     "n": [
-     "Construcción de Coartadas",
+     "Construcción de coartadas",
      "Alibi Building"
     ],
     "d": [
@@ -1013,7 +983,7 @@
    },
    {
     "n": [
-     "Ofuscación Verbal / Gaslighting",
+     "Ofuscación verbal / gaslighting",
      "Verbal Obfuscation / Gaslighting"
     ],
     "d": [
@@ -1023,7 +993,7 @@
    },
    {
     "n": [
-     "Falsificación Documental",
+     "Falsificación documental",
      "Forgery"
     ],
     "d": [
@@ -1033,7 +1003,7 @@
    },
    {
     "n": [
-     "Distracción Táctica",
+     "Distracción táctica",
      "Tactical Distraction"
     ],
     "d": [
@@ -1051,17 +1021,17 @@
   "items": [
    {
     "n": [
-     "Lectura de Intenciones",
+     "Lectura de intenciones",
      "Reading Intentions"
     ],
     "d": [
      "Detección del estado emocional subyacente y motivaciones reales del objetivo.",
-     "Sensing the target's underlying emotional state and true motives."
+     "Sensing the target’s underlying emotional state and true motives."
     ]
    },
    {
     "n": [
-     "Calmado de Ánimos",
+     "Calmar los ánimos",
      "Soothing Tempers"
     ],
     "d": [
@@ -1071,17 +1041,17 @@
    },
    {
     "n": [
-     "Detección de Vulnerabilidades",
+     "Detección de vulnerabilidades",
      "Finding Weak Spots"
     ],
     "d": [
      "Identificar los miedos, complejos o deseos secretos de un objetivo.",
-     "Identifying a target's fears, hang-ups or secret desires."
+     "Identifying a target’s fears, hang-ups or secret desires."
     ]
    },
    {
     "n": [
-     "Validación Emocional",
+     "Validación emocional",
      "Emotional Validation"
     ],
     "d": [
@@ -1091,12 +1061,22 @@
    },
    {
     "n": [
-     "Análisis de Dinámicas de Grupo",
+     "Análisis de dinámicas de grupo",
      "Group Dynamics"
     ],
     "d": [
      "Identificar quién manda, quién sufre y quién es el eslabón débil en un grupo.",
      "Working out who is in charge, who is suffering and who is the weak link in a group."
+    ]
+   },
+   {
+    "n": [
+     "Lectura corporal",
+     "Body Reading"
+    ],
+    "d": [
+     "Identificación de microexpresiones, nerviosismo o mentiras en tiempo real.",
+     "Spotting micro-expressions, nerves or lies in real time."
     ]
    }
   ]
@@ -1109,7 +1089,7 @@
   "items": [
    {
     "n": [
-     "Atracción Magnética",
+     "Atracción magnética",
      "Magnetic Allure"
     ],
     "d": [
@@ -1119,7 +1099,7 @@
    },
    {
     "n": [
-     "Encanto Superficial",
+     "Encanto superficial",
      "Easy Charm"
     ],
     "d": [
@@ -1129,7 +1109,7 @@
    },
    {
     "n": [
-     "Llamado de Auxilio",
+     "Llamado de auxilio",
      "Cry for Help"
     ],
     "d": [
@@ -1139,7 +1119,7 @@
    },
    {
     "n": [
-     "Flirteo Táctico",
+     "Flirteo táctico",
      "Tactical Flirting"
     ],
     "d": [
@@ -1149,12 +1129,12 @@
    },
    {
     "n": [
-     "Adulación Calculada",
+     "Adulación calculada",
      "Calculated Flattery"
     ],
     "d": [
      "Manipular el ego del interlocutor mediante cumplidos específicos.",
-     "Working the other person's ego with well-aimed compliments."
+     "Working the other person’s ego with well-aimed compliments."
     ]
    }
   ]
@@ -1167,17 +1147,17 @@
   "items": [
    {
     "n": [
-     "Arenga Táctica",
+     "Arenga táctica",
      "Rallying Cry"
     ],
     "d": [
      "Otorgar bonificaciones o mantener la moral de los aliados en momentos de crisis.",
-     "Granting bonuses or keeping allies' morale up in moments of crisis."
+     "Granting bonuses or keeping allies’ morale up in moments of crisis."
     ]
    },
    {
     "n": [
-     "Mando y Disciplina",
+     "Mando y disciplina",
      "Command and Discipline"
     ],
     "d": [
@@ -1187,17 +1167,17 @@
    },
    {
     "n": [
-     "Asignación de Roles",
+     "Asignación de roles",
      "Role Assignment"
     ],
     "d": [
      "Coordinación de un equipo distribuyendo tareas según las fortalezas de cada uno.",
-     "Coordinating a team by handing out tasks to suit each member's strengths."
+     "Coordinating a team by handing out tasks to suit each member’s strengths."
     ]
    },
    {
     "n": [
-     "Mantenimiento del Orden",
+     "Mantenimiento del orden",
      "Keeping Order"
     ],
     "d": [
@@ -1207,7 +1187,7 @@
    },
    {
     "n": [
-     "Inspiración por el Ejemplo",
+     "Inspiración por el ejemplo",
      "Leading by Example"
     ],
     "d": [
@@ -1225,7 +1205,7 @@
   "items": [
    {
     "n": [
-     "Coacción Física / Violencia Explícita",
+     "Coacción física / violencia explícita",
      "Physical Coercion / Open Violence"
     ],
     "d": [
@@ -1235,7 +1215,7 @@
    },
    {
     "n": [
-     "Presión Fría / Amenaza Implícita",
+     "Presión fría / amenaza implícita",
      "Cold Pressure / Veiled Threat"
     ],
     "d": [
@@ -1245,7 +1225,7 @@
    },
    {
     "n": [
-     "Dominación Escénica",
+     "Dominación escénica",
      "Commanding Presence"
     ],
     "d": [
@@ -1255,17 +1235,17 @@
    },
    {
     "n": [
-     "Tortura Psicológica",
+     "Tortura psicológica",
      "Psychological Torture"
     ],
     "d": [
      "Romper la voluntad de un cautivo mediante privación o desgaste sostenido.",
-     "Breaking a captive's will through deprivation or sustained attrition."
+     "Breaking a captive’s will through deprivation or sustained attrition."
     ]
    },
    {
     "n": [
-     "Intimidación de Masas",
+     "Intimidación de masas",
      "Mass Intimidation"
     ],
     "d": [
@@ -1283,7 +1263,7 @@
   "items": [
    {
     "n": [
-     "Red Subterránea / Círculos Criminales",
+     "Red subterránea / círculos criminales",
      "Underground Network / Criminal Circles"
     ],
     "d": [
@@ -1293,7 +1273,7 @@
    },
    {
     "n": [
-     "Cúpula Corporativa / Institucional",
+     "Cúpula corporativa / institucional",
      "Corporate / Institutional Elite"
     ],
     "d": [
@@ -1303,7 +1283,7 @@
    },
    {
     "n": [
-     "Búsqueda de Favores",
+     "Búsqueda de favores",
      "Calling in Favours"
     ],
     "d": [
@@ -1313,7 +1293,7 @@
    },
    {
     "n": [
-     "Red de Soplones Urbana",
+     "Red de soplones urbana",
      "Street Informant Network"
     ],
     "d": [
@@ -1323,7 +1303,7 @@
    },
    {
     "n": [
-     "Acceso VIP / Salvoconductos",
+     "Acceso VIP / salvoconductos",
      "VIP Access / Safe-Conducts"
     ],
     "d": [
@@ -1341,7 +1321,7 @@
   "items": [
    {
     "n": [
-     "Inyección de Capital",
+     "Inyección de capital",
      "Cash Injection"
     ],
     "d": [
@@ -1351,7 +1331,7 @@
    },
    {
     "n": [
-     "Logística y Suministros",
+     "Logística y suministros",
      "Logistics and Supply"
     ],
     "d": [
@@ -1361,7 +1341,7 @@
    },
    {
     "n": [
-     "Especulación / Blanqueo",
+     "Especulación / blanqueo",
      "Speculation / Laundering"
     ],
     "d": [
@@ -1371,7 +1351,7 @@
    },
    {
     "n": [
-     "Monopolio de Mercado",
+     "Monopolio de mercado",
      "Market Monopoly"
     ],
     "d": [
@@ -1381,7 +1361,7 @@
    },
    {
     "n": [
-     "Línea de Crédito Ilimitada",
+     "Línea de crédito ilimitada",
      "Unlimited Credit Line"
     ],
     "d": [
@@ -1399,7 +1379,7 @@
   "items": [
    {
     "n": [
-     "Reparación de Emergencia",
+     "Reparación de emergencia",
      "Emergency Repair"
     ],
     "d": [
@@ -1409,7 +1389,7 @@
    },
    {
     "n": [
-     "Modificación de Motores / Subidón",
+     "Modificación de motores / subidón",
      "Engine Tuning / Overdrive"
     ],
     "d": [
@@ -1419,7 +1399,7 @@
    },
    {
     "n": [
-     "Ingeniería Inversa",
+     "Ingeniería inversa",
      "Reverse Engineering"
     ],
     "d": [
@@ -1429,7 +1409,7 @@
    },
    {
     "n": [
-     "Fabricación de Herramientas",
+     "Fabricación de herramientas",
      "Toolmaking"
     ],
     "d": [
@@ -1439,7 +1419,7 @@
    },
    {
     "n": [
-     "Sabotaje Estructural",
+     "Sabotaje estructural",
      "Structural Sabotage"
     ],
     "d": [
@@ -1457,17 +1437,17 @@
   "items": [
    {
     "n": [
-     "Puenteado de Circuitos",
+     "Puenteado de circuitos",
      "Hotwiring"
     ],
     "d": [
-     "Bypassear paneles de control, encendidos o circuitos físicos sin clave.",
+     "Saltarse paneles de control, encendidos o circuitos físicos sin clave.",
      "Bypassing control panels, ignitions or physical circuits without a code."
     ]
    },
    {
     "n": [
-     "Diseño de Microchips / Hardware",
+     "Diseño de microchips / hardware",
      "Microchip / Hardware Design"
     ],
     "d": [
@@ -1477,7 +1457,7 @@
    },
    {
     "n": [
-     "Diagnóstico de Placas",
+     "Diagnóstico de placas",
      "Board Diagnostics"
     ],
     "d": [
@@ -1487,7 +1467,7 @@
    },
    {
     "n": [
-     "Inhibición de Señal (Jammers)",
+     "Inhibición de señal (jammers)",
      "Signal Jamming"
     ],
     "d": [
@@ -1497,7 +1477,7 @@
    },
    {
     "n": [
-     "Cómputo Análogo / Sensores",
+     "Cómputo analógico / sensores",
      "Analogue Computing / Sensors"
     ],
     "d": [
@@ -1515,7 +1495,7 @@
   "items": [
    {
     "n": [
-     "Implantes y Prótesis",
+     "Implantes y prótesis",
      "Implants and Prosthetics"
     ],
     "d": [
@@ -1525,7 +1505,7 @@
    },
    {
     "n": [
-     "Síntesis Biomédica",
+     "Síntesis biomédica",
      "Biomedical Synthesis"
     ],
     "d": [
@@ -1535,7 +1515,7 @@
    },
    {
     "n": [
-     "Cultivo de Tejidos",
+     "Cultivo de tejidos",
      "Tissue Culture"
     ],
     "d": [
@@ -1545,7 +1525,7 @@
    },
    {
     "n": [
-     "Ingeniería Genética",
+     "Ingeniería genética",
      "Genetic Engineering"
     ],
     "d": [
@@ -1555,12 +1535,22 @@
    },
    {
     "n": [
-     "Ciber-Diagnóstico",
+     "Ciber-diagnóstico",
      "Cyber-Diagnostics"
     ],
     "d": [
      "Detectar rechazos de cibernética, virus neuronales o incompatibilidades de hardware orgánico.",
      "Detecting cybernetic rejection, neural viruses or organic-hardware incompatibilities."
+    ]
+   },
+   {
+    "n": [
+     "Primeros auxilios de campo",
+     "Field First Aid"
+    ],
+    "d": [
+     "Torniquetes, cauterización y estabilización de emergencia sin quirófano.",
+     "Tourniquets, cauterisation and emergency stabilisation without an operating theatre."
     ]
    }
   ]
@@ -1573,7 +1563,7 @@
   "items": [
    {
     "n": [
-     "Armería y Calibración",
+     "Armería y calibración",
      "Gunsmithing and Tuning"
     ],
     "d": [
@@ -1583,7 +1573,7 @@
    },
    {
     "n": [
-     "Forja y Metalurgia",
+     "Forja y metalurgia",
      "Forging and Metallurgy"
     ],
     "d": [
@@ -1593,7 +1583,7 @@
    },
    {
     "n": [
-     "Sastrería Técnica / Balística",
+     "Sastrería técnica / balística",
      "Technical / Ballistic Tailoring"
     ],
     "d": [
@@ -1603,7 +1593,7 @@
    },
    {
     "n": [
-     "Soplado y Química de Vidrio",
+     "Soplado y química de vidrio",
      "Glassblowing and Glass Chemistry"
     ],
     "d": [
@@ -1613,7 +1603,7 @@
    },
    {
     "n": [
-     "Carpintería Táctica",
+     "Carpintería táctica",
      "Tactical Carpentry"
     ],
     "d": [
@@ -1631,7 +1621,7 @@
   "items": [
    {
     "n": [
-     "Conducción Evasiva",
+     "Conducción evasiva",
      "Evasive Driving"
     ],
     "d": [
@@ -1641,7 +1631,7 @@
    },
    {
     "n": [
-     "Embestida de Vehículos",
+     "Embestida de vehículos",
      "Vehicular Ramming"
     ],
     "d": [
@@ -1651,7 +1641,7 @@
    },
    {
     "n": [
-     "Pilotaje de Maquinaria Pesada",
+     "Pilotaje de maquinaria pesada",
      "Heavy Machinery"
     ],
     "d": [
@@ -1661,7 +1651,7 @@
    },
    {
     "n": [
-     "Navegación Marítima",
+     "Navegación marítima",
      "Seamanship"
     ],
     "d": [
@@ -1671,7 +1661,7 @@
    },
    {
     "n": [
-     "Conducción Off-Road / Todo Terreno",
+     "Conducción off-road / todo terreno",
      "Off-Road / All-Terrain"
     ],
     "d": [
@@ -1689,7 +1679,7 @@
   "items": [
    {
     "n": [
-     "Combate Aéreo (Dogfight)",
+     "Combate aéreo (dogfight)",
      "Air Combat (Dogfight)"
     ],
     "d": [
@@ -1699,7 +1689,7 @@
    },
    {
     "n": [
-     "Aterrizaje de Emergencia",
+     "Aterrizaje de emergencia",
      "Emergency Landing"
     ],
     "d": [
@@ -1709,7 +1699,7 @@
    },
    {
     "n": [
-     "Vuelo Rasante / Bajo Radar",
+     "Vuelo rasante / bajo radar",
      "Nap-of-the-Earth / Under the Radar"
     ],
     "d": [
@@ -1719,7 +1709,7 @@
    },
    {
     "n": [
-     "Infiltración Aérea",
+     "Infiltración aérea",
      "Air Insertion"
     ],
     "d": [
@@ -1729,7 +1719,7 @@
    },
    {
     "n": [
-     "Manejo de VTOL / Drones",
+     "Manejo de VTOL / drones",
      "VTOL / Drone Handling"
     ],
     "d": [
@@ -1747,7 +1737,7 @@
   "items": [
    {
     "n": [
-     "Intrusión en Redes (Hacking)",
+     "Intrusión en redes (hacking)",
      "Network Intrusion (Hacking)"
     ],
     "d": [
@@ -1757,12 +1747,12 @@
    },
    {
     "n": [
-     "Ciberseguridad / Defensas",
+     "Ciberseguridad / defensas",
      "Cybersecurity / Defences"
     ],
     "d": [
      "Bloquear intrusiones en tiempo real y rastrear la IP/origen del atacante.",
-     "Blocking intrusions in real time and tracing the attacker's IP or origin."
+     "Blocking intrusions in real time and tracing the attacker’s IP or origin."
     ]
    },
    {
@@ -1777,7 +1767,7 @@
    },
    {
     "n": [
-     "Inyección de Malware",
+     "Inyección de malware",
      "Malware Injection"
     ],
     "d": [
@@ -1787,7 +1777,7 @@
    },
    {
     "n": [
-     "Exfiltración de Datos",
+     "Exfiltración de datos",
      "Data Exfiltration"
     ],
     "d": [
@@ -1805,17 +1795,17 @@
   "items": [
    {
     "n": [
-     "Análisis de Vulnerabilidades",
+     "Análisis de vulnerabilidades",
      "Vulnerability Assessment"
     ],
     "d": [
      "Identificar puntos ciegos en patrullas, cámaras y protocolos de un edificio.",
-     "Finding the blind spots in a building's patrols, cameras and protocols."
+     "Finding the blind spots in a building’s patrols, cameras and protocols."
     ]
    },
    {
     "n": [
-     "Bypass de Biometría",
+     "Bypass de biometría",
      "Biometric Bypass"
     ],
     "d": [
@@ -1825,17 +1815,17 @@
    },
    {
     "n": [
-     "Control de Cámaras / CCTVs",
+     "Control de cámaras / CCTVs",
      "Camera Control / CCTV"
     ],
     "d": [
-     "Bucleado de vídeo, apagado remoto o manipulación de sensores de alarma.",
+     "Vídeo en bucle, apagado remoto o manipulación de sensores de alarma.",
      "Looping footage, remote shutdown or tampering with alarm sensors."
     ]
    },
    {
     "n": [
-     "Desactivación de Explosivos (EOD)",
+     "Desactivación de explosivos (EOD)",
      "Bomb Disposal (EOD)"
     ],
     "d": [
@@ -1845,12 +1835,22 @@
    },
    {
     "n": [
-     "Gestión de Cierres (Lockdown)",
+     "Gestión de cierres (lockdown)",
      "Lockdown Control"
     ],
     "d": [
      "Activar la contención, sellado de puertas blindadas y aislamiento de zonas.",
      "Triggering containment, sealing blast doors and isolating zones."
+    ]
+   },
+   {
+    "n": [
+     "Ganzúa / cerrajería física",
+     "Lockpicking"
+    ],
+    "d": [
+     "Apertura y manipulación de cerraduras mecánicas tradicionales.",
+     "Opening and manipulating traditional mechanical locks."
     ]
    }
   ]
@@ -1863,7 +1863,7 @@
   "items": [
    {
     "n": [
-     "Ráfaga de Energía / Plasma",
+     "Ráfaga de energía / plasma",
      "Energy / Plasma Blast"
     ],
     "d": [
@@ -1873,17 +1873,7 @@
    },
    {
     "n": [
-     "Proyección Astral / Psíquica",
-     "Astral / Psychic Projection"
-    ],
-    "d": [
-     "Separar la conciencia del cuerpo para explorar o comunicarse mentalmente.",
-     "Separating consciousness from the body to scout or communicate mentally."
-    ]
-   },
-   {
-    "n": [
-     "Onda de Choque Kinética",
+     "Onda de choque kinética",
      "Kinetic Shockwave"
     ],
     "d": [
@@ -1893,22 +1883,12 @@
    },
    {
     "n": [
-     "Emanación Focalizada",
+     "Emanación focalizada",
      "Focused Emanation"
     ],
     "d": [
      "Canalizar energía a través de la mirada o las manos para debilitar o paralizar.",
      "Channelling energy through the eyes or hands to weaken or paralyse."
-    ]
-   },
-   {
-    "n": [
-     "Duplicación Ficticia / Ilusión",
-     "Phantom Double / Illusion"
-    ],
-    "d": [
-     "Crear copias intangibles o proyecciones mentales/holográficas de sí mismo.",
-     "Creating intangible copies or mental or holographic projections of oneself."
     ]
    }
   ]
@@ -1921,7 +1901,7 @@
   "items": [
    {
     "n": [
-     "Transmutación Fisiológica",
+     "Transmutación fisiológica",
      "Physiological Transmutation"
     ],
     "d": [
@@ -1931,7 +1911,7 @@
    },
    {
     "n": [
-     "Control Elemental Local",
+     "Control elemental local",
      "Local Elemental Control"
     ],
     "d": [
@@ -1941,7 +1921,7 @@
    },
    {
     "n": [
-     "Telequinesis Fina",
+     "Telequinesis fina",
      "Fine Telekinesis"
     ],
     "d": [
@@ -1951,7 +1931,7 @@
    },
    {
     "n": [
-     "Giro de Fase / Intangibilidad",
+     "Giro de fase / intangibilidad",
      "Phase Shift / Intangibility"
     ],
     "d": [
@@ -1961,12 +1941,22 @@
    },
    {
     "n": [
-     "Aceleración Metabólica",
+     "Aceleración metabólica",
      "Metabolic Acceleration"
     ],
     "d": [
      "Incrementar la velocidad de reacción y desplazamiento durante unos instantes.",
      "Boosting reaction and movement speed for a few moments."
+    ]
+   },
+   {
+    "n": [
+     "Duplicación ficticia / ilusión",
+     "Phantom Double / Illusion"
+    ],
+    "d": [
+     "Crear copias intangibles o proyecciones mentales/holográficas de sí mismo.",
+     "Creating intangible copies or mental or holographic projections of oneself."
     ]
    }
   ]
@@ -1979,7 +1969,7 @@
   "items": [
    {
     "n": [
-     "Visión del Pasado (Retrocognición)",
+     "Visión del pasado (retrocognición)",
      "Past Sight (Retrocognition)"
     ],
     "d": [
@@ -1989,17 +1979,17 @@
    },
    {
     "n": [
-     "Presciencia Inmediata (Precognición)",
+     "Presciencia inmediata (precognición)",
      "Immediate Foresight (Precognition)"
     ],
     "d": [
      "Sentir el peligro o prever el movimiento del enemigo un segundo antes.",
-     "Sensing danger or foreseeing an enemy's move a second ahead."
+     "Sensing danger or foreseeing an enemy’s move a second ahead."
     ]
    },
    {
     "n": [
-     "Lectura de Auras / Sentidos Místicos",
+     "Lectura de auras / sentidos místicos",
      "Aura Reading / Mystic Senses"
     ],
     "d": [
@@ -2009,7 +1999,7 @@
    },
    {
     "n": [
-     "Clariaudiencia / Clarividencia",
+     "Clariaudiencia / clarividencia",
      "Clairaudience / Clairvoyance"
     ],
     "d": [
@@ -2019,12 +2009,22 @@
    },
    {
     "n": [
-     "Sintonía Empática / Telepatía",
+     "Sintonía empática / telepatía",
      "Empathic Attunement / Telepathy"
     ],
     "d": [
      "Sentir las emociones directas o transmitir pensamientos a otra mente.",
      "Feeling emotions directly or sending thoughts to another mind."
+    ]
+   },
+   {
+    "n": [
+     "Proyección astral / psíquica",
+     "Astral / Psychic Projection"
+    ],
+    "d": [
+     "Separar la conciencia del cuerpo para explorar o comunicarse mentalmente.",
+     "Separating consciousness from the body to scout or communicate mentally."
     ]
    }
   ]
@@ -2037,7 +2037,7 @@
   "items": [
    {
     "n": [
-     "Escudo de Fuerza / Barrera Kinética",
+     "Escudo de fuerza / barrera kinética",
      "Force Shield / Kinetic Barrier"
     ],
     "d": [
@@ -2047,7 +2047,7 @@
    },
    {
     "n": [
-     "Aislamiento Místico / Limpieza",
+     "Aislamiento místico / limpieza",
      "Mystic Ward / Cleansing"
     ],
     "d": [
@@ -2057,7 +2057,7 @@
    },
    {
     "n": [
-     "Reflejo de Daño",
+     "Reflejo de daño",
      "Damage Reflection"
     ],
     "d": [
@@ -2067,7 +2067,7 @@
    },
    {
     "n": [
-     "Anclaje Ontológico",
+     "Anclaje ontológico",
      "Ontological Anchor"
     ],
     "d": [
@@ -2077,7 +2077,7 @@
    },
    {
     "n": [
-     "Camino Velado / Inconspicuo",
+     "Camino velado / inconspicuo",
      "Veiled Path / Unseen"
     ],
     "d": [
@@ -2095,7 +2095,7 @@
   "items": [
    {
     "n": [
-     "Pociones de Transmutación",
+     "Pociones de transmutación",
      "Transmutation Potions"
     ],
     "d": [
@@ -2105,7 +2105,7 @@
    },
    {
     "n": [
-     "Ungüentos y Aceites Tácticos",
+     "Ungüentos y aceites tácticos",
      "Tactical Salves and Oils"
     ],
     "d": [
@@ -2115,7 +2115,7 @@
    },
    {
     "n": [
-     "Gases y Vapores Reactivos",
+     "Gases y vapores reactivos",
      "Reactive Gases and Vapours"
     ],
     "d": [
@@ -2125,7 +2125,7 @@
    },
    {
     "n": [
-     "Catalizadores de Poder",
+     "Catalizadores de poder",
      "Power Catalysts"
     ],
     "d": [
@@ -2135,7 +2135,7 @@
    },
    {
     "n": [
-     "Polvos de Revelación",
+     "Polvos de revelación",
      "Revealing Powders"
     ],
     "d": [
@@ -2153,7 +2153,7 @@
   "items": [
    {
     "n": [
-     "Atadura de Entidades / Familiares",
+     "Atadura de entidades / familiares",
      "Binding Entities / Familiars"
     ],
     "d": [
@@ -2163,7 +2163,7 @@
    },
    {
     "n": [
-     "Apertura de Portales / Desplazamiento",
+     "Apertura de portales / desplazamiento",
      "Portal Opening / Displacement"
     ],
     "d": [
@@ -2173,7 +2173,7 @@
    },
    {
     "n": [
-     "Invocación de Elementales",
+     "Invocación de elementales",
      "Elemental Summoning"
     ],
     "d": [
@@ -2183,7 +2183,7 @@
    },
    {
     "n": [
-     "Llamado de Entidades Menores",
+     "Llamado de entidades menores",
      "Calling Lesser Entities"
     ],
     "d": [
@@ -2193,7 +2193,7 @@
    },
    {
     "n": [
-     "Banquete / Suministro Místico",
+     "Banquete / suministro místico",
      "Feast / Mystic Provision"
     ],
     "d": [
@@ -2211,7 +2211,7 @@
   "items": [
    {
     "n": [
-     "Inscripción de Runas / Glifos",
+     "Inscripción de runas / glifos",
      "Rune / Glyph Inscription"
     ],
     "d": [
@@ -2221,7 +2221,7 @@
    },
    {
     "n": [
-     "Imbuir Propiedades",
+     "Imbuir propiedades",
      "Imbue Properties"
     ],
     "d": [
@@ -2231,7 +2231,7 @@
    },
    {
     "n": [
-     "Talismanes de Salvaguarda",
+     "Talismanes de salvaguarda",
      "Warding Talismans"
     ],
     "d": [
@@ -2241,7 +2241,7 @@
    },
    {
     "n": [
-     "Forja de Objetos Místicos",
+     "Forja de objetos místicos",
      "Forging Mystic Items"
     ],
     "d": [
@@ -2251,7 +2251,7 @@
    },
    {
     "n": [
-     "Sellado de Zonas",
+     "Sellado de zonas",
      "Zone Sealing"
     ],
     "d": [
@@ -2269,7 +2269,7 @@
   "items": [
    {
     "n": [
-     "Pacto de Sangre / Lealtad",
+     "Pacto de sangre / lealtad",
      "Blood Pact / Loyalty"
     ],
     "d": [
@@ -2279,7 +2279,7 @@
    },
    {
     "n": [
-     "Transferencia de Vitalidad",
+     "Transferencia de vitalidad",
      "Vitality Transfer"
     ],
     "d": [
@@ -2289,7 +2289,7 @@
    },
    {
     "n": [
-     "Maldición de Daño Compartido",
+     "Maldición de daño compartido",
      "Shared Pain Curse"
     ],
     "d": [
@@ -2299,7 +2299,7 @@
    },
    {
     "n": [
-     "Ancla Psíquica / Rastreación",
+     "Ancla psíquica / rastreo",
      "Psychic Anchor / Tracking"
     ],
     "d": [
@@ -2309,12 +2309,12 @@
    },
    {
     "n": [
-     "Ruptura de Vínculos / Exorcismo",
+     "Ruptura de vínculos / exorcismo",
      "Severing Bonds / Exorcism"
     ],
     "d": [
      "Romper lazos místicos, dominaciones mentales o contratos arcanos ajenos.",
-     "Breaking other people's mystic ties, mental domination or arcane contracts."
+     "Breaking other people’s mystic ties, mental domination or arcane contracts."
     ]
    }
   ]

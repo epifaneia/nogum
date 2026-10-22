@@ -40,7 +40,7 @@ SOSPECHOSOS = {
    'Marvel', 'DC Comics', 'Batman', 'Superman', 'Spider', 'Hombre Araña', 'Iron Man',
    'Thanos', 'Gema del Infinito', 'Infinity Stone', 'Vengadores', 'Avengers',
    'Liga de la Justicia', 'Justice League', 'X-Men', 'Patrulla-X', 'Watchmen',
-   'Homelander', 'Patria', 'Kryptonita', 'Kryptonite', 'Batmóvil', 'Batmobile',
+   'Homelander', 'Patria', 'The Boys', 'Kryptonita', 'Kryptonite', 'Batmóvil', 'Batmobile',
    'Capa de Levitación', 'Cloak of Levitation', 'Mjolnir', 'Thor', 'Hulk'],
  'Terror': [
    'Cthulhu', 'Lovecraft', 'Necronomic', 'Innsmouth', 'Arkham', 'Miskatonic',

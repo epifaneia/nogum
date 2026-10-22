@@ -250,14 +250,18 @@ OLDIDS = {'ch2-llave': 'ch4-llave', 'ch2-rejilla': 'ch3-ambitos', 'ch3-economia'
           'ch7-disonancia': 'ch8-disonancia', 'ch8-baul': 'ch9-baul', 'ch8-recetas': 'ch9-recetas',
           'ch8-skills': 'ch9-skills', 'ch8-tablas': 'ch9-tablas', 'ch8b': 'ch9b'}
 
-def fix_cross(body, me, mode):
+def fix_cross(body, me, mode, lang='es'):
+    """Un enlace a un apartado de otra pieza lleva a ese apartado, no solo a
+    la portada de la pieza: se conserva el ancla. En ingles, ademas, la otra
+    pieza se abre en ingles (?lang=en), salvo en claude.ai, que no lo pasa."""
     def rep(m):
         i = m.group(1)
         if i in IDS[me]: return m.group(0)
         for p, s in IDS.items():
             if p != me and i in s:
                 tgt = '' if mode in ('local', 'web') else ' target="_blank" rel="noopener"'
-                return f'href="{href_for(p, mode)}"{tgt}'
+                q = '?lang=en' if lang == 'en' and mode in ('local', 'web') else ''
+                return f'href="{href_for(p, mode)}{q}#{i}"{tgt}'
         return m.group(0)
     return re.sub(r'href="#([^"]+)"', rep, body)
 
@@ -291,7 +295,7 @@ def build(me, mode):
         b = c['src'][l]
         if me == 'cuaderno':
             b = re.sub(r'href="#([^"]+)"', lambda m: 'href="#%s"' % OLDIDS.get(m.group(1), m.group(1)), b)
-        b = fix_cross(b, me, mode)
+        b = fix_cross(b, me, mode, l)
         if me != 'cuaderno': b = limpia_editorial(b)
         b = con_pack(b, me, mode, l)
         b = con_foto(b, me, mode, l)

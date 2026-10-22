@@ -56,8 +56,8 @@
 .a4{width:min(210mm,100%);min-height:297mm;margin:0 auto 18px;background:var(--paper);border:1px solid var(--rule);box-shadow:var(--shadow);padding:clamp(14px,3.5vw,13mm) clamp(14px,3.5vw,13mm) 18mm;position:relative}
 .pgno{position:absolute;bottom:7mm;left:0;right:0;text-align:center;font:600 11px/1 var(--mono);color:var(--ink-3)}
 .a4 .sec:first-child{margin-top:0}
-.skillgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-@media (max-width:760px){.skillgrid{grid-template-columns:1fr}}
+/* un Ambito por fila: con dos, las Firmas no caben (los nombres y su select se pisan) */
+.skillgrid{display:grid;grid-template-columns:1fr;gap:8px}
 .acard{border:1.5px solid var(--ink-3);border-radius:10px;overflow:hidden;break-inside:avoid}
 .acard.null{border-style:dashed;border-color:var(--red)}
 .acard-h{display:flex;align-items:center;gap:8px;padding:6px 10px;background:var(--rule-2)}
@@ -77,6 +77,8 @@
 .srow.dom .nm{font-weight:600;font-size:13.5px}
 .srow.fir{padding-left:10px}
 .srow.fir select{flex:1;min-width:0;font-size:11.5px;padding:1px 3px}
+.fown{padding:0 0 3px 10px}
+.fown input{width:100%;box-sizing:border-box;font-size:11.5px;padding:2px 5px}
 .meter{display:flex;gap:2px;flex:none}
 .meter button{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--ink-2);background:var(--paper);padding:0}
 .meter button.on{background:var(--red);border-color:var(--red)}
@@ -1088,8 +1090,10 @@ document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListene
 var root = document.documentElement, th = load('nogum-theme-app', null); if (th) root.setAttribute('data-theme', th);
 $('themeBtn').addEventListener('click', function(){ var c = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light'); var n = c==='dark'?'light':'dark'; root.setAttribute('data-theme', n); save('nogum-theme-app', n); });
 // la Configuracion: desde su boton y desde el indicador de IA («Sin IA» lleva a donde se arregla)
-function abreCfg(){ S.tab = 'cfg'; S.form = null; persist(); render(); window.scrollTo(0, 0); }
-$('cfgBtn').addEventListener('click', abreCfg);
+// el boton de Ajustes abre y cierra: con los Ajustes abiertos, vuelve a donde estabas
+var cfgVuelta = 'tpl';
+function abreCfg(){ if (S.tab !== 'cfg') cfgVuelta = S.tab; S.tab = 'cfg'; S.form = null; persist(); render(); window.scrollTo(0, 0); }
+$('cfgBtn').addEventListener('click', function(){ if (S.tab !== 'cfg') return abreCfg(); S.tab = cfgVuelta || 'tpl'; persist(); render(); window.scrollTo(0, 0); });
 $('aiStatus').addEventListener('click', abreCfg);
 
 /* Las otras tres piezas, para que la app no sea un callejon sin salida.
@@ -2245,7 +2249,10 @@ function skillGrid(c){
         body += '<div class="srow dis' + (fdis ? ' folded' : '') + '">' + dots(2, sOn ? 2 : (dOn ? 1 : 0), (!blank && dOn) ? [2] : [], 'data-dis="' + sk + '"') + '<span class="nm">' + esc(pick(s)) + (fdis ? ' <span class="fold">' + esc(t('plegada +4','folded +4')) + '</span>' : '') + '</span>' + (sOn ? '<button type="button" class="plus noprint" data-addf="' + sk + '" title="' + esc(t('Añadir firma','Add signature')) + '">+</button>' : '') + '<span class="bonus' + ((!sOn && torpe) ? ' neg' : '') + '">' + (sOn ? '+2' : (torpe ? '−1' : '')) + '</span></div>';
         if (!blank) c.fir.forEach(function(f, fi){
           if (f.key !== sk) return; best = Math.max(best, 4);
-          body += '<div class="srow fir">' + dots(4, 4, [4], 'data-flv="' + fi + '"') + '<select data-fsel="' + fi + '"><option value="">' + esc(t('Firma…','Signature…')) + '</option>' + firmaList(sk).map(function(x, xi){ return '<option value="' + xi + '"' + (String(f.s) === String(xi) ? ' selected' : '') + ' title="' + esc(pick(x.d)) + '">' + esc(pick(x.n)) + '</option>'; }).join('') + '</select><button type="button" class="plus noprint" data-fdel="' + fi + '" title="' + esc(t('Quitar','Remove')) + '">×</button><span class="bonus">+4</span></div>' + (firmaOf(f) ? '<div class="fdesc">' + esc(pick(firmaOf(f).d)) + '</div>' : '');
+          body += '<div class="srow fir">' + dots(4, 4, [4], 'data-flv="' + fi + '"') + '<select data-fsel="' + fi + '"><option value="">' + esc(t('Firma…','Signature…')) + '</option>' + firmaList(sk).map(function(x, xi){ return '<option value="' + xi + '"' + (String(f.s) === String(xi) ? ' selected' : '') + ' title="' + esc(pick(x.d)) + '">' + esc(pick(x.n)) + '</option>'; }).join('') +
+            '<option value="own"' + (f.s === 'own' ? ' selected' : '') + '>' + esc(t('Escribir la mía…','Write my own…')) + '</option></select>' +
+            '<button type="button" class="plus noprint" data-fdel="' + fi + '" title="' + esc(t('Quitar','Remove')) + '">×</button><span class="bonus">+4</span></div>' +
+            (f.s === 'own' ? '<div class="fown"><input type="text" data-ftxt="' + fi + '" maxlength="60" placeholder="' + esc(t('Tu Firma: lo concreto que haces de maravilla','Your Signature: the specific thing you do brilliantly')) + '" aria-label="' + esc(t('Nombre de tu Firma','Your Signature name')) + '" value="' + esc(f.t || '') + '"></div>' : '') + (firmaOf(f) ? '<div class="fdesc">' + esc(pick(firmaOf(f).d)) + '</div>' : '');
         });
       });
       body += '</div>';
@@ -2287,11 +2294,15 @@ function keysBlock(c){
   /* 4.1-4.4: la Llave es toda una Disciplina, contra cualquier objetivo (la
      entera, n²); Limitada, contra una sola cosa o solo el daño (la mitad, al
      alza, minimo 1); la prestada y la de un momento las da la ficcion, duran
-     una escena y no se pagan. La «ancha» y la «estrecha» se retiraron: una
-     Llave vieja «ancha» se lee como de un momento. */
+     una escena y no se pagan. Potenciada y Desatada son el Ajuste hacia
+     arriba (5.5): x2 y x3, para lo que la cuenta no ha pagado; el Acelerado
+     no tiene Ajuste. La «ancha» y la «estrecha» se retiraron: una Llave vieja
+     «ancha» se lee como de un momento. */
   var forms = [['all', t('Entera · toda la Disciplina, contra todo','Full · the whole Discipline, against everything')],
-               ['dis', t('Limitada · contra una sola cosa, o solo el daño (la mitad)','Limited · against a single thing, or damage only (half)')],
-               ['mom', t('Prestada o de un momento · una escena, no se paga','Borrowed or momentary · one scene, not paid for')]];
+               ['dis', t('Limitada · contra una sola cosa, o solo el daño (la mitad)','Limited · against a single thing, or damage only (half)')]];
+  if (!isAcc()) forms.push(['pot', t('Potenciada · hace además algo que la cuenta no paga (×2)','Enhanced · also does something the tally does not pay for (×2)')],
+                           ['des', t('Desatada · sin condiciones, ni la ficción te la quita (×3)','Unleashed · no conditions, not even the fiction takes it away (×3)')]);
+  forms.push(['mom', t('Prestada o de un momento · una escena, no se paga','Borrowed or momentary · one scene, not paid for')]);
   var h = '<div class="sec">' + esc(t('Bote aparte y Llaves','Separate pot and Keys')) + '<span class="note">' +
     esc(t('El bote aparte: 5 Llaves o +1 de Rejilla en un Ámbito (de 1 a 2 cuesta 5), más o menos lo que dé la experiencia de salida. La Rejilla por encima de 1 cuesta ' + (llana() ? '5·(3n−2) por Ámbito, con la escalera llana del Baúl: +1, 5; +2, 20; +3, 35' : '5·n² por Ámbito: +1, 5; +2, 20; +3, 45') + '. No se cambia por puntos. ¿Dudas? ¿Le gana a cualquier cosa de ese Ámbito, o solo a una? Si es solo a una, son Llaves (3.1).',
           'The separate pot: 5 Keys or +1 Grid in one Sphere (1 to 2 costs 5), plus or minus whatever starting experience gives. Grid above 1 costs ' + (llana() ? '5·(3n−2) per Sphere, with the Chest’s flat ladder: +1, 5; +2, 20; +3, 35' : '5·n² per Sphere: +1, 5; +2, 20; +3, 45') + '. It does not trade for points. Unsure? Does it beat anything in that Sphere, or just one thing? If just one thing, those are Keys (3.1).')) + '</span></div>';
@@ -2306,7 +2317,7 @@ function keysBlock(c){
       'Before you leave it like that: does it beat anything in that Sphere, or just one thing? If just one thing —their fans, their computer, vampires—, it is a Key, not Grid (3.1).')) + '</p>';
   if (!c) {
     h += '<div class="keys"><div class="potrow"><button type="button" class="potb" disabled>' + esc(t('+1 Rejilla = 5 Llaves','+1 Grid = 5 Keys')) + '</button><span class="kcount">__ / ' + Math.max(0, 5 + keysExtra()) + ' ' + esc(t('Llaves','Keys')) + '</span></div>';
-    for (var i = 0; i < 5; i++) h += '<div class="krow blank"><span class="line"></span><span class="kf">' + esc(t('Disciplina · nivel (□ Limitada · □ de un momento)','Discipline · level (□ Limited · □ momentary)')) + '</span><span class="kc">□</span></div>';
+    for (var i = 0; i < 5; i++) h += '<div class="krow blank"><span class="line"></span><span class="kf">' + esc(isAcc() ? t('Disciplina · nivel (□ Limitada · □ de un momento)','Discipline · level (□ Limited · □ momentary)') : t('Disciplina · nivel (□ Limitada · □ ×2 · □ ×3 · □ de un momento)','Discipline · level (□ Limited · □ ×2 · □ ×3 · □ momentary)')) + '</span><span class="kc">□</span></div>';
     return h + '</div>';
   }
   var used = keysUsed(c), have = keysHave(c), gear = keysGear(c), kg = keysGrid(c), pai = potAi(c);
@@ -2327,7 +2338,8 @@ function keysBlock(c){
       '<button type="button" class="plus noprint" data-kdel="' + ki + '">×</button></div>';
   });
   h += '<div class="krow noprint"><button type="button" class="tool" data-kadd="1">' + esc(t('Añadir Llave','Add Key')) + '</button>' +
-    '<span class="note">' + esc(t('Una Llave es toda una Disciplina, con sus Firmas dentro. A un nivel, la Limitada cuesta lo mismo que la entera: no se recomienda limitarla (4.3).','A Key is a whole Discipline, with its Signatures inside. At one level a Limited Key costs the same as the full one: limiting it is not recommended (4.3).')) +
+    '<span class="note">' + esc(t('Una Llave es toda una Disciplina, con sus Firmas dentro. A un nivel, la Limitada cuesta lo mismo que la entera: no se recomienda limitarla (4.3).','A Key is a whole Discipline, with its Signatures inside. At one level a Limited Key costs the same as the full one: limiting it is not recommended (4.3).') +
+      (isAcc() ? '' : t(' Potenciada y Desatada (4.3) son el Ajuste (5.5): para lo que se siente demasiado poderoso, y solo por lo que la cuenta no ha pagado ya.',' Enhanced and Unleashed (4.3) are the Adjustment (5.5): for what feels too powerful, and only for what the tally has not already paid for.'))) +
     (gear ? ' ' + esc(t('El equipo se lleva ','Equipment takes ') + gear + t(' Llaves.',' Keys.')) : '') + '</span></div>';
   return h + '</div>';
 }
@@ -2379,7 +2391,9 @@ function llana(){ return !isAcc() && baul().indexOf(16) > -1; }
 function escalera(n){ return n <= 0 ? 0 : llana() ? 3 * n - 2 : n * n; }
 function limitada(n){ return n <= 0 ? 0 : Math.max(1, Math.ceil(escalera(n) / 2)); }
 function keyMom(k){ return k.w === 'mom' || k.w === 'amb'; }
-function keyCost(k){ var n = +k.lv || 1; return keyMom(k) ? 0 : k.w === 'dis' ? limitada(n) : escalera(n); }
+function keyCost(k){ var n = +k.lv || 1; if (keyMom(k)) return 0; if (k.w === 'dis') return limitada(n);
+  // el Ajuste hacia arriba (5.5); en el Acelerado no existe y vale como entera
+  return escalera(n) * (isAcc() ? 1 : k.w === 'des' ? 3 : k.w === 'pot' ? 2 : 1); }
 function keysOwn(c){ var n = 0; (c.klist || []).forEach(function(k){ n += keyCost(k); }); return n; }
 /* Los precios del Bazar son para un portador de nivel 1 (9.3). Para otro
    nivel cambia lo que el objeto te sube, x = su nivel menos el tuyo:
@@ -2829,7 +2843,9 @@ function analyse(){
 /* ======================= SIGNATURES ======================= */
 function firmaList(sk){ var p = String(sk).split('.'); var e = DATA.firmas[(+p[0]) * 8 + (+p[1]) * 4 + (+p[2])]; return e ? e.items : []; }
 function disName(sk){ var p = String(sk).split('.'); return AMB[+p[0]].doms[+p[1]].dis[+p[2]]; }
-function firmaOf(f){ return (f.s === undefined || f.s === null || f.s === '') ? null : firmaList(f.key)[+f.s] || null; }
+// una Firma propia (s = 'own') no esta en el catalogo: solo tiene su nombre, en f.t
+function firmaOf(f){ return (f.s === undefined || f.s === null || f.s === '' || f.s === 'own') ? null : firmaList(f.key)[+f.s] || null; }
+function firmaNom(f){ var it = firmaOf(f); return it ? pick(it.n) : (f.s === 'own' && f.t) ? f.t : t('Firma sin elegir','Unchosen signature'); }
 
 /* ======================= SCENE TONE (quick change) ======================= */
 var sceneOpen = false;
@@ -3126,7 +3142,7 @@ function skillsOf(c){
       d.dis.forEach(function(s, si){ if (c.dis[ai + '.' + di + '.' + si]) o.push({k:'s' + ai + di + si, n:pick(d.n) + ' › ' + pick(s), b:Math.max(2, bonoCol(c, ai, di), folds(c).dis[ai + '.' + di + '.' + si] ? 4 : 2)}); });
     });
   });
-  c.fir.forEach(function(f, fi){ var it = firmaOf(f); o.push({k:'f' + fi, n:(it ? pick(it.n) : t('Firma sin elegir','Unchosen signature')) + ' (' + pick(disName(f.key)) + ')', b:f.lv}); });
+  c.fir.forEach(function(f, fi){ o.push({k:'f' + fi, n:firmaNom(f) + ' (' + pick(disName(f.key)) + ')', b:f.lv}); });
   return o;
 }
 function diceBonus(){
@@ -3893,7 +3909,8 @@ function render(keep){
     sh.querySelectorAll('[data-gj]').forEach(function(x){ x.addEventListener('change', function(){ c.gj = c.gj || {}; c.gj[x.getAttribute('data-gj')] = +x.value; persist(); render(true); }); });
     sh.querySelectorAll('[data-potamb]').forEach(function(x){ x.addEventListener('change', function(){ c.potAmb = x.value; persist(); render(true); }); });
     sh.querySelectorAll('select[data-grid]').forEach(function(s){ s.addEventListener('change', function(){ c.grid[s.getAttribute('data-grid')] = +s.value; persist(); }); });
-    sh.querySelectorAll('select[data-fsel]').forEach(function(s){ s.addEventListener('change', function(){ c.fir[+s.getAttribute('data-fsel')].s = s.value; persist(); render(true); }); });
+    sh.querySelectorAll('select[data-fsel]').forEach(function(s){ s.addEventListener('change', function(){ c.fir[+s.getAttribute('data-fsel')].s = s.value; persist(); render(true); if (s.value === 'own') { var x = sh.ownerDocument.querySelector('[data-ftxt="' + s.getAttribute('data-fsel') + '"]'); if (x) x.focus(); } }); });
+    sh.querySelectorAll('input[data-ftxt]').forEach(function(x){ x.addEventListener('input', function(){ c.fir[+x.getAttribute('data-ftxt')].t = x.value; persist(); }); });
     var gs = groups();
     $('gType').addEventListener('change', function(){ var g = gs[+this.value], it = $('gItem'); it.innerHTML = '<option value="">' + esc(t('Objeto…','Item…')) + '</option>' + (g ? g.items.map(function(x, i){ return '<option value="' + i + '">' + esc(pick(x.n)) + ' — ' + esc(pick(x.d)) + '</option>'; }).join('') : ''); it.disabled = !g; $('gAdd').disabled = true; });
     $('gItem').addEventListener('change', function(){ $('gAdd').disabled = this.value === ''; });

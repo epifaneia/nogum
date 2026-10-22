@@ -293,7 +293,13 @@ El autor contestó en un documento las 25 preguntas de `PREGUNTAS-v2.md` (raíz)
 - **Crítico del atacante y pifia del defensor a la vez (22 oct).** **El autor:**
   > Se suman: crítico y pifia del defensor dan +2 al daño.
 
-- **Preguntas abiertas contestadas desde las seis ideas (22 oct).** El autor pidió al asistente contestarlas él, «como test de si la lógica es fuerte», y las confirmó todas: **«todo bien»**. Están en `src/v2/DECISIONES-ultimas.md`: el hechizo de Ysolde paga 1 Llave aunque tenga Arcano 2; la escalera llana abarata también la Rejilla (5·(3n−2)); fuera la «escala de la partida» de la App; las Firmas, en su Disciplina; hackear es Técnico; sin fila +0 en Recursos; sin porcentaje con bono 0 en las tarjetas; «permiso narrativo» solo para la Llave (el cerrojo pasa a «que la historia lo permita»); el Acelerado como está; el Baúl con coste de atención y cuándo estorba; «Ámbito» con mayúscula; nombres en castellano con mayúscula solo inicial.
+- **Preguntas abiertas contestadas desde las seis ideas (22 oct).** El autor pidió al asistente contestarlas él, «como test de si la lógica es fuerte», y las confirmó todas: **«todo bien»**.
+
+- **La Llave potenciada (23 oct).** Va en 4.3, debajo de la Llave Limitada, con los multiplicadores del Ajuste (Potenciada ×2, Desatada ×3), una lista corta de ×2 y otra más larga de ×3. **El autor:**
+  > A veces lo que hace tu poder no encaja exactamente con una llave. Se siente DEMASIADO poderoso, casi tramposo. Como podemos utilizar este manual para cualquier poder, habilidad, conjuro, o ventaja sobrenatural, queremos asegurarnos de que hay un precio para tu idea. Y hablamos de los multiplicadores. Muy breve. […] El sigilo que te haga invisible, inaudible, indetectable a ki, cámaras de calor, etc. No es justo que cueste igual que una capa de invisibilidad. Y no es un salto ×100. No habla de afectar a más gente. Solo a uno cada vez. El que mira.
+  > si, me gusta más sigilo como 1 desatado que como una rejilla más. Y cámbialo en todo.
+
+  Consecuencia: «indetectable por cualquier medio» deja de ser Sigilo +2 (4 Llaves, T179) y pasa a **Sigilo +1 Desatada: 3 Llaves**, en 4.3, 4.6 y 5.4–5.5. La invisibilidad queda en 1 / 2 / 3 Llaves (capa, a voluntad, indetectable). Están en `src/v2/DECISIONES-ultimas.md`: el hechizo de Ysolde paga 1 Llave aunque tenga Arcano 2; la escalera llana abarata también la Rejilla (5·(3n−2)); fuera la «escala de la partida» de la App; las Firmas, en su Disciplina; hackear es Técnico; sin fila +0 en Recursos; sin porcentaje con bono 0 en las tarjetas; «permiso narrativo» solo para la Llave (el cerrojo pasa a «que la historia lo permita»); el Acelerado como está; el Baúl con coste de atención y cuándo estorba; «Ámbito» con mayúscula; nombres en castellano con mayúscula solo inicial.
 
 ---
 
