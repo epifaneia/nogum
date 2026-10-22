@@ -228,15 +228,12 @@ def limpia_editorial(body):
     body = re.sub(r'\(\s*' + ED + r'\s*\)', '', body)
     body = re.sub(r'\s*,\s*' + ED + r'(?=\s*\))', '', body)
     body = re.sub(r'\((?:con\s+|with\s+|under\s+)?' + ED + r'[:,]\s*', '(', body)
-    # 2c. las marcas de origen se quedan solo con su codigo (T…, ED-…, C·…):
-    #     las que llevan texto («Aprobado por el autor», «Borrador»…) son
-    #     notas de edicion y van al Cuaderno, no al manual
-    COD = r'T\d+(?:[–-]T?\d+)?|ED-[A-Z]?\d+|C·[a-z0-9]+'
-    def src(m):
-        if re.fullmatch(r'(?:\s*(?:' + COD + r')(?:\s*·\s*[a-z0-9]+)?\s*[,·]?\s*)+', m.group(1)): return m.group(0)
-        codes = re.findall(COD, m.group(1))
-        return ('<span class="src">' + ' '.join(codes) + '</span>') if codes else ''
-    body = re.sub(r'<span class="src">([^<]*)</span>', src, body)
+    # 2c. las marcas de origen (T…, ED-…, C·…) son la trazabilidad del
+    #     proyecto: viven en el Cuaderno. En los libros parecian notas de un
+    #     documento de trabajo, asi que fuera, y con ellas la leyenda que las
+    #     explicaba en la portada.
+    body = re.sub(r'\s*<span class="src">[^<]*</span>', '', body)
+    body = re.sub(r'<div class="legend">.*?</div>\n?', '', body, flags=re.S)
     # 3. parentesis y comas que quedan colgando
     body = re.sub(r'\(\s*\)', '', body)
     body = re.sub(r'\s+([.,;:])', r'\1', body)
