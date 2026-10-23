@@ -1,31 +1,41 @@
 // Graba el vídeo de demostración de la App: una partida de NOGUM Acelerado en
 // Innsmouth, de la portada a la primera tirada. Cursor y subtítulos van
 // inyectados en la página, así que salen en la captura tal cual.
-//   node grabar.js        -> graba (frames + tiempos + subtítulos .srt)
-//   node grabar.js seco   -> solo hace fotos de control, sin grabar
+//   node grabar.js           -> graba en español (frames + tiempos + subtítulos .srt)
+//   node grabar.js en        -> la misma partida, con la App y los textos en inglés
+//   node grabar.js [en] seco -> solo hace fotos de control, sin grabar
 // Necesita puppeteer-core, Chrome y la web servida en http://localhost:8777
 // (python -m http.server 8777 desde la raíz del repo). Después, con ffmpeg:
 //   ffmpeg -f concat -safe 0 -i <tmp>/nogum-video/lista.txt -vf "fps=30,scale=1920:1080:flags=lanczos:in_range=pc:out_range=tv,setsar=1,format=yuv420p" -c:v libx264 -preset slow -crf 18 -movflags +faststart nogum-app-innsmouth.mp4
 const puppeteer = require('puppeteer-core'); const path = require('path'); const fs = require('fs');
-const SECO = process.argv[2] === 'seco';
+const SECO = process.argv.includes('seco');
+const EN = process.argv.includes('en'), LANG = EN ? 'en' : 'es';
+// cada texto del guion, en los dos idiomas
+const L = (es, en) => EN ? en : es;
 // los fotogramas van a la carpeta temporal: son miles y no se versionan
-const OUT = path.join(require('os').tmpdir(), 'nogum-video'); const FR = path.join(OUT, 'frames');
+const OUT = path.join(require('os').tmpdir(), 'nogum-video' + (EN ? '-en' : '')); const FR = path.join(OUT, 'frames');
 fs.rmSync(OUT, { recursive: true, force: true }); fs.mkdirSync(FR, { recursive: true });
 const ESPERA = ms => new Promise(r => setTimeout(r, ms));
 
-const LORE = fs.readFileSync(path.join(__dirname, 'innsmouth.txt'), 'utf8').split('\n=====\n');
+const LORE = fs.readFileSync(path.join(__dirname, EN ? 'innsmouth-en.txt' : 'innsmouth.txt'), 'utf8').split('\n=====\n');
 
 process.on('unhandledRejection', async e => { console.error(e.message); try { await global.pg.screenshot({ path: path.join(OUT, 'FALLO.png') }); } catch (x) {} process.exit(1); });
 (async () => {
   const b = await puppeteer.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: 'new', defaultViewport: null, args: ['--hide-scrollbars', '--force-color-profile=srgb', '--force-device-scale-factor=1.5', '--window-size=1296,815'] });
   const p = (await b.pages())[0] || await b.newPage(); global.pg = p;
   const errs = []; p.on('pageerror', e => errs.push(e.message));
+  // los dados, con semilla fija: las dos versiones del tráiler sacan la misma tirada
+  await p.evaluateOnNewDocument(() => {
+    let x = 20261023;
+    const azar = () => { x = (x + 0x6D2B79F5) | 0; let t = Math.imul(x ^ x >>> 15, 1 | x); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return (t ^ t >>> 14) >>> 0; };
+    crypto.getRandomValues = a => { for (let i = 0; i < a.length; i++) a[i] = azar(); return a; };
+  });
   // la mesa arranca vacía; solo la historia de la campaña viene escrita de casa
-  await p.goto('http://localhost:8777/docs/app.html?lang=es', { waitUntil: 'networkidle0' });
-  await p.evaluate((lore, secreto) => {
-    localStorage.clear(); localStorage.setItem('nogum-lang', 'es'); localStorage.setItem('nogum-theme-app', '"light"');
-    localStorage.setItem('nogum-app3', JSON.stringify({ lang: 'es', story: { pc: ['', '', '', '', ''], common: lore, secret: secreto, pw: null } }));
-  }, LORE[0].trim(), LORE[1].trim());
+  await p.goto('http://localhost:8777/docs/app.html?lang=' + LANG, { waitUntil: 'networkidle0' });
+  await p.evaluate((lore, secreto, lang) => {
+    localStorage.clear(); localStorage.setItem('nogum-lang', lang); localStorage.setItem('nogum-theme-app', '"light"');
+    localStorage.setItem('nogum-app3', JSON.stringify({ lang: lang, story: { pc: ['', '', '', '', ''], common: lore, secret: secreto, pw: null } }));
+  }, LORE[0].trim(), LORE[1].trim(), LANG);
   await p.goto('http://localhost:8777/docs/app.html', { waitUntil: 'networkidle0' });
   await p.evaluate(() => document.fonts.ready);
   const caja = await p.evaluate(() => [innerWidth, innerHeight, devicePixelRatio]);
@@ -82,8 +92,11 @@ process.on('unhandledRejection', async e => { console.error(e.message); try { aw
   const ahora = () => Date.now() / 1000 - inicio;
 
   // un subtítulo se queda al menos lo que tarda en leerse
+  // antes de cada frase, un respiro: la voz no tiene que encadenarlas
+  const RESPIRO = 670;
   async function sub(txt, minimo) {
     const falta = subHasta - Date.now(); if (falta > 0) await ESPERA(falta);
+    await ESPERA(RESPIRO);
     await asegura();
     if (subAbierto) { subAbierto.fin = ahora(); }
     await p.evaluate(h => { const s = document.getElementById('vsub'); s.classList.remove('on'); }, txt);
@@ -107,7 +120,8 @@ process.on('unhandledRejection', async e => { console.error(e.message); try { aw
     await p.waitForSelector(sel, { visible: true, timeout: 8000 });
     const fuera = await p.evaluate(s => {
       const r = document.querySelector(s).getBoundingClientRect();
-      return r.top < 70 || r.bottom > innerHeight - 150;
+      // arriba, la cabecera fija y la barra del tono tapan unos 100 px
+      return r.top < 150 || r.bottom > innerHeight - 150;
     }, sel);
     if (fuera) {
       await p.evaluate(s => {
@@ -170,54 +184,68 @@ process.on('unhandledRejection', async e => { console.error(e.message); try { aw
   const quitaTitulo = async () => { await p.evaluate(() => { document.getElementById('vtit').classList.remove('on'); document.getElementById('vcur').style.opacity = 1; }); await ESPERA(900); };
 
   // =================== el guion ===================
-  await titulo('NOGUM', 'La App del Director', 'UNA PARTIDA EN TRES MINUTOS', 2600);
+  await titulo('NOGUM', L('La App del Director', 'The GM App'), L('UNA PARTIDA EN TRES MINUTOS', 'A GAME IN THREE MINUTES'), 2600);
   await quitaTitulo();
-  await sub('Esta es la App de NOGUM. Vamos a montar una partida de <b>terror cósmico</b>, de principio a fin.');
+  await sub(L('Esta es la App de NOGUM. Vamos a montar una partida de <b>terror cósmico</b>, de principio a fin.',
+    'This is the NOGUM App. Let’s set up a game of <b>cosmic horror</b>, from start to finish.'));
   await apunta('[data-edi=acelerado]', 1100);
   await foto('bienvenida');
-  await sub('Elegimos <b>NOGUM Acelerado</b>: lo esencial, para jugar esta misma tarde.');
+  await sub(L('Elegimos <b>NOGUM Acelerado</b>: lo esencial, para jugar esta misma tarde.',
+    'We pick <b>NOGUM Accelerated</b>: the essentials, to play this very evening.'));
   await pulsa('[data-edi=acelerado]');
 
   // -- el universo --
-  await sub('Primero, el universo. ¿Tenéis uno conocido en la cabeza?');
+  await sub(L('Primero, el universo. ¿Tenéis uno conocido en la cabeza?',
+    'First, the universe. Do you have a known one in mind?'));
   await pulsa('[data-hub=uni]', 900, 900);
   await pulsa('[data-pk="known|1"]');
   await pulsa('[data-fsig]', 700, 800);
-  await sub('Es un mundo actual, con misterio…');
+  await sub(L('Es un mundo actual, con misterio…',
+    'A present-day world, with mystery…'));
   await pulsa('[data-pk="family|mo"]', 800);
   await pulsa('[data-fsig]', 700, 800);
   await foto('mundos');
-  await sub('…y de los que dan miedo: <b>dioses primigenios, libros prohibidos y locura</b>.');
+  await sub(L('…y de los que dan miedo: <b>dioses primigenios, libros prohibidos y locura</b>.',
+    '…and the frightening kind: <b>elder gods, forbidden books and madness</b>.'));
   await pulsa('[data-pk="world|11"]', 900, 900);
   await pulsa('[data-fsig]', 700, 900);
-  await sub('Dos toques, y la mesa ya sabe qué cabe en su mundo y de qué tamaño son las hazañas.');
+  await sub(L('Dos toques, y la mesa ya sabe qué cabe en su mundo y de qué tamaño son las hazañas.',
+    'Two clicks, and the table already knows what fits in its world and how big its feats can be.'));
   await baja(260, 1400); await foto('universo-fin');
   await pulsa('[data-fsal]@ultimo', 800, 900);
 
   // -- el tono --
-  await sub('Ahora, el tono. No hay preguntas técnicas: hay <b>situaciones</b>, y tú dices qué esperas.');
+  await sub(L('Ahora, el tono. No hay preguntas técnicas: hay <b>situaciones</b>, y tú dices qué esperas.',
+    'Now, the tone. No technical questions: just <b>situations</b>, and you say what you expect.'));
   await pulsa('[data-hub=tono]', 900, 900);
   await foto('tono-1');
-  await sub('Un buen escalador, sin prisa y con buen material. ¿Qué espera la mesa? Que la pared le cobre algo.');
+  await sub(L('Un buen escalador, sin prisa y con buen material. ¿Qué espera la mesa? Que la pared le cobre algo.',
+    'A good climber, in no hurry, with good gear. What does the table expect? That the wall takes its toll.'));
   await pulsa('[data-sc="2"]', 900, 900);
   await pulsa('[data-fsig]', 700, 900);
-  await sub('Un ruido al fondo del pasillo para distraer al guardia. Mira… sin creérselo del todo.');
+  await sub(L('Un ruido al fondo del pasillo para distraer al guardia. Mira… sin creérselo del todo.',
+    'A noise at the end of the corridor to distract the guard. He looks… without quite buying it.'));
   await pulsa('[data-sc="2"]', 900, 900);
   await pulsa('[data-fsig]', 700, 900);
-  await sub('¿La suerte está de vuestro lado? En Innsmouth, <b>no</b>.');
+  await sub(L('¿La suerte está de vuestro lado? En Innsmouth, <b>no</b>.',
+    'Is luck on your side? In Innsmouth, <b>no</b>.'));
   await desliza(1);
   await ESPERA(600);
   await pulsa('[data-fsig]', 700, 900);
   await foto('optimismo');
-  await sub('El universo os pone a prueba. En el Acelerado eso es <b>Terror</b>: el mismo dado, pero solo tres casillas de vida.');
+  await sub(L('El universo os pone a prueba. Queda establecido: <b>tono hostil</b>.',
+    'The universe puts you to the test. It’s settled: <b>a hostile tone</b>.'));
   await pulsa('[data-fsig]', 900, 900);
-  await sub('El caos. Tres sesiones preparando un golpe… y sale a medias. Ni reloj suizo ni ruleta.');
+  await sub(L('El caos. Tres sesiones preparando un golpe… y sale a medias. Ni reloj suizo ni ruleta.',
+    'Chaos. Three sessions planning a heist… and it half works. Neither Swiss watch nor roulette.'));
   await pulsa('[data-sc="3"]', 900, 900);
   await pulsa('[data-fsig]', 700, 900);
-  await sub('Una pelea de taberna sin nada en juego: gana quien tenga suerte, y se rompen dos sillas.');
+  await sub(L('Una pelea de taberna sin nada en juego: gana quien tenga suerte, y se rompen dos sillas.',
+    'A tavern brawl with nothing at stake: luck picks the winner, and two chairs get broken.'));
   await pulsa('[data-sc="3"]', 900, 900);
   await pulsa('[data-fsig]', 700, 900);
-  await sub('¿Los planes se tuercen por donde nadie miraba? No hace falta. Este horror no es caótico: <b>es opresivo</b>.');
+  await sub(L('¿Los planes se tuercen por donde nadie miraba? No hace falta. Esta atmósfera no es caótica: <b>es opresiva</b>.',
+    'Do plans go wrong where nobody was looking? No need. This atmosphere isn’t chaotic: <b>it’s oppressive</b>.'));
   await desliza(2);
   await ESPERA(400);
   await desliza(3);
@@ -225,58 +253,73 @@ process.on('unhandledRejection', async e => { console.error(e.message); try { aw
   await pulsa('[data-fsig]', 700, 900);
   await pulsa('[data-fsig]', 800, 900);
   await foto('tono-fin');
-  await sub('Resultado: <b>Modo Terror</b>. Antes de tirar un solo dado, la mesa ya sabe cómo se va a sentir con ellos en la mano.');
+  await sub(L('Hostil y sin caos: <b>Modo Terror</b>. Antes de tirar un solo dado, la mesa ya sabe cómo se va a sentir con ellos en la mano.',
+    'Hostile, and no chaos: <b>Terror mode</b>. Before a single die is rolled, the table already knows how it will feel holding them.'));
   await ESPERA(1500);
   await pulsa('[data-fsal]@ultimo', 900, 1000);
-  await sub('Así queda la mesa. Todo esto cabe en un Código corto que se comparte con los jugadores.');
+  await sub(L('Así queda la mesa. Todo esto cabe en un Código corto que se comparte con los jugadores.',
+    'That’s the table. All of it fits in a short Code you share with the players.'));
   await baja(560, 1600); await ESPERA(1200); await foto('mesa');
 
   // -- el personaje --
-  await sub('Ahora, un investigador. De la ficha plantilla sale una ficha nueva.');
+  await sub(L('Ahora, un investigador. De la ficha plantilla sale una ficha nueva.',
+    'Now, an investigator. A new sheet comes out of the template sheet.'));
   await pulsa('[data-gotpl]', 900, 1100);
   await baja(380, 1200);
   await pulsa('#createBtn', 900, 1100);
   await escribe('#f-name', 'Frank Delaney');
-  await sub('<b>Frank Delaney</b>, detective privado. Boston, 1927.');
-  await escribe('#f-concept', 'Detective privado de Boston');
+  await sub(L('<b>Frank Delaney</b>, detective privado. Boston, 1927.',
+    '<b>Frank Delaney</b>, private detective. Boston, 1927.'));
+  await escribe('#f-concept', L('Detective privado de Boston', 'Boston private detective'));
   await apunta('#f-concept', 200);
-  await sub('Catorce puntos. Sabe investigar, mirar dos veces y leer lo que no debería…');
+  await sub(L('Catorce puntos. Sabe investigar, mirar dos veces y leer lo que no debería…',
+    'Fourteen points. He knows how to investigate, look twice and read what he shouldn’t…'));
   for (const s of ['[data-dom="1.1"]', '[data-dis="1.1.0"]', '[data-dis="1.1.1"]', '[data-dom="1.0"]', '[data-dis="1.0.2"]']) await pulsa('#pcSheet ' + s, 450, 380);
-  await sub('…moverse sin ruido, sacarle la verdad a un testigo y, si no queda otra, apretar el gatillo.');
+  await sub(L('…moverse sin ruido, sacarle la verdad a un testigo y, si no queda otra, apretar el gatillo.',
+    '…move without a sound, get the truth out of a witness and, if there’s no other way, pull the trigger.'));
   for (const s of ['[data-dom="0.0"]', '[data-dis="0.0.2"]', '[data-dom="2.0"]', '[data-dis="2.0.2"]', '[data-dom="0.1"]', '[data-dis="0.1.3"]']) await pulsa('#pcSheet ' + s, 450, 380);
   await ESPERA(800); await foto('ficha');
 
   // -- el equipo --
-  await sub('El equipo es de quien lo lleva. Se busca por nombre, o por lo que hace.');
+  await sub(L('El equipo es de quien lo lleva. Se busca por nombre, o por lo que hace.',
+    'Gear belongs to whoever carries it. Search by name, or by what it does.'));
   await arriba();
   await pulsa('[data-tab=form]', 800, 900);
   await pulsa('[data-hub=equipo]', 900, 900);
   await pulsa('[data-eqwho]', 800, 900);
-  await escribe('#eqq', 'cámara', 90);
+  await escribe('#eqq', L('cámara', 'camera'), 90);
   await ESPERA(500);
-  await sub('Una cámara, para lo que nadie creería sin pruebas…');
+  await sub(L('Una cámara, para lo que nadie creería sin pruebas…',
+    'A camera, for what nobody would believe without proof…'));
   await pulsa('#eqres [data-eqadd]', 800, 700);
   await foto('camara');
   await p.evaluate(() => { const i = document.getElementById('eqq'); i.select(); });
   await p.keyboard.press('Backspace'); await ESPERA(200);
-  await p.keyboard.type('revólver', { delay: 90 }); await ESPERA(600);
-  await sub('…y un revólver pequeño. Por si las pruebas vienen a buscarle a él.');
+  await p.keyboard.type(L('revólver', 'revolver'), { delay: 90 }); await ESPERA(600);
+  await sub(L('…y un revólver pequeño. Por si las pruebas vienen a buscarle a él.',
+    '…and a small revolver. In case the proof comes looking for him.'));
   await pulsa('#eqres [data-eqadd]', 800, 800);
   await pulsa('[data-eq=cuenta]', 800, 1000);
   await foto('cuenta');
-  await sub('La cuenta. En el Acelerado, el equipo solo cuesta dinero: y lo tiene a su alcance.');
+  await sub(L('La cuenta. En el Acelerado, el equipo solo cuesta dinero: y lo tiene a su alcance.',
+    'The bill. In Accelerated, gear only costs money: and he can afford it.'));
   await ESPERA(1200);
   await pulsa('[data-eq=add]', 900, 1100);
-  await sub('Lo que no está en la lista se apunta a mano: <b>un cuaderno de tapas negras</b>.');
-  await escribe('#f-notes', 'Cuaderno de tapas negras, siempre en el bolsillo del abrigo.', 42);
+  await sub(L('Lo que no está en la lista se apunta a mano: <b>un cuaderno de tapas negras</b>.',
+    'Whatever isn’t on the list is written in by hand: <b>a black-covered notebook</b>.'));
+  await escribe('#f-notes', L('Cuaderno de tapas negras, siempre en el bolsillo del abrigo.',
+    'Black-covered notebook, always in his coat pocket.'), 42);
   await ESPERA(600); await foto('notas');
 
   // -- la historia --
-  await sub('En <b>Historia</b> vive la memoria de la campaña. Primero, de dónde viene Frank.');
+  await sub(L('En <b>Historia</b> vive la memoria de la campaña. Primero, de dónde viene Frank.',
+    'The campaign’s memory lives in <b>Story</b>. First, where Frank comes from.'));
   await arriba();
   await pulsa('[data-tab=story]', 800, 1000);
-  await escribe('#st-pc0', 'Expolicía de Boston. Lo echaron por hacer demasiadas preguntas sobre un caso que nadie quería resolver. Ahora le pagan por hacerlas.', 32);
-  await sub('Y la campaña, que ya estaba escrita: <b>La sombra sobre Innsmouth</b>.');
+  await escribe('#st-pc0', L('Expolicía de Boston. Lo echaron por hacer demasiadas preguntas sobre un caso que nadie quería resolver. Ahora le pagan por hacerlas.',
+    'Former Boston cop. Kicked off the force for asking too many questions about a case nobody wanted solved. Now he gets paid to ask them.'), 32);
+  await sub(L('Y la campaña, que ya estaba escrita: <b>La sombra sobre Innsmouth</b>.',
+    'And the campaign, already written: <b>The Shadow over Innsmouth</b>.'));
   // la campaña arriba del todo, y se lee un trozo bajando por dentro
   await p.evaluate(() => { const r = document.getElementById('st-common').closest('.panel').getBoundingClientRect(); scrollBy({ top: r.top - 150, behavior: 'smooth' }); });
   await quieto();
@@ -287,27 +330,30 @@ process.on('unhandledRejection', async e => { console.error(e.message); try { aw
     await ESPERA(1500);
   }
   await foto('historia-2');
-  await sub('La pestaña Preguntas contesta a partir de lo que hay aquí. Y el secreto del Máster, con candado si hace falta.');
+  await sub(L('La pestaña Preguntas contesta a partir de lo que hay aquí. Y el secreto del Máster, con candado si hace falta.',
+    'The Questions tab answers from what’s written here. And the GM’s secret, under lock if need be.'));
   await baja(420, 1500);
   await ESPERA(1800);
 
   // -- la primera tirada --
-  await sub('Y a jugar. Frank entra en el hotel Gilman House y escucha a través de la pared.');
+  await sub(L('Y a jugar. Frank entra en el hotel Gilman House y escucha a través de la pared.',
+    'And now, play. Frank checks into the Gilman House hotel and listens through the wall.'));
   await arriba();
   await pulsa('[data-tab=dice]', 800, 1000);
   await pulsa('#dPc', 700, 300);
   await p.evaluate(() => { const s = document.getElementById('dPc'); s.selectedIndex = 1; s.dispatchEvent(new Event('change', { bubbles: true })); });
   await ESPERA(900); await asegura();
   await pulsa('#dSk', 700, 300);
-  await p.evaluate(() => { const s = document.getElementById('dSk'); const o = [...s.options].findIndex(o => /Alerta/.test(o.textContent)); s.selectedIndex = o > 0 ? o : 1; s.dispatchEvent(new Event('change', { bubbles: true })); });
+  await p.evaluate(nombre => { const s = document.getElementById('dSk'); const o = [...s.options].findIndex(o => o.textContent.includes(nombre)); s.selectedIndex = o > 0 ? o : 1; s.dispatchEvent(new Event('change', { bubbles: true })); }, L('Alerta', 'Alertness'));
   await ESPERA(900); await asegura();
-  await sub('Modo Terror: solo cuenta el dado rojo.');
+  await sub(L('Modo Terror: solo cuenta el dado rojo.',
+    'Terror mode: only the red die counts.'));
   await pulsa('#dRoll', 900, 900);
   await arriba(); await ESPERA(600);
   await foto('dados');
   await ESPERA(1800);
   await finSub();
-  await titulo('NOGUM', 'Un juego de rol universal. Libre, en español y en inglés.', 'EPIFANEIA.DEV/NOGUM', 4200);
+  await titulo('NOGUM', L('Un juego de rol universal. Libre, en español y en inglés.', 'A universal roleplaying game. Free, in English and Spanish.'), 'EPIFANEIA.DEV/NOGUM', 4200);
 
   if (!SECO) await cdp.send('Page.stopScreencast');
   if (subAbierto) subAbierto.fin = ahora();

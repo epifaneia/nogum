@@ -1,18 +1,22 @@
 # Monta el vídeo de la App a partir de la grabación de grabar.js.
 #   python montar.py            -> vídeo mudo + vídeo con música + pista de música
 #   python montar.py voz.m4a    -> además, la versión con voz: la música baja sola cuando hablas
+#   python montar.py en [voz]   -> lo mismo con la grabación en inglés (node grabar.js en)
 # Necesita imageio-ffmpeg (pip install imageio-ffmpeg) y la grabación en la carpeta temporal.
 import os, subprocess, sys, tempfile, shutil
 import imageio_ffmpeg
 
 FF = imageio_ffmpeg.get_ffmpeg_exe()
 AQUI = os.path.dirname(os.path.abspath(__file__))
-TMP = os.path.join(tempfile.gettempdir(), 'nogum-video')
+EN = 'en' in sys.argv[1:]
+ARGS = [a for a in sys.argv[1:] if a != 'en']
+SUF = '-en' if EN else ''
+TMP = os.path.join(tempfile.gettempdir(), 'nogum-video' + SUF)
 MUSICA = os.path.join(AQUI, 'Cjbeards - Shattered Glass.mp3')
-MUDO = os.path.join(AQUI, 'nogum-app-innsmouth.mp4')
-CON_MUSICA = os.path.join(AQUI, 'nogum-app-innsmouth-musica.mp4')
-PISTA = os.path.join(AQUI, 'musica-trailer.wav')
-CON_VOZ = os.path.join(AQUI, 'nogum-app-innsmouth-voz.mp4')
+MUDO = os.path.join(AQUI, 'nogum-app-innsmouth%s.mp4' % SUF)
+CON_MUSICA = os.path.join(AQUI, 'nogum-app-innsmouth%s-musica.mp4' % SUF)
+PISTA = os.path.join(AQUI, 'musica-trailer%s.wav' % SUF)
+CON_VOZ = os.path.join(AQUI, 'nogum-app-innsmouth%s-voz.mp4' % SUF)
 
 def ff(*a):
     subprocess.run([FF, '-y', '-loglevel', 'error', *a], check=True)
@@ -27,7 +31,7 @@ ff('-f', 'concat', '-safe', '0', '-i', os.path.join(TMP, 'lista.txt'),
    '-vf', 'fps=30,scale=1920:1080:flags=lanczos:in_range=pc:out_range=tv,setsar=1,format=yuv420p',
    '-color_range', 'tv', '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709',
    '-c:v', 'libx264', '-preset', 'slow', '-crf', '18', '-movflags', '+faststart', MUDO)
-shutil.copy(os.path.join(TMP, 'subtitulos.srt'), os.path.join(AQUI, 'nogum-app-innsmouth.srt'))
+shutil.copy(os.path.join(TMP, 'subtitulos.srt'), os.path.join(AQUI, 'nogum-app-innsmouth%s.srt' % SUF))
 D = dura(MUDO)
 
 # 2 · la música, estirada hasta D: se repite un trozo de la parte tranquila
@@ -48,8 +52,8 @@ ff('-i', MUDO, '-i', PISTA, '-map', '0:v', '-map', '1:a', '-c:v', 'copy', '-c:a'
 print('vídeo %.1f s · repetición desde %.2f s' % (D, S))
 
 # 3 · con voz: la música se aparta sola cuando hablas (sidechain)
-if len(sys.argv) > 1:
-    voz = sys.argv[1]
+if ARGS:
+    voz = ARGS[0]
     ff('-i', MUDO, '-i', PISTA, '-i', voz, '-filter_complex',
        '[2:a]aresample=48000,loudnorm=I=-16:TP=-1.5:LRA=11,asplit=2[v][vk];'
        '[1:a][vk]sidechaincompress=threshold=0.03:ratio=8:attack=20:release=400[mb];'

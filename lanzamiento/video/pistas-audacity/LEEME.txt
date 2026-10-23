@@ -1,0 +1,25 @@
+Pistas del tráiler, para editar a mano en Audacity.
+
+Todas empiezan en el segundo 0 del vídeo y duran lo mismo (3:18,2), así que
+quedan alineadas en cuanto las importas juntas.
+
+  0-mezcla-de-referencia.wav  lo que montó el script, solo para comparar
+  1-voz-original.wav          tu voz tal cual (canal de la entrada 2), sin tocar
+  2-voz-limpia.wav            tu voz con graves de mesa fuera, reductor de ruido suave y volumen igualado
+  3-musica.wav                la música entera, sin que baje cuando hablas
+  4-efecto-camara.wav         el disparo cae en 2:15,6, cuando la cámara entra en la ficha
+  5-efecto-revolver.wav       el primer amartillado cae en 2:19,1
+  6-efecto-cuaderno.wav       dos hojas que pasan hacia 2:28
+
+Cómo:
+  1. Audacity → Archivo → Importar → Audio, y selecciona todas menos la 0
+     (o con la 0 silenciada, para comparar).
+  2. Usa una de las dos voces, la original o la limpia, y silencia la otra.
+  3. Edita a tu gusto: volumen de la música por tramos (herramienta Envolvente),
+     mueve o recorta efectos, lo que haga falta.
+  4. Archivo → Exportar audio → WAV, como «mezcla-final.wav» en esta carpeta.
+  5. Para pegarla al vídeo: python unir_mezcla.py   (en la carpeta del vídeo)
+     Sale nogum-app-innsmouth-final.mp4.
+
+Para ver la imagen mientras editas, abre nogum-app-innsmouth.mp4 (el vídeo mudo)
+en cualquier reproductor y mira los minutos en los dos.
