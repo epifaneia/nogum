@@ -138,6 +138,8 @@ main{padding:26px 16px 80px;min-width:0;overflow-x:hidden}
 table.t{border-collapse:collapse;width:100%;font-size:8.7pt;line-height:1.35;table-layout:auto}
 table.t th,table.t td{padding:1.4mm 2mm;text-align:left;vertical-align:top;border-bottom:.25mm solid var(--rule-2);overflow-wrap:break-word;hyphens:auto}
 table.t thead th{background:var(--ink);color:var(--paper);font:600 7.5pt/1.25 var(--mono);letter-spacing:.03em;text-transform:uppercase}
+/* lo pequeño de una cabecera, del color de la cabecera: el gris de .sb small no se lee sobre el negro */
+table.t thead th small{color:inherit;font-weight:400}
 table.t tbody th{background:var(--rule-2);font-weight:600}
 table.t tbody tr:last-child>*{border-bottom:0}
 table.t .tag{white-space:normal}
