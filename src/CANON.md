@@ -313,7 +313,26 @@ El autor contestó en un documento las 25 preguntas de `PREGUNTAS-v2.md` (raíz)
 - **Esq: Parcial (23 oct).** El autor la había entendido como un −1 a la esquiva; el libro dice que, aunque esquives, comes al menos 1 punto. **El autor:**
   > me gusta mucho más el tuyo jajajaa lo dejamos no?
 
-  Se queda como está: con Esq: Parcial, aunque iguales o superes, recibes al menos 1 (Juego 6.2–6.3, Acelerado 2.6, Bazar). Están en `src/v2/DECISIONES-ultimas.md`: el hechizo de Ysolde paga 1 Llave aunque tenga Arcano 2; la escalera llana abarata también la Rejilla (5·(3n−2)); fuera la «escala de la partida» de la App; las Firmas, en su Disciplina; hackear es Técnico; sin fila +0 en Recursos; sin porcentaje con bono 0 en las tarjetas; «permiso narrativo» solo para la Llave (el cerrojo pasa a «que la historia lo permita»); el Acelerado como está; el Baúl con coste de atención y cuándo estorba; «Ámbito» con mayúscula; nombres en castellano con mayúscula solo inicial.
+  Se queda como está: con Esq: Parcial, aunque iguales o superes, recibes al menos 1 (Juego 6.2–6.3, Acelerado 2.6, Bazar).
+
+- **Los penalizadores por herida: −1 y −3 (23 oct).** El autor: «los penalizadores por daño son una pasada no?». Con −2/−4, la segunda herida empujaba por debajo del suelo del Ancla a quien sabe hacer algo (un +1 a −3). **El autor:**
+  > Sí: el suelo se queda en −2 y los penalizadores pasan a −1 y −3. Cámbialo en todo, en los dos idiomas.
+
+  Primer bloque lleno: −1; segundo: −3 (sustituye al −1) y se pierden las acciones complejas. El suelo sigue en −2 (por debajo, el Director decide si hay tirada). Las barras se siguen sumando: Herido en una y Crítico en otra, −4. Cambia en el Juego (6.5, 6.6), el Acelerado (2.7, la ficha y la chuleta) y la App.
+
+- **La escena de 6.7 y la estaca (23 oct).** **El autor:**
+  > No me gusta el ejemplo. Primero. No tiran normal. Parte de la superioridad del vampiro es su alerta […] y tú le das iniciativa en igualdad de condiciones por un palito. Segundo. La estaca no hace más daño. Es un punto débil conocido. En el corazón, los paraliza o los mata según el universo. […] vampiro tiene un fandom serio
+  > sé lo del crítico, pero no vamos a limitarlo tanto. […] el crítico te da el permiso narrativo de hacer más daño, y la excusa es un punto débil. Aquí es simplemente un ataque apuntado. Más difícil, quizás −1, están frente a frente, cerca, no es una proeza.
+  > y si tiene una llave de pelea, no hay razón para no seguir peleando. La llave es acercarse sin que el vampiro sienta la hostilidad con sus sentidos aumentados. Le permite tirar iniciativa […] Se lo juega todo a una carta.
+  > Esa iniciativa se la da el entrenamiento de cazador.
+
+  Tomás: Rejilla 1, Pelea +2 y una Llave, su entrenamiento de cazador (llegar sin que el vampiro sienta su hostilidad: con ella tira iniciativa). La estaca es una Llave Limitada: solo en el corazón, con un ataque apuntado (−1). Si conecta pero la esquiva empata, entra sin llegar al corazón: sin daño. Luego no le queda Llave para defenderse ni seguir: se narra la derrota. En el Bazar, la estaca: en el corazón (apuntado, −1), paraliza o mata según el universo; 1 Llave Limitada contra vampiros.
+
+- **Inés en 7.2: sin tarjeta y sin Llave en blanco (23 oct).** **El autor:**
+  > No mezcles conceptos. Ensucia la idea central. Se explica aquí que las llaves esparcidas para decir con una serie de poderes que eres sobrehumana, se puede resumir en un aumento completo de la malla física, y eliminas por completo la posibilidad de un humano de afectarte. Nada del tono. Es un cambio de foco en lo interesante.
+  > No pinta nada meter la llave en blanco. Si llegado el momento la ponen en otro ámbito, la conversión no es tan limpia. Y además, tampoco te hace más humana una llave en blanco. […] Quita toda la mención a la llave en blanco. Está mal por muchas razones.
+
+  «La misma Inés, en la corte» ya no cambia la tarjeta: las Llaves sueltas se resumen en Físico 2, y lo que cambia es el foco. En la ficha de Inés sale la frase de la Llave en blanco. La regla general de la Llave en blanco (C·l7, 4.4) se queda. Están en `src/v2/DECISIONES-ultimas.md`: el hechizo de Ysolde paga 1 Llave aunque tenga Arcano 2; la escalera llana abarata también la Rejilla (5·(3n−2)); fuera la «escala de la partida» de la App; las Firmas, en su Disciplina; hackear es Técnico; sin fila +0 en Recursos; sin porcentaje con bono 0 en las tarjetas; «permiso narrativo» solo para la Llave (el cerrojo pasa a «que la historia lo permita»); el Acelerado como está; el Baúl con coste de atención y cuándo estorba; «Ámbito» con mayúscula; nombres en castellano con mayúscula solo inicial.
 
 ---
 

@@ -463,7 +463,7 @@ var ZOOM = {
   carne:{n:['Táctico','Tactical'], units:9, size:3},
   nucleo:{n:['Guerra','War'], units:27, size:1}
 };
-var BLOCKS = [['Sano','Healthy'],['Herido −2','Wounded −2'],['Crítico −4','Critical −4']];
+var BLOCKS = [['Sano','Healthy'],['Herido −1','Wounded −1'],['Crítico −3','Critical −3']];
 var BARS = [['fis','Física','Physical'],['men','Mental','Mental'],['esp','Espiritual','Spiritual']];
 var STANCES = [['violencia','Violencia','Violence'],['treta','Treta','Trick'],['especialidad','Especialidad','Specialty']];
 var GRIDN = [null,['Una persona · ×1','One person · ×1'],['Una sala llena · ×100','A full room · ×100'],['Un edificio · ×10.000','A building · ×10,000'],['Una ciudad · ×1.000.000','A city · ×1,000,000'],['Un país · ×100.000.000','A country · ×100,000,000'],['Un planeta · ×10.000.000.000','A planet · ×10,000,000,000']];
@@ -2160,9 +2160,9 @@ function reminders(){
   var terror3 = isAcc() && ZOOM[zoomK()].units === 3;
   h += '<div class="rbox"><h3>' + esc(t('Vida','Health')) + '</h3><ul>' + (isAcc()
     ? (terror3
-      ? li('Modo Terror: 3 casillas, un solo bloque.','Terror mode: 3 boxes, a single block.') + li('Al llenarlo, fuera de combate. Sin −2 ni −4 por el camino.','When it fills, you are out of the fight. No −2 or −4 on the way.')
-      : li('9 casillas de vida, en tres bloques de tres.','9 health boxes, in three blocks of three.') + li('1.er bloque lleno: −2 a lo que la herida estorbe. 2.º: −4 y pierdes las acciones complejas. 3.º: fuera de combate.','1st block full: −2 to whatever the wound hinders. 2nd: −4 and you lose complex actions. 3rd: out of the fight.'))
-    : '<li>' + esc(pick(ZOOM[zoomK()].n) + ' · ' + ZOOM[zoomK()].units + t(' casillas por barra.',' boxes per bar.')) + '</li>' + li('1.er bloque lleno: −2. 2.º: −4. 3.º: fuera de combate. Las penalizaciones de las barras se suman.','1st block full: −2. 2nd: −4. 3rd: out of the fight. Bar penalties add up.')) +
+      ? li('Modo Terror: 3 casillas, un solo bloque.','Terror mode: 3 boxes, a single block.') + li('Al llenarlo, fuera de combate. Sin −1 ni −3 por el camino.','When it fills, you are out of the fight. No −1 or −3 on the way.')
+      : li('9 casillas de vida, en tres bloques de tres.','9 health boxes, in three blocks of three.') + li('1.er bloque lleno: −1 a lo que la herida estorbe. 2.º: −3 y pierdes las acciones complejas. 3.º: fuera de combate.','1st block full: −1 to whatever the wound hinders. 2nd: −3 and you lose complex actions. 3rd: out of the fight.'))
+    : '<li>' + esc(pick(ZOOM[zoomK()].n) + ' · ' + ZOOM[zoomK()].units + t(' casillas por barra.',' boxes per bar.')) + '</li>' + li('1.er bloque lleno: −1. 2.º: −3. 3.º: fuera de combate. Las penalizaciones de las barras se suman.','1st block full: −1. 2nd: −3. 3rd: out of the fight. Bar penalties add up.')) +
     /* T181: la barra es tension y vuelve entera; la consecuencia es la grieta y se queda */
     (isAcc()
       ? li('Cuando termina la amenaza y el Director os declara a salvo, las casillas se borran. Las heridas se quedan: el penalizador del bloque que llenaste sigue hasta que te cures. Leves, cura sencilla; graves, cura grave; qué significa cada una lo decide el universo.','When the threat is over and the GM declares you safe, the boxes are cleared. Wounds stay: the penalty of the block you filled lasts until you heal. Light ones, simple cure; serious ones, serious cure; what each means is up to the universe.')
@@ -2183,7 +2183,7 @@ function tracks(ch){
   /* sin Arcano no hay barra Espiritual: no esta vacia, no existe (6.5) */
   var z = ZOOM[zoomK()], bars = isAcc() ? [BARS[0]] : BARS.filter(function(b){ return b[0] !== 'esp' || arcOpen(); }), h = '<div class="tracks">';
   /* Acelerado en Terror (2.7): 3 casillas, UN bloque, y al llenarlo fuera de
-     combate. Sin −2 ni −4. */
+     combate. Sin −1 ni −3. */
   var nb = (isAcc() && z.units === 3) ? 1 : 3;
   bars.forEach(function(bar){
     var pts = ch ? (ch.dmg[bar[0]] || 0) : 0, per = z.units / nb;
