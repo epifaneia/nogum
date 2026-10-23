@@ -375,7 +375,6 @@ button.status{border:0;cursor:pointer}
 .bienvenida img{display:block;width:100%;height:clamp(170px,28vw,340px);object-fit:cover;object-position:50% 40%}
 .bienvenida figcaption{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:baseline;gap:12px;padding:40px 18px 14px;
   background:linear-gradient(rgba(12,10,8,0),rgba(12,10,8,.85));color:#f5efe3}
-.bienvenida b{font:800 clamp(28px,4.4vw,44px)/1 var(--display);text-transform:uppercase;letter-spacing:.02em}
 .bienvenida span{font:600 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.14em;opacity:.8}
 .srow.folded .nm{font-weight:600}
 </style>
@@ -1185,7 +1184,7 @@ var IMG_APP = '%%IMG_APP%%';
 function bienvenida(){
   if (!IMG_APP || M.known !== null || S.chars.length) return '';
   return '<figure class="bienvenida"><img src="' + IMG_APP + '" alt="" onerror="this.parentNode.remove()">' +
-    '<figcaption><b>NOGUM</b><span>' + esc(u('sub')) + '</span></figcaption></figure>';
+    '<figcaption><span>' + esc(u('sub')) + '</span></figcaption></figure>';
 }
 function renderHub(){
   var h = '<div class="wiz">' + bienvenida() + '<p class="disclaimer">' + esc(t(
