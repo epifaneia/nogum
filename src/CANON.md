@@ -299,7 +299,21 @@ El autor contestó en un documento las 25 preguntas de `PREGUNTAS-v2.md` (raíz)
   > A veces lo que hace tu poder no encaja exactamente con una llave. Se siente DEMASIADO poderoso, casi tramposo. Como podemos utilizar este manual para cualquier poder, habilidad, conjuro, o ventaja sobrenatural, queremos asegurarnos de que hay un precio para tu idea. Y hablamos de los multiplicadores. Muy breve. […] El sigilo que te haga invisible, inaudible, indetectable a ki, cámaras de calor, etc. No es justo que cueste igual que una capa de invisibilidad. Y no es un salto ×100. No habla de afectar a más gente. Solo a uno cada vez. El que mira.
   > si, me gusta más sigilo como 1 desatado que como una rejilla más. Y cámbialo en todo.
 
-  Consecuencia: «indetectable por cualquier medio» deja de ser Sigilo +2 (4 Llaves, T179) y pasa a **Sigilo +1 Desatada: 3 Llaves**, en 4.3, 4.6 y 5.4–5.5. La invisibilidad queda en 1 / 2 / 3 Llaves (capa, a voluntad, indetectable). Están en `src/v2/DECISIONES-ultimas.md`: el hechizo de Ysolde paga 1 Llave aunque tenga Arcano 2; la escalera llana abarata también la Rejilla (5·(3n−2)); fuera la «escala de la partida» de la App; las Firmas, en su Disciplina; hackear es Técnico; sin fila +0 en Recursos; sin porcentaje con bono 0 en las tarjetas; «permiso narrativo» solo para la Llave (el cerrojo pasa a «que la historia lo permita»); el Acelerado como está; el Baúl con coste de atención y cuándo estorba; «Ámbito» con mayúscula; nombres en castellano con mayúscula solo inicial.
+  Consecuencia: «indetectable por cualquier medio» deja de ser Sigilo +2 (4 Llaves, T179) y pasa a **Sigilo +1 Desatada: 3 Llaves**, en 4.3, 4.6 y 5.4–5.5. La invisibilidad queda en 1 / 2 / 3 Llaves (capa, a voluntad e inaudible, indetectable).
+  Corrección del autor a la tabla de 5.5:
+  > A voluntad es la definición de completa, de siempre. Y pone potenciado. […] Cambia las dos. Permiso: 1 llave. Ajuste: Limitado. Precio: una llave. El precio mínimo es 1. Invisibilidad a voluntad, y además, inaudible. Permiso 1 llave. Potenciado 2 llaves. Y el indetectable por cualquier medio, desatado.
+
+  Capa: permiso, Limitado, 1 Llave (el mínimo), sin el Acceso en la tabla. A voluntad e inaudible: Potenciado, 2. A voluntad sola es Completo, 1 Llave (así queda en el Bazar).
+
+- **La Parca y la vida Letal (23 oct).** **El autor:**
+  > la parca está escrita para fichas de 3 puntos de vida. Creo que no es preocupante. Yo lo dejaría así. Quizás una línea para subrayarlo. La parca deja fuera de combate sea cual sea tu barra de vida, a menos que tengas llave. Nótese que el daño realista, con el techo a +2, es el de 3 puntos de vida. Ponerte más vida es perfectamente legítimo y usual en el rol. Pero que sea una decisión consciente. Es una ficha que soporta balazos, hachazos en la cabeza y caídas letales. […] No cambies nada del acelerado. Esto es teoría y detalle. Y solo merece vivir en el densito.
+
+  Va en 6.4 (el daño realista es el de la vida Letal) y, en 4.5, una frase que remite allí. El Acelerado no se toca.
+
+- **Esq: Parcial (23 oct).** El autor la había entendido como un −1 a la esquiva; el libro dice que, aunque esquives, comes al menos 1 punto. **El autor:**
+  > me gusta mucho más el tuyo jajajaa lo dejamos no?
+
+  Se queda como está: con Esq: Parcial, aunque iguales o superes, recibes al menos 1 (Juego 6.2–6.3, Acelerado 2.6, Bazar). Están en `src/v2/DECISIONES-ultimas.md`: el hechizo de Ysolde paga 1 Llave aunque tenga Arcano 2; la escalera llana abarata también la Rejilla (5·(3n−2)); fuera la «escala de la partida» de la App; las Firmas, en su Disciplina; hackear es Técnico; sin fila +0 en Recursos; sin porcentaje con bono 0 en las tarjetas; «permiso narrativo» solo para la Llave (el cerrojo pasa a «que la historia lo permita»); el Acelerado como está; el Baúl con coste de atención y cuándo estorba; «Ámbito» con mayúscula; nombres en castellano con mayúscula solo inicial.
 
 ---
 
