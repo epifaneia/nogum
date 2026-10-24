@@ -582,3 +582,7 @@ table.t.ficha-equipo td:not(:first-child),table.t.ficha-equipo th:not(:first-chi
 .chu-t{margin:2.5mm 0 1mm!important;font:600 7.5pt/1 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--red)}
 .chu-cols ul{margin:0;padding-left:4mm}
 .chu-cols li{margin:0 0 .8mm}
+
+/* la señal de los expedientes (9.5): siempre igual, para que se aprenda a verla */
+.ver-exp{margin:-1mm 0 3mm!important;font:600 7.4pt/1.45 var(--mono);letter-spacing:.03em;color:var(--ink-2)}
+.ver-exp::before{content:"◆ ";color:var(--cap,var(--red))}
