@@ -13,9 +13,9 @@ dat = json.load(open(os.path.join(D, 'app_data.json'), encoding='utf-8'))
 _rs = [int(x) for x in re.findall(r"\{r:(\d+), n:\[", src)]
 _n = len(dat['recipes'])
 assert len(dat.get('techos', [])) == _n, 'hay %d recetas y %d juegos de techos' % (_n, len(dat.get('techos', [])))
-# el Baul tiene 17 reglas y el Codigo 17 bits (los Codigos viejos, de 16, se leen igual)
-assert len(dat['baul']) == 17, 'el Baul tiene %d reglas y el Codigo usa 17 bits' % len(dat['baul'])
-assert 'var BAUL_BITS = 17;' in src, 'el Codigo de la app no usa 17 bits'
+# el Baul tiene 18 reglas y el Codigo 18 bits (los Codigos viejos, de 16 y 17, se leen igual)
+assert len(dat['baul']) == 18, 'el Baul tiene %d reglas y el Codigo usa 18 bits' % len(dat['baul'])
+assert 'var BAUL_BITS = 18;' in src, 'el Codigo de la app no usa 18 bits'
 # la escala de la partida ya no existe: la sustituyen el nivel maximo del mundo
 # y el de los jugadores (3.7); la escalera llana abarata tambien la Rejilla (9.1)
 for _v in ('Escala de la partida', 'Game scale', 'el permiso narrativo y el coste'):

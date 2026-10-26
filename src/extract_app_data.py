@@ -123,7 +123,7 @@ BAUL_BITS = [  # nombre en el manual v2 (castellano), por bit
     'Rejilla mística inversa', 'Destino (Wyrd)', 'Fundas (el cuerpo como equipo)', 'Clones',
     'El Director tira en oculto', 'Tablas de dados', 'Transformación', 'Sincronización',
     'Daño ambiental', 'Barras propias (Honor, Reputación y otras)', 'Vínculos', 'Menú de los 4 costes',
-    'La escalera llana']
+    'La escalera llana', 'Cansancio']
 def baul_modulos(s):
     ini = s.index('id="ch9-baul"')
     fin = s.index('id="ch9-tablas"')
