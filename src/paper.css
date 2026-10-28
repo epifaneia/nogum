@@ -586,3 +586,11 @@ table.t.ficha-equipo td:not(:first-child),table.t.ficha-equipo th:not(:first-chi
 /* la señal de los expedientes (9.5): siempre igual, para que se aprenda a verla */
 .ver-exp{margin:-1mm 0 3mm!important;font:600 7.4pt/1.45 var(--mono);letter-spacing:.03em;color:var(--ink-2)}
 .ver-exp::before{content:"◆ ";color:var(--cap,var(--red))}
+
+/* las laminas del interior: una banda a lo ancho, o cuadrada y estrecha */
+.fig.ilus{background:#0d0c0b}
+.fig.ilus > .fig-box{aspect-ratio:16/9}
+.fig.ilus > .fig-box > img{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;display:block}
+.fig.ilus.sq{width:62%;margin-left:auto;margin-right:auto}
+.fig.ilus.sq > .fig-box{aspect-ratio:1/1}
+.fig.ilus figcaption{font:italic 9.5pt/1.4 var(--serif)}

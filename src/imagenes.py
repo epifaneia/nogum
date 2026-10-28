@@ -11,6 +11,9 @@ cambiar una: dejar el original en src/img/ con su nombre y ejecutar esto.
 Y los retratos de los expedientes (las fichas de ejemplo del capitulo 8): cada
 original de src/img/expedientes/ sale a docs/img/exp/ a 600 px, en gris.
 
+Y las laminas del interior: cada original de src/img/laminas/ sale a
+docs/img/lam/ a 1400 px, en color.
+
 Necesita Pillow, pero solo para esto: la compilacion de los libros no lo usa.
 """
 import os, sys
@@ -44,3 +47,15 @@ if os.path.isdir(EXP):
         im = im.resize((lado, round(im.height * lado / im.width)), Image.LANCZOS)
         im.save(os.path.join(DEST, 'exp', os.path.splitext(f)[0] + '.jpg'), quality=80, optimize=True, progressive=True)
         print('exp', f)
+
+# las laminas del interior de los libros, en color
+LAM = os.path.join(ORIG, 'laminas')
+if os.path.isdir(LAM):
+    os.makedirs(os.path.join(DEST, 'lam'), exist_ok=True)
+    for f in sorted(os.listdir(LAM)):
+        if not f.lower().endswith(('.jpg', '.jpeg', '.png', '.webp')): continue
+        im = Image.open(os.path.join(LAM, f)).convert('RGB')
+        ancho = 1400
+        if im.width > ancho: im = im.resize((ancho, round(im.height * ancho / im.width)), Image.LANCZOS)
+        im.save(os.path.join(DEST, 'lam', os.path.splitext(f)[0] + '.jpg'), quality=80, optimize=True, progressive=True)
+        print('lam', f)
