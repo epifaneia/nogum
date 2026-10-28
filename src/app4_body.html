@@ -197,6 +197,9 @@
 label.tool.file{cursor:pointer;display:inline-flex;align-items:center}
 .rbmsg{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0 0;font-size:13.5px;background:var(--amber-soft);color:var(--amber);border-radius:8px;padding:7px 10px}
 .rbmsg.bad{background:var(--red-soft);color:var(--red)}
+.mesavacia{max-width:640px;margin:28px auto;text-align:center}
+.mesavacia .rbmsg{justify-content:center}
+.mesabtns{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:14px 0}
 @media (max-width:640px){.rbf select{max-width:100%}.rbgn{flex-basis:100%}}
 
 .acard .techo{font:600 10px/1 var(--mono);color:var(--red);background:var(--red-soft);border-radius:999px;padding:3px 7px;margin-left:6px}
@@ -524,7 +527,9 @@ var FAMILIES = [
 ];
 
 /* ======================= STATE ======================= */
-S.m = S.m || {known:null, family:null, world:null, era:null, tech:null, sup:[], xtra:[], edition:null, opt:null, caos:null, flavor:null, hueco:null, card:null, unis:null, zoom:null, estilo:null, grid:null, pmax:null, pts:0, kx:0, b0:[], b1:[], b2:[], b3:[]};
+/* la mesa sin configurar; «Mesa nueva» vuelve a ella */
+var M0 = {known:null, family:null, world:null, era:null, tech:null, sup:[], xtra:[], edition:null, opt:null, caos:null, flavor:null, hueco:null, card:null, unis:null, zoom:null, estilo:null, grid:null, pmax:null, pts:0, kx:0, b0:[], b1:[], b2:[], b3:[]};
+S.m = S.m || JSON.parse(JSON.stringify(M0));
 S.chars = S.chars || [];
 /* El equipo de una ficha se guarda por su sitio en el Bazar (seccion, bloque,
    fila). El catalogo de la v2 metio «Arma de fuego» en el sitio 6 del primer
@@ -2348,7 +2353,7 @@ function stanceBlock(c){
   return '<div class="sec">' + esc(t('Guardia','Guard')) + '<span class="note">' + esc(t('marcador: vale la última si la mesa no elige','marker: the last one applies if the table does not choose')) + '</span></div><div class="stance">' + STANCES.map(function(s){ return '<button type="button"' + (c ? ' data-stance="' + s[0] + '" aria-pressed="' + (c.stance === s[0]) + '"' : ' disabled') + '>' + esc(pick(s.slice(1))) + '</button>'; }).join('') + '</div>';
 }
 function renderTemplate(){
-  if (M.known === null) return '<p class="disclaimer">' + esc(t('Todavía no hay mesa configurada. Empieza por el formulario.','No table has been set up yet. Start with the form.')) + '</p>';
+  if (M.known === null) return mesaVacia();
   var p1 = sheetHead(u('tpl'), (estilo() ? '<span class="badge red">' + esc(t('Estilo +2','Style +2')) + '</span>' : '') + '<span class="badge">' + esc('0 / ' + budget() + t(' puntos',' points')) + '</span>') +
     '<div class="fields blankfields"><div class="line">' + esc(t('Nombre','Name')) + '</div><div class="line">' + esc(t('Concepto','Concept')) + '</div></div>' + stanceBlock(null) +
     '<div class="sec">' + esc(t('Rejilla y habilidades','Grid and skills')) + '</div>' + skillGrid(null);
@@ -3489,6 +3494,58 @@ function restoreM(json){
   Object.keys(o).forEach(function(k){ M[k] = o[k]; });
 }
 
+/* --- Mesa nueva ---
+   Borra la mesa (configuracion, respuestas de los formularios, escena) y, si
+   se pide, tambien las fichas y el reparto. Antes guarda la partida entera,
+   para deshacerlo. Los ajustes (idioma, clave de IA, tema) no son de la mesa. */
+var mesaUndo = null, mesaMsg = '';
+function mesaNueva(todo){
+  mesaUndo = JSON.stringify(S);
+  restoreM(JSON.stringify(M0));
+  S.q = {}; S.st = {}; S.ia = {}; S.scene = null; S.fix = null; S.form = null; S.locked = false;
+  if (todo) { S.chars = []; S.pnjs = []; S.pnj = null; S.eq = null; if (S.dice) { S.dice.pc = null; S.dice.sk = null; } }
+  S.tab = 'tpl'; rbOpen = null; rbMsg = ''; rbUndo = null;
+  mesaMsg = todo ? t('Se ha borrado todo: la mesa, las fichas y el reparto.','Everything has been cleared: the table, the sheets and the cast.')
+                 : t('Se ha borrado la mesa. Las fichas siguen ahí.','The table has been cleared. The sheets are still there.');
+}
+function mesaDeshacer(){
+  if (!mesaUndo) return;
+  var o = JSON.parse(mesaUndo), lang = S.lang;
+  Object.keys(S).forEach(function(k){ delete S[k]; });
+  Object.keys(o).forEach(function(k){ S[k] = o[k]; });
+  restoreM(JSON.stringify(o.m)); S.m = M; S.lang = lang;
+  mesaUndo = null; mesaMsg = t('Deshecho: la mesa ha vuelto.','Undone: the table is back.');
+}
+/* la mesa por defecto: un mundo propio sin una sola respuesta, ni Codigo ni tarjeta elegida */
+function mesaPorDefecto(){
+  if (M.known !== false || M.card || M.opt || M.caos) return false;
+  return !Object.keys(S.q || {}).some(function(f){ var o = S.q[f] || {}; return Object.keys(o).some(function(k){ return (o[k] || []).some(Boolean); }); });
+}
+function mesaVacia(){
+  return '<div class="mesavacia">' +
+    (mesaMsg ? '<p class="rbmsg">' + esc(mesaMsg) + (mesaUndo ? '<button type="button" class="mini" data-mesa="deshacer">' + esc(t('Deshacer','Undo')) + '</button>' : '') + '</p>' : '') +
+    '<p class="disclaimer">' + esc(t('Todavía no hay mesa configurada.','No table has been set up yet.')) + '</p>' +
+    '<div class="mesabtns"><button type="button" class="tool primary" data-mesa="forms">' + esc(t('Empezar por los formularios','Start with the forms')) + '</button>' +
+    '<button type="button" class="tool" data-mesa="defecto">' + esc(t('Usar la mesa por defecto','Use the default table')) + '</button></div>' +
+    '<p class="note">' + esc(t('La mesa por defecto es un mundo actual con la tarjeta Primera marcha, 9 casillas y ninguna regla del Baúl. Se cambia cuando quieras, desde los formularios o desde la barra de la mesa.',
+      'The default table is a present-day world with the First Gear card, 9 boxes and no Chest rules. Change it whenever you like, from the forms or from the table bar.')) + '</p></div>';
+}
+function mesaBotones(){
+  return '<div class="rbcode"><button type="button" class="tool" data-mesa="borrarmesa">' + esc(t('Borrar la mesa (las fichas se quedan)','Clear the table (sheets stay)')) + '</button>' +
+    '<button type="button" class="tool" data-mesa="borrartodo">' + esc(t('Borrarlo todo','Clear everything')) + '</button></div>';
+}
+document.addEventListener('click', function(e){
+  var b = e.target.closest('[data-mesa]'); if (!b) return;
+  var k = b.getAttribute('data-mesa');
+  if (k === 'forms') { S.tab = 'form'; S.form = null; mesaMsg = ''; mesaUndo = null; }
+  else if (k === 'defecto') { aplicaUni(); mesaMsg = ''; mesaUndo = null; rbBad = false; rbMsg = t('Mesa por defecto: ','Default table: ') + pick(card().n) + ' · ' + pick(ZOOM[zoomK()].n) + ' · ' + worldName(); }
+  else if (k === 'deshacer') mesaDeshacer();
+  else if (k === 'borrarmesa') mesaNueva(false);
+  else if (k === 'borrartodo') { if (!confirm(t('¿Borrarlo todo? La mesa, las fichas y el reparto. Podrás deshacerlo mientras no cierres la app.','Clear everything? The table, the sheets and the cast. You can undo it as long as you do not close the app.'))) return; mesaNueva(true); }
+  else return;
+  persist(); render(); window.scrollTo(0, 0);
+});
+
 /* --- el Codigo --- */
 function codeMake(){
   var bm = baulMask();
@@ -3687,6 +3744,7 @@ function renderCfg(){
   h += '<div class="rbcode"><button type="button" class="tool" id="cfgExp">' + esc(t('Guardar la mesa','Save the table')) + '</button>' +
     '<button type="button" class="tool" id="cfgExpM">' + esc(t('Guardar la mesa con música','Save the table with music')) + '</button>' +
     '<label class="tool file">' + esc(t('Abrir una mesa…','Open a table…')) + '<input type="file" id="cfgImp" accept=".json,application/json" hidden></label></div>';
+  h += '<p class="rbp-t">' + esc(t('Mesa nueva: vuelve a empezar desde cero. Hay deshacer.','New table: start again from scratch. There is undo.')) + '</p>' + mesaBotones();
   if (cfgMsg) h += '<p class="cfgmsg">' + esc(cfgMsg) + '</p>';
   if (TEXTO_CAIDO.cfgJson) h += '<textarea id="cfgJson" class="cfgjson" readonly>' + esc(TEXTO_CAIDO.cfgJson) + '</textarea>';
   else h += '<textarea id="cfgJson" class="cfgjson" hidden></textarea>';
@@ -3745,7 +3803,8 @@ function rbSel(f, cur, opts){
 }
 function rulesBar(){
   if (M.known === null) return '';
-  var h = '<div class="rulesbar noprint"><div class="rbrow"><span class="rblab">' + esc(t('La mesa','The table')) + '</span>';
+  var h = '<div class="rulesbar noprint"><div class="rbrow"><span class="rblab">' + esc(t('La mesa','The table')) + '</span>' +
+    (mesaPorDefecto() ? '<span class="badge" title="' + esc(t('Sin configurar: cámbiala desde los formularios o desde esta barra','Not set up: change it from the forms or from this bar')) + '">' + esc(t('por defecto','default')) + '</span>' : '');
   var wl = [[-1, t('Mundo propio','Your own world')]];
   KNOWN.forEach(function(k, i){ wl.push([i, pick(k.n)]); });
   h += rbSel('world', (M.known && M.world !== null) ? M.world : -1, {lab:t('Universo','Universe'), list:wl});
@@ -3805,7 +3864,9 @@ function rbFile(){
   return '<div class="rbpanel"><p class="rbp-h">' + esc(t('La partida en un archivo','The game in a file')) + '</p>' +
     '<p class="rbp-t">' + esc(t('El Código lleva la mesa; el archivo lleva la partida entera: mesa, fichas e historia. Guárdalo de vez en cuando, porque la app vive en este navegador y un borrado de datos se lo lleva todo. Al abrir un archivo se cambia todo, fichas incluidas.','The Code carries the table; the file carries the whole game: table, sheets and story. Save one now and then, because the app lives in this browser and clearing its data takes everything with it. Opening a file replaces everything, sheets included.')) + '</p>' +
     '<div class="rbcode"><button type="button" class="tool" data-rbb="export">' + esc(t('Guardar la partida','Save the game')) + '</button><label class="tool file">' + esc(t('Abrir un archivo…','Open a file…')) + '<input type="file" accept=".json,.txt,application/json" data-rbfile="1" hidden></label><button type="button" class="tool" data-rbb="importpaste">' + esc(t('Abrir el texto de abajo','Open the text below')) + '</button></div>' +
-    '<textarea id="rbJson" placeholder="' + esc(t('Aquí aparece la partida si el navegador no deja guardar archivos; y aquí puedes pegarla para abrirla.','The game appears here if the browser will not save files; and you can paste one here to open it.')) + '"></textarea></div>';
+    '<textarea id="rbJson" placeholder="' + esc(t('Aquí aparece la partida si el navegador no deja guardar archivos; y aquí puedes pegarla para abrirla.','The game appears here if the browser will not save files; and you can paste one here to open it.')) + '"></textarea>' +
+    '<p class="rbp-h" style="margin-top:12px">' + esc(t('Mesa nueva','New table')) + '</p><p class="rbp-t">' + esc(t('Vuelve a empezar desde cero: borra solo la mesa y quédate con las fichas, o bórralo todo. Los ajustes y tu clave no se tocan, y hay deshacer.','Start again from scratch: clear just the table and keep the sheets, or clear everything. Settings and your key are left alone, and there is undo.')) + '</p>' + mesaBotones() +
+    '</div>';
 }
 function rbCopy(txt, id){
   var el = $(id);
