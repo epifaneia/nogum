@@ -1,14 +1,14 @@
 # NOGUM
 
-**Compilador de un manual bilingüe de 150 páginas, con validación automática de contenido, y la aplicación web que lo configura.**
+**Compilador de un manual bilingüe de 210 páginas, con validación automática de contenido, y la aplicación web que lo configura.**
 
 El producto es un juego de rol universal. Lo interesante desde aquí es el problema: mantener **cuatro productos derivados de una misma fuente, en dos idiomas, con datos compartidos entre un libro y una aplicación**, sin que se desincronicen. Este repositorio es el pipeline que lo resuelve y las puertas de validación que lo vigilan.
 
 🔗 **[Leerlo publicado](https://epifaneia.dev/nogum/)**
 
-> **Por qué está aquí.** El principio de [Epifaneia](https://epifaneia.dev) es que *el modelo interpreta y el código determinista verifica*. Esto es ese principio llevado al extremo en un dominio donde la especificación era mía de arriba abajo: 150 páginas, dos idiomas, cuatro salidas y una aplicación que consume datos del propio libro.
+> **Por qué está aquí.** El principio de [Epifaneia](https://epifaneia.dev) es que *el modelo interpreta y el código determinista verifica*. Esto es ese principio llevado al extremo en un dominio donde la especificación era mía de arriba abajo: 210 páginas, dos idiomas, cuatro salidas y una aplicación que consume datos del propio libro.
 >
-> Las tres cosas que se demuestran son las mismas que se piden en un proceso regulado. **Trazabilidad:** cada regla lleva escrito de dónde sale, y el diario de diseño son 154 decisiones con su porqué. **Verificación automática:** las puertas paran la compilación cuando el contenido y los datos dejan de decir lo mismo. **Y restricción deliberada del modelo:** el configurador es determinista porque un árbol de veinte preguntas resuelve eso mejor que un modelo, y al asistente se le recorta el contexto para que nunca lea el diario de trabajo.
+> Las tres cosas que se demuestran son las mismas que se piden en un proceso regulado. **Trazabilidad:** cada regla lleva escrito de dónde sale, y el diario de diseño va por la entrada 189, cada decisión con su porqué. **Verificación automática:** las puertas paran la compilación cuando el contenido y los datos dejan de decir lo mismo. **Y restricción deliberada del modelo:** el configurador es determinista porque un árbol de veinte preguntas resuelve eso mejor que un modelo, y al asistente se le recorta el contexto para que nunca lea el diario de trabajo.
 >
 > El problema de fondo es el mismo que ataca [CTSM](https://github.com/epifaneia/ctsm) entre un requisito de cliente y un documento de proveedor: dos textos que debían decir lo mismo y dejaron de decirlo, sin que nadie se enterara. Aquí la diferencia es que el corpus es grande, vivo y bilingüe, y que las puertas llevan meses funcionando.
 
@@ -20,10 +20,12 @@ Una misma fuente alimenta cuatro salidas que se contradicen con facilidad:
 
 | Pieza | Qué es | Formato |
 |---|---|---|
-| La Idea | el argumento de diseño, 13 páginas | libro |
-| Juego completo | el manual, ~150 páginas | libro |
-| Acelerado | la versión corta, 16 páginas | libro |
+| La Idea | el argumento de diseño, 15 páginas | libro |
+| Juego completo | el manual, 210 páginas | libro |
+| Acelerado | la versión corta, 22 páginas (23 en inglés) | libro |
 | App | el configurador y las fichas | aplicación de un fichero |
+
+Cada libro sale en web y en PDF, y el PDF en dos versiones: para pantalla y para imprimir en casa. Son doce PDF por compilación.
 
 Los tres libros se montan desde los mismos fragmentos. La aplicación consume **datos extraídos de esos fragmentos** (catálogo de equipo, reglas opcionales, recetas de mundo). Y todo existe en castellano y en inglés.
 
@@ -37,8 +39,11 @@ Las formas de romperlo son muchas y silenciosas: renombrar un concepto en el man
 src/assemble3.py          los tres libros, dos idiomas, tres destinos
 src/build_app3.py         la aplicación
 src/extract_app_data.py   extrae datos del manual hacia la aplicación
+src/extract_firmas.py     el catálogo de firmas del manual, para la aplicación
 src/make_covers.py        portadas
-src/imagenes.py           la imagen de cada pieza, a los tamaños de la web (usa Pillow)
+src/imagenes.py           las imágenes, a los tamaños de la web (usa Pillow)
+src/pdf/imprime.mjs       los PDF, con Chrome sin ventana, como el botón «Imprimir» del libro
+src/pdf/marcadores.py     marcadores y metadatos de cada PDF (usa pypdf)
 ```
 
 Tres destinos con enlaces distintos —carpeta local, artefactos, sitio público— resueltos en compilación, no a mano.
@@ -49,8 +54,8 @@ Nada se publica sin pasar por aquí:
 
 - **`src/w_revision.py`** — barre los productos compilados buscando vocabulario retirado, comprueba invariantes del sistema y revisa anclas rotas, identificadores duplicados y enlaces entre piezas.
 - **`src/w_marcas_inv.py`** — inventario de marcas y nombres con derechos sobre lo publicado, con su contexto.
-- **Aserciones en compilación** — que el número de recetas cuadre con el de tablas de techos; que el catálogo de reglas opcionales siga siendo de 16, porque el código de partida usa 16 bits; que los veinte mundos del atajo apunten a las veinte recetas una vez cada uno; que el documento JSON embebido en la aplicación siga siendo válido.
-- **`src/curvas.py`** — el modelo de probabilidad del sistema, contrastado contra las tablas impresas del propio manual: 42 filas comparadas, 0 discrepancias. De ahí salen también las gráficas SVG del libro, generadas desde los datos y no dibujadas a mano.
+- **Aserciones en compilación** — que el número de recetas cuadre con el de tablas de techos; que el catálogo de reglas opcionales siga siendo de 18, porque el código de partida usa 18 bits; que los veinte mundos del atajo apunten a las veinte recetas una vez cada uno; que el documento JSON embebido en la aplicación siga siendo válido.
+- **`src/curvas.py`** — el modelo de probabilidad del sistema, contrastado contra las tablas impresas del propio manual. Las ocho tablas del Apéndice B dan 56 filas comparadas y 0 discrepancias (comprobado de nuevo el 28 oct 2026). De ahí salen también las gráficas SVG del libro, generadas desde los datos y no dibujadas a mano.
 
 Tres ejemplos de fallos que estas puertas encontraron y que ninguna lectura humana había visto: un catálogo que repartía un valor de daño retirado **solo en la versión inglesa**; texto que la aplicación arrastraba con vocabulario que el manual ya había cambiado; y dos rutas de salida que en Windows eran el mismo fichero, de modo que los enlaces publicados apuntaban a copias locales inexistentes.
 
@@ -67,17 +72,35 @@ Un fichero HTML autónomo, sin dependencias ni servidor.
 
 Sobre esto último: el configurador es determinista **a propósito**. Un árbol de veinte preguntas resuelve mejor ese problema que un modelo, y el modelo se usa donde sí aporta.
 
+## Las imágenes
+
+Las imágenes se hicieron con **Nano Banana**, el modelo de imagen de Google en el ecosistema Gemini. El texto se redactó con ayuda de Claude. Se dice aquí y no se esconde en ninguna parte.
+
+| Serie | Cuántas | Dónde | Cómo salen |
+|---|---|---|---|
+| Portadas | 5 | la portada general y una por pieza (La Idea, Juego completo, Acelerado, App) | color, a 1280 y 640 px |
+| Láminas | 7 | el interior del Juego completo: la mesa, los dados, la Rejilla, la Llave, la coreografía, el taller y el hada | color, a 1400 px |
+| Retratos | 12 | los expedientes del capítulo 9, de frente y de perfil | gris, a 600 px |
+
+- **Portadas.** Es una serie con el mismo personaje (sombrero y abrigo) y el mismo estudio. El centro va casi en blanco y negro y el color, en los bordes.
+- **Retratos.** Imitan una ficha policial antigua. La banda negra de los ojos no está en la imagen: la pone la página, a la altura que marca cada ficha.
+- **Gráficas.** Las del libro no son imágenes generadas: son SVG que `curvas.py` dibuja a partir de los datos.
+
+Los originales están en `src/img/` (`laminas/` y `expedientes/` aparte). `imagenes.py` los recorta, los escala y, en los retratos, los pasa a gris, y los deja en `docs/img/`.
+
 ## Estructura
 
 ```
 docs/      el sitio publicado (GitHub Pages)
 src/       fuentes, datos y pipeline
-  frag_*.html      fragmentos del manual (es / en)
-  img/             las imágenes: portada.jpg y, cuando la haya, una por pieza
-                   (idea, juego, acelerado, app); imagenes.py las pasa a docs/img/
+  v2/f*.html       fragmentos del Juego completo, cada uno con su espejo .en.html
+  frag_*.html      fragmentos de La Idea, el Acelerado y el cuaderno (es / en)
+  img/             originales: portada.jpg y una por pieza (idea, juego,
+                   acelerado, app), laminas/ y expedientes/
+  pdf/             la impresión a PDF y sus marcadores
   app4_body.html   la aplicación
   *.json           datos extraídos
-  CANON.md         el diario de diseño: 154 decisiones con su porqué
+  CANON.md         el diario de diseño, con el porqué de cada decisión
   archivo/         scripts de un solo uso, por historial
 LICENSE
 ```
@@ -86,13 +109,21 @@ LICENSE
 
 ```bash
 cd src
-python extract_app_data.py   # datos del manual -> aplicación
-python assemble3.py          # los tres libros, tres destinos
-python build_app3.py         # la aplicación
-python w_revision.py         # la puerta de validación
+python extract_app_data.py            # datos del manual -> aplicación
+python assemble3.py ../NOGUM_productos # los tres libros, tres destinos
+python build_app3.py                  # la aplicación
+python w_revision.py                  # la puerta de validación
+python imagenes.py                    # solo si cambia alguna imagen
 ```
 
-Sin dependencias: biblioteca estándar de Python 3.
+Los PDF, desde la raíz y con un servidor estático en `localhost:8777` (`python -m http.server 8777`):
+
+```bash
+node src/pdf/imprime.mjs NOGUM_productos/pdf
+python src/pdf/marcadores.py NOGUM_productos/pdf
+```
+
+Los libros y la aplicación se compilan solo con la biblioteca estándar de Python 3. Las dependencias son para lo de alrededor: Pillow para las imágenes, Node y Chrome para los PDF, y pypdf para sus marcadores.
 
 ## Licencia
 

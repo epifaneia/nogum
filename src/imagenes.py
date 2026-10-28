@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """Las imagenes de cada pieza, a los tamanos que usa la web.
 
-Una por pieza en src/img/<pieza>.jpg (idea, juego, acelerado, app). La que
-falte usa src/img/portada.jpg, asi que hoy las cuatro son la misma. Para
-cambiar una: dejar el original en src/img/ con su nombre y ejecutar esto.
+Una por pieza en src/img/<pieza>.jpg (idea, juego, acelerado, app); la que
+falte usa src/img/portada.jpg. Para cambiar una: dejar el original en
+src/img/ con su nombre y ejecutar esto.
 
     docs/img/<pieza>.jpg       1280 px, la banda de la portadilla de cada libro
     docs/img/<pieza>-640.jpg    640 px, la tarjeta de la portada del sitio
