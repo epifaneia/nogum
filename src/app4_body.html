@@ -281,6 +281,12 @@ label.tool.file{cursor:pointer;display:inline-flex;align-items:center}
 .hubcard.est .hubgo{padding-top:8px}
 /* musica ambiente */
 .musica{border-top:1px solid var(--rule);margin:10px 0 0;padding:12px 0 2px}
+.reglas{margin:14px 0 0}.reglas .note{margin:2px 0 8px}
+.regla{border:1px solid var(--rule);border-radius:8px;padding:8px 10px;margin:0 0 8px}
+.regla p{margin:6px 0 0;white-space:pre-wrap}
+.reglahead{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}.reglahead .tech{flex:1}
+.regla.edit textarea{width:100%;min-height:90px}.regla.edit .row{margin-top:8px}
+.reglasficha p{margin:4px 0;white-space:pre-wrap}
 .hubmus{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0 0}
 .hubmus .note{flex:1;min-width:180px}
 /* la vuelta a los manuales */
@@ -528,7 +534,7 @@ var FAMILIES = [
 
 /* ======================= STATE ======================= */
 /* la mesa sin configurar; «Mesa nueva» vuelve a ella */
-var M0 = {known:null, family:null, world:null, era:null, tech:null, sup:[], xtra:[], edition:null, opt:null, caos:null, flavor:null, hueco:null, card:null, unis:null, zoom:null, estilo:null, grid:null, pmax:null, pts:0, kx:0, b0:[], b1:[], b2:[], b3:[]};
+var M0 = {known:null, family:null, world:null, era:null, tech:null, sup:[], xtra:[], edition:null, opt:null, caos:null, flavor:null, hueco:null, card:null, unis:null, zoom:null, estilo:null, grid:null, pmax:null, pts:0, kx:0, b0:[], b1:[], b2:[], b3:[], reglas:[]};
 S.m = S.m || JSON.parse(JSON.stringify(M0));
 S.chars = S.chars || [];
 /* El equipo de una ficha se guarda por su sitio en el Bazar (seccion, bloque,
@@ -1218,14 +1224,14 @@ function renderHub(){
       h += '<tr><td>' + esc(r[1]) + '</td><td>' + esc(r[2]) + '<span class="tech">' + esc(r[3]) + '</span></td>' +
         '<td class="chg">' + (r[0] ? '<button type="button" class="mini" data-hub="' + r[0] + '">' + esc(t('Cambiar','Change')) + '</button>' : '') + '</td></tr>';
     });
-    h += '</table>';
+    h += '</table>' + renderReglas();
     h += '<div class="hubmus"><button type="button" class="mini strong" data-musg="1" aria-expanded="' + musOpen + '">' +
       esc(musOpen ? t('Cerrar la música','Close the music') : t('Música de la partida','Music for the game')) + '</button>' +
       '<span class="note">' + esc(t('Arrastra tus pistas y asígnalas a cada tarjeta. También está en la barra de arriba, en cualquier otra pestaña.','Drag your own tracks in and assign them to each card. It is also in the bar above, on any other tab.')) + '</span></div>';
     if (musOpen) h += renderMusica();
     h += '<div class="cta"><button type="button" class="btn red" data-gotpl="1">' + esc(t('Ficha plantilla','Template sheet')) + ' →</button></div></div>';
   } else {
-    h += '<p class="hint">' + esc(t('Empieza por donde quieras. Con el universo ya se puede imprimir una ficha; el resto afina cómo se juega.','Start wherever you like. With the universe alone you can already print a sheet; the rest fine-tunes how it plays.')) + '</p>';
+    h += '<p class="hint">' + esc(t('Empieza por donde quieras. Con el universo ya se puede imprimir una ficha; el resto afina cómo se juega.','Start wherever you like. With the universe alone you can already print a sheet; the rest fine-tunes how it plays.')) + '</p>' + renderReglas();
   }
   if (M.known !== null && !S.chars.length) h += '<p class="hint">' + esc(t('El cuarto se abre cuando haya una ficha: ve a la ficha plantilla y pulsa «Crear ficha».','The fourth one opens once there is a sheet: go to the template sheet and press “Create sheet”.')) + '</p>';
   return h + '</div>';
@@ -2359,7 +2365,7 @@ function renderTemplate(){
     '<div class="sec">' + esc(t('Rejilla y habilidades','Grid and skills')) + '</div>' + skillGrid(null);
   var p2 = '<div class="sec">' + esc(t('Vida','Health')) + '</div>' + tracks(null) + '<div class="sec">' + esc(t('Equipo','Equipment')) + '<span class="note">' + esc(universes().map(uniName).join(' · ')) + '</span></div>' + gearTable(null) +
     refs(keysBlock(null)) + '<div class="fields"><div><div class="sec">' + esc(t('Notas','Notes')) + '</div><div class="lines"><div class="line"></div><div class="line"></div></div></div><div><div class="sec">' + esc(t('Heridas','Wounds')) + '</div><div class="lines"><div class="line"></div><div class="line"></div></div></div></div>';
-  var p3 = '<div class="sec">' + esc(t('Recordatorios para la mesa','Table reminders')) + '</div>' + reminders();
+  var p3 = '<div class="sec">' + esc(t('Recordatorios para la mesa','Table reminders')) + '</div>' + reminders() + reglasFicha(reglas().filter(function(r){ return !reglaDuenio(r); }));
   return rulesBar() + toolbar() + a4(1, 3, p1) + a4(2, 3, p2) + a4(3, 3, p3) + '<div class="create noprint"><button type="button" id="createBtn">' + esc(u('create')) + '</button></div>';
 }
 
@@ -2528,7 +2534,7 @@ function renderChar(c, idx){
     (accTres(c) ? '<p class="lockmsg">' + esc(t('Llevas más de tres objetos. En el Acelerado son tres los que importan: para coger uno nuevo, sueltas uno, salvo lo de un solo uso (2.9).','You carry more than three items. In Accelerated three are the ones that matter: to take a new one, you drop one, except single-use things (2.9).')) + '</p>' : '') +
     finder() + '<div class="addrow noprint"><select id="gType"><option value="">' + esc(t('Tipo…','Type…')) + '</option>' + gs.map(function(g, i){ return '<option value="' + i + '">' + esc(g.name) + ' (' + g.items.length + ')</option>'; }).join('') + '</select><select id="gItem" disabled><option value="">' + esc(t('Objeto…','Item…')) + '</option></select><button type="button" class="tool" id="gAdd" disabled>' + esc(t('Añadir','Add')) + '</button></div>' +
     refs(keysBlock(c)) + '<div class="fields" style="margin-top:12px"><div><label for="f-keys">' + esc(t('Notas de Llaves','Key notes')) + '</label><textarea id="f-keys">' + esc(c.keys) + '</textarea></div><div><label for="f-notes">' + esc(t('Heridas y notas','Wounds and notes')) + '</label><textarea id="f-notes">' + esc(c.notes) + '</textarea></div></div>';
-  var p3 = '<div class="sec">' + esc(t('Recordatorios','Reminders')) + '</div>' + reminders();
+  var p3 = '<div class="sec">' + esc(t('Recordatorios','Reminders')) + '</div>' + reminders() + reglasFicha(reglasDe(c.id));
   return rulesBar() + '<div id="pcSheet">' + toolbar('<button class="tool" type="button" id="delBtn">' + esc(u('del')) + '</button>') + a4(1, 3, p1) + a4(2, 3, p2) + a4(3, 3, p3) + '</div>';
 }
 function onChar(e, c){
@@ -2815,9 +2821,9 @@ function errText(e){
   if (c === 'api') return t('La API de ','The ') + provNombre() + t(' ha rechazado la petición: ',' API rejected the request: ') + (e.message || '');
   return c === 'cancelled' ? t('Detenido.','Stopped.') : pick(ERR[c] || ERR.upstream_error);
 }
-function ctx(){ return 'CURRENT TABLE: ' + JSON.stringify({world:worldName(), edition:edition(), mode:pick(card().n), health:zoomK(), worldMax:mundoMax(), playerMax:jugMaxTxt() || 'none', style:estilo(), extra:baul().map(function(k){ return DATA.baul[k][1]; })}); }
+function ctx(){ return 'CURRENT TABLE: ' + JSON.stringify({world:worldName(), edition:edition(), mode:pick(card().n), health:zoomK(), worldMax:mundoMax(), playerMax:jugMaxTxt() || 'none', style:estilo(), extra:baul().map(function(k){ return DATA.baul[k][1]; }), houseRules:reglas().map(function(r){ var c = reglaDuenio(r); return {name:r.n, rule:r.d, appliesTo:c ? (c.name || 'one character') : 'whole table'}; })}); }
 function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); }
-function localSearch(q){ var w = norm(q).match(/[a-z0-9]{4,}/g) || []; return CANON.split(/\n(?=##|- )/).map(function(c){ var n = norm(c), sc = 0; w.forEach(function(x){ if (n.indexOf(x) > -1) sc++; }); return {c:c, sc:sc}; }).filter(function(x){ return x.sc; }).sort(function(a,b){ return b.sc - a.sc; }).slice(0,3).map(function(x){ return x.c.replace(/\*\*/g,''); }); }
+function localSearch(q){ var w = norm(q).match(/[a-z0-9]{4,}/g) || []; return reglas().map(function(r){ return '## ' + t('Regla de la mesa','Table rule') + ': ' + (r.n || '') + '\n' + (r.d || ''); }).concat(CANON.split(/\n(?=##|- )/)).map(function(c){ var n = norm(c), sc = 0; w.forEach(function(x){ if (n.indexOf(x) > -1) sc++; }); return {c:c, sc:sc}; }).filter(function(x){ return x.sc; }).sort(function(a,b){ return b.sc - a.sc; }).slice(0,3).map(function(x){ return x.c.replace(/\*\*/g,''); }); }
 function renderAsk(){ var camp = S.askMode === 'camp'; return '<div class="panel"><div class="formhead"><h2>' + esc(u('ask')) + '</h2><div class="modesw" role="group"><button type="button" data-amode="rules" aria-pressed="' + !camp + '">' + esc(t('Reglas','Rules')) + '</button><button type="button" data-amode="camp" aria-pressed="' + camp + '">' + esc(t('Campaña','Campaign')) + '</button></div>' + (camp && S.story.pw && unlocked ? '<button type="button" class="tool" id="askLock">🔒 ' + esc(t('Bloquear secreto','Lock secret')) + '</button>' : '') + '</div><p class="note">' + esc(camp ? t('Preguntas sobre la campaña, respondidas con lo escrito en la pestaña Historia. Si la respuesta está en el Secreto de Máster, se pide la contraseña.','Campaign questions, answered from what is written in the Story tab. If the answer is in the GM secret, the password is required.') : t('Dudas de reglas, respondidas según el canon de NOGUM y la mesa actual.','Rules questions, answered from the NOGUM canon and the current table.')) + '</p><div class="chat" id="chat"></div><textarea id="askQ"></textarea><div class="row" style="margin-top:8px"><button class="tool primary" id="askBtn" type="button">' + esc(t('Preguntar','Ask')) + '</button><button class="tool" id="stopBtn" type="button" hidden>' + esc(t('Parar','Stop')) + '</button><button class="tool" id="clearBtn" type="button">' + esc(t('Nueva conversación','New conversation')) + '</button><span class="note" id="askNote"></span></div></div>'; }
 function chatMsg(kind, text){ var d = document.createElement('div'); d.className = 'msg ' + kind; d.innerHTML = '<span class="who"></span><span></span>'; d.firstChild.textContent = kind === 'me' ? t('Tú','You') : kind === 'ai' ? 'NOGUM' : kind === 'lock' ? '🔒' : S.askMode === 'camp' ? t('Historia (sin IA)','Story (no AI)') : t('Canon (sin IA)','Canon (no AI)'); d.lastChild.textContent = text; $('chat').appendChild(d); $('chat').scrollTop = 1e9; return d.lastChild; }
 function ask(){
@@ -2826,7 +2832,7 @@ function ask(){
   if (!sample || aiDenied) { var hits = localSearch(qv); chatMsg('loc', hits.length ? hits.join('\n\n— — —\n\n') : t('No encuentro nada con esas palabras.','Nothing found with those words.')); return; }
   turns.push({role:'user', content:qv}); while (turns.length > 12) turns.splice(0,2);
   var bub = chatMsg('ai', t('Pensando…','Thinking…')); ctl = new AbortController(); $('askBtn').disabled = true; $('stopBtn').hidden = false;
-  var rules = 'You are the rules assistant for the NOGUM roleplaying game. Answer ONLY from the canon below (written in Spanish): the PALABRA DEL AUTOR (the author’s word) rules over everything, and the REFERENCE SHEET sums up the current rules. The author writes «malla»: it is the Grid (Rejilla). Use the current vocabulary: Director (GM), the Grid, Keys (a Key is a whole Discipline against any target), advantages and flaws. Reply in ' + (S.lang === 'en' ? 'English' : 'Spanish') + ', in 2-6 sentences or a short list, no heavy markdown, no absolutes. Name the section of the Juego completo when you know it (numbered as in the reference sheet). If something is pending or absent, say so and do not invent it.\n' + ctx() + '\n\nCANON:\n' + CANON;
+  var rules = 'You are the rules assistant for the NOGUM roleplaying game. Answer ONLY from the canon below (written in Spanish): the PALABRA DEL AUTOR (the author’s word) rules over everything, and the REFERENCE SHEET sums up the current rules. The houseRules in CURRENT TABLE were written by this table for what the rulebook does not cover (section 0.9): they apply at this table alongside the canon; say so when an answer rests on one. The author writes «malla»: it is the Grid (Rejilla). Use the current vocabulary: Director (GM), the Grid, Keys (a Key is a whole Discipline against any target), advantages and flaws. Reply in ' + (S.lang === 'en' ? 'English' : 'Spanish') + ', in 2-6 sentences or a short list, no heavy markdown, no absolutes. Name the section of the Juego completo when you know it (numbered as in the reference sheet). If something is pending or absent, say so and do not invent it.\n' + ctx() + '\n\nCANON:\n' + CANON;
   sample([{role:'user', content:rules}].concat(turns), {cache:false, signal:ctl.signal, onText:function(x){ bub.textContent = x.text; $('chat').scrollTop = 1e9; }})
     .then(function(r){ bub.textContent = r.text; turns.push({role:'assistant', content:r.text}); })
     .catch(function(e){ bub.textContent = (e && e.text) || '—'; turns.pop(); $('askNote').textContent = errText(e); })
@@ -3493,6 +3499,64 @@ function restoreM(json){
   Object.keys(M).forEach(function(k){ if (!(k in o)) delete M[k]; });
   Object.keys(o).forEach(function(k){ M[k] = o[k]; });
 }
+
+/* --- Reglas de la mesa (0.9) ---
+   Las que la mesa escribe porque el manual no las trae. Viajan en el archivo
+   de la mesa, no en el Codigo; salen en la ficha de quien las lleva, y el
+   asistente las lee como validas en esta mesa. */
+function reglas(){ return Array.isArray(M.reglas) ? M.reglas : []; }
+function reglaDuenio(r){ var c = r.a && S.chars.filter(function(x){ return x.id === r.a; })[0]; return c || null; }
+function reglasDe(cid){ return reglas().filter(function(r){ return !reglaDuenio(r) || r.a === cid; }); }
+function reglaPara(r){ var c = reglaDuenio(r); return c ? t('Para ','For ') + (c.name || u('pc')) : t('Para toda la mesa','For the whole table'); }
+var reglaEd = null;
+function renderReglas(){
+  var h = '<div class="reglas"><p class="kick">' + esc(t('Reglas de la mesa','Table rules')) + '</p>' +
+    '<p class="note">' + esc(t('Las que el manual no trae y os habéis inventado (0.9): qué hace, cuándo se aplica y cómo se tira. Viajan en el archivo de la mesa, salen en la ficha de quien las lleva y el asistente las tiene en cuenta.',
+      'The ones the rulebook does not have and you have made up (0.9): what it does, when it applies and how it is rolled. They travel in the table file, appear on the sheet of whoever has them, and the assistant takes them into account.')) + '</p>';
+  reglas().forEach(function(r){
+    if (reglaEd === r.id) { h += reglaForm(r); return; }
+    h += '<div class="regla"><div class="reglahead"><b>' + esc(r.n || t('Sin nombre','Untitled')) + '</b><span class="tech">' + esc(reglaPara(r)) + '</span>' +
+      '<button type="button" class="mini" data-regla="editar" data-rid="' + esc(r.id) + '">' + esc(t('Editar','Edit')) + '</button>' +
+      '<button type="button" class="mini" data-regla="borrar" data-rid="' + esc(r.id) + '">' + esc(t('Borrar','Delete')) + '</button></div>' +
+      (r.d ? '<p>' + esc(r.d) + '</p>' : '') + '</div>';
+  });
+  if (reglaEd === 'nueva') h += reglaForm(null);
+  else if (!reglaEd) h += '<button type="button" class="tool" data-regla="nueva">' + esc(t('Escribir una regla','Write a rule')) + '</button>';
+  return h + '</div>';
+}
+function reglaForm(r){
+  var a = r && reglaDuenio(r) ? r.a : '';
+  return '<div class="regla edit"><div class="fields"><div><label for="rgN">' + esc(t('Nombre','Name')) + '</label><input type="text" id="rgN" value="' + esc(r ? r.n : '') + '" placeholder="' + esc(t('La Humanidad que se diluye','Humanity that thins')) + '"></div>' +
+    '<div><label for="rgA">' + esc(t('Vale para','Applies to')) + '</label><select id="rgA"><option value="">' + esc(t('Toda la mesa','The whole table')) + '</option>' +
+    S.chars.map(function(c, i){ return '<option value="' + esc(c.id) + '"' + (a === c.id ? ' selected' : '') + '>' + esc(c.name || (u('pc') + ' ' + (i + 1))) + '</option>'; }).join('') + '</select></div></div>' +
+    '<label for="rgD">' + esc(t('Qué hace, cuándo se aplica y cómo se tira','What it does, when it applies and how it is rolled')) + '</label>' +
+    '<textarea id="rgD" placeholder="' + esc(t('Cada vez que se transforma, la Humanidad pierde un d10 entre tres, redondeando hacia abajo, leído con el dado de la tarjeta.','Every time she transforms, Humanity loses a d10 divided by three, rounded down, read with the card’s die.')) + '">' + esc(r ? r.d : '') + '</textarea>' +
+    '<div class="row"><button type="button" class="tool primary" data-regla="guardar" data-rid="' + esc(r ? r.id : '') + '">' + esc(t('Guardar','Save')) + '</button>' +
+    '<button type="button" class="tool" data-regla="cancelar">' + esc(t('Cancelar','Cancel')) + '</button></div></div>';
+}
+function reglasFicha(L){
+  if (!L.length) return '';
+  return '<div class="sec">' + esc(t('Reglas de la mesa','Table rules')) + '</div><div class="reglasficha">' +
+    L.map(function(r){ return '<p><b>' + esc(r.n || t('Sin nombre','Untitled')) + '.</b> ' + esc(r.d || '') + '</p>'; }).join('') + '</div>';
+}
+document.addEventListener('click', function(e){
+  var b = e.target.closest('[data-regla]'); if (!b) return;
+  var k = b.getAttribute('data-regla'), id = b.getAttribute('data-rid');
+  if (k === 'nueva') reglaEd = 'nueva';
+  else if (k === 'editar') reglaEd = id;
+  else if (k === 'cancelar') reglaEd = null;
+  else if (k === 'borrar') { M.reglas = reglas().filter(function(r){ return r.id !== id; }); reglaEd = null; }
+  else if (k === 'guardar') {
+    var n = ($('rgN').value || '').trim(), d = ($('rgD').value || '').trim(), a = $('rgA').value || '';
+    if (n || d) {
+      var L = reglas().slice(), r = id && L.filter(function(x){ return x.id === id; })[0];
+      if (r) { r.n = n; r.d = d; r.a = a; } else L.push({id:'r' + Date.now().toString(36), n:n, d:d, a:a});
+      M.reglas = L;
+    }
+    reglaEd = null;
+  }
+  persist(); render(true);
+});
 
 /* --- Mesa nueva ---
    Borra la mesa (configuracion, respuestas de los formularios, escena) y, si
