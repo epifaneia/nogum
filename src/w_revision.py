@@ -5,6 +5,9 @@ Mira los cuatro productos tal como salen, no los fragmentos: lo que importa es
 lo que lee el lector. El Cuaderno queda fuera porque es el diario de edicion y
 ahi la historia es legitima. En la app se recorta el canon embebido por lo
 mismo: es bitacora.
+
+Sale con codigo 1 si encuentra algun problema, para que la integracion
+continua (.github/workflows/puertas.yml) pare.
 """
 import io, os, re, sys
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
@@ -125,3 +128,4 @@ if fallos:
 else:
     print(' RESULTADO: limpio.')
 print(L)
+sys.exit(1 if fallos else 0)

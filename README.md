@@ -1,17 +1,24 @@
 # NOGUM
 
-> **In English.** NOGUM is a compiler for a bilingual (Spanish/English) 210-page tabletop RPG manual, plus the single-file web app that configures a game from it. One set of source fragments feeds three books and the app, each in two languages and as web and PDF, so the real problem is keeping them from drifting apart.
+[![puertas](https://github.com/epifaneia/nogum/actions/workflows/puertas.yml/badge.svg)](https://github.com/epifaneia/nogum/actions/workflows/puertas.yml)
+
+> **In English.** NOGUM is a tabletop role-playing game, and this repo is the compiler for its bilingual (Spanish/English) 210-page manual, plus the single-file web app that configures a game from it. One set of source fragments feeds three books and the app, each in two languages and as web and PDF, so the real problem is keeping them from drifting apart.
 > The principle is *the model interprets, deterministic code verifies*: text is drafted with an LLM's help, but nothing ships until deterministic Python checks pass.
-> The validation gates: `src/w_revision.py` sweeps the compiled products for retired vocabulary, system invariants, broken anchors, duplicate ids and cross-links; `src/w_marcas_inv.py` inventories trademarked names; build-time assertions check catalogue counts and the app's embedded JSON; `src/curvas.py` is the probability model, checked against the printed tables (Appendix B: 56 rows compared, 0 discrepancies).
+> The validation gates: `src/w_revision.py` sweeps the compiled products for retired vocabulary, system invariants, broken anchors, duplicate ids and cross-links; `src/w_marcas_inv.py` inventories trademarked names; build-time assertions check catalogue counts and the app's embedded JSON; `src/curvas.py` is the probability model, and `src/w_apendice_b.py` checks it against the printed tables (Appendix B: 56 rows per language, 0 discrepancies). CI runs the build and the gates on every push (`.github/workflows/puertas.yml`).
 > Every rule records where it comes from in the design log, `src/CANON.md`, currently at entry 189.
-> To run the gates (Python 3, standard library only): `mkdir -p NOGUM_productos NOGUM_app && cd src && python extract_app_data.py && python assemble3.py ../NOGUM_productos && python build_app3.py && python w_revision.py`.
+> To run the gates (Python 3, standard library only): `mkdir -p NOGUM_productos NOGUM_app && cd src && python extract_app_data.py && python assemble3.py ../NOGUM_productos && python build_app3.py && python w_revision.py && python w_apendice_b.py`. Each gate exits non-zero on any problem.
+> Published: [the idea](https://epifaneia.dev/nogum/idea.html) · [the book](https://epifaneia.dev/nogum/juego.html) · [the app](https://epifaneia.dev/nogum/app.html).
 > The rest of this README is in Spanish; internal working notes live in `notas/`.
 
-**Compilador de un manual bilingüe de 210 páginas, con validación automática de contenido, y la aplicación web que lo configura.**
+**NOGUM es un juego de rol de mesa. Este repositorio es el compilador de su manual bilingüe de 210 páginas, con validación automática de contenido, y la aplicación web que lo configura.**
 
 El producto es un juego de rol universal. Lo interesante desde aquí es el problema: mantener **cuatro productos derivados de una misma fuente, en dos idiomas, con datos compartidos entre un libro y una aplicación**, sin que se desincronicen. Este repositorio es el pipeline que lo resuelve y las puertas de validación que lo vigilan.
 
-🔗 **[Leerlo publicado](https://epifaneia.dev/nogum/)**
+🔗 **[Leerlo publicado](https://epifaneia.dev/nogum/)**: [la idea](https://epifaneia.dev/nogum/idea.html) · [el libro](https://epifaneia.dev/nogum/juego.html) · [la app](https://epifaneia.dev/nogum/app.html)
+
+![Una página del Juego completo publicado: A.8, las siete tarjetas de tono, con la gráfica de cuánto sale adelante según el bono, generada por curvas.py](img-readme/libro-a8-siete-tarjetas.png)
+
+![La aplicación con una mesa configurada: tono Primera marcha, peligro Táctico, mundo propio de nivel máximo 3 y el catálogo de objetos que ese mundo usa](img-readme/app-mesa-configurada.png)
 
 > **Por qué está aquí.** El principio de [Epifaneia](https://epifaneia.dev) es que *el modelo interpreta y el código determinista verifica*. Esto es ese principio llevado al extremo en un dominio donde la especificación era mía de arriba abajo: 210 páginas, dos idiomas, cuatro salidas y una aplicación que consume datos del propio libro.
 >
@@ -62,9 +69,59 @@ Nada se publica sin pasar por aquí:
 - **`src/w_revision.py`** — barre los productos compilados buscando vocabulario retirado, comprueba invariantes del sistema y revisa anclas rotas, identificadores duplicados y enlaces entre piezas.
 - **`src/w_marcas_inv.py`** — inventario de marcas y nombres con derechos sobre lo publicado, con su contexto.
 - **Aserciones en compilación** — que el número de recetas cuadre con el de tablas de techos; que el catálogo de reglas opcionales siga siendo de 18, porque el código de partida usa 18 bits; que los veinte mundos del atajo apunten a las veinte recetas una vez cada uno; que el documento JSON embebido en la aplicación siga siendo válido.
-- **`src/curvas.py`** — el modelo de probabilidad del sistema, contrastado contra las tablas impresas del propio manual. Las ocho tablas del Apéndice B dan 56 filas comparadas y 0 discrepancias (comprobado de nuevo el 28 oct 2026). De ahí salen también las gráficas SVG del libro, generadas desde los datos y no dibujadas a mano.
+- **`src/curvas.py`** — el modelo de probabilidad del sistema, contrastado contra las tablas impresas del propio manual. Las ocho tablas del Apéndice B dan 56 filas comparadas por idioma y 0 discrepancias, y **`src/w_apendice_b.py`** lo vuelve a comprobar en cada compilación. De ahí salen también las gráficas SVG del libro, generadas desde los datos y no dibujadas a mano.
 
 Tres ejemplos de fallos que estas puertas encontraron y que ninguna lectura humana había visto: un catálogo que repartía un valor de daño retirado **solo en la versión inglesa**; texto que la aplicación arrastraba con vocabulario que el manual ya había cambiado; y dos rutas de salida que en Windows eran el mismo fichero, de modo que los enlaces publicados apuntaban a copias locales inexistentes.
+
+Cada puerta sale con código distinto de cero si encuentra algo, y la integración continua ([`.github/workflows/puertas.yml`](.github/workflows/puertas.yml)) compila y las pasa en cada push.
+
+### Una puerta en acción / A gate at work
+
+El primero de esos tres es real y está en el diario (`src/CANON.md`, entrada T152, anterior al primer commit público): el tope de daño se había bajado a 2 en castellano y no en inglés, y el Lanzallamas Casero y la Gema del Infinito seguían repartiendo 3 solo en la versión inglesa. Lo destapó el barrido del que nació `w_revision.py`.
+
+Aquí está la misma deriva, provocada a propósito en una copia: una sola celda de la versión inglesa del Bazar vuelve a decir `Damage 3`. La puerta la encuentra en el libro y en los datos de la aplicación, que ahora dicen `"Daño 2"` en castellano y `"Damage 3"` en inglés, y sale con código 1:
+
+```
+$ python w_revision.py
+====================================================================
+ 1 - VOCABULARIO RETIRADO
+====================================================================
+  [Juego     ] x1   el dano maximo es +2; encima, la Parca (T131)
+      ...points; Soak: Max 1, 1. Homemade Flamethrower Damage 3 Dodge: Partial Soak: None 1 1 1 Cone area. On...
+  [App       ] x1   el dano maximo es +2; encima, la Parca (T131)
+      ...as casero", "Homemade Flamethrower"], "d": ["Daño 2", "Damage 3"], "e": ["Esq: Parcial", "Dodge: Partial"], "a": ["Abs:...
+
+====================================================================
+ 2 - INVARIANTES
+====================================================================
+  ok   [Juego     ] la Firma a +4                x358
+  ok   [Juego     ] el escalon Torpe             x12
+  ok   [Juego     ] la Parca                     x96
+  ok   [Juego     ] vida Letal                   x26
+  ok   [Juego     ] la tarjeta Comedia negra     x38
+  ok   [Acelerado ] modo Optimista               x12
+  ok   [Acelerado ] modo Terror                  x34
+  ok   [Acelerado ] modo Caos                    x17
+  ok   [La Idea   ] el feliz accidente           x2
+
+====================================================================
+ 3 - ENLACES E IDENTIFICADORES
+====================================================================
+  La Idea     rotas:0   claude.ai:7   locales:0   ids repetidos:0
+  Juego       rotas:0   claude.ai:7   locales:0   ids repetidos:0
+  Acelerado   rotas:0   claude.ai:6   locales:0   ids repetidos:0
+  App         rotas:0   claude.ai:0   locales:0   ids repetidos:0
+
+====================================================================
+ RESULTADO: 2 problema(s)
+  - Juego: el dano maximo es +2; encima, la Parca (T131)
+  - App: el dano maximo es +2; encima, la Parca (T131)
+====================================================================
+$ echo $?
+1
+```
+
+Para reproducirlo, en una copia del repositorio: cambia `Damage 2` por `Damage 3` en la fila de *Homemade Flamethrower* de `src/v2/fK1_bazar_a.en.html`, compila como en [Compilar](#compilar) y pasa `python w_revision.py`.
 
 ## La aplicación
 
@@ -109,6 +166,8 @@ src/       fuentes, datos y pipeline
   *.json           datos extraídos
   CANON.md         el diario de diseño, con el porqué de cada decisión
   archivo/         scripts de un solo uso, por historial
+img-readme/ las capturas de este README (fuera del sitio publicado)
+.github/   la integración continua: compila y pasa las puertas en cada push
 notas/     notas de trabajo, preguntas al autor e instrucciones para el modelo (fuera del sitio publicado)
 LICENSE
 ```
@@ -116,11 +175,13 @@ LICENSE
 ## Compilar
 
 ```bash
+mkdir -p NOGUM_productos NOGUM_app    # las carpetas de salida, fuera de docs/
 cd src
 python extract_app_data.py            # datos del manual -> aplicación
 python assemble3.py ../NOGUM_productos # los tres libros, tres destinos
 python build_app3.py                  # la aplicación
 python w_revision.py                  # la puerta de validación
+python w_apendice_b.py                # el Apéndice B contra curvas.py
 python imagenes.py                    # solo si cambia alguna imagen
 ```
 

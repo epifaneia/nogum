@@ -1,0 +1,56 @@
+# Las puertas de validacion, en cada push y en cada pull request.
+#
+# Compila los libros y la aplicacion exactamente como dice el README y pasa las
+# puertas. Si una puerta encuentra un problema sale con codigo distinto de 0 y
+# el job falla. Solo biblioteca estandar de Python: no hay nada que instalar.
+#
+# Los compiladores tambien reescriben docs/ (el sitio publicado). Aqui eso pasa
+# en la copia efimera del runner: este workflow no hace commit ni push, asi que
+# nunca toca el sitio.
+name: puertas
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  puertas:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Carpetas de salida (fuera de docs/)
+        working-directory: .
+        run: mkdir -p NOGUM_productos NOGUM_app
+
+      # --- compilacion (con sus aserciones: recetas, techos, Baul de 18, JSON) ---
+      - name: Datos del manual -> aplicacion
+        run: python extract_app_data.py
+
+      - name: Los tres libros, dos idiomas, tres destinos
+        run: python assemble3.py ../NOGUM_productos
+
+      - name: La aplicacion
+        run: python build_app3.py
+
+      # --- puertas ---
+      - name: w_revision (vocabulario retirado, invariantes, anclas, ids)
+        run: python w_revision.py
+
+      - name: w_apendice_b (Apendice B contra curvas.py)
+        run: python w_apendice_b.py
+
+      # Inventario, no puerta: ensena el contexto para decidir caso por caso y
+      # no falla por diseno. Se ejecuta para que su salida quede en el log.
+      - name: w_marcas_inv (inventario de marcas, informativo)
+        run: python w_marcas_inv.py
