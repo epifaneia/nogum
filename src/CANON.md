@@ -1,7 +1,7 @@
 # CANON NOGUM — Reglas definitivas para el documento maestro
 
 ## PALABRA DEL AUTOR (21 oct 2026): manda sobre todo lo demás
-Daniel Martín respondió uno a uno a los 53 conceptos del núcleo (`CANON-respuestas-2026-10-21.html`, en la raíz). Esto manda sobre todo lo que viene después en este fichero y sobre el texto del libro. Donde dijo **Sí**, el enunciado queda confirmado tal cual. Donde dijo **No**, manda su texto, copiado literal; el enunciado del asistente se deja solo para que se vea a qué responde, y no vale como regla.
+Daniel Martín respondió uno a uno a los 53 conceptos del núcleo (`notas/CANON-respuestas-2026-10-21.html`). Esto manda sobre todo lo que viene después en este fichero y sobre el texto del libro. Donde dijo **Sí**, el enunciado queda confirmado tal cual. Donde dijo **No**, manda su texto, copiado literal; el enunciado del asistente se deja solo para que se vea a qué responde, y no vale como regla.
 
 ### El marco
 - **m1 · La mesa manda.** Sí. Las reglas son herramientas para que el tono y el progreso se controlen, y se ignoran cuando impiden lo que la trama pide. NOGUM es para adultos: no hay cortafuegos contra el combo barato; la mesa puede decir «esto no vale».
@@ -214,7 +214,7 @@ Daniel Martín respondió uno a uno a los 53 conceptos del núcleo (`CANON-respu
 
 
 ### Respuestas a PREGUNTAS-v2 (22 oct, `respuestas.docx`)
-El autor contestó en un documento las 25 preguntas de `PREGUNTAS-v2.md` (raíz). Cada respuesta va literal, tras el título de la pregunta.
+El autor contestó en un documento las 25 preguntas de `notas/PREGUNTAS-v2.md`. Cada respuesta va literal, tras el título de la pregunta.
 - **1. La Parca, Limitada al daño.** **El autor:**
   > Confirmo.
 - **2. Anular la absorción, ¿Llave?** **El autor:**

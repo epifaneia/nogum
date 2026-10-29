@@ -1,5 +1,12 @@
 # NOGUM
 
+> **In English.** NOGUM is a compiler for a bilingual (Spanish/English) 210-page tabletop RPG manual, plus the single-file web app that configures a game from it. One set of source fragments feeds three books and the app, each in two languages and as web and PDF, so the real problem is keeping them from drifting apart.
+> The principle is *the model interprets, deterministic code verifies*: text is drafted with an LLM's help, but nothing ships until deterministic Python checks pass.
+> The validation gates: `src/w_revision.py` sweeps the compiled products for retired vocabulary, system invariants, broken anchors, duplicate ids and cross-links; `src/w_marcas_inv.py` inventories trademarked names; build-time assertions check catalogue counts and the app's embedded JSON; `src/curvas.py` is the probability model, checked against the printed tables (Appendix B: 56 rows compared, 0 discrepancies).
+> Every rule records where it comes from in the design log, `src/CANON.md`, currently at entry 189.
+> To run the gates (Python 3, standard library only): `mkdir -p NOGUM_productos NOGUM_app && cd src && python extract_app_data.py && python assemble3.py ../NOGUM_productos && python build_app3.py && python w_revision.py`.
+> The rest of this README is in Spanish; internal working notes live in `notas/`.
+
 **Compilador de un manual bilingüe de 210 páginas, con validación automática de contenido, y la aplicación web que lo configura.**
 
 El producto es un juego de rol universal. Lo interesante desde aquí es el problema: mantener **cuatro productos derivados de una misma fuente, en dos idiomas, con datos compartidos entre un libro y una aplicación**, sin que se desincronicen. Este repositorio es el pipeline que lo resuelve y las puertas de validación que lo vigilan.
@@ -102,6 +109,7 @@ src/       fuentes, datos y pipeline
   *.json           datos extraídos
   CANON.md         el diario de diseño, con el porqué de cada decisión
   archivo/         scripts de un solo uso, por historial
+notas/     notas de trabajo, preguntas al autor e instrucciones para el modelo (fuera del sitio publicado)
 LICENSE
 ```
 

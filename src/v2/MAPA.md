@@ -5,8 +5,8 @@ Estás reescribiendo un trozo del **Juego completo** de NOGUM (castellano) con u
 ## 0. Lo que tienes que leer antes de nada
 
 1. `src/CANON.md`, **líneas 1–215**: la PALABRA DEL AUTOR. Es la única verdad. Lo marcado «Sí» está confirmado; en lo marcado «No» manda solo el texto del autor. Las «Aclaraciones del 22 oct» (desde la línea 138) también son palabra del autor, e incluyen las dos tablas de ejemplos de la Rejilla ya aprobadas. Nada de CANON.md por debajo de la línea 215 vale como verdad (es historia, con capas viejas y erróneas).
-2. `REVISION-canon-2026-10-21.md` (raíz): el barrido de contradicciones del libro viejo, con fichero:línea. **Toda corrección que afecte a tus fuentes hay que aplicarla.** Ojo: algunas «dudas» de ese informe ya las ha contestado el autor en las Aclaraciones; manda la Aclaración.
-3. `PLAN-reestructura.md` (raíz): el principio y el índice.
+2. `notas/REVISION-canon-2026-10-21.md`: el barrido de contradicciones del libro viejo, con fichero:línea. **Toda corrección que afecte a tus fuentes hay que aplicarla.** Ojo: algunas «dudas» de ese informe ya las ha contestado el autor en las Aclaraciones; manda la Aclaración.
+3. `notas/PLAN-reestructura.md`: el principio y el índice.
 4. Este fichero entero, y tu sección de reparto.
 5. Tus fuentes viejas, enteras (rutas en `src/`).
 

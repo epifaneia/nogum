@@ -16,7 +16,7 @@ Inglés británico (colour, armour, neighbourhood). Texto principal serio y clar
 
 ## Términos (obligatorios)
 
-Mandan sobre `GLOSSARY_EN.md` (raíz), que es más viejo: «Ancla/Vela», «Malla Tonal» y los nombres viejos de tarjetas ya no se usan.
+Mandan sobre `notas/GLOSSARY_EN.md`, que es más viejo: «Ancla/Vela», «Malla Tonal» y los nombres viejos de tarjetas ya no se usan.
 
 | Castellano | English |
 |---|---|
