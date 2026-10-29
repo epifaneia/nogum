@@ -1133,7 +1133,7 @@ table.t.ficha-equipo td:not(:first-child),table.t.ficha-equipo th:not(:first-chi
     // carry trailing headings of the innermost target to the next page
     var t = target(), carry = [];
     while (t.lastChild && t.lastChild.nodeType===1 && isHead(t.lastChild) && realCount(t) + t.querySelectorAll(':scope > h2,:scope > h3,:scope > h4').length > 1) { carry.unshift(t.lastChild); t.removeChild(t.lastChild); }
-    var old = clones.slice();
+    var old = clones.slice(), oldBody = body;
     newSheet();
     var parent = body;
     clones = old.map(function(o, i){
@@ -1149,6 +1149,12 @@ table.t.ficha-equipo td:not(:first-child),table.t.ficha-equipo th:not(:first-chi
         Array.prototype.slice.call(old[i].c.childNodes).forEach(function(n){ if (isHead(n) || n.nodeType===3) clones[i].t.insertBefore(n, clones[i].t.firstChild); });
         old[i].c.remove();
       } else break;
+    }
+    // if fragments were dropped (a table that left only its header), its heading goes with it
+    if (i < old.length - 1) {
+      var from = i >= 0 ? old[i].t : oldBody, to = i >= 0 ? clones[i].t : body, at = clones[i + 1].c, heads = [];
+      while (from.lastChild && from.lastChild.nodeType===1 && isHead(from.lastChild) && realCount(from) + from.querySelectorAll(':scope > h2,:scope > h3,:scope > h4').length > 1) { heads.unshift(from.lastChild); from.removeChild(from.lastChild); }
+      heads.forEach(function(n){ to.insertBefore(n, at); });
     }
   }
   function put(node){

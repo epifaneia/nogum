@@ -1456,6 +1456,7 @@ table.t.ficha-equipo td:not(:first-child),table.t.ficha-equipo th:not(:first-chi
 
 <h4 id="ch4-arriba">Hacia arriba: con permiso, el bono completo</h4>
 <p>Lo contraintuitivo va en la otra dirección. Contra quien está por encima, con la Llave <strong>tiras con tu bono completo</strong>, sin penalizador ni dificultad añadida por ser él de arriba. <strong>No se protege dos veces</strong>: la Rejilla ya era su protección, y la Llave es justo lo que la levanta.</p>
+<figure class="fig ilus"><div class="fig-box"><img src="img/lam/gigante.jpg" alt="Un samurái con una katana de fuego azul planta cara a un oni gigante bajo la lluvia"></div><figcaption>La espada es la Llave: contra el de arriba, tu bono completo. La maza es otra historia.</figcaption></figure>
 <p><strong>La Llave cubre lo que cubre.</strong> La Llave, o las Llaves, dicen qué tipo de oportunidad compras: un arma que lo hiere aunque se proteja, o una ocasión de la escena —una emboscada, una sorpresa—, que es una sola oportunidad. En lo que cubre, quedáis a la par y se tira con normalidad (<a href="#ch6-golpes">6.2</a>). En lo que no cubre, sigue estando por encima: si le toca a él, <strong>su golpe te entra como a cualquiera de abajo, sin tirada</strong>, salvo que tu Llave cubra también tu defensa.</p>
 <p>Para defenderte de algo que está por encima, la Llave tiene que cubrir la Disciplina con la que te defiendes —Acrobacia para esquivar, Entereza para aguantar—, o ser una Llave de un momento que te dé la ficción (<a href="#ch4-tipos">4.4</a>). Con una Llave de Armas le das al vampiro; su zarpazo lo esquivas con otra. Y una espada no te cubre contra el aliento del dragón: aguantarlo es Entereza, y tú compraste Armas.</p>
 
@@ -3660,6 +3661,7 @@ Fin de las notas de trabajo. -->
 </tbody></table></div>
 <h3 id="bz-social">El Duelo Social (intriga cortesana)</h3>
 <p><em>«Donde la lengua corta más que la espada.»</em></p>
+<figure class="fig ilus"><div class="fig-box"><img src="img/lam/corte.jpg" alt="Un bufón de espaldas, en medio de un baile de máscaras partido en rojo y azul"></div><figcaption>Un salón, dos bandos y un bufón en medio: en la corte, el daño es social.</figcaption></figure>
 <h4>Arsenal social</h4>
 <div class="tw"><table class="t arsenal">
 <thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th class="num">Acceso</th><th class="num">Puntos</th><th class="num">Llaves</th><th>Notas</th></tr></thead>
@@ -6792,6 +6794,7 @@ Fin de las notas de trabajo. -->
 
 <h4 id="ch4-arriba">Upwards: with the permit, the full bonus</h4>
 <p>The counter-intuitive part goes the other way. Against whoever is above you, with the Key <strong>you roll with your full bonus</strong>, with no penalty and no added difficulty because they stand higher. <strong>Nothing is protected twice</strong>: the Grid was already their protection, and the Key is exactly what lifts it.</p>
+<figure class="fig ilus"><div class="fig-box"><img src="img/lam/gigante.jpg" alt="A samurai with a blue-flame katana stands up to a giant oni in the rain"></div><figcaption>The sword is the Key: against the one above, your full bonus. The club is another story.</figcaption></figure>
 <p><strong>The Key covers what it covers.</strong> The Key, or the Keys, say what kind of opportunity you are buying: a weapon that wounds them even if they protect themselves, or an opening in the scene —an ambush, a surprise—, which is a single opportunity. In what it covers, you stand level and roll normally (<a href="#ch6-golpes">6.2</a>). In what it does not cover, they are still above you: when their turn comes, <strong>their blow lands on you as on anyone below, without a roll</strong>, unless your Key also covers your defence.</p>
 <p>To defend yourself against something above you, the Key has to cover the Discipline you defend with —Acrobatics to dodge, Fortitude to take it—, or be a momentary Key given by the fiction (<a href="#ch4-tipos">4.4</a>). With a Weapons Key you hit the vampire; its swipe you dodge with another. And a sword gives you no cover against the dragon’s breath: surviving it is Fortitude, and you bought Weapons.</p>
 
@@ -8996,6 +8999,7 @@ Fin de las notas de trabajo. -->
 </tbody></table></div>
 <h3 id="bz-social">The Social Duel (court intrigue)</h3>
 <p><em>“Where the tongue cuts deeper than the sword.”</em></p>
+<figure class="fig ilus"><div class="fig-box"><img src="img/lam/corte.jpg" alt="A jester seen from behind, in the middle of a masked ball split into red and blue"></div><figcaption>A ballroom, two factions and a jester in the middle: at court, the damage is social.</figcaption></figure>
 <h4>Social arsenal</h4>
 <div class="tw"><table class="t arsenal">
 <thead><tr><th>Object</th><th>Damage</th><th>Dodge</th><th>Soak</th><th class="num">Access</th><th class="num">Points</th><th class="num">Keys</th><th>Notes</th></tr></thead>
@@ -11367,7 +11371,7 @@ Fin de las notas de trabajo. -->
     // carry trailing headings of the innermost target to the next page
     var t = target(), carry = [];
     while (t.lastChild && t.lastChild.nodeType===1 && isHead(t.lastChild) && realCount(t) + t.querySelectorAll(':scope > h2,:scope > h3,:scope > h4').length > 1) { carry.unshift(t.lastChild); t.removeChild(t.lastChild); }
-    var old = clones.slice();
+    var old = clones.slice(), oldBody = body;
     newSheet();
     var parent = body;
     clones = old.map(function(o, i){
@@ -11383,6 +11387,12 @@ Fin de las notas de trabajo. -->
         Array.prototype.slice.call(old[i].c.childNodes).forEach(function(n){ if (isHead(n) || n.nodeType===3) clones[i].t.insertBefore(n, clones[i].t.firstChild); });
         old[i].c.remove();
       } else break;
+    }
+    // if fragments were dropped (a table that left only its header), its heading goes with it
+    if (i < old.length - 1) {
+      var from = i >= 0 ? old[i].t : oldBody, to = i >= 0 ? clones[i].t : body, at = clones[i + 1].c, heads = [];
+      while (from.lastChild && from.lastChild.nodeType===1 && isHead(from.lastChild) && realCount(from) + from.querySelectorAll(':scope > h2,:scope > h3,:scope > h4').length > 1) { heads.unshift(from.lastChild); from.removeChild(from.lastChild); }
+      heads.forEach(function(n){ to.insertBefore(n, at); });
     }
   }
   function put(node){
