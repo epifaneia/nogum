@@ -882,7 +882,7 @@ table.t.ficha-equipo td:not(:first-child),table.t.ficha-equipo th:not(:first-chi
 <thead><tr><th>Etiqueta</th><th>Valores</th><th>Qué significa</th></tr></thead>
 <tbody>
 <tr><td><span class="tag">Daño 1</span></td><td>Leve</td><td>Puños, cuchillos, pistolas ligeras, caídas cortas. «Urgencias».</td></tr>
-<tr><td><span class="tag">Daño 2</span></td><td>Serio</td><td>Espadas de guerra, magnum, garras. «UCI».</td></tr>
+<tr><td><span class="tag">Daño 2</span></td><td>Serio</td><td>Espadas de guerra, revólveres pesados, garras. «UCI».</td></tr>
 <tr><td><span class="tag parca">La Parca</span></td><td>No es un valor de daño</td><td>Artillería, explosivos de guerra, un coche a toda velocidad. Es una Llave al daño. Lleva nivel de Rejilla, que se compara con el Físico del objetivo. Si te alcanza y estás por debajo, se te da fuera de combate, sin derecho a tirada: no hay absorción que valga. Si se puede esquivar, lo dice su etiqueta <span class="tag">Esq</span>: el francotirador que no ves (<span class="tag">Esq: Nula</span>) no se esquiva —se evita, no estando ahí—; una granada, por su área, se esquiva a duras penas: −2. A su altura hace Daño 2 y te defiendes normal, con sus etiquetas. Por encima de ella, nada sin Llave.</td></tr>
 <tr><td><span class="tag">Esq: Total</span></td><td>Esquiva libre</td><td>Cuerpo a cuerpo, flechas, proyectiles lentos. Esquivando puedes quedarte en 0.</td></tr>
 <tr><td><span class="tag">Esq: Parcial</span></td><td>Esquiva limitada</td><td>Área, ráfagas, fuego. Aunque esquives, recibes al menos 1.</td></tr>
@@ -901,7 +901,7 @@ table.t.ficha-equipo td:not(:first-child),table.t.ficha-equipo th:not(:first-chi
 <tr><td>Maza, martillo de guerra</td><td><span class="tag">Daño 2</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Máx 1</span></td></tr>
 <tr><td>Arco</td><td><span class="tag">Daño 1</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Total</span></td></tr>
 <tr><td>Pistola, revólver</td><td><span class="tag">Daño 1</span> <span class="tag">Esq: Nula</span> <span class="tag">Abs: Total</span></td></tr>
-<tr><td>Magnum, escopeta</td><td><span class="tag">Daño 2</span> <span class="tag">Esq: Nula</span> <span class="tag">Abs: Total</span></td></tr>
+<tr><td>Revólver pesado, escopeta</td><td><span class="tag">Daño 2</span> <span class="tag">Esq: Nula</span> <span class="tag">Abs: Total</span></td></tr>
 <tr><td>Pistola bláster (ópera espacial: se esquiva por convenio del género)</td><td><span class="tag">Daño 2</span> <span class="tag">Esq: Total</span> <span class="tag">Abs: Máx 1</span></td></tr>
 <tr><td>Granada, explosivo de guerra</td><td><span class="tag parca">La Parca · Rejilla 2</span> <span class="tag">Esq: Difícil (−2)</span> <span class="tag">Abs: Nula</span></td></tr>
 <tr><td>Rifle láser</td><td><span class="tag">Daño 2</span> <span class="tag">Esq: Nula</span> <span class="tag">Abs: Total</span></td></tr>
@@ -1419,7 +1419,7 @@ table.t.ficha-equipo td:not(:first-child),table.t.ficha-equipo th:not(:first-chi
 <thead><tr><th>Tag</th><th>Values</th><th>What it means</th></tr></thead>
 <tbody>
 <tr><td><span class="tag">Damage 1</span></td><td>Light</td><td>Fists, knives, light pistols, short falls. “A&amp;E”.</td></tr>
-<tr><td><span class="tag">Damage 2</span></td><td>Serious</td><td>War swords, magnums, claws. “ICU”.</td></tr>
+<tr><td><span class="tag">Damage 2</span></td><td>Serious</td><td>War swords, heavy revolvers, claws. “ICU”.</td></tr>
 <tr><td><span class="tag parca">The Reaper</span></td><td>Not a damage value</td><td>Artillery, military explosives, a car at full speed. It is a Key to damage. It carries a Grid level, compared against the target’s Physical. If it reaches you and you are below it, you are put out of the fight, with no right to roll: no soak helps. Whether it can be dodged is what its <span class="tag">Dodge</span> tag says: the sniper you cannot see (<span class="tag">Dodge: None</span>) cannot be dodged —it is avoided, by not being there—; a grenade, because of its area, can barely be dodged: −2. At its level it does Damage 2 and you defend as normal, with its tags. Above it, nothing without a Key.</td></tr>
 <tr><td><span class="tag">Dodge: Full</span></td><td>Free dodge</td><td>Melee, arrows, slow projectiles. Dodging can bring you down to 0.</td></tr>
 <tr><td><span class="tag">Dodge: Partial</span></td><td>Limited dodge</td><td>Area, bursts, fire. Even if you dodge, you take at least 1.</td></tr>
@@ -1438,7 +1438,7 @@ table.t.ficha-equipo td:not(:first-child),table.t.ficha-equipo th:not(:first-chi
 <tr><td>Mace, war hammer</td><td><span class="tag">Damage 2</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Max 1</span></td></tr>
 <tr><td>Bow</td><td><span class="tag">Damage 1</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Full</span></td></tr>
 <tr><td>Pistol, revolver</td><td><span class="tag">Damage 1</span> <span class="tag">Dodge: None</span> <span class="tag">Soak: Full</span></td></tr>
-<tr><td>Magnum, shotgun</td><td><span class="tag">Damage 2</span> <span class="tag">Dodge: None</span> <span class="tag">Soak: Full</span></td></tr>
+<tr><td>Heavy revolver, shotgun</td><td><span class="tag">Damage 2</span> <span class="tag">Dodge: None</span> <span class="tag">Soak: Full</span></td></tr>
 <tr><td>Blaster pistol (space opera: it can be dodged by genre convention)</td><td><span class="tag">Damage 2</span> <span class="tag">Dodge: Full</span> <span class="tag">Soak: Max 1</span></td></tr>
 <tr><td>Grenade, military explosive</td><td><span class="tag parca">The Reaper · Grid 2</span> <span class="tag">Dodge: Hard (−2)</span> <span class="tag">Soak: None</span></td></tr>
 <tr><td>Laser rifle</td><td><span class="tag">Damage 2</span> <span class="tag">Dodge: None</span> <span class="tag">Soak: Full</span></td></tr>
