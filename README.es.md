@@ -124,7 +124,7 @@ Un fichero HTML autónomo, sin dependencias ni servidor.
 - **Configurador determinista**: monta la partida con preguntas sobre situaciones, no sobre reglas, y a partir de ahí acota el catálogo —que son cientos de elementos— a lo que ese mundo concreto usa.
 - **Estado comprimido**: la configuración entera viaja en una cadena corta.
 - **IndexedDB** para los ficheros de audio que el usuario aporta, con validación de que el fichero decodifica antes de guardarlo.
-- **Modelo de lenguaje** para consultas de reglas, con el contexto curado: el documento de canon se corta por un marcador para que el asistente nunca lea el diario de trabajo.
+- **Modelo de lenguaje** para consultas de reglas, con el contexto curado: el documento de canon se corta por un marcador (`<!-- BITACORA`, `src/app4_body.html`) para que el asistente nunca lea el diario de trabajo. La aplicación lleva el canon entero, citas del autor incluidas, para que el lector lo consulte; el corte se aplica solo a lo que se envía al modelo.
 - **La IA con la clave del lector (BYOK)**: dentro de claude.ai usa la de la plataforma; fuera, la clave que pegue el lector, de uno de cuatro proveedores (Google Gemini, que tiene cupo gratis y es el recomendado; Mistral; OpenAI; Anthropic), sin servidor propio. Para Anthropic se carga su SDK oficial desde una CDN; los otros tres se llaman directamente. La clave se queda en su navegador, no viaja en ningún archivo y por defecto se olvida al cerrar la pestaña.
 - **La mesa en un archivo**, con o sin la música: configuración, respuestas, fichas, historia y lore, con un sello de versión que avisa si se abre con otras preguntas.
 

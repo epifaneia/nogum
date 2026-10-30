@@ -124,7 +124,7 @@ A self-contained HTML file, with no dependencies and no server.
 - **Deterministic configurator**: it sets up the game with questions about situations, not about rules, and from there narrows the catalogue (hundreds of items) down to what that particular world uses.
 - **Compressed state**: the whole configuration travels in a short string.
 - **IndexedDB** for the audio files the user provides, checking that the file decodes before saving it.
-- **A language model** for rules questions, with curated context: the canon document is cut at a marker so that the assistant never reads the working log.
+- **A language model** for rules questions, with curated context: the canon document is cut at a marker (`<!-- BITACORA`, `src/app4_body.html`) so that the assistant never reads the working log. The app itself carries the whole canon, the author's quotes included, for the reader to browse; the cut applies only to what is sent to the model.
 - **AI with the reader's key (BYOK)**: inside claude.ai it uses the platform's; outside, the key the reader pastes, from one of four providers (Google Gemini, which has a free quota and is the recommended one; Mistral; OpenAI; Anthropic), with no server of its own. For Anthropic its official SDK is loaded from a CDN; the other three are called directly. The key stays in the reader's browser, never travels in any file and by default is forgotten when the tab closes.
 - **The table in a file**, with or without the music: configuration, answers, sheets, story and lore, with a version stamp that warns if it is opened with other questions.
 
