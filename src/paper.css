@@ -593,4 +593,5 @@ table.t.ficha-equipo td:not(:first-child),table.t.ficha-equipo th:not(:first-chi
 .fig.ilus > .fig-box > img{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;display:block}
 .fig.ilus.sq{width:62%;margin-left:auto;margin-right:auto}
 .fig.ilus.sq > .fig-box{aspect-ratio:1/1}
+.fig.ilus.ancha > .fig-box{aspect-ratio:21/9}
 .fig.ilus figcaption{font:italic 9.5pt/1.4 var(--serif)}
