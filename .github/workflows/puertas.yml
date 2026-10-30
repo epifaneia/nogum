@@ -43,6 +43,13 @@ jobs:
       - name: La aplicacion
         run: python build_app3.py
 
+      # El sitio publicado (docs/) y las paginas compiladas que se versionan tienen que
+      # ser exactamente lo que sale de la fuente: si alguien cambia la fuente y no
+      # recompila, o toca docs/ a mano, el job falla y ensena que fichero se desvio.
+      - name: docs/ al dia con la fuente
+        working-directory: .
+        run: git diff --stat --exit-code
+
       # --- puertas ---
       - name: w_revision (vocabulario retirado, invariantes, anclas, ids)
         run: python w_revision.py
