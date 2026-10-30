@@ -36,7 +36,7 @@ Una misma fuente alimenta cuatro salidas que se contradicen con facilidad:
 |---|---|---|
 | La Idea | el argumento de diseño, 16 páginas | libro |
 | Juego completo | el manual, 218 páginas | libro |
-| Acelerado | la versión corta, 22 páginas (23 en inglés) | libro |
+| Acelerado | la versión corta, 23 páginas | libro |
 | App | el configurador y las fichas | aplicación de un fichero |
 
 Cada libro sale en web y en PDF, y el PDF en dos versiones: para pantalla y para imprimir en casa. Son doce PDF por compilación.
@@ -143,7 +143,7 @@ Las imágenes se hicieron con **Nano Banana**, el modelo de imagen de Google en 
 | Serie | Cuántas | Dónde | Cómo salen |
 |---|---|---|---|
 | Portadas | 5 | la portada general y una por pieza (La Idea, Juego completo, Acelerado, App) | color, a 1280 y 640 px |
-| Láminas | 19 | en el Juego completo: la tesis, la mesa, los mundos, el optimismo, el Ancla, la observación, la Rejilla, la Llave, el peligro, la coreografía, Viper entrevistada, la consola, el mago, la nave, el páramo, el taller, el hada, la corte del Duelo Social y el archivo de los expedientes; la tesis abre también La Idea | color, a 1400 px |
+| Láminas | 19 | en el Juego completo: la tesis, la mesa, los mundos, el optimismo, el Ancla, la observación, la Rejilla, la Llave, el peligro, la coreografía, Viper entrevistada, la consola, el mago, la nave, el páramo, el taller, el hada, la corte del Duelo Social y el archivo de los expedientes; la tesis abre también La Idea, y los mundos, el Acelerado | color, a 1400 px |
 | Retratos | 12 | los expedientes del capítulo 9, de frente y de perfil | gris, a 600 px |
 
 - **Portadas.** Es una serie con el mismo personaje (sombrero y abrigo) y el mismo estudio. El centro va casi en blanco y negro y el color, en los bordes.
