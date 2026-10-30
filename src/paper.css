@@ -599,6 +599,4 @@ table.t.ficha-equipo td:not(:first-child),table.t.ficha-equipo th:not(:first-chi
 .fig.ilus.sq{width:62%;margin-left:auto;margin-right:auto}
 .fig.ilus.sq > .fig-box{aspect-ratio:1/1}
 .fig.ilus.ancha > .fig-box{aspect-ratio:21/9}
-/* la lamina de cierre va sola en su hoja, centrada en vertical */
-.sb:has(> .fig.cierre:only-child){display:flex;flex-direction:column;justify-content:center}
 .fig.ilus figcaption{font:italic 9.5pt/1.4 var(--serif)}

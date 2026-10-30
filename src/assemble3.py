@@ -144,7 +144,7 @@ COLOFON = {
         '<p class="note">{a} · {c}</p></section>\n')}
 
 
-def colofon(lang):
+def colofon(lang, me=None):
     """La licencia, al final de cada pieza.
 
     Tres cosas y las tres hacen falta: como se cita, que el nombre NOGUM no
@@ -152,7 +152,19 @@ def colofon(lang):
     ultimo no anade nada legalmente (las mecanicas no son objeto de derechos
     de autor) pero quita la duda que frena a quien querria escribir algo.
     """
-    return COLOFON[lang].format(l=lang, u=LIC[lang], a=AUTOR, c=LICENCIA)
+    s = COLOFON[lang].format(l=lang, u=LIC[lang], a=AUTOR, c=LICENCIA)
+    # el Juego completo acaba aqui, con el caso cerrado debajo de la licencia
+    if me == 'juego': s = s.replace('</section>', CIERRE[lang] + '</section>')
+    return s
+
+CIERRE = {
+ 'es': ('<figure class="fig ilus"><div class="fig-box"><img src="img/lam/cierre.jpg" alt="En un despacho '
+        'a oscuras, con el letrero de neón de NOGUM tras la persiana, el hombre del sombrero apaga la luz al '
+        'salir; sobre la mesa, un expediente cerrado"></div><figcaption>Caso cerrado.</figcaption></figure>'),
+ 'en': ('<figure class="fig ilus"><div class="fig-box"><img src="img/lam/cierre.jpg" alt="In a dark office, '
+        'with the NOGUM neon sign behind the blinds, the man in the hat switches off the light on his way '
+        'out; on the desk, a closed case file"></div><figcaption>Case closed.</figcaption></figure>'),
+}
 
 
 # El numero de cada titular, en el rojo del dado: «Capitulo 3 ·», «3.5»,
@@ -299,7 +311,7 @@ def build(me, mode):
         if me != 'cuaderno': b = limpia_editorial(b)
         b = con_pack(b, me, mode, l)
         b = con_foto(b, me, mode, l)
-        b = b + colofon(l)
+        b = b + colofon(l, me)
         b = num_rojo(b)
         if mode == 'artifact': check(me, l, b)
         tpls += f'<template id="src-{l}">{b}</template>\n'
