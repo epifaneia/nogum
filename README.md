@@ -143,7 +143,7 @@ Las imágenes se hicieron con **Nano Banana**, el modelo de imagen de Google en 
 | Serie | Cuántas | Dónde | Cómo salen |
 |---|---|---|---|
 | Portadas | 5 | la portada general y una por pieza (La Idea, Juego completo, Acelerado, App) | color, a 1280 y 640 px |
-| Láminas | 21 | en el Juego completo: la tesis, la mesa, los mundos, el optimismo, el Ancla, la observación, la Rejilla, la Llave, los dos monederos, el peligro, la coreografía, Viper entrevistada, la consola, el baúl, el mago, la nave, el páramo, el taller, el hada, la corte del Duelo Social y el archivo de los expedientes; la tesis abre también La Idea, y los mundos, el Acelerado | color, a 1400 px |
+| Láminas | 25 | en el Juego completo: la tesis, la mesa, el Director que señala, los mundos, el optimismo, el Ancla, la observación, la Rejilla, la Llave, los dos monederos, el peligro, la coreografía, Viper entrevistada, la consola, el baúl, el menú degustación, el mago, la nave, el páramo, el asalto del Bloque C, la cantante del Bloque D, el taller, el hada, la corte del Duelo Social y el archivo de los expedientes; la tesis abre también La Idea, y los mundos, el Acelerado | color, a 1400 px |
 | Retratos | 12 | los expedientes del capítulo 9, de frente y de perfil | gris, a 600 px |
 
 - **Portadas.** Es una serie con el mismo personaje (sombrero y abrigo) y el mismo estudio. El centro va casi en blanco y negro y el color, en los bordes.
