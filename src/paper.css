@@ -482,12 +482,17 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 .sheet[data-cap="apx-maquinas"]{--cap:#555f6e}
 
 /* El arsenal del Bazar pasa de cinco columnas a ocho: Objeto, Daño, Esq,
-   Abs y los tres precios (Acceso, Puntos, Llaves), y Notas se queda el resto. */
-table.t.arsenal thead th:nth-child(1){width:26mm}
-table.t.arsenal thead th:nth-child(2){width:15mm}
-table.t.arsenal thead th:nth-child(3){width:17mm}
-table.t.arsenal thead th:nth-child(4){width:16mm}
-table.t.arsenal thead th:nth-child(5),table.t.arsenal thead th:nth-child(6),table.t.arsenal thead th:nth-child(7){width:11mm;font-size:6.5pt;letter-spacing:0}
+   Abs y los tres precios (Acceso, Puntos, Llaves), y Notas se queda el resto.
+   Las etiquetas van un punto mas pequenas y las celdas con menos aire a los
+   lados, para que «Abs: Reputacion» o «La Parca · Rejilla 3» no invadan la
+   columna de al lado. */
+table.t.arsenal th,table.t.arsenal td{padding-left:1.2mm;padding-right:1.2mm}
+table.t.arsenal .tag{font-size:6.6pt;padding:.2mm .8mm;max-width:100%;overflow-wrap:anywhere}
+table.t.arsenal thead th:nth-child(1){width:24mm}
+table.t.arsenal thead th:nth-child(2){width:20mm}
+table.t.arsenal thead th:nth-child(3){width:20mm}
+table.t.arsenal thead th:nth-child(4){width:22mm}
+table.t.arsenal thead th:nth-child(5),table.t.arsenal thead th:nth-child(6),table.t.arsenal thead th:nth-child(7){width:10mm;font-size:6.5pt;letter-spacing:0}
 table.t.arsenal td:nth-child(5),table.t.arsenal td:nth-child(6),table.t.arsenal td:nth-child(7){text-align:center}
 
 /* ===== Hoja de referencia (apx-referencia): todo el juego en una cara =====
@@ -594,4 +599,6 @@ table.t.ficha-equipo td:not(:first-child),table.t.ficha-equipo th:not(:first-chi
 .fig.ilus.sq{width:62%;margin-left:auto;margin-right:auto}
 .fig.ilus.sq > .fig-box{aspect-ratio:1/1}
 .fig.ilus.ancha > .fig-box{aspect-ratio:21/9}
+/* la lamina de cierre va sola en su hoja, centrada en vertical */
+.sb:has(> .fig.cierre:only-child){display:flex;flex-direction:column;justify-content:center}
 .fig.ilus figcaption{font:italic 9.5pt/1.4 var(--serif)}

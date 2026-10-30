@@ -491,12 +491,17 @@ table.t.exp-t td:first-child{font-weight:600;width:22%}
 .sheet[data-cap="apx-maquinas"]{--cap:#555f6e}
 
 /* El arsenal del Bazar pasa de cinco columnas a ocho: Objeto, Daño, Esq,
-   Abs y los tres precios (Acceso, Puntos, Llaves), y Notas se queda el resto. */
-table.t.arsenal thead th:nth-child(1){width:26mm}
-table.t.arsenal thead th:nth-child(2){width:15mm}
-table.t.arsenal thead th:nth-child(3){width:17mm}
-table.t.arsenal thead th:nth-child(4){width:16mm}
-table.t.arsenal thead th:nth-child(5),table.t.arsenal thead th:nth-child(6),table.t.arsenal thead th:nth-child(7){width:11mm;font-size:6.5pt;letter-spacing:0}
+   Abs y los tres precios (Acceso, Puntos, Llaves), y Notas se queda el resto.
+   Las etiquetas van un punto mas pequenas y las celdas con menos aire a los
+   lados, para que «Abs: Reputacion» o «La Parca · Rejilla 3» no invadan la
+   columna de al lado. */
+table.t.arsenal th,table.t.arsenal td{padding-left:1.2mm;padding-right:1.2mm}
+table.t.arsenal .tag{font-size:6.6pt;padding:.2mm .8mm;max-width:100%;overflow-wrap:anywhere}
+table.t.arsenal thead th:nth-child(1){width:24mm}
+table.t.arsenal thead th:nth-child(2){width:20mm}
+table.t.arsenal thead th:nth-child(3){width:20mm}
+table.t.arsenal thead th:nth-child(4){width:22mm}
+table.t.arsenal thead th:nth-child(5),table.t.arsenal thead th:nth-child(6),table.t.arsenal thead th:nth-child(7){width:10mm;font-size:6.5pt;letter-spacing:0}
 table.t.arsenal td:nth-child(5),table.t.arsenal td:nth-child(6),table.t.arsenal td:nth-child(7){text-align:center}
 
 /* ===== Hoja de referencia (apx-referencia): todo el juego en una cara =====
@@ -603,6 +608,8 @@ table.t.ficha-equipo td:not(:first-child),table.t.ficha-equipo th:not(:first-chi
 .fig.ilus.sq{width:62%;margin-left:auto;margin-right:auto}
 .fig.ilus.sq > .fig-box{aspect-ratio:1/1}
 .fig.ilus.ancha > .fig-box{aspect-ratio:21/9}
+/* la lamina de cierre va sola en su hoja, centrada en vertical */
+.sb:has(> .fig.cierre:only-child){display:flex;flex-direction:column;justify-content:center}
 .fig.ilus figcaption{font:italic 9.5pt/1.4 var(--serif)}
 </style>
 </head>
@@ -2576,7 +2583,7 @@ table.t.ficha-equipo td:not(:first-child),table.t.ficha-equipo th:not(:first-chi
 <p>Es regla del núcleo y vive en <a href="#ch3-sincro">3.8</a>: quien pilota un mecha, viste un exoesqueleto o se fusiona juega con la ficha del mecha, con su nivel, mientras dure. En el baúl solo figura para recordar que existe.</p>
 <p><em>Recetas:</em> 18 («Robots gigantes y angustia adolescente»).</p>
 
-<h4 class="nueva-hoja">Daño ambiental</h4>
+<h4>Daño ambiental</h4>
 <div class="rule"><p class="rule-title">El mundo te hace daño</p>
 <p>Un entorno hostil (radiación, frío extremo, vacío, gas) inflige daño <strong>por cada escena de exposición</strong> y sin tirada de ataque, y <strong>el daño sube según te quedas</strong>: <span class="tag">Daño 1</span> la primera escena, <span class="tag">Daño 2</span> la segunda, <span class="tag parca">La Parca · Rejilla 2</span> la tercera —a quien esté por debajo de ese nivel lo deja fuera de combate, sin derecho a tirada (<a href="#ch4-parca">4.5</a>)—, y todo con <span class="tag">Esq: Nula</span> <span class="tag">Abs: Nula</span>. Rejilla 2 es lo corriente; el vacío o el corazón de un reactor llevan la suya, más alta. El contador vuelve a cero en cuanto sales. La protección adecuada (traje, refugio, antídoto) es lo que te salva: con ella, el daño se puede absorber o desaparece.</p>
 </div>
@@ -2769,7 +2776,7 @@ table.t.ficha-equipo td:not(:first-child),table.t.ficha-equipo th:not(:first-chi
 <tr><td>Firma (Gran Maestro)</td><td class="num">4</td><td class="num">+4</td><td>Abierta</td></tr>
 </tbody></table></div>
 
-<h4 class="nueva-hoja">Las 40 Disciplinas</h4>
+<h4>Las 40 Disciplinas</h4>
 <div class="tw"><table class="t">
 <thead><tr><th>Ámbito</th><th>Dominio (+1)</th><th>Disciplina (+2)</th><th>Qué cubre</th></tr></thead>
 <tbody>
@@ -3417,7 +3424,7 @@ Fin de las notas de trabajo. -->
 <tr><td><strong>Carne de perro en lata</strong></td><td>—</td><td>—</td><td>—</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td>Restaura 1 casilla de daño físico. «Sabe a rayos». <em>La cuenta:</em> De un solo uso: no se paga (<a href="#ch5-cuenta">5.4</a>).</td></tr>
 <tr><td><strong>Agua purificada</strong></td><td>—</td><td>—</td><td>—</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td>«El oro azul». Restaura Mente y Cuerpo. Cantidad sin fijar. <em>La cuenta:</em> De un solo uso: no se paga (<a href="#ch5-cuenta">5.4</a>).</td></tr>
 </tbody></table></div>
-<h4 class="nueva-hoja">Mutaciones y artefactos</h4>
+<h4>Mutaciones y artefactos</h4>
 <div class="tw"><table class="t arsenal">
 <thead><tr><th>Objeto</th><th>Daño</th><th>Esq</th><th>Abs</th><th class="num">Acceso</th><th class="num">Puntos</th><th class="num">Llaves</th><th>Notas</th></tr></thead>
 <tbody>
@@ -5966,6 +5973,7 @@ Fin de las notas de trabajo. -->
 </div>
 
 </div>
+<figure class="fig ilus nueva-hoja cierre"><div class="fig-box"><img src="img/lam/cierre.jpg" alt="En un despacho a oscuras, con el letrero de neón de NOGUM tras la persiana, el hombre del sombrero apaga la luz al salir; sobre la mesa, un expediente cerrado"></div><figcaption>Caso cerrado. Hasta la próxima mesa.</figcaption></figure>
 </section>
 <section class="chapter colofon" id="es-licencia"><h2>Licencia</h2><p class="lede">Esta obra se publica bajo <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" target="_blank" rel="noopener">Creative Commons Atribución-CompartirIgual 4.0</a>. Puedes copiarla, traducirla, modificarla y construir encima, también con ánimo de lucro, con dos condiciones: <strong>cita al autor</strong> y <strong>publica lo que construyas bajo la misma licencia</strong>.</p><p><strong>Cómo se cita.</strong> «NOGUM, de Daniel Martín · CC BY-SA 4.0», con enlace al original donde el medio lo permita.</p><p><strong>Las reglas son libres.</strong> Las mecánicas de juego no son objeto de derechos de autor. Puedes escribir material compatible con este sistema sin pedirle permiso a nadie: la licencia cubre este <em>texto</em>, no el motor. Si lo que quieres es construir sobre NOGUM, ya puedes.</p><p><strong>Lo que la licencia no cubre.</strong> El nombre <strong>NOGUM</strong> y sus signos de identidad. El contenido es libre; el nombre se queda con su autor, para que nadie firme en su lugar.</p><p class="note">Daniel Martín · CC BY-SA 4.0</p></section>
 </template>
@@ -7920,7 +7928,7 @@ Fin de las notas de trabajo. -->
 <p>It is a core rule and lives in <a href="#ch3-sincro">3.8</a>: whoever pilots a mecha, wears an exoskeleton or fuses plays with the mecha’s sheet, at its level, for as long as it lasts. It only appears in the chest as a reminder that it exists.</p>
 <p><em>Recipes:</em> 18 (“Giant Robots and Teenage Angst”).</p>
 
-<h4 class="nueva-hoja">Environmental damage</h4>
+<h4>Environmental damage</h4>
 <div class="rule"><p class="rule-title">The world hurts you</p>
 <p>A hostile environment (radiation, extreme cold, vacuum, gas) inflicts damage <strong>for each scene of exposure</strong>, with no attack roll, and <strong>the damage rises the longer you stay</strong>: <span class="tag">Damage 1</span> the first scene, <span class="tag">Damage 2</span> the second, <span class="tag parca">The Reaper · Grid 2</span> the third —anyone below that level is taken out of the fight, with no right to roll (<a href="#ch4-parca">4.5</a>)—, and all of it with <span class="tag">Dodge: None</span> <span class="tag">Soak: None</span>. Grid 2 is the usual; vacuum or the heart of a reactor carry their own, higher. The counter resets the moment you get out. The right protection (suit, shelter, antidote) is what saves you: with it, the damage can be soaked or disappears.</p>
 </div>
@@ -8113,7 +8121,7 @@ Fin de las notas de trabajo. -->
 <tr><td>Signature (Grand Master)</td><td class="num">4</td><td class="num">+4</td><td>Open</td></tr>
 </tbody></table></div>
 
-<h4 class="nueva-hoja">The 40 Disciplines</h4>
+<h4>The 40 Disciplines</h4>
 <div class="tw"><table class="t">
 <thead><tr><th>Sphere</th><th>Domain (+1)</th><th>Discipline (+2)</th><th>What it covers</th></tr></thead>
 <tbody>
@@ -8761,7 +8769,7 @@ Fin de las notas de trabajo. -->
 <tr><td><strong>Canned Dog Meat</strong></td><td>—</td><td>—</td><td>—</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td>Restores 1 box of physical damage. “Tastes awful”. <em>Tally:</em> Single use: not paid for (<a href="#ch5-cuenta">5.4</a>).</td></tr>
 <tr><td><strong>Purified Water</strong></td><td>—</td><td>—</td><td>—</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td>“Blue gold”. Restores Mind and Body. Amount not set. <em>Tally:</em> Single use: not paid for (<a href="#ch5-cuenta">5.4</a>).</td></tr>
 </tbody></table></div>
-<h4 class="nueva-hoja">Mutations and artefacts</h4>
+<h4>Mutations and artefacts</h4>
 <div class="tw"><table class="t arsenal">
 <thead><tr><th>Object</th><th>Damage</th><th>Dodge</th><th>Soak</th><th class="num">Access</th><th class="num">Points</th><th class="num">Keys</th><th>Notes</th></tr></thead>
 <tbody>
@@ -11310,6 +11318,7 @@ Fin de las notas de trabajo. -->
 </div>
 
 </div>
+<figure class="fig ilus nueva-hoja cierre"><div class="fig-box"><img src="img/lam/cierre.jpg" alt="In a dark office, with the NOGUM neon sign behind the blinds, the man in the hat switches off the light on his way out; on the desk, a closed case file"></div><figcaption>Case closed. Until the next table.</figcaption></figure>
 </section>
 <section class="chapter colofon" id="en-licencia"><h2>Licence</h2><p class="lede">This work is published under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-ShareAlike 4.0</a>. You may copy it, translate it, modify it and build on it, commercially included, on two conditions: <strong>credit the author</strong> and <strong>release whatever you build under the same licence</strong>.</p><p><strong>How to credit it.</strong> “NOGUM, by Daniel Martín · CC BY-SA 4.0”, with a link to the original wherever the medium allows one.</p><p><strong>The rules are free.</strong> Game mechanics are not subject to copyright. You can write material compatible with this system without asking anyone: the licence covers this <em>text</em>, not the engine. If what you want is to build on NOGUM, you already can.</p><p><strong>What the licence does not cover.</strong> The name <strong>NOGUM</strong> and its identifying marks. The content is free; the name stays with its author, so that nobody signs in his place.</p><p class="note">Daniel Martín · CC BY-SA 4.0</p></section>
 </template>
@@ -11337,7 +11346,8 @@ Fin de las notas de trabajo. -->
   // tarjetas de tono: sin estar aqui iban como un solo bloque de dos paginas
   // y la hoja recortaba en silencio lo que no cabia (T163)
   var SPLIT = 'div.tw, table, ul, ol, dl, div.rule, div.example, div.cards, div.steps, div.step, div.recipe, blockquote, section, div.acro, div.legend, div.t7s';
-  var HEAD = /^(H2|H3|H4)$/;
+  // el termino de una lista (dt) viaja con su definicion, como un titulo
+  var HEAD = /^(H2|H3|H4|DT)$/;
   function isHead(el){ return el.nodeType===1 && (HEAD.test(el.tagName) || (el.matches && el.matches('.rule-title,.example-title,.step-title,.recipe-title,.card-kicker'))); }
 
   function newSheet(kind){
@@ -11383,7 +11393,7 @@ Fin de las notas de trabajo. -->
   function breakPage(){
     // carry trailing headings of the innermost target to the next page
     var t = target(), carry = [];
-    while (t.lastChild && t.lastChild.nodeType===1 && isHead(t.lastChild) && realCount(t) + t.querySelectorAll(':scope > h2,:scope > h3,:scope > h4').length > 1) { carry.unshift(t.lastChild); t.removeChild(t.lastChild); }
+    while (t.lastChild && t.lastChild.nodeType===1 && isHead(t.lastChild) && realCount(t) + t.querySelectorAll(':scope > h2,:scope > h3,:scope > h4,:scope > dt').length > 1) { carry.unshift(t.lastChild); t.removeChild(t.lastChild); }
     var old = clones.slice(), oldBody = body;
     newSheet();
     var parent = body;
@@ -11404,7 +11414,7 @@ Fin de las notas de trabajo. -->
     // if fragments were dropped (a table that left only its header), its heading goes with it
     if (i < old.length - 1) {
       var from = i >= 0 ? old[i].t : oldBody, to = i >= 0 ? clones[i].t : body, at = clones[i + 1].c, heads = [];
-      while (from.lastChild && from.lastChild.nodeType===1 && isHead(from.lastChild) && realCount(from) + from.querySelectorAll(':scope > h2,:scope > h3,:scope > h4').length > 1) { heads.unshift(from.lastChild); from.removeChild(from.lastChild); }
+      while (from.lastChild && from.lastChild.nodeType===1 && isHead(from.lastChild) && realCount(from) + from.querySelectorAll(':scope > h2,:scope > h3,:scope > h4,:scope > dt').length > 1) { heads.unshift(from.lastChild); from.removeChild(from.lastChild); }
       heads.forEach(function(n){ to.insertBefore(n, at); });
     }
   }
@@ -11415,10 +11425,28 @@ Fin de las notas de trabajo. -->
     t.removeChild(node);
     if (canSplit(node) && (placed > 0 || true)) { split(node); return; }
     if (placed === 0) { t.appendChild(node); placed++; return; }
+    if (floatUp(node, t)) return;
     breakPage();
     target().appendChild(node);
     if (over() && canSplit(node)) { target().removeChild(node); split(node); return; }
     placed++;
+  }
+  // a plate that does not fit, with more than a quarter of the page still free,
+  // goes up past up to three paragraphs of its own section, and they follow it
+  function floatUp(node, t){
+    if (!node.matches || !node.matches('figure.fig.ilus')) return false;
+    var last = body.lastElementChild; if (!last) return false;
+    var free = body.getBoundingClientRect().bottom - last.getBoundingClientRect().bottom;
+    if (free < body.clientHeight * 0.25) return false;
+    var moved = [];
+    while (moved.length < 3 && t.lastElementChild && t.lastElementChild.tagName === 'P' && t.lastChild === t.lastElementChild) {
+      moved.unshift(t.removeChild(t.lastElementChild));
+      t.appendChild(node);
+      if (!over()) { placed++; moved.forEach(put); return true; }
+      t.removeChild(node);
+    }
+    moved.forEach(function(n){ t.appendChild(n); });
+    return false;
   }
   function split(node){
     var s = shallow(node, false);

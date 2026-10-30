@@ -76,7 +76,9 @@ for (const libro of LIBROS) for (const lang of ['es', 'en']) {
       const top = b.getBoundingClientRect().top; let mx = 0;
       b.querySelectorAll('p,li,tr,h3,h4,dt,dd,figure').forEach(e => { mx = Math.max(mx, e.getBoundingClientRect().bottom - top); });
       if (mx - b.clientHeight > 0.5) over.push(s.getAttribute('data-page'));
-      const l = b.lastElementChild; if (l && /^H[234]$/.test(l.tagName)) orph.push(s.getAttribute('data-page') + ': ' + l.textContent.trim().slice(0, 40)); });
+      let l = b.lastElementChild;
+      while (l && l.lastElementChild && /^(DL|DIV|SECTION)$/.test(l.tagName) && !l.matches('.tw,.fig')) l = l.lastElementChild;
+      if (l && /^(H[234]|DT)$/.test(l.tagName)) orph.push(s.getAttribute('data-page') + ': ' + l.textContent.trim().slice(0, 40)); });
     return { over, orph }; })()`);
   if (fallos.over.length || fallos.orph.length) console.log(`  AVISO ${libro.f} ${lang}: cortes ${JSON.stringify(fallos.over)} · huérfanos ${JSON.stringify(fallos.orph)}`);
   for (const modo of MODOS) {

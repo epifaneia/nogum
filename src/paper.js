@@ -22,7 +22,8 @@
   // tarjetas de tono: sin estar aqui iban como un solo bloque de dos paginas
   // y la hoja recortaba en silencio lo que no cabia (T163)
   var SPLIT = 'div.tw, table, ul, ol, dl, div.rule, div.example, div.cards, div.steps, div.step, div.recipe, blockquote, section, div.acro, div.legend, div.t7s';
-  var HEAD = /^(H2|H3|H4)$/;
+  // el termino de una lista (dt) viaja con su definicion, como un titulo
+  var HEAD = /^(H2|H3|H4|DT)$/;
   function isHead(el){ return el.nodeType===1 && (HEAD.test(el.tagName) || (el.matches && el.matches('.rule-title,.example-title,.step-title,.recipe-title,.card-kicker'))); }
 
   function newSheet(kind){
@@ -68,7 +69,7 @@
   function breakPage(){
     // carry trailing headings of the innermost target to the next page
     var t = target(), carry = [];
-    while (t.lastChild && t.lastChild.nodeType===1 && isHead(t.lastChild) && realCount(t) + t.querySelectorAll(':scope > h2,:scope > h3,:scope > h4').length > 1) { carry.unshift(t.lastChild); t.removeChild(t.lastChild); }
+    while (t.lastChild && t.lastChild.nodeType===1 && isHead(t.lastChild) && realCount(t) + t.querySelectorAll(':scope > h2,:scope > h3,:scope > h4,:scope > dt').length > 1) { carry.unshift(t.lastChild); t.removeChild(t.lastChild); }
     var old = clones.slice(), oldBody = body;
     newSheet();
     var parent = body;
@@ -89,7 +90,7 @@
     // if fragments were dropped (a table that left only its header), its heading goes with it
     if (i < old.length - 1) {
       var from = i >= 0 ? old[i].t : oldBody, to = i >= 0 ? clones[i].t : body, at = clones[i + 1].c, heads = [];
-      while (from.lastChild && from.lastChild.nodeType===1 && isHead(from.lastChild) && realCount(from) + from.querySelectorAll(':scope > h2,:scope > h3,:scope > h4').length > 1) { heads.unshift(from.lastChild); from.removeChild(from.lastChild); }
+      while (from.lastChild && from.lastChild.nodeType===1 && isHead(from.lastChild) && realCount(from) + from.querySelectorAll(':scope > h2,:scope > h3,:scope > h4,:scope > dt').length > 1) { heads.unshift(from.lastChild); from.removeChild(from.lastChild); }
       heads.forEach(function(n){ to.insertBefore(n, at); });
     }
   }
@@ -100,10 +101,28 @@
     t.removeChild(node);
     if (canSplit(node) && (placed > 0 || true)) { split(node); return; }
     if (placed === 0) { t.appendChild(node); placed++; return; }
+    if (floatUp(node, t)) return;
     breakPage();
     target().appendChild(node);
     if (over() && canSplit(node)) { target().removeChild(node); split(node); return; }
     placed++;
+  }
+  // a plate that does not fit, with more than a quarter of the page still free,
+  // goes up past up to three paragraphs of its own section, and they follow it
+  function floatUp(node, t){
+    if (!node.matches || !node.matches('figure.fig.ilus')) return false;
+    var last = body.lastElementChild; if (!last) return false;
+    var free = body.getBoundingClientRect().bottom - last.getBoundingClientRect().bottom;
+    if (free < body.clientHeight * 0.25) return false;
+    var moved = [];
+    while (moved.length < 3 && t.lastElementChild && t.lastElementChild.tagName === 'P' && t.lastChild === t.lastElementChild) {
+      moved.unshift(t.removeChild(t.lastElementChild));
+      t.appendChild(node);
+      if (!over()) { placed++; moved.forEach(put); return true; }
+      t.removeChild(node);
+    }
+    moved.forEach(function(n){ t.appendChild(n); });
+    return false;
   }
   function split(node){
     var s = shallow(node, false);
