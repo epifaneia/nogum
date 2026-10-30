@@ -2,7 +2,7 @@
 
 [![puertas](https://github.com/epifaneia/nogum/actions/workflows/puertas.yml/badge.svg)](https://github.com/epifaneia/nogum/actions/workflows/puertas.yml)
 
-> **In English.** NOGUM is a tabletop role-playing game, and this repo is the compiler for its bilingual (Spanish/English) 218-page manual, plus the single-file web app that configures a game from it. One set of source fragments feeds three books and the app, each in two languages and as web and PDF, so the real problem is keeping them from drifting apart.
+> **In English.** NOGUM is a tabletop role-playing game, and this repo is the compiler for its bilingual (Spanish/English) 217-page manual, plus the single-file web app that configures a game from it. One set of source fragments feeds three books and the app, each in two languages and as web and PDF, so the real problem is keeping them from drifting apart.
 > The principle is *the model interprets, deterministic code verifies*: text is drafted with an LLM's help, but nothing ships until deterministic Python checks pass.
 > The validation gates: `src/w_revision.py` sweeps the compiled products for retired vocabulary, system invariants, broken anchors, duplicate ids and cross-links; `src/w_marcas_inv.py` inventories trademarked names; build-time assertions check catalogue counts and the app's embedded JSON; `src/curvas.py` is the probability model, and `src/w_apendice_b.py` checks it against the printed tables (Appendix B: 56 rows per language, 0 discrepancies). CI runs the build and the gates on every push (`.github/workflows/puertas.yml`).
 > Every rule records where it comes from in the design log, `src/CANON.md`, currently at entry 189.
@@ -10,7 +10,7 @@
 > Published: [the idea](https://epifaneia.dev/nogum/idea.html) · [the book](https://epifaneia.dev/nogum/juego.html) · [the app](https://epifaneia.dev/nogum/app.html).
 > The rest of this README is in Spanish; internal working notes live in `notas/`.
 
-**NOGUM es un juego de rol de mesa. Este repositorio es el compilador de su manual bilingüe de 218 páginas, con validación automática de contenido, y la aplicación web que lo configura.**
+**NOGUM es un juego de rol de mesa. Este repositorio es el compilador de su manual bilingüe de 217 páginas, con validación automática de contenido, y la aplicación web que lo configura.**
 
 El producto es un juego de rol universal. Lo interesante desde aquí es el problema: mantener **cuatro productos derivados de una misma fuente, en dos idiomas, con datos compartidos entre un libro y una aplicación**, sin que se desincronicen. Este repositorio es el pipeline que lo resuelve y las puertas de validación que lo vigilan.
 
@@ -20,7 +20,7 @@ El producto es un juego de rol universal. Lo interesante desde aquí es el probl
 
 ![La aplicación con una mesa configurada: tono Primera marcha, peligro Táctico, mundo propio de nivel máximo 3 y el catálogo de objetos que ese mundo usa](img-readme/app-mesa-configurada.png)
 
-> **Por qué está aquí.** El principio de [Epifaneia](https://epifaneia.dev) es que *el modelo interpreta y el código determinista verifica*. Esto es ese principio llevado al extremo en un dominio donde la especificación era mía de arriba abajo: 218 páginas, dos idiomas, cuatro salidas y una aplicación que consume datos del propio libro.
+> **Por qué está aquí.** El principio de [Epifaneia](https://epifaneia.dev) es que *el modelo interpreta y el código determinista verifica*. Esto es ese principio llevado al extremo en un dominio donde la especificación era mía de arriba abajo: 217 páginas, dos idiomas, cuatro salidas y una aplicación que consume datos del propio libro.
 >
 > Las tres cosas que se demuestran son las mismas que se piden en un proceso regulado. **Trazabilidad:** cada regla lleva escrito de dónde sale, y el diario de diseño va por la entrada 189, cada decisión con su porqué. **Verificación automática:** las puertas paran la compilación cuando el contenido y los datos dejan de decir lo mismo. **Y restricción deliberada del modelo:** el configurador es determinista porque un árbol de veinte preguntas resuelve eso mejor que un modelo, y al asistente se le recorta el contexto para que nunca lea el diario de trabajo.
 >
@@ -35,7 +35,7 @@ Una misma fuente alimenta cuatro salidas que se contradicen con facilidad:
 | Pieza | Qué es | Formato |
 |---|---|---|
 | La Idea | el argumento de diseño, 16 páginas | libro |
-| Juego completo | el manual, 218 páginas | libro |
+| Juego completo | el manual, 217 páginas | libro |
 | Acelerado | la versión corta, 22 páginas (23 en inglés) | libro |
 | App | el configurador y las fichas | aplicación de un fichero |
 
@@ -143,7 +143,7 @@ Las imágenes se hicieron con **Nano Banana**, el modelo de imagen de Google en 
 | Serie | Cuántas | Dónde | Cómo salen |
 |---|---|---|---|
 | Portadas | 5 | la portada general y una por pieza (La Idea, Juego completo, Acelerado, App) | color, a 1280 y 640 px |
-| Láminas | 19 | en el Juego completo: la tesis, la mesa, los mundos, el optimismo, el Ancla, la observación, la Rejilla, la Llave, la espada contra el gigante, el peligro, la coreografía, Viper entrevistada, la consola, la nave, el páramo, el taller, el hada, la corte del Duelo Social y el archivo de los expedientes; la tesis abre también La Idea | color, a 1400 px |
+| Láminas | 18 | en el Juego completo: la tesis, la mesa, los mundos, el optimismo, el Ancla, la observación, la Rejilla, la Llave, el peligro, la coreografía, Viper entrevistada, la consola, la nave, el páramo, el taller, el hada, la corte del Duelo Social y el archivo de los expedientes; la tesis abre también La Idea | color, a 1400 px |
 | Retratos | 12 | los expedientes del capítulo 9, de frente y de perfil | gris, a 600 px |
 
 - **Portadas.** Es una serie con el mismo personaje (sombrero y abrigo) y el mismo estudio. El centro va casi en blanco y negro y el color, en los bordes.
