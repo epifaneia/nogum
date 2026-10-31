@@ -132,7 +132,7 @@ Sobre esto último: el configurador es determinista **a propósito**. Un árbol 
 
 ## Las imágenes
 
-Las imágenes se hicieron con **Nano Banana**, el modelo de imagen de Google en el ecosistema Gemini. El texto se redactó con ayuda de Claude. Se dice aquí y no se esconde en ninguna parte.
+Las imágenes se hicieron con **Nano Banana**, el modelo de imagen de Google en el ecosistema Gemini. Claude redactó y reescribió buena parte de la prosa, hizo la edición inglesa y escribió la mayor parte del código. El canon del autor manda sobre cada regla, y las propuestas que el autor no ha validado quedan marcadas como tales. Se dice aquí y no se esconde en ninguna parte.
 
 | Serie | Cuántas | Dónde | Cómo salen |
 |---|---|---|---|
@@ -145,6 +145,12 @@ Las imágenes se hicieron con **Nano Banana**, el modelo de imagen de Google en 
 - **Gráficas.** Las del libro no son imágenes generadas: son SVG que `curvas.py` dibuja a partir de los datos.
 
 Los originales están en `src/img/` (`laminas/` y `expedientes/` aparte). `imagenes.py` los recorta, los escala y, en los retratos, los pasa a gris, y los deja en `docs/img/`.
+
+## Uso responsable
+
+- **Datos de entrenamiento.** Las imágenes salen de un modelo comercial cuyos datos de entrenamiento no elegí ni puedo auditar: no sé de qué obras aprendió ni si sus autores estuvieron de acuerdo. Por eso las imágenes se declaran, nada de las reglas ni de los datos depende de ellas, y las tablas y gráficas que llevan información las calcula `curvas.py` en vez de generarse.
+- **Accesibilidad.** Cada lámina que dice algo tiene texto alternativo en los dos idiomas; las portadas van marcadas como decorativas. Al cambiar de idioma cambia también el idioma declarado de la página, así que un lector de pantalla cambia de voz con él. Los tres libros y la aplicación respetan el movimiento reducido y el modo oscuro y tienen estilo de impresión, y cada PDF lleva marcadores. No se ha probado de punta a punta con un lector de pantalla.
+- **Huella.** Un sitio estático, sin servidor, sin base de datos y sin analítica; la única petición a un tercero es la de las fuentes, a Google Fonts. Las imágenes se recortan a los tamaños que usa la web, y la aplicación es un solo fichero de unos 0,7 MB. Solo se llama a un modelo cuando el lector le pregunta algo a la aplicación, con su propia clave, que por defecto se olvida al cerrar la pestaña.
 
 ## Estructura
 

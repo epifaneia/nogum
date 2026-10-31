@@ -132,7 +132,7 @@ On that last point: the configurator is deterministic **on purpose**. A twenty-q
 
 ## The images
 
-The images were made with **Nano Banana**, Google's image model in the Gemini ecosystem. The text was drafted with Claude's help. It is said here and hidden nowhere.
+The images were made with **Nano Banana**, Google's image model in the Gemini ecosystem. Claude drafted and rewrote much of the prose, produced the English edition and wrote most of the code. The author's canon governs every rule, and proposals the author has not validated stay marked as such. It is said here and hidden nowhere.
 
 | Series | How many | Where | How they come out |
 |---|---|---|---|
@@ -145,6 +145,12 @@ The images were made with **Nano Banana**, Google's image model in the Gemini ec
 - **Charts.** The book's charts are not generated images: they are SVGs that `curvas.py` draws from the data.
 
 The originals are in `src/img/` (`laminas/` and `expedientes/` separately). `imagenes.py` crops them, scales them and, for the portraits, turns them grey, and leaves them in `docs/img/`.
+
+## Responsible use
+
+- **Training data.** The images come from a commercial model whose training data I did not choose and cannot audit: I cannot say whose work it learned from, or whether they agreed. That is why the images are declared, why nothing in the rules or the data depends on them, and why the tables and charts that carry information are computed by `curvas.py` instead of generated.
+- **Accessibility.** Every plate that carries meaning has a text alternative in both languages; the covers are marked as decorative. The language switch also changes the page's declared language, so a screen reader changes voice with it. The three books and the app respect reduced motion and dark mode and have a print style, and every PDF carries bookmarks. It has not been tested end to end with a screen reader.
+- **Footprint.** A static site with no server, no database and no analytics; the only request to a third party is for the fonts, to Google Fonts. Images are cut to the sizes the web uses, and the app is a single file of about 0.7 MB. A model is called only when a reader asks the app something, with the reader's own key, which by default is forgotten when the tab closes.
 
 ## Structure
 
